@@ -200,3 +200,82 @@ section { position: relative; }
   background: currentColor;
   display: inline-block;
 }
+
+/* ───── Responsive ───── */
+
+/* Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+  :root { --pad: clamp(20px, 4vw, 32px); }
+
+  /* Collapse 5-col grids → 3-col */
+  [style*="repeat(5, 1fr)"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  /* Collapse 4-col grids → 2-col */
+  [style*="repeat(4, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Collapse 3-col grids → 2-col */
+  [style*="repeat(3, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Collapse asymmetric two-column layouts → stack */
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1.6fr"],
+  [style*="grid-template-columns: 1.4fr 1fr"],
+  [style*="grid-template-columns: 1fr 1.4fr"],
+  [style*="grid-template-columns: 1fr 1.2fr"],
+  [style*="grid-template-columns: 1.1fr 1.2fr 1fr"],
+  [style*="grid-template-columns: 1fr 320px"],
+  [style*="grid-template-columns: 2fr 1fr 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* When the editorial 2-col header collapses, reset right-aligned paragraphs */
+  [style*="grid-template-columns: 1fr 1fr"] [style*="text-align: right"],
+  [style*="grid-template-columns: 1fr 1fr"] [style*="justify-self: end"] {
+    text-align: left !important;
+    justify-self: start !important;
+    margin-top: 4px !important;
+  }
+
+  /* Hide desktop-only nav links */
+  .wfs-desktop-nav { display: none !important; }
+  /* Hide secondary CTAs on tablet */
+  .wfs-hide-tablet { display: none !important; }
+}
+
+/* Mobile (≤ 640px) */
+@media (max-width: 640px) {
+  :root { --pad: 16px; }
+
+  /* All multi-col grids → single column */
+  [style*="repeat(5, 1fr)"],
+  [style*="repeat(4, 1fr)"],
+  [style*="repeat(3, 1fr)"],
+  [style*="repeat(2, 1fr)"],
+  [style*="repeat(6, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Tighter section padding */
+  section { padding-top: 40px !important; padding-bottom: 40px !important; }
+
+  /* Hide utility bar on phone — too cluttered */
+  .wfs-utility-bar { display: none !important; }
+  .wfs-hide-mobile { display: none !important; }
+
+  /* Hero gets less padding, smaller minHeight */
+  .wfs-hero { min-height: 100svh !important; padding-top: 40px !important; }
+
+  /* Smaller display titles on phone */
+  .display { letter-spacing: -0.01em; }
+
+  /* Project gallery row height */
+  .wfs-projects-grid { grid-auto-rows: 280px !important; }
+
+  /* FAQ stack: drop sticky on mobile so the CTA panel can collapse */
+  .wfs-faq-sidebar { position: static !important; }
+
+  /* Map: keep 4/3 instead of 192/152 letterbox awkwardness */
+  .wfs-map { aspect-ratio: 4 / 3 !important; }
+}

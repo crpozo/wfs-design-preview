@@ -53,7 +53,7 @@ const Hero = () => {
   ];
 
   return (
-    <section style={{
+    <section className="wfs-hero" style={{
       position: 'relative',
       color: 'var(--white)',
       overflow: 'hidden',

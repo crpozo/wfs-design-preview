@@ -59,7 +59,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
         @keyframes wfsFadeDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
       `}</style>
       {/* Utility bar */}
-      <div style={{ background: 'var(--ink)', borderBottom: '1px solid rgba(255,255,255,0.08)', color: 'var(--alice-blue)' }}>
+      <div className="wfs-utility-bar" style={{ background: 'var(--ink)', borderBottom: '1px solid rgba(255,255,255,0.08)', color: 'var(--alice-blue)' }}>
         <div className="container" style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           gap: 32, padding: '10px 0', fontFamily: 'var(--mono)', fontSize: 11,
@@ -173,7 +173,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
           </a>
 
           {/* Nav */}
-          <nav style={{ display: 'flex', gap: 26, alignItems: 'center' }}
+          <nav className="wfs-desktop-nav" style={{ display: 'flex', gap: 26, alignItems: 'center' }}
             onMouseLeave={() => setOpenMenu(null)}>
             {NAV.map(([label, def]) => (
               <div key={label} style={{ position: 'static' }}
@@ -194,7 +194,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
 
           {/* CTAs — match the editorial pill + mono-rule pattern used across the page */}
           <div style={{ display: 'flex', gap: 18, alignItems: 'center' }}>
-            <a href="estimate.html" className="mono" style={{
+            <a href="estimate.html" className="mono wfs-hide-tablet" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
               padding: '8px 0',
               fontSize: 11, fontWeight: 700,

@@ -275,7 +275,7 @@ const ProjectGallery = () => {
         </div>
 
         {/* Grid — 3 cols × 2 rows, equal cards */}
-        <div style={{
+        <div className="wfs-projects-grid" style={{
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
           gridAutoRows: '220px',
@@ -497,7 +497,7 @@ const ServiceAreas = () => {
           display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 24, alignItems: 'stretch',
         }}>
           {/* Florida map with white pins over the tangerine state */}
-          <div style={{
+          <div className="wfs-map" style={{
             position: 'relative',
             background: 'var(--ink)',
             border: '1px solid var(--ink)',

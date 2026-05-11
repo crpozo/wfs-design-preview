@@ -182,7 +182,7 @@ const FAQ = () => {
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
           {/* Left: editorial header + CTA */}
-          <div style={{ position: 'sticky', top: 100 }}>
+          <div className="wfs-faq-sidebar" style={{ position: 'sticky', top: 100 }}>
             <div className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 12,
               fontSize: 11, fontWeight: 700,
