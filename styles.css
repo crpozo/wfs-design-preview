@@ -281,4 +281,10 @@ section { position: relative; }
 
   /* Map: keep 4/3 instead of 192/152 letterbox awkwardness */
   .wfs-map { aspect-ratio: 4 / 3 !important; }
+
+  /* Fence/gate cards: portrait 4/5 is too tall when stacked → make them landscape */
+  [style*="aspect-ratio: 4 / 5"] { aspect-ratio: 5 / 4 !important; }
+
+  /* Project cards: shorter rows on mobile */
+  .wfs-projects-grid { grid-auto-rows: 220px !important; }
 }
