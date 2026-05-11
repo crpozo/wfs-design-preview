@@ -282,12 +282,17 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
           }}>
             <img src="assets/wfs-logo.svg" alt="Western Fence Supply" style={{ height: 32, width: 'auto' }}/>
             <button onClick={() => setMobileOpen(false)} aria-label="Close menu" style={{
-              width: 42, height: 42,
+              flexShrink: 0,
+              width: 44, height: 44,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              background: 'transparent', border: '1px solid var(--ink)', cursor: 'pointer',
+              gap: 0,
+              background: '#1a2548',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 0,
             }}>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <path d="M1 1l12 12M13 1L1 13" stroke="var(--ink)" strokeWidth="1.6"/>
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <path d="M3 3 L15 15 M15 3 L3 15" stroke="#ff7133" strokeWidth="2" strokeLinecap="square"/>
               </svg>
             </button>
           </div>
