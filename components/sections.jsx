@@ -511,36 +511,40 @@ const ServiceAreas = () => {
                 width: '100%', height: '100%', objectFit: 'cover',
               }}/>
 
-            {/* Pins — placed at SVG coords (FM 762,535 · PC 757,527) within viewBox 624..816 / 432..584.
-                FM xPct = (762-624)/192 = 71.9, yPct = (535-432)/152 = 67.8
-                PC xPct = (757-624)/192 = 69.3, yPct = (527-432)/152 = 62.5 */}
+            {/* Pins — anchored to exact SVG coords within viewBox 624 432 192 152.
+                Computed by parsing FL path: FM west-coast inland (757, 534);
+                PC west-coast inland (755, 528). */}
             {[
-              { name: 'Fort Myers · HQ', xPct: 71.9, yPct: 67.8 },
-              { name: 'Port Charlotte', xPct: 69.3, yPct: 62.5, labelLeft: true },
+              { name: 'Fort Myers · HQ', xPct: 69.3, yPct: 67.1 },
+              { name: 'Port Charlotte', xPct: 68.2, yPct: 63.2, labelLeft: true },
             ].map((p) => (
-              <div key={p.name} style={{
-                position: 'absolute',
-                left: `${p.xPct}%`, top: `${p.yPct}%`,
-                transform: 'translate(-50%, -50%)',
-                display: 'flex', alignItems: 'center', gap: 10,
-                flexDirection: p.labelLeft ? 'row-reverse' : 'row',
-                pointerEvents: 'none',
-              }}>
+              <React.Fragment key={p.name}>
+                {/* Dot — sits exactly on the target SVG point */}
                 <span style={{
+                  position: 'absolute',
+                  left: `${p.xPct}%`, top: `${p.yPct}%`,
+                  transform: 'translate(-50%, -50%)',
                   width: 14, height: 14, borderRadius: '50%',
                   background: 'var(--white)',
                   border: '3px solid var(--ink)',
                   boxShadow: '0 0 0 4px rgba(26,37,72,0.35)',
-                  flexShrink: 0,
+                  pointerEvents: 'none',
+                  zIndex: 2,
                 }}/>
+                {/* Label — offset 16px to the side of the dot */}
                 <span className="mono" style={{
+                  position: 'absolute',
+                  left: p.labelLeft ? `calc(${p.xPct}% - 16px)` : `calc(${p.xPct}% + 16px)`,
+                  top: `${p.yPct}%`,
+                  transform: p.labelLeft ? 'translate(-100%, -50%)' : 'translate(0, -50%)',
                   fontSize: 10, fontWeight: 700, letterSpacing: '0.18em',
                   textTransform: 'uppercase',
                   color: 'var(--ink)', background: 'var(--white)',
                   padding: '5px 9px', whiteSpace: 'nowrap',
                   border: '1px solid var(--ink)',
+                  pointerEvents: 'none',
                 }}>{p.name}</span>
-              </div>
+              </React.Fragment>
             ))}
 
             {/* Eyebrow label, top-left */}
@@ -648,24 +652,38 @@ const FinalCTA = () => {
       }}/>
       <div className="container" style={{ position: 'relative' }}>
         <div style={{
-          borderTop: '1px solid var(--ink)', paddingTop: 28, marginBottom: 56,
-          display: 'grid', gridTemplateColumns: '1fr 320px', gap: 40, alignItems: 'start',
+          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48,
+          alignItems: 'end',
+          paddingBottom: 24, marginBottom: 40,
+          borderBottom: '1px solid rgba(0,16,17,0.12)',
         }}>
           <div>
             <div className="mono" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 10,
-              fontSize: 12, fontWeight: 700, letterSpacing: '0.28em',
+              display: 'inline-flex', alignItems: 'center', gap: 12,
+              fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
               color: 'var(--tangerine)', textTransform: 'uppercase',
               marginBottom: 18,
             }}>
-              <span style={{ width: 28, height: 2, background: 'var(--tangerine)' }}/>
-              Request a quote
+              <span>07 — Request a quote</span>
+              <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
             </div>
-            <h2 className="display" style={{ margin: 0, fontSize: 'clamp(40px, 5vw, 60px)', lineHeight: 0.95, letterSpacing: '-0.02em' }}>
-              Ready to spec your <span style={{ color: 'var(--tangerine)' }}>next perimeter?</span>
+            <h2 className="display" style={{
+              margin: 0,
+              fontSize: 'clamp(28px, 3vw, 40px)',
+              lineHeight: 1, letterSpacing: '-0.02em',
+              fontWeight: 800,
+            }}>
+              Ready to spec your<br/>
+              <span style={{ color: 'var(--tangerine)' }}>next perimeter?</span>
             </h2>
           </div>
-          <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--ink)' }}>Tell us about your project — we'll come back within 24 hours with stock, pricing and lead time.</p>
+          <p style={{
+            margin: 0, maxWidth: 360, justifySelf: 'end',
+            fontSize: 14, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
+          }}>
+            Tell us about your project — we'll come back within 24 hours with
+            stock, pricing and lead time.
+          </p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 48, alignItems: 'start' }}>

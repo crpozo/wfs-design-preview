@@ -192,39 +192,47 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
             ))}
           </nav>
 
-          {/* CTAs */}
-          <div style={{ display: 'flex', gap: 10 }}>
-            <a href="estimate.html" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              padding: '12px 18px', border: '1px solid var(--ink)',
-              fontSize: 14, fontWeight: 500, color: 'var(--ink)', background: 'var(--white)',
-              transition: 'all 0.15s',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'var(--tangerine)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'var(--white)'; }}>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          {/* CTAs — match the editorial pill + mono-rule pattern used across the page */}
+          <div style={{ display: 'flex', gap: 18, alignItems: 'center' }}>
+            <a href="estimate.html" className="mono" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 10,
+              padding: '8px 0',
+              fontSize: 11, fontWeight: 700,
+              letterSpacing: '0.22em', textTransform: 'uppercase',
+              color: 'var(--ink)',
+              borderBottom: '1px solid var(--ink)',
+            }}>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                 <path d="M2 13 L11 4 L13 6 L4 15 L2 15 Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="miter"/>
               </svg>
               Draw My Fence
             </a>
             <a href="estimate.html" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              padding: '12px 22px', background: 'var(--ink)',
-              fontSize: 14, fontWeight: 500, color: 'var(--white)',
-              transition: 'background 0.15s',
-              position: 'relative',
+              display: 'inline-flex', alignItems: 'center', gap: 12,
+              padding: '8px 8px 8px 18px',
+              borderRadius: 999,
+              background: 'var(--ink)', color: 'var(--white)',
+              fontFamily: 'var(--mono)',
+              fontSize: 11, fontWeight: 700,
+              letterSpacing: '0.22em', textTransform: 'uppercase',
+              transition: 'background 0.2s ease, transform 0.2s ease',
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = 'var(--indigo-blue)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'var(--ink)'; }}>
+            onMouseEnter={e => { e.currentTarget.style.background = '#0f1832'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'var(--ink)'; e.currentTarget.style.transform = 'none'; }}>
               <span style={{
-                width: 7, height: 7, borderRadius: '50%', background: '#22c55e',
+                width: 6, height: 6, borderRadius: '50%', background: '#22c55e',
                 boxShadow: '0 0 0 3px rgba(34,197,94,0.25)',
               }}/>
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <circle cx="8" cy="6" r="2.5" stroke="currentColor" strokeWidth="1.4"/>
-                <path d="M3 14 C3 11 5.5 10 8 10 C10.5 10 13 11 13 14" stroke="currentColor" strokeWidth="1.4"/>
-              </svg>
               Live Agent
+              <span style={{
+                width: 26, height: 26, borderRadius: '50%',
+                background: 'var(--tangerine)', color: 'var(--ink)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="square"/>
+                </svg>
+              </span>
             </a>
           </div>
         </div>

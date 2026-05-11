@@ -90,16 +90,51 @@ const Testimonials = () => {
     { name: 'Reinier Carmenates', text: 'I\'ve installed fences in Lee County for 5 years. I\'ve never paid such a low price for such good material.', tag: 'Contractor' },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '76px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '56px 0' }}>
       <div className="container">
-        <div style={{ marginBottom: 48, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 24 }}>
+        {/* Editorial header — matches the rest of the page */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: '1fr auto',
+          gap: 48,
+          alignItems: 'end',
+          paddingBottom: 24, marginBottom: 28,
+          borderBottom: '1px solid rgba(0,16,17,0.12)',
+        }}>
           <div>
-            <h2 className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 60px)', margin: '0', maxWidth: 800 }}>
-              What contractors<br/>and homeowners say.
+            <div className="mono" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 12,
+              fontSize: 11, fontWeight: 700,
+              letterSpacing: '0.22em',
+              color: 'var(--tangerine)',
+              textTransform: 'uppercase',
+              marginBottom: 18,
+            }}>
+              <span>06 — Reviews</span>
+              <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
+            </div>
+            <h2 className="display" style={{
+              margin: 0,
+              fontSize: 'clamp(28px, 3vw, 40px)',
+              lineHeight: 1, letterSpacing: '-0.02em',
+              fontWeight: 800,
+            }}>
+              What contractors and<br/>
+              <span style={{ color: 'var(--tangerine)' }}>homeowners say.</span>
             </h2>
           </div>
-          <a href="#" className="mono" style={{ fontSize: 13, letterSpacing: '0.14em', color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 8 }}>
-            READ ALL REVIEWS <ArrowRight size={13} />
+          <a href="#" className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            fontSize: 11, fontWeight: 700,
+            letterSpacing: '0.22em', textTransform: 'uppercase',
+            color: 'var(--ink)',
+            borderBottom: '1px solid var(--ink)',
+            paddingBottom: 4,
+          }}>
+            Read all reviews
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+            </svg>
           </a>
         </div>
 
@@ -386,15 +421,15 @@ const ShopTour = () => (
 const AboutIntro = () => {
   const [ctaHover, setCtaHover] = React.useState(false);
   return (
-    <section style={{ background: 'var(--white)', padding: '96px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '48px 0' }}>
       <div className="container" style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
-        gap: 80,
+        gap: 56,
         alignItems: 'center',
       }}>
         {/* Image with notched corners */}
-        <div style={{ position: 'relative', aspectRatio: '5 / 4' }}>
+        <div style={{ position: 'relative', aspectRatio: '4 / 3' }}>
           <div style={{
             position: 'absolute', inset: 0,
             background: '#f3f1ee',
@@ -427,64 +462,55 @@ const AboutIntro = () => {
         {/* Copy */}
         <div style={{ maxWidth: 560 }}>
           <div className="mono" style={{
-            display: 'inline-block',
-            fontSize: 12, fontWeight: 700,
-            letterSpacing: '0.32em',
+            display: 'inline-flex', alignItems: 'center', gap: 12,
+            fontSize: 11, fontWeight: 700,
+            letterSpacing: '0.22em',
             color: 'var(--tangerine)',
             textTransform: 'uppercase',
-            paddingBottom: 4,
-            borderBottom: '2px solid var(--laser-blue)',
-            marginBottom: 28,
-          }}>About</div>
+            marginBottom: 16,
+          }}>
+            <span>About</span>
+            <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
+          </div>
 
           <h2 className="display" style={{
             margin: 0,
-            fontSize: 'clamp(34px, 3.4vw, 46px)',
-            lineHeight: 1.08,
-            letterSpacing: '-0.015em',
+            fontSize: 'clamp(26px, 2.6vw, 36px)',
+            lineHeight: 1.02,
+            letterSpacing: '-0.02em',
             fontWeight: 800,
-          }}>#1 Southwest Florida Fence Supply</h2>
+          }}>
+            #1 Southwest Florida<br/>
+            <span style={{ color: 'var(--tangerine)' }}>Fence Supply.</span>
+          </h2>
 
           <p style={{
-            marginTop: 24,
-            fontSize: 15.5, lineHeight: 1.65,
+            marginTop: 20,
+            fontSize: 14.5, lineHeight: 1.55,
             color: 'var(--charcoal)',
             maxWidth: 540,
           }}>
-            Western Fence Supply is Southwest Florida's best source for high-quality
-            vinyl, aluminum and chain-link fence materials. We sell to fence
-            companies and homeowners across Lee, Collier, Charlotte and Hendry
-            counties — wholesale pricing, direct delivery, and best-in-class
-            customer service.
-          </p>
-
-          <p style={{
-            marginTop: 16,
-            fontSize: 15.5, lineHeight: 1.65,
-            color: 'var(--charcoal)',
-            maxWidth: 540,
-          }}>
-            Family-owned and led by management with over a decade of installation
-            and fabrication experience. From our Fort Myers shop we transform raw
-            components into the highest-quality fence panels on the market — the
+            Southwest Florida's best source for high-quality vinyl, aluminum
+            and chain-link fence materials. Family-owned and led by management
+            with over a decade of installation and fabrication experience —
             same standard we held when we were the contractors.
           </p>
 
           {/* Stat strip */}
           <div style={{
-            marginTop: 28,
+            marginTop: 20,
             display: 'grid', gridTemplateColumns: 'repeat(3, auto)',
-            gap: 36,
-            paddingTop: 20,
+            gap: 32,
+            paddingTop: 16,
             borderTop: '1px solid rgba(0,16,17,0.12)',
           }}>
             {[
               ['10+', 'Years fabricating'],
               ['4', 'Counties served'],
-              ['2', 'Yards · Fort Myers + Port Charlotte'],
+              ['2', 'Yards · FM + PC'],
             ].map(([n, l]) => (
               <div key={l}>
-                <div className="display" style={{ fontSize: 28, lineHeight: 1, color: 'var(--ink)' }}>{n}</div>
+                <div className="display" style={{ fontSize: 24, lineHeight: 1, color: 'var(--ink)' }}>{n}</div>
                 <div className="mono" style={{
                   marginTop: 6, fontSize: 10, letterSpacing: '0.18em',
                   textTransform: 'uppercase', color: 'var(--charcoal)',
@@ -493,7 +519,7 @@ const AboutIntro = () => {
             ))}
           </div>
 
-          <div style={{ marginTop: 32, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+          <div style={{ marginTop: 24, display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center' }}>
             <a href="estimate.html"
               onMouseEnter={() => setCtaHover(true)}
               onMouseLeave={() => setCtaHover(false)}
