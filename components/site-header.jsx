@@ -4,6 +4,14 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
   const [curLang, setCurLang] = React.useState(lang);
   const [curMode, setCurMode] = useMode();
   const [openMenu, setOpenMenu] = React.useState(null);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileExpanded, setMobileExpanded] = React.useState(null);
+
+  // Lock body scroll when mobile menu is open
+  React.useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
 
   const NAV = [
     ['Fences', { kind: 'mega-fences' }],
@@ -234,6 +242,196 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
                 </svg>
               </span>
             </a>
+
+            {/* Hamburger — visible only on tablet/mobile */}
+            <button
+              className="wfs-mobile-trigger"
+              onClick={() => setMobileOpen(true)}
+              aria-label="Open menu"
+              style={{
+                display: 'none',
+                width: 42, height: 42,
+                alignItems: 'center', justifyContent: 'center',
+                background: 'transparent',
+                border: '1px solid var(--ink)',
+                cursor: 'pointer',
+              }}>
+              <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
+                <path d="M0 1h18M0 7h18M0 13h18" stroke="var(--ink)" strokeWidth="1.6"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile menu — slides down from top */}
+        <div className="wfs-mobile-menu" style={{
+          position: 'fixed', inset: 0,
+          background: 'var(--white)',
+          zIndex: 100,
+          display: 'none',
+          flexDirection: 'column',
+          transform: mobileOpen ? 'translateY(0)' : 'translateY(-100%)',
+          transition: 'transform 0.3s ease',
+          overflowY: 'auto',
+        }}>
+          {/* Top bar */}
+          <div style={{
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            padding: '14px 20px',
+            borderBottom: '1px solid rgba(0,16,17,0.12)',
+          }}>
+            <img src="assets/wfs-logo.svg" alt="Western Fence Supply" style={{ height: 32, width: 'auto' }}/>
+            <button onClick={() => setMobileOpen(false)} aria-label="Close menu" style={{
+              width: 42, height: 42,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              background: 'transparent', border: '1px solid var(--ink)', cursor: 'pointer',
+            }}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M1 1l12 12M13 1L1 13" stroke="var(--ink)" strokeWidth="1.6"/>
+              </svg>
+            </button>
+          </div>
+
+          {/* Mode toggle */}
+          <div style={{
+            padding: '20px',
+            borderBottom: '1px solid rgba(0,16,17,0.08)',
+            display: 'flex', alignItems: 'center', gap: 22,
+          }}>
+            {['HOMEOWNER', 'CONTRACTOR'].map((m) => {
+              const isActive = curMode === m;
+              return (
+                <button key={m} onClick={() => setCurMode(m)} className="mono" style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  padding: 0, background: 'transparent',
+                  fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
+                  textTransform: 'uppercase',
+                  color: isActive ? 'var(--ink)' : 'var(--charcoal)',
+                  cursor: 'pointer',
+                }}>
+                  <span style={{
+                    width: 6, height: 6, borderRadius: '50%',
+                    background: isActive ? 'var(--tangerine)' : 'transparent',
+                    border: isActive ? 'none' : '1px solid rgba(0,16,17,0.3)',
+                  }}/>
+                  {m}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Nav list with expandable sub-items */}
+          <nav style={{ flex: 1, padding: '8px 0' }}>
+            {NAV.map(([label, def]) => {
+              const isExpanded = mobileExpanded === label;
+              const fallbackHref = def.kind === 'mega-fences' ? 'products.html'
+                : def.kind === 'mega-gates' ? 'estimate.html'
+                : def.items && def.items[0] ? def.items[0][1] : '#';
+              return (
+                <div key={label} style={{
+                  borderBottom: '1px solid rgba(0,16,17,0.08)',
+                }}>
+                  <button onClick={() => setMobileExpanded(isExpanded ? null : label)} style={{
+                    width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                    padding: '18px 20px', background: 'transparent',
+                    fontFamily: 'var(--sans)', fontSize: 18, fontWeight: 500,
+                    color: 'var(--ink)', textAlign: 'left', cursor: 'pointer',
+                  }}>
+                    {label}
+                    {def.items ? (
+                      <span style={{
+                        width: 28, height: 28,
+                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        background: isExpanded ? 'var(--tangerine)' : 'transparent',
+                        border: `1px solid ${isExpanded ? 'var(--tangerine)' : 'rgba(0,16,17,0.2)'}`,
+                        color: 'var(--ink)',
+                      }}>
+                        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                          <path d="M2 6h8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+                          {!isExpanded && <path d="M6 2v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>}
+                        </svg>
+                      </span>
+                    ) : (
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+                      </svg>
+                    )}
+                  </button>
+                  {def.items && (
+                    <div style={{
+                      maxHeight: isExpanded ? 500 : 0,
+                      overflow: 'hidden',
+                      transition: 'max-height 0.3s ease',
+                      background: '#faf9f7',
+                    }}>
+                      {def.items.map(([l, href, sub], i) => (
+                        <a key={i} href={href} style={{
+                          display: 'block', padding: '14px 20px 14px 36px',
+                          borderTop: '1px solid rgba(0,16,17,0.06)',
+                          fontSize: 14, color: 'var(--ink)',
+                        }}>
+                          <div style={{ fontWeight: 500 }}>{l}</div>
+                          {sub && <div style={{ fontSize: 12, color: 'var(--charcoal)', marginTop: 2 }}>{sub}</div>}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                  {(def.kind === 'mega-fences' || def.kind === 'mega-gates') && isExpanded && (
+                    <a href={fallbackHref} style={{
+                      display: 'block', padding: '14px 20px 14px 36px',
+                      borderTop: '1px solid rgba(0,16,17,0.06)',
+                      background: '#faf9f7',
+                      fontSize: 14, color: 'var(--ink)', fontWeight: 500,
+                    }}>
+                      View all {def.kind === 'mega-fences' ? 'fence' : 'gate'} systems →
+                    </a>
+                  )}
+                </div>
+              );
+            })}
+          </nav>
+
+          {/* Footer: phone + lang */}
+          <div style={{
+            padding: '20px',
+            borderTop: '1px solid rgba(0,16,17,0.12)',
+            display: 'flex', flexDirection: 'column', gap: 16,
+          }}>
+            <a href="tel:2396895496" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 14,
+              padding: '14px 16px',
+              background: 'var(--ink)', color: 'var(--white)',
+              fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700,
+              letterSpacing: '0.18em', textTransform: 'uppercase',
+            }}>
+              <span style={{
+                width: 7, height: 7, borderRadius: '50%', background: '#22c55e',
+                boxShadow: '0 0 0 3px rgba(34,197,94,0.25)',
+              }}/>
+              Call (239) 689-5496
+            </a>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+              {['EN', 'ES'].map((l) => {
+                const isActive = curLang === l;
+                return (
+                  <button key={l} onClick={() => setCurLang(l)} className="mono" style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 8,
+                    padding: 0, background: 'transparent',
+                    fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
+                    textTransform: 'uppercase',
+                    color: isActive ? 'var(--ink)' : 'var(--charcoal)',
+                    cursor: 'pointer',
+                  }}>
+                    <span style={{
+                      width: 5, height: 5, borderRadius: '50%',
+                      background: isActive ? 'var(--tangerine)' : 'transparent',
+                      border: isActive ? 'none' : '1px solid rgba(0,16,17,0.3)',
+                    }}/>
+                    {l}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
 

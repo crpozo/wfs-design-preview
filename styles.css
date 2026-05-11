@@ -242,6 +242,9 @@ section { position: relative; }
   .wfs-desktop-nav { display: none !important; }
   /* Hide secondary CTAs on tablet */
   .wfs-hide-tablet { display: none !important; }
+  /* Show hamburger trigger + mobile menu panel below desktop */
+  .wfs-mobile-trigger { display: inline-flex !important; }
+  .wfs-mobile-menu { display: flex !important; }
 }
 
 /* Mobile (≤ 640px) */
