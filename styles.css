@@ -249,7 +249,18 @@ section { position: relative; }
 
 /* Mobile (≤ 640px) */
 @media (max-width: 640px) {
-  :root { --pad: 16px; }
+  :root { --pad: 22px; }
+
+  /* Prevent horizontal scroll from any wide element */
+  html, body { overflow-x: hidden; }
+
+  /* Footer: wrap the link row and let long emails break */
+  footer [style*="display: flex"][style*="gap: 24"] {
+    flex-wrap: wrap !important;
+    gap: 10px 18px !important;
+    justify-content: flex-start !important;
+  }
+  footer a, footer .mono { overflow-wrap: anywhere; }
 
   /* All multi-col grids → single column */
   [style*="repeat(5, 1fr)"],
