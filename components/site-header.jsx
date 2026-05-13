@@ -41,10 +41,10 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
   ];
 
   const FENCE_TILES = [
-    { key: 'aluminum', name: 'Aluminum Fence', tag: 'Mech · Welded', href: 'aluminum.html' },
-    { key: 'chainlink', name: 'Chain Link Fence', tag: 'Galv · Vinyl-Coated', href: 'chain-link.html' },
-    { key: 'metal', name: 'Metal Fence', tag: 'Aluminum Board Privacy', href: 'metal.html' },
-    { key: 'vinyl', name: 'Vinyl Fence', tag: 'Veka-Extruded PVC', href: 'vinyl.html' },
+    { key: 'aluminum', name: 'Aluminum', tag: 'Mech · Welded', href: 'aluminum.html' },
+    { key: 'chainlink', name: 'Chain Link', tag: 'Galv · Vinyl-Coated', href: 'chain-link.html' },
+    { key: 'metal', name: 'Metal / DuraFence', tag: 'Aluminum Board Privacy', href: 'metal.html' },
+    { key: 'vinyl', name: 'Vinyl / PVC', tag: 'Veka-Extruded PVC', href: 'vinyl.html' },
     { key: 'ecfence', name: 'ecFence', tag: 'Galv Steel · HVHZ', href: 'ecfence.html' },
   ];
 
@@ -465,7 +465,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
                       </h3>
                       <p style={{ fontSize: 14, lineHeight: 1.5, color: 'var(--charcoal)', maxWidth: 240, margin: '0 0 20px' }}>
                         {def.kind === 'mega-fences'
-                          ? 'Same wholesale floor for fence companies and homeowners across SW Florida.'
+                          ? 'Supplier-direct pricing for contractors, homeowners and DIY projects across SW Florida.'
                           : 'Sized to fit your run. Quoted in 24h, delivered or shop-pickup.'}
                       </p>
                       <a href={def.kind === 'mega-fences' ? 'products.html' : 'estimate.html'}

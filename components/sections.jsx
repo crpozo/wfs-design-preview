@@ -73,7 +73,7 @@ const FeaturedGrid = () => {
                 </h3>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span className="mono" style={{ fontSize: 11, color: 'var(--charcoal)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
-                    Wholesale pricing
+                    Supplier-direct pricing
                   </span>
                   <button style={{
                     fontSize: 12, fontFamily: 'var(--mono)', letterSpacing: '0.14em',
@@ -733,10 +733,10 @@ const FinalCTA = () => {
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginBottom: 18 }}>
                   <div><label style={labelStyle}>I am a</label>
-                    <select style={inputStyle}><option>Homeowner</option><option>Contractor</option><option>Commercial / Builder</option></select>
+                    <select style={inputStyle}><option>Homeowner</option><option>DIY / Self-installer</option><option>Contractor</option><option>Commercial / Builder</option></select>
                   </div>
                   <div><label style={labelStyle}>Project type</label>
-                    <select style={inputStyle}><option>Vinyl Fence</option><option>Aluminum Fence</option><option>Chain Link</option><option>Metal Fence</option><option>EC Fence</option><option>Gate System</option><option>Other</option></select>
+                    <select style={inputStyle}><option>Vinyl / PVC</option><option>Aluminum</option><option>Chain Link</option><option>Metal / DuraFence</option><option>EC Fence</option><option>Gate System</option><option>Other</option></select>
                   </div>
                 </div>
                 <div style={{ marginBottom: 24 }}>
@@ -768,11 +768,12 @@ const Footer = () => (
         <div>
           <Logo light />
           <p style={{ fontSize: 14, color: 'var(--alice-blue)', lineHeight: 1.5, marginTop: 20, maxWidth: 320 }}>
-            Reliable fencing for professional environments. Family-owned, factory-direct since 2003.
+            Fencing material supplier for contractors, homeowners and DIY projects. Family-owned,
+            factory-direct since 2003 — we supply, we don't install.
           </p>
         </div>
         {[
-          ['Products', ['Aluminum Fence', 'Chain Link Fence', 'Metal Fence', 'Vinyl Fence', 'Gates & Hardware']],
+          ['Products', ['Aluminum', 'Chain Link', 'Metal / DuraFence', 'Vinyl / PVC', 'Gates & Hardware']],
           ['Solutions', ['For Fence Companies', 'For Homeowners', 'Commercial', 'Custom Fabrication']],
           ['Resources', ['Fence Estimate', 'Articles & Guides', 'FAQ', 'Service Areas']],
           ['Company', ['About', 'Yard Locations', 'Contact', 'sales@westernfencesupply.com']],

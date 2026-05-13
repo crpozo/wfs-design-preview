@@ -2,10 +2,10 @@
 
 const IconStrip = () => {
   const items = [
-    { key: 'aluminum', label: 'Aluminum Fence', href: '#products' },
-    { key: 'chainlink', label: 'Chain Link Fence', href: '#products' },
-    { key: 'metal', label: 'Metal Fence', href: '#products' },
-    { key: 'vinyl', label: 'Vinyl Fence', href: '#products' },
+    { key: 'aluminum', label: 'Aluminum', href: '#products' },
+    { key: 'chainlink', label: 'Chain Link', href: '#products' },
+    { key: 'metal', label: 'Metal / DuraFence', href: '#products' },
+    { key: 'vinyl', label: 'Vinyl / PVC', href: '#products' },
   ];
   return (
     <section style={{ background: 'var(--white)', padding: '40px 0', borderBottom: '1px solid rgba(0,16,17,0.06)' }}>
@@ -168,7 +168,7 @@ const Testimonials = () => {
 
 const FAQ = () => {
   const items = [
-    ['Do you sell to the general public?', 'Yes. We sell to homeowners as well as fence and general contractors — same wholesale prices, no minimums.'],
+    ['Do you sell to the general public?', 'Yes. We sell to homeowners, DIY customers and contractors alike — same supplier-direct prices, no minimums.'],
     ['What are the lead times on fencing material?', 'Stocked items typically ship in 1–2 days. Custom or non-stock items can take 6–8 weeks.'],
     ['Do you install fences?', 'No — we are solely a supply company. We can recommend trusted local installers who use our materials.'],
     ['Do you come out to measure?', 'No. We ask you to provide a survey or hand-drawn layout with measurements per side, plus height, color and style.'],
@@ -429,7 +429,7 @@ const AboutIntro = () => {
         alignItems: 'center',
       }}>
         {/* Image with notched corners */}
-        <div style={{ position: 'relative', aspectRatio: '4 / 3' }}>
+        <div style={{ position: 'relative', aspectRatio: '16 / 9' }}>
           <div style={{
             position: 'absolute', inset: 0,
             background: '#f3f1ee',
@@ -453,7 +453,7 @@ const AboutIntro = () => {
               loop
               playsInline
               preload="auto"
-              aria-label="Western Fence Supply — fence installation in Southwest Florida"
+              aria-label="Western Fence Supply — fencing material supplier in Southwest Florida"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
           </div>

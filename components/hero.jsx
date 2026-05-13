@@ -45,10 +45,10 @@ const Nav = () => {
 const Hero = () => {
   const [mode, setMode] = useMode();
   const fences = [
-    { id: 'vinyl',     name: 'Vinyl Fence',     blurb: 'Privacy + semi-private profiles', href: 'vinyl.html' },
-    { id: 'aluminum',  name: 'Aluminum Fence',  blurb: 'Pool, perimeter, ornamental',     href: 'aluminum.html' },
+    { id: 'vinyl',     name: 'Vinyl / PVC',     blurb: 'Privacy + semi-private profiles', href: 'vinyl.html' },
+    { id: 'aluminum',  name: 'Aluminum',        blurb: 'Pool, perimeter, ornamental',     href: 'aluminum.html' },
     { id: 'chainlink', name: 'Chain Link',      blurb: 'Industrial, residential, sport',  href: 'chain-link.html' },
-    { id: 'metal',     name: 'Metal Fence',     blurb: 'Steel + ornamental panels',       href: 'metal.html' },
+    { id: 'metal',     name: 'Metal / DuraFence', blurb: 'Steel + ornamental panels',     href: 'metal.html' },
     { id: 'ecfence',   name: 'EC Fence',        blurb: 'Self-mating galvanized steel',    href: 'ecfence.html', isNew: true },
   ];
 
@@ -97,7 +97,7 @@ const Hero = () => {
             display: 'flex', alignItems: 'center', gap: 12, marginBottom: 22,
           }}>
             <span style={{ width: 28, height: 1.5, background: 'var(--tangerine)' }}/>
-            Western Fence Supply · SW Florida
+            Western Fence Supply · Material Supplier · SW Florida
           </div>
 
           <h1 className="display" style={{
@@ -108,7 +108,7 @@ const Hero = () => {
             color: 'var(--white)',
             textShadow: '0 2px 24px rgba(0,0,0,0.18)',
           }}>
-            The Best Place to <span style={{ color: 'var(--tangerine)' }}>Buy Fences</span><br/>
+            The Best Place to <span style={{ color: 'var(--tangerine)' }}>Buy Fencing Materials</span><br/>
             in Southwest Florida.
           </h1>
 
@@ -119,8 +119,9 @@ const Hero = () => {
             margin: '0 0 32px',
             color: 'rgba(255,255,255,0.88)',
           }}>
-            Chain link, aluminum, vinyl, metal &amp; EC Fence — factory-direct,
-            American-made supply for fence companies and homeowners across SW Florida.
+            American-made fencing materials for contractors, homeowners and DIY projects —
+            we're a Southwest Florida supplier, not an installer. Factory-direct chain link,
+            aluminum, vinyl, metal and EC Fence, stocked in Fort Myers.
           </p>
 
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>

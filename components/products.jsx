@@ -2,7 +2,7 @@
 
 const FENCE_CATEGORIES = [
   {
-    id: 'vinyl', name: 'Vinyl Fences', tag: 'Privacy, Picket & Ranch',
+    id: 'vinyl', name: 'Vinyl / PVC', tag: 'Privacy, Picket & Ranch',
     img: 'vinyl', href: 'vinyl.html',
     desc: 'Low-maintenance vinyl in privacy, picket and ranch profiles. Won\'t rot, rust, peel or fade — engineered for Florida sun and salt air with a transferable lifetime warranty.',
   },
@@ -17,7 +17,7 @@ const FENCE_CATEGORIES = [
     desc: 'Galvanized and vinyl-coated mesh from 6 to 12 gauge. The workhorse fence for security, sports, agricultural and commercial perimeters across SW Florida.',
   },
   {
-    id: 'metal', name: 'Metal Fences', tag: 'Aluminum Board Privacy',
+    id: 'metal', name: 'Metal / DuraFence', tag: 'Aluminum Board Privacy',
     img: 'metal', href: 'metal.html',
     desc: 'Aluminum board privacy fencing — the strength of metal with the look of solid board. Hurricane-rated, no warping, no painting, no replacement boards.',
   },
@@ -461,8 +461,9 @@ const FenceCategories = () => {
               color: 'var(--charcoal)',
               textAlign: 'right',
             }}>
-              Wholesale floor for fence companies and homeowners across SW Florida —
-              factory-direct, stocked, and quoted in 24 hours.
+              Supplier-direct pricing for contractors, homeowners and DIY projects across
+              SW Florida — factory-direct, stocked, and quoted in 24 hours. We supply
+              the materials; we don't install.
             </p>
             <a href="products.html" className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
