@@ -174,6 +174,9 @@ const FAQ = () => {
     ['Do you come out to measure?', 'No. We ask you to provide a survey or hand-drawn layout with measurements per side, plus height, color and style.'],
     ['What is the price per foot for fence material?', 'Pricing fluctuates frequently. Send us your project and we\'ll come back with a detailed estimate.'],
     ['Does your fence material have a warranty?', 'Most materials we sell carry a limited lifetime warranty from the manufacturer.'],
+    ['Do you offer delivery?', 'Yes — we deliver throughout Florida from our Fort Myers warehouse. Delivery fees vary by location and order size; we\'ll confirm both when you place your order.'],
+    ['Can I pick up my order?', 'Yes. Pickup is available from our Fort Myers or Port Charlotte yards depending on material stock. Please contact us first to confirm availability and pickup location before coming in.'],
+    ['Do you deliver outside Florida?', 'Not at this time — we currently deliver within Florida only.'],
   ];
   const [open, setOpen] = React.useState(0);
   const [ctaHover, setCtaHover] = React.useState(false);
