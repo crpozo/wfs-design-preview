@@ -18,7 +18,7 @@ const Nav = () => {
     }}>
       <div className="container" style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        padding: '18px 0', gap: 24,
+        paddingTop: 18, paddingBottom: 18, gap: 24,
       }}>
         <Logo />
         <nav style={{ display: 'flex', gap: 28, alignItems: 'center' }}>

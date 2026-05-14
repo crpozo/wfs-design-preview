@@ -70,7 +70,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
       <div className="wfs-utility-bar" style={{ background: 'var(--ink)', borderBottom: '1px solid rgba(255,255,255,0.08)', color: 'var(--alice-blue)' }}>
         <div className="container" style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          gap: 32, padding: '10px 0', fontFamily: 'var(--mono)', fontSize: 11,
+          gap: 32, paddingTop: 10, paddingBottom: 10, fontFamily: 'var(--mono)', fontSize: 11,
           letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700,
         }}>
           {/* Left: mode toggle + catalog link */}
@@ -170,7 +170,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
       <div style={{ borderBottom: '1px solid var(--ink)', background: 'var(--white)' }}>
         <div className="container" style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          gap: 24, padding: '14px 0',
+          gap: 24, paddingTop: 14, paddingBottom: 14,
         }}>
           {/* Logo block */}
           <a href="Homepage.html" style={{
@@ -453,7 +453,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
               boxShadow: '0 24px 40px -16px rgba(0,16,17,0.18)',
               animation: 'wfsFadeDown 0.18s ease',
             }}>
-              <div className="container" style={{ padding: '40px 0 48px' }}>
+              <div className="container" style={{ paddingTop: 40, paddingBottom: 48 }}>
                 {def.kind === 'mega-fences' || def.kind === 'mega-gates' ? (
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 4fr', gap: 56 }}>
                     <div>
