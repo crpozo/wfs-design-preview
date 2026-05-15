@@ -167,7 +167,9 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
       </div>
 
       {/* Main bar */}
-      <div style={{ borderBottom: '1px solid var(--ink)', background: 'var(--white)' }}>
+      <div
+        onMouseLeave={() => setOpenMenu(null)}
+        style={{ borderBottom: '1px solid var(--ink)', background: 'var(--white)' }}>
         <div className="container" style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           gap: 24, paddingTop: 14, paddingBottom: 14,
@@ -181,8 +183,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
           </a>
 
           {/* Nav */}
-          <nav className="wfs-desktop-nav" style={{ display: 'flex', gap: 26, alignItems: 'center' }}
-            onMouseLeave={() => setOpenMenu(null)}>
+          <nav className="wfs-desktop-nav" style={{ display: 'flex', gap: 26, alignItems: 'center' }}>
             {NAV.map(([label, def]) => (
               <div key={label} style={{ position: 'static' }}
                 onMouseEnter={() => setOpenMenu(label)}>
