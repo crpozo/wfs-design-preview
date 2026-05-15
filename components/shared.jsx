@@ -18,6 +18,12 @@ const FENCE_IMG = {
   vinyl: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/home/wfs_style_tab_vinyl_fence_sw_florida.jpg',
   ecfence: 'assets/ec-fence.jpg',
   shop: 'assets/wfs-shop.webp',
+  // Gate systems
+  'gate-single':     'assets/gate-single-swing.jpg',
+  'gate-double':     'assets/gate-double.jpg',
+  'gate-sliding':    'assets/gate-sliding.jpg',
+  'gate-cantilever': 'assets/gate-cantilever.jpg',
+  'gate-rolling':    'assets/gate-rolling.jpg',
 };
 
 const FENCE_ICON = {

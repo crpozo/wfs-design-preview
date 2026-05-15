@@ -31,27 +31,27 @@ const FENCE_CATEGORIES = [
 const GATE_SYSTEMS = [
   {
     id: 'single-swing', name: 'Single Swing', tag: 'Walk gates & entry points',
-    img: 'aluminum',
+    img: 'gate-single',
     desc: 'Standard pedestrian and entry gates from 3 to 6 ft wide. Mechanically assembled or welded, with hardware to match every fence material we stock.',
   },
   {
     id: 'double-swing', name: 'Double Swing', tag: 'Driveway access gates',
-    img: 'metal',
+    img: 'gate-double',
     desc: 'Driveway-width gates from 8 to 16 ft total opening. Pre-hung options for single-day install with drop rod and gate latch hardware included.',
   },
   {
     id: 'sliding', name: 'Sliding Gates', tag: 'Space-saving operation',
-    img: 'vinyl',
+    img: 'gate-sliding',
     desc: 'Track-mounted sliding gates for tight or graded openings. Manual or automated with operator and safety package available.',
   },
   {
     id: 'cantilever', name: 'Cantilever', tag: 'No ground track needed',
-    img: 'chainlink',
+    img: 'gate-cantilever',
     desc: 'Counter-balanced rolling gates with no ground track — ideal for sites with sand, debris or grade change. Up to 50 ft single openings.',
   },
   {
     id: 'rolling', name: 'Rolling Gate', tag: 'Industrial rolling gates',
-    img: 'metal',
+    img: 'gate-rolling',
     desc: 'Industrial rolling gates with V-track and rollers. Built for high-cycle commercial use, secured perimeters, yards and operations.',
   },
 ];
