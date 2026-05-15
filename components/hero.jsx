@@ -86,10 +86,9 @@ const Hero = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         paddingTop: 72, paddingBottom: 40,
-        paddingLeft: 'clamp(20px, 4vw, 56px)',
-        paddingRight: 'clamp(20px, 4vw, 56px)',
       }}>
-        <div style={{ maxWidth: 760, width: '100%' }}>
+        <div className="container">
+          <div style={{ maxWidth: 760, width: '100%' }}>
           <div style={{
             fontFamily: 'var(--sans)', fontSize: 11, fontWeight: 700,
             letterSpacing: '0.20em', textTransform: 'uppercase',
@@ -167,6 +166,7 @@ const Hero = () => {
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
             </a>
           </div>
+        </div>
         </div>
       </div>
 
