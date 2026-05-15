@@ -773,18 +773,40 @@ const Footer = () => (
           </p>
         </div>
         {[
-          ['Products', ['Aluminum', 'Chain Link', 'Metal / DuraFence', 'Vinyl / PVC', 'Gates & Hardware']],
-          ['Solutions', ['For Fence Companies', 'For Homeowners', 'Commercial', 'Custom Fabrication']],
-          ['Resources', ['Fence Estimate', 'Articles & Guides', 'FAQ', 'Service Areas']],
-          ['Company', ['About', 'Yard Locations', 'Contact', 'sales@westernfencesupply.com']],
+          ['Products', [
+            ['Vinyl / PVC', 'vinyl.html'],
+            ['Aluminum', 'aluminum.html'],
+            ['Chain Link', 'chain-link.html'],
+            ['Metal / DuraFence', 'metal.html'],
+            ['EC Fence', 'ecfence.html'],
+            ['Full catalog', 'products.html'],
+          ]],
+          ['Solutions', [
+            ['For Contractors', 'solutions.html'],
+            ['For Homeowners', 'solutions.html'],
+            ['For DIY', 'solutions.html'],
+            ['Commercial', 'solutions.html'],
+          ]],
+          ['Resources', [
+            ['Get a Quote', 'estimate.html'],
+            ['Articles & Guides', 'resources.html'],
+            ['FAQ', 'resources.html#faq'],
+            ['Yard Locations', 'solutions.html#yards'],
+          ]],
+          ['Company', [
+            ['About WFS', 'about.html'],
+            ['Projects', 'projects.html'],
+            ['Contact', 'estimate.html'],
+            ['sales@westernfencesupply.com', 'mailto:sales@westernfencesupply.com'],
+          ]],
         ].map(([h, items]) => (
           <div key={h}>
             <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--tangerine)', marginBottom: 16 }}>
               {h}
             </div>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 10 }}>
-              {items.map(it => (
-                <li key={it}><a href="#" style={{ fontSize: 14, color: 'var(--alice-blue)' }}>{it}</a></li>
+              {items.map(([label, href]) => (
+                <li key={label}><a href={href} style={{ fontSize: 14, color: 'var(--alice-blue)' }}>{label}</a></li>
               ))}
             </ul>
           </div>
