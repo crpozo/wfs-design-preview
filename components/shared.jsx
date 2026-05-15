@@ -16,7 +16,7 @@ const FENCE_IMG = {
   chainlink: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/chainlink-fence/wfs_chain_link_tab.jpg',
   metal: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/metal-fence/wfs_metal_fence_tab.jpg',
   vinyl: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/home/wfs_style_tab_vinyl_fence_sw_florida.jpg',
-  ecfence: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/metal-fence/wfs_metal_fence_tab.jpg',
+  ecfence: 'assets/ec-fence.jpg',
   shop: 'assets/wfs-shop.webp',
 };
 
