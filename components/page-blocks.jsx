@@ -51,9 +51,10 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, height = 'c
       )}
       <h1 className="display" style={{
         margin: '0 0 18px',
-        fontSize: 'clamp(34px, 4.8vw, 56px)',
-        lineHeight: 0.98, letterSpacing: '-0.02em',
+        fontSize: 'clamp(28px, 3.4vw, 44px)',
+        lineHeight: 1, letterSpacing: '-0.02em',
         color: 'var(--white)',
+        maxWidth: 820,
       }}>
         {title}{accent && <><br/><span style={{ color: 'var(--tangerine)' }}>{accent}</span></>}
       </h1>
