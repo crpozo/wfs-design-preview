@@ -87,7 +87,7 @@ const Hero = () => {
         justifyContent: 'center',
         paddingTop: 72, paddingBottom: 40,
       }}>
-        <div className="container">
+        <div className="container" style={{ width: '100%' }}>
           <div style={{ maxWidth: 760, width: '100%' }}>
           <div style={{
             fontFamily: 'var(--sans)', fontSize: 11, fontWeight: 700,
