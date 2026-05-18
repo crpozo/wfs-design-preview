@@ -110,34 +110,78 @@ const AboutShop = () => (
   />
 );
 
-const AboutStats = () => (
-  <section style={{ background: 'var(--white)', padding: '64px 0' }}>
-    <div className="container">
-      <div style={{
-        display: 'grid', gridTemplateColumns: '1fr 2fr', gap: 56, alignItems: 'end',
-        paddingBottom: 24, marginBottom: 28, borderBottom: '1px solid rgba(0,16,17,0.12)',
-      }}>
-        <div>
-          <div className="mono" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', color: 'var(--tangerine)', marginBottom: 14 }}>04 — By the numbers</div>
-          <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em' }}>
-            22 years.<br/>
-            <span style={{ color: 'var(--tangerine)' }}>Still local.</span>
-          </h2>
+const AboutStats = () => {
+  const stats = [
+    ['22+',  'Years in business', 'Family-owned since 2003'],
+    ['480+', 'Active SKUs',       'Across five fence systems'],
+    ['2',    'Yards',             'Fort Myers + Port Charlotte'],
+    ['4',    'Counties served',   'Lee · Collier · Charlotte · Sarasota'],
+    ['24h',  'Quote turnaround',  '18-hour average this week'],
+  ];
+  return (
+    <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+      <div className="container">
+        {/* Single editorial header row — no stacked headline */}
+        <div style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
+          gap: 32, flexWrap: 'wrap',
+          paddingBottom: 28, marginBottom: 56,
+          borderBottom: '1px solid rgba(0,16,17,0.12)',
+        }}>
+          <div className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 12,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
+            color: 'var(--tangerine)', textTransform: 'uppercase',
+          }}>
+            <span>04 — By the numbers</span>
+            <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
+          </div>
+          <div style={{
+            display: 'flex', alignItems: 'baseline', gap: 14,
+          }}>
+            <span className="display" style={{
+              fontSize: 22, lineHeight: 1, color: 'var(--ink)',
+            }}>Family-owned since 2003.</span>
+            <span style={{ fontSize: 13.5, color: 'var(--charcoal)' }}>
+              Two yards, zero plans to franchise.
+            </span>
+          </div>
         </div>
-        <p style={{ margin: 0, fontSize: 14, lineHeight: 1.55, color: 'var(--charcoal)', maxWidth: 460, justifySelf: 'end', textAlign: 'right' }}>
-          Family-owned since day one. Two yards, four counties served, zero plans to franchise.
-        </p>
+
+        {/* Stat grid — big numerals, vertical dividers, no double rule */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: `repeat(${stats.length}, 1fr)`,
+          gap: 0,
+        }}>
+          {stats.map(([n, label, sub], i) => (
+            <div key={label} style={{
+              padding: i === 0 ? '0 28px 0 0' : `0 28px`,
+              borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.12)',
+            }}>
+              <div className="display" style={{
+                fontSize: 'clamp(48px, 5.4vw, 80px)',
+                lineHeight: 1,
+                color: 'var(--ink)',
+                letterSpacing: '-0.02em',
+              }}>{n}</div>
+              <div style={{
+                marginTop: 22,
+                fontSize: 14, fontWeight: 600, color: 'var(--ink)',
+                letterSpacing: '-0.005em',
+              }}>{label}</div>
+              <div className="mono" style={{
+                marginTop: 6,
+                fontSize: 11, letterSpacing: '0.08em',
+                color: 'var(--charcoal)', lineHeight: 1.5,
+              }}>{sub}</div>
+            </div>
+          ))}
+        </div>
       </div>
-      <StatStrip items={[
-        ['22+', 'Years in business'],
-        ['480+', 'Active SKUs'],
-        ['2', 'Yards · FM + PC'],
-        ['4', 'Counties served'],
-        ['24h', 'Quote turnaround'],
-      ]}/>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const AboutCTA = () => (
   <CTABand
