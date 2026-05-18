@@ -135,12 +135,15 @@ const StatStrip = ({ items, dark = false }) => (
   </div>
 );
 
-const CTABand = ({ kicker, title, accent, body, primary, secondary, theme = 'ink' }) => {
+const CTABand = ({ kicker, title, accent, body, primary, secondary, theme = 'cream' }) => {
   const bg = theme === 'ink' ? 'var(--ink)' : theme === 'parchment' ? 'var(--parchment)' : '#faf9f7';
   const fg = theme === 'ink' ? 'var(--parchment)' : 'var(--ink)';
   const sub = theme === 'ink' ? 'var(--alice-blue)' : 'var(--charcoal)';
   return (
-    <section style={{ background: bg, color: fg, padding: '72px 0' }}>
+    <section style={{
+      background: bg, color: fg, padding: '88px 0',
+      borderTop: theme === 'ink' ? 'none' : '1px solid rgba(0,16,17,0.08)',
+    }}>
       <div className="container">
         <div style={{
           display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 48,
