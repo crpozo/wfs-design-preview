@@ -36,6 +36,7 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, height = 'c
     }}/>
     <div className="container" style={{
       position: 'relative', zIndex: 2,
+      width: '100%',
       paddingTop: 80, paddingBottom: 56,
     }}>
       {crumbs && <Breadcrumb items={crumbs} />}
