@@ -39,7 +39,6 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, height = 'c
       width: '100%',
       paddingTop: 80, paddingBottom: 56,
     }}>
-      {crumbs && <Breadcrumb items={crumbs} />}
       {eyebrow && (
         <div className="mono" style={{
           fontSize: 11, fontWeight: 700, letterSpacing: '0.20em', textTransform: 'uppercase',
