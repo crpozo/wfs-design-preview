@@ -7,7 +7,7 @@ const ResourcesHero = () => (
     title="Pick the right fence —"
     accent="the first time."
     subtitle="Guides, materials comparisons, Florida code references and downloadable spec sheets. Written by the people who fabricate this stuff every day."
-    image={FENCE_IMG.vinyl}
+    image="assets/gate-rolling.jpg"
   />
 );
 
