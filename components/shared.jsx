@@ -15,13 +15,14 @@ const Logo = ({ light = false }) => (
 );
 
 const FENCE_IMG = {
-  // westernfencesupply.com WP image folder went 403 (hotlink-protected),
-  // so we route the four material thumbs through Unsplash CDN. Easy swap
-  // later if you want them local in /assets/.
-  aluminum:  'https://images.unsplash.com/photo-1718909704612-29e9707612b7?auto=format&fit=crop&w=1200&q=80',
+  // Material thumbs — mix of local photos and Unsplash:
+  // · vinyl swapped to the local white double-gate photo (no flowers)
+  // · aluminum / metal try fresh Unsplash IDs (best guesses; replace
+  //   with local files in /assets/ when available)
+  aluminum:  'https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=1200&q=80',
   chainlink: 'https://images.unsplash.com/photo-1519478224231-4f91b359198b?auto=format&fit=crop&w=1200&q=80',
-  metal:     'https://images.unsplash.com/photo-1530328881134-8c525cc57036?auto=format&fit=crop&w=1200&q=80',
-  vinyl:     'https://images.unsplash.com/photo-1623042538574-7df756b9945b?auto=format&fit=crop&w=1200&q=80',
+  metal:     'https://images.unsplash.com/photo-1571055107559-3e67626fa8be?auto=format&fit=crop&w=1200&q=80',
+  vinyl:     'assets/gate-double.jpg',
   ecfence:   'assets/ec-fence.jpg',
   shop:      'assets/wfs-shop.webp',
   // Gate systems
