@@ -1,325 +1,204 @@
-/* Gate detail pages — shared GatePage<slug/>, modeled after fence-supply-pro replit reference */
+/* Gate detail pages — same component pattern as page-material.jsx */
 
 const GATE_DATA = {
   single: {
     slug: 'single',
-    name: 'Single Swing Gates',
-    tag: 'Swing Gate System',
-    audienceTag: 'Homeowner View',
-    heroBody: 'Classic single-swing entry gates customized to fit any opening width. Tailored for homeowners who want security, ease of use, and the right look for their property.',
+    name: 'Single Swing',
+    tag: 'Walk gates · Pedestrian access',
+    heroTitle: 'Single-swing gates.',
+    heroAccent: 'Walk-through and pedestrian openings.',
+    heroBody: 'Standard pedestrian and entry gates from 3 to 6 ft wide. Mechanically assembled or welded, with hardware to match every fence material we stock — every kit ships with a self-latching gravity latch and padlockable hasp.',
     heroImg: 'assets/gate-single-swing.jpg',
+    bestFor: 'Walk gates, residential side-yards, pool enclosures',
+    profiles: [
+      { name: 'Standard Walk',       tag: 'Residential',    notes: '3–4 ft wide mechanical kit, gravity latch + padlock hasp included.' },
+      { name: 'Estate Pedestrian',   tag: 'Ornamental',     notes: '4–6 ft welded heavy frame with decorative top option.' },
+      { name: 'Pool-Code Gate',      tag: 'Code Compliant', notes: 'Self-closing, self-latching, picket spacing ≤ 1.75".' },
+      { name: 'Industrial Walk',     tag: 'Commercial',     notes: 'Galv steel frame, heavy hinges, key-coded lockable handle.' },
+    ],
+    specs: [
+      ['Widths',     '3 ft, 4 ft, 5 ft, 6 ft (custom on request)'],
+      ['Heights',    '4 ft, 5 ft, 6 ft (matches fence height)'],
+      ['Material',   'Chain link, aluminum, vinyl, EC Fence — to match run'],
+      ['Hardware',   'Self-latching gravity latch + padlock hasp included'],
+      ['Automation', 'Pre-engineered for LiftMaster actuator add-on'],
+      ['Lead time',  'Same day stocked widths · 3–5 days fabricated'],
+      ['Starts at',  '$280 / opening (4 ft chain link)'],
+    ],
     useCases: [
-      ['Pedestrian Access',  'Walk gates 3 to 6 ft wide for residential side-yard and gardens.'],
-      ['Property Security',  'Adds safety and controlled entry to your home or community.'],
-      ['Tight Spaces',       'Single panel works where double-swing clearance is not available.'],
-    ],
-    styles: [
-      { name: 'Standard Picket', tag: 'Classic',    img: 'assets/gate-single-swing.jpg' },
-      { name: 'Privacy Panel',   tag: 'Solid',      img: 'assets/gate-double.jpg' },
-      { name: 'Industrial Mesh', tag: 'Security',   img: 'assets/gate-rolling.jpg' },
-      { name: 'Arched Top',      tag: 'Decorative', img: 'assets/gate-cantilever.jpg' },
-      { name: 'Estate Style',    tag: 'Luxury',     img: 'assets/gate-double.jpg' },
-      { name: 'Custom Frame',    tag: 'Bespoke',    img: 'assets/ec-fence.jpg' },
-    ],
-    gallery: { hero: 'assets/gate-single-swing.jpg', detail1: 'assets/gate-sliding.jpg', detail2: 'assets/gate-cantilever.jpg' },
-    faq: [
-      ['Can I automate this gate later?',     'Yes — every pre-hung single-swing gate is sized to accept a LiftMaster actuator add-on. Hinges and posts are spec\'d for the future load.'],
-      ['What is the required clearance space?','Plan for the gate width plus a ~6" swing margin. A 4 ft gate needs about 4.5 ft of unobstructed arc; planters in the swing path will block it.'],
-      ['Does it come with a lock?',           'Each kit ships with a self-latching gravity latch and padlockable hasp. Magnetic latches and code-keyed options available on request.'],
-      ['Can you match my existing fence?',    'Yes — matching profiles for chain link, aluminum, vinyl and EC Fence. Send a photo and color; we\'ll spec the gate to blend with the run.'],
+      ['Pedestrian access',   'Side-yard, gardens and walk-through openings where a driveway gate is too much.'],
+      ['Pool code enclosure', 'Self-closing, self-latching profiles meet Florida pool code requirements.'],
+      ['Tight spaces',        'Single panel works where double-swing arc clearance is unavailable.'],
     ],
   },
   double: {
     slug: 'double',
-    name: 'Double Swing Gates',
-    tag: 'Driveway Swing System',
-    audienceTag: 'Homeowner View',
-    heroBody: 'Symmetrical double-swing driveway gates from 8 to 16 ft total opening. Pre-hung with drop rod, gate latch and hardware kit packed per opening — single-day install for most layouts.',
+    name: 'Double Swing',
+    tag: 'Driveway access · Symmetrical',
+    heroTitle: 'Double-swing gates.',
+    heroAccent: 'Driveway openings, single-day install.',
+    heroBody: 'Symmetrical driveway-width gates from 8 to 16 ft total opening. Pre-hung with drop rod, gate latch and stainless hardware kit packed per opening — single-day install for most layouts.',
     heroImg: 'assets/gate-double.jpg',
+    bestFor: 'Residential driveways, estate entries, vehicle access',
+    profiles: [
+      { name: 'Standard Drive',      tag: 'Residential',    notes: '8–12 ft total, mechanically assembled, drop rod + center latch.' },
+      { name: 'Estate Pair',         tag: 'Luxury',         notes: '10–16 ft welded heavy, decorative scrollwork or arched top.' },
+      { name: 'Privacy Drive',       tag: 'Solid',          notes: 'Full vinyl or DuraFence panels — matched to privacy run.' },
+      { name: 'Commercial Drive',    tag: 'Heavy-Duty',     notes: 'Up to 16 ft welded steel, sized for higher cycle counts.' },
+    ],
+    specs: [
+      ['Widths',     '8 ft, 10 ft, 12 ft, 14 ft, 16 ft total opening'],
+      ['Heights',    '4 ft, 5 ft, 6 ft, 8 ft (matches fence height)'],
+      ['Material',   'Chain link, aluminum, vinyl, EC Fence, DuraFence'],
+      ['Hardware',   'Hinge sets, drop rod, center latch, stainless fasteners'],
+      ['Automation', 'Dual-leaf LiftMaster kit with photo-eye + keypad add-on'],
+      ['Lead time',  '3–5 days fabricated · 1–2 days stocked widths'],
+      ['Starts at',  '$680 / opening (10 ft chain link)'],
+    ],
     useCases: [
-      ['Wide Driveways',     'Two leaves meeting in the middle clear 8–16 ft openings cleanly.'],
-      ['Estate Entries',     'Symmetrical look reads as a formal main entry — more presence than single.'],
-      ['Vehicle + Pedestrian','Open one leaf for walk-in, both for vehicle access.'],
-    ],
-    styles: [
-      { name: 'Standard Picket', tag: 'Classic',    img: 'assets/gate-double.jpg' },
-      { name: 'Privacy Panel',   tag: 'Solid',      img: 'assets/ec-fence.jpg' },
-      { name: 'Ornamental Iron', tag: 'Wrought',    img: 'assets/gate-cantilever.jpg' },
-      { name: 'Arched Top',      tag: 'Decorative', img: 'assets/gate-single-swing.jpg' },
-      { name: 'Estate Style',    tag: 'Luxury',     img: 'assets/gate-double.jpg' },
-      { name: 'Custom Frame',    tag: 'Bespoke',    img: 'assets/gate-rolling.jpg' },
-    ],
-    gallery: { hero: 'assets/gate-double.jpg', detail1: 'assets/gate-single-swing.jpg', detail2: 'assets/gate-cantilever.jpg' },
-    faq: [
-      ['What hardware comes in the kit?',     'Two heavy-duty hinge sets, a drop rod, a center gate latch and stainless-steel fasteners — all sized to your opening.'],
-      ['Can the gates swing inward?',         'Yes. Specify swing direction on the quote; hinges flip to accommodate either side.'],
-      ['Do you offer automation kits?',       'Yes — dual-leaf LiftMaster actuator kits with photo-eye safety and keypad available as add-ons.'],
-      ['Can I add a center stop?',            'Recommended on driveways longer than 12 ft for wind stability. We include a black powder-coat ground stop on request.'],
+      ['Wide driveways',       'Two leaves meeting in the middle clear 8–16 ft openings cleanly.'],
+      ['Estate entries',       'Symmetrical look reads as a formal main entry — more presence than single.'],
+      ['Vehicle + pedestrian', 'Open one leaf for walk-in, both for vehicle access.'],
     ],
   },
   sliding: {
     slug: 'sliding',
     name: 'Sliding Gates',
-    tag: 'Track-Mounted Sliding System',
-    audienceTag: 'Contractor View',
-    heroBody: 'Track-mounted sliding gates for tight or graded openings where a swing arc won\'t work. Manual or automated with operator and safety package available — common in tight residential driveways.',
+    tag: 'Track-mounted · Space-saving',
+    heroTitle: 'Sliding gates.',
+    heroAccent: 'For tight or graded openings.',
+    heroBody: 'Track-mounted sliding gates for tight or graded driveways where a swing arc won\'t work. Manual or automated with operator and safety package — slides parallel to the fence.',
     heroImg: 'assets/gate-sliding.jpg',
+    bestFor: 'Tight residential driveways, sloped sites, repeat daily use',
+    profiles: [
+      { name: 'Galvanized Mesh',     tag: 'Standard',    notes: 'V-track mounted chain-link mesh with twin rollers.' },
+      { name: 'Vinyl-Coated Black',  tag: 'Residential', notes: 'PVC-coated mesh disappears against landscaping.' },
+      { name: 'Privacy Slide',       tag: 'Solid',       notes: 'Full vinyl or DuraFence panel on V-track.' },
+      { name: 'Automated Kit',       tag: 'Powered',     notes: 'LiftMaster slide operator + photo-eye + keypad bundle.' },
+    ],
+    specs: [
+      ['Widths',     '8 ft, 10 ft, 12 ft, 14 ft, 16 ft, 18 ft openings'],
+      ['Heights',    '4 ft, 5 ft, 6 ft, 8 ft'],
+      ['Material',   'Galv chain link, vinyl-coated, EC Fence, DuraFence'],
+      ['Track',      'Galvanized V-track or pipe-track + end stops included'],
+      ['Wind rating','130 mph closed · 150 mph HVHZ on heavy commercial spec'],
+      ['Lead time',  '2–3 weeks custom · 1–2 days stocked widths up to 18 ft'],
+      ['Starts at',  '$820 / opening (10 ft galvanized)'],
+    ],
     useCases: [
-      ['Limited Swing Clearance', 'Slides parallel to the fence — no arc to block walkways or planters.'],
-      ['Sloped Driveways',         'Ground track handles up to 3% grade without high-low binding.'],
-      ['Repeat Daily Use',         'Manual operation is two-finger easy; automation kits available.'],
-    ],
-    styles: [
-      { name: 'Standard Mesh',     tag: 'Galvanized', img: 'assets/gate-sliding.jpg' },
-      { name: 'Vinyl-Coated Black',tag: 'Residential',img: 'assets/gate-cantilever.jpg' },
-      { name: 'Privacy Panel',     tag: 'Solid',      img: 'assets/gate-double.jpg' },
-      { name: 'V-Track Heavy',     tag: 'Commercial', img: 'assets/gate-rolling.jpg' },
-      { name: 'Ornamental Frame',  tag: 'Decorative', img: 'assets/gate-single-swing.jpg' },
-      { name: 'Automated Kit',     tag: 'Powered',    img: 'assets/ec-fence.jpg' },
-    ],
-    gallery: { hero: 'assets/gate-sliding.jpg', detail1: 'assets/gate-rolling.jpg', detail2: 'assets/gate-double.jpg' },
-    faq: [
-      ['Do you supply the ground track?',     'Yes — galvanized V-track or pipe-track in cuts to match the run, plus rollers and end stops.'],
-      ['What about hurricane wind loads?',    'Track-mount sliders rated to 130 mph closed. For 150 mph HVHZ, spec the heavy commercial V-track frame.'],
-      ['Can it be automated?',                'LiftMaster slide operator + photo-eye + keypad. Kit ships with the gate; install runs $1,800–$2,400 from a local pro.'],
-      ['Lead time on custom widths?',         '2–3 weeks for non-stock spans. Stock widths up to 18 ft ship in 1–2 days from the FM fabrication shop.'],
+      ['Limited swing clearance', 'Slides parallel to the fence — no arc to block walkways or planters.'],
+      ['Sloped driveways',        'Ground track handles up to 3% grade without binding.'],
+      ['Repeat daily use',        'Manual operation is two-finger easy; automation kits available.'],
     ],
   },
   cantilever: {
     slug: 'cantilever',
-    name: 'Cantilever Gates',
-    tag: 'No-Ground-Track System',
-    audienceTag: 'Contractor View',
-    heroBody: 'Counter-balanced rolling gates with no ground track — ideal for sites with sand, debris, or grade change. Single openings up to 50 ft, with internal V-rollers and an overhang section that floats clear of the driveway.',
+    name: 'Cantilever',
+    tag: 'No ground track · Up to 50 ft',
+    heroTitle: 'Cantilever gates.',
+    heroAccent: 'Counter-balanced, no ground track.',
+    heroBody: 'Counter-balanced rolling gates with no ground track — ideal for sites with sand, debris or grade change. Internal V-rollers and an overhang section that floats clear of the driveway. Single openings up to 50 ft.',
     heroImg: 'assets/gate-cantilever.jpg',
+    bestFor: 'Industrial yards, coastal sites, long openings',
+    profiles: [
+      { name: 'Galvanized Frame',    tag: 'Industrial',   notes: 'Hot-dip galv welded frame with V-rollers, mesh or vinyl-coated.' },
+      { name: 'Vinyl-Coated Black',  tag: 'Coastal',      notes: 'Salt-spray-rated rollers, black PVC-coated mesh face.' },
+      { name: 'Solid Privacy',       tag: 'Commercial',   notes: 'DuraFence aluminum board face on welded cantilever frame.' },
+      { name: 'Long-Span Custom',    tag: 'Bespoke',      notes: 'Up to 50 ft single opening or telescoping for wider runs.' },
+    ],
+    specs: [
+      ['Widths',     '14 ft to 50 ft single openings (wider on telescoping)'],
+      ['Heights',    '6 ft, 8 ft, 10 ft, 12 ft (industrial)'],
+      ['Material',   'Galv chain link, vinyl-coated, DuraFence, EC Fence'],
+      ['Overhang',   '50% of opening on receiving side (30 ft → 15 ft)'],
+      ['Wind rating','Up to 150 mph HVHZ on mesh or vinyl-coated specs'],
+      ['Lead time',  '3–4 weeks fabricated in Fort Myers'],
+      ['Starts at',  '$2,400 / opening (20 ft galvanized)'],
+    ],
     useCases: [
-      ['No Ground Track',     'Nothing in the driveway path — no debris jam, no track to clear.'],
-      ['Sandy / Coastal Sites','Salt-spray-rated rollers replace exposed ground track.'],
-      ['Long Openings',       'Up to 50 ft single openings — typical for industrial yards.'],
-    ],
-    styles: [
-      { name: 'Galvanized Frame', tag: 'Industrial', img: 'assets/gate-cantilever.jpg' },
-      { name: 'Vinyl-Coated Black',tag: 'Coastal',   img: 'assets/gate-rolling.jpg' },
-      { name: 'Solid Privacy',    tag: 'Commercial', img: 'assets/ec-fence.jpg' },
-      { name: 'Sport-Field',      tag: 'High-Cycle', img: 'assets/gate-cantilever.jpg' },
-      { name: 'Welded Heavy',     tag: 'Industrial', img: 'assets/gate-rolling.jpg' },
-      { name: 'Custom Span',      tag: 'Bespoke',    img: 'assets/gate-sliding.jpg' },
-    ],
-    gallery: { hero: 'assets/gate-cantilever.jpg', detail1: 'assets/gate-rolling.jpg', detail2: 'assets/gate-sliding.jpg' },
-    faq: [
-      ['Maximum opening size?',               'Single-piece cantilevers ship up to 50 ft. Wider runs use a follower gate or telescoping section.'],
-      ['Do you fabricate in-house?',          'Yes — all cantilever frames are welded at the Fort Myers shop. Cut, primed, powder-coated and packed per opening.'],
-      ['What is the overhang allowance?',     '50% of opening width on the receiving side. 30 ft opening = 15 ft overhang behind the catch post.'],
-      ['Wind ratings?',                       'Rated to 150 mph HVHZ in mesh or vinyl-coated configurations. Solid-panel cantilevers spec\'d case-by-case.'],
+      ['No ground track',      'Nothing in the driveway path — no debris jam, no track to clear.'],
+      ['Sandy / coastal sites','Salt-spray-rated rollers replace exposed ground track.'],
+      ['Long openings',        'Up to 50 ft single openings — typical for industrial yards.'],
     ],
   },
   rolling: {
     slug: 'rolling',
-    name: 'Rolling Gates',
-    tag: 'Industrial Rolling System',
-    audienceTag: 'Commercial / Industrial',
-    heroBody: 'Industrial rolling gates with V-track and rollers, built for high-cycle commercial use, secured perimeters, yards and operations. Heavy galvanized frame with stainless-steel hardware.',
+    name: 'Rolling Gate',
+    tag: 'Industrial V-track · High-cycle',
+    heroTitle: 'Rolling gates.',
+    heroAccent: 'Industrial V-track and rollers.',
+    heroBody: 'Industrial rolling gates with V-track and ground rollers, built for high-cycle commercial use, secured perimeters and yards. Heavy galvanized frame with stainless-steel hardware — rated for hundreds of cycles a day.',
     heroImg: 'assets/gate-rolling.jpg',
+    bestFor: 'Commercial perimeters, industrial yards, self-storage',
+    profiles: [
+      { name: 'V-Track Standard',    tag: 'Industrial',  notes: 'Heavy galvanized frame on V-track with stainless rollers.' },
+      { name: 'High-Cycle Heavy',    tag: 'Continuous-Duty', notes: 'Bearings and frame spec\'d for continuous-duty cycles.' },
+      { name: 'Vinyl-Coated Visual', tag: 'Visual',      notes: 'PVC-coated black mesh — softer look for visual perimeters.' },
+      { name: 'Automated Kit',       tag: 'Powered',     notes: 'LiftMaster Elite slide operator with loop-detect + safety edges.' },
+    ],
+    specs: [
+      ['Widths',     '16 ft, 20 ft, 24 ft, 30 ft openings (custom on request)'],
+      ['Heights',    '6 ft, 8 ft, 10 ft, 12 ft'],
+      ['Material',   'Galv chain link mesh on welded heavy steel frame'],
+      ['Track',      'V-track kit + end stops + follower rollers + tensioner'],
+      ['Cycle rating','400 cycles/day standard · continuous-duty heavy frame'],
+      ['Lead time',  '3–4 weeks fabricated · stocked widths 1–2 weeks'],
+      ['Starts at',  '$3,200 / opening (20 ft galvanized)'],
+    ],
     useCases: [
-      ['Commercial Perimeters', 'Industrial yards, self-storage, transit hubs.'],
-      ['High-Cycle Use',        'Rated for hundreds of cycles per day — bearings and frame spec\'d for it.'],
-      ['Heavy Vehicle Access',  'Wide spans for tractor-trailer and box-truck access without slowing operations.'],
-    ],
-    styles: [
-      { name: 'V-Track Standard',  tag: 'Industrial', img: 'assets/gate-rolling.jpg' },
-      { name: 'Heavy Galvanized',  tag: 'High-Cycle', img: 'assets/gate-cantilever.jpg' },
-      { name: 'Vinyl-Coated Black',tag: 'Visual',     img: 'assets/gate-sliding.jpg' },
-      { name: 'Privacy Panel',     tag: 'Screened',   img: 'assets/ec-fence.jpg' },
-      { name: 'Automated Kit',     tag: 'Powered',    img: 'assets/gate-rolling.jpg' },
-      { name: 'Custom Span',       tag: 'Bespoke',    img: 'assets/gate-cantilever.jpg' },
-    ],
-    gallery: { hero: 'assets/gate-rolling.jpg', detail1: 'assets/gate-cantilever.jpg', detail2: 'assets/gate-sliding.jpg' },
-    faq: [
-      ['Cycle rating?',                       'Standard frame rated to 400 cycles/day. Heavy commercial frame rated continuous-duty.'],
-      ['What operator do you spec?',          'LiftMaster Elite slide operators for high-cycle. Magnetic interlock and loop-detect safety as standard add-ons.'],
-      ['Lead time on commercial widths?',     '3–4 weeks for custom-fab. Stock 20 ft and 24 ft openings ship in 1–2 weeks.'],
-      ['Can you supply the V-track?',         'Yes — full V-track kit including rail, end stops, follower wheels and tensioner ships with the gate.'],
+      ['Commercial perimeters', 'Industrial yards, self-storage, transit hubs.'],
+      ['High-cycle use',        'Hundreds of cycles per day — bearings and frame spec\'d for it.'],
+      ['Heavy vehicle access',  'Wide spans for tractor-trailer and box-truck access.'],
     ],
   },
 };
 
-/* ───── Hero ───── */
+/* ───── Sections (same shape as MaterialPage) ───── */
 
 const GateHero = ({ data }) => (
-  <section style={{
-    background: '#faf9f7', color: 'var(--ink)',
-    padding: '88px 0',
-  }}>
+  <PageHero
+    eyebrow={data.tag}
+    title={data.heroTitle}
+    accent={data.heroAccent}
+    subtitle={data.heroBody}
+    image={data.heroImg}
+  />
+);
+
+const GateQuickFacts = ({ data }) => (
+  <section style={{ background: 'var(--white)', padding: '40px 0', borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
     <div className="container">
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center' }}>
-        {/* Left */}
-        <div>
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginBottom: 28 }}>
-            <span className="mono" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              padding: '8px 14px',
-              border: '1px solid var(--ink)',
-              fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
-              textTransform: 'uppercase', color: 'var(--ink)',
-              background: 'var(--white)',
-            }}>
-              <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-              {data.tag}
-            </span>
-            <span className="mono" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              padding: '8px 14px',
-              border: '1px solid var(--ink)',
-              fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
-              textTransform: 'uppercase', color: 'var(--ink)',
-              background: 'var(--white)',
-            }}>
-              <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8 L8 3 L13 8 L13 14 L3 14 Z" stroke="currentColor" strokeWidth="1.4" fill="none"/>
-              </svg>
-              {data.audienceTag}
-            </span>
-          </div>
-
-          <h1 className="display" style={{
-            margin: '0 0 28px',
-            fontSize: 'clamp(36px, 5vw, 64px)',
-            lineHeight: 0.98, letterSpacing: '-0.02em',
-          }}>{data.name}</h1>
-
-          <div style={{
-            paddingLeft: 22, borderLeft: '3px solid var(--tangerine)',
-            marginBottom: 32, maxWidth: 540,
-          }}>
-            <p className="mono" style={{
-              margin: 0,
-              fontSize: 14, lineHeight: 1.65,
-              color: 'var(--charcoal)',
-            }}>{data.heroBody}</p>
-          </div>
-
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <a href="estimate.html" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 10,
-              padding: '14px 24px',
-              background: 'var(--ink)', color: 'var(--white)',
-              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600,
-              boxShadow: '6px 6px 0 var(--tangerine)',
-              transition: 'transform 0.18s ease',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-1px, -1px)'; e.currentTarget.style.boxShadow = '7px 7px 0 var(--tangerine)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '6px 6px 0 var(--tangerine)'; }}>
-              Configure Gate
-            </a>
-            <a href="resources.html" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 10,
-              padding: '14px 24px',
-              border: '1.5px solid var(--ink)',
-              background: 'var(--white)', color: 'var(--ink)',
-              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600,
-            }}>
-              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-                <path d="M3 2 H10 L13 5 V14 H3 Z M10 2 V5 H13 M5 8 H11 M5 11 H11" stroke="currentColor" strokeWidth="1.4"/>
-              </svg>
-              Gate Guide
-            </a>
-          </div>
-        </div>
-
-        {/* Right — gate visual */}
-        <div style={{
-          position: 'relative', aspectRatio: '4 / 3',
-          background: '#1a2548',
-          border: '1.5px solid var(--ink)',
-          overflow: 'hidden',
-        }}>
-          <img src={data.heroImg} alt={data.name}
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
-          <div className="mono" style={{
-            position: 'absolute', bottom: 16, right: 16,
-            background: 'var(--white)', color: 'var(--ink)',
-            padding: '6px 12px',
-            fontSize: 10, letterSpacing: '0.22em',
-            fontWeight: 700, textTransform: 'uppercase',
-          }}>Gate System Visual</div>
-        </div>
-      </div>
+      <FeatureRow items={[
+        ['Best for',   data.bestFor],
+        ['Material',   data.specs.find(s => s[0] === 'Material')?.[1] || '—'],
+        ['Starts at',  data.specs.find(s => s[0] === 'Starts at')?.[1] || '—'],
+        ['Lead time',  data.specs.find(s => s[0] === 'Lead time')?.[1] || '—'],
+      ]}/>
     </div>
   </section>
 );
 
-/* ───── Best Use Cases ───── */
-
-const GateUseCases = ({ data }) => (
-  <section style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '56px 0' }}>
+const GateProfiles = ({ data }) => (
+  <section style={{ background: 'var(--white)', padding: '64px 0' }}>
     <div className="container">
-      <div style={{
-        display: 'flex', alignItems: 'center', gap: 12,
-        paddingBottom: 18, marginBottom: 24,
-        borderBottom: '1px solid rgba(255,255,255,0.2)',
-      }}>
-        <svg width="18" height="18" viewBox="0 0 16 16" fill="none">
-          <path d="M1 8 L4 8 L6 3 L10 13 L12 8 L15 8" stroke="var(--tangerine)" strokeWidth="1.6" strokeLinecap="square" fill="none"/>
-        </svg>
-        <span className="mono" style={{
-          fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-          textTransform: 'uppercase',
-        }}>Best Use Cases</span>
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 32 }}>
-        {data.useCases.map(([title, body], i) => (
-          <div key={i} style={{
-            paddingLeft: 16,
-            borderLeft: '2px solid var(--tangerine)',
+      <PageSectionHeader
+        number="01" label="Profiles & configurations"
+        title={`${data.name} —`}
+        accent="four ways to spec it."
+        sub="We stock all four configurations. Custom widths, heights and finishes available on request."
+      />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14 }}>
+        {data.profiles.map((p, i) => (
+          <article key={p.name} style={{
+            background: 'var(--white)', padding: 24,
+            border: '1px solid rgba(0,16,17,0.12)',
           }}>
             <div className="mono" style={{
-              fontSize: 13.5, fontWeight: 700, letterSpacing: '0.04em',
-              color: 'var(--white)', marginBottom: 8,
-            }}>{title}</div>
-            <p className="mono" style={{
-              margin: 0, fontSize: 12, lineHeight: 1.6,
-              color: 'var(--alice-blue)',
-            }}>{body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-/* ───── Styles & Configuration ───── */
-
-const GateStyles = ({ data }) => (
-  <section style={{ background: '#faf9f7', padding: '96px 0' }}>
-    <div className="container">
-      <h2 className="display" style={{
-        textAlign: 'center', margin: '0 0 56px',
-        fontSize: 'clamp(28px, 3vw, 40px)',
-        lineHeight: 1, letterSpacing: '-0.02em',
-      }}>Styles & Configuration</h2>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 18 }}>
-        {data.styles.map((s, i) => (
-          <article key={i} style={{
-            background: 'var(--white)',
-            border: '1.5px solid var(--ink)',
-            padding: 14,
-          }}>
-            <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', background: '#1a2548', marginBottom: 16 }}>
-              <img src={s.img} alt={s.name}
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '4px 4px 8px' }}>
-              <h3 style={{ margin: 0, fontSize: 15, fontWeight: 700, color: 'var(--ink)' }}>{s.name}</h3>
-            </div>
-            <div style={{ padding: '0 4px' }}>
-              <span className="mono" style={{
-                display: 'inline-block',
-                padding: '4px 8px',
-                background: 'var(--ink)', color: 'var(--white)',
-                fontSize: 9, letterSpacing: '0.18em',
-                fontWeight: 700, textTransform: 'uppercase',
-              }}>{s.tag}</span>
-            </div>
+              fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
+              color: 'var(--tangerine)', fontWeight: 700, marginBottom: 14,
+            }}>0{i+1} · {p.tag}</div>
+            <h3 className="display" style={{ margin: '0 0 12px', fontSize: 22, lineHeight: 1.1 }}>{p.name}</h3>
+            <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
           </article>
         ))}
       </div>
@@ -327,110 +206,116 @@ const GateStyles = ({ data }) => (
   </section>
 );
 
-/* ───── Installation Gallery ───── */
-
-const GateGallery = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '72px 0' }}>
+const GateSpecs = ({ data }) => (
+  <section style={{ background: 'var(--parchment)', padding: '64px 0' }}>
     <div className="container">
-      <div style={{
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-        paddingBottom: 18, marginBottom: 24,
-        borderBottom: '1px solid rgba(0,16,17,0.18)',
-      }}>
-        <h2 className="display" style={{
-          margin: 0, fontSize: 'clamp(20px, 2.2vw, 28px)',
-          lineHeight: 1, letterSpacing: '-0.01em',
-        }}>Installation Gallery</h2>
-        <a href="projects.html" className="mono" style={{
-          fontSize: 11, fontWeight: 700, letterSpacing: '0.18em',
-          textTransform: 'uppercase', color: 'var(--ink)',
-          paddingBottom: 2, borderBottom: '1px solid var(--ink)',
-        }}>View Full Portfolio</a>
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 14 }}>
-        <div style={{ position: 'relative', aspectRatio: '16 / 11', overflow: 'hidden', background: '#1a2548' }}>
-          <img src={data.gallery.hero} alt=""
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
+        <div>
+          <div className="mono" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', color: 'var(--tangerine)', marginBottom: 16 }}>02 — Spec sheet</div>
+          <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em' }}>
+            Real numbers,<br/>
+            <span style={{ color: 'var(--tangerine)' }}>no marketing.</span>
+          </h2>
+          <p style={{ marginTop: 20, fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)', maxWidth: 320 }}>
+            Need a sealed manufacturer spec? Ask your rep — we'll send the PDF before quote.
+          </p>
         </div>
-        <div style={{ display: 'grid', gridTemplateRows: '1fr 1fr', gap: 14 }}>
-          <div style={{ position: 'relative', overflow: 'hidden', background: '#1a2548' }}>
-            <img src={data.gallery.detail1} alt=""
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
-          </div>
-          <div style={{ position: 'relative', overflow: 'hidden', background: '#1a2548' }}>
-            <img src={data.gallery.detail2} alt=""
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
-          </div>
+        <div style={{ background: 'var(--white)', border: '1px solid var(--ink)' }}>
+          {data.specs.map(([k, v], i) => (
+            <div key={k} style={{
+              display: 'grid', gridTemplateColumns: '220px 1fr',
+              borderBottom: i === data.specs.length - 1 ? 'none' : '1px solid rgba(0,16,17,0.08)',
+            }}>
+              <div className="mono" style={{
+                padding: '14px 18px',
+                fontSize: 10.5, letterSpacing: '0.18em', textTransform: 'uppercase',
+                color: 'var(--charcoal)', fontWeight: 700,
+                background: '#faf9f7',
+              }}>{k}</div>
+              <div style={{ padding: '14px 18px', fontSize: 14, color: 'var(--ink)' }}>{v}</div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
   </section>
 );
 
-/* ───── FAQ ───── */
+const GateUseCases = ({ data }) => (
+  <section style={{ background: 'var(--white)', padding: '64px 0' }}>
+    <div className="container">
+      <PageSectionHeader
+        number="03" label="Where it shines"
+        title="Three jobs"
+        accent="this gate wins."
+      />
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+        {data.useCases.map(([t, body], i) => (
+          <div key={t} style={{
+            background: i === 1 ? 'var(--ink)' : 'var(--parchment)',
+            color: i === 1 ? 'var(--parchment)' : 'var(--ink)',
+            padding: '32px 28px',
+            border: i === 1 ? 'none' : '1px solid rgba(0,16,17,0.1)',
+          }}>
+            <div className="display" style={{ fontSize: 36, color: 'var(--tangerine)', lineHeight: 1, marginBottom: 18 }}>0{i+1}</div>
+            <h3 className="display" style={{ fontSize: 22, lineHeight: 1.1, margin: '0 0 12px' }}>{t}</h3>
+            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: i === 1 ? 'var(--alice-blue)' : 'var(--charcoal)' }}>{body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
-const GateFAQ = ({ data }) => {
-  const [open, setOpen] = React.useState(0);
+const GateOtherGates = ({ currentSlug }) => {
+  const others = [
+    { slug: 'single',     href: 'gate-single.html',     name: 'Single Swing', img: 'assets/gate-single-swing.jpg' },
+    { slug: 'double',     href: 'gate-double.html',     name: 'Double Swing', img: 'assets/gate-double.jpg' },
+    { slug: 'sliding',    href: 'gate-sliding.html',    name: 'Sliding',      img: 'assets/gate-sliding.jpg' },
+    { slug: 'cantilever', href: 'gate-cantilever.html', name: 'Cantilever',   img: 'assets/gate-cantilever.jpg' },
+    { slug: 'rolling',    href: 'gate-rolling.html',    name: 'Rolling',      img: 'assets/gate-rolling.jpg' },
+  ].filter(g => g.slug !== currentSlug);
   return (
-    <section style={{ background: '#faf9f7', padding: '96px 0' }}>
-      <div className="container" style={{ maxWidth: 880 }}>
-        <h2 className="display" style={{
-          textAlign: 'center', margin: '0 0 48px',
-          fontSize: 'clamp(28px, 3vw, 40px)',
-          lineHeight: 1, letterSpacing: '-0.02em',
-        }}>Frequently Asked Questions</h2>
-        <div>
-          {data.faq.map(([q, a], i) => {
-            const isOpen = open === i;
-            return (
-              <div key={i} style={{ borderBottom: '1px solid rgba(0,16,17,0.2)' }}>
-                <button onClick={() => setOpen(isOpen ? -1 : i)} style={{
-                  width: '100%', display: 'flex', justifyContent: 'space-between',
-                  alignItems: 'center',
-                  padding: '22px 8px', textAlign: 'left', gap: 24,
-                  background: 'transparent', border: 'none', cursor: 'pointer',
-                }}>
-                  <span className="mono" style={{
-                    fontSize: 13, fontWeight: 700, letterSpacing: '0.04em',
-                    color: 'var(--ink)',
-                  }}>{q}</span>
-                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none"
-                    style={{ flexShrink: 0, transform: isOpen ? 'rotate(180deg)' : 'none', transition: 'transform 0.2s ease' }}>
-                    <path d="M4 6 L8 10 L12 6" stroke="var(--ink)" strokeWidth="1.6" strokeLinecap="square"/>
-                  </svg>
-                </button>
-                <div style={{
-                  maxHeight: isOpen ? 240 : 0, overflow: 'hidden',
-                  transition: 'max-height 0.3s ease',
-                }}>
-                  <p style={{
-                    margin: 0, padding: '0 8px 22px',
-                    fontSize: 14.5, lineHeight: 1.65, color: 'var(--charcoal)',
-                  }}>{a}</p>
-                </div>
+    <section style={{ background: '#faf9f7', padding: '64px 0' }}>
+      <div className="container">
+        <PageSectionHeader
+          number="04" label="Compare"
+          title="Or check"
+          accent="another gate."
+          link={['All gates', 'products.html#gates']}
+        />
+        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${others.length}, 1fr)`, gap: 14 }}>
+          {others.map(g => (
+            <a key={g.slug} href={g.href} style={{
+              position: 'relative', display: 'block',
+              aspectRatio: '4 / 5', overflow: 'hidden',
+              background: '#1a2548', textDecoration: 'none', color: 'var(--white)',
+            }}>
+              <img src={g.img} alt={g.name}
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(20,30,55,0) 35%, rgba(20,30,55,0.85) 100%)' }}/>
+              <div style={{ position: 'absolute', bottom: 16, left: 16, right: 16 }}>
+                <div className="display" style={{ fontSize: 18, lineHeight: 1.1 }}>{g.name}</div>
+                <div className="mono" style={{ marginTop: 6, fontSize: 10, letterSpacing: '0.18em', color: 'var(--alice-blue)' }}>Explore →</div>
               </div>
-            );
-          })}
+            </a>
+          ))}
         </div>
       </div>
     </section>
   );
 };
 
-/* ───── Bottom CTA ───── */
-
 const GateCTA = ({ data }) => (
   <CTABand
     kicker={`Quote a ${data.name.toLowerCase()} run`}
     title="Send us your"
     accent="opening size + spec."
-    body={`We'll come back in 24 hours with stocked components, lead time and a delivery or pickup plan from Fort Myers or Port Charlotte. Hardware kits packed per opening.`}
+    body="We'll come back in 24 hours with stocked components, lead time and a delivery or pickup plan from Fort Myers or Port Charlotte. Hardware kits packed per opening."
     primary={['Request a quote', 'estimate.html']}
     secondary={['Call (239) 689-5496', 'tel:2396895496']}
   />
 );
-
-/* ───── Page composer ───── */
 
 const GatePage = ({ slug }) => {
   const data = GATE_DATA[slug];
@@ -439,10 +324,12 @@ const GatePage = ({ slug }) => {
     <>
       <SiteHeader active="Gates" />
       <GateHero data={data}/>
+      <GateQuickFacts data={data}/>
+      <GateProfiles data={data}/>
+      <GateSpecs data={data}/>
       <GateUseCases data={data}/>
-      <GateStyles data={data}/>
-      <GateGallery data={data}/>
-      <GateFAQ data={data}/>
+      <ProjectGallery />
+      <GateOtherGates currentSlug={slug}/>
       <GateCTA data={data}/>
       <Footer />
     </>
