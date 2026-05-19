@@ -14,49 +14,136 @@ const AboutHero = () => (
 const AboutStory = () => (
   <section style={{ background: 'var(--white)', padding: '72px 0' }}>
     <div className="container">
-      <PageSectionHeader
-        number="01" label="Our story"
-        title="From contractor's yard"
-        accent="to Southwest Florida's supply hub."
-        sub="Founded in 2003 by a fence contractor tired of driving to Miami for material — built into a two-yard supplier serving Lee, Collier, Charlotte and Sarasota."
-      />
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start' }}>
+      {/* Editorial header — single line, clean wrap */}
+      <div style={{
+        display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 56, alignItems: 'end',
+        paddingBottom: 32, marginBottom: 64,
+        borderBottom: '1px solid rgba(0,16,17,0.12)',
+      }}>
         <div>
-          {[
-            ['2003', 'Founded', 'Family launches WFS out of a single Fort Myers yard with one truck and four chain-link product lines.'],
-            ['2008', 'Fabrication shop', 'Welding shop opens in-house — drives down lead times on custom gates from weeks to days.'],
-            ['2016', 'Aluminum + Vinyl', 'Catalog expands to factory-direct aluminum and Veka-extruded vinyl. Residential business grows 4×.'],
-            ['2021', 'Port Charlotte yard', 'Second location opens to serve Charlotte and Sarasota counties with same-day pickup.'],
-            ['2024', 'EC Fence', 'WFS becomes a Southwest Florida distributor for EC Fence self-mating galvanized panels.'],
-          ].map(([y, t, body]) => (
-            <div key={y} style={{
-              display: 'grid', gridTemplateColumns: '64px 1fr',
-              gap: 22, paddingBottom: 24, marginBottom: 24,
-              borderBottom: '1px solid rgba(0,16,17,0.1)',
+          <div className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 12,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
+            color: 'var(--tangerine)', textTransform: 'uppercase',
+            marginBottom: 18,
+          }}>
+            <span>01 — Our story</span>
+            <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
+          </div>
+          <h2 className="display" style={{
+            margin: 0,
+            fontSize: 'clamp(28px, 3vw, 44px)',
+            lineHeight: 1, letterSpacing: '-0.02em',
+            fontWeight: 800,
+            maxWidth: 640,
+          }}>
+            From contractor's yard <br/>
+            <span style={{ color: 'var(--tangerine)' }}>to SW Florida's supply hub.</span>
+          </h2>
+        </div>
+        <p style={{
+          margin: 0, maxWidth: 420, justifySelf: 'end', textAlign: 'right',
+          fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)',
+        }}>
+          Founded in 2003 by a fence contractor tired of driving to Miami for material — built into a two-yard supplier across Lee, Collier, Charlotte and Sarasota.
+        </p>
+      </div>
+
+      {/* Image (sticky) + timeline with vertical spine */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: 64, alignItems: 'start' }}>
+        {/* Sticky left rail: photo + stats */}
+        <div style={{ position: 'sticky', top: 120 }}>
+          <div style={{
+            position: 'relative', aspectRatio: '4 / 5', overflow: 'hidden',
+            background: '#1a2548',
+          }}>
+            <img src="assets/hero-warehouse.webp" alt="WFS Fort Myers warehouse"
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
+            <div aria-hidden style={{
+              position: 'absolute', inset: 0,
+              background: 'linear-gradient(180deg, rgba(20,30,55,0) 50%, rgba(20,30,55,0.55) 100%)',
+            }}/>
+            {/* HQ chip */}
+            <div className="mono" style={{
+              position: 'absolute', top: 18, left: 18,
+              background: 'var(--tangerine)', color: 'var(--ink)',
+              padding: '5px 10px',
+              fontSize: 10, letterSpacing: '0.22em', fontWeight: 700,
+            }}>HQ · FORT MYERS</div>
+            <div style={{
+              position: 'absolute', bottom: 18, left: 18, right: 18,
+              color: 'var(--white)',
             }}>
-              <div className="display" style={{ fontSize: 22, color: 'var(--tangerine)' }}>{y}</div>
-              <div>
-                <div className="mono" style={{
-                  fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
-                  color: 'var(--ink)', marginBottom: 8, fontWeight: 700,
-                }}>{t}</div>
-                <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>{body}</p>
+              <div className="display" style={{ fontSize: 18, lineHeight: 1.1 }}>2611 Fowler St</div>
+              <div className="mono" style={{ marginTop: 6, fontSize: 10, letterSpacing: '0.18em', color: 'rgba(255,255,255,0.85)' }}>FORT MYERS, FL 33901</div>
+            </div>
+          </div>
+          {/* Inline stats under photo */}
+          <div style={{
+            marginTop: 24,
+            display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16,
+            paddingTop: 20, borderTop: '1px solid rgba(0,16,17,0.12)',
+          }}>
+            <div>
+              <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--ink)' }}>22+</div>
+              <div className="mono" style={{ marginTop: 8, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>Years family-owned</div>
+            </div>
+            <div>
+              <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--ink)' }}>5</div>
+              <div className="mono" style={{ marginTop: 8, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>Catalog expansions</div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right: editorial timeline with vertical spine */}
+        <div style={{ position: 'relative', paddingLeft: 56 }}>
+          {/* Spine line */}
+          <div aria-hidden style={{
+            position: 'absolute', left: 17, top: 14, bottom: 14,
+            width: 1, background: 'rgba(255,113,51,0.35)',
+          }}/>
+          {[
+            ['2003', 'Founded',             'Family launches WFS out of a single Fort Myers yard with one truck and four chain-link product lines.'],
+            ['2008', 'Fabrication shop',    'Welding shop opens in-house — drives custom gate lead times from weeks down to days.'],
+            ['2016', 'Aluminum + Vinyl',    'Catalog expands to factory-direct aluminum and Veka-extruded vinyl. Residential business grows 4×.'],
+            ['2021', 'Port Charlotte yard', 'Second location opens to serve Charlotte and Sarasota counties with same-day pickup.'],
+            ['2024', 'EC Fence',            'WFS becomes a Southwest Florida distributor for EC Fence self-mating galvanized panels.'],
+          ].map(([y, t, body], i, arr) => (
+            <div key={y} style={{
+              position: 'relative',
+              paddingBottom: i === arr.length - 1 ? 0 : 44,
+            }}>
+              {/* Dot on the spine */}
+              <span aria-hidden style={{
+                position: 'absolute', left: -45, top: 10,
+                width: 14, height: 14, borderRadius: '50%',
+                background: 'var(--tangerine)',
+                border: '3px solid var(--white)',
+                boxShadow: '0 0 0 1px rgba(255,113,51,0.5)',
+              }}/>
+              <div style={{
+                display: 'grid', gridTemplateColumns: '88px 1fr',
+                gap: 28, alignItems: 'baseline',
+              }}>
+                <div className="display" style={{
+                  fontSize: 30, lineHeight: 1,
+                  color: 'var(--ink)', letterSpacing: '-0.01em',
+                }}>{y}</div>
+                <div>
+                  <div className="mono" style={{
+                    fontSize: 10.5, letterSpacing: '0.22em',
+                    textTransform: 'uppercase',
+                    color: 'var(--tangerine)', fontWeight: 700,
+                    marginBottom: 10,
+                  }}>{t}</div>
+                  <p style={{
+                    margin: 0, fontSize: 15, lineHeight: 1.6,
+                    color: 'var(--ink)', maxWidth: 520,
+                  }}>{body}</p>
+                </div>
               </div>
             </div>
           ))}
-        </div>
-        <div style={{ position: 'relative', aspectRatio: '4 / 5', overflow: 'hidden', background: '#1a2548' }}>
-          <img src="assets/hero-warehouse.webp" alt="WFS Fort Myers warehouse"
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
-          <div style={{
-            position: 'absolute', bottom: 18, left: 18, right: 18,
-            background: 'rgba(26,37,72,0.92)', backdropFilter: 'blur(6px)',
-            padding: '18px 22px',
-            color: 'var(--white)',
-          }}>
-            <div className="mono" style={{ fontSize: 10, letterSpacing: '0.22em', color: 'var(--tangerine)', fontWeight: 700, marginBottom: 6 }}>HQ · FORT MYERS</div>
-            <div className="display" style={{ fontSize: 18, lineHeight: 1.1 }}>2611 Fowler St, FL 33901</div>
-          </div>
         </div>
       </div>
     </div>
