@@ -1,18 +1,18 @@
 /* Projects page — extended gallery + case study */
 
 const FULL_PROJECTS = [
-  { name: 'Cape Coral Residential',      loc: 'Cape Coral, FL',     size: '320 LF',  material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, with double drive gate', contractor: 'Coastline Fence Co.',   year: '2024', imgUrl: 'https://images.unsplash.com/photo-1519478224231-4f91b359198b?auto=format&fit=crop&w=900&q=80' },
-  { name: 'Estero Community',            loc: 'Estero, FL',         size: '38 lots', material: 'Metal',      type: 'Aluminum board privacy, 6 ft, bronze finish',      contractor: 'Gulf Perimeter LLC',    year: '2024', imgUrl: 'https://images.unsplash.com/photo-1530328881134-8c525cc57036?auto=format&fit=crop&w=900&q=80' },
-  { name: 'Fort Myers Estate',           loc: 'Fort Myers, FL',     size: '420 LF',  material: 'Aluminum',   type: 'Welded 3-rail aluminum, 5 ft, residential grade',   contractor: 'Estate Fence Pros',     year: '2025', imgUrl: 'https://images.unsplash.com/photo-1718909704612-29e9707612b7?auto=format&fit=crop&w=900&q=80' },
-  { name: 'Naples Pool Enclosure',       loc: 'Naples, FL',         size: '180 LF',  material: 'Vinyl',      type: 'Vinyl privacy by Veka, 6 ft, pool-code compliant', contractor: 'Naples Outdoor',        year: '2025', imgUrl: 'https://images.unsplash.com/photo-1623042538574-7df756b9945b?auto=format&fit=crop&w=900&q=80' },
-  { name: 'Bonita Springs Self-Storage', loc: 'Bonita Springs, FL', size: '0.9 mi',  material: 'Chain Link', type: 'Galvanized 9-gauge, 8 ft + barbed extension',      contractor: 'Industrial Fence FL',   year: '2024', imgUrl: 'https://images.unsplash.com/photo-1615129628457-17ff3d9386c9?auto=format&fit=crop&w=900&q=80' },
+  { name: 'Cape Coral Residential',      loc: 'Cape Coral, FL',     size: '320 LF',  material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, with double drive gate', contractor: 'Coastline Fence Co.',   year: '2024', imgUrl: 'assets/gate-sliding.jpg' },
+  { name: 'Estero Community',            loc: 'Estero, FL',         size: '38 lots', material: 'Metal',      type: 'Aluminum board privacy, 6 ft, bronze finish',      contractor: 'Gulf Perimeter LLC',    year: '2024', imgUrl: FENCE_IMG.metal },
+  { name: 'Fort Myers Estate',           loc: 'Fort Myers, FL',     size: '420 LF',  material: 'Aluminum',   type: 'Welded 3-rail aluminum, 5 ft, residential grade',   contractor: 'Estate Fence Pros',     year: '2025', imgUrl: 'assets/gate-cantilever.jpg' },
+  { name: 'Naples Pool Enclosure',       loc: 'Naples, FL',         size: '180 LF',  material: 'Vinyl',      type: 'Vinyl privacy by Veka, 6 ft, pool-code compliant', contractor: 'Naples Outdoor',        year: '2025', imgUrl: FENCE_IMG.vinyl },
+  { name: 'Bonita Springs Self-Storage', loc: 'Bonita Springs, FL', size: '0.9 mi',  material: 'Chain Link', type: 'Galvanized 9-gauge, 8 ft + barbed extension',      contractor: 'Industrial Fence FL',   year: '2024', imgUrl: 'assets/gate-rolling.jpg' },
   { name: 'Punta Gorda Marina',          loc: 'Punta Gorda, FL',    size: '240 LF',  material: 'EC Fence',   type: 'EC Fence panels, 6 ft, white finish',              contractor: 'Harbor Iron Works',     year: '2025', imgUrl: 'assets/ec-fence.jpg' },
-  { name: 'Sanibel Beachfront',          loc: 'Sanibel, FL',        size: '180 LF',  material: 'Aluminum',   type: 'Pool code aluminum, 4 ft, hurricane anchors',      contractor: 'Island Outdoor LLC',    year: '2025', imgUrl: 'https://images.unsplash.com/photo-1718909704612-29e9707612b7?auto=format&fit=crop&w=900&q=80' },
-  { name: 'Fort Myers Industrial Park',  loc: 'Fort Myers, FL',     size: '1.4 mi',  material: 'Chain Link', type: '11.5 ga galvanized, 8 ft, 6 cantilever gates',     contractor: 'Industrial Fence FL',   year: '2025', imgUrl: 'https://images.unsplash.com/photo-1517490232338-06b912a786b5?auto=format&fit=crop&w=900&q=80' },
-  { name: 'Lehigh Acres Subdivision',    loc: 'Lehigh Acres, FL',   size: '52 lots', material: 'Vinyl',      type: 'Veka privacy white, 6 ft, walk + double gates',   contractor: 'Lehigh Outdoor Co.',    year: '2024', imgUrl: 'https://images.unsplash.com/photo-1572020636961-3a5dab02d8e3?auto=format&fit=crop&w=900&q=80' },
-  { name: 'Marco Island Resort',         loc: 'Marco Island, FL',   size: '780 LF',  material: 'Metal',      type: 'DuraFence board privacy, 8 ft, bronze, HVHZ',     contractor: 'Coastline Fence Co.',   year: '2025', imgUrl: 'https://images.unsplash.com/photo-1571055107559-3e67626fa8be?auto=format&fit=crop&w=900&q=80' },
-  { name: 'North Port HOA',              loc: 'North Port, FL',     size: '0.7 mi',  material: 'Aluminum',   type: 'Powder-coat black, 5 ft, 14 ornamental sections', contractor: 'Sun Coast Fence',       year: '2024', imgUrl: 'https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=900&q=80' },
-  { name: 'Englewood Tennis Courts',     loc: 'Englewood, FL',      size: '4 courts',material: 'Chain Link', type: 'Vinyl-coated black, 10 ft mesh, 12 ft windscreens', contractor: 'Industrial Fence FL',   year: '2025', imgUrl: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=900&q=80' },
+  { name: 'Sanibel Beachfront',          loc: 'Sanibel, FL',        size: '180 LF',  material: 'Aluminum',   type: 'Pool code aluminum, 4 ft, hurricane anchors',      contractor: 'Island Outdoor LLC',    year: '2025', imgUrl: 'assets/gate-cantilever.jpg' },
+  { name: 'Fort Myers Industrial Park',  loc: 'Fort Myers, FL',     size: '1.4 mi',  material: 'Chain Link', type: '11.5 ga galvanized, 8 ft, 6 cantilever gates',     contractor: 'Industrial Fence FL',   year: '2025', imgUrl: 'assets/gate-rolling.jpg' },
+  { name: 'Lehigh Acres Subdivision',    loc: 'Lehigh Acres, FL',   size: '52 lots', material: 'Vinyl',      type: 'Veka privacy white, 6 ft, walk + double gates',   contractor: 'Lehigh Outdoor Co.',    year: '2024', imgUrl: FENCE_IMG.vinyl },
+  { name: 'Marco Island Resort',         loc: 'Marco Island, FL',   size: '780 LF',  material: 'Metal',      type: 'DuraFence board privacy, 8 ft, bronze, HVHZ',     contractor: 'Coastline Fence Co.',   year: '2025', imgUrl: FENCE_IMG.metal },
+  { name: 'North Port HOA',              loc: 'North Port, FL',     size: '0.7 mi',  material: 'Aluminum',   type: 'Powder-coat black, 5 ft, 14 ornamental sections', contractor: 'Sun Coast Fence',       year: '2024', imgUrl: 'assets/gate-cantilever.jpg' },
+  { name: 'Englewood Tennis Courts',     loc: 'Englewood, FL',      size: '4 courts',material: 'Chain Link', type: 'Vinyl-coated black, 10 ft mesh, 12 ft windscreens', contractor: 'Industrial Fence FL',   year: '2025', imgUrl: FENCE_IMG.chainlink },
 ];
 
 const ProjectsHero = () => (
@@ -22,7 +22,7 @@ const ProjectsHero = () => (
     title="Real projects."
     accent="Real perimeters."
     subtitle="Forty-plus completed jobs across Lee, Collier, Charlotte and Sarasota. Filter by material below."
-    image="https://images.unsplash.com/photo-1718909704612-29e9707612b7?auto=format&fit=crop&w=1600&q=80"
+    image="assets/hero-warehouse.webp"
   />
 );
 
@@ -82,7 +82,7 @@ const ProjectsCaseStudy = () => (
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 56, alignItems: 'center' }}>
         <div style={{ position: 'relative', aspectRatio: '4 / 5', overflow: 'hidden' }}>
-          <img src="https://images.unsplash.com/photo-1517490232338-06b912a786b5?auto=format&fit=crop&w=900&q=80"
+          <img src="assets/gate-rolling.jpg"
             alt="Fort Myers Industrial Park perimeter"
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
           <div className="mono" style={{

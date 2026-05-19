@@ -8,7 +8,7 @@ const ArticlesHero = () => (
     title="Plain-English writeups"
     accent="on picking the right fence."
     subtitle="Written by the people who fabricate this stuff every day — sized to read in under 10 minutes."
-    image="https://images.unsplash.com/photo-1718909704612-29e9707612b7?auto=format&fit=crop&w=1600&q=80"
+    image={FENCE_IMG.aluminum}
   />
 );
 
@@ -118,7 +118,7 @@ const FaqHero = () => (
     title="The questions we"
     accent="get every week."
     subtitle="Lead times, pricing, install policy, delivery, pickup — answered here, with phone numbers if you'd rather just call."
-    image="https://images.unsplash.com/photo-1530328881134-8c525cc57036?auto=format&fit=crop&w=1600&q=80"
+    image={FENCE_IMG.metal}
   />
 );
 
@@ -141,7 +141,7 @@ const MaterialsCompHero = () => (
     title="Side by side,"
     accent="no marketing fluff."
     subtitle="Aluminum vs vinyl vs chain link vs metal vs EC Fence — picked apart by spec, lead time and starting price."
-    image="https://images.unsplash.com/photo-1623042538574-7df756b9945b?auto=format&fit=crop&w=1600&q=80"
+    image={FENCE_IMG.vinyl}
   />
 );
 
@@ -258,7 +258,7 @@ const PoolCodeHero = () => (
     title="Code-compliant"
     accent="enclosure profiles."
     subtitle="What the Florida Building Code says about residential pool barriers — and which of our stocked profiles meet it."
-    image="https://images.unsplash.com/photo-1718909704612-29e9707612b7?auto=format&fit=crop&w=1600&q=80"
+    image={FENCE_IMG.aluminum}
   />
 );
 

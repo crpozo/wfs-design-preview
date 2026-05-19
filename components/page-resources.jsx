@@ -7,7 +7,7 @@ const ResourcesHero = () => (
     title="Pick the right fence —"
     accent="the first time."
     subtitle="Guides, materials comparisons, Florida code references and downloadable spec sheets. Written by the people who fabricate this stuff every day."
-    image="https://images.unsplash.com/photo-1623042538574-7df756b9945b?auto=format&fit=crop&w=1600&q=80"
+    image={FENCE_IMG.vinyl}
   />
 );
 
@@ -162,7 +162,7 @@ const PoolCodeSection = () => (
       'Self-closing, self-latching gates ≥ 54" from grade',
       'Stamped manufacturer specs available on request',
     ]}
-    image="https://images.unsplash.com/photo-1718909704612-29e9707612b7?auto=format&fit=crop&w=1600&q=80"
+    image={FENCE_IMG.aluminum}
     imageRight={false}
   />
 );

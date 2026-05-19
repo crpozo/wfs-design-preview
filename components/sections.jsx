@@ -197,12 +197,12 @@ const ProjectCard = ({ p, i, layout }) => {
 const ProjectGallery = () => {
   const [filter, setFilter] = React.useState('All');
   const projects = [
-    { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, with double drive gate', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'https://images.unsplash.com/photo-1519478224231-4f91b359198b?auto=format&fit=crop&w=900&q=80' },
-    { name: 'Estero Community', loc: 'Estero, FL', size: '38 lots', material: 'Metal', type: 'Aluminum board privacy, 6 ft, bronze finish', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'https://images.unsplash.com/photo-1530328881134-8c525cc57036?auto=format&fit=crop&w=900&q=80' },
-    { name: 'Fort Myers Estate', loc: 'Fort Myers, FL', size: '420 LF', material: 'Aluminum', type: 'Welded 3-rail aluminum, 5 ft, residential grade', contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'https://images.unsplash.com/photo-1718909704612-29e9707612b7?auto=format&fit=crop&w=900&q=80' },
-    { name: 'Naples Pool Enclosure', loc: 'Naples, FL', size: '180 LF', material: 'Vinyl', type: 'Vinyl privacy by Veka, 6 ft, pool-code compliant', contractor: 'Naples Outdoor', year: '2025', imgUrl: 'https://images.unsplash.com/photo-1623042538574-7df756b9945b?auto=format&fit=crop&w=900&q=80' },
-    { name: 'Bonita Springs Self-Storage', loc: 'Bonita Springs, FL', size: '0.9 mi', material: 'Chain Link', type: 'Galvanized 9-gauge, 8 ft + barbed extension', contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'https://images.unsplash.com/photo-1615129628457-17ff3d9386c9?auto=format&fit=crop&w=900&q=80' },
-    { name: 'Punta Gorda Marina', loc: 'Punta Gorda, FL', size: '240 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, white finish', contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'https://images.unsplash.com/photo-1593285247650-cd7bb44adcfd?auto=format&fit=crop&w=900&q=80' },
+    { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, with double drive gate', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/gate-sliding.jpg' },
+    { name: 'Estero Community', loc: 'Estero, FL', size: '38 lots', material: 'Metal', type: 'Aluminum board privacy, 6 ft, bronze finish', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: FENCE_IMG.metal },
+    { name: 'Fort Myers Estate', loc: 'Fort Myers, FL', size: '420 LF', material: 'Aluminum', type: 'Welded 3-rail aluminum, 5 ft, residential grade', contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/gate-cantilever.jpg' },
+    { name: 'Naples Pool Enclosure', loc: 'Naples, FL', size: '180 LF', material: 'Vinyl', type: 'Vinyl privacy by Veka, 6 ft, pool-code compliant', contractor: 'Naples Outdoor', year: '2025', imgUrl: FENCE_IMG.vinyl },
+    { name: 'Bonita Springs Self-Storage', loc: 'Bonita Springs, FL', size: '0.9 mi', material: 'Chain Link', type: 'Galvanized 9-gauge, 8 ft + barbed extension', contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/gate-rolling.jpg' },
+    { name: 'Punta Gorda Marina', loc: 'Punta Gorda, FL', size: '240 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, white finish', contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/ec-fence.jpg' },
   ];
 
   const filters = ['All', 'Chain Link', 'Aluminum', 'Vinyl', 'Metal', 'EC Fence'];
