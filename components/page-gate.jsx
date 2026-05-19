@@ -30,6 +30,16 @@ const GATE_DATA = {
       ['Pool code enclosure', 'Self-closing, self-latching profiles meet Florida pool code requirements.'],
       ['Tight spaces',        'Single panel works where double-swing arc clearance is unavailable.'],
     ],
+    contractor: {
+      tag: 'Walk gates · Trade-account pickup',
+      heroBody: 'Pre-hung kits or in-house welded custom from 3 to 6 ft. Hardware kits packed and labeled per opening. Net-30 trade accounts after the second order — pull up to the bay, walk out in 15 minutes.',
+      bestFor: 'Volume residential, code-compliant pool runs, will-call pickup',
+      useCases: [
+        ['Trade volume',         'Stocked widths for repeat residential jobs. Pre-hung kits cut field install time.'],
+        ['Code-compliant builds','Pool-code profiles meet FBC R 4501.17 — paperwork ready for AHJ.'],
+        ['Will-call staging',    'Order before 2pm, pickup ready by 4pm. Hardware packed per opening.'],
+      ],
+    },
   },
   double: {
     slug: 'double',
@@ -60,6 +70,16 @@ const GATE_DATA = {
       ['Estate entries',       'Symmetrical look reads as a formal main entry — more presence than single.'],
       ['Vehicle + pedestrian', 'Open one leaf for walk-in, both for vehicle access.'],
     ],
+    contractor: {
+      tag: 'Driveway gates · Pre-hung kits',
+      heroBody: 'Pre-hung driveway gates from 8 to 16 ft — welded in Fort Myers, drop rod + hardware kit packed per opening. Trade accounts get net-30 + dedicated rep + job-site dispatch.',
+      bestFor: 'Volume residential drives, custom welded estate runs, trade kits',
+      useCases: [
+        ['Volume residential', 'Same-day pickup on stocked 10/12/14 ft openings — cuts site time.'],
+        ['Custom welded fab',  'Estate runs and non-stock widths welded in-house in 5–7 days.'],
+        ['Trade dispatch',     'Job-site delivery across Lee, Collier, Charlotte and Sarasota.'],
+      ],
+    },
   },
   sliding: {
     slug: 'sliding',
@@ -90,6 +110,16 @@ const GATE_DATA = {
       ['Sloped driveways',        'Ground track handles up to 3% grade without binding.'],
       ['Repeat daily use',        'Manual operation is two-finger easy; automation kits available.'],
     ],
+    contractor: {
+      tag: 'Track-mounted · Trade-account fab',
+      heroBody: 'V-track and pipe-track slide gates fabricated for tight residential drives and sloped lots. Net-30 trade accounts, dedicated rep, will-call staging — kit ships with track, rollers and end stops.',
+      bestFor: 'Tight residential lots, sloped driveway jobs, repeat HOA work',
+      useCases: [
+        ['HOA + subdivision', 'Repeat 12–14 ft openings with uniform finish across the run.'],
+        ['Grade-change sites','V-track handles up to 3% grade without high-low binding.'],
+        ['Will-call staging', 'Pull to bay, walk out with the gate + track + rollers staged.'],
+      ],
+    },
   },
   cantilever: {
     slug: 'cantilever',
@@ -120,6 +150,16 @@ const GATE_DATA = {
       ['Sandy / coastal sites','Salt-spray-rated rollers replace exposed ground track.'],
       ['Long openings',        'Up to 50 ft single openings — typical for industrial yards.'],
     ],
+    contractor: {
+      tag: 'Industrial · Phased delivery',
+      heroBody: 'Counter-balanced cantilever frames welded in Fort Myers — up to 50 ft single openings. Phased deliveries against your release schedule, sealed manufacturer specs available for AHJ submission.',
+      bestFor: 'Industrial perimeters, commercial yards, HVHZ contracts',
+      useCases: [
+        ['Industrial perimeters', '1.4+ mile runs phased against tight release windows.'],
+        ['HVHZ contracts',        'Sealed wind-load specs for 150 mph zones — AHJ-ready.'],
+        ['Custom span fab',       'Telescoping or follower-gate config for spans wider than 50 ft.'],
+      ],
+    },
   },
   rolling: {
     slug: 'rolling',
@@ -150,6 +190,16 @@ const GATE_DATA = {
       ['High-cycle use',        'Hundreds of cycles per day — bearings and frame spec\'d for it.'],
       ['Heavy vehicle access',  'Wide spans for tractor-trailer and box-truck access.'],
     ],
+    contractor: {
+      tag: 'Continuous-duty · RFQ welcome',
+      heroBody: 'Heavy industrial rolling gates welded to spec — continuous-duty bearings, V-track and stainless hardware. Phased delivery, RFQ process, dedicated commercial rep.',
+      bestFor: 'Self-storage, transit hubs, industrial yards, commercial perimeters',
+      useCases: [
+        ['Self-storage rollouts','Multi-opening releases with phased delivery and consistent finish.'],
+        ['Continuous-duty fab', 'Bearings and frame spec\'d for high-cycle commercial operations.'],
+        ['Sealed wind ratings', 'HVHZ-rated configurations with stamped specs for AHJ submission.'],
+      ],
+    },
   },
 };
 
@@ -318,8 +368,14 @@ const GateCTA = ({ data }) => (
 );
 
 const GatePage = ({ slug }) => {
-  const data = GATE_DATA[slug];
-  if (!data) return <p style={{ padding: 80, textAlign: 'center' }}>Gate type not found.</p>;
+  const [mode] = useMode();
+  const base = GATE_DATA[slug];
+  if (!base) return <p style={{ padding: 80, textAlign: 'center' }}>Gate type not found.</p>;
+  // Merge contractor overrides on top of the base data when the mode toggle
+  // in the utility bar is set to CONTRACTOR. useMode() subscribes to the
+  // wfs:mode-change event, so flipping the toggle re-renders this tree.
+  const override = (mode === 'CONTRACTOR' && base.contractor) || {};
+  const data = { ...base, ...override };
   return (
     <>
       <SiteHeader active="Gates" />

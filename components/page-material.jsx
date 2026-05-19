@@ -30,6 +30,16 @@ const MATERIAL_DATA = {
       ['Pool enclosures', 'Code-compliant profiles meet the 4 ft minimum with pickets ≤ 1.75" spaced.'],
       ['HOA boundaries', 'Uniform white/tan finish across subdivisions — stocked in volume.'],
     ],
+    contractor: {
+      tag: 'Veka-extruded · Trade pickup',
+      heroBody: 'Veka-extruded vinyl in white, tan and khaki across privacy, semi-private, picket and ranch rail. All profiles stocked for same-day will-call. Net-30 trade accounts available after the second order.',
+      bestFor: 'HOA + subdivision rollouts, repeat residential privacy',
+      useCases: [
+        ['HOA rollouts',         'Uniform 6 ft privacy across 50+ lots — stocked in volume, packed by run.'],
+        ['Repeat residential',   'Pull, pick, install. Same-day pickup on most stock widths.'],
+        ['Custom color runs',    'Khaki + tan run-outs from Veka for community-specific specs.'],
+      ],
+    },
   },
   aluminum: {
     slug: 'aluminum',
@@ -60,6 +70,16 @@ const MATERIAL_DATA = {
       ['Ornamental front yards', 'Decorative spear-top and finial caps for residential front perimeters.'],
       ['HVHZ perimeters', 'Welded commercial grade rated for 150 mph in HVHZ counties.'],
     ],
+    contractor: {
+      tag: 'Powder-coat · Pool-code + HVHZ',
+      heroBody: 'Powder-coated aluminum in 3, 4 and 5-rail. Pool-code compliant by default, rackable on grade. Residential, commercial and industrial grades stocked — sealed wind-load specs available for HVHZ submissions.',
+      bestFor: 'Pool enclosures, code-required perimeters, HVHZ residential',
+      useCases: [
+        ['Pool code at volume', 'FBC R 4501.17 profiles — paperwork-ready, no field surprises on AHJ check.'],
+        ['HVHZ residential',   '150 mph welded commercial spec — sealed wind load on request.'],
+        ['HOA ornamental',     'Black powder-coat repeat sections — pickup-ready for repeat jobs.'],
+      ],
+    },
   },
   chainlink: {
     slug: 'chain-link',
@@ -90,6 +110,16 @@ const MATERIAL_DATA = {
       ['Sports & rec', '10 ft and 12 ft mesh for tennis, baseball, soccer fields.'],
       ['Self-storage / industrial', 'Phased deliveries against release schedules.'],
     ],
+    contractor: {
+      tag: 'Galv + PVC-coated · Same-day will-call',
+      heroBody: 'Galvanized and PVC-coated mesh from 6 to 12 gauge — same-day pickup on stocked rolls and posts. Phased commercial dispatch for industrial perimeters, net-30 trade accounts available.',
+      bestFor: 'Industrial perimeters, security fencing, sports fields',
+      useCases: [
+        ['Industrial perimeters','Mile+ runs of 9-ga galv with phased delivery against release schedule.'],
+        ['Sports + recreation', '10 ft and 12 ft mesh stocked for tennis, baseball, soccer fields.'],
+        ['Same-day will-call',  'Order before 2pm — pickup ready by 4pm at FM or PC yard.'],
+      ],
+    },
   },
   metal: {
     slug: 'metal',
@@ -120,6 +150,16 @@ const MATERIAL_DATA = {
       ['Modern residential', 'Horizontal board lines + matte powder-coat for contemporary designs.'],
       ['Commercial screens', 'Dumpster enclosures, AC screens, utility-yard perimeters.'],
     ],
+    contractor: {
+      tag: 'Aluminum board · HVHZ + custom color',
+      heroBody: 'Aluminum board privacy in 6 and 8 ft — HVHZ-rated to 150 mph. Commercial and residential builds, phased delivery against release schedules, custom powder-coat color match on volume orders.',
+      bestFor: 'HVHZ residential, commercial screens, modern privacy builds',
+      useCases: [
+        ['HVHZ residential',  '150 mph rated — full privacy through a Cat 4 hurricane.'],
+        ['Commercial screens','AC enclosures, dumpster screens, utility-yard perimeters.'],
+        ['Color-match runs',  'Powder-coat custom color on commercial volume orders.'],
+      ],
+    },
   },
   ecfence: {
     slug: 'ecfence',
@@ -151,6 +191,16 @@ const MATERIAL_DATA = {
       ['Commercial property', 'Clean modern face for office parks, marinas, gated communities.'],
       ['Modern residential', 'Architectural alternative to vinyl or board privacy.'],
     ],
+    contractor: {
+      tag: 'Self-mating steel · Sealed Exposure C',
+      heroBody: 'Self-mating galvanized steel panels engineered for Exposure C wind loads. Modern panel face for coastal commercial and HVHZ residential builds. Sealed manufacturer specs available for AHJ submission.',
+      bestFor: 'Coastal commercial, modern residential, HVHZ contracts',
+      useCases: [
+        ['Coastal commercial','Hot-dip galv core stands up to salt air — marina + coastal yards.'],
+        ['HVHZ contracts',   'Engineered Exposure C — sealed AHJ-ready specs on request.'],
+        ['Modern panel face','Clean architectural alternative to vinyl board for modern builds.'],
+      ],
+    },
   },
 };
 
@@ -318,8 +368,14 @@ const MaterialCTA = ({ data }) => (
 );
 
 const MaterialPage = ({ slug }) => {
-  const data = MATERIAL_DATA[slug];
-  if (!data) return <p style={{ padding: 80, textAlign: 'center' }}>Material not found.</p>;
+  const [mode] = useMode();
+  const base = MATERIAL_DATA[slug];
+  if (!base) return <p style={{ padding: 80, textAlign: 'center' }}>Material not found.</p>;
+  // Mode-aware copy: HOMEOWNER (default) uses the base data, CONTRACTOR
+  // merges in the trade-focused overrides. useMode() subscribes to the
+  // wfs:mode-change event so flipping the toggle re-renders the page.
+  const override = (mode === 'CONTRACTOR' && base.contractor) || {};
+  const data = { ...base, ...override };
   return (
     <>
       <SiteHeader active="Fences" />
