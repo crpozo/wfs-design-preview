@@ -788,9 +788,10 @@ const Footer = () => (
             ['Commercial', 'solutions.html'],
           ]],
           ['Resources', [
-            ['Get a Quote', 'estimate.html'],
-            ['Articles & Guides', 'resources.html'],
-            ['FAQ', 'resources.html#faq'],
+            ['Articles & Guides', 'articles.html'],
+            ['FAQ', 'faq.html'],
+            ['Materials Comparison', 'materials-comparison.html'],
+            ['Florida Pool Code', 'pool-code.html'],
             ['Yard Locations', 'solutions.html#yards'],
           ]],
           ['Company', [

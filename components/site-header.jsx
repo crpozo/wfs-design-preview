@@ -33,10 +33,10 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
       ['Contact', 'estimate.html', 'Phone, email, hours by yard'],
     ]}],
     ['Fence Education Hub', { kind: 'list', items: [
-      ['Articles & Guides', 'resources.html', 'Picking the right fence the first time'],
-      ['FAQ', 'resources.html', 'The questions we get every week'],
-      ['Materials Comparison', 'resources.html', 'Aluminum vs Vinyl vs Chain Link'],
-      ['Florida Pool Code', 'resources.html', 'Code-compliant enclosure profiles'],
+      ['Articles & Guides', 'articles.html', 'Picking the right fence the first time'],
+      ['FAQ', 'faq.html', 'The questions we get every week'],
+      ['Materials Comparison', 'materials-comparison.html', 'Aluminum vs Vinyl vs Chain Link vs Metal'],
+      ['Florida Pool Code', 'pool-code.html', 'Code-compliant enclosure profiles'],
     ]}],
   ];
 
