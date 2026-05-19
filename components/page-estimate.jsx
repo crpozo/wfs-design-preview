@@ -16,15 +16,14 @@ const EstimatePaths = () => (
     <div className="container">
       <PageSectionHeader
         number="01" label="Pick a starting point"
-        title="Three ways"
+        title="Two ways"
         accent="to get a quote."
-        sub="All three land in the same inbox. Whichever feels easier."
+        sub="Both land in the same inbox. Whichever feels easier."
       />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
         {[
-          { tag: 'Fastest',  title: '5-min calculator', body: 'Drag the sliders. Get a real-time materials estimate. Lock it in for a binding quote.', href: '#calculator', cta: 'Open calculator' },
-          { tag: 'Visual',   title: 'Draw my fence',     body: 'Sketch your layout in the browser, drop gate openings, hit submit. We figure the takeoff.', href: '#draw', cta: 'Open sketch tool' },
-          { tag: 'Detailed', title: 'Intake form',       body: 'Project type, height, gates, ZIP, anything else relevant. Pair it with a survey or photo if you have one.', href: '#form', cta: 'Open form' },
+          { tag: 'Visual',   title: 'Draw my fence', body: 'Sketch your layout in the browser, drop gate openings, hit submit. We figure the takeoff.', href: '#draw', cta: 'Open sketch tool' },
+          { tag: 'Detailed', title: 'Intake form',   body: 'Project type, height, gates, ZIP, anything else relevant. Pair it with a survey or photo if you have one.', href: '#form', cta: 'Open form' },
         ].map((c, i) => (
           <a key={c.title} href={c.href} style={{
             display: 'block', padding: 28,
