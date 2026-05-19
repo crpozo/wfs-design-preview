@@ -49,10 +49,11 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
   ];
 
   const GATE_TILES = [
-    { key: 'aluminum', name: 'Single Walk Gates', tag: 'Mechanical or welded', href: 'estimate.html' },
-    { key: 'metal', name: 'Double Drive Gates', tag: 'Up to 16 ft welded', href: 'estimate.html' },
-    { key: 'vinyl', name: 'Custom Estate Gates', tag: 'Fabricated in-house', href: 'estimate.html' },
-    { key: 'chainlink', name: 'Chain Link Gates', tag: 'Welded + hardware kit', href: 'estimate.html' },
+    { key: 'aluminum',  name: 'Single Swing',   tag: 'Walk + entry gates',       href: 'gate-single.html' },
+    { key: 'metal',     name: 'Double Swing',   tag: 'Driveway access',          href: 'gate-double.html' },
+    { key: 'vinyl',     name: 'Sliding',        tag: 'Track-mounted',            href: 'gate-sliding.html' },
+    { key: 'chainlink', name: 'Cantilever',     tag: 'No-ground-track',          href: 'gate-cantilever.html' },
+    { key: 'ecfence',   name: 'Rolling',        tag: 'Industrial V-track',       href: 'gate-rolling.html' },
   ];
 
   const Caret = () => (
