@@ -23,8 +23,8 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
     ]}],
     ['Get a Quote', { kind: 'list', items: [
       ['Request Estimate', 'estimate.html', 'Send measurements, get pricing in 24h'],
-      ['Draw My Fence', 'estimate.html', 'Sketch your layout right in the browser'],
       ['Talk to a Live Agent', 'estimate.html', 'Mon–Fri · Fort Myers + Port Charlotte'],
+      ['Call (239) 689-5496', 'tel:2396895496', 'Avg pickup under 18s in business hours'],
     ]}],
     ['Company', { kind: 'list', items: [
       ['About WFS', 'about.html', 'Family-owned · fabricated in-house'],
@@ -121,7 +121,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
               width: 5, height: 5, borderRadius: '50%',
               background: 'var(--tangerine)',
             }}/>
-            Draw your fence — get started
+            Get a quote — 24h turnaround
             <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
             </svg>
@@ -212,9 +212,9 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
               borderBottom: '1px solid var(--ink)',
             }}>
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                <path d="M2 13 L11 4 L13 6 L4 15 L2 15 Z" stroke="currentColor" strokeWidth="1.4" strokeLinejoin="miter"/>
+                <path d="M3 3 H13 V13 H3 Z M3 6 H13 M6 3 V13" stroke="currentColor" strokeWidth="1.4"/>
               </svg>
-              Draw My Fence
+              Request Estimate
             </a>
             <a href="estimate.html" style={{
               display: 'inline-flex', alignItems: 'center', gap: 12,

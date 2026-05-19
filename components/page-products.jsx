@@ -83,7 +83,7 @@ const ProductsCTA = () => (
     accent="we'll come back with stock + price."
     body="Linear feet, height, color, gate count. We'll quote it in 24 hours with delivery and pickup options for both yards."
     primary={['Request a quote', 'estimate.html']}
-    secondary={['Draw my fence', 'estimate.html#draw']}
+    secondary={['Talk to a rep', 'tel:2396895496']}
   />
 );
 
