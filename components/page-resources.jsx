@@ -7,7 +7,7 @@ const ResourcesHero = () => (
     title="Pick the right fence —"
     accent="the first time."
     subtitle="Guides, materials comparisons, Florida code references and downloadable spec sheets. Written by the people who fabricate this stuff every day."
-    image="https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/aluminum-fence/wfs_aluminum_fence_tab.jpg"
+    image="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?auto=format&fit=crop&w=1600&q=80"
   />
 );
 
@@ -162,7 +162,7 @@ const PoolCodeSection = () => (
       'Self-closing, self-latching gates ≥ 54" from grade',
       'Stamped manufacturer specs available on request',
     ]}
-    image="https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/aluminum-fence/wfs_aluminum_fence_tab.jpg"
+    image="https://images.unsplash.com/photo-1604335399105-a0c585fd81a1?auto=format&fit=crop&w=1600&q=80"
     imageRight={false}
   />
 );

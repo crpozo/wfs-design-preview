@@ -8,7 +8,7 @@ const MATERIAL_DATA = {
     heroTitle: 'Veka-extruded vinyl.',
     heroAccent: 'Built for the Florida sun.',
     heroBody: 'Privacy, semi-private, picket and ranch rail in white, tan and khaki. Won\'t rot, rust, peel or fade — engineered for Florida UV with a transferable lifetime warranty.',
-    heroImg: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/home/wfs_style_tab_vinyl_fence_sw_florida.jpg',
+    heroImg: 'https://images.unsplash.com/photo-1623042538574-7df756b9945b?auto=format&fit=crop&w=1600&q=80',
     bestFor: 'Backyard privacy, pool enclosures, residential subdivisions',
     profiles: [
       { name: 'Privacy', tag: 'Full board', notes: '6 ft tongue-and-groove board, no gaps' },
@@ -38,7 +38,7 @@ const MATERIAL_DATA = {
     heroTitle: 'Powder-coated aluminum.',
     heroAccent: 'Pool-code by default.',
     heroBody: 'Welded and mechanically assembled aluminum in 3-rail, 4-rail and 5-rail configurations. Pool-code compliant, rackable on grade, available in residential, commercial and industrial grades.',
-    heroImg: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/aluminum-fence/wfs_aluminum_fence_tab.jpg',
+    heroImg: 'https://images.unsplash.com/photo-1718909704612-29e9707612b7?auto=format&fit=crop&w=1600&q=80',
     bestFor: 'Pool enclosures, ornamental perimeters, HOAs',
     profiles: [
       { name: '3-Rail', tag: 'Classic', notes: 'Open picket, residential grade' },
@@ -68,7 +68,7 @@ const MATERIAL_DATA = {
     heroTitle: 'Chain link mesh.',
     heroAccent: 'The workhorse perimeter.',
     heroBody: 'Galvanized and PVC-coated mesh from 6 to 12 gauge. The default for security, sports, agricultural and commercial perimeters. Same-day pickup on stocked rolls + posts.',
-    heroImg: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/chainlink-fence/wfs_chain_link_tab.jpg',
+    heroImg: 'https://images.unsplash.com/photo-1519478224231-4f91b359198b?auto=format&fit=crop&w=1600&q=80',
     bestFor: 'Security perimeters, sports fields, industrial sites',
     profiles: [
       { name: 'Galvanized', tag: 'Industrial', notes: 'Hot-dip galvanized, weather-spec' },
@@ -98,7 +98,7 @@ const MATERIAL_DATA = {
     heroTitle: 'DuraFence aluminum board.',
     heroAccent: 'The look of board, the strength of metal.',
     heroBody: 'Horizontal aluminum board privacy — solid 6–8 ft privacy with the strength of aluminum and the silhouette of solid board. Hurricane-rated, no warping, no painting, no replacement boards.',
-    heroImg: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/metal-fence/wfs_metal_fence_tab.jpg',
+    heroImg: 'https://images.unsplash.com/photo-1530328881134-8c525cc57036?auto=format&fit=crop&w=1600&q=80',
     bestFor: 'Modern privacy in HVHZ counties',
     profiles: [
       { name: 'Standard board', tag: '6 ft', notes: 'Horizontal aluminum board, flush mount' },

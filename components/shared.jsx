@@ -1,23 +1,29 @@
 /* Shared UI bits for WFS homepage */
 
-const Logo = ({ light = false }) => {
-  const src = light
-    ? 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/global/wfs-logo-wht.svg'
-    : 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/global/western-fence-supply-logo.svg';
-  return (
-    <a href="#" style={{ display: 'inline-flex', alignItems: 'center', height: 36 }}>
-      <img src={src} alt="Western Fence Supply" style={{ height: 36, width: 'auto' }} />
-    </a>
-  );
-};
+const Logo = ({ light = false }) => (
+  <a href="Homepage.html" style={{ display: 'inline-flex', alignItems: 'center', height: 36 }}>
+    <img
+      src="assets/wfs-logo.svg"
+      alt="Western Fence Supply"
+      style={{
+        height: 36,
+        width: 'auto',
+        filter: light ? 'brightness(0) invert(1)' : 'none',
+      }}
+    />
+  </a>
+);
 
 const FENCE_IMG = {
-  aluminum: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/aluminum-fence/wfs_aluminum_fence_tab.jpg',
-  chainlink: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/chainlink-fence/wfs_chain_link_tab.jpg',
-  metal: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/metal-fence/wfs_metal_fence_tab.jpg',
-  vinyl: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/home/wfs_style_tab_vinyl_fence_sw_florida.jpg',
-  ecfence: 'assets/ec-fence.jpg',
-  shop: 'assets/wfs-shop.webp',
+  // westernfencesupply.com WP image folder went 403 (hotlink-protected),
+  // so we route the four material thumbs through Unsplash CDN. Easy swap
+  // later if you want them local in /assets/.
+  aluminum:  'https://images.unsplash.com/photo-1718909704612-29e9707612b7?auto=format&fit=crop&w=1200&q=80',
+  chainlink: 'https://images.unsplash.com/photo-1519478224231-4f91b359198b?auto=format&fit=crop&w=1200&q=80',
+  metal:     'https://images.unsplash.com/photo-1530328881134-8c525cc57036?auto=format&fit=crop&w=1200&q=80',
+  vinyl:     'https://images.unsplash.com/photo-1623042538574-7df756b9945b?auto=format&fit=crop&w=1200&q=80',
+  ecfence:   'assets/ec-fence.jpg',
+  shop:      'assets/wfs-shop.webp',
   // Gate systems
   'gate-single':     'assets/gate-single-swing.jpg',
   'gate-double':     'assets/gate-double.jpg',

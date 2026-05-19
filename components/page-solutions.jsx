@@ -39,7 +39,7 @@ const SolutionsAudiences = () => {
         'Trusted-installer list across 4 counties',
       ],
       cta: ['Get a homeowner quote', 'estimate.html'],
-      image: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/aluminum-fence/wfs_aluminum_fence_tab.jpg',
+      image: 'https://images.unsplash.com/photo-1718909704612-29e9707612b7?auto=format&fit=crop&w=1400&q=80',
     },
     {
       tag: 'For DIY',
@@ -53,7 +53,7 @@ const SolutionsAudiences = () => {
         'Phone support during install hours, both yards',
       ],
       cta: ['Start a DIY takeoff', 'estimate.html'],
-      image: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/home/wfs_style_tab_vinyl_fence_sw_florida.jpg',
+      image: 'https://images.unsplash.com/photo-1623042538574-7df756b9945b?auto=format&fit=crop&w=1400&q=80',
     },
     {
       tag: 'For Commercial / Builders',
@@ -67,7 +67,7 @@ const SolutionsAudiences = () => {
         'Phased deliveries against a release schedule',
       ],
       cta: ['Submit RFQ', 'estimate.html'],
-      image: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/chainlink-fence/wfs_chain_link_tab.jpg',
+      image: 'https://images.unsplash.com/photo-1519478224231-4f91b359198b?auto=format&fit=crop&w=1400&q=80',
     },
   ];
 
