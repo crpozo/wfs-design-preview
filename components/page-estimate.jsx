@@ -1,13 +1,146 @@
 /* Estimate page — hero + live agent (form comes from FinalCTA in sections.jsx) */
 
 const EstimateHero = () => (
-  <PageHero
-    eyebrow="Quote in 24 hours"
-    title="Tell us your run."
-    accent="We'll come back with stock + price."
-    subtitle="Send your linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery — no chatbot in between."
-    image="https://images.unsplash.com/photo-1718909704612-29e9707612b7?auto=format&fit=crop&w=1600&q=80"
-  />
+  <section style={{
+    position: 'relative', color: 'var(--white)', overflow: 'hidden',
+    minHeight: 'clamp(520px, 78vh, 680px)',
+    display: 'flex', flexDirection: 'column',
+    background: '#1a2548',
+  }}>
+    {/* Industrial warehouse backdrop */}
+    <img src="assets/hero-warehouse.webp" alt="" aria-hidden style={{
+      position: 'absolute', inset: 0, width: '100%', height: '100%',
+      objectFit: 'cover', objectPosition: 'center 55%', zIndex: 0,
+      filter: 'saturate(0.85) contrast(1.05)',
+    }}/>
+    {/* Dark scrim — stronger on left, lighter on right for hierarchy */}
+    <div aria-hidden style={{
+      position: 'absolute', inset: 0, zIndex: 1,
+      background:
+        'linear-gradient(100deg, rgba(20,30,55,0.92) 0%, rgba(20,30,55,0.78) 38%, rgba(20,30,55,0.52) 70%, rgba(20,30,55,0.35) 100%)',
+    }}/>
+    {/* Bottom fade so the process strip stays anchored */}
+    <div aria-hidden style={{
+      position: 'absolute', left: 0, right: 0, bottom: 0, height: '40%', zIndex: 1,
+      background: 'linear-gradient(180deg, rgba(20,30,55,0) 0%, rgba(20,30,55,0.55) 60%, rgba(20,30,55,0.85) 100%)',
+    }}/>
+
+    {/* Hero body */}
+    <div className="container" style={{
+      position: 'relative', zIndex: 2, width: '100%',
+      flex: 1, display: 'flex', flexDirection: 'column',
+      paddingTop: 96, paddingBottom: 40,
+    }}>
+      {/* Top: eyebrow + ticker chip */}
+      <div style={{
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        flexWrap: 'wrap', gap: 16, marginBottom: 28,
+      }}>
+        <div className="mono" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 12,
+          fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
+          color: 'var(--tangerine)', textTransform: 'uppercase',
+        }}>
+          <span style={{ width: 28, height: 1.5, background: 'var(--tangerine)' }}/>
+          Get a Quote · Direct from the yard
+        </div>
+        <div className="mono" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 10,
+          padding: '6px 12px',
+          background: 'rgba(255,255,255,0.08)',
+          border: '1px solid rgba(255,255,255,0.18)',
+          backdropFilter: 'blur(6px)',
+          fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+          color: 'rgba(255,255,255,0.85)', textTransform: 'uppercase',
+        }}>
+          <span style={{
+            width: 7, height: 7, borderRadius: '50%',
+            background: '#22c55e',
+            boxShadow: '0 0 0 3px rgba(34,197,94,0.25)',
+          }}/>
+          18h avg turnaround · this week
+        </div>
+      </div>
+
+      {/* Main heading */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: 880 }}>
+        <h1 className="display" style={{
+          margin: '0 0 22px',
+          fontSize: 'clamp(36px, 5vw, 64px)',
+          lineHeight: 0.98, letterSpacing: '-0.025em',
+          color: 'var(--white)',
+        }}>
+          Send your run.<br/>
+          <span style={{ color: 'var(--tangerine)' }}>Get a binding quote in 24 hours.</span>
+        </h1>
+        <p style={{
+          fontSize: 17, lineHeight: 1.55, maxWidth: 580, margin: 0,
+          color: 'rgba(255,255,255,0.85)',
+        }}>
+          Linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery — no chatbot, no contractor-only tiers.
+        </p>
+        <div style={{ marginTop: 32, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+          <a href="#form" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 12,
+            padding: '16px 26px', borderRadius: 999,
+            background: 'var(--tangerine)', color: 'var(--white)',
+            fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600,
+            letterSpacing: '0.06em', textTransform: 'uppercase',
+            boxShadow: '0 10px 28px rgba(231,114,53,0.4)',
+            transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(231,114,53,0.5)'; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(231,114,53,0.4)'; }}>
+            Send the project
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+          </a>
+          <a href="tel:2396895496" className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            paddingBottom: 4,
+            fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+            color: 'var(--white)',
+            borderBottom: '1px solid rgba(255,255,255,0.5)',
+          }}>
+            Or call (239) 689-5496
+          </a>
+        </div>
+      </div>
+
+      {/* 3-step process strip at the bottom of the hero */}
+      <div style={{
+        marginTop: 56,
+        paddingTop: 28,
+        borderTop: '1px solid rgba(255,255,255,0.18)',
+        display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24,
+      }}>
+        {[
+          ['01', 'Send your run',         'Linear feet · height · gate count · ZIP. Survey or sketch optional.'],
+          ['02', 'We quote in 24h',       'Stock, lead time, delivery or pickup window — all in one email.'],
+          ['03', 'Pickup or delivery',    'FM or PC yard · Mon–Fri 7am–4pm. Same-day staging if called ahead.'],
+        ].map(([n, t, sub], i, arr) => (
+          <div key={n} style={{
+            paddingLeft: i === 0 ? 0 : 28,
+            borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.18)',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, marginBottom: 12 }}>
+              <span className="display" style={{
+                fontSize: 30, lineHeight: 1, color: 'var(--tangerine)', letterSpacing: '-0.01em',
+              }}>{n}</span>
+              <span style={{
+                fontSize: 15, fontWeight: 600, color: 'var(--white)', letterSpacing: '-0.005em',
+              }}>{t}</span>
+            </div>
+            <p className="mono" style={{
+              margin: 0,
+              fontSize: 11, letterSpacing: '0.06em', lineHeight: 1.55,
+              color: 'rgba(255,255,255,0.7)',
+            }}>{sub}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
 );
 
 const LiveAgentBand = () => (
