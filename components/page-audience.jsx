@@ -287,202 +287,174 @@ const HomeownerPage = () => (
 
 const ContractorHero = () => (
   <section style={{
-    position: 'relative', color: 'var(--white)', overflow: 'hidden',
-    minHeight: 'clamp(520px, 72vh, 640px)',
-    display: 'flex', flexDirection: 'column',
-    background: '#0f1832',
+    background: 'var(--ink)', color: 'var(--white)',
+    padding: '96px 0 88px',
   }}>
-    <img src="assets/hero-warehouse.webp" alt="" aria-hidden style={{
-      position: 'absolute', inset: 0, width: '100%', height: '100%',
-      objectFit: 'cover', objectPosition: 'center 55%', zIndex: 0,
-      filter: 'saturate(0.85) contrast(1.05)',
-    }}/>
-    <div aria-hidden style={{
-      position: 'absolute', inset: 0, zIndex: 1,
-      background: 'linear-gradient(100deg, rgba(15,24,50,0.94) 0%, rgba(15,24,50,0.78) 45%, rgba(15,24,50,0.45) 100%)',
-    }}/>
-    <div className="container" style={{
-      position: 'relative', zIndex: 2, width: '100%',
-      flex: 1, display: 'flex', flexDirection: 'column',
-      paddingTop: 96, paddingBottom: 56,
-    }}>
-      <div className="mono" style={{
-        display: 'inline-flex', alignItems: 'center', gap: 12,
-        fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-        color: 'var(--tangerine)', textTransform: 'uppercase',
-        marginBottom: 26,
+    <div className="container">
+      <div style={{
+        display: 'grid', gridTemplateColumns: '1fr 1fr',
+        gap: 64, alignItems: 'center',
       }}>
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-          <path d="M2 9 Q8 3 14 9 L14 12 L2 12 Z M5 9 V6 Q8 4 11 6 V9" stroke="currentColor" strokeWidth="1.4" fill="none"/>
-        </svg>
-        Contractor Landing
-      </div>
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: 920 }}>
-        <h1 className="display" style={{
-          margin: '0 0 22px',
-          fontSize: 'clamp(36px, 5vw, 64px)',
-          lineHeight: 0.98, letterSpacing: '-0.025em',
-        }}>
-          Trade accounts. Will-call.<br/>
-          <span style={{ color: 'var(--tangerine)' }}>Phased delivery.</span>
-        </h1>
-        <p style={{ fontSize: 17, lineHeight: 1.55, maxWidth: 620, margin: 0, color: 'rgba(255,255,255,0.85)' }}>
-          Net-30 trade accounts after the second order. Dedicated sales rep, in-house fabrication shop, and dispatched delivery across Lee, Collier, Charlotte and Sarasota. Pre-hung gates ship welded with hardware kits packed per opening.
-        </p>
-        <div style={{ marginTop: 32, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
-          <a href="estimate.html" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12,
-            padding: '16px 26px', borderRadius: 999,
-            background: 'var(--tangerine)', color: 'var(--white)',
-            fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600,
-            letterSpacing: '0.06em', textTransform: 'uppercase',
-            boxShadow: '0 10px 28px rgba(231,114,53,0.4)',
-            transition: 'transform 0.18s, box-shadow 0.18s',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(231,114,53,0.5)'; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(231,114,53,0.4)'; }}>
-            Open a trade account
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
-          </a>
-          <a href="tel:2396895496" className="mono" style={{
+        {/* Left — copy block */}
+        <div>
+          <span className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            paddingBottom: 4,
-            fontSize: 12, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
-            color: 'var(--white)', borderBottom: '1px solid rgba(255,255,255,0.5)',
+            padding: '8px 14px',
+            border: '1px solid rgba(255,255,255,0.4)',
+            fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+            textTransform: 'uppercase', color: 'var(--white)',
+            marginBottom: 36,
           }}>
-            Or call (239) 689-5496
-          </a>
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+              <path d="M3 6 H13 V13 H3 Z M6 6 V4 H10 V6" stroke="currentColor" strokeWidth="1.4"/>
+            </svg>
+            Wholesale Partner Program
+          </span>
+          <h1 className="display" style={{
+            margin: '0 0 36px',
+            fontSize: 'clamp(44px, 6vw, 80px)',
+            lineHeight: 1, letterSpacing: '-0.025em',
+            color: 'var(--white)',
+          }}>
+            Grow your<br/>business<br/>with WFS
+          </h1>
+          <p className="mono" style={{
+            margin: '0 0 44px',
+            maxWidth: 520,
+            fontSize: 14, lineHeight: 1.7,
+            color: 'rgba(255,255,255,0.7)',
+          }}>
+            Partner with Southwest Florida's leading manufacturer. Get wholesale pricing, priority manufacturing, and job-site delivery.
+          </p>
+          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+            <a href="estimate.html" style={{
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              padding: '16px 28px',
+              background: 'var(--white)', color: 'var(--ink)',
+              fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
+              letterSpacing: '0.18em', textTransform: 'uppercase',
+            }}>Contact Wholesale Team</a>
+            <a href="resources.html" style={{
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              padding: '16px 28px',
+              background: 'var(--white)', color: 'var(--ink)',
+              fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
+              letterSpacing: '0.18em', textTransform: 'uppercase',
+            }}>Request Price List</a>
+          </div>
+        </div>
+
+        {/* Right — decorative wireframe block */}
+        <div style={{
+          position: 'relative',
+          aspectRatio: '5 / 4',
+          border: '1.5px solid rgba(255,255,255,0.4)',
+          padding: 28,
+          background: 'rgba(255,255,255,0.02)',
+        }}>
+          <div style={{
+            position: 'absolute', inset: 18,
+            border: '1px dashed rgba(255,255,255,0.18)',
+          }}/>
+          {/* Two stacked panes on top */}
+          <div style={{
+            display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18,
+            position: 'absolute', top: 36, left: 36, right: 36, bottom: '40%',
+          }}>
+            {[1, 2].map(i => (
+              <div key={i} style={{
+                border: '1px dashed rgba(255,255,255,0.22)',
+                background: 'rgba(255,255,255,0.025)',
+              }}/>
+            ))}
+          </div>
+          {/* Wide bottom pane */}
+          <div style={{
+            position: 'absolute', bottom: 36, left: 36, right: 36,
+            height: '32%',
+            border: '1px dashed rgba(255,255,255,0.22)',
+            background: 'rgba(255,255,255,0.025)',
+          }}/>
+          {/* Partner Program pill */}
+          <span className="mono" style={{
+            position: 'absolute', bottom: 26, right: 26,
+            padding: '7px 14px',
+            background: 'var(--white)', color: 'var(--ink)',
+            fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+            textTransform: 'uppercase',
+          }}>Partner Program</span>
         </div>
       </div>
-      <div style={{
-        marginTop: 56, paddingTop: 28,
-        borderTop: '1px solid rgba(255,255,255,0.18)',
-        display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 24,
-      }}>
-        {[
-          ['Net-30',          'After second order — no application fee.'],
-          ['Will-call',       'Pull to bay, walk out in 15 min.'],
-          ['In-house fab',    'Custom gates welded in Fort Myers in 5–7 days.'],
-          ['Job-site dispatch','Delivery across Lee · Collier · Charlotte · Sarasota.'],
-        ].map(([t, sub], i, arr) => (
-          <div key={t} style={{
-            paddingLeft: i === 0 ? 0 : 24,
-            borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.18)',
-          }}>
-            <div className="mono" style={{
-              fontSize: 12, fontWeight: 700, color: 'var(--tangerine)',
-              letterSpacing: '0.18em', textTransform: 'uppercase', marginBottom: 10,
-            }}>0{i+1} · {t}</div>
-            <div className="mono" style={{ fontSize: 11, lineHeight: 1.55, color: 'rgba(255,255,255,0.7)' }}>{sub}</div>
-          </div>
-        ))}
-      </div>
     </div>
   </section>
 );
 
-const ContractorBenefits = () => (
-  <section style={{ background: 'var(--white)', padding: '72px 0' }}>
-    <div className="container">
-      <PageSectionHeader
-        number="01" label="Trade benefits"
-        title="Built around"
-        accent="how contractors actually buy."
-        sub="No tiered pricing tricks, no dispatch dance. One rep follows your account, and the yard staff knows your job number."
-      />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-        {[
-          ['Net-30 trade accounts',     'Approved after the second order. Statement billing, single AP contact.'],
-          ['Volume pricing',             'Tiered floor for repeat residential. No annual renewal, no minimum spend.'],
-          ['Dedicated sales rep',        'One name, one direct line. Knows your job board and your usual specs.'],
-          ['In-house fabrication',       'Custom gates and panels welded in Fort Myers. 5–7 day turnaround on most custom runs.'],
-          ['Will-call staging',          'Order Friday, pickup Monday. Hardware packed per opening and labeled to the run.'],
-          ['Job-site dispatch',          'Delivery across Lee, Collier, Charlotte and Sarasota. Phased deliveries against your release.'],
-        ].map(([t, body], i) => (
-          <div key={t} style={{
-            display: 'flex', gap: 20,
-            padding: 28,
-            border: '1px solid rgba(0,16,17,0.12)',
-            background: 'var(--white)',
-          }}>
-            <div style={{
-              flexShrink: 0,
-              width: 44, height: 44,
-              background: 'var(--ink)', color: 'var(--white)',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'var(--mono)', fontWeight: 700, fontSize: 14,
-            }}>0{i+1}</div>
-            <div>
-              <h3 className="display" style={{ margin: '0 0 8px', fontSize: 18, lineHeight: 1.15 }}>{t}</h3>
-              <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{body}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const ContractorProcess = () => (
-  <section style={{ background: 'var(--parchment)', padding: '72px 0' }}>
-    <div className="container">
-      <PageSectionHeader
-        number="02" label="Open an account"
-        title="Three steps —"
-        accent="from first order to Net-30."
-      />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0, border: '1px solid var(--ink)', background: 'var(--white)' }}>
-        {[
-          ['01', 'First order on COD',  'Card or check at pickup. Same supplier-direct pricing as account holders.'],
-          ['02', 'Apply for Net-30',     'One-page application + two trade references. Approval typically same week.'],
-          ['03', 'Trade rep assigned',   'Direct line, takeoff service, job-site dispatch and statement billing.'],
-        ].map(([n, t, body], i, arr) => (
-          <div key={n} style={{
-            padding: '32px 28px',
-            borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.12)',
-          }}>
-            <div className="display" style={{ fontSize: 30, color: 'var(--tangerine)', lineHeight: 1, marginBottom: 16 }}>{n}</div>
-            <h3 style={{ fontSize: 16, fontWeight: 700, margin: '0 0 10px', color: 'var(--ink)' }}>{t}</h3>
-            <p className="mono" style={{ margin: 0, fontSize: 11.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{body}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-);
-
-const ContractorMaterials = () => {
-  const materials = [
-    { name: 'Vinyl / PVC',         tag: 'HOA + subdivision volume', href: 'vinyl.html',      img: 'vinyl' },
-    { name: 'Aluminum',            tag: 'Pool code + HVHZ',         href: 'aluminum.html',   img: 'aluminum' },
-    { name: 'Chain Link',          tag: 'Industrial + security',    href: 'chain-link.html', img: 'chainlink' },
-    { name: 'Metal / DuraFence',   tag: 'Commercial privacy',       href: 'metal.html',      img: 'metal' },
-    { name: 'EC Fence',            tag: 'Coastal commercial',       href: 'ecfence.html',    img: 'ecfence' },
+const ContractorBenefits = () => {
+  const benefits = [
+    {
+      title: 'Factory Direct Pricing',
+      body: 'Maximize your margins with true wholesale pricing levels based on volume.',
+      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21 V11 L9 14 V11 L15 14 V11 L21 14 V21 Z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>),
+    },
+    {
+      title: 'Priority Fabrication',
+      body: 'Skip the line. Contractors get priority manufacturing slots for faster turnaround.',
+      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>),
+    },
+    {
+      title: 'Job Site Delivery',
+      body: 'We deliver unbranded or branded drops directly to your job site.',
+      svg: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21 Q4 14 4 9 A8 8 0 0 1 20 9 Q20 14 12 21 Z"/><circle cx="12" cy="9.5" r="2.6"/></svg>),
+    },
+    {
+      title: 'Lead Generation',
+      body: 'We refer homeowners directly to our trusted installer network.',
+      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 19 Q9 14 15 19"/><path d="M14 18 Q17.5 15 21 18"/></svg>),
+      highlighted: false,
+    },
+    {
+      title: 'Credit Terms',
+      body: 'Flexible payment terms available for qualified high-volume partners.',
+      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="6" width="18" height="13" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><rect x="6" y="14" width="4" height="2" rx="0.4" fill="currentColor"/></svg>),
+      highlighted: true,
+    },
+    {
+      title: 'Easy Ordering',
+      body: 'Order via phone, email, or in-person with our dedicated contractor support team.',
+      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="8" height="8" rx="0.5"/><rect x="13" y="3" width="8" height="8" rx="0.5"/><rect x="3" y="13" width="8" height="8" rx="0.5"/><rect x="13" y="13" width="8" height="8" rx="0.5"/></svg>),
+    },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '72px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '96px 0' }}>
       <div className="container">
-        <PageSectionHeader
-          number="03" label="Stocked for trade"
-          title="Five systems,"
-          accent="full hardware kits per opening."
-          link={['Full catalog', 'products.html']}
-        />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 14 }}>
-          {materials.map(m => (
-            <a key={m.name} href={m.href} style={{
-              position: 'relative', display: 'block',
-              aspectRatio: '4 / 5', overflow: 'hidden',
-              background: '#1a2548', textDecoration: 'none', color: 'var(--white)',
+        <h2 className="display" style={{
+          textAlign: 'center', margin: '0 auto 56px',
+          fontSize: 'clamp(28px, 3.4vw, 44px)',
+          lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
+        }}>Why partner with us?</h2>
+        <div style={{
+          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
+          gap: 18, maxWidth: 1200, margin: '0 auto',
+        }}>
+          {benefits.map(b => (
+            <article key={b.title} style={{
+              border: '1.5px solid var(--ink)',
+              background: b.highlighted ? '#f5f8fc' : 'var(--white)',
+              padding: '36px 32px',
+              minHeight: 260,
             }}>
-              <img src={FENCE_IMG[m.img]} alt={m.name}
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(20,30,55,0) 35%, rgba(20,30,55,0.88) 100%)' }}/>
-              <div style={{ position: 'absolute', bottom: 16, left: 16, right: 16 }}>
-                <div className="display" style={{ fontSize: 18, lineHeight: 1.1 }}>{m.name}</div>
-                <div className="mono" style={{ marginTop: 6, fontSize: 10, letterSpacing: '0.18em', color: 'var(--alice-blue)' }}>{m.tag}</div>
-              </div>
-            </a>
+              <div style={{ marginBottom: 32, color: 'var(--ink)' }}>{b.svg}</div>
+              <h3 style={{
+                margin: '0 0 16px',
+                fontSize: 16, fontWeight: 700,
+                letterSpacing: '-0.005em', color: 'var(--ink)',
+                textTransform: 'uppercase',
+              }}>{b.title}</h3>
+              <p className="mono" style={{
+                margin: 0, fontSize: 12.5, lineHeight: 1.65,
+                color: 'var(--charcoal)',
+              }}>{b.body}</p>
+            </article>
           ))}
         </div>
       </div>
@@ -491,14 +463,35 @@ const ContractorMaterials = () => {
 };
 
 const ContractorCTA = () => (
-  <CTABand
-    kicker="Open a trade account"
-    title="One page application."
-    accent="Approval typically the same week."
-    body="Send your business info + two trade references. Net-30 statement billing and job-site dispatch kick in on the second order."
-    primary={['Apply now', 'estimate.html']}
-    secondary={['Call (239) 689-5496', 'tel:2396895496']}
-  />
+  <section style={{ background: 'var(--white)', padding: '88px 0 112px' }}>
+    <div className="container" style={{ textAlign: 'center', maxWidth: 720 }}>
+      <h2 className="display" style={{
+        margin: '0 0 28px',
+        fontSize: 'clamp(28px, 3.4vw, 44px)',
+        lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
+      }}>Ready to Partner?</h2>
+      <p className="mono" style={{
+        margin: '0 auto 40px', maxWidth: 580,
+        fontSize: 14, lineHeight: 1.7,
+        color: 'var(--charcoal)',
+      }}>
+        Fill out our contractor inquiry form to get started. Our team will contact you within 24 hours.
+      </p>
+      <a href="estimate.html" style={{
+        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+        padding: '18px 44px',
+        background: 'var(--ink)', color: 'var(--white)',
+        fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+        letterSpacing: '0.18em', textTransform: 'uppercase',
+        boxShadow: '6px 6px 0 var(--tangerine)',
+        transition: 'transform 0.18s ease, box-shadow 0.18s ease',
+      }}
+      onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px, -2px)'; e.currentTarget.style.boxShadow = '8px 8px 0 var(--tangerine)'; }}
+      onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '6px 6px 0 var(--tangerine)'; }}>
+        Inquire Now
+      </a>
+    </div>
+  </section>
 );
 
 const ContractorPage = () => (
@@ -506,10 +499,6 @@ const ContractorPage = () => (
     <SiteHeader />
     <ContractorHero />
     <ContractorBenefits />
-    <ContractorProcess />
-    <ContractorMaterials />
-    <Testimonials />
-    <FAQ />
     <ContractorCTA />
     <Footer />
   </>
@@ -517,5 +506,5 @@ const ContractorPage = () => (
 
 Object.assign(window, {
   HomeownerHero, HomeownerSteps, HomeownerInstallerSplit, HomeownerFAQ, HomeownerPage,
-  ContractorHero, ContractorBenefits, ContractorProcess, ContractorMaterials, ContractorCTA, ContractorPage,
+  ContractorHero, ContractorBenefits, ContractorCTA, ContractorPage,
 });
