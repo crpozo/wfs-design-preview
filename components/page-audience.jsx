@@ -3,10 +3,33 @@
 /* ───────────────────────────── HOMEOWNER ───────────────────────────── */
 
 const HomeownerHero = () => (
-  <section style={{ background: 'var(--white)', padding: '96px 0 64px' }}>
-    <div className="container" style={{ maxWidth: 1100, textAlign: 'center' }}>
+  <section style={{
+    background: 'var(--white)', padding: '96px 0 56px',
+    position: 'relative', overflow: 'hidden',
+  }}>
+    {/* Faint dotted grid texture behind */}
+    <div aria-hidden style={{
+      position: 'absolute', inset: 0,
+      backgroundImage: 'radial-gradient(rgba(0,16,17,0.06) 1px, transparent 1px)',
+      backgroundSize: '24px 24px',
+      maskImage: 'radial-gradient(ellipse at center, #000 0%, transparent 70%)',
+      WebkitMaskImage: 'radial-gradient(ellipse at center, #000 0%, transparent 70%)',
+      pointerEvents: 'none',
+    }}/>
+    <div className="container" style={{ position: 'relative', maxWidth: 1120, textAlign: 'center' }}>
+      <span className="mono" style={{
+        display: 'inline-flex', alignItems: 'center', gap: 10,
+        padding: '8px 16px', marginBottom: 30,
+        border: '1px solid var(--ink)',
+        background: 'var(--white)',
+        fontSize: 10.5, fontWeight: 700, letterSpacing: '0.22em',
+        textTransform: 'uppercase', color: 'var(--ink)',
+      }}>
+        <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
+        Homeowner · Built for residential
+      </span>
       <h1 className="display" style={{
-        margin: '0 auto 36px',
+        margin: '0 auto 30px',
         fontSize: 'clamp(48px, 7.2vw, 104px)',
         lineHeight: 0.98, letterSpacing: '-0.025em',
         color: 'var(--ink)',
@@ -15,14 +38,14 @@ const HomeownerHero = () => (
         Fence Solutions<br/>for Homeowners
       </h1>
       <p className="mono" style={{
-        margin: '0 auto 44px',
-        maxWidth: 780,
-        fontSize: 15.5, lineHeight: 1.65,
+        margin: '0 auto 36px',
+        maxWidth: 720,
+        fontSize: 15, lineHeight: 1.7,
         color: 'var(--charcoal)',
       }}>
         Enhance your property's value, privacy, and security with our premium manufacturing-direct fencing. We help you plan the project and connect you with certified installers for the finished build.
       </p>
-      <div style={{ display: 'flex', gap: 18, justifyContent: 'center', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: 16, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 36 }}>
         <a href="estimate.html" style={{
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
           padding: '18px 38px',
@@ -47,6 +70,58 @@ const HomeownerHero = () => (
           View Gallery
         </a>
       </div>
+      {/* Trust micro-bullets */}
+      <div className="mono" style={{
+        display: 'inline-flex', gap: 28, flexWrap: 'wrap', justifyContent: 'center',
+        fontSize: 11, fontWeight: 700, letterSpacing: '0.16em',
+        textTransform: 'uppercase', color: 'var(--charcoal)',
+      }}>
+        {['No minimums', 'Free takeoff', 'Same supplier-direct floor'].map((t, i) => (
+          <span key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  </section>
+);
+
+/* ───── Trust strip — 4 stats anchoring the hero ───── */
+
+const HomeownerTrustStrip = () => (
+  <section style={{
+    background: 'var(--white)',
+    borderTop: '1px solid rgba(0,16,17,0.1)',
+    borderBottom: '1px solid rgba(0,16,17,0.1)',
+    padding: '32px 0',
+  }}>
+    <div className="container">
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+        {[
+          ['22+',  'Years family-owned'],
+          ['2',    'Yards · FM + PC'],
+          ['480+', 'Active SKUs'],
+          ['24h',  'Quote turnaround'],
+        ].map(([n, l], i) => (
+          <div key={l} style={{
+            paddingLeft: i === 0 ? 0 : 24,
+            borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.1)',
+          }}>
+            <div className="display" style={{
+              fontSize: 'clamp(32px, 3.6vw, 48px)', lineHeight: 1,
+              color: 'var(--ink)', letterSpacing: '-0.02em',
+            }}>{n}</div>
+            <div className="mono" style={{
+              marginTop: 10, fontSize: 11, letterSpacing: '0.18em',
+              textTransform: 'uppercase', color: 'var(--charcoal)',
+              fontWeight: 700,
+            }}>{l}</div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 );
@@ -54,54 +129,93 @@ const HomeownerHero = () => (
 /* ───── How it works — 6 steps with circle icons ───── */
 
 const HomeownerSteps = () => {
-  const Icon = ({ children }) => (
+  const StepIcon = ({ n, children }) => (
     <div style={{
-      width: 84, height: 84, borderRadius: '50%',
-      background: '#f5f5f5',
-      display: 'flex', alignItems: 'center', justifyContent: 'center',
-      margin: '0 auto 26px',
-      color: 'var(--ink)',
+      position: 'relative',
+      width: 96, height: 96,
+      margin: '0 auto 28px',
     }}>
-      {children}
+      {/* Outer tangerine ring */}
+      <div style={{
+        position: 'absolute', inset: 0, borderRadius: '50%',
+        border: '1.5px dashed rgba(255,113,51,0.45)',
+      }}/>
+      {/* Inner solid circle */}
+      <div style={{
+        position: 'absolute', inset: 6, borderRadius: '50%',
+        background: '#f5f5f5',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        color: 'var(--ink)',
+      }}>{children}</div>
+      {/* Number badge */}
+      <span className="mono" style={{
+        position: 'absolute', bottom: -2, right: -2,
+        width: 30, height: 30, borderRadius: '50%',
+        background: 'var(--ink)', color: 'var(--white)',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        fontSize: 12, fontWeight: 700, letterSpacing: '0',
+        border: '3px solid var(--white)',
+      }}>{n}</span>
     </div>
   );
   const steps = [
     { n: '1', t: 'Draw Your Fence', body: 'Sketch your layout to visualize the project.',
-      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19 L7 21 L9 16 L18 7 L21 10 Z"/><path d="M16 9 L19 12"/></svg>) },
+      svg: (<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19 L7 21 L9 16 L18 7 L21 10 Z"/><path d="M16 9 L19 12"/></svg>) },
     { n: '2', t: 'Get an Estimate', body: 'Use our tools to get a rough idea of the cost.',
-      svg: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="5" y="3" width="14" height="18" rx="1"/><rect x="7.5" y="5.5" width="9" height="4"/><circle cx="9" cy="13" r="0.6" fill="currentColor"/><circle cx="12" cy="13" r="0.6" fill="currentColor"/><circle cx="15" cy="13" r="0.6" fill="currentColor"/><circle cx="9" cy="16" r="0.6" fill="currentColor"/><circle cx="12" cy="16" r="0.6" fill="currentColor"/><circle cx="15" cy="16" r="0.6" fill="currentColor"/></svg>) },
+      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="5" y="3" width="14" height="18" rx="1"/><rect x="7.5" y="5.5" width="9" height="4"/><circle cx="9" cy="13" r="0.6" fill="currentColor"/><circle cx="12" cy="13" r="0.6" fill="currentColor"/><circle cx="15" cy="13" r="0.6" fill="currentColor"/><circle cx="9" cy="16" r="0.6" fill="currentColor"/><circle cx="12" cy="16" r="0.6" fill="currentColor"/><circle cx="15" cy="16" r="0.6" fill="currentColor"/></svg>) },
     { n: '3', t: 'Book a Visit', body: 'Schedule a time for us to verify measurements.',
-      svg: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 9 H20"/><line x1="8" y1="3" x2="8" y2="6"/><line x1="16" y1="3" x2="16" y2="6"/></svg>) },
+      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 9 H20"/><line x1="8" y1="3" x2="8" y2="6"/><line x1="16" y1="3" x2="16" y2="6"/></svg>) },
     { n: '4', t: 'Get a Quote', body: 'Receive a final, detailed quote for your project.',
-      svg: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 3 H15 L19 7 V21 H7 Z"/><path d="M15 3 V7 H19"/><line x1="9" y1="12" x2="17" y2="12"/><line x1="9" y1="15" x2="17" y2="15"/><line x1="9" y1="18" x2="13" y2="18"/></svg>) },
+      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 3 H15 L19 7 V21 H7 Z"/><path d="M15 3 V7 H19"/><line x1="9" y1="12" x2="17" y2="12"/><line x1="9" y1="15" x2="17" y2="15"/><line x1="9" y1="18" x2="13" y2="18"/></svg>) },
     { n: '5', t: 'Fabrication', body: 'We manufacture your fence locally to your exact specifications.',
-      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 21 V11 L9 14 V11 L15 14 V11 L21 14 V21 Z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>) },
+      svg: (<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 21 V11 L9 14 V11 L15 14 V11 L21 14 V21 Z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>) },
     { n: '6', t: 'Certified Installation', body: 'Choose from our WFS-certified installer alliance for professional installation.',
-      svg: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg>) },
+      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg>) },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '64px 0 96px' }}>
+    <section style={{ background: '#fafafa', padding: '96px 0 112px' }}>
       <div className="container">
-        <h2 className="display" style={{
-          textAlign: 'center', margin: '0 auto 64px',
-          fontSize: 'clamp(28px, 3.4vw, 44px)',
-          lineHeight: 1, letterSpacing: '-0.015em',
-          color: 'var(--ink)',
-        }}>How it works for homeowners</h2>
+        <div style={{ textAlign: 'center', marginBottom: 64 }}>
+          <span className="mono" style={{
+            display: 'inline-block',
+            marginBottom: 16,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
+            color: 'var(--tangerine)', textTransform: 'uppercase',
+          }}>01 — Process</span>
+          <h2 className="display" style={{
+            margin: 0,
+            fontSize: 'clamp(28px, 3.4vw, 44px)',
+            lineHeight: 1, letterSpacing: '-0.015em',
+            color: 'var(--ink)',
+          }}>How it works for homeowners</h2>
+        </div>
         <div style={{
+          position: 'relative',
           display: 'grid',
           gridTemplateColumns: 'repeat(3, 1fr)',
-          rowGap: 72, columnGap: 48,
+          rowGap: 80, columnGap: 56,
           maxWidth: 1100, margin: '0 auto',
         }}>
+          {/* Subtle horizontal connector lines behind row 1 and row 2 */}
+          <div aria-hidden style={{
+            position: 'absolute', top: 48, left: '12%', right: '12%', height: 1,
+            borderTop: '1px dashed rgba(0,16,17,0.18)',
+            zIndex: 0, pointerEvents: 'none',
+          }}/>
+          <div aria-hidden style={{
+            position: 'absolute', top: 'calc(50% + 24px)', left: '12%', right: '12%', height: 1,
+            borderTop: '1px dashed rgba(0,16,17,0.18)',
+            zIndex: 0, pointerEvents: 'none',
+          }}/>
           {steps.map(s => (
-            <div key={s.n} style={{ textAlign: 'center' }}>
-              <Icon>{s.svg}</Icon>
-              <h3 style={{
-                margin: '0 0 14px',
-                fontSize: 16, fontWeight: 700,
+            <div key={s.n} style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
+              <StepIcon n={s.n}>{s.svg}</StepIcon>
+              <h3 className="display" style={{
+                margin: '0 0 12px',
+                fontSize: 17, fontWeight: 700,
                 letterSpacing: '-0.005em', color: 'var(--ink)',
-              }}>{s.n}. {s.t}</h3>
+                textTransform: 'uppercase',
+              }}>{s.t}</h3>
               <p className="mono" style={{
                 margin: '0 auto', maxWidth: 280,
                 fontSize: 12.5, lineHeight: 1.6,
@@ -117,96 +231,150 @@ const HomeownerSteps = () => {
 
 /* ───── Two cards: Certified Installer Alliance + What You Get ───── */
 
-const HomeownerInstallerSplit = () => (
-  <section style={{ background: '#fafafa', padding: '96px 0' }}>
-    <div className="container">
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, maxWidth: 1200, margin: '0 auto' }}>
-        {/* Left — Certified Installer Alliance (white) */}
-        <article style={{
-          background: 'var(--white)', color: 'var(--ink)',
-          border: '1.5px solid var(--ink)',
-          padding: '44px 44px 36px',
+const HomeownerInstallerSplit = () => {
+  const HoverCard = ({ children, theme, ...rest }) => {
+    const dark = theme === 'dark';
+    return (
+      <article
+        {...rest}
+        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = dark ? '0 18px 36px rgba(0,0,0,0.35)' : '12px 12px 0 var(--tangerine)'; }}
+        onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = dark ? '0 8px 18px rgba(0,0,0,0.2)' : '8px 8px 0 rgba(255,113,51,0.85)'; }}
+        style={{
+          background: dark ? 'var(--ink)' : 'var(--white)',
+          color: dark ? 'var(--white)' : 'var(--ink)',
+          border: dark ? 'none' : '1.5px solid var(--ink)',
+          padding: '40px 44px 36px',
           display: 'flex', flexDirection: 'column',
-        }}>
-          <h3 className="display" style={{
-            margin: '0 0 22px',
-            fontSize: 'clamp(22px, 2.2vw, 30px)',
-            lineHeight: 1.05, letterSpacing: '-0.01em',
-          }}>Certified Installer Alliance</h3>
-          <p className="mono" style={{
-            margin: '0 0 28px',
-            fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
-          }}>
-            WFS does not offer DIY installation. We connect homeowners with certified installation partners who know our products, hardware, and finish standards.
-          </p>
-          <ul style={{ listStyle: 'none', margin: '0 0 36px', padding: 0, display: 'grid', gap: 14 }}>
-            {[
-              'WFS-aligned independent installers',
-              'Product-aware installation practices',
-              'Clean handoff from quote to installation',
-            ].map(line => (
-              <li key={line} style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
-                  <path d="M3 8 L7 12 L13 4" stroke="var(--ink)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                <span className="mono" style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--ink)' }}>{line}</span>
-              </li>
-            ))}
-          </ul>
-          <a href="estimate.html" style={{
-            display: 'block', textAlign: 'center', marginTop: 'auto',
-            padding: '16px 28px',
-            background: 'var(--ink)', color: 'var(--white)',
-            fontFamily: 'var(--sans)', fontSize: 12.5, fontWeight: 700,
-            letterSpacing: '0.18em', textTransform: 'uppercase',
-          }}>Find an Installer</a>
-        </article>
+          boxShadow: dark ? '0 8px 18px rgba(0,0,0,0.2)' : '8px 8px 0 rgba(255,113,51,0.85)',
+          transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+        }}
+      >{children}</article>
+    );
+  };
 
-        {/* Right — What You Get (black) */}
-        <article style={{
-          background: 'var(--ink)', color: 'var(--white)',
-          padding: '44px 44px 36px',
-          display: 'flex', flexDirection: 'column',
-        }}>
-          <h3 className="display" style={{
-            margin: '0 0 22px',
-            fontSize: 'clamp(22px, 2.2vw, 30px)',
-            lineHeight: 1.05, letterSpacing: '-0.01em',
-          }}>What You Get</h3>
-          <p className="mono" style={{
-            margin: '0 0 28px',
-            fontSize: 13, lineHeight: 1.7,
-            color: 'rgba(255,255,255,0.7)',
-          }}>
-            Your installer stays independent, but the project stays aligned with WFS material specs, fabrication details, and finish expectations.
-          </p>
-          <ul style={{ listStyle: 'none', margin: '0 0 36px', padding: 0, display: 'grid', gap: 14 }}>
-            {[
-              ['Local crews familiar with WFS systems',
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 19 Q9 14 15 19"/><path d="M14 18 Q17.5 15 21 18"/></svg>],
-              ['Installation practices that support warranty-friendly outcomes',
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg>],
-              ['Certified partners for residential and gate projects',
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="12" cy="12" r="9" strokeDasharray="2 1.5"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0"/></svg>],
-            ].map(([line, icon], i) => (
-              <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 14 }}>
-                <span style={{ flexShrink: 0, marginTop: 1, color: 'var(--white)' }}>{icon}</span>
-                <span className="mono" style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--white)' }}>{line}</span>
-              </li>
-            ))}
-          </ul>
-          <a href="estimate.html" style={{
-            display: 'block', textAlign: 'center', marginTop: 'auto',
-            padding: '16px 28px',
-            background: 'var(--white)', color: 'var(--ink)',
-            fontFamily: 'var(--sans)', fontSize: 12.5, fontWeight: 700,
-            letterSpacing: '0.18em', textTransform: 'uppercase',
-          }}>Request Your Quote</a>
-        </article>
+  return (
+    <section style={{ background: 'var(--white)', padding: '96px 0' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', marginBottom: 56 }}>
+          <span className="mono" style={{
+            display: 'inline-block', marginBottom: 16,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
+            color: 'var(--tangerine)', textTransform: 'uppercase',
+          }}>02 — Installation</span>
+          <h2 className="display" style={{
+            margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
+            lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
+          }}>WFS supplies. Certified installers build.</h2>
+        </div>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, maxWidth: 1200, margin: '0 auto', alignItems: 'stretch' }}>
+          {/* Left — Certified Installer Alliance (white) */}
+          <HoverCard theme="light">
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              marginBottom: 28,
+            }}>
+              <span className="mono" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                padding: '6px 12px',
+                background: 'var(--ink)', color: 'var(--white)',
+                fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+              }}>Alliance</span>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/>
+                <path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <h3 className="display" style={{
+              margin: '0 0 18px',
+              fontSize: 'clamp(22px, 2.2vw, 30px)',
+              lineHeight: 1.05, letterSpacing: '-0.01em',
+            }}>Certified Installer Alliance</h3>
+            <p className="mono" style={{
+              margin: '0 0 26px',
+              fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
+            }}>
+              WFS does not offer DIY installation. We connect homeowners with certified installation partners who know our products, hardware, and finish standards.
+            </p>
+            <ul style={{ listStyle: 'none', margin: '0 0 32px', padding: 0, display: 'grid', gap: 12 }}>
+              {[
+                'WFS-aligned independent installers',
+                'Product-aware installation practices',
+                'Clean handoff from quote to installation',
+              ].map(line => (
+                <li key={line} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
+                    <path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                  <span className="mono" style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--ink)' }}>{line}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="estimate.html" style={{
+              display: 'block', textAlign: 'center', marginTop: 'auto',
+              padding: '16px 28px',
+              background: 'var(--ink)', color: 'var(--white)',
+              fontFamily: 'var(--sans)', fontSize: 12.5, fontWeight: 700,
+              letterSpacing: '0.18em', textTransform: 'uppercase',
+            }}>Find an Installer</a>
+          </HoverCard>
+
+          {/* Right — What You Get (black) */}
+          <HoverCard theme="dark">
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              marginBottom: 28,
+            }}>
+              <span className="mono" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                padding: '6px 12px',
+                background: 'var(--tangerine)', color: 'var(--ink)',
+                fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+              }}>What you get</span>
+              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                <circle cx="12" cy="12" r="9" strokeDasharray="2 1.5"/>
+                <path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0"/>
+              </svg>
+            </div>
+            <h3 className="display" style={{
+              margin: '0 0 18px',
+              fontSize: 'clamp(22px, 2.2vw, 30px)',
+              lineHeight: 1.05, letterSpacing: '-0.01em',
+            }}>Spec-aligned outcomes</h3>
+            <p className="mono" style={{
+              margin: '0 0 26px',
+              fontSize: 13, lineHeight: 1.7,
+              color: 'rgba(255,255,255,0.7)',
+            }}>
+              Your installer stays independent, but the project stays aligned with WFS material specs, fabrication details, and finish expectations.
+            </p>
+            <ul style={{ listStyle: 'none', margin: '0 0 32px', padding: 0, display: 'grid', gap: 12 }}>
+              {[
+                ['Local crews familiar with WFS systems',
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 19 Q9 14 15 19"/><path d="M14 18 Q17.5 15 21 18"/></svg>],
+                ['Installation practices that support warranty-friendly outcomes',
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg>],
+                ['Certified partners for residential and gate projects',
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="4" y="6" width="16" height="14" rx="1"/><line x1="4" y1="10" x2="20" y2="10"/><path d="M8 14 L11 17 L17 12" strokeLinecap="round" strokeLinejoin="round"/></svg>],
+              ].map(([line, icon], i) => (
+                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <span style={{ flexShrink: 0, marginTop: 1, color: 'var(--tangerine)' }}>{icon}</span>
+                  <span className="mono" style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--white)' }}>{line}</span>
+                </li>
+              ))}
+            </ul>
+            <a href="estimate.html" style={{
+              display: 'block', textAlign: 'center', marginTop: 'auto',
+              padding: '16px 28px',
+              background: 'var(--white)', color: 'var(--ink)',
+              fontFamily: 'var(--sans)', fontSize: 12.5, fontWeight: 700,
+              letterSpacing: '0.18em', textTransform: 'uppercase',
+            }}>Request Your Quote</a>
+          </HoverCard>
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 /* ───── Homeowner-specific FAQ ───── */
 
@@ -223,62 +391,174 @@ const HomeownerFAQ = () => {
   ];
   const [open, setOpen] = React.useState(1);
   return (
-    <section style={{ background: 'var(--white)', padding: '96px 0' }}>
-      <div className="container" style={{ maxWidth: 920 }}>
-        <h2 className="display" style={{
-          textAlign: 'center', margin: '0 auto 56px',
-          fontSize: 'clamp(28px, 3.4vw, 44px)',
-          lineHeight: 1, letterSpacing: '-0.015em',
-        }}>Frequently Asked Questions</h2>
-        <div style={{ display: 'grid', gap: 18 }}>
-          {items.map(([q, a], i) => {
-            const isOpen = open === i;
-            return (
-              <div key={i} style={{
-                border: '1.5px solid var(--ink)',
-                background: isOpen ? '#f5f8fc' : 'var(--white)',
+    <section style={{ background: '#fafafa', padding: '96px 0' }}>
+      <div className="container">
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
+          {/* Left — title + contact sidebar */}
+          <div style={{ position: 'sticky', top: 100 }}>
+            <span className="mono" style={{
+              display: 'inline-block', marginBottom: 18,
+              fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
+              color: 'var(--tangerine)', textTransform: 'uppercase',
+            }}>03 — FAQ</span>
+            <h2 className="display" style={{
+              margin: '0 0 24px',
+              fontSize: 'clamp(28px, 3vw, 40px)',
+              lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
+            }}>Common homeowner<br/>questions</h2>
+            <p className="mono" style={{
+              margin: '0 0 32px',
+              fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
+              maxWidth: 320,
+            }}>
+              The four we hear most often. If yours isn't here, call the yard or send a sketch.
+            </p>
+            <div style={{
+              border: '1.5px solid var(--ink)',
+              background: 'var(--white)',
+              padding: '24px 26px',
+              maxWidth: 320,
+            }}>
+              <div className="mono" style={{
+                fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+                color: 'var(--tangerine)', textTransform: 'uppercase',
+                marginBottom: 14,
+                display: 'flex', alignItems: 'center', gap: 8,
               }}>
-                <button onClick={() => setOpen(isOpen ? -1 : i)} style={{
-                  width: '100%', display: 'flex',
-                  alignItems: 'center', justifyContent: 'space-between',
-                  padding: '24px 28px', textAlign: 'left', gap: 24,
-                  background: 'transparent', border: 'none', cursor: 'pointer',
-                }}>
-                  <span className="mono" style={{
-                    fontSize: 13.5, fontWeight: 700, color: 'var(--ink)',
-                  }}>{q}</span>
-                  <span style={{
-                    flexShrink: 0,
-                    fontSize: 20, fontWeight: 300, color: 'var(--ink)',
-                    transform: isOpen ? 'rotate(45deg)' : 'none',
-                    transition: 'transform 0.2s ease',
-                  }}>+</span>
-                </button>
-                <div style={{
-                  maxHeight: isOpen ? 280 : 0, overflow: 'hidden',
-                  transition: 'max-height 0.3s ease',
-                }}>
-                  <p className="mono" style={{
-                    margin: 0, padding: '0 28px 24px',
-                    fontSize: 12.5, lineHeight: 1.7, color: 'var(--charcoal)',
-                  }}>{a}</p>
-                </div>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 0 3px rgba(34,197,94,0.25)' }}/>
+                Still got questions?
               </div>
-            );
-          })}
+              <a href="tel:2396895496" className="display" style={{
+                display: 'block', marginBottom: 8,
+                fontSize: 22, color: 'var(--ink)', lineHeight: 1.1,
+              }}>(239) 689-5496</a>
+              <a href="mailto:sales@westernfencesupply.com" className="mono" style={{
+                display: 'block', wordBreak: 'break-all',
+                fontSize: 12, color: 'var(--charcoal)',
+              }}>sales@westernfencesupply.com</a>
+              <div className="mono" style={{
+                marginTop: 14, paddingTop: 14,
+                borderTop: '1px solid rgba(0,16,17,0.1)',
+                fontSize: 10.5, letterSpacing: '0.18em',
+                textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 700,
+              }}>Mon–Fri · 7am–4pm EST</div>
+            </div>
+          </div>
+
+          {/* Right — accordion */}
+          <div style={{ display: 'grid', gap: 14 }}>
+            {items.map(([q, a], i) => {
+              const isOpen = open === i;
+              return (
+                <div key={i} style={{
+                  border: '1.5px solid var(--ink)',
+                  background: isOpen ? '#f5f8fc' : 'var(--white)',
+                  transition: 'background 0.2s ease',
+                }}>
+                  <button onClick={() => setOpen(isOpen ? -1 : i)} style={{
+                    width: '100%', display: 'flex',
+                    alignItems: 'center', justifyContent: 'space-between',
+                    padding: '22px 26px', textAlign: 'left', gap: 24,
+                    background: 'transparent', border: 'none', cursor: 'pointer',
+                  }}>
+                    <span style={{ display: 'flex', alignItems: 'baseline', gap: 18 }}>
+                      <span className="mono" style={{
+                        fontSize: 10.5, fontWeight: 700, letterSpacing: '0.22em',
+                        color: isOpen ? 'var(--tangerine)' : 'var(--charcoal)',
+                      }}>{String(i + 1).padStart(2, '0')}</span>
+                      <span className="mono" style={{
+                        fontSize: 13.5, fontWeight: 700, color: 'var(--ink)',
+                      }}>{q}</span>
+                    </span>
+                    <span style={{
+                      flexShrink: 0,
+                      fontSize: 22, fontWeight: 300,
+                      color: isOpen ? 'var(--tangerine)' : 'var(--ink)',
+                      transform: isOpen ? 'rotate(45deg)' : 'none',
+                      transition: 'transform 0.2s ease, color 0.2s ease',
+                    }}>+</span>
+                  </button>
+                  <div style={{
+                    maxHeight: isOpen ? 280 : 0, overflow: 'hidden',
+                    transition: 'max-height 0.3s ease',
+                  }}>
+                    <p className="mono" style={{
+                      margin: 0, padding: '0 26px 22px 64px',
+                      fontSize: 12.5, lineHeight: 1.7, color: 'var(--charcoal)',
+                    }}>{a}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
+/* ───── Closing CTA band ───── */
+
+const HomeownerClosingCTA = () => (
+  <section style={{
+    background: 'var(--ink)', color: 'var(--white)',
+    padding: '88px 0',
+  }}>
+    <div className="container" style={{
+      display: 'grid', gridTemplateColumns: '1.4fr 1fr',
+      gap: 48, alignItems: 'center',
+    }}>
+      <div>
+        <span className="mono" style={{
+          display: 'inline-block', marginBottom: 18,
+          fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
+          color: 'var(--tangerine)', textTransform: 'uppercase',
+        }}>Ready to start?</span>
+        <h2 className="display" style={{
+          margin: 0, fontSize: 'clamp(32px, 4vw, 56px)',
+          lineHeight: 1, letterSpacing: '-0.02em', color: 'var(--white)',
+        }}>
+          Send a sketch.<br/>
+          <span style={{ color: 'var(--tangerine)' }}>Quote in 24 hours.</span>
+        </h2>
+        <p className="mono" style={{
+          margin: '22px 0 0', maxWidth: 520,
+          fontSize: 13, lineHeight: 1.7,
+          color: 'rgba(255,255,255,0.7)',
+        }}>
+          Linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery — and routes the labor side to a certified installer near you.
+        </p>
+      </div>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 14, alignItems: 'stretch' }}>
+        <a href="estimate.html" style={{
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+          padding: '18px 28px',
+          background: 'var(--tangerine)', color: 'var(--white)',
+          fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+          letterSpacing: '0.18em', textTransform: 'uppercase',
+        }}>Get a Quote</a>
+        <a href="tel:2396895496" style={{
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+          padding: '18px 28px',
+          background: 'transparent', color: 'var(--white)',
+          border: '1.5px solid rgba(255,255,255,0.5)',
+          fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+          letterSpacing: '0.18em', textTransform: 'uppercase',
+        }}>Call (239) 689-5496</a>
+      </div>
+    </div>
+  </section>
+);
+
 const HomeownerPage = () => (
   <>
     <SiteHeader />
     <HomeownerHero />
+    <HomeownerTrustStrip />
     <HomeownerSteps />
     <HomeownerInstallerSplit />
     <HomeownerFAQ />
+    <HomeownerClosingCTA />
     <Footer />
   </>
 );
@@ -505,6 +785,7 @@ const ContractorPage = () => (
 );
 
 Object.assign(window, {
-  HomeownerHero, HomeownerSteps, HomeownerInstallerSplit, HomeownerFAQ, HomeownerPage,
+  HomeownerHero, HomeownerTrustStrip, HomeownerSteps, HomeownerInstallerSplit,
+  HomeownerFAQ, HomeownerClosingCTA, HomeownerPage,
   ContractorHero, ContractorBenefits, ContractorCTA, ContractorPage,
 });
