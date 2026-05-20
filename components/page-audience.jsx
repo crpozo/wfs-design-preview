@@ -4,7 +4,10 @@
 
 const HomeownerHero = () => (
   <section style={{
-    background: 'var(--white)', padding: '88px 0 64px',
+    background: 'var(--white)',
+    minHeight: 'calc(100svh - 80px)',
+    padding: '40px 0',
+    display: 'flex', alignItems: 'center',
     position: 'relative', overflow: 'hidden',
   }}>
     {/* Faint dotted grid texture behind */}
@@ -16,27 +19,27 @@ const HomeownerHero = () => (
       WebkitMaskImage: 'radial-gradient(ellipse at center, #000 0%, transparent 70%)',
       pointerEvents: 'none',
     }}/>
-    <div className="container" style={{ position: 'relative', maxWidth: 1280 }}>
+    <div className="container" style={{ position: 'relative', maxWidth: 1280, width: '100%' }}>
       <div style={{
-        display: 'grid', gridTemplateColumns: '1.15fr 1fr',
-        gap: 72, alignItems: 'center',
+        display: 'grid', gridTemplateColumns: '1.2fr 1fr',
+        gap: 64, alignItems: 'center',
       }}>
         {/* Left — copy */}
         <div>
           <span className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            padding: '8px 16px', marginBottom: 28,
+            padding: '7px 14px', marginBottom: 22,
             border: '1px solid var(--ink)',
             background: 'var(--white)',
-            fontSize: 10.5, fontWeight: 700, letterSpacing: '0.22em',
+            fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
             textTransform: 'uppercase', color: 'var(--ink)',
           }}>
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
             Homeowner · Built for residential
           </span>
           <h1 className="display" style={{
-            margin: '0 0 26px',
-            fontSize: 'clamp(46px, 6.4vw, 96px)',
+            margin: '0 0 22px',
+            fontSize: 'clamp(38px, 4.8vw, 72px)',
             lineHeight: 0.96, letterSpacing: '-0.025em',
             color: 'var(--ink)',
           }}>
@@ -44,19 +47,19 @@ const HomeownerHero = () => (
             <span style={{ color: 'var(--tangerine)' }}>for your home.</span>
           </h1>
           <p className="mono" style={{
-            margin: '0 0 32px',
-            maxWidth: 540,
-            fontSize: 15, lineHeight: 1.7,
+            margin: '0 0 26px',
+            maxWidth: 520,
+            fontSize: 14, lineHeight: 1.65,
             color: 'var(--charcoal)',
           }}>
             Enhance your property's value, privacy, and security with premium manufacturing-direct fencing. We help you plan the project and connect you with certified installers for the build.
           </p>
-          <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap', marginBottom: 32 }}>
+          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 26 }}>
             <a href="estimate.html" style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              padding: '18px 36px',
+              padding: '15px 30px',
               background: 'var(--ink)', color: 'var(--white)',
-              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+              fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
               boxShadow: '6px 6px 0 var(--tangerine)',
               transition: 'transform 0.18s ease, box-shadow 0.18s ease',
@@ -67,10 +70,10 @@ const HomeownerHero = () => (
             </a>
             <a href="projects.html" style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              padding: '18px 36px',
+              padding: '15px 30px',
               background: 'var(--white)', color: 'var(--ink)',
               border: '1.5px solid var(--ink)',
-              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+              fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
             }}>
               View Gallery
@@ -78,8 +81,8 @@ const HomeownerHero = () => (
           </div>
           {/* Trust micro-bullets */}
           <div className="mono" style={{
-            display: 'flex', gap: 24, flexWrap: 'wrap',
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.16em',
+            display: 'flex', gap: 22, flexWrap: 'wrap',
+            fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em',
             textTransform: 'uppercase', color: 'var(--charcoal)',
           }}>
             {['No minimums', 'Free takeoff', 'Supplier-direct floor'].map((t) => (
@@ -94,7 +97,7 @@ const HomeownerHero = () => (
         </div>
 
         {/* Right — visual block */}
-        <div style={{ position: 'relative', aspectRatio: '4 / 5' }}>
+        <div style={{ position: 'relative', aspectRatio: '5 / 6', maxHeight: 'calc(100svh - 160px)' }}>
           {/* Outer ink frame */}
           <div style={{
             position: 'absolute', inset: 0,
@@ -879,7 +882,9 @@ const HomeownerPage = () => (
 const ContractorHero = () => (
   <section style={{
     background: 'var(--ink)', color: 'var(--white)',
-    padding: '96px 0 88px',
+    minHeight: 'calc(100svh - 80px)',
+    padding: '40px 0',
+    display: 'flex', alignItems: 'center',
     position: 'relative', overflow: 'hidden',
   }}>
     {/* Background dotted grid */}
@@ -894,45 +899,45 @@ const ContractorHero = () => (
       position: 'absolute', top: 0, left: 0, right: 0, height: 4,
       background: 'var(--tangerine)',
     }}/>
-    <div className="container" style={{ position: 'relative' }}>
+    <div className="container" style={{ position: 'relative', width: '100%' }}>
       <div style={{
-        display: 'grid', gridTemplateColumns: '1.15fr 1fr',
-        gap: 64, alignItems: 'center',
+        display: 'grid', gridTemplateColumns: '1.2fr 1fr',
+        gap: 56, alignItems: 'center',
       }}>
         {/* Left — copy block */}
         <div>
           <span className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            padding: '8px 14px',
+            padding: '7px 14px',
             border: '1px solid rgba(255,255,255,0.4)',
             fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
             textTransform: 'uppercase', color: 'var(--white)',
-            marginBottom: 32,
+            marginBottom: 24,
           }}>
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
             Wholesale Partner Program · Florida
           </span>
           <h1 className="display" style={{
-            margin: '0 0 32px',
-            fontSize: 'clamp(44px, 6.4vw, 88px)',
+            margin: '0 0 22px',
+            fontSize: 'clamp(38px, 4.8vw, 72px)',
             lineHeight: 0.96, letterSpacing: '-0.025em',
             color: 'var(--white)',
           }}>
-            Build with<br/>the<br/>
+            Build with the<br/>
             <span style={{ color: 'var(--tangerine)' }}>manufacturer.</span>
           </h1>
           <p className="mono" style={{
-            margin: '0 0 36px',
+            margin: '0 0 26px',
             maxWidth: 520,
-            fontSize: 14, lineHeight: 1.7,
+            fontSize: 14, lineHeight: 1.65,
             color: 'rgba(255,255,255,0.72)',
           }}>
             Partner with Southwest Florida's leading fence manufacturer. Wholesale pricing tiers, priority fabrication, and job-site delivery — without an out-of-state distributor in the middle.
           </p>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 36 }}>
+          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 26 }}>
             <a href="estimate.html" style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              padding: '16px 32px',
+              padding: '14px 28px',
               background: 'var(--tangerine)', color: 'var(--white)',
               fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
@@ -945,7 +950,7 @@ const ContractorHero = () => (
             </a>
             <a href="resources.html" style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              padding: '16px 32px',
+              padding: '14px 28px',
               background: 'transparent', color: 'var(--white)',
               border: '1.5px solid rgba(255,255,255,0.5)',
               fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
@@ -954,7 +959,7 @@ const ContractorHero = () => (
           </div>
           {/* Trust micro-bullets */}
           <div className="mono" style={{
-            display: 'flex', gap: 24, flexWrap: 'wrap',
+            display: 'flex', gap: 22, flexWrap: 'wrap',
             fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em',
             textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)',
           }}>
