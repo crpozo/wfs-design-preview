@@ -124,7 +124,7 @@ const Hero = () => {
           </p>
 
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
-            <a href="estimate.html" onClick={() => setMode('HOMEOWNER')}
+            <a href="homeowners.html" onClick={() => setMode('HOMEOWNER')}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 12,
                 padding: '16px 26px', borderRadius: 999,
@@ -144,7 +144,7 @@ const Hero = () => {
               I'm a Homeowner
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
             </a>
-            <a href="estimate.html" onClick={() => setMode('CONTRACTOR')}
+            <a href="contractors.html" onClick={() => setMode('CONTRACTOR')}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: 12,
                 padding: '16px 26px', borderRadius: 999,
