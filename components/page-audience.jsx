@@ -1012,99 +1012,102 @@ const ContractorHero = () => {
           </div>
         </div>
 
-        {/* Right — partner spec card */}
-        <div style={{ position: 'relative' }}>
+        {/* Right — contractor visual: yard photo + "what you get" card */}
+        <div style={{ position: 'relative', aspectRatio: '5 / 6', maxHeight: 'calc(100svh - 160px)' }}>
+          {/* Outer white frame */}
+          <div style={{
+            position: 'absolute', inset: 0,
+            border: '1.5px solid rgba(255,255,255,0.25)',
+            background: 'rgba(255,255,255,0.03)',
+          }}/>
           {/* Tangerine offset plate */}
           <div aria-hidden style={{
-            position: 'absolute', inset: '14px -14px -14px 14px',
-            background: 'var(--tangerine)', zIndex: 0,
+            position: 'absolute', inset: '12px -12px -12px 12px',
+            background: 'var(--tangerine)', zIndex: -1,
           }}/>
+
+          {/* Photo: real warehouse / yard for pickup */}
           <div style={{
-            position: 'relative', zIndex: 1,
-            background: 'var(--white)', color: 'var(--ink)',
-            border: '1.5px solid var(--white)',
-            padding: '32px 32px 28px',
+            position: 'absolute', top: 24, left: 24, right: 24,
+            height: '52%',
+            overflow: 'hidden',
+            border: '1px solid rgba(255,255,255,0.18)',
+            background: '#1a2548',
           }}>
-            <div style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              marginBottom: 22,
-              paddingBottom: 18,
-              borderBottom: '1px dashed rgba(26,37,72,0.18)',
+            <img
+              src="assets/hero-warehouse.webp"
+              alt={t('WFS yard and warehouse', 'Sucursal y almacén WFS')}
+              style={{
+                width: '100%', height: '100%',
+                objectFit: 'cover', display: 'block',
+              }}
+            />
+            {/* Top-left chip */}
+            <span className="mono" style={{
+              position: 'absolute', top: 14, left: 14,
+              padding: '6px 12px',
+              background: 'var(--tangerine)', color: 'var(--white)',
+              fontSize: 9.5, fontWeight: 700, letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+            }}>{t('Will-call ready', 'Listo para recoger')}</span>
+            {/* Bottom-right location chip */}
+            <span className="mono" style={{
+              position: 'absolute', bottom: 14, right: 14,
+              padding: '6px 12px',
+              background: 'rgba(26,37,72,0.92)', color: 'var(--white)',
+              fontSize: 9.5, fontWeight: 700, letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              display: 'inline-flex', alignItems: 'center', gap: 8,
             }}>
-              <span className="mono" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '6px 12px',
-                background: 'var(--ink)', color: 'var(--white)',
-                fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
-              }}>{t('Partner ID · 0042', 'ID Socio · 0042')}</span>
-              <span className="mono" style={{
-                fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
-                color: 'var(--charcoal)', textTransform: 'uppercase',
-              }}>{t("FY '26 · Active", "AF '26 · Activo")}</span>
-            </div>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }}/>
+              {t('2 yards · FM + PC', '2 sucursales · FM + PC')}
+            </span>
+          </div>
 
+          {/* Bottom card — what contractors get (mirrors homeowner pattern) */}
+          <div style={{
+            position: 'absolute', bottom: 24, left: 24, right: 24,
+            border: '1px solid rgba(255,255,255,0.18)',
+            background: 'var(--white)',
+            padding: '20px 22px',
+          }}>
             <div className="mono" style={{
-              fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 9.5, fontWeight: 700, letterSpacing: '0.22em',
               color: 'var(--tangerine)', textTransform: 'uppercase',
-              marginBottom: 8,
-            }}>{t('Volume tier — example', 'Nivel por volumen — ejemplo')}</div>
-            <div className="display" style={{
-              fontSize: 28, lineHeight: 1, color: 'var(--ink)',
-              letterSpacing: '-0.015em', marginBottom: 18,
-            }}>{t('Pro · 18 – 22%', 'Pro · 18 – 22%')}</div>
-
-            {/* Stat grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14, marginBottom: 22 }}>
+              marginBottom: 14,
+              display: 'flex', alignItems: 'center', gap: 10,
+            }}>
+              <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>
+              {t('What contractors get', 'Qué obtienen los contratistas')}
+            </div>
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: 11 }}>
               {[
-                [{ EN: 'MTD LF',   ES: 'PL del mes' },     '4,820'],
-                [{ EN: 'Open POs', ES: 'Órdenes abiertas' }, '7'],
-                [{ EN: 'On-time',  ES: 'A tiempo' },        '98%'],
-              ].map(([k, v], i) => (
-                <div key={i} style={{
-                  borderLeft: '2px solid var(--tangerine)',
-                  paddingLeft: 10,
+                { line: { EN: 'Wholesale pricing — save 18–28%',  ES: 'Precios mayoristas — ahorra 18–28%' },
+                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9 L12 4 L18 9 L18 19 H6 Z"/><path d="M9 19 V13 H15 V19"/></svg>) },
+                { line: { EN: 'Priority manufacturing — 72h on gates', ES: 'Fabricación prioritaria — 72h en portones' },
+                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15 14"/></svg>) },
+                { line: { EN: 'Free delivery to your job site',     ES: 'Entrega gratis a tu obra' },
+                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>) },
+                { line: { EN: 'Same rep on every order — Net 30',   ES: 'El mismo representante en cada orden — Net 30' },
+                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20 Q5 14 12 14 Q19 14 19 20"/></svg>) },
+              ].map((b, i) => (
+                <li key={i} style={{
+                  display: 'flex', alignItems: 'center', gap: 12,
                 }}>
-                  <div className="display" style={{
-                    fontSize: 18, lineHeight: 1, color: 'var(--ink)',
-                    letterSpacing: '-0.01em',
-                  }}>{v}</div>
-                  <div className="mono" style={{
-                    marginTop: 4, fontSize: 9.5, fontWeight: 700, letterSpacing: '0.18em',
-                    textTransform: 'uppercase', color: 'var(--charcoal)',
-                  }}>{t(k)}</div>
-                </div>
+                  <span style={{
+                    flexShrink: 0,
+                    width: 28, height: 28,
+                    border: '1.5px solid var(--ink)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    color: 'var(--tangerine)',
+                  }}>{b.icon}</span>
+                  <span className="mono" style={{
+                    fontSize: 12.5, fontWeight: 500, color: 'var(--ink)',
+                    lineHeight: 1.3,
+                  }}>{t(b.line)}</span>
+                </li>
               ))}
-            </div>
-
-            {/* Bars */}
-            <div className="mono" style={{
-              fontSize: 9.5, fontWeight: 700, letterSpacing: '0.2em',
-              color: 'var(--charcoal)', textTransform: 'uppercase',
-              marginBottom: 10,
-            }}>{t('Next tier — Elite at 8,000 LF', 'Próximo nivel — Elite a 8,000 PL')}</div>
-            <div style={{
-              height: 8, background: '#eef0f4',
-              border: '1px solid rgba(26,37,72,0.1)',
-              position: 'relative', overflow: 'hidden',
-            }}>
-              <div style={{
-                position: 'absolute', inset: 0, width: '60%',
-                background: 'var(--tangerine)',
-              }}/>
-            </div>
-            <div className="mono" style={{
-              marginTop: 18, paddingTop: 14,
-              borderTop: '1px dashed rgba(26,37,72,0.2)',
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              fontSize: 10.5, fontWeight: 700, letterSpacing: '0.18em',
-              textTransform: 'uppercase', color: 'var(--ink)',
-            }}>
-              <span>{t('Next drop · Wed', 'Próxima entrega · Mié')}</span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-                <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#22c55e' }}/>
-                {t('Scheduled', 'Programada')}
-              </span>
-            </div>
+            </ul>
           </div>
         </div>
       </div>
