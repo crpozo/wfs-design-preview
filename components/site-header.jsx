@@ -17,9 +17,9 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
     ['Fences', { kind: 'mega-fences' }],
     ['Gates', { kind: 'mega-gates' }],
     ['Warranty', { kind: 'list', items: [
-      ['Lifetime Warranty', 'resources.html', 'Coverage details, what\'s included'],
-      ['Warranty Claims', 'estimate.html', 'Submit a claim · 24h response'],
-      ['Manufacturer Specs', 'resources.html', 'PDF spec sheets'],
+      ['Lifetime Warranty', 'warranty.html', 'Coverage details, what\'s included'],
+      ['Warranty Claims', 'warranty-claims.html', 'Submit a claim · 24h response'],
+      ['Manufacturer Specs', 'specs.html', 'PDF spec sheets'],
     ]}],
     ['Get a Quote', { kind: 'list', items: [
       ['Request Estimate', 'estimate.html', 'Send measurements, get pricing in 24h'],
