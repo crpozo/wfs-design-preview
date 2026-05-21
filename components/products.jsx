@@ -576,4 +576,7 @@ const GateSystems = () => {
   );
 };
 
-Object.assign(window, { FenceCategories, GateSystems });
+Object.assign(window, {
+  FenceCategories, GateSystems,
+  FENCE_CATEGORIES, GATE_SYSTEMS, FenceStyleCard,
+});

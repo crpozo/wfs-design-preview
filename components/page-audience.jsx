@@ -337,127 +337,77 @@ const HomeownerSteps = () => {
   );
 };
 
-/* ───── Popular fence styles for homes ───── */
+/* ───── Popular fence styles for homes (uses same 5 photo cards as homepage) ───── */
 
-const HomeownerStylePicker = () => {
-  const styles = [
-    {
-      key: 'vinyl', title: 'Vinyl',
-      sub: 'Privacy · Low maintenance',
-      copy: 'Best-seller for backyards. UV-stable color, no painting, withstands FL humidity.',
-      href: 'vinyl.html',
-      Pattern: VinylSVG,
-      tag: 'Most popular',
-    },
-    {
-      key: 'aluminum', title: 'Aluminum',
-      sub: 'Pool-code · Decorative',
-      copy: 'Powder-coated, pool-code compliant, won\'t rust. Clean line of sight for waterfront homes.',
-      href: 'aluminum.html',
-      Pattern: AluminumSVG,
-    },
-    {
-      key: 'chainlink', title: 'Chain-link',
-      sub: 'Pets · Property line',
-      copy: 'Budget-friendly perimeter. Galvanized or black vinyl-coated for residential lots.',
-      href: 'chain-link.html',
-      Pattern: ChainLinkSVG,
-    },
-    {
-      key: 'ecfence', title: 'EC-Fence',
-      sub: 'Modern · Horizontal slat',
-      copy: 'Architectural board-fence look in aluminum. Spans wide gaps with no posts visible.',
-      href: 'ecfence.html',
-      Pattern: MetalSVG,
-    },
-  ];
-  return (
-    <section style={{ background: 'var(--white)', padding: '96px 0 88px' }}>
-      <div className="container">
-        <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1fr',
-          gap: 48, alignItems: 'end', marginBottom: 48,
-        }}>
-          <div>
-            <span className="mono" style={{
-              display: 'inline-block', marginBottom: 16,
-              fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
-              color: 'var(--tangerine)', textTransform: 'uppercase',
-            }}>02 — Styles</span>
-            <h2 className="display" style={{
-              margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
-              lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
-            }}>Find the style<br/>that fits your home</h2>
-          </div>
-          <p className="mono" style={{
-            margin: 0, maxWidth: 460, justifySelf: 'end', textAlign: 'right',
-            fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
+const HomeownerStylePicker = () => (
+  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+    <div className="container">
+      <div style={{
+        display: 'grid', gridTemplateColumns: '1fr 1fr',
+        gap: 48, alignItems: 'end', marginBottom: 40,
+        paddingBottom: 24,
+        borderBottom: '1px solid rgba(26,37,72,0.12)',
+      }}>
+        <div>
+          <div className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 12,
+            fontSize: 11, fontWeight: 700,
+            letterSpacing: '0.22em',
+            color: 'var(--tangerine)',
+            textTransform: 'uppercase',
+            marginBottom: 18,
           }}>
-            Four residential systems we manufacture in-house — pick the one that matches your priorities for privacy, code, or curb appeal.
-          </p>
+            <span>02 — Styles</span>
+            <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
+          </div>
+          <h2 className="display" style={{
+            margin: 0, fontSize: 'clamp(28px, 3vw, 40px)',
+            lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800,
+          }}>
+            Find the style<br/>
+            <span style={{ color: 'var(--tangerine)' }}>that fits your home.</span>
+          </h2>
         </div>
         <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: 18,
+          display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 18,
         }}>
-          {styles.map(s => (
-            <a key={s.key} href={s.href} style={{
-              display: 'flex', flexDirection: 'column',
-              border: '1.5px solid var(--ink)',
-              background: 'var(--white)',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '8px 8px 0 var(--tangerine)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-              {/* Pattern preview */}
-              <div style={{
-                position: 'relative',
-                aspectRatio: '5 / 4',
-                background: '#f5f5f5',
-                borderBottom: '1.5px solid var(--ink)',
-                overflow: 'hidden',
-              }}>
-                <s.Pattern color="#1a2548" opacity={0.55}/>
-                {s.tag && (
-                  <span className="mono" style={{
-                    position: 'absolute', top: 12, left: 12,
-                    padding: '5px 10px',
-                    background: 'var(--tangerine)', color: 'var(--white)',
-                    fontSize: 9, fontWeight: 700, letterSpacing: '0.2em',
-                    textTransform: 'uppercase',
-                  }}>{s.tag}</span>
-                )}
-              </div>
-              {/* Body */}
-              <div style={{ padding: '22px 22px 24px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-                <h3 className="display" style={{
-                  margin: '0 0 6px', fontSize: 20,
-                  letterSpacing: '-0.01em', color: 'var(--ink)',
-                }}>{s.title}</h3>
-                <div className="mono" style={{
-                  fontSize: 10.5, fontWeight: 700, letterSpacing: '0.18em',
-                  textTransform: 'uppercase', color: 'var(--tangerine)',
-                  marginBottom: 12,
-                }}>{s.sub}</div>
-                <p className="mono" style={{
-                  margin: '0 0 18px', fontSize: 12.5, lineHeight: 1.6,
-                  color: 'var(--charcoal)', flex: 1,
-                }}>{s.copy}</p>
-                <span className="mono" style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 8,
-                  fontSize: 11, fontWeight: 700, letterSpacing: '0.18em',
-                  textTransform: 'uppercase', color: 'var(--ink)',
-                }}>
-                  Explore <ArrowRight size={12}/>
-                </span>
-              </div>
-            </a>
-          ))}
+          <p style={{
+            margin: 0, maxWidth: 380,
+            fontSize: 14, lineHeight: 1.55,
+            color: 'var(--charcoal)',
+            textAlign: 'right',
+          }}>
+            Five residential systems we manufacture in-house — pick the one that matches your priorities for privacy, pool-code, curb appeal or pet containment.
+          </p>
+          <a href="products.html" className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            fontSize: 11, fontWeight: 700,
+            letterSpacing: '0.22em', textTransform: 'uppercase',
+            color: 'var(--ink)',
+            borderBottom: '1px solid var(--ink)',
+            paddingBottom: 4,
+          }}>
+            Full catalog
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+            </svg>
+          </a>
         </div>
       </div>
-    </section>
-  );
-};
+
+      {/* Equal 5-column grid — same image-led cards as homepage */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(5, 1fr)',
+        gap: 14,
+      }}>
+        {FENCE_CATEGORIES.map((c, i) => (
+          <FenceStyleCard key={c.id} item={c} index={i}/>
+        ))}
+      </div>
+    </div>
+  </section>
+);
 
 /* ───── Two cards: Certified Installer Alliance + What You Get ───── */
 
