@@ -110,82 +110,42 @@ const HomeownerHero = () => (
             background: 'var(--tangerine)', zIndex: -1,
           }}/>
 
-          {/* Illustration: Florida home + fence + palm + sun */}
+          {/* Photo: real residential vinyl gate */}
           <div style={{
             position: 'absolute', top: 24, left: 24, right: 24,
             height: '52%',
             overflow: 'hidden',
             border: '1px solid rgba(26,37,72,0.18)',
-            background: '#fafafa',
+            background: '#eef0e8',
           }}>
-            <svg viewBox="0 0 400 280" preserveAspectRatio="xMidYMid meet"
-                 style={{ width: '100%', height: '100%', display: 'block' }}>
-              {/* Sky wash */}
-              <rect width="400" height="220" fill="#fafafa"/>
-              {/* Grass band */}
-              <rect x="0" y="220" width="400" height="60" fill="#eef0e8"/>
-
-              {/* Sun */}
-              <circle cx="345" cy="55" r="20" fill="var(--tangerine)" opacity="0.95"/>
-              <g stroke="var(--tangerine)" strokeWidth="1.8" strokeLinecap="round" opacity="0.85">
-                <line x1="345" y1="22" x2="345" y2="14"/>
-                <line x1="378" y1="55" x2="386" y2="55"/>
-                <line x1="322" y1="32" x2="316" y2="26"/>
-                <line x1="368" y1="32" x2="374" y2="26"/>
-                <line x1="322" y1="78" x2="316" y2="84"/>
-              </g>
-
-              {/* Palm tree */}
-              <g stroke="var(--ink)" strokeWidth="1.8" strokeLinecap="round" fill="none">
-                {/* Trunk */}
-                <path d="M62 222 Q60 180 64 140"/>
-                {/* Fronds */}
-                <path d="M64 138 Q42 122 22 130"/>
-                <path d="M64 138 Q86 122 106 132"/>
-                <path d="M64 138 Q50 116 38 100"/>
-                <path d="M64 138 Q78 116 92 102"/>
-                <path d="M64 138 Q64 116 60 100"/>
-              </g>
-
-              {/* House */}
-              <g fill="none" stroke="var(--ink)" strokeWidth="1.8" strokeLinejoin="round" strokeLinecap="round">
-                {/* Roof */}
-                <path d="M168 138 L246 86 L324 138" />
-                {/* Body */}
-                <rect x="178" y="138" width="136" height="86" fill="var(--white)"/>
-                {/* Chimney */}
-                <rect x="278" y="100" width="14" height="22" fill="var(--white)"/>
-                {/* Windows */}
-                <rect x="194" y="156" width="26" height="26" fill="#eef0e8"/>
-                <line x1="207" y1="156" x2="207" y2="182" strokeWidth="1.2"/>
-                <line x1="194" y1="169" x2="220" y2="169" strokeWidth="1.2"/>
-                <rect x="272" y="156" width="26" height="26" fill="#eef0e8"/>
-                <line x1="285" y1="156" x2="285" y2="182" strokeWidth="1.2"/>
-                <line x1="272" y1="169" x2="298" y2="169" strokeWidth="1.2"/>
-                {/* Door */}
-                <rect x="233" y="178" width="26" height="46" fill="var(--tangerine)" stroke="var(--ink)"/>
-                <circle cx="254" cy="202" r="1.4" fill="var(--ink)"/>
-              </g>
-
-              {/* Fence — vinyl pickets foreground */}
-              <g stroke="var(--ink)" strokeWidth="1.6" strokeLinecap="round">
-                {/* Top horizontal rail */}
-                <line x1="14" y1="246" x2="386" y2="246"/>
-                {/* Bottom horizontal rail */}
-                <line x1="14" y1="272" x2="386" y2="272"/>
-                {/* Vertical pickets */}
-                {Array.from({ length: 24 }).map((_, i) => {
-                  const x = 14 + i * 16;
-                  return (
-                    <g key={i}>
-                      <line x1={x} y1="236" x2={x} y2="280" />
-                      {/* Picket cap */}
-                      <path d={`M${x - 3} 236 L${x} 232 L${x + 3} 236`} fill="none"/>
-                    </g>
-                  );
-                })}
-              </g>
-            </svg>
+            <img
+              src="assets/gate-double.jpg"
+              alt="Residential white vinyl double-swing gate"
+              style={{
+                width: '100%', height: '100%',
+                objectFit: 'cover', display: 'block',
+              }}
+            />
+            {/* Top-left chip */}
+            <span className="mono" style={{
+              position: 'absolute', top: 14, left: 14,
+              padding: '6px 12px',
+              background: 'var(--ink)', color: 'var(--white)',
+              fontSize: 9.5, fontWeight: 700, letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+            }}>Recent install</span>
+            {/* Bottom-right location chip */}
+            <span className="mono" style={{
+              position: 'absolute', bottom: 14, right: 14,
+              padding: '6px 12px',
+              background: 'rgba(255,255,255,0.95)', color: 'var(--ink)',
+              fontSize: 9.5, fontWeight: 700, letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+            }}>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--tangerine)' }}/>
+              Cape Coral · Vinyl 6′
+            </span>
           </div>
 
           {/* Bottom card — what you'll love */}
