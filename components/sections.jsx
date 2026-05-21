@@ -195,6 +195,7 @@ const ProjectCard = ({ p, i, layout }) => {
 };
 
 const ProjectGallery = () => {
+  const t = useT();
   const [filter, setFilter] = React.useState('All');
   const projects = [
     { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, with double drive gate', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/gate-sliding.jpg' },
@@ -224,7 +225,7 @@ const ProjectGallery = () => {
             textTransform: 'uppercase',
             marginBottom: 18,
           }}>
-            <span>03 — Projects</span>
+            <span>{t('03 — Projects', '03 — Proyectos')}</span>
             <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
           </div>
           <h2 className="display" style={{
@@ -232,8 +233,8 @@ const ProjectGallery = () => {
             lineHeight: 1, letterSpacing: '-0.02em',
             fontWeight: 800,
           }}>
-            Real projects.<br/>
-            <span style={{ color: 'var(--tangerine)' }}>Real perimeters.</span>
+            {t('Real projects.', 'Proyectos reales.')}<br/>
+            <span style={{ color: 'var(--tangerine)' }}>{t('Real perimeters.', 'Perímetros reales.')}</span>
           </h2>
         </div>
 
@@ -244,6 +245,14 @@ const ProjectGallery = () => {
         }}>
           {filters.map(f => {
             const active = f === filter;
+            const labelMap = {
+              'All': { EN: 'All', ES: 'Todos' },
+              'Chain Link': { EN: 'Chain Link', ES: 'Malla ciclónica' },
+              'Aluminum': { EN: 'Aluminum', ES: 'Aluminio' },
+              'Vinyl': { EN: 'Vinyl', ES: 'Vinilo' },
+              'Metal': { EN: 'Metal', ES: 'Metal' },
+              'EC Fence': { EN: 'EC Fence', ES: 'EC Fence' },
+            };
             return (
               <button key={f} onClick={() => setFilter(f)} className="mono"
                 style={{
@@ -255,7 +264,7 @@ const ProjectGallery = () => {
                   color: active ? 'var(--white)' : 'var(--ink)',
                   cursor: 'pointer',
                 }}>
-                {f}
+                {t(labelMap[f])}
               </button>
             );
           })}
@@ -267,7 +276,7 @@ const ProjectGallery = () => {
             color: 'var(--ink)',
             borderBottom: '1px solid var(--ink)',
           }}>
-            View all 40+ projects
+            {t('View all 40+ projects', 'Ver los 40+ proyectos')}
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
             </svg>
@@ -440,6 +449,7 @@ const Calculator = () => {
 };
 
 const ServiceAreas = () => {
+  const t = useT();
   const cities = [
     { name: 'Fort Myers', x: 22, y: 32, hq: true },
     { name: 'Cape Coral', x: 18, y: 38 },
@@ -471,7 +481,7 @@ const ServiceAreas = () => {
               textTransform: 'uppercase',
               marginBottom: 18,
             }}>
-              <span>04 — Service area</span>
+              <span>{t('04 — Service area', '04 — Zona de servicio')}</span>
               <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
             </div>
             <h2 className="display" style={{
@@ -479,16 +489,18 @@ const ServiceAreas = () => {
               lineHeight: 1, letterSpacing: '-0.02em',
               fontWeight: 800,
             }}>
-              Serving all of<br/>
-              <span style={{ color: 'var(--tangerine)' }}>Southwest Florida.</span>
+              {t('Serving all of', 'Atendemos todo')}<br/>
+              <span style={{ color: 'var(--tangerine)' }}>{t('Southwest Florida.', 'el suroeste de Florida.')}</span>
             </h2>
           </div>
           <p style={{
             margin: 0, maxWidth: 360, justifySelf: 'end',
             fontSize: 14, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
           }}>
-            Two yards in Fort Myers and Port Charlotte — same-day pickup,
-            scheduled delivery from Sarasota to Marco Island.
+            {t(
+              'Two yards in Fort Myers and Port Charlotte — same-day pickup, scheduled delivery from Sarasota to Marco Island.',
+              'Dos sucursales en Fort Myers y Port Charlotte — recogida el mismo día, entrega programada desde Sarasota a Marco Island.'
+            )}
           </p>
         </div>
 
@@ -619,6 +631,7 @@ const ServiceAreas = () => {
 };
 
 const FinalCTA = () => {
+  const t = useT();
   const [submitted, setSubmitted] = React.useState(false);
   const inputStyle = {
     width: '100%', padding: '14px 16px',
@@ -664,7 +677,7 @@ const FinalCTA = () => {
               color: 'var(--tangerine)', textTransform: 'uppercase',
               marginBottom: 18,
             }}>
-              <span>07 — Request a quote</span>
+              <span>{t('07 — Request a quote', '07 — Solicita cotización')}</span>
               <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
             </div>
             <h2 className="display" style={{
@@ -673,16 +686,18 @@ const FinalCTA = () => {
               lineHeight: 1, letterSpacing: '-0.02em',
               fontWeight: 800,
             }}>
-              Ready to spec your<br/>
-              <span style={{ color: 'var(--tangerine)' }}>next perimeter?</span>
+              {t('Ready to spec your', '¿Listo para tu próximo')}<br/>
+              <span style={{ color: 'var(--tangerine)' }}>{t('next perimeter?', 'perímetro?')}</span>
             </h2>
           </div>
           <p style={{
             margin: 0, maxWidth: 360, justifySelf: 'end',
             fontSize: 14, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
           }}>
-            Tell us about your project — we'll come back within 24 hours with
-            stock, pricing and lead time.
+            {t(
+              "Tell us about your project — we'll come back within 24 hours with stock, pricing and lead time.",
+              'Cuéntanos sobre tu proyecto — respondemos en 24 horas con stock, precios y plazo de entrega.'
+            )}
           </p>
         </div>
 
@@ -690,22 +705,22 @@ const FinalCTA = () => {
           {/* Left: contact info */}
           <div style={{ paddingTop: 8 }}>
             <div style={{ marginBottom: 32 }}>
-              <div style={labelStyle}>Call us</div>
+              <div style={labelStyle}>{t('Call us', 'Llámanos')}</div>
               <a href="tel:2396895496" className="display" style={{ fontSize: 32, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.1 }}>(239) 689-5496</a>
-              <div style={{ fontSize: 13, color: 'var(--charcoal)', marginTop: 6 }}>Mon–Fri · 7am–4pm EST</div>
+              <div style={{ fontSize: 13, color: 'var(--charcoal)', marginTop: 6 }}>{t('Mon–Fri · 7am–4pm EST', 'Lun–Vie · 7am–4pm EST')}</div>
             </div>
             <div style={{ marginBottom: 32 }}>
-              <div style={labelStyle}>Email</div>
+              <div style={labelStyle}>{t('Email', 'Correo')}</div>
               <a href="mailto:sales@westernfencesupply.com" style={{ fontSize: 16, color: 'var(--ink)' }}>sales@westernfencesupply.com</a>
             </div>
             <div style={{ marginBottom: 32 }}>
-              <div style={labelStyle}>Visit</div>
+              <div style={labelStyle}>{t('Visit', 'Visítanos')}</div>
               <div style={{ fontSize: 14, color: 'var(--ink)', lineHeight: 1.5 }}>2611 Fowler St<br/>Fort Myers, FL 33901</div>
             </div>
             <div style={{ paddingTop: 24, borderTop: '1px solid rgba(0,16,17,0.15)' }}>
               <div className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', color: 'var(--ink)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ width: 8, height: 8, background: '#10b981', borderRadius: '50%' }}/>
-                Currently quoting in 18hrs avg
+                {t('Currently quoting in 18hrs avg', 'Cotizando en 18 hrs en promedio')}
               </div>
             </div>
           </div>
@@ -717,38 +732,51 @@ const FinalCTA = () => {
           }}>
             {submitted ? (
               <div style={{ padding: '40px 0', textAlign: 'center' }}>
-                <div className="mono" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--tangerine)', marginBottom: 16, textTransform: 'uppercase', fontWeight: 700 }}>Submitted</div>
-                <h3 className="display" style={{ fontSize: 32, margin: '0 0 12px', lineHeight: 1.1 }}>Thanks — we'll be in touch.</h3>
-                <p style={{ fontSize: 14, color: 'var(--charcoal)', maxWidth: 360, margin: '0 auto' }}>One of our reps will reach out within 24 hours with stock, pricing and lead time for your project.</p>
+                <div className="mono" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--tangerine)', marginBottom: 16, textTransform: 'uppercase', fontWeight: 700 }}>{t('Submitted', 'Enviado')}</div>
+                <h3 className="display" style={{ fontSize: 32, margin: '0 0 12px', lineHeight: 1.1 }}>{t("Thanks — we'll be in touch.", 'Gracias — pronto te contactamos.')}</h3>
+                <p style={{ fontSize: 14, color: 'var(--charcoal)', maxWidth: 360, margin: '0 auto' }}>{t('One of our reps will reach out within 24 hours with stock, pricing and lead time for your project.', 'Uno de nuestros representantes se comunicará en 24 horas con stock, precios y plazo de entrega para tu proyecto.')}</p>
               </div>
             ) : (
               <>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginBottom: 18 }}>
-                  <div><label style={labelStyle}>Full name</label><input type="text" required style={inputStyle} placeholder="Jane Smith"/></div>
-                  <div><label style={labelStyle}>Company (optional)</label><input type="text" style={inputStyle} placeholder="Acme Fence Co."/></div>
+                  <div><label style={labelStyle}>{t('Full name', 'Nombre completo')}</label><input type="text" required style={inputStyle} placeholder="Jane Smith"/></div>
+                  <div><label style={labelStyle}>{t('Company (optional)', 'Empresa (opcional)')}</label><input type="text" style={inputStyle} placeholder="Acme Fence Co."/></div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginBottom: 18 }}>
-                  <div><label style={labelStyle}>Email</label><input type="email" required style={inputStyle} placeholder="jane@email.com"/></div>
-                  <div><label style={labelStyle}>Phone</label><input type="tel" required style={inputStyle} placeholder="(239) 555-0142"/></div>
+                  <div><label style={labelStyle}>{t('Email', 'Correo')}</label><input type="email" required style={inputStyle} placeholder="jane@email.com"/></div>
+                  <div><label style={labelStyle}>{t('Phone', 'Teléfono')}</label><input type="tel" required style={inputStyle} placeholder="(239) 555-0142"/></div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginBottom: 18 }}>
-                  <div><label style={labelStyle}>I am a</label>
-                    <select style={inputStyle}><option>Homeowner</option><option>DIY / Self-installer</option><option>Contractor</option><option>Commercial / Builder</option></select>
+                  <div><label style={labelStyle}>{t('I am a', 'Soy')}</label>
+                    <select style={inputStyle}>
+                      <option>{t('Homeowner', 'Propietario')}</option>
+                      <option>{t('DIY / Self-installer', 'DIY / Auto-instalador')}</option>
+                      <option>{t('Contractor', 'Contratista')}</option>
+                      <option>{t('Commercial / Builder', 'Comercial / Constructor')}</option>
+                    </select>
                   </div>
-                  <div><label style={labelStyle}>Project type</label>
-                    <select style={inputStyle}><option>Vinyl / PVC</option><option>Aluminum</option><option>Chain Link</option><option>Metal / DuraFence</option><option>EC Fence</option><option>Gate System</option><option>Other</option></select>
+                  <div><label style={labelStyle}>{t('Project type', 'Tipo de proyecto')}</label>
+                    <select style={inputStyle}>
+                      <option>Vinyl / PVC</option>
+                      <option>Aluminum</option>
+                      <option>Chain Link</option>
+                      <option>Metal / DuraFence</option>
+                      <option>EC Fence</option>
+                      <option>{t('Gate System', 'Sistema de portón')}</option>
+                      <option>{t('Other', 'Otro')}</option>
+                    </select>
                   </div>
                 </div>
                 <div style={{ marginBottom: 24 }}>
-                  <label style={labelStyle}>Project details</label>
-                  <textarea rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: 100 }} placeholder="Approx. linear feet, height, location/zip, timeline, anything else relevant…"/>
+                  <label style={labelStyle}>{t('Project details', 'Detalles del proyecto')}</label>
+                  <textarea rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: 100 }} placeholder={t('Approx. linear feet, height, location/zip, timeline, anything else relevant…', 'Aprox. pies lineales, altura, ubicación/código postal, plazo, cualquier otro detalle relevante…')}/>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
                   <p className="mono" style={{ margin: 0, fontSize: 11, letterSpacing: '0.04em', color: 'var(--charcoal)', maxWidth: 280 }}>
-                    By submitting, you agree to be contacted by Western Fence Supply.
+                    {t('By submitting, you agree to be contacted by Western Fence Supply.', 'Al enviar, aceptas ser contactado por Western Fence Supply.')}
                   </p>
                   <button type="submit" className="btn btn-dark" style={{ fontSize: 14, padding: '16px 24px' }}>
-                    Request quote
+                    {t('Request quote', 'Solicitar cotización')}
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/></svg>
                   </button>
                 </div>

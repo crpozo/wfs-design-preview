@@ -2,57 +2,67 @@
 
 const FENCE_CATEGORIES = [
   {
-    id: 'vinyl', name: 'Vinyl / PVC', tag: 'Privacy, Picket & Ranch',
+    id: 'vinyl', name: { EN: 'Vinyl / PVC', ES: 'Vinilo / PVC' }, tag: { EN: 'Privacy, Picket & Ranch', ES: 'Privacidad, picket y rancho' },
     img: 'vinyl', href: 'vinyl.html',
-    desc: 'Low-maintenance vinyl in privacy, picket and ranch profiles. Won\'t rot, rust, peel or fade — engineered for Florida sun and salt air with a transferable lifetime warranty.',
+    desc: { EN: "Low-maintenance vinyl in privacy, picket and ranch profiles. Won't rot, rust, peel or fade — engineered for Florida sun and salt air with a transferable lifetime warranty.",
+            ES: 'Vinilo de bajo mantenimiento en perfiles de privacidad, picket y rancho. No se pudre, no se oxida, no se pela ni decolora — diseñado para el sol y aire salino de Florida con garantía de por vida transferible.' },
   },
   {
-    id: 'aluminum', name: 'Aluminum', tag: 'Residential & Commercial',
+    id: 'aluminum', name: { EN: 'Aluminum', ES: 'Aluminio' }, tag: { EN: 'Residential & Commercial', ES: 'Residencial y comercial' },
     img: 'aluminum', href: 'aluminum.html',
-    desc: 'Powder-coated aluminum panels in 3, 4 and 5-rail configurations. Pool-code compliant, rackable on grade and available in residential, commercial and industrial grades.',
+    desc: { EN: 'Powder-coated aluminum panels in 3, 4 and 5-rail configurations. Pool-code compliant, rackable on grade and available in residential, commercial and industrial grades.',
+            ES: 'Paneles de aluminio con pintura en polvo en configuraciones de 3, 4 y 5 rieles. Cumple código de piscinas, adaptable a pendientes y disponible en grados residencial, comercial e industrial.' },
   },
   {
-    id: 'chainlink', name: 'Chain Link', tag: 'Galvanized & Vinyl Coated',
+    id: 'chainlink', name: { EN: 'Chain Link', ES: 'Malla ciclónica' }, tag: { EN: 'Galvanized & Vinyl Coated', ES: 'Galvanizada y recubierta de vinilo' },
     img: 'chainlink', href: 'chain-link.html',
-    desc: 'Galvanized and vinyl-coated mesh from 6 to 12 gauge. The workhorse fence for security, sports, agricultural and commercial perimeters across SW Florida.',
+    desc: { EN: 'Galvanized and vinyl-coated mesh from 6 to 12 gauge. The workhorse fence for security, sports, agricultural and commercial perimeters across SW Florida.',
+            ES: 'Malla galvanizada y recubierta de vinilo de calibre 6 a 12. La cerca de trabajo para seguridad, deporte, agricultura y perímetros comerciales en el suroeste de Florida.' },
   },
   {
-    id: 'metal', name: 'Metal / DuraFence', tag: 'Aluminum Board Privacy',
+    id: 'metal', name: { EN: 'Metal / DuraFence', ES: 'Metal / DuraFence' }, tag: { EN: 'Aluminum Board Privacy', ES: 'Privacidad de tabla aluminio' },
     img: 'metal', href: 'metal.html',
-    desc: 'Aluminum board privacy fencing — the strength of metal with the look of solid board. Hurricane-rated, no warping, no painting, no replacement boards.',
+    desc: { EN: 'Aluminum board privacy fencing — the strength of metal with the look of solid board. Hurricane-rated, no warping, no painting, no replacement boards.',
+            ES: 'Cerca de privacidad de tabla aluminio — la fuerza del metal con el aspecto de tabla sólida. Resistente a huracanes, no se deforma, no se pinta, no se reemplazan tablas.' },
   },
   {
-    id: 'ecfence', name: 'EC Fence', tag: 'Self-Mating Galvanized Steel',
+    id: 'ecfence', name: { EN: 'EC Fence', ES: 'EC Fence' }, tag: { EN: 'Self-Mating Galvanized Steel', ES: 'Acero galv. autoensamblable' },
     img: 'ecfence', href: 'ecfence.html', isNew: true,
-    desc: 'Our newest system: self-mating galvanized steel panels installed every 12 ft. 6 ft tall, available in bronze and white. Engineered for Exposure C wind loads.',
+    desc: { EN: 'Our newest system: self-mating galvanized steel panels installed every 12 ft. 6 ft tall, available in bronze and white. Engineered for Exposure C wind loads.',
+            ES: 'Nuestro sistema más nuevo: paneles de acero galvanizado autoensamblables instalados cada 12 pies. 6 pies de alto, disponibles en bronce y blanco. Diseñados para cargas eólicas Exposición C.' },
   },
 ];
 
 const GATE_SYSTEMS = [
   {
-    id: 'single-swing', name: 'Single Swing', tag: 'Walk gates & entry points',
+    id: 'single-swing', name: { EN: 'Single Swing', ES: 'Batiente sencillo' }, tag: { EN: 'Walk gates & entry points', ES: 'Peatonal y puntos de entrada' },
     img: 'gate-single', href: 'gate-single.html',
-    desc: 'Standard pedestrian and entry gates from 3 to 6 ft wide. Mechanically assembled or welded, with hardware to match every fence material we stock.',
+    desc: { EN: 'Standard pedestrian and entry gates from 3 to 6 ft wide. Mechanically assembled or welded, with hardware to match every fence material we stock.',
+            ES: 'Portones peatonales y de entrada estándar de 3 a 6 pies de ancho. Ensamblados mecánicamente o soldados, con hardware para cada material de cerca en stock.' },
   },
   {
-    id: 'double-swing', name: 'Double Swing', tag: 'Driveway access gates',
+    id: 'double-swing', name: { EN: 'Double Swing', ES: 'Batiente doble' }, tag: { EN: 'Driveway access gates', ES: 'Portones de acceso vehicular' },
     img: 'gate-double', href: 'gate-double.html',
-    desc: 'Driveway-width gates from 8 to 16 ft total opening. Pre-hung options for single-day install with drop rod and gate latch hardware included.',
+    desc: { EN: 'Driveway-width gates from 8 to 16 ft total opening. Pre-hung options for single-day install with drop rod and gate latch hardware included.',
+            ES: 'Portones de ancho vehicular de 8 a 16 pies de abertura total. Opciones preinstaladas para montaje en un día, con barra de caída y herrajes incluidos.' },
   },
   {
-    id: 'sliding', name: 'Sliding Gates', tag: 'Space-saving operation',
+    id: 'sliding', name: { EN: 'Sliding Gates', ES: 'Portones corredizos' }, tag: { EN: 'Space-saving operation', ES: 'Operación que ahorra espacio' },
     img: 'gate-sliding', href: 'gate-sliding.html',
-    desc: 'Track-mounted sliding gates for tight or graded openings. Manual or automated with operator and safety package available.',
+    desc: { EN: 'Track-mounted sliding gates for tight or graded openings. Manual or automated with operator and safety package available.',
+            ES: 'Portones corredizos sobre riel para aberturas estrechas o en pendiente. Manuales o automáticos con operador y paquete de seguridad disponibles.' },
   },
   {
-    id: 'cantilever', name: 'Cantilever', tag: 'No ground track needed',
+    id: 'cantilever', name: { EN: 'Cantilever', ES: 'Cantilever' }, tag: { EN: 'No ground track needed', ES: 'Sin riel en el suelo' },
     img: 'gate-cantilever', href: 'gate-cantilever.html',
-    desc: 'Counter-balanced rolling gates with no ground track — ideal for sites with sand, debris or grade change. Up to 50 ft single openings.',
+    desc: { EN: 'Counter-balanced rolling gates with no ground track — ideal for sites with sand, debris or grade change. Up to 50 ft single openings.',
+            ES: 'Portones rodantes contrabalanceados sin riel en el suelo — ideales para sitios con arena, escombros o cambios de nivel. Aberturas únicas hasta 50 pies.' },
   },
   {
-    id: 'rolling', name: 'Rolling Gate', tag: 'Industrial rolling gates',
+    id: 'rolling', name: { EN: 'Rolling Gate', ES: 'Portón rodante' }, tag: { EN: 'Industrial rolling gates', ES: 'Portones rodantes industriales' },
     img: 'gate-rolling', href: 'gate-rolling.html',
-    desc: 'Industrial rolling gates with V-track and rollers. Built for high-cycle commercial use, secured perimeters, yards and operations.',
+    desc: { EN: 'Industrial rolling gates with V-track and rollers. Built for high-cycle commercial use, secured perimeters, yards and operations.',
+            ES: 'Portones rodantes industriales con V-track y rodillos. Construidos para uso comercial de alto ciclo, perímetros seguros, patios y operaciones.' },
   },
 ];
 
@@ -332,8 +342,11 @@ const FenceCard = ({ item, index, featured }) => {
 
 /* ---------- Editorial fence card: image-led with overlaid caption ---------- */
 const FenceStyleCard = ({ item, index }) => {
+  const t = useT();
   const [hover, setHover] = React.useState(false);
   const num = String(index + 1).padStart(2, '0');
+  const nameStr = typeof item.name === 'string' ? item.name : t(item.name);
+  const tagStr  = typeof item.tag  === 'string' ? item.tag  : t(item.tag);
   return (
     <a href={item.href || '#'}
       onMouseEnter={() => setHover(true)}
@@ -348,7 +361,7 @@ const FenceStyleCard = ({ item, index }) => {
         transition: 'transform 0.35s ease',
         transform: hover ? 'translateY(-4px)' : 'none',
       }}>
-      <img src={FENCE_IMG[item.img]} alt={item.name}
+      <img src={FENCE_IMG[item.img]} alt={nameStr}
         style={{
           position: 'absolute', inset: 0,
           width: '100%', height: '100%', objectFit: 'cover',
@@ -379,7 +392,7 @@ const FenceStyleCard = ({ item, index }) => {
           fontSize: 9, fontWeight: 700, letterSpacing: '0.22em',
           color: 'var(--ink)', background: 'var(--tangerine)',
           padding: '5px 8px',
-        }}>NEW</span>
+        }}>{t('NEW', 'NUEVO')}</span>
       )}
 
       {/* Caption — name + tag */}
@@ -390,11 +403,11 @@ const FenceStyleCard = ({ item, index }) => {
           margin: '0 0 6px',
           fontSize: 'clamp(17px, 1.5vw, 22px)',
           lineHeight: 1, letterSpacing: '-0.01em',
-        }}>{item.name}</h3>
+        }}>{nameStr}</h3>
         <div className="mono" style={{
           fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'rgba(255,255,255,0.85)',
-        }}>{item.tag}</div>
+        }}>{tagStr}</div>
       </div>
 
       {/* Hover arrow, bottom-right */}
@@ -416,6 +429,7 @@ const FenceStyleCard = ({ item, index }) => {
 };
 
 const FenceCategories = () => {
+  const t = useT();
   const visible = FENCE_CATEGORIES;
   return (
     <section id="fences" style={{ background: 'var(--white)', padding: '64px 0' }}>
@@ -439,7 +453,7 @@ const FenceCategories = () => {
               textTransform: 'uppercase',
               marginBottom: 18,
             }}>
-              <span>01 — Catalog</span>
+              <span>{t('01 — Catalog', '01 — Catálogo')}</span>
               <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
             </div>
             <h2 className="display" style={{
@@ -448,8 +462,8 @@ const FenceCategories = () => {
               lineHeight: 1, letterSpacing: '-0.02em',
               fontWeight: 800,
             }}>
-              Five systems.<br/>
-              <span style={{ color: 'var(--tangerine)' }}>One yard.</span>
+              {t('Five systems.', 'Cinco sistemas.')}<br/>
+              <span style={{ color: 'var(--tangerine)' }}>{t('One yard.', 'Una sucursal.')}</span>
             </h2>
           </div>
           <div style={{
@@ -461,9 +475,10 @@ const FenceCategories = () => {
               color: 'var(--charcoal)',
               textAlign: 'right',
             }}>
-              Supplier-direct pricing for contractors, homeowners and DIY projects across
-              SW Florida — factory-direct, stocked, and quoted in 24 hours. We supply
-              the materials; we don't install.
+              {t(
+                "Supplier-direct pricing for contractors, homeowners and DIY projects across SW Florida — factory-direct, stocked, and quoted in 24 hours. We supply the materials; we don't install.",
+                'Precios directos del proveedor para contratistas, propietarios y proyectos DIY en el suroeste de Florida — directo de fábrica, en stock y cotizado en 24 horas. Suministramos el material; no instalamos.'
+              )}
             </p>
             <a href="products.html" className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -473,7 +488,7 @@ const FenceCategories = () => {
               borderBottom: '1px solid var(--ink)',
               paddingBottom: 4,
             }}>
-              Full catalog
+              {t('Full catalog', 'Catálogo completo')}
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
               </svg>
@@ -497,6 +512,7 @@ const FenceCategories = () => {
 };
 
 const GateSystems = () => {
+  const t = useT();
   const visible = GATE_SYSTEMS.map(g => ({ ...g, href: g.href || 'estimate.html' }));
   return (
     <section id="gates" style={{ background: '#faf9f7', padding: '64px 0' }}>
@@ -520,7 +536,7 @@ const GateSystems = () => {
               textTransform: 'uppercase',
               marginBottom: 18,
             }}>
-              <span>02 — Gates</span>
+              <span>{t('02 — Gates', '02 — Portones')}</span>
               <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
             </div>
             <h2 className="display" style={{
@@ -529,8 +545,8 @@ const GateSystems = () => {
               lineHeight: 1, letterSpacing: '-0.02em',
               fontWeight: 800,
             }}>
-              Welded in-house.<br/>
-              <span style={{ color: 'var(--tangerine)' }}>Sized to fit.</span>
+              {t('Welded in-house.', 'Soldados en planta.')}<br/>
+              <span style={{ color: 'var(--tangerine)' }}>{t('Sized to fit.', 'A la medida.')}</span>
             </h2>
           </div>
           <div style={{
@@ -542,8 +558,10 @@ const GateSystems = () => {
               color: 'var(--charcoal)',
               textAlign: 'right',
             }}>
-              From walk gates to industrial cantilever. Pre-hung options ship
-              complete with hardware — quoted in 24 hours.
+              {t(
+                'From walk gates to industrial cantilever. Pre-hung options ship complete with hardware — quoted in 24 hours.',
+                'Desde portones peatonales hasta cantilever industriales. Opciones preinstaladas se envían completas con herrajes — cotizadas en 24 horas.'
+              )}
             </p>
             <a href="estimate.html" className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -553,7 +571,7 @@ const GateSystems = () => {
               borderBottom: '1px solid var(--ink)',
               paddingBottom: 4,
             }}>
-              Custom quote
+              {t('Custom quote', 'Cotización a medida')}
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
               </svg>

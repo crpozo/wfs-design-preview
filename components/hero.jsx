@@ -43,14 +43,8 @@ const Nav = () => {
 };
 
 const Hero = () => {
+  const t = useT();
   const [mode, setMode] = useMode();
-  const fences = [
-    { id: 'vinyl',     name: 'Vinyl / PVC',     blurb: 'Privacy + semi-private profiles', href: 'vinyl.html' },
-    { id: 'aluminum',  name: 'Aluminum',        blurb: 'Pool, perimeter, ornamental',     href: 'aluminum.html' },
-    { id: 'chainlink', name: 'Chain Link',      blurb: 'Industrial, residential, sport',  href: 'chain-link.html' },
-    { id: 'metal',     name: 'Metal / DuraFence', blurb: 'Steel + ornamental panels',     href: 'metal.html' },
-    { id: 'ecfence',   name: 'EC Fence',        blurb: 'Self-mating galvanized steel',    href: 'ecfence.html', isNew: true },
-  ];
 
   return (
     <section className="wfs-hero" style={{
@@ -96,7 +90,8 @@ const Hero = () => {
             display: 'flex', alignItems: 'center', gap: 12, marginBottom: 22,
           }}>
             <span style={{ width: 28, height: 1.5, background: 'var(--tangerine)' }}/>
-            Western Fence Supply · Material Supplier · SW Florida
+            {t('Western Fence Supply · Material Supplier · SW Florida',
+               'Western Fence Supply · Proveedor de material · SW Florida')}
           </div>
 
           <h1 className="display" style={{
@@ -107,8 +102,9 @@ const Hero = () => {
             color: 'var(--white)',
             textShadow: '0 2px 24px rgba(0,0,0,0.18)',
           }}>
-            The Best Place to <span style={{ color: 'var(--tangerine)' }}>Buy Fencing Materials</span><br/>
-            in Southwest Florida.
+            {t('The Best Place to ', 'El mejor lugar para ')}
+            <span style={{ color: 'var(--tangerine)' }}>{t('Buy Fencing Materials', 'comprar material de cercas')}</span><br/>
+            {t('in Southwest Florida.', 'en el suroeste de Florida.')}
           </h1>
 
           <p style={{
@@ -118,9 +114,10 @@ const Hero = () => {
             margin: '0 0 32px',
             color: 'rgba(255,255,255,0.88)',
           }}>
-            American-made fencing materials for contractors, homeowners and DIY projects —
-            we're a Southwest Florida supplier, not an installer. Factory-direct chain link,
-            aluminum, vinyl, metal and EC Fence, stocked in Fort Myers.
+            {t(
+              "American-made fencing materials for contractors, homeowners and DIY projects — we're a Southwest Florida supplier, not an installer. Factory-direct chain link, aluminum, vinyl, metal and EC Fence, stocked in Fort Myers.",
+              'Material de cercas hecho en Estados Unidos para contratistas, propietarios y proyectos DIY — somos proveedor del suroeste de Florida, no instaladores. Malla ciclónica, aluminio, vinilo, metal y EC Fence directos de fábrica, en stock en Fort Myers.'
+            )}
           </p>
 
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
@@ -141,7 +138,7 @@ const Hero = () => {
                 <path d="M3 11 L12 4 L21 11"/>
                 <path d="M5 10 V20 H19 V10"/>
               </svg>
-              I'm a Homeowner
+              {t("I'm a Homeowner", 'Soy propietario')}
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
             </a>
             <a href="contractors.html" onClick={() => setMode('CONTRACTOR')}
@@ -162,7 +159,7 @@ const Hero = () => {
                 <path d="M5 14 Q5 7 12 7 Q19 7 19 14"/>
                 <path d="M3 14 H21 V17 H3 Z"/>
               </svg>
-              I'm a Contractor
+              {t("I'm a Contractor", 'Soy contratista')}
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
             </a>
           </div>

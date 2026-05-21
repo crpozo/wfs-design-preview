@@ -83,11 +83,24 @@ const Gates = () => {
 };
 
 const Testimonials = () => {
+  const t = useT();
   const reviews = [
-    { name: 'Lauren Johnson', text: 'Customer service is the best I\'ve seen anywhere. They made sure we had every part for our aluminum fence and delivered with no issues.', tag: 'Aluminum' },
-    { name: 'Sally Barney', text: 'Their prices are the best in Lee County. I checked several competitors and they were not even close.', tag: 'Chain Link' },
-    { name: 'Yanier Ortiz', text: 'Best company in town, best materials at a great price. You don\'t have to drive to Miami anymore — everything you need is right here.', tag: 'Vinyl' },
-    { name: 'Reinier Carmenates', text: 'I\'ve installed fences in Lee County for 5 years. I\'ve never paid such a low price for such good material.', tag: 'Contractor' },
+    { name: 'Lauren Johnson',
+      text: { EN: "Customer service is the best I've seen anywhere. They made sure we had every part for our aluminum fence and delivered with no issues.",
+              ES: 'El servicio al cliente es el mejor que he visto. Se aseguraron de que tuviéramos cada pieza para nuestra cerca de aluminio y entregaron sin problemas.' },
+      tag: { EN: 'Aluminum', ES: 'Aluminio' } },
+    { name: 'Sally Barney',
+      text: { EN: 'Their prices are the best in Lee County. I checked several competitors and they were not even close.',
+              ES: 'Sus precios son los mejores del condado de Lee. Comparé con varios competidores y ni se acercaron.' },
+      tag: { EN: 'Chain Link', ES: 'Malla ciclónica' } },
+    { name: 'Yanier Ortiz',
+      text: { EN: "Best company in town, best materials at a great price. You don't have to drive to Miami anymore — everything you need is right here.",
+              ES: 'La mejor empresa de la ciudad, los mejores materiales a buen precio. Ya no tienes que manejar hasta Miami — todo lo que necesitas está aquí.' },
+      tag: { EN: 'Vinyl', ES: 'Vinilo' } },
+    { name: 'Reinier Carmenates',
+      text: { EN: "I've installed fences in Lee County for 5 years. I've never paid such a low price for such good material.",
+              ES: 'He instalado cercas en el condado de Lee por 5 años. Nunca había pagado un precio tan bajo por material tan bueno.' },
+      tag: { EN: 'Contractor', ES: 'Contratista' } },
   ];
   return (
     <section style={{ background: 'var(--white)', padding: '56px 0' }}>
@@ -110,7 +123,7 @@ const Testimonials = () => {
               textTransform: 'uppercase',
               marginBottom: 18,
             }}>
-              <span>06 — Reviews</span>
+              <span>{t('06 — Reviews', '06 — Reseñas')}</span>
               <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
             </div>
             <h2 className="display" style={{
@@ -119,8 +132,8 @@ const Testimonials = () => {
               lineHeight: 1, letterSpacing: '-0.02em',
               fontWeight: 800,
             }}>
-              What contractors and<br/>
-              <span style={{ color: 'var(--tangerine)' }}>homeowners say.</span>
+              {t('What contractors and', 'Lo que dicen los contratistas')}<br/>
+              <span style={{ color: 'var(--tangerine)' }}>{t('homeowners say.', 'y propietarios.')}</span>
             </h2>
           </div>
           <a href="#" className="mono" style={{
@@ -131,7 +144,7 @@ const Testimonials = () => {
             borderBottom: '1px solid var(--ink)',
             paddingBottom: 4,
           }}>
-            Read all reviews
+            {t('Read all reviews', 'Ver todas las reseñas')}
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
             </svg>
@@ -152,11 +165,11 @@ const Testimonials = () => {
                 {'★★★★★'}
               </div>
               <p style={{ fontSize: 14, lineHeight: 1.5, color: 'var(--ink)', margin: 0, flex: 1 }}>
-                "{r.text}"
+                "{t(r.text)}"
               </p>
               <div style={{ borderTop: '1px solid rgba(0,16,17,0.1)', paddingTop: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--ink)' }}>{r.name}</div>
-                <span className="mono" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'var(--charcoal)', textTransform: 'uppercase' }}>{r.tag}</span>
+                <span className="mono" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'var(--charcoal)', textTransform: 'uppercase' }}>{t(r.tag)}</span>
               </div>
             </div>
           ))}
@@ -167,16 +180,35 @@ const Testimonials = () => {
 };
 
 const FAQ = () => {
+  const t = useT();
   const items = [
-    ['Do you sell to the general public?', 'Yes. We sell to homeowners, DIY customers and contractors alike — same supplier-direct prices, no minimums.'],
-    ['What are the lead times on fencing material?', 'Stocked items typically ship in 1–2 days. Custom or non-stock items can take 6–8 weeks.'],
-    ['Do you install fences?', 'No — we are solely a supply company. We can recommend trusted local installers who use our materials.'],
-    ['Do you come out to measure?', 'No. We ask you to provide a survey or hand-drawn layout with measurements per side, plus height, color and style.'],
-    ['What is the price per foot for fence material?', 'Pricing fluctuates frequently. Send us your project and we\'ll come back with a detailed estimate.'],
-    ['Does your fence material have a warranty?', 'Most materials we sell carry a limited lifetime warranty from the manufacturer.'],
-    ['Do you offer delivery?', 'Yes — we deliver throughout Florida from our Fort Myers warehouse. Delivery fees vary by location and order size; we\'ll confirm both when you place your order.'],
-    ['Can I pick up my order?', 'Yes. Pickup is available from our Fort Myers or Port Charlotte yards depending on material stock. Please contact us first to confirm availability and pickup location before coming in.'],
-    ['Do you deliver outside Florida?', 'Not at this time — we currently deliver within Florida only.'],
+    [{ EN: 'Do you sell to the general public?', ES: '¿Le venden al público en general?' },
+     { EN: 'Yes. We sell to homeowners, DIY customers and contractors alike — same supplier-direct prices, no minimums.',
+       ES: 'Sí. Vendemos a propietarios, clientes DIY y contratistas por igual — los mismos precios directos del proveedor, sin mínimos.' }],
+    [{ EN: 'What are the lead times on fencing material?', ES: '¿Cuáles son los plazos de entrega del material?' },
+     { EN: 'Stocked items typically ship in 1–2 days. Custom or non-stock items can take 6–8 weeks.',
+       ES: 'Los artículos en stock normalmente se envían en 1–2 días. Los artículos a medida o fuera de stock pueden tardar 6–8 semanas.' }],
+    [{ EN: 'Do you install fences?', ES: '¿Instalan cercas?' },
+     { EN: 'No — we are solely a supply company. We can recommend trusted local installers who use our materials.',
+       ES: 'No — somos solamente una empresa de suministro. Podemos recomendar instaladores locales de confianza que usan nuestros materiales.' }],
+    [{ EN: 'Do you come out to measure?', ES: '¿Vienen a tomar medidas?' },
+     { EN: 'No. We ask you to provide a survey or hand-drawn layout with measurements per side, plus height, color and style.',
+       ES: 'No. Te pedimos un plano o boceto a mano con medidas por lado, además de altura, color y estilo.' }],
+    [{ EN: 'What is the price per foot for fence material?', ES: '¿Cuál es el precio por pie del material?' },
+     { EN: "Pricing fluctuates frequently. Send us your project and we'll come back with a detailed estimate.",
+       ES: 'Los precios fluctúan con frecuencia. Envíanos tu proyecto y respondemos con un estimado detallado.' }],
+    [{ EN: 'Does your fence material have a warranty?', ES: '¿El material tiene garantía?' },
+     { EN: 'Most materials we sell carry a limited lifetime warranty from the manufacturer.',
+       ES: 'La mayoría de los materiales que vendemos tienen una garantía limitada de por vida del fabricante.' }],
+    [{ EN: 'Do you offer delivery?', ES: '¿Ofrecen entrega?' },
+     { EN: "Yes — we deliver throughout Florida from our Fort Myers warehouse. Delivery fees vary by location and order size; we'll confirm both when you place your order.",
+       ES: 'Sí — entregamos en toda Florida desde nuestro almacén de Fort Myers. Los costos varían por ubicación y tamaño de la orden; confirmamos ambos al hacer el pedido.' }],
+    [{ EN: 'Can I pick up my order?', ES: '¿Puedo recoger mi pedido?' },
+     { EN: 'Yes. Pickup is available from our Fort Myers or Port Charlotte yards depending on material stock. Please contact us first to confirm availability and pickup location before coming in.',
+       ES: 'Sí. Puedes recoger en nuestras sucursales de Fort Myers o Port Charlotte según el stock del material. Contáctanos primero para confirmar disponibilidad y ubicación antes de venir.' }],
+    [{ EN: 'Do you deliver outside Florida?', ES: '¿Entregan fuera de Florida?' },
+     { EN: 'Not at this time — we currently deliver within Florida only.',
+       ES: 'Por ahora no — actualmente entregamos solamente dentro de Florida.' }],
   ];
   const [open, setOpen] = React.useState(0);
   const [ctaHover, setCtaHover] = React.useState(false);
@@ -194,7 +226,7 @@ const FAQ = () => {
               textTransform: 'uppercase',
               marginBottom: 18,
             }}>
-              <span>05 — FAQ</span>
+              <span>{t('05 — FAQ', '05 — Preguntas frecuentes')}</span>
               <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
             </div>
             <h2 className="display" style={{
@@ -203,15 +235,15 @@ const FAQ = () => {
               lineHeight: 1, letterSpacing: '-0.02em',
               fontWeight: 800,
             }}>
-              Common fence<br/>
-              <span style={{ color: 'var(--tangerine)' }}>questions.</span>
+              {t('Common fence', 'Preguntas comunes')}<br/>
+              <span style={{ color: 'var(--tangerine)' }}>{t('questions.', 'sobre cercas.')}</span>
             </h2>
             <p style={{
               marginTop: 24,
               fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)',
               maxWidth: 340, marginBottom: 28,
             }}>
-              Can't find what you're looking for? Call the yard or email
+              {t("Can't find what you're looking for? Call the yard or email", '¿No encuentras lo que buscas? Llama a la sucursal o escribe a')}
               {' '}<a href="mailto:sales@westernfencesupply.com" style={{
                 color: 'var(--ink)', borderBottom: '1px solid var(--tangerine)',
               }}>sales@westernfencesupply.com</a>.
@@ -234,7 +266,7 @@ const FAQ = () => {
                 transform: ctaHover ? 'translateY(-1px)' : 'none',
                 boxShadow: '0 18px 36px -18px rgba(26,37,72,0.5)',
               }}>
-              Talk to a sales rep
+              {t('Talk to a sales rep', 'Habla con un representante')}
               <span style={{
                 width: 30, height: 30, borderRadius: '50%',
                 background: 'var(--tangerine)', color: 'var(--ink)',
@@ -276,7 +308,7 @@ const FAQ = () => {
                         fontSize: 17, fontWeight: 500,
                         color: 'var(--ink)',
                         letterSpacing: '-0.005em',
-                      }}>{q}</span>
+                      }}>{t(q)}</span>
                     </span>
                     <span style={{
                       width: 28, height: 28,
@@ -303,7 +335,7 @@ const FAQ = () => {
                       color: 'var(--ink)', opacity: 0.78,
                       margin: '0 0 22px', paddingLeft: 40, maxWidth: 640,
                     }}>
-                      {a}
+                      {t(a)}
                     </p>
                   </div>
                 </div>
@@ -422,6 +454,7 @@ const ShopTour = () => (
 
 /* ---------- About Intro (homepage, just below hero) ---------- */
 const AboutIntro = () => {
+  const t = useT();
   const [ctaHover, setCtaHover] = React.useState(false);
   return (
     <section style={{ background: 'var(--white)', padding: '48px 0' }}>
@@ -472,7 +505,7 @@ const AboutIntro = () => {
             textTransform: 'uppercase',
             marginBottom: 16,
           }}>
-            <span>About</span>
+            <span>{t('About', 'Sobre nosotros')}</span>
             <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
           </div>
 
@@ -483,8 +516,8 @@ const AboutIntro = () => {
             letterSpacing: '-0.02em',
             fontWeight: 800,
           }}>
-            #1 Southwest Florida<br/>
-            <span style={{ color: 'var(--tangerine)' }}>Fence Supply.</span>
+            {t('#1 Southwest Florida', '#1 del suroeste de Florida')}<br/>
+            <span style={{ color: 'var(--tangerine)' }}>{t('Fence Supply.', 'en cercas.')}</span>
           </h2>
 
           <p style={{
@@ -493,10 +526,10 @@ const AboutIntro = () => {
             color: 'var(--charcoal)',
             maxWidth: 540,
           }}>
-            Southwest Florida's best source for high-quality vinyl, aluminum
-            and chain-link fence materials. Family-owned and led by management
-            with over a decade of installation and fabrication experience —
-            same standard we held when we were the contractors.
+            {t(
+              "Southwest Florida's best source for high-quality vinyl, aluminum and chain-link fence materials. Family-owned and led by management with over a decade of installation and fabrication experience — same standard we held when we were the contractors.",
+              'La mejor fuente del suroeste de Florida para materiales de cerca de vinilo, aluminio y malla ciclónica de alta calidad. Empresa familiar dirigida por gerencia con más de una década de experiencia en instalación y fabricación — el mismo estándar que mantuvimos cuando éramos los contratistas.'
+            )}
           </p>
 
           {/* Stat strip */}
@@ -508,16 +541,16 @@ const AboutIntro = () => {
             borderTop: '1px solid rgba(0,16,17,0.12)',
           }}>
             {[
-              ['10+', 'Years fabricating'],
-              ['4', 'Counties served'],
-              ['2', 'Yards · FM + PC'],
-            ].map(([n, l]) => (
-              <div key={l}>
+              ['10+', { EN: 'Years fabricating', ES: 'Años fabricando' }],
+              ['4',   { EN: 'Counties served',    ES: 'Condados atendidos' }],
+              ['2',   { EN: 'Yards · FM + PC',    ES: 'Sucursales · FM + PC' }],
+            ].map(([n, l], i) => (
+              <div key={i}>
                 <div className="display" style={{ fontSize: 24, lineHeight: 1, color: 'var(--ink)' }}>{n}</div>
                 <div className="mono" style={{
                   marginTop: 6, fontSize: 10, letterSpacing: '0.18em',
                   textTransform: 'uppercase', color: 'var(--charcoal)',
-                }}>{l}</div>
+                }}>{t(l)}</div>
               </div>
             ))}
           </div>
@@ -541,7 +574,7 @@ const AboutIntro = () => {
                 transform: ctaHover ? 'translateY(-1px)' : 'none',
                 boxShadow: '0 18px 36px -18px rgba(26,37,72,0.5)',
               }}>
-              Start Your Fence Project
+              {t('Start Your Fence Project', 'Inicia tu proyecto de cerca')}
               <span style={{
                 width: 30, height: 30, borderRadius: '50%',
                 background: 'var(--white)', color: 'var(--ink)',
@@ -559,7 +592,7 @@ const AboutIntro = () => {
               textTransform: 'uppercase', color: 'var(--ink)',
               borderBottom: '1px solid var(--ink)',
             }}>
-              Tour the shop
+              {t('Tour the shop', 'Recorre la planta')}
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
               </svg>
