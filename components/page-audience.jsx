@@ -2,7 +2,9 @@
 
 /* ───────────────────────────── HOMEOWNER ───────────────────────────── */
 
-const HomeownerHero = () => (
+const HomeownerHero = () => {
+  const t = useT();
+  return (
   <section style={{
     background: 'var(--white)',
     minHeight: 'calc(100svh - 80px)',
@@ -35,7 +37,7 @@ const HomeownerHero = () => (
             textTransform: 'uppercase', color: 'var(--ink)',
           }}>
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-            Homeowner · Built for residential
+            {t('Homeowner · Built for residential', 'Propietario · Diseñado para residencial')}
           </span>
           <h1 className="display" style={{
             margin: '0 0 22px',
@@ -43,8 +45,8 @@ const HomeownerHero = () => (
             lineHeight: 0.96, letterSpacing: '-0.025em',
             color: 'var(--ink)',
           }}>
-            Fence solutions<br/>
-            <span style={{ color: 'var(--tangerine)' }}>for your home.</span>
+            {t('Fence solutions', 'Soluciones de cercas')}<br/>
+            <span style={{ color: 'var(--tangerine)' }}>{t('for your home.', 'para tu hogar.')}</span>
           </h1>
           <p className="mono" style={{
             margin: '0 0 26px',
@@ -52,7 +54,10 @@ const HomeownerHero = () => (
             fontSize: 14, lineHeight: 1.65,
             color: 'var(--charcoal)',
           }}>
-            Enhance your property's value, privacy, and security with premium manufacturing-direct fencing. We help you plan the project and connect you with certified installers for the build.
+            {t(
+              "Enhance your property's value, privacy, and security with premium manufacturing-direct fencing. We help you plan the project and connect you with certified installers for the build.",
+              'Aumenta el valor, privacidad y seguridad de tu propiedad con cercas premium directas de fábrica. Te ayudamos a planificar el proyecto y te conectamos con instaladores certificados para la obra.'
+            )}
           </p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 26 }}>
             <a href="estimate.html" style={{
@@ -66,7 +71,7 @@ const HomeownerHero = () => (
             }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px, -2px)'; e.currentTarget.style.boxShadow = '8px 8px 0 var(--tangerine)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '6px 6px 0 var(--tangerine)'; }}>
-              Get Started
+              {t('Get Started', 'Comenzar')}
             </a>
             <a href="projects.html" style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -76,7 +81,7 @@ const HomeownerHero = () => (
               fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
             }}>
-              View Gallery
+              {t('View Gallery', 'Ver galería')}
             </a>
           </div>
           {/* Trust micro-bullets */}
@@ -85,12 +90,16 @@ const HomeownerHero = () => (
             fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em',
             textTransform: 'uppercase', color: 'var(--charcoal)',
           }}>
-            {['No minimums', 'Free takeoff', 'Supplier-direct floor'].map((t) => (
-              <span key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            {[
+              { EN: 'No minimums', ES: 'Sin mínimos' },
+              { EN: 'Free takeoff', ES: 'Toma de medidas gratis' },
+              { EN: 'Supplier-direct floor', ES: 'Precio directo del proveedor' },
+            ].map((b, i) => (
+              <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                {t}
+                {t(b)}
               </span>
             ))}
           </div>
@@ -120,7 +129,7 @@ const HomeownerHero = () => (
           }}>
             <img
               src="assets/gate-double.jpg"
-              alt="Residential white vinyl double-swing gate"
+              alt={t('Residential white vinyl double-swing gate', 'Portón residencial doble batiente de vinilo blanco')}
               style={{
                 width: '100%', height: '100%',
                 objectFit: 'cover', display: 'block',
@@ -133,7 +142,7 @@ const HomeownerHero = () => (
               background: 'var(--ink)', color: 'var(--white)',
               fontSize: 9.5, fontWeight: 700, letterSpacing: '0.22em',
               textTransform: 'uppercase',
-            }}>Recent install</span>
+            }}>{t('Recent install', 'Instalación reciente')}</span>
             {/* Bottom-right location chip */}
             <span className="mono" style={{
               position: 'absolute', bottom: 14, right: 14,
@@ -144,7 +153,7 @@ const HomeownerHero = () => (
               display: 'inline-flex', alignItems: 'center', gap: 8,
             }}>
               <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-              Cape Coral · Vinyl 6′
+              {t('Cape Coral · Vinyl 6′', 'Cape Coral · Vinilo 6′')}
             </span>
           </div>
 
@@ -162,17 +171,17 @@ const HomeownerHero = () => (
               display: 'flex', alignItems: 'center', gap: 10,
             }}>
               <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-              Why homeowners pick WFS
+              {t('Why homeowners pick WFS', 'Por qué los propietarios eligen WFS')}
             </div>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: 11 }}>
               {[
-                ['Privacy around the backyard',
-                  (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/></svg>)],
-                ['Curb appeal that lifts home value',
-                  (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 21 V11 L12 5 L20 11 V21 Z"/><path d="M10 21 V15 H14 V21"/></svg>)],
-                ['Pool-code & HOA compliant',
-                  (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 14 Q6 12 9 14 Q12 16 15 14 Q18 12 21 14"/><path d="M3 19 Q6 17 9 19 Q12 21 15 19 Q18 17 21 19"/><circle cx="16" cy="6" r="2.4"/></svg>)],
-              ].map(([line, icon], i) => (
+                { line: { EN: 'Privacy around the backyard', ES: 'Privacidad alrededor del patio' },
+                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/></svg>) },
+                { line: { EN: 'Curb appeal that lifts home value', ES: 'Atractivo exterior que sube el valor de tu hogar' },
+                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 21 V11 L12 5 L20 11 V21 Z"/><path d="M10 21 V15 H14 V21"/></svg>) },
+                { line: { EN: 'Pool-code & HOA compliant', ES: 'Cumple código de piscinas y HOA' },
+                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 14 Q6 12 9 14 Q12 16 15 14 Q18 12 21 14"/><path d="M3 19 Q6 17 9 19 Q12 21 15 19 Q18 17 21 19"/><circle cx="16" cy="6" r="2.4"/></svg>) },
+              ].map((b, i) => (
                 <li key={i} style={{
                   display: 'flex', alignItems: 'center', gap: 12,
                 }}>
@@ -182,11 +191,11 @@ const HomeownerHero = () => (
                     border: '1.5px solid var(--ink)',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     color: 'var(--tangerine)',
-                  }}>{icon}</span>
+                  }}>{b.icon}</span>
                   <span className="mono" style={{
                     fontSize: 12.5, fontWeight: 500, color: 'var(--ink)',
                     lineHeight: 1.3,
-                  }}>{line}</span>
+                  }}>{t(b.line)}</span>
                 </li>
               ))}
             </ul>
@@ -195,11 +204,14 @@ const HomeownerHero = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 /* ───── Trust strip — 4 stats anchoring the hero ───── */
 
-const HomeownerTrustStrip = () => (
+const HomeownerTrustStrip = () => {
+  const t = useT();
+  return (
   <section style={{
     background: 'var(--white)',
     borderTop: '1px solid rgba(26,37,72,0.1)',
@@ -209,12 +221,12 @@ const HomeownerTrustStrip = () => (
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
         {[
-          ['22+',  'Years family-owned'],
-          ['2',    'Yards · FM + PC'],
-          ['480+', 'Active SKUs'],
-          ['24h',  'Quote turnaround'],
+          ['22+',  { EN: 'Years family-owned', ES: 'Años familia propietaria' }],
+          ['2',    { EN: 'Yards · FM + PC',    ES: 'Sucursales · FM + PC' }],
+          ['480+', { EN: 'Active SKUs',         ES: 'SKUs activos' }],
+          ['24h',  { EN: 'Quote turnaround',    ES: 'Cotización en 24h' }],
         ].map(([n, l], i) => (
-          <div key={l} style={{
+          <div key={n} style={{
             paddingLeft: i === 0 ? 0 : 24,
             borderLeft: i === 0 ? 'none' : '1px solid rgba(26,37,72,0.1)',
           }}>
@@ -226,17 +238,19 @@ const HomeownerTrustStrip = () => (
               marginTop: 10, fontSize: 11, letterSpacing: '0.18em',
               textTransform: 'uppercase', color: 'var(--charcoal)',
               fontWeight: 700,
-            }}>{l}</div>
+            }}>{t(l)}</div>
           </div>
         ))}
       </div>
     </div>
   </section>
-);
+  );
+};
 
 /* ───── How it works — 6 steps with circle icons ───── */
 
 const HomeownerSteps = () => {
+  const t = useT();
   const StepIcon = ({ n, children }) => (
     <div style={{
       position: 'relative',
@@ -267,17 +281,29 @@ const HomeownerSteps = () => {
     </div>
   );
   const steps = [
-    { n: '1', t: 'Draw Your Fence', body: 'Sketch your layout to visualize the project.',
+    { n: '1', title: { EN: 'Draw Your Fence',      ES: 'Dibuja tu cerca' },
+      body:  { EN: 'Sketch your layout to visualize the project.',
+                ES: 'Esboza la distribución para visualizar el proyecto.' },
       svg: (<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19 L7 21 L9 16 L18 7 L21 10 Z"/><path d="M16 9 L19 12"/></svg>) },
-    { n: '2', t: 'Get an Estimate', body: 'Use our tools to get a rough idea of the cost.',
+    { n: '2', title: { EN: 'Get an Estimate',      ES: 'Obtén un estimado' },
+      body:  { EN: 'Use our tools to get a rough idea of the cost.',
+                ES: 'Usa nuestras herramientas para una idea aproximada del costo.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="5" y="3" width="14" height="18" rx="1"/><rect x="7.5" y="5.5" width="9" height="4"/><circle cx="9" cy="13" r="0.6" fill="currentColor"/><circle cx="12" cy="13" r="0.6" fill="currentColor"/><circle cx="15" cy="13" r="0.6" fill="currentColor"/><circle cx="9" cy="16" r="0.6" fill="currentColor"/><circle cx="12" cy="16" r="0.6" fill="currentColor"/><circle cx="15" cy="16" r="0.6" fill="currentColor"/></svg>) },
-    { n: '3', t: 'Book a Visit', body: 'Schedule a time for us to verify measurements.',
+    { n: '3', title: { EN: 'Book a Visit',         ES: 'Agenda una visita' },
+      body:  { EN: 'Schedule a time for us to verify measurements.',
+                ES: 'Programa una hora para que verifiquemos las medidas.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 9 H20"/><line x1="8" y1="3" x2="8" y2="6"/><line x1="16" y1="3" x2="16" y2="6"/></svg>) },
-    { n: '4', t: 'Get a Quote', body: 'Receive a final, detailed quote for your project.',
+    { n: '4', title: { EN: 'Get a Quote',          ES: 'Recibe la cotización' },
+      body:  { EN: 'Receive a final, detailed quote for your project.',
+                ES: 'Recibe una cotización final y detallada para tu proyecto.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 3 H15 L19 7 V21 H7 Z"/><path d="M15 3 V7 H19"/><line x1="9" y1="12" x2="17" y2="12"/><line x1="9" y1="15" x2="17" y2="15"/><line x1="9" y1="18" x2="13" y2="18"/></svg>) },
-    { n: '5', t: 'Fabrication', body: 'We manufacture your fence locally to your exact specifications.',
+    { n: '5', title: { EN: 'Fabrication',          ES: 'Fabricación' },
+      body:  { EN: 'We manufacture your fence locally to your exact specifications.',
+                ES: 'Fabricamos tu cerca localmente con tus especificaciones exactas.' },
       svg: (<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 21 V11 L9 14 V11 L15 14 V11 L21 14 V21 Z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>) },
-    { n: '6', t: 'Certified Installation', body: 'Choose from our WFS-certified installer alliance for professional installation.',
+    { n: '6', title: { EN: 'Certified Installation', ES: 'Instalación certificada' },
+      body:  { EN: 'Choose from our WFS-certified installer alliance for professional installation.',
+                ES: 'Elige entre nuestra red de instaladores certificados WFS para una instalación profesional.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg>) },
   ];
   return (
@@ -289,13 +315,13 @@ const HomeownerSteps = () => {
             marginBottom: 16,
             fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
             color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>01 — Process</span>
+          }}>{t('01 — Process', '01 — Proceso')}</span>
           <h2 className="display" style={{
             margin: 0,
             fontSize: 'clamp(28px, 3.4vw, 44px)',
             lineHeight: 1, letterSpacing: '-0.015em',
             color: 'var(--ink)',
-          }}>How it works for homeowners</h2>
+          }}>{t('How it works for homeowners', 'Cómo funciona para propietarios')}</h2>
         </div>
         <div style={{
           position: 'relative',
@@ -323,12 +349,12 @@ const HomeownerSteps = () => {
                 fontSize: 17, fontWeight: 700,
                 letterSpacing: '-0.005em', color: 'var(--ink)',
                 textTransform: 'uppercase',
-              }}>{s.t}</h3>
+              }}>{t(s.title)}</h3>
               <p className="mono" style={{
                 margin: '0 auto', maxWidth: 280,
                 fontSize: 12.5, lineHeight: 1.6,
                 color: 'var(--charcoal)',
-              }}>{s.body}</p>
+              }}>{t(s.body)}</p>
             </div>
           ))}
         </div>
@@ -339,7 +365,9 @@ const HomeownerSteps = () => {
 
 /* ───── Popular fence styles for homes (uses same 5 photo cards as homepage) ───── */
 
-const HomeownerStylePicker = () => (
+const HomeownerStylePicker = () => {
+  const t = useT();
+  return (
   <section style={{ background: 'var(--white)', padding: '88px 0' }}>
     <div className="container">
       <div style={{
@@ -357,15 +385,15 @@ const HomeownerStylePicker = () => (
             textTransform: 'uppercase',
             marginBottom: 18,
           }}>
-            <span>02 — Styles</span>
+            <span>{t('02 — Styles', '02 — Estilos')}</span>
             <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
           </div>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3vw, 40px)',
             lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800,
           }}>
-            Find the style<br/>
-            <span style={{ color: 'var(--tangerine)' }}>that fits your home.</span>
+            {t('Find the style', 'Encuentra el estilo')}<br/>
+            <span style={{ color: 'var(--tangerine)' }}>{t('that fits your home.', 'que va con tu hogar.')}</span>
           </h2>
         </div>
         <div style={{
@@ -377,7 +405,10 @@ const HomeownerStylePicker = () => (
             color: 'var(--charcoal)',
             textAlign: 'right',
           }}>
-            Five residential systems we manufacture in-house — pick the one that matches your priorities for privacy, pool-code, curb appeal or pet containment.
+            {t(
+              'Five residential systems we manufacture in-house — pick the one that matches your priorities for privacy, pool-code, curb appeal or pet containment.',
+              'Cinco sistemas residenciales que fabricamos en planta — elige el que mejor encaja con tus prioridades: privacidad, código de piscinas, estética o contener mascotas.'
+            )}
           </p>
           <a href="products.html" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -387,7 +418,7 @@ const HomeownerStylePicker = () => (
             borderBottom: '1px solid var(--ink)',
             paddingBottom: 4,
           }}>
-            Full catalog
+            {t('Full catalog', 'Catálogo completo')}
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
             </svg>
@@ -407,11 +438,13 @@ const HomeownerStylePicker = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 /* ───── Two cards: Certified Installer Alliance + What You Get ───── */
 
 const HomeownerInstallerSplit = () => {
+  const t = useT();
   const HoverCard = ({ children, theme, ...rest }) => {
     const dark = theme === 'dark';
     return (
@@ -440,11 +473,11 @@ const HomeownerInstallerSplit = () => {
             display: 'inline-block', marginBottom: 16,
             fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
             color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>03 — Installation</span>
+          }}>{t('03 — Installation', '03 — Instalación')}</span>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
             lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
-          }}>WFS supplies. Certified installers build.</h2>
+          }}>{t('WFS supplies. Certified installers build.', 'WFS suministra. Instaladores certificados construyen.')}</h2>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, maxWidth: 1200, margin: '0 auto', alignItems: 'stretch' }}>
           {/* Left — Certified Installer Alliance (white) */}
@@ -458,7 +491,7 @@ const HomeownerInstallerSplit = () => {
                 padding: '6px 12px',
                 background: 'var(--ink)', color: 'var(--white)',
                 fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
-              }}>Alliance</span>
+              }}>{t('Alliance', 'Alianza')}</span>
               <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/>
                 <path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/>
@@ -468,24 +501,27 @@ const HomeownerInstallerSplit = () => {
               margin: '0 0 18px',
               fontSize: 'clamp(22px, 2.2vw, 30px)',
               lineHeight: 1.05, letterSpacing: '-0.01em',
-            }}>Certified Installer Alliance</h3>
+            }}>{t('Certified Installer Alliance', 'Alianza de Instaladores Certificados')}</h3>
             <p className="mono" style={{
               margin: '0 0 26px',
               fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
             }}>
-              WFS does not offer DIY installation. We connect homeowners with certified installation partners who know our products, hardware, and finish standards.
+              {t(
+                'WFS does not offer DIY installation. We connect homeowners with certified installation partners who know our products, hardware, and finish standards.',
+                'WFS no ofrece instalación DIY. Conectamos a propietarios con socios instaladores certificados que conocen nuestros productos, hardware y estándares de acabado.'
+              )}
             </p>
             <ul style={{ listStyle: 'none', margin: '0 0 32px', padding: 0, display: 'grid', gap: 12 }}>
               {[
-                'WFS-aligned independent installers',
-                'Product-aware installation practices',
-                'Clean handoff from quote to installation',
-              ].map(line => (
-                <li key={line} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                { EN: 'WFS-aligned independent installers',     ES: 'Instaladores independientes alineados con WFS' },
+                { EN: 'Product-aware installation practices',   ES: 'Prácticas de instalación conscientes del producto' },
+                { EN: 'Clean handoff from quote to installation', ES: 'Transición limpia de cotización a instalación' },
+              ].map((line, i) => (
+                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
                     <path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span className="mono" style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--ink)' }}>{line}</span>
+                  <span className="mono" style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--ink)' }}>{t(line)}</span>
                 </li>
               ))}
             </ul>
@@ -495,7 +531,7 @@ const HomeownerInstallerSplit = () => {
               background: 'var(--ink)', color: 'var(--white)',
               fontFamily: 'var(--sans)', fontSize: 12.5, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
-            }}>Find an Installer</a>
+            }}>{t('Find an Installer', 'Encontrar instalador')}</a>
           </HoverCard>
 
           {/* Right — What You Get (black) */}
@@ -509,7 +545,7 @@ const HomeownerInstallerSplit = () => {
                 padding: '6px 12px',
                 background: 'var(--tangerine)', color: 'var(--ink)',
                 fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
-              }}>What you get</span>
+              }}>{t('What you get', 'Qué obtienes')}</span>
               <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <circle cx="12" cy="12" r="9" strokeDasharray="2 1.5"/>
                 <path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round" strokeDasharray="0"/>
@@ -519,26 +555,29 @@ const HomeownerInstallerSplit = () => {
               margin: '0 0 18px',
               fontSize: 'clamp(22px, 2.2vw, 30px)',
               lineHeight: 1.05, letterSpacing: '-0.01em',
-            }}>Spec-aligned outcomes</h3>
+            }}>{t('Spec-aligned outcomes', 'Resultados alineados a especificaciones')}</h3>
             <p className="mono" style={{
               margin: '0 0 26px',
               fontSize: 13, lineHeight: 1.7,
               color: 'rgba(255,255,255,0.7)',
             }}>
-              Your installer stays independent, but the project stays aligned with WFS material specs, fabrication details, and finish expectations.
+              {t(
+                'Your installer stays independent, but the project stays aligned with WFS material specs, fabrication details, and finish expectations.',
+                'Tu instalador es independiente, pero el proyecto se mantiene alineado con las especificaciones de material, detalles de fabricación y acabados de WFS.'
+              )}
             </p>
             <ul style={{ listStyle: 'none', margin: '0 0 32px', padding: 0, display: 'grid', gap: 12 }}>
               {[
-                ['Local crews familiar with WFS systems',
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 19 Q9 14 15 19"/><path d="M14 18 Q17.5 15 21 18"/></svg>],
-                ['Installation practices that support warranty-friendly outcomes',
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg>],
-                ['Certified partners for residential and gate projects',
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="4" y="6" width="16" height="14" rx="1"/><line x1="4" y1="10" x2="20" y2="10"/><path d="M8 14 L11 17 L17 12" strokeLinecap="round" strokeLinejoin="round"/></svg>],
-              ].map(([line, icon], i) => (
+                { line: { EN: 'Local crews familiar with WFS systems', ES: 'Cuadrillas locales familiarizadas con los sistemas WFS' },
+                  icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 19 Q9 14 15 19"/><path d="M14 18 Q17.5 15 21 18"/></svg> },
+                { line: { EN: 'Installation practices that support warranty-friendly outcomes', ES: 'Prácticas de instalación que respaldan la cobertura de garantía' },
+                  icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg> },
+                { line: { EN: 'Certified partners for residential and gate projects', ES: 'Socios certificados para proyectos residenciales y de portones' },
+                  icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="4" y="6" width="16" height="14" rx="1"/><line x1="4" y1="10" x2="20" y2="10"/><path d="M8 14 L11 17 L17 12" strokeLinecap="round" strokeLinejoin="round"/></svg> },
+              ].map((b, i) => (
                 <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                  <span style={{ flexShrink: 0, marginTop: 1, color: 'var(--tangerine)' }}>{icon}</span>
-                  <span className="mono" style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--white)' }}>{line}</span>
+                  <span style={{ flexShrink: 0, marginTop: 1, color: 'var(--tangerine)' }}>{b.icon}</span>
+                  <span className="mono" style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--white)' }}>{t(b.line)}</span>
                 </li>
               ))}
             </ul>
@@ -548,7 +587,7 @@ const HomeownerInstallerSplit = () => {
               background: 'var(--white)', color: 'var(--ink)',
               fontFamily: 'var(--sans)', fontSize: 12.5, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
-            }}>Request Your Quote</a>
+            }}>{t('Request Your Quote', 'Solicita tu cotización')}</a>
           </HoverCard>
         </div>
       </div>
@@ -558,7 +597,9 @@ const HomeownerInstallerSplit = () => {
 
 /* ───── Homeowner testimonial / quote block ───── */
 
-const HomeownerTestimonial = () => (
+const HomeownerTestimonial = () => {
+  const t = useT();
+  return (
   <section style={{ background: 'var(--white)', padding: '96px 0' }}>
     <div className="container" style={{ maxWidth: 1200 }}>
       <div style={{
@@ -571,17 +612,20 @@ const HomeownerTestimonial = () => (
             display: 'inline-block', marginBottom: 18,
             fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
             color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>04 — Real homeowners</span>
+          }}>{t('04 — Real homeowners', '04 — Propietarios reales')}</span>
           <h2 className="display" style={{
             margin: '0 0 24px',
             fontSize: 'clamp(26px, 3vw, 36px)',
             lineHeight: 1.05, letterSpacing: '-0.015em', color: 'var(--ink)',
-          }}>From sketch to<br/>finished fence.</h2>
+          }}>{t('From sketch to', 'Del boceto')}<br/>{t('finished fence.', 'a la cerca terminada.')}</h2>
           <p className="mono" style={{
             margin: 0, fontSize: 13, lineHeight: 1.7,
             color: 'var(--charcoal)', maxWidth: 320,
           }}>
-            One project, three stages. The same WFS rep stayed on the order from first quote to final pickup.
+            {t(
+              'One project, three stages. The same WFS rep stayed on the order from first quote to final pickup.',
+              'Un proyecto, tres etapas. El mismo representante WFS acompañó el pedido desde la primera cotización hasta la entrega final.'
+            )}
           </p>
         </div>
 
@@ -604,7 +648,10 @@ const HomeownerTestimonial = () => (
             fontSize: 17, lineHeight: 1.55, color: 'var(--ink)',
             fontWeight: 500,
           }}>
-            We sent a phone-photo sketch on a Monday, had a stamped quote Tuesday, and the panels were on the trailer by Friday. The installer they paired us with knew the exact post-spacing for our windload zone.
+            {t(
+              'We sent a phone-photo sketch on a Monday, had a stamped quote Tuesday, and the panels were on the trailer by Friday. The installer they paired us with knew the exact post-spacing for our windload zone.',
+              'Enviamos un boceto desde el celular el lunes, tuvimos cotización sellada el martes y los paneles estaban en el camión el viernes. El instalador que nos asignaron sabía el espaciado exacto de postes para nuestra zona de carga eólica.'
+            )}
           </p>
           <div style={{
             display: 'flex', alignItems: 'center', gap: 16,
@@ -625,7 +672,7 @@ const HomeownerTestimonial = () => (
                 marginTop: 4, fontSize: 10.5, fontWeight: 700,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--charcoal)',
-              }}>Cape Coral · 186 LF vinyl + 2 gates</div>
+              }}>{t('Cape Coral · 186 LF vinyl + 2 gates', 'Cape Coral · 186 PL vinilo + 2 portones')}</div>
             </div>
             {/* Star rating */}
             <div style={{ marginLeft: 'auto', display: 'flex', gap: 3 }}>
@@ -640,20 +687,30 @@ const HomeownerTestimonial = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 /* ───── Homeowner-specific FAQ ───── */
 
 const HomeownerFAQ = () => {
+  const t = useT();
   const items = [
-    ['Do I need a permit for my fence?',
-      'Most Florida counties require a permit for fences over 4 ft, and pool barriers always require code-compliant permits. Your installer typically handles the filing — we provide the manufacturer specs and stamped wind-load data for AHJ submission.'],
-    ['Does WFS handle HOA approvals?',
-      'We don\'t submit on your behalf, but we provide every document your HOA needs: profile drawings, color samples, finish specs and a written quote in the format most boards expect. Your installer or a community manager submits.'],
-    ['What is the lead time for orders?',
-      'Stocked items ship in 1–2 days. Custom welded gates run 3–7 days. Color-matched or non-stock heights take 2–4 weeks. We confirm the exact lead time before you approve the quote.'],
-    ['How do I connect with a certified installer?',
-      'When you request a quote we route your project to the closest WFS-aligned installer in our certified alliance. They quote the labor side; the material side stays on your WFS line item.'],
+    [{ EN: 'Do I need a permit for my fence?',
+        ES: '¿Necesito permiso para mi cerca?' },
+     { EN: 'Most Florida counties require a permit for fences over 4 ft, and pool barriers always require code-compliant permits. Your installer typically handles the filing — we provide the manufacturer specs and stamped wind-load data for AHJ submission.',
+       ES: 'La mayoría de condados de Florida exigen permiso para cercas de más de 4 pies, y los cerramientos de piscina siempre requieren permisos según código. Tu instalador suele encargarse del trámite — nosotros proveemos las specs del fabricante y datos sellados de carga eólica para la presentación AHJ.' }],
+    [{ EN: 'Does WFS handle HOA approvals?',
+        ES: '¿WFS gestiona aprobaciones del HOA?' },
+     { EN: "We don't submit on your behalf, but we provide every document your HOA needs: profile drawings, color samples, finish specs and a written quote in the format most boards expect. Your installer or a community manager submits.",
+       ES: 'No presentamos por ti, pero proveemos cada documento que tu HOA necesita: dibujos de perfil, muestras de color, specs de acabado y una cotización por escrito en el formato que la mayoría de juntas espera. Tu instalador o un community manager presenta.' }],
+    [{ EN: 'What is the lead time for orders?',
+        ES: '¿Cuál es el tiempo de entrega de los pedidos?' },
+     { EN: 'Stocked items ship in 1–2 days. Custom welded gates run 3–7 days. Color-matched or non-stock heights take 2–4 weeks. We confirm the exact lead time before you approve the quote.',
+       ES: 'Los artículos en stock se envían en 1–2 días. Los portones soldados a medida toman 3–7 días. Colores específicos o alturas fuera de stock toman 2–4 semanas. Confirmamos el plazo exacto antes de que apruebes la cotización.' }],
+    [{ EN: 'How do I connect with a certified installer?',
+        ES: '¿Cómo me conecto con un instalador certificado?' },
+     { EN: 'When you request a quote we route your project to the closest WFS-aligned installer in our certified alliance. They quote the labor side; the material side stays on your WFS line item.',
+       ES: 'Cuando solicitas cotización, enrutamos tu proyecto al instalador alineado con WFS más cercano dentro de nuestra alianza certificada. Ellos cotizan la mano de obra; el material queda en tu línea WFS.' }],
   ];
   const [open, setOpen] = React.useState(1);
   return (
@@ -666,18 +723,21 @@ const HomeownerFAQ = () => {
               display: 'inline-block', marginBottom: 18,
               fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
               color: 'var(--tangerine)', textTransform: 'uppercase',
-            }}>05 — FAQ</span>
+            }}>{t('05 — FAQ', '05 — Preguntas frecuentes')}</span>
             <h2 className="display" style={{
               margin: '0 0 24px',
               fontSize: 'clamp(28px, 3vw, 40px)',
               lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
-            }}>Common homeowner<br/>questions</h2>
+            }}>{t('Common homeowner', 'Preguntas comunes de')}<br/>{t('questions', 'propietarios')}</h2>
             <p className="mono" style={{
               margin: '0 0 32px',
               fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
               maxWidth: 320,
             }}>
-              The four we hear most often. If yours isn't here, call the yard or send a sketch.
+              {t(
+                "The four we hear most often. If yours isn't here, call the yard or send a sketch.",
+                'Las cuatro que más recibimos. Si la tuya no está aquí, llama a la sucursal o envíanos un boceto.'
+              )}
             </p>
             <div style={{
               border: '1.5px solid var(--ink)',
@@ -692,7 +752,7 @@ const HomeownerFAQ = () => {
                 display: 'flex', alignItems: 'center', gap: 8,
               }}>
                 <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 0 3px rgba(34,197,94,0.25)' }}/>
-                Still got questions?
+                {t('Still got questions?', '¿Aún tienes preguntas?')}
               </div>
               <a href="tel:2396895496" className="display" style={{
                 display: 'block', marginBottom: 8,
@@ -707,7 +767,7 @@ const HomeownerFAQ = () => {
                 borderTop: '1px solid rgba(26,37,72,0.1)',
                 fontSize: 10.5, letterSpacing: '0.18em',
                 textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 700,
-              }}>Mon–Fri · 7am–4pm EST</div>
+              }}>{t('Mon–Fri · 7am–4pm EST', 'Lun–Vie · 7am–4pm EST')}</div>
             </div>
           </div>
 
@@ -734,7 +794,7 @@ const HomeownerFAQ = () => {
                       }}>{String(i + 1).padStart(2, '0')}</span>
                       <span className="mono" style={{
                         fontSize: 13.5, fontWeight: 700, color: 'var(--ink)',
-                      }}>{q}</span>
+                      }}>{t(q)}</span>
                     </span>
                     <span style={{
                       flexShrink: 0,
@@ -751,7 +811,7 @@ const HomeownerFAQ = () => {
                     <p className="mono" style={{
                       margin: 0, padding: '0 26px 22px 64px',
                       fontSize: 12.5, lineHeight: 1.7, color: 'var(--charcoal)',
-                    }}>{a}</p>
+                    }}>{t(a)}</p>
                   </div>
                 </div>
               );
@@ -765,7 +825,9 @@ const HomeownerFAQ = () => {
 
 /* ───── Closing CTA band ───── */
 
-const HomeownerClosingCTA = () => (
+const HomeownerClosingCTA = () => {
+  const t = useT();
+  return (
   <section style={{
     background: 'var(--ink)', color: 'var(--white)',
     padding: '88px 0',
@@ -788,20 +850,23 @@ const HomeownerClosingCTA = () => (
           display: 'inline-block', marginBottom: 18,
           fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
           color: 'var(--tangerine)', textTransform: 'uppercase',
-        }}>Ready to start?</span>
+        }}>{t('Ready to start?', '¿Listo para empezar?')}</span>
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(32px, 4vw, 56px)',
           lineHeight: 1, letterSpacing: '-0.02em', color: 'var(--white)',
         }}>
-          Send a sketch.<br/>
-          <span style={{ color: 'var(--tangerine)' }}>Quote in 24 hours.</span>
+          {t('Send a sketch.', 'Envía un boceto.')}<br/>
+          <span style={{ color: 'var(--tangerine)' }}>{t('Quote in 24 hours.', 'Cotización en 24 horas.')}</span>
         </h2>
         <p className="mono" style={{
           margin: '22px 0 0', maxWidth: 520,
           fontSize: 13, lineHeight: 1.7,
           color: 'rgba(255,255,255,0.7)',
         }}>
-          Linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery — and routes the labor side to a certified installer near you.
+          {t(
+            'Linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery — and routes the labor side to a certified installer near you.',
+            'Pies lineales, altura, número de portones y código postal. Un representante sigue el pedido desde cotización hasta recogida o entrega — y enruta la mano de obra a un instalador certificado cercano.'
+          )}
         </p>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14, alignItems: 'stretch' }}>
@@ -811,7 +876,7 @@ const HomeownerClosingCTA = () => (
           background: 'var(--tangerine)', color: 'var(--white)',
           fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
           letterSpacing: '0.18em', textTransform: 'uppercase',
-        }}>Get a Quote</a>
+        }}>{t('Get a Quote', 'Cotizar')}</a>
         <a href="tel:2396895496" style={{
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
           padding: '18px 28px',
@@ -819,11 +884,12 @@ const HomeownerClosingCTA = () => (
           border: '1.5px solid rgba(255,255,255,0.5)',
           fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
           letterSpacing: '0.18em', textTransform: 'uppercase',
-        }}>Call (239) 689-5496</a>
+        }}>{t('Call (239) 689-5496', 'Llamar (239) 689-5496')}</a>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const HomeownerPage = () => (
   <>
@@ -842,7 +908,9 @@ const HomeownerPage = () => (
 
 /* ───────────────────────────── CONTRACTOR ───────────────────────────── */
 
-const ContractorHero = () => (
+const ContractorHero = () => {
+  const t = useT();
+  return (
   <section style={{
     background: 'var(--ink)', color: 'var(--white)',
     minHeight: 'calc(100svh - 80px)',
@@ -878,7 +946,7 @@ const ContractorHero = () => (
             marginBottom: 24,
           }}>
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-            Wholesale Partner Program · Florida
+            {t('Wholesale Partner Program · Florida', 'Programa de Socio Mayorista · Florida')}
           </span>
           <h1 className="display" style={{
             margin: '0 0 22px',
@@ -886,8 +954,8 @@ const ContractorHero = () => (
             lineHeight: 0.96, letterSpacing: '-0.025em',
             color: 'var(--white)',
           }}>
-            Build with the<br/>
-            <span style={{ color: 'var(--tangerine)' }}>manufacturer.</span>
+            {t('Build with the', 'Construye con el')}<br/>
+            <span style={{ color: 'var(--tangerine)' }}>{t('manufacturer.', 'fabricante.')}</span>
           </h1>
           <p className="mono" style={{
             margin: '0 0 26px',
@@ -895,7 +963,10 @@ const ContractorHero = () => (
             fontSize: 14, lineHeight: 1.65,
             color: 'rgba(255,255,255,0.72)',
           }}>
-            Partner with Southwest Florida's leading fence manufacturer. Wholesale pricing tiers, priority fabrication, and job-site delivery — without an out-of-state distributor in the middle.
+            {t(
+              "Partner with Southwest Florida's leading fence manufacturer. Wholesale pricing tiers, priority fabrication, and job-site delivery — without an out-of-state distributor in the middle.",
+              'Asóciate con el fabricante líder de cercas del suroeste de Florida. Niveles de precio mayorista, fabricación prioritaria y entrega a obra — sin distribuidor de otro estado en medio.'
+            )}
           </p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 26 }}>
             <a href="estimate.html" style={{
@@ -909,7 +980,7 @@ const ContractorHero = () => (
             }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px, -2px)'; e.currentTarget.style.boxShadow = '8px 8px 0 rgba(255,255,255,0.22)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '6px 6px 0 rgba(255,255,255,0.18)'; }}>
-              Contact Wholesale Team
+              {t('Contact Wholesale Team', 'Contactar al equipo mayorista')}
             </a>
             <a href="resources.html" style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
@@ -918,7 +989,7 @@ const ContractorHero = () => (
               border: '1.5px solid rgba(255,255,255,0.5)',
               fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
-            }}>Request Price List</a>
+            }}>{t('Request Price List', 'Solicitar lista de precios')}</a>
           </div>
           {/* Trust micro-bullets */}
           <div className="mono" style={{
@@ -926,12 +997,16 @@ const ContractorHero = () => (
             fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em',
             textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)',
           }}>
-            {['No application fee', 'Volume tiers', 'Net terms available'].map((t) => (
-              <span key={t} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+            {[
+              { EN: 'No application fee',   ES: 'Sin costo de aplicación' },
+              { EN: 'Volume tiers',          ES: 'Niveles por volumen' },
+              { EN: 'Net terms available',   ES: 'Términos Net disponibles' },
+            ].map((b, i) => (
+              <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-                {t}
+                {t(b)}
               </span>
             ))}
           </div>
@@ -961,31 +1036,31 @@ const ContractorHero = () => (
                 padding: '6px 12px',
                 background: 'var(--ink)', color: 'var(--white)',
                 fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
-              }}>Partner ID · 0042</span>
+              }}>{t('Partner ID · 0042', 'ID Socio · 0042')}</span>
               <span className="mono" style={{
                 fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
                 color: 'var(--charcoal)', textTransform: 'uppercase',
-              }}>FY '26 · Active</span>
+              }}>{t("FY '26 · Active", "AF '26 · Activo")}</span>
             </div>
 
             <div className="mono" style={{
               fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
               color: 'var(--tangerine)', textTransform: 'uppercase',
               marginBottom: 8,
-            }}>Volume tier — example</div>
+            }}>{t('Volume tier — example', 'Nivel por volumen — ejemplo')}</div>
             <div className="display" style={{
               fontSize: 28, lineHeight: 1, color: 'var(--ink)',
               letterSpacing: '-0.015em', marginBottom: 18,
-            }}>Pro · 18 – 22%</div>
+            }}>{t('Pro · 18 – 22%', 'Pro · 18 – 22%')}</div>
 
             {/* Stat grid */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14, marginBottom: 22 }}>
               {[
-                ['MTD LF', '4,820'],
-                ['Open POs', '7'],
-                ['On-time', '98%'],
-              ].map(([k, v]) => (
-                <div key={k} style={{
+                [{ EN: 'MTD LF',   ES: 'PL del mes' },     '4,820'],
+                [{ EN: 'Open POs', ES: 'Órdenes abiertas' }, '7'],
+                [{ EN: 'On-time',  ES: 'A tiempo' },        '98%'],
+              ].map(([k, v], i) => (
+                <div key={i} style={{
                   borderLeft: '2px solid var(--tangerine)',
                   paddingLeft: 10,
                 }}>
@@ -996,7 +1071,7 @@ const ContractorHero = () => (
                   <div className="mono" style={{
                     marginTop: 4, fontSize: 9.5, fontWeight: 700, letterSpacing: '0.18em',
                     textTransform: 'uppercase', color: 'var(--charcoal)',
-                  }}>{k}</div>
+                  }}>{t(k)}</div>
                 </div>
               ))}
             </div>
@@ -1006,7 +1081,7 @@ const ContractorHero = () => (
               fontSize: 9.5, fontWeight: 700, letterSpacing: '0.2em',
               color: 'var(--charcoal)', textTransform: 'uppercase',
               marginBottom: 10,
-            }}>Next tier — Elite at 8,000 LF</div>
+            }}>{t('Next tier — Elite at 8,000 LF', 'Próximo nivel — Elite a 8,000 PL')}</div>
             <div style={{
               height: 8, background: '#eef0f4',
               border: '1px solid rgba(26,37,72,0.1)',
@@ -1024,10 +1099,10 @@ const ContractorHero = () => (
               fontSize: 10.5, fontWeight: 700, letterSpacing: '0.18em',
               textTransform: 'uppercase', color: 'var(--ink)',
             }}>
-              <span>Next drop · Wed</span>
+              <span>{t('Next drop · Wed', 'Próxima entrega · Mié')}</span>
               <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                 <span style={{ width: 7, height: 7, borderRadius: '50%', background: '#22c55e' }}/>
-                Scheduled
+                {t('Scheduled', 'Programada')}
               </span>
             </div>
           </div>
@@ -1035,9 +1110,12 @@ const ContractorHero = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
-const ContractorStatsStrip = () => (
+const ContractorStatsStrip = () => {
+  const t = useT();
+  return (
   <section style={{
     background: 'var(--white)',
     borderBottom: '1px solid rgba(26,37,72,0.1)',
@@ -1046,63 +1124,71 @@ const ContractorStatsStrip = () => (
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
         {[
-          ['18–28%', 'Wholesale margin tiers'],
-          ['72h',    'Avg priority fabrication'],
-          ['Free',   'Job-site drops · in-county'],
-          ['$0',     'Application fee'],
+          ['18–28%', { EN: 'Wholesale margin tiers',     ES: 'Niveles de margen mayorista' }],
+          ['72h',    { EN: 'Avg priority fabrication',   ES: 'Fabricación prioritaria promedio' }],
+          [{ EN: 'Free', ES: 'Gratis' }, { EN: 'Job-site drops · in-county', ES: 'Entregas a obra · mismo condado' }],
+          ['$0',     { EN: 'Application fee',             ES: 'Costo de aplicación' }],
         ].map(([n, l], i) => (
-          <div key={l} style={{
+          <div key={i} style={{
             paddingLeft: i === 0 ? 0 : 24,
             borderLeft: i === 0 ? 'none' : '1px solid rgba(26,37,72,0.1)',
           }}>
             <div className="display" style={{
               fontSize: 'clamp(28px, 3.2vw, 42px)', lineHeight: 1,
               color: 'var(--ink)', letterSpacing: '-0.02em',
-            }}>{n}</div>
+            }}>{typeof n === 'string' ? n : t(n)}</div>
             <div className="mono" style={{
               marginTop: 10, fontSize: 11, letterSpacing: '0.18em',
               textTransform: 'uppercase', color: 'var(--charcoal)',
               fontWeight: 700,
-            }}>{l}</div>
+            }}>{t(l)}</div>
           </div>
         ))}
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const ContractorBenefits = () => {
+  const t = useT();
   const benefits = [
     {
-      title: 'Factory Direct Pricing',
-      body: 'Maximize your margins with true wholesale pricing tiered to your volume — no out-of-state distributor markup.',
+      title: { EN: 'Factory Direct Pricing', ES: 'Precios directos de fábrica' },
+      body:  { EN: 'Maximize your margins with true wholesale pricing tiered to your volume — no out-of-state distributor markup.',
+                ES: 'Maximiza tus márgenes con precios mayoristas reales escalonados por volumen — sin recargo de distribuidor de otro estado.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21 V11 L9 14 V11 L15 14 V11 L21 14 V21 Z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>),
       highlighted: true,
     },
     {
-      title: 'Priority Fabrication',
-      body: 'Skip the line. Wholesale partners get priority manufacturing slots and 72-hour standard turnaround on gates.',
+      title: { EN: 'Priority Fabrication', ES: 'Fabricación prioritaria' },
+      body:  { EN: 'Skip the line. Wholesale partners get priority manufacturing slots and 72-hour standard turnaround on gates.',
+                ES: 'Sáltate la fila. Los socios mayoristas obtienen turnos prioritarios de fabricación y entrega estándar de 72 horas en portones.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>),
     },
     {
-      title: 'Job Site Delivery',
-      body: 'Unbranded or branded drops directly to your job site. Curbside, will-call, or LTL — your choice per PO.',
+      title: { EN: 'Job Site Delivery', ES: 'Entrega a obra' },
+      body:  { EN: 'Unbranded or branded drops directly to your job site. Curbside, will-call, or LTL — your choice per PO.',
+                ES: 'Entregas con o sin tu marca, directo a tu obra. Banqueta, recoge en planta o LTL — tú decides en cada orden.' },
       svg: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21 Q4 14 4 9 A8 8 0 0 1 20 9 Q20 14 12 21 Z"/><circle cx="12" cy="9.5" r="2.6"/></svg>),
     },
     {
-      title: 'Lead Routing',
-      body: 'We refer homeowner projects directly to certified installer partners in the alliance, with the WFS material line locked in.',
+      title: { EN: 'Lead Routing', ES: 'Enrutamiento de leads' },
+      body:  { EN: 'We refer homeowner projects directly to certified installer partners in the alliance, with the WFS material line locked in.',
+                ES: 'Referimos proyectos de propietarios directamente a socios instaladores certificados de la alianza, con la línea de material WFS asegurada.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 19 Q9 14 15 19"/><path d="M14 18 Q17.5 15 21 18"/></svg>),
     },
     {
-      title: 'Net 30 Terms',
-      body: 'Flexible payment terms available for qualified high-volume partners after a short trade-reference review.',
+      title: { EN: 'Net 30 Terms', ES: 'Términos Net 30' },
+      body:  { EN: 'Flexible payment terms available for qualified high-volume partners after a short trade-reference review.',
+                ES: 'Términos de pago flexibles disponibles para socios de alto volumen calificados, tras una breve revisión de referencias comerciales.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="6" width="18" height="13" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><rect x="6" y="14" width="4" height="2" rx="0.4" fill="currentColor"/></svg>),
       highlighted: true,
     },
     {
-      title: 'Dedicated Rep',
-      body: 'One named contractor account rep. Order by phone, email, or in-yard — same person from RFQ through PO close-out.',
+      title: { EN: 'Dedicated Rep', ES: 'Representante dedicado' },
+      body:  { EN: 'One named contractor account rep. Order by phone, email, or in-yard — same person from RFQ through PO close-out.',
+                ES: 'Un representante asignado a tu cuenta. Ordena por teléfono, email o en la sucursal — la misma persona desde la RFQ hasta el cierre de la orden.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20 Q5 14 12 14 Q19 14 19 20"/></svg>),
     },
   ];
@@ -1114,18 +1200,18 @@ const ContractorBenefits = () => {
             display: 'inline-block', marginBottom: 16,
             fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
             color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>01 — Partner Benefits</span>
+          }}>{t('01 — Partner Benefits', '01 — Beneficios del socio')}</span>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
             lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
-          }}>Why partner with WFS</h2>
+          }}>{t('Why partner with WFS', 'Por qué asociarte con WFS')}</h2>
         </div>
         <div style={{
           display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
           gap: 18, maxWidth: 1200, margin: '0 auto',
         }}>
-          {benefits.map(b => (
-            <article key={b.title} style={{
+          {benefits.map((b, i) => (
+            <article key={i} style={{
               position: 'relative',
               border: '1.5px solid var(--ink)',
               background: b.highlighted ? 'var(--ink)' : 'var(--white)',
@@ -1143,7 +1229,7 @@ const ContractorBenefits = () => {
                   background: 'var(--tangerine)', color: 'var(--white)',
                   fontSize: 9, fontWeight: 700, letterSpacing: '0.2em',
                   textTransform: 'uppercase',
-                }}>Top ask</span>
+                }}>{t('Top ask', 'Más solicitado')}</span>
               )}
               <div style={{ marginBottom: 30, color: b.highlighted ? 'var(--tangerine)' : 'var(--ink)' }}>{b.svg}</div>
               <h3 style={{
@@ -1152,11 +1238,11 @@ const ContractorBenefits = () => {
                 letterSpacing: '-0.005em',
                 color: b.highlighted ? 'var(--white)' : 'var(--ink)',
                 textTransform: 'uppercase',
-              }}>{b.title}</h3>
+              }}>{t(b.title)}</h3>
               <p className="mono" style={{
                 margin: 0, fontSize: 12.5, lineHeight: 1.65,
                 color: b.highlighted ? 'rgba(255,255,255,0.72)' : 'var(--charcoal)',
-              }}>{b.body}</p>
+              }}>{t(b.body)}</p>
             </article>
           ))}
         </div>
@@ -1168,25 +1254,30 @@ const ContractorBenefits = () => {
 /* ───── How partnership works — 4 steps ───── */
 
 const ContractorHowItWorks = () => {
+  const t = useT();
   const steps = [
     {
-      n: '01', t: 'Apply',
-      body: 'Send your business info, trade refs, and an idea of monthly LF. No fee, no commitment.',
+      n: '01', title: { EN: 'Apply', ES: 'Aplica' },
+      body: { EN: 'Send your business info, trade refs, and an idea of monthly LF. No fee, no commitment.',
+               ES: 'Envía la info de tu empresa, referencias comerciales y una idea de tu volumen mensual. Sin costo, sin compromiso.' },
       svg: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3 H15 L19 7 V21 H7 Z"/><path d="M15 3 V7 H19"/><line x1="9" y1="12" x2="17" y2="12"/><line x1="9" y1="15" x2="17" y2="15"/></svg>),
     },
     {
-      n: '02', t: 'Get Approved',
-      body: 'We review and confirm your starter tier within 5 business days. Tax-exempt setup included.',
+      n: '02', title: { EN: 'Get Approved', ES: 'Aprobación' },
+      body: { EN: 'We review and confirm your starter tier within 5 business days. Tax-exempt setup included.',
+               ES: 'Revisamos y confirmamos tu nivel inicial en 5 días hábiles. Configuración exenta de impuestos incluida.' },
       svg: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10"/></svg>),
     },
     {
-      n: '03', t: 'Order & Build',
-      body: 'Phone, email, or in-yard. Same rep on every PO. Job-site delivery or will-call from FM or PC.',
+      n: '03', title: { EN: 'Order & Build', ES: 'Ordena y construye' },
+      body: { EN: 'Phone, email, or in-yard. Same rep on every PO. Job-site delivery or will-call from FM or PC.',
+               ES: 'Por teléfono, email o en la sucursal. El mismo representante en cada orden. Entrega a obra o recoge en FM o PC.' },
       svg: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>),
     },
     {
-      n: '04', t: 'Tier Up',
-      body: 'As your monthly LF grows, your margin tier and turnaround priority both step up automatically.',
+      n: '04', title: { EN: 'Tier Up', ES: 'Sube de nivel' },
+      body: { EN: 'As your monthly LF grows, your margin tier and turnaround priority both step up automatically.',
+               ES: 'A medida que tu volumen mensual crece, tu nivel de margen y prioridad de entrega suben automáticamente.' },
       svg: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 20 L10 14 L14 18 L20 6"/><path d="M14 6 L20 6 L20 12"/></svg>),
     },
   ];
@@ -1198,11 +1289,11 @@ const ContractorHowItWorks = () => {
             display: 'inline-block', marginBottom: 16,
             fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
             color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>02 — Process</span>
+          }}>{t('02 — Process', '02 — Proceso')}</span>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
             lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
-          }}>How partnership works</h2>
+          }}>{t('How partnership works', 'Cómo funciona la asociación')}</h2>
         </div>
         <div style={{
           position: 'relative',
@@ -1239,11 +1330,11 @@ const ContractorHowItWorks = () => {
               <h3 className="display" style={{
                 margin: '0 0 10px', fontSize: 18,
                 letterSpacing: '-0.005em', color: 'var(--ink)',
-              }}>{s.t}</h3>
+              }}>{t(s.title)}</h3>
               <p className="mono" style={{
                 margin: 0, fontSize: 12.5, lineHeight: 1.6,
                 color: 'var(--charcoal)',
-              }}>{s.body}</p>
+              }}>{t(s.body)}</p>
             </div>
           ))}
         </div>
@@ -1255,35 +1346,42 @@ const ContractorHowItWorks = () => {
 /* ───── What's in the wholesale kit — resources ───── */
 
 const ContractorWholesaleKit = () => {
+  const t = useT();
   const items = [
     {
-      title: 'Tiered Price List',
-      body: 'Bronze · Pro · Elite tier pricing for every active SKU, updated quarterly with FY rolls.',
+      title: { EN: 'Tiered Price List', ES: 'Lista de precios por niveles' },
+      body:  { EN: 'Bronze · Pro · Elite tier pricing for every active SKU, updated quarterly with FY rolls.',
+                ES: 'Precios Bronze · Pro · Elite para cada SKU activo, actualizados cada trimestre con cambio de año fiscal.' },
       svg: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3 H15 L19 7 V21 H7 Z"/><path d="M15 3 V7 H19"/><line x1="9" y1="12" x2="17" y2="12"/><line x1="9" y1="15" x2="17" y2="15"/><line x1="9" y1="18" x2="14" y2="18"/></svg>),
     },
     {
-      title: 'Spec Library',
-      body: 'PDF profile drawings, wind-load data, color samples — formatted for AHJ and HOA submission.',
+      title: { EN: 'Spec Library', ES: 'Biblioteca de specs' },
+      body:  { EN: 'PDF profile drawings, wind-load data, color samples — formatted for AHJ and HOA submission.',
+                ES: 'Dibujos de perfil en PDF, datos de carga eólica, muestras de color — formateados para presentación AHJ y HOA.' },
       svg: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>),
     },
     {
-      title: 'Co-branded Marketing',
-      body: 'White-label estimate templates and yard-sign artwork with your logo set against WFS material specs.',
+      title: { EN: 'Co-branded Marketing', ES: 'Marketing co-marcado' },
+      body:  { EN: 'White-label estimate templates and yard-sign artwork with your logo set against WFS material specs.',
+                ES: 'Plantillas de cotización white-label y arte para letreros de obra con tu logo sobre las specs de material WFS.' },
       svg: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="6" width="14" height="12" rx="1"/><path d="M17 10 L21 7 V17 L17 14 Z"/></svg>),
     },
     {
-      title: 'Job-Site Drops',
-      body: 'Branded or unbranded delivery. Real-time slot booking through your dedicated rep.',
+      title: { EN: 'Job-Site Drops', ES: 'Entregas en obra' },
+      body:  { EN: 'Branded or unbranded delivery. Real-time slot booking through your dedicated rep.',
+                ES: 'Entrega con o sin marca. Reserva de turno en tiempo real a través de tu representante dedicado.' },
       svg: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>),
     },
     {
-      title: 'Lead Pipeline',
-      body: 'Homeowner inquiries in your county routed straight to your inbox with the spec sheet attached.',
+      title: { EN: 'Lead Pipeline', ES: 'Pipeline de leads' },
+      body:  { EN: 'Homeowner inquiries in your county routed straight to your inbox with the spec sheet attached.',
+                ES: 'Consultas de propietarios en tu condado enviadas directamente a tu inbox con la hoja de specs adjunta.' },
       svg: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 4 H21 V20 H3 Z"/><path d="M3 4 L12 13 L21 4"/></svg>),
     },
     {
-      title: 'Training & Tech',
-      body: 'In-yard walkthroughs on new product lines, plus install-tech support for your crews when a job throws a curveball.',
+      title: { EN: 'Training & Tech', ES: 'Capacitación y soporte técnico' },
+      body:  { EN: 'In-yard walkthroughs on new product lines, plus install-tech support for your crews when a job throws a curveball.',
+                ES: 'Recorridos en sucursal de nuevas líneas de producto, más soporte técnico de instalación para tu cuadrilla cuando un trabajo se complica.' },
       svg: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 4 L21 9 L12 14 L3 9 Z"/><path d="M6 11 V16 Q12 19 18 16 V11"/></svg>),
     },
   ];
@@ -1299,17 +1397,20 @@ const ContractorWholesaleKit = () => {
               display: 'inline-block', marginBottom: 16,
               fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
               color: 'var(--tangerine)', textTransform: 'uppercase',
-            }}>03 — What you get</span>
+            }}>{t('03 — What you get', '03 — Qué obtienes')}</span>
             <h2 className="display" style={{
               margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
               lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
-            }}>The wholesale kit</h2>
+            }}>{t('The wholesale kit', 'El kit mayorista')}</h2>
           </div>
           <p className="mono" style={{
             margin: 0, maxWidth: 460, justifySelf: 'end', textAlign: 'right',
             fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
           }}>
-            Six things every active partner walks away with — not someday, on day one.
+            {t(
+              'Six things every active partner walks away with — not someday, on day one.',
+              'Seis cosas que todo socio activo se lleva — no algún día, el primer día.'
+            )}
           </p>
         </div>
         <div style={{
@@ -1318,7 +1419,7 @@ const ContractorWholesaleKit = () => {
           border: '1.5px solid var(--ink)',
         }}>
           {items.map((it, i) => (
-            <div key={it.title} style={{
+            <div key={i} style={{
               padding: '32px 30px 34px',
               borderRight: (i % 3 !== 2) ? '1.5px solid var(--ink)' : 'none',
               borderBottom: (i < 3) ? '1.5px solid var(--ink)' : 'none',
@@ -1340,11 +1441,11 @@ const ContractorWholesaleKit = () => {
               <h3 className="display" style={{
                 margin: '0 0 12px', fontSize: 17,
                 letterSpacing: '-0.005em', color: 'var(--ink)',
-              }}>{it.title}</h3>
+              }}>{t(it.title)}</h3>
               <p className="mono" style={{
                 margin: 0, fontSize: 12.5, lineHeight: 1.65,
                 color: 'var(--charcoal)',
-              }}>{it.body}</p>
+              }}>{t(it.body)}</p>
             </div>
           ))}
         </div>
@@ -1355,7 +1456,9 @@ const ContractorWholesaleKit = () => {
 
 /* ───── Contractor testimonial ───── */
 
-const ContractorTestimonial = () => (
+const ContractorTestimonial = () => {
+  const t = useT();
+  return (
   <section style={{ background: '#fafafa', padding: '96px 0' }}>
     <div className="container" style={{ maxWidth: 1200 }}>
       <div style={{
@@ -1368,17 +1471,20 @@ const ContractorTestimonial = () => (
             display: 'inline-block', marginBottom: 18,
             fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
             color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>04 — Partner voice</span>
+          }}>{t('04 — Partner voice', '04 — Voz del socio')}</span>
           <h2 className="display" style={{
             margin: '0 0 24px',
             fontSize: 'clamp(26px, 3vw, 36px)',
             lineHeight: 1.05, letterSpacing: '-0.015em', color: 'var(--ink)',
-          }}>What contractors<br/>tell us.</h2>
+          }}>{t('What contractors', 'Lo que los contratistas')}<br/>{t('tell us.', 'nos cuentan.')}</h2>
           <p className="mono" style={{
             margin: 0, fontSize: 13, lineHeight: 1.7,
             color: 'var(--charcoal)', maxWidth: 320,
           }}>
-            Two yards, one rep per account, and material that ships on the date the rep promised.
+            {t(
+              'Two yards, one rep per account, and material that ships on the date the rep promised.',
+              'Dos sucursales, un representante por cuenta, y material que se envía en la fecha que el representante prometió.'
+            )}
           </p>
         </div>
 
@@ -1399,7 +1505,10 @@ const ContractorTestimonial = () => (
             fontSize: 17, lineHeight: 1.55, color: 'var(--white)',
             fontWeight: 500,
           }}>
-            We were buying out of Tampa and eating two-week lead times. Switched to WFS direct and we're picking up gates on Wednesday that we quoted Monday. The margin step-up paid for the truck I bought last spring.
+            {t(
+              "We were buying out of Tampa and eating two-week lead times. Switched to WFS direct and we're picking up gates on Wednesday that we quoted Monday. The margin step-up paid for the truck I bought last spring.",
+              'Estábamos comprando desde Tampa y aguantando plazos de dos semanas. Nos cambiamos a WFS directo y ahora recogemos portones el miércoles que cotizamos el lunes. El incremento de margen pagó la camioneta que compré la primavera pasada.'
+            )}
           </p>
           <div style={{
             display: 'flex', alignItems: 'center', gap: 16,
@@ -1420,18 +1529,21 @@ const ContractorTestimonial = () => (
                 marginTop: 4, fontSize: 10.5, fontWeight: 700,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.6)',
-              }}>Fort Myers · Pro tier · since '23</div>
+              }}>{t("Fort Myers · Pro tier · since '23", "Fort Myers · Nivel Pro · desde '23")}</div>
             </div>
           </div>
         </article>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 /* ───── Contractor closing CTA — dark band with form preview ───── */
 
-const ContractorClosingCTA = () => (
+const ContractorClosingCTA = () => {
+  const t = useT();
+  return (
   <section style={{
     background: 'var(--ink)', color: 'var(--white)',
     padding: '96px 0',
@@ -1459,20 +1571,23 @@ const ContractorClosingCTA = () => (
           display: 'inline-block', marginBottom: 18,
           fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
           color: 'var(--tangerine)', textTransform: 'uppercase',
-        }}>Ready to partner?</span>
+        }}>{t('Ready to partner?', '¿Listo para asociarte?')}</span>
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(32px, 4.2vw, 60px)',
           lineHeight: 0.98, letterSpacing: '-0.02em', color: 'var(--white)',
         }}>
-          Apply once.<br/>
-          <span style={{ color: 'var(--tangerine)' }}>Quote forever.</span>
+          {t('Apply once.', 'Aplica una vez.')}<br/>
+          <span style={{ color: 'var(--tangerine)' }}>{t('Quote forever.', 'Cotiza siempre.')}</span>
         </h2>
         <p className="mono" style={{
           margin: '24px 0 32px', maxWidth: 520,
           fontSize: 13, lineHeight: 1.7,
           color: 'rgba(255,255,255,0.7)',
         }}>
-          Submit the partner application once. We approve, lock in your starter tier, and route every future RFQ through your dedicated rep. No annual fee, no minimums on individual orders.
+          {t(
+            'Submit the partner application once. We approve, lock in your starter tier, and route every future RFQ through your dedicated rep. No annual fee, no minimums on individual orders.',
+            'Envía la aplicación de socio una sola vez. Aprobamos, fijamos tu nivel inicial y enrutamos cada RFQ futura a través de tu representante dedicado. Sin cuota anual, sin mínimos por orden.'
+          )}
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
           <a href="estimate.html" style={{
@@ -1481,7 +1596,7 @@ const ContractorClosingCTA = () => (
             background: 'var(--tangerine)', color: 'var(--white)',
             fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
             letterSpacing: '0.18em', textTransform: 'uppercase',
-          }}>Start Application</a>
+          }}>{t('Start Application', 'Iniciar aplicación')}</a>
           <a href="tel:2396895496" style={{
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
             padding: '18px 32px',
@@ -1506,16 +1621,16 @@ const ContractorClosingCTA = () => (
           display: 'flex', alignItems: 'center', gap: 10,
         }}>
           <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-          Application checklist
+          {t('Application checklist', 'Checklist de aplicación')}
         </div>
         <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: 14 }}>
           {[
-            'Business license + EIN',
-            'Florida resale certificate',
-            '2 trade references',
-            'Est. monthly linear-feet',
+            { EN: 'Business license + EIN',         ES: 'Licencia de negocio + EIN' },
+            { EN: 'Florida resale certificate',     ES: 'Certificado de reventa de Florida' },
+            { EN: '2 trade references',              ES: '2 referencias comerciales' },
+            { EN: 'Est. monthly linear-feet',        ES: 'Estimado mensual de pies lineales' },
           ].map((line, i) => (
-            <li key={line} style={{
+            <li key={i} style={{
               display: 'flex', alignItems: 'center', gap: 14,
               paddingBottom: i < 3 ? 14 : 0,
               borderBottom: i < 3 ? '1px dashed rgba(255,255,255,0.18)' : 'none',
@@ -1532,7 +1647,7 @@ const ContractorClosingCTA = () => (
               <span className="mono" style={{
                 fontSize: 12.5, fontWeight: 500,
                 color: 'var(--white)',
-              }}>{line}</span>
+              }}>{t(line)}</span>
             </li>
           ))}
         </ul>
@@ -1543,13 +1658,14 @@ const ContractorClosingCTA = () => (
           textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
-          <span>Approval window</span>
-          <span style={{ color: 'var(--white)' }}>≤ 5 business days</span>
+          <span>{t('Approval window', 'Tiempo de aprobación')}</span>
+          <span style={{ color: 'var(--white)' }}>{t('≤ 5 business days', '≤ 5 días hábiles')}</span>
         </div>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const ContractorPage = () => (
   <>
