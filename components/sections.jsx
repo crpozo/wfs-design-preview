@@ -761,70 +761,85 @@ const FinalCTA = () => {
   );
 };
 
-const Footer = () => (
-  <footer style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '80px 0 32px' }}>
-    <div className="container">
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 60 }}>
-        <div>
-          <Logo light />
-          <p style={{ fontSize: 14, color: 'var(--alice-blue)', lineHeight: 1.5, marginTop: 20, maxWidth: 320 }}>
-            Fencing material supplier for contractors, homeowners and DIY projects. Family-owned,
-            factory-direct since 2003 — we supply, we don't install.
-          </p>
-        </div>
-        {[
-          ['Products', [
-            ['Vinyl / PVC', 'vinyl.html'],
-            ['Aluminum', 'aluminum.html'],
-            ['Chain Link', 'chain-link.html'],
-            ['Metal / DuraFence', 'metal.html'],
-            ['EC Fence', 'ecfence.html'],
-            ['Full catalog', 'products.html'],
-          ]],
-          ['Solutions', [
-            ['For Contractors', 'solutions.html'],
-            ['For Homeowners', 'solutions.html'],
-            ['For DIY', 'solutions.html'],
-            ['Commercial', 'solutions.html'],
-          ]],
-          ['Resources', [
-            ['Articles & Guides', 'articles.html'],
-            ['FAQ', 'faq.html'],
-            ['Materials Comparison', 'materials-comparison.html'],
-            ['Florida Pool Code', 'pool-code.html'],
-            ['Yard Locations', 'solutions.html#yards'],
-          ]],
-          ['Company', [
-            ['About WFS', 'about.html'],
-            ['Projects', 'projects.html'],
-            ['Contact', 'estimate.html'],
-            ['sales@westernfencesupply.com', 'mailto:sales@westernfencesupply.com'],
-          ]],
-        ].map(([h, items]) => (
-          <div key={h}>
-            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--tangerine)', marginBottom: 16 }}>
-              {h}
-            </div>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 10 }}>
-              {items.map(([label, href]) => (
-                <li key={label}><a href={href} style={{ fontSize: 14, color: 'var(--alice-blue)' }}>{label}</a></li>
-              ))}
-            </ul>
+const Footer = () => {
+  const t = useT();
+  const cols = [
+    { title: { EN: 'Products', ES: 'Productos' }, items: [
+      { label: { EN: 'Vinyl / PVC',         ES: 'Vinilo / PVC' },         href: 'vinyl.html' },
+      { label: { EN: 'Aluminum',            ES: 'Aluminio' },             href: 'aluminum.html' },
+      { label: { EN: 'Chain Link',          ES: 'Malla ciclónica' },      href: 'chain-link.html' },
+      { label: { EN: 'Metal / DuraFence',   ES: 'Metal / DuraFence' },    href: 'metal.html' },
+      { label: { EN: 'EC Fence',            ES: 'EC Fence' },             href: 'ecfence.html' },
+      { label: { EN: 'Full catalog',        ES: 'Catálogo completo' },    href: 'products.html' },
+    ]},
+    { title: { EN: 'Solutions', ES: 'Soluciones' }, items: [
+      { label: { EN: 'For Contractors',     ES: 'Para contratistas' },    href: 'contractors.html' },
+      { label: { EN: 'For Homeowners',      ES: 'Para propietarios' },    href: 'homeowners.html' },
+      { label: { EN: 'For DIY',             ES: 'Para DIY' },             href: 'solutions.html' },
+      { label: { EN: 'Commercial',          ES: 'Comercial' },            href: 'solutions.html' },
+    ]},
+    { title: { EN: 'Resources', ES: 'Recursos' }, items: [
+      { label: { EN: 'Articles & Guides',   ES: 'Artículos y guías' },        href: 'articles.html' },
+      { label: { EN: 'FAQ',                  ES: 'Preguntas frecuentes' },     href: 'faq.html' },
+      { label: { EN: 'Materials Comparison', ES: 'Comparativa de materiales' },href: 'materials-comparison.html' },
+      { label: { EN: 'Florida Pool Code',    ES: 'Código de piscinas FL' },    href: 'pool-code.html' },
+      { label: { EN: 'Yard Locations',       ES: 'Sucursales' },               href: 'solutions.html#yards' },
+    ]},
+    { title: { EN: 'Company', ES: 'Empresa' }, items: [
+      { label: { EN: 'About WFS',           ES: 'Sobre WFS' },               href: 'about.html' },
+      { label: { EN: 'Projects',            ES: 'Proyectos' },               href: 'projects.html' },
+      { label: { EN: 'Contact',             ES: 'Contacto' },                href: 'estimate.html' },
+      { label: 'sales@westernfencesupply.com', href: 'mailto:sales@westernfencesupply.com' },
+    ]},
+  ];
+  return (
+    <footer style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '80px 0 32px' }}>
+      <div className="container">
+        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 60 }}>
+          <div>
+            <Logo light />
+            <p style={{ fontSize: 14, color: 'var(--alice-blue)', lineHeight: 1.5, marginTop: 20, maxWidth: 320 }}>
+              {t(
+                "Fencing material supplier for contractors, homeowners and DIY projects. Family-owned, factory-direct since 2003 — we supply, we don't install.",
+                'Proveedor de material de cercado para contratistas, propietarios y proyectos DIY. Empresa familiar, directo de fábrica desde 2003 — suministramos, no instalamos.'
+              )}
+            </p>
           </div>
-        ))}
-      </div>
-      <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-        <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', color: 'var(--silver)' }}>
-          © 2026 Western Fence Supply · Fort Myers, FL · Port Charlotte, FL
-        </div>
-        <div style={{ display: 'flex', gap: 24 }}>
-          {['Privacy', 'Terms', 'Accessibility', 'sales@westernfencesupply.com'].map(t => (
-            <a key={t} href="#" style={{ fontSize: 12, fontFamily: 'var(--mono)', letterSpacing: '0.1em', color: 'var(--silver)' }}>{t}</a>
+          {cols.map((col, ci) => (
+            <div key={ci}>
+              <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--tangerine)', marginBottom: 16 }}>
+                {t(col.title)}
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 10 }}>
+                {col.items.map((it, i) => (
+                  <li key={i}><a href={it.href} style={{ fontSize: 14, color: 'var(--alice-blue)' }}>
+                    {typeof it.label === 'string' ? it.label : t(it.label)}
+                  </a></li>
+                ))}
+              </ul>
+            </div>
           ))}
         </div>
+        <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+          <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', color: 'var(--silver)' }}>
+            © 2026 Western Fence Supply · Fort Myers, FL · Port Charlotte, FL
+          </div>
+          <div style={{ display: 'flex', gap: 24 }}>
+            {[
+              { label: { EN: 'Privacy', ES: 'Privacidad' } },
+              { label: { EN: 'Terms', ES: 'Términos' } },
+              { label: { EN: 'Accessibility', ES: 'Accesibilidad' } },
+              { label: 'sales@westernfencesupply.com' },
+            ].map((item, i) => (
+              <a key={i} href="#" style={{ fontSize: 12, fontFamily: 'var(--mono)', letterSpacing: '0.1em', color: 'var(--silver)' }}>
+                {typeof item.label === 'string' ? item.label : t(item.label)}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
 
 Object.assign(window, { FeaturedGrid, ProjectGallery, Calculator, ServiceAreas, FinalCTA, Footer });

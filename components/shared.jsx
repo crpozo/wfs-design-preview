@@ -146,3 +146,41 @@ const useMode = () => {
 };
 
 window.useMode = useMode;
+
+/* ───── Global Language (EN / ES) ───── */
+const __WFS_LANG_KEY = 'wfs:lang';
+const __WFS_LANG_EVENT = 'wfs:lang-change';
+
+const useLang = () => {
+  const [lang, setLangState] = React.useState(() => {
+    try { return localStorage.getItem(__WFS_LANG_KEY) || 'EN'; }
+    catch (e) { return 'EN'; }
+  });
+  React.useEffect(() => {
+    const onChange = (e) => setLangState(e.detail);
+    window.addEventListener(__WFS_LANG_EVENT, onChange);
+    return () => window.removeEventListener(__WFS_LANG_EVENT, onChange);
+  }, []);
+  const set = (l) => {
+    try { localStorage.setItem(__WFS_LANG_KEY, l); } catch (e) {}
+    window.dispatchEvent(new CustomEvent(__WFS_LANG_EVENT, { detail: l }));
+  };
+  return [lang, set];
+};
+
+/* useT — returns a t(en, es) helper for inline translations
+   Also accepts an object: t({ EN: 'hello', ES: 'hola' })
+   If only `en` is supplied and lang === 'ES', falls back to `en`. */
+const useT = () => {
+  const [lang] = useLang();
+  return (en, es) => {
+    if (en && typeof en === 'object' && !Array.isArray(en)) {
+      return en[lang] ?? en.EN ?? '';
+    }
+    if (lang === 'ES') return es ?? en;
+    return en;
+  };
+};
+
+window.useLang = useLang;
+window.useT = useT;

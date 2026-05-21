@@ -1,7 +1,8 @@
 /* Unified site header — matches the wireframe header */
 
-const SiteHeader = ({ active, lang = 'EN' }) => {
-  const [curLang, setCurLang] = React.useState(lang);
+const SiteHeader = ({ active }) => {
+  const t = useT();
+  const [curLang, setCurLang] = useLang();
   const [curMode, setCurMode] = useMode();
   const [openMenu, setOpenMenu] = React.useState(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -13,47 +14,48 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
     return () => { document.body.style.overflow = ''; };
   }, [mobileOpen]);
 
+  // NAV: id stays stable (used by `active` prop). label + items get translated.
   const NAV = [
-    ['Fences', { kind: 'mega-fences' }],
-    ['Gates', { kind: 'mega-gates' }],
-    ['Warranty', { kind: 'list', items: [
-      ['Lifetime Warranty', 'warranty.html', 'Coverage details, what\'s included'],
-      ['Warranty Claims', 'warranty-claims.html', 'Submit a claim · 24h response'],
-      ['Manufacturer Specs', 'specs.html', 'PDF spec sheets'],
-    ]}],
-    ['Get a Quote', { kind: 'list', items: [
-      ['Request Estimate', 'estimate.html', 'Send measurements, get pricing in 24h'],
-      ['Talk to a Live Agent', 'estimate.html', 'Mon–Fri · Fort Myers + Port Charlotte'],
-      ['Call (239) 689-5496', 'tel:2396895496', 'Avg pickup under 18s in business hours'],
-    ]}],
-    ['Company', { kind: 'list', items: [
-      ['About WFS', 'about.html', 'Family-owned · fabricated in-house'],
-      ['Yard Locations', 'solutions.html', '2 yards across SW Florida'],
-      ['Projects', 'projects.html', 'Recent installs from Cape Coral to Naples'],
-      ['Contact', 'estimate.html', 'Phone, email, hours by yard'],
-    ]}],
-    ['Fence Education Hub', { kind: 'list', items: [
-      ['Articles & Guides', 'articles.html', 'Picking the right fence the first time'],
-      ['FAQ', 'faq.html', 'The questions we get every week'],
-      ['Materials Comparison', 'materials-comparison.html', 'Aluminum vs Vinyl vs Chain Link vs Metal'],
-      ['Florida Pool Code', 'pool-code.html', 'Code-compliant enclosure profiles'],
-    ]}],
+    { id: 'Fences', label: { EN: 'Fences', ES: 'Cercas' }, def: { kind: 'mega-fences' } },
+    { id: 'Gates',  label: { EN: 'Gates',  ES: 'Portones' }, def: { kind: 'mega-gates' } },
+    { id: 'Warranty', label: { EN: 'Warranty', ES: 'Garantía' }, def: { kind: 'list', items: [
+      { label: { EN: 'Lifetime Warranty', ES: 'Garantía de por vida' },     href: 'warranty.html',         sub: { EN: 'Coverage details, what\'s included', ES: 'Detalles de cobertura, qué incluye' } },
+      { label: { EN: 'Warranty Claims',   ES: 'Reclamaciones de garantía' }, href: 'warranty-claims.html', sub: { EN: 'Submit a claim · 24h response',     ES: 'Envía un reclamo · respuesta 24h' } },
+      { label: { EN: 'Manufacturer Specs',ES: 'Specs del fabricante' },     href: 'specs.html',            sub: { EN: 'PDF spec sheets',                    ES: 'Hojas técnicas PDF' } },
+    ]}},
+    { id: 'Get a Quote', label: { EN: 'Get a Quote', ES: 'Cotizar' }, def: { kind: 'list', items: [
+      { label: { EN: 'Request Estimate',     ES: 'Pedir estimado' },        href: 'estimate.html', sub: { EN: 'Send measurements, get pricing in 24h',   ES: 'Envía medidas, recibe precios en 24h' } },
+      { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html', sub: { EN: 'Mon–Fri · Fort Myers + Port Charlotte',   ES: 'Lun–Vie · Fort Myers + Port Charlotte' } },
+      { label: { EN: 'Call (239) 689-5496',  ES: 'Llamar (239) 689-5496' }, href: 'tel:2396895496', sub: { EN: 'Avg pickup under 18s in business hours', ES: 'Tiempo medio de respuesta: 18s en horario' } },
+    ]}},
+    { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [
+      { label: { EN: 'About WFS',       ES: 'Sobre WFS' },         href: 'about.html',     sub: { EN: 'Family-owned · fabricated in-house',            ES: 'Familiar · fabricado en planta' } },
+      { label: { EN: 'Yard Locations',  ES: 'Sucursales' },        href: 'solutions.html', sub: { EN: '2 yards across SW Florida',                     ES: '2 sucursales en el suroeste de FL' } },
+      { label: { EN: 'Projects',        ES: 'Proyectos' },         href: 'projects.html',  sub: { EN: 'Recent installs from Cape Coral to Naples',     ES: 'Instalaciones de Cape Coral a Naples' } },
+      { label: { EN: 'Contact',         ES: 'Contacto' },          href: 'estimate.html',  sub: { EN: 'Phone, email, hours by yard',                   ES: 'Teléfono, email, horarios por sucursal' } },
+    ]}},
+    { id: 'Fence Education Hub', label: { EN: 'Fence Education Hub', ES: 'Centro Educativo' }, def: { kind: 'list', items: [
+      { label: { EN: 'Articles & Guides',     ES: 'Artículos y guías' },           href: 'articles.html',              sub: { EN: 'Picking the right fence the first time',   ES: 'Elige la cerca correcta a la primera' } },
+      { label: { EN: 'FAQ',                    ES: 'Preguntas frecuentes' },       href: 'faq.html',                   sub: { EN: 'The questions we get every week',          ES: 'Las preguntas que recibimos cada semana' } },
+      { label: { EN: 'Materials Comparison',  ES: 'Comparativa de materiales' },   href: 'materials-comparison.html',  sub: { EN: 'Aluminum vs Vinyl vs Chain Link vs Metal', ES: 'Aluminio vs Vinilo vs Malla vs Metal' } },
+      { label: { EN: 'Florida Pool Code',     ES: 'Código de piscinas FL' },       href: 'pool-code.html',             sub: { EN: 'Code-compliant enclosure profiles',         ES: 'Perfiles de cerramiento según código' } },
+    ]}},
   ];
 
   const FENCE_TILES = [
-    { key: 'aluminum', name: 'Aluminum', tag: 'Mech · Welded', href: 'aluminum.html' },
-    { key: 'chainlink', name: 'Chain Link', tag: 'Galv · Vinyl-Coated', href: 'chain-link.html' },
-    { key: 'metal', name: 'Metal / DuraFence', tag: 'Aluminum Board Privacy', href: 'metal.html' },
-    { key: 'vinyl', name: 'Vinyl / PVC', tag: 'Veka-Extruded PVC', href: 'vinyl.html' },
-    { key: 'ecfence', name: 'ecFence', tag: 'Galv Steel · HVHZ', href: 'ecfence.html' },
+    { key: 'aluminum',  name: { EN: 'Aluminum',          ES: 'Aluminio' },          tag: { EN: 'Mech · Welded',          ES: 'Mecánico · Soldado' },      href: 'aluminum.html' },
+    { key: 'chainlink', name: { EN: 'Chain Link',        ES: 'Malla ciclónica' },   tag: { EN: 'Galv · Vinyl-Coated',    ES: 'Galv · Recubierto vinilo' }, href: 'chain-link.html' },
+    { key: 'metal',     name: { EN: 'Metal / DuraFence', ES: 'Metal / DuraFence' }, tag: { EN: 'Aluminum Board Privacy', ES: 'Privacidad de tabla aluminio' }, href: 'metal.html' },
+    { key: 'vinyl',     name: { EN: 'Vinyl / PVC',       ES: 'Vinilo / PVC' },      tag: { EN: 'Veka-Extruded PVC',      ES: 'PVC extruido Veka' },       href: 'vinyl.html' },
+    { key: 'ecfence',   name: { EN: 'ecFence',           ES: 'ecFence' },           tag: { EN: 'Galv Steel · HVHZ',      ES: 'Acero galv · HVHZ' },       href: 'ecfence.html' },
   ];
 
   const GATE_TILES = [
-    { key: 'aluminum',  name: 'Single Swing',   tag: 'Walk + entry gates',       href: 'gate-single.html' },
-    { key: 'metal',     name: 'Double Swing',   tag: 'Driveway access',          href: 'gate-double.html' },
-    { key: 'vinyl',     name: 'Sliding',        tag: 'Track-mounted',            href: 'gate-sliding.html' },
-    { key: 'chainlink', name: 'Cantilever',     tag: 'No-ground-track',          href: 'gate-cantilever.html' },
-    { key: 'ecfence',   name: 'Rolling',        tag: 'Industrial V-track',       href: 'gate-rolling.html' },
+    { key: 'aluminum',  name: { EN: 'Single Swing', ES: 'Batiente sencillo' },   tag: { EN: 'Walk + entry gates', ES: 'Peatonal + entrada' },       href: 'gate-single.html' },
+    { key: 'metal',     name: { EN: 'Double Swing', ES: 'Batiente doble' },      tag: { EN: 'Driveway access',    ES: 'Acceso vehicular' },          href: 'gate-double.html' },
+    { key: 'vinyl',     name: { EN: 'Sliding',      ES: 'Corredizo' },           tag: { EN: 'Track-mounted',      ES: 'Sobre riel' },                href: 'gate-sliding.html' },
+    { key: 'chainlink', name: { EN: 'Cantilever',   ES: 'Cantilever' },          tag: { EN: 'No-ground-track',    ES: 'Sin riel en piso' },          href: 'gate-cantilever.html' },
+    { key: 'ecfence',   name: { EN: 'Rolling',      ES: 'Rodante industrial' },  tag: { EN: 'Industrial V-track', ES: 'V-track industrial' },        href: 'gate-rolling.html' },
   ];
 
   const Caret = () => (
@@ -76,25 +78,28 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
         }}>
           {/* Left: mode toggle + catalog link */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-            {/* Mode toggle — dot indicator, no fill */}
+            {/* Mode toggle — dot indicator */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 18 }}>
-              {['HOMEOWNER', 'CONTRACTOR'].map((m) => {
-                const active = curMode === m;
+              {[
+                { key: 'HOMEOWNER',  label: { EN: 'HOMEOWNER',  ES: 'PROPIETARIO' } },
+                { key: 'CONTRACTOR', label: { EN: 'CONTRACTOR', ES: 'CONTRATISTA' } },
+              ].map((m) => {
+                const isActive = curMode === m.key;
                 return (
-                  <button key={m} onClick={() => setCurMode(m)} style={{
+                  <button key={m.key} onClick={() => setCurMode(m.key)} style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
                     padding: 0, background: 'transparent',
                     fontFamily: 'inherit', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.18em', textTransform: 'uppercase',
-                    color: active ? 'var(--white)' : 'rgba(219,233,238,0.55)',
+                    color: isActive ? 'var(--white)' : 'rgba(219,233,238,0.55)',
                     cursor: 'pointer',
                   }}>
                     <span style={{
                       width: 6, height: 6, borderRadius: '50%',
-                      background: active ? 'var(--tangerine)' : 'transparent',
-                      border: active ? 'none' : '1px solid rgba(219,233,238,0.4)',
+                      background: isActive ? 'var(--tangerine)' : 'transparent',
+                      border: isActive ? 'none' : '1px solid rgba(219,233,238,0.4)',
                     }}/>
-                    {m}
+                    {t(m.label)}
                   </button>
                 );
               })}
@@ -104,14 +109,14 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
               display: 'inline-flex', alignItems: 'center', gap: 8,
               color: 'var(--alice-blue)', textDecoration: 'none',
             }}>
-              Full Catalog
+              {t('Full Catalog', 'Catálogo completo')}
               <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
               </svg>
             </a>
           </div>
 
-          {/* Center: featured CTA with tangerine rule */}
+          {/* Center: featured CTA */}
           <a href="estimate.html" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             color: 'var(--white)',
@@ -122,7 +127,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
               width: 5, height: 5, borderRadius: '50%',
               background: 'var(--tangerine)',
             }}/>
-            Get a quote — 24h turnaround
+            {t('Get a quote — 24h turnaround', 'Cotiza — respuesta en 24h')}
             <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
             </svg>
@@ -140,23 +145,23 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
               (239) 689-5496
             </a>
             <span style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.15)' }}/>
-            {/* Lang — same dot pattern */}
+            {/* Lang toggle */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 14 }}>
               {['EN', 'ES'].map((l) => {
-                const active = curLang === l;
+                const isActive = curLang === l;
                 return (
                   <button key={l} onClick={() => setCurLang(l)} style={{
                     display: 'inline-flex', alignItems: 'center', gap: 6,
                     padding: 0, background: 'transparent',
                     fontFamily: 'inherit', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.18em', textTransform: 'uppercase',
-                    color: active ? 'var(--white)' : 'rgba(219,233,238,0.55)',
+                    color: isActive ? 'var(--white)' : 'rgba(219,233,238,0.55)',
                     cursor: 'pointer',
                   }}>
                     <span style={{
                       width: 5, height: 5, borderRadius: '50%',
-                      background: active ? 'var(--tangerine)' : 'transparent',
-                      border: active ? 'none' : '1px solid rgba(219,233,238,0.4)',
+                      background: isActive ? 'var(--tangerine)' : 'transparent',
+                      border: isActive ? 'none' : '1px solid rgba(219,233,238,0.4)',
                     }}/>
                     {l}
                   </button>
@@ -175,7 +180,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
           gap: 24, paddingTop: 14, paddingBottom: 14,
         }}>
-          {/* Logo block */}
+          {/* Logo */}
           <a href="Homepage.html" style={{
             display: 'inline-flex', alignItems: 'center',
             padding: '6px 4px',
@@ -185,24 +190,24 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
 
           {/* Nav */}
           <nav className="wfs-desktop-nav" style={{ display: 'flex', gap: 26, alignItems: 'center' }}>
-            {NAV.map(([label, def]) => (
-              <div key={label} style={{ position: 'static' }}
-                onMouseEnter={() => setOpenMenu(label)}>
+            {NAV.map(({ id, label, def }) => (
+              <div key={id} style={{ position: 'static' }}
+                onMouseEnter={() => setOpenMenu(id)}>
                 <button style={{
                   display: 'inline-flex', alignItems: 'center',
                   fontSize: 15, fontWeight: 500,
-                  color: openMenu === label ? 'var(--laser-blue)' : 'var(--ink)',
+                  color: openMenu === id ? 'var(--laser-blue)' : 'var(--ink)',
                   background: 'transparent', cursor: 'pointer', padding: '8px 0',
-                  borderBottom: (active === label || openMenu === label) ? '2px solid var(--tangerine)' : '2px solid transparent',
+                  borderBottom: (active === id || openMenu === id) ? '2px solid var(--tangerine)' : '2px solid transparent',
                   transition: 'color 0.15s, border-color 0.15s',
                 }}>
-                  {label} <Caret />
+                  {t(label)} <Caret />
                 </button>
               </div>
             ))}
           </nav>
 
-          {/* CTAs — match the editorial pill + mono-rule pattern used across the page */}
+          {/* CTAs */}
           <div style={{ display: 'flex', gap: 18, alignItems: 'center' }}>
             <a href="estimate.html" className="mono wfs-hide-tablet" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -215,7 +220,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                 <path d="M3 3 H13 V13 H3 Z M3 6 H13 M6 3 V13" stroke="currentColor" strokeWidth="1.4"/>
               </svg>
-              Request Estimate
+              {t('Request Estimate', 'Pedir estimado')}
             </a>
             <a href="estimate.html" style={{
               display: 'inline-flex', alignItems: 'center', gap: 12,
@@ -233,7 +238,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
                 width: 6, height: 6, borderRadius: '50%', background: '#22c55e',
                 boxShadow: '0 0 0 3px rgba(34,197,94,0.25)',
               }}/>
-              Live Agent
+              {t('Live Agent', 'Agente en vivo')}
               <span style={{
                 width: 26, height: 26, borderRadius: '50%',
                 background: 'var(--tangerine)', color: 'var(--ink)',
@@ -245,11 +250,11 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
               </span>
             </a>
 
-            {/* Hamburger — visible only on tablet/mobile */}
+            {/* Hamburger */}
             <button
               className="wfs-mobile-trigger"
               onClick={() => setMobileOpen(true)}
-              aria-label="Open menu"
+              aria-label={t('Open menu', 'Abrir menú')}
               style={{
                 display: 'none',
                 width: 42, height: 42,
@@ -265,7 +270,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
           </div>
         </div>
 
-        {/* Mobile menu — slides down from top */}
+        {/* Mobile menu */}
         <div className="wfs-mobile-menu" style={{
           position: 'fixed', inset: 0,
           background: 'var(--white)',
@@ -276,14 +281,13 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
           transition: 'transform 0.3s ease',
           overflowY: 'auto',
         }}>
-          {/* Top bar */}
           <div style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',
             padding: '14px 20px',
             borderBottom: '1px solid rgba(0,16,17,0.12)',
           }}>
             <img src="assets/wfs-logo.svg" alt="Western Fence Supply" style={{ height: 32, width: 'auto' }}/>
-            <button onClick={() => setMobileOpen(false)} aria-label="Close menu" style={{
+            <button onClick={() => setMobileOpen(false)} aria-label={t('Close menu', 'Cerrar menú')} style={{
               flexShrink: 0,
               width: 44, height: 44,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -299,16 +303,19 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
             </button>
           </div>
 
-          {/* Mode toggle */}
+          {/* Mode toggle (mobile) */}
           <div style={{
             padding: '20px',
             borderBottom: '1px solid rgba(0,16,17,0.08)',
             display: 'flex', alignItems: 'center', gap: 22,
           }}>
-            {['HOMEOWNER', 'CONTRACTOR'].map((m) => {
-              const isActive = curMode === m;
+            {[
+              { key: 'HOMEOWNER',  label: { EN: 'HOMEOWNER',  ES: 'PROPIETARIO' } },
+              { key: 'CONTRACTOR', label: { EN: 'CONTRACTOR', ES: 'CONTRATISTA' } },
+            ].map((m) => {
+              const isActive = curMode === m.key;
               return (
-                <button key={m} onClick={() => setCurMode(m)} className="mono" style={{
+                <button key={m.key} onClick={() => setCurMode(m.key)} className="mono" style={{
                   display: 'inline-flex', alignItems: 'center', gap: 8,
                   padding: 0, background: 'transparent',
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
@@ -321,30 +328,30 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
                     background: isActive ? 'var(--tangerine)' : 'transparent',
                     border: isActive ? 'none' : '1px solid rgba(0,16,17,0.3)',
                   }}/>
-                  {m}
+                  {t(m.label)}
                 </button>
               );
             })}
           </div>
 
-          {/* Nav list with expandable sub-items */}
+          {/* Nav list (mobile) */}
           <nav style={{ flex: 1, padding: '8px 0' }}>
-            {NAV.map(([label, def]) => {
-              const isExpanded = mobileExpanded === label;
+            {NAV.map(({ id, label, def }) => {
+              const isExpanded = mobileExpanded === id;
               const fallbackHref = def.kind === 'mega-fences' ? 'products.html'
                 : def.kind === 'mega-gates' ? 'estimate.html'
-                : def.items && def.items[0] ? def.items[0][1] : '#';
+                : def.items && def.items[0] ? def.items[0].href : '#';
               return (
-                <div key={label} style={{
+                <div key={id} style={{
                   borderBottom: '1px solid rgba(0,16,17,0.08)',
                 }}>
-                  <button onClick={() => setMobileExpanded(isExpanded ? null : label)} style={{
+                  <button onClick={() => setMobileExpanded(isExpanded ? null : id)} style={{
                     width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                     padding: '18px 20px', background: 'transparent',
                     fontFamily: 'var(--sans)', fontSize: 18, fontWeight: 500,
                     color: 'var(--ink)', textAlign: 'left', cursor: 'pointer',
                   }}>
-                    {label}
+                    {t(label)}
                     {def.items ? (
                       <span style={{
                         width: 28, height: 28,
@@ -371,14 +378,14 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
                       transition: 'max-height 0.3s ease',
                       background: '#faf9f7',
                     }}>
-                      {def.items.map(([l, href, sub], i) => (
-                        <a key={i} href={href} style={{
+                      {def.items.map((it, i) => (
+                        <a key={i} href={it.href} style={{
                           display: 'block', padding: '14px 20px 14px 36px',
                           borderTop: '1px solid rgba(0,16,17,0.06)',
                           fontSize: 14, color: 'var(--ink)',
                         }}>
-                          <div style={{ fontWeight: 500 }}>{l}</div>
-                          {sub && <div style={{ fontSize: 12, color: 'var(--charcoal)', marginTop: 2 }}>{sub}</div>}
+                          <div style={{ fontWeight: 500 }}>{t(it.label)}</div>
+                          {it.sub && <div style={{ fontSize: 12, color: 'var(--charcoal)', marginTop: 2 }}>{t(it.sub)}</div>}
                         </a>
                       ))}
                     </div>
@@ -390,7 +397,9 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
                       background: '#faf9f7',
                       fontSize: 14, color: 'var(--ink)', fontWeight: 500,
                     }}>
-                      View all {def.kind === 'mega-fences' ? 'fence' : 'gate'} systems →
+                      {def.kind === 'mega-fences'
+                        ? t('View all fence systems →', 'Ver todos los sistemas de cerca →')
+                        : t('View all gate systems →',  'Ver todos los sistemas de portón →')}
                     </a>
                   )}
                 </div>
@@ -398,7 +407,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
             })}
           </nav>
 
-          {/* Footer: phone + lang */}
+          {/* Mobile footer: phone + lang */}
           <div style={{
             padding: '20px',
             borderTop: '1px solid rgba(0,16,17,0.12)',
@@ -415,7 +424,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
                 width: 7, height: 7, borderRadius: '50%', background: '#22c55e',
                 boxShadow: '0 0 0 3px rgba(34,197,94,0.25)',
               }}/>
-              Call (239) 689-5496
+              {t('Call (239) 689-5496', 'Llamar (239) 689-5496')}
             </a>
             <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
               {['EN', 'ES'].map((l) => {
@@ -444,8 +453,9 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
 
         {/* Mega menu panel */}
         {openMenu && (() => {
-          const def = NAV.find(([l]) => l === openMenu)[1];
-          const navIdx = NAV.findIndex(([l]) => l === openMenu);
+          const navItem = NAV.find(n => n.id === openMenu);
+          const def = navItem.def;
+          const navIdx = NAV.findIndex(n => n.id === openMenu);
           return (
             <div onMouseEnter={() => setOpenMenu(openMenu)} onMouseLeave={() => setOpenMenu(null)} style={{
               position: 'absolute', left: 0, right: 0, top: '100%',
@@ -460,24 +470,28 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 4fr', gap: 56 }}>
                     <div>
                       <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>
-                        0{navIdx + 1} — {def.kind === 'mega-fences' ? 'By material' : 'By gate type'}
+                        0{navIdx + 1} — {def.kind === 'mega-fences' ? t('By material', 'Por material') : t('By gate type', 'Por tipo de portón')}
                       </span>
                       <h3 className="display" style={{ fontSize: 36, lineHeight: 0.98, margin: '14px 0 16px', maxWidth: 240 }}>
-                        {def.kind === 'mega-fences' ? 'Four systems,\none yard.' : 'Welded\nin-house.'}
+                        {def.kind === 'mega-fences'
+                          ? t('Four systems,\none yard.', 'Cuatro sistemas,\nuna sucursal.')
+                          : t('Welded\nin-house.',         'Soldados\nen planta.')}
                       </h3>
                       <p style={{ fontSize: 14, lineHeight: 1.5, color: 'var(--charcoal)', maxWidth: 240, margin: '0 0 20px' }}>
                         {def.kind === 'mega-fences'
-                          ? 'Supplier-direct pricing for contractors, homeowners and DIY projects across SW Florida.'
-                          : 'Sized to fit your run. Quoted in 24h, delivered or shop-pickup.'}
+                          ? t('Supplier-direct pricing for contractors, homeowners and DIY projects across SW Florida.',
+                              'Precios directos de fábrica para contratistas, propietarios y proyectos DIY en el suroeste de Florida.')
+                          : t('Sized to fit your run. Quoted in 24h, delivered or shop-pickup.',
+                              'A la medida de tu proyecto. Cotizado en 24h, entrega o recoge en planta.')}
                       </p>
                       <a href={def.kind === 'mega-fences' ? 'products.html' : 'estimate.html'}
                         style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 500, fontSize: 14, color: 'var(--ink)' }}>
-                        {def.kind === 'mega-fences' ? 'Full catalog' : 'Custom quote'} <ArrowRight size={12}/>
+                        {def.kind === 'mega-fences' ? t('Full catalog', 'Catálogo completo') : t('Custom quote', 'Cotización a medida')} <ArrowRight size={12}/>
                       </a>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 12 }}>
-                      {(def.kind === 'mega-fences' ? FENCE_TILES : GATE_TILES).map((t, i) => (
-                        <a key={i} href={t.href} style={{
+                      {(def.kind === 'mega-fences' ? FENCE_TILES : GATE_TILES).map((tile, i) => (
+                        <a key={i} href={tile.href} style={{
                           position: 'relative', aspectRatio: '4/5',
                           borderRadius: 'var(--radius)',
                           overflow: 'hidden', display: 'block',
@@ -486,7 +500,7 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
                         }}
                         onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 18px 40px -20px rgba(0,16,17,0.25)'; }}
                         onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-                          <img src={FENCE_IMG[t.key]} alt={t.name}
+                          <img src={FENCE_IMG[tile.key]} alt={t(tile.name)}
                             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
                           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,16,17,0) 35%, rgba(0,16,17,0.85) 100%)' }}/>
                           <div style={{
@@ -498,8 +512,8 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
                             0{i + 1}
                           </div>
                           <div style={{ position: 'absolute', bottom: 14, left: 14, right: 14, color: 'var(--white)' }}>
-                            <div className="display" style={{ fontSize: 17, lineHeight: 1.1, marginBottom: 6 }}>{t.name}</div>
-                            <div className="eyebrow" style={{ fontSize: 10, color: 'var(--alice-blue)' }}>{t.tag}</div>
+                            <div className="display" style={{ fontSize: 17, lineHeight: 1.1, marginBottom: 6 }}>{t(tile.name)}</div>
+                            <div className="eyebrow" style={{ fontSize: 10, color: 'var(--alice-blue)' }}>{t(tile.tag)}</div>
                           </div>
                         </a>
                       ))}
@@ -509,18 +523,18 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', gap: 56 }}>
                     <div>
                       <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>
-                        0{navIdx + 1} — {openMenu}
+                        0{navIdx + 1} — {t(navItem.label)}
                       </span>
                       <h3 className="display" style={{ fontSize: 36, margin: '14px 0 0', lineHeight: 0.98, maxWidth: 240 }}>
-                        {openMenu === 'Warranty' && 'Backed by\nthe maker.'}
-                        {openMenu === 'Get a Quote' && 'Three ways\nto start.'}
-                        {openMenu === 'Company' && 'About\nthe yard.'}
-                        {openMenu === 'Fence Education Hub' && 'Pick the\nright fence.'}
+                        {openMenu === 'Warranty' && t('Backed by\nthe maker.',   'Respaldada por\nel fabricante.')}
+                        {openMenu === 'Get a Quote' && t('Three ways\nto start.','Tres maneras\nde empezar.')}
+                        {openMenu === 'Company' && t('About\nthe yard.',         'Sobre\nla empresa.')}
+                        {openMenu === 'Fence Education Hub' && t('Pick the\nright fence.', 'Elige la\ncerca correcta.')}
                       </h3>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, borderTop: '1px solid rgba(0,16,17,0.08)' }}>
-                      {def.items.map(([l, href, sub], i) => (
-                        <a key={i} href={href} style={{
+                      {def.items.map((it, i) => (
+                        <a key={i} href={it.href} style={{
                           display: 'block', padding: '20px 22px',
                           borderBottom: '1px solid rgba(0,16,17,0.08)',
                           borderRight: i % 2 === 0 ? '1px solid rgba(0,16,17,0.08)' : 'none',
@@ -532,9 +546,9 @@ const SiteHeader = ({ active, lang = 'EN' }) => {
                             <span className="eyebrow" style={{ color: 'var(--tangerine)', fontSize: 10 }}>
                               0{i + 1}
                             </span>
-                            <span style={{ fontSize: 17, fontWeight: 500, color: 'var(--ink)' }}>{l}</span>
+                            <span style={{ fontSize: 17, fontWeight: 500, color: 'var(--ink)' }}>{t(it.label)}</span>
                           </div>
-                          <div style={{ fontSize: 13, color: 'var(--charcoal)', paddingLeft: 28, lineHeight: 1.45 }}>{sub}</div>
+                          <div style={{ fontSize: 13, color: 'var(--charcoal)', paddingLeft: 28, lineHeight: 1.45 }}>{t(it.sub)}</div>
                         </a>
                       ))}
                     </div>
