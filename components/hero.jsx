@@ -90,8 +90,8 @@ const Hero = () => {
             fontWeight: 700,
             fontSize: 'clamp(30px, 3.2vw, 46px)',
             lineHeight: 1.08,
-            letterSpacing: '-0.02em',
-            textTransform: 'none',
+            letterSpacing: '-0.01em',
+            textTransform: 'uppercase',
             color: 'var(--white)',
             textShadow: '0 2px 24px rgba(0,0,0,0.18)',
           }}>
