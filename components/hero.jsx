@@ -64,7 +64,7 @@ const Hero = () => {
       {/* Dark scrim — strong on left, lighter on right */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
-        background: 'linear-gradient(95deg, rgba(20,30,55,0.86) 0%, rgba(20,30,55,0.70) 35%, rgba(20,30,55,0.45) 65%, rgba(20,30,55,0.30) 100%)',
+        background: 'linear-gradient(95deg, rgba(16,24,48,0.92) 0%, rgba(16,24,48,0.78) 38%, rgba(20,30,55,0.45) 68%, rgba(20,30,55,0.28) 100%)',
       }}/>
       {/* Bottom fade for fence-card band */}
       <div style={{
@@ -82,29 +82,34 @@ const Hero = () => {
         paddingTop: 72, paddingBottom: 40,
       }}>
         <div className="container" style={{ width: '100%' }}>
-          <div style={{ maxWidth: 600, width: '100%' }}>
+          <div style={{ maxWidth: 640, width: '100%' }}>
+          {/* Thin accent bar */}
+          <div aria-hidden style={{
+            width: 56, height: 4, background: 'var(--tangerine)',
+            marginBottom: 28, borderRadius: 2,
+          }}/>
           <h1 style={{
-            margin: '0 0 18px',
+            margin: '0 0 20px',
             fontFamily: 'var(--display)',
             fontVariationSettings: "'wdth' 100",
-            fontWeight: 700,
-            fontSize: 'clamp(30px, 3.2vw, 46px)',
-            lineHeight: 1.08,
-            letterSpacing: '-0.01em',
+            fontWeight: 800,
+            fontSize: 'clamp(34px, 3.8vw, 56px)',
+            lineHeight: 1.04,
+            letterSpacing: '-0.015em',
             textTransform: 'uppercase',
             color: 'var(--white)',
-            textShadow: '0 2px 24px rgba(0,0,0,0.18)',
+            textShadow: '0 2px 28px rgba(0,0,0,0.28)',
           }}>
             {t('Fence materials,', 'Material de cercas,')}<br/>
             <span style={{ color: 'var(--tangerine)' }}>{t('factory direct.', 'directo de fábrica.')}</span>
           </h1>
 
           <p style={{
-            fontSize: 15,
-            lineHeight: 1.5,
-            maxWidth: 380,
-            margin: '0 0 30px',
-            color: 'rgba(255,255,255,0.82)',
+            fontSize: 16,
+            lineHeight: 1.55,
+            maxWidth: 480,
+            margin: '0 0 34px',
+            color: 'rgba(255,255,255,0.85)',
           }}>
             {t(
               'SW Florida supplier — not an installer. Stocked in Fort Myers.',
