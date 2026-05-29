@@ -84,28 +84,27 @@ const Hero = () => {
         <div className="container" style={{ width: '100%' }}>
           <div style={{ maxWidth: 760, width: '100%' }}>
           <h1 className="display" style={{
-            margin: '0 0 22px',
-            fontSize: 'clamp(42px, 5.4vw, 60px)',
-            lineHeight: 0.98,
-            letterSpacing: '-0.02em',
+            margin: '0 0 24px',
+            fontSize: 'clamp(48px, 6vw, 88px)',
+            lineHeight: 0.95,
+            letterSpacing: '-0.025em',
             color: 'var(--white)',
             textShadow: '0 2px 24px rgba(0,0,0,0.18)',
           }}>
-            {t('The Best Place to ', 'El mejor lugar para ')}
-            <span style={{ color: 'var(--tangerine)' }}>{t('Buy Fencing Materials', 'comprar material de cercas')}</span><br/>
-            {t('in Southwest Florida.', 'en el suroeste de Florida.')}
+            {t('Fence materials,', 'Material de cercas,')}<br/>
+            <span style={{ color: 'var(--tangerine)' }}>{t('factory direct.', 'directo de fábrica.')}</span>
           </h1>
 
           <p style={{
             fontSize: 17,
             lineHeight: 1.55,
-            maxWidth: 520,
-            margin: '0 0 32px',
+            maxWidth: 460,
+            margin: '0 0 36px',
             color: 'rgba(255,255,255,0.88)',
           }}>
             {t(
-              "American-made fencing materials for contractors, homeowners and DIY projects — we're a Southwest Florida supplier, not an installer. Factory-direct chain link, aluminum, vinyl, metal and EC Fence, stocked in Fort Myers.",
-              'Material de cercas hecho en Estados Unidos para contratistas, propietarios y proyectos DIY — somos proveedor del suroeste de Florida, no instaladores. Malla ciclónica, aluminio, vinilo, metal y EC Fence directos de fábrica, en stock en Fort Myers.'
+              'Southwest Florida supplier — not an installer. Stocked in Fort Myers.',
+              'Proveedor del suroeste de Florida — no instaladores. En stock en Fort Myers.'
             )}
           </p>
 
