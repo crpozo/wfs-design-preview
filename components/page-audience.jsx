@@ -310,12 +310,6 @@ const HomeownerSteps = () => {
     <section style={{ background: '#fafafa', padding: '96px 0 112px' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="mono" style={{
-            display: 'inline-block',
-            marginBottom: 16,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
-            color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>{t('01 — Process', '01 — Proceso')}</span>
           <h2 className="display" style={{
             margin: 0,
             fontSize: 'clamp(28px, 3.4vw, 44px)',
@@ -469,11 +463,6 @@ const HomeownerInstallerSplit = () => {
     <section style={{ background: '#fafafa', padding: '96px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
-          <span className="mono" style={{
-            display: 'inline-block', marginBottom: 16,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
-            color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>{t('03 — Installation', '03 — Instalación')}</span>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
             lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
@@ -608,11 +597,6 @@ const HomeownerTestimonial = () => {
       }}>
         {/* Left — meta column */}
         <div>
-          <span className="mono" style={{
-            display: 'inline-block', marginBottom: 18,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
-            color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>{t('04 — Real homeowners', '04 — Propietarios reales')}</span>
           <h2 className="display" style={{
             margin: '0 0 24px',
             fontSize: 'clamp(26px, 3vw, 36px)',
@@ -719,11 +703,6 @@ const HomeownerFAQ = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
           {/* Left — title + contact sidebar */}
           <div style={{ position: 'sticky', top: 100 }}>
-            <span className="mono" style={{
-              display: 'inline-block', marginBottom: 18,
-              fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
-              color: 'var(--tangerine)', textTransform: 'uppercase',
-            }}>{t('05 — FAQ', '05 — Preguntas frecuentes')}</span>
             <h2 className="display" style={{
               margin: '0 0 24px',
               fontSize: 'clamp(28px, 3vw, 40px)',
@@ -846,11 +825,6 @@ const HomeownerClosingCTA = () => {
       gap: 48, alignItems: 'center',
     }}>
       <div>
-        <span className="mono" style={{
-          display: 'inline-block', marginBottom: 18,
-          fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
-          color: 'var(--tangerine)', textTransform: 'uppercase',
-        }}>{t('Ready to start?', '¿Listo para empezar?')}</span>
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(32px, 4vw, 56px)',
           lineHeight: 1, letterSpacing: '-0.02em', color: 'var(--white)',
@@ -1199,11 +1173,6 @@ const ContractorBenefits = () => {
     <section style={{ background: 'var(--white)', padding: '96px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
-          <span className="mono" style={{
-            display: 'inline-block', marginBottom: 16,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
-            color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>{t('01 — Partner Benefits', '01 — Beneficios del socio')}</span>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
             lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
@@ -1288,11 +1257,6 @@ const ContractorHowItWorks = () => {
     <section style={{ background: '#fafafa', padding: '96px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <span className="mono" style={{
-            display: 'inline-block', marginBottom: 16,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
-            color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>{t('02 — Process', '02 — Proceso')}</span>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
             lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
@@ -1396,11 +1360,6 @@ const ContractorWholesaleKit = () => {
           gap: 48, alignItems: 'end', marginBottom: 48,
         }}>
           <div>
-            <span className="mono" style={{
-              display: 'inline-block', marginBottom: 16,
-              fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
-              color: 'var(--tangerine)', textTransform: 'uppercase',
-            }}>{t('03 — What you get', '03 — Qué obtienes')}</span>
             <h2 className="display" style={{
               margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
               lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
@@ -1470,11 +1429,6 @@ const ContractorTestimonial = () => {
       }}>
         {/* Left — meta */}
         <div>
-          <span className="mono" style={{
-            display: 'inline-block', marginBottom: 18,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
-            color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>{t('04 — Partner voice', '04 — Voz del socio')}</span>
           <h2 className="display" style={{
             margin: '0 0 24px',
             fontSize: 'clamp(26px, 3vw, 36px)',
@@ -1570,11 +1524,6 @@ const ContractorClosingCTA = () => {
       gap: 56, alignItems: 'center',
     }}>
       <div>
-        <span className="mono" style={{
-          display: 'inline-block', marginBottom: 18,
-          fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
-          color: 'var(--tangerine)', textTransform: 'uppercase',
-        }}>{t('Ready to partner?', '¿Listo para asociarte?')}</span>
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(32px, 4.2vw, 60px)',
           lineHeight: 0.98, letterSpacing: '-0.02em', color: 'var(--white)',

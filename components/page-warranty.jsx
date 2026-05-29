@@ -847,15 +847,6 @@ const SpecsStamped = () => {
         boxShadow: '12px 12px 0 var(--tangerine)',
       }}>
         <div>
-          <div className="mono" style={{
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.24em',
-            color: 'var(--tangerine)', textTransform: 'uppercase',
-            marginBottom: 18,
-            display: 'flex', alignItems: 'center', gap: 12,
-          }}>
-            <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
-            {t('02 — Stamped / sealed', '02 — Sellado / firmado')}
-          </div>
           <h2 className="display" style={{
             margin: '0 0 18px', fontSize: 'clamp(26px, 3vw, 38px)',
             lineHeight: 1.05, letterSpacing: '-0.015em', color: 'var(--white)',

@@ -356,10 +356,6 @@ const PoolCodeChecklist = () => (
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
-          <div className="mono" style={{
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-            color: 'var(--tangerine)', textTransform: 'uppercase', marginBottom: 18,
-          }}>03 — Pre-permit checklist</div>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3vw, 40px)',
             lineHeight: 1, letterSpacing: '-0.02em',

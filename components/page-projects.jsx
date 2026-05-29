@@ -92,10 +92,6 @@ const ProjectsCaseStudy = () => (
           }}>CASE STUDY · 01</div>
         </div>
         <div>
-          <div className="mono" style={{
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-            color: 'var(--tangerine)', textTransform: 'uppercase', marginBottom: 18,
-          }}>02 — Featured</div>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(32px, 3.6vw, 48px)', lineHeight: 1, letterSpacing: '-0.02em',
           }}>

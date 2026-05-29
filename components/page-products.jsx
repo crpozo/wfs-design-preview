@@ -25,7 +25,6 @@ const ProductsIntro = () => (
         display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 56, alignItems: 'end',
       }}>
         <div>
-          <div className="mono" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', color: 'var(--tangerine)', marginBottom: 16 }}>01 — Catalog</div>
           <h2 className="display" style={{ margin: 0, fontSize: 'clamp(26px, 2.6vw, 36px)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
             Everything you need to build the perimeter —<br/>
             <span style={{ color: 'var(--tangerine)' }}>and nothing we wouldn't put on our own job.</span>

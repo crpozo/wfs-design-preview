@@ -21,15 +21,6 @@ const AboutStory = () => (
         borderBottom: '1px solid rgba(0,16,17,0.12)',
       }}>
         <div>
-          <div className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-            color: 'var(--tangerine)', textTransform: 'uppercase',
-            marginBottom: 18,
-          }}>
-            <span>01 — Our story</span>
-            <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
-          </div>
           <h2 className="display" style={{
             margin: 0,
             fontSize: 'clamp(28px, 3vw, 44px)',
@@ -215,14 +206,6 @@ const AboutStats = () => {
           paddingBottom: 28, marginBottom: 56,
           borderBottom: '1px solid rgba(0,16,17,0.12)',
         }}>
-          <div className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-            color: 'var(--tangerine)', textTransform: 'uppercase',
-          }}>
-            <span>04 — By the numbers</span>
-            <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
-          </div>
           <div style={{
             display: 'flex', alignItems: 'baseline', gap: 14,
           }}>

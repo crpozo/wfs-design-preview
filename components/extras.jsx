@@ -115,17 +115,6 @@ const Testimonials = () => {
           borderBottom: '1px solid rgba(0,16,17,0.12)',
         }}>
           <div>
-            <div className="mono" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12,
-              fontSize: 11, fontWeight: 700,
-              letterSpacing: '0.22em',
-              color: 'var(--tangerine)',
-              textTransform: 'uppercase',
-              marginBottom: 18,
-            }}>
-              <span>{t('06 — Reviews', '06 — Reseñas')}</span>
-              <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
-            </div>
             <h2 className="display" style={{
               margin: 0,
               fontSize: 'clamp(28px, 3vw, 40px)',
@@ -218,17 +207,6 @@ const FAQ = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
           {/* Left: editorial header + CTA */}
           <div className="wfs-faq-sidebar" style={{ position: 'sticky', top: 100 }}>
-            <div className="mono" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12,
-              fontSize: 11, fontWeight: 700,
-              letterSpacing: '0.22em',
-              color: 'var(--tangerine)',
-              textTransform: 'uppercase',
-              marginBottom: 18,
-            }}>
-              <span>{t('05 — FAQ', '05 — Preguntas frecuentes')}</span>
-              <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
-            </div>
             <h2 className="display" style={{
               margin: 0,
               fontSize: 'clamp(28px, 3vw, 40px)',
@@ -497,18 +475,6 @@ const AboutIntro = () => {
 
         {/* Copy */}
         <div style={{ maxWidth: 560 }}>
-          <div className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12,
-            fontSize: 11, fontWeight: 700,
-            letterSpacing: '0.22em',
-            color: 'var(--tangerine)',
-            textTransform: 'uppercase',
-            marginBottom: 16,
-          }}>
-            <span>{t('About', 'Sobre nosotros')}</span>
-            <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
-          </div>
-
           <h2 className="display" style={{
             margin: 0,
             fontSize: 'clamp(26px, 2.6vw, 36px)',

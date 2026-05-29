@@ -37,14 +37,6 @@ const EstimateHero = () => (
         flexWrap: 'wrap', gap: 16, marginBottom: 28,
       }}>
         <div className="mono" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 12,
-          fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-          color: 'var(--tangerine)', textTransform: 'uppercase',
-        }}>
-          <span style={{ width: 28, height: 1.5, background: 'var(--tangerine)' }}/>
-          Get a Quote · Direct from the yard
-        </div>
-        <div className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10,
           padding: '6px 12px',
           background: 'rgba(255,255,255,0.08)',
@@ -156,19 +148,6 @@ const LiveAgentBand = () => (
         borderBottom: '1px solid rgba(0,16,17,0.12)',
       }}>
         <div>
-          <div className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-            color: 'var(--tangerine)', textTransform: 'uppercase',
-            marginBottom: 16,
-          }}>
-            <span style={{
-              width: 8, height: 8, borderRadius: '50%',
-              background: '#22c55e',
-              boxShadow: '0 0 0 4px rgba(34,197,94,0.25)',
-            }}/>
-            Live now · Mon–Fri 7am–4pm
-          </div>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3vw, 44px)',
             lineHeight: 1, letterSpacing: '-0.02em',

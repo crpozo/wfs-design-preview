@@ -39,16 +39,6 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, height = 'c
       width: '100%',
       paddingTop: 80, paddingBottom: 56,
     }}>
-      {eyebrow && (
-        <div className="mono" style={{
-          fontSize: 11, fontWeight: 700, letterSpacing: '0.20em', textTransform: 'uppercase',
-          color: 'var(--tangerine)',
-          display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18,
-        }}>
-          <span style={{ width: 28, height: 1.5, background: 'var(--tangerine)' }}/>
-          {eyebrow}
-        </div>
-      )}
       <h1 className="display" style={{
         margin: '0 0 18px',
         fontSize: 'clamp(28px, 3.4vw, 44px)',
@@ -75,15 +65,6 @@ const PageSectionHeader = ({ number, label, title, accent, sub, link }) => (
     borderBottom: '1px solid rgba(0,16,17,0.12)',
   }}>
     <div>
-      <div className="mono" style={{
-        display: 'inline-flex', alignItems: 'center', gap: 12,
-        fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-        color: 'var(--tangerine)', textTransform: 'uppercase',
-        marginBottom: 18,
-      }}>
-        <span>{number} — {label}</span>
-        <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
-      </div>
       <h2 className="display" style={{
         margin: 0, fontSize: 'clamp(28px, 3vw, 40px)',
         lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800,
@@ -150,13 +131,6 @@ const CTABand = ({ kicker, title, accent, body, primary, secondary, theme = 'cre
           alignItems: 'center',
         }}>
           <div>
-            {kicker && (
-              <div className="mono" style={{
-                fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-                textTransform: 'uppercase', color: 'var(--tangerine)',
-                marginBottom: 18,
-              }}>{kicker}</div>
-            )}
             <h2 className="display" style={{
               fontSize: 'clamp(30px, 3.5vw, 48px)', lineHeight: 1,
               letterSpacing: '-0.02em', margin: 0,
@@ -223,17 +197,6 @@ const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageRight = 
           alignItems: 'center',
         }}>
           <div style={{ order: imageRight ? 1 : 2 }}>
-            {kicker && (
-              <div className="mono" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 12,
-                fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-                color: 'var(--tangerine)', textTransform: 'uppercase',
-                marginBottom: 16,
-              }}>
-                <span>{kicker}</span>
-                <span style={{ width: 28, height: 1, background: 'var(--tangerine)' }}/>
-              </div>
-            )}
             <h2 className="display" style={{
               margin: 0, fontSize: 'clamp(28px, 3vw, 42px)',
               lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800,

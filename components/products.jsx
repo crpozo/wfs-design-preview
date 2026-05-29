@@ -445,17 +445,6 @@ const FenceCategories = () => {
           borderBottom: '1px solid rgba(0,16,17,0.12)',
         }}>
           <div>
-            <div className="mono" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12,
-              fontSize: 11, fontWeight: 700,
-              letterSpacing: '0.22em',
-              color: 'var(--tangerine)',
-              textTransform: 'uppercase',
-              marginBottom: 18,
-            }}>
-              <span>{t('01 — Catalog', '01 — Catálogo')}</span>
-              <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
-            </div>
             <h2 className="display" style={{
               margin: 0,
               fontSize: 'clamp(28px, 3vw, 40px)',
@@ -528,17 +517,6 @@ const GateSystems = () => {
           borderBottom: '1px solid rgba(0,16,17,0.12)',
         }}>
           <div>
-            <div className="mono" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12,
-              fontSize: 11, fontWeight: 700,
-              letterSpacing: '0.22em',
-              color: 'var(--tangerine)',
-              textTransform: 'uppercase',
-              marginBottom: 18,
-            }}>
-              <span>{t('02 — Gates', '02 — Portones')}</span>
-              <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
-            </div>
             <h2 className="display" style={{
               margin: 0,
               fontSize: 'clamp(28px, 3vw, 40px)',

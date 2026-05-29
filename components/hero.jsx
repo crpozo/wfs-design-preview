@@ -83,17 +83,6 @@ const Hero = () => {
       }}>
         <div className="container" style={{ width: '100%' }}>
           <div style={{ maxWidth: 760, width: '100%' }}>
-          <div style={{
-            fontFamily: 'var(--sans)', fontSize: 11, fontWeight: 700,
-            letterSpacing: '0.20em', textTransform: 'uppercase',
-            color: 'var(--tangerine)',
-            display: 'flex', alignItems: 'center', gap: 12, marginBottom: 22,
-          }}>
-            <span style={{ width: 28, height: 1.5, background: 'var(--tangerine)' }}/>
-            {t('Western Fence Supply · Material Supplier · SW Florida',
-               'Western Fence Supply · Proveedor de material · SW Florida')}
-          </div>
-
           <h1 className="display" style={{
             margin: '0 0 22px',
             fontSize: 'clamp(42px, 5.4vw, 60px)',
