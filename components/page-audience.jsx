@@ -39,13 +39,18 @@ const HomeownerHero = () => {
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
             {t('Homeowner · Built for residential', 'Propietario · Diseñado para residencial')}
           </span>
-          <h1 className="display" style={{
+          <h1 style={{
             margin: '0 0 22px',
-            fontSize: 'clamp(38px, 4.8vw, 72px)',
-            lineHeight: 0.96, letterSpacing: '-0.025em',
+            fontFamily: 'var(--display)',
+            fontVariationSettings: "'wdth' 100",
+            fontWeight: 700,
+            fontSize: 'clamp(32px, 3.6vw, 52px)',
+            lineHeight: 1.05,
+            letterSpacing: '-0.02em',
+            textTransform: 'none',
             color: 'var(--ink)',
           }}>
-            {t('Fence solutions', 'Soluciones de cercas')}<br/>
+            {t('Fence solutions', 'Soluciones de cercas')}{' '}
             <span style={{ color: 'var(--tangerine)' }}>{t('for your home.', 'para tu hogar.')}</span>
           </h1>
           <p className="mono" style={{
@@ -922,13 +927,18 @@ const ContractorHero = () => {
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
             {t('Wholesale Partner Program · Florida', 'Programa de Socio Mayorista · Florida')}
           </span>
-          <h1 className="display" style={{
+          <h1 style={{
             margin: '0 0 22px',
-            fontSize: 'clamp(38px, 4.8vw, 72px)',
-            lineHeight: 0.96, letterSpacing: '-0.025em',
+            fontFamily: 'var(--display)',
+            fontVariationSettings: "'wdth' 100",
+            fontWeight: 700,
+            fontSize: 'clamp(32px, 3.6vw, 52px)',
+            lineHeight: 1.05,
+            letterSpacing: '-0.02em',
+            textTransform: 'none',
             color: 'var(--white)',
           }}>
-            {t('Build with the', 'Construye con el')}<br/>
+            {t('Build with the', 'Construye con el')}{' '}
             <span style={{ color: 'var(--tangerine)' }}>{t('manufacturer.', 'fabricante.')}</span>
           </h1>
           <p className="mono" style={{

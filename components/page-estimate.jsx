@@ -55,21 +55,26 @@ const EstimateHero = () => (
       </div>
 
       {/* Main heading */}
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: 880 }}>
-        <h1 className="display" style={{
-          margin: '0 0 22px',
-          fontSize: 'clamp(36px, 5vw, 64px)',
-          lineHeight: 0.98, letterSpacing: '-0.025em',
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: 720 }}>
+        <h1 style={{
+          margin: '0 0 20px',
+          fontFamily: 'var(--display)',
+          fontVariationSettings: "'wdth' 100",
+          fontWeight: 700,
+          fontSize: 'clamp(32px, 3.6vw, 52px)',
+          lineHeight: 1.05,
+          letterSpacing: '-0.02em',
+          textTransform: 'none',
           color: 'var(--white)',
         }}>
-          Send your run.<br/>
+          Send your run.{' '}
           <span style={{ color: 'var(--tangerine)' }}>Get a binding quote in 24 hours.</span>
         </h1>
         <p style={{
-          fontSize: 17, lineHeight: 1.55, maxWidth: 580, margin: 0,
+          fontSize: 16, lineHeight: 1.5, maxWidth: 460, margin: 0,
           color: 'rgba(255,255,255,0.85)',
         }}>
-          Linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery — no chatbot, no contractor-only tiers.
+          Linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery.
         </p>
         <div style={{ marginTop: 32, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
           <a href="#form" style={{
