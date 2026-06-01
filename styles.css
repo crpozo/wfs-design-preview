@@ -378,7 +378,7 @@ section { position: relative; }
 .fence-card {
   position: relative;
   display: block;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 2 / 3;
   padding: 2.5px;                 /* gradient frame thickness */
   border: 0;
   background: linear-gradient(160deg, var(--r1, #6381d6), var(--r2, #263166));
@@ -436,15 +436,17 @@ section { position: relative; }
 }
 .fence-card:hover .fence-card__sheen { left: 160%; }
 
-/* Mobile: rail wraps to a horizontal scroll strip */
+/* Mobile: don't force a full-height section; rail becomes a scroll strip */
 @media (max-width: 720px) {
+  .fence-arena { min-height: auto !important; }
   .fence-rail {
     gap: 10px;
+    margin-top: 24px !important;
     overflow-x: auto;
     padding-bottom: 8px;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
-  .fence-rail > * { flex: 0 0 46%; scroll-snap-align: center; }
+  .fence-rail > * { flex: 0 0 46%; scroll-snap-align: center; max-height: none !important; }
   .fence-card.is-active { transform: translateY(-8px) scale(1.02); }
 }

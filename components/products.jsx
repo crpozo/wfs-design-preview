@@ -446,13 +446,14 @@ const FenceArenaCard = ({ item, index, active, onSelect }) => {
   const nameStr = t(item.name);
   const r = FENCE_RARITY[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)' };
   return (
-    <a
-      href={item.href || '#'}
+    <button
+      type="button"
       className={`fence-card${active ? ' is-active' : ''}`}
-      style={{ '--r1': r.c1, '--r2': r.c2, maxHeight: 'min(42vh, 360px)' }}
+      style={{ '--r1': r.c1, '--r2': r.c2, maxHeight: 'clamp(210px, 34vh, 440px)' }}
       onMouseEnter={() => onSelect(index)}
       onFocus={() => onSelect(index)}
-      onClick={(e) => { if (!active) { e.preventDefault(); onSelect(index); } }}
+      onClick={() => onSelect(index)}
+      aria-pressed={active}
       aria-label={nameStr}
     >
       <div className="fence-card__inner">
@@ -479,14 +480,14 @@ const FenceArenaCard = ({ item, index, active, onSelect }) => {
         )}
 
         {/* name pinned bottom */}
-        <div style={{ position: 'absolute', left: 12, right: 12, bottom: 12 }}>
+        <div style={{ position: 'absolute', left: 14, right: 14, bottom: 14, textAlign: 'left' }}>
           <h3 className="display" style={{
             margin: 0, color: 'var(--white)',
-            fontSize: 'clamp(13px, 1.05vw, 17px)', lineHeight: 1, letterSpacing: '-0.01em',
+            fontSize: 'clamp(13px, 0.95vw, 16px)', lineHeight: 1.05, letterSpacing: '-0.01em',
           }}>{nameStr}</h3>
         </div>
       </div>
-    </a>
+    </button>
   );
 };
 
@@ -518,7 +519,7 @@ const FenceArenaDetail = ({ item, index, active }) => {
       </div>
       <h2 className="display" style={{
         margin: '0 0 clamp(8px, 1.4vh, 14px)', color: 'var(--white)',
-        fontSize: 'clamp(30px, 2.6vw + 1.4vh, 60px)', lineHeight: 0.92, letterSpacing: '-0.02em', fontWeight: 800,
+        fontSize: 'clamp(32px, 3vw + 1.6vh, 72px)', lineHeight: 0.92, letterSpacing: '-0.02em', fontWeight: 800,
         textShadow: '0 4px 30px rgba(0,0,0,0.4)',
       }}>{nameStr}</h2>
       <div className="mono" style={{
@@ -565,7 +566,7 @@ const FenceCategories = () => {
     <section id="fences" className="fence-arena" style={{
       minHeight: '100vh',
       display: 'flex', flexDirection: 'column', justifyContent: 'center',
-      padding: 'clamp(104px, 13vh, 150px) 0 clamp(24px, 4vh, 48px)',
+      padding: 'clamp(124px, 14vh, 152px) 0 clamp(24px, 4vh, 48px)',
     }}>
       {/* Crossfading environment photos */}
       {items.map((c, i) => (
@@ -581,7 +582,9 @@ const FenceCategories = () => {
       <div className="fence-arena__scrim" />
       <div className="fence-arena__grid" />
 
-      <div className="container fence-arena__inner">
+      <div className="container fence-arena__inner" style={{
+        flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0, width: '100%',
+      }}>
         {/* Top eyebrow row */}
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
@@ -614,8 +617,9 @@ const FenceCategories = () => {
           ))}
         </div>
 
-        {/* The locker — selectable rail of all five systems */}
-        <div className="fence-rail">
+        {/* The locker — selectable rail of all five systems, pinned to the
+            bottom so the section fills the viewport top-to-bottom */}
+        <div className="fence-rail" style={{ marginTop: 'auto' }}>
           {items.map((c, i) => (
             <FenceArenaCard
               key={c.id}
