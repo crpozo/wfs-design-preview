@@ -490,6 +490,59 @@ const FenceArenaCard = ({ item, index, active, onSelect }) => {
   );
 };
 
+/* One detail panel (badge + title + tag + copy + CTA). All five are stacked
+   in the same grid cell so the container always reserves the tallest panel's
+   height — switching systems never reflows the layout (no vertical jump). */
+const FenceArenaDetail = ({ item, index, active }) => {
+  const t = useT();
+  const r = FENCE_RARITY[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)', tier: { EN: 'System', ES: 'Sistema' } };
+  const nameStr = t(item.name);
+  return (
+    <div style={{
+      gridArea: '1 / 1',
+      maxWidth: 560,
+      opacity: active ? 1 : 0,
+      visibility: active ? 'visible' : 'hidden',
+      transform: active ? 'translateY(0)' : 'translateY(8px)',
+      transition: 'opacity 0.45s ease, transform 0.45s ease',
+      pointerEvents: active ? 'auto' : 'none',
+    }}>
+      <div className="mono" style={{
+        display: 'inline-flex', alignItems: 'center', gap: 8,
+        fontSize: 10, letterSpacing: '0.22em', fontWeight: 700, textTransform: 'uppercase',
+        color: 'var(--ink)', background: r.c1, padding: '5px 9px', marginBottom: 16,
+      }}>
+        <span>{String(index + 1).padStart(2, '0')}</span>
+        <span style={{ opacity: 0.55 }}>/</span>
+        <span>{t(r.tier)}</span>
+      </div>
+      <h2 className="display" style={{
+        margin: '0 0 14px', color: 'var(--white)',
+        fontSize: 'clamp(40px, 6vw, 80px)', lineHeight: 0.92, letterSpacing: '-0.02em', fontWeight: 800,
+        textShadow: '0 4px 30px rgba(0,0,0,0.4)',
+      }}>{nameStr}</h2>
+      <div className="mono" style={{
+        fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
+        color: r.c1, marginBottom: 16, fontWeight: 700,
+      }}>{t(item.tag)}</div>
+      <p style={{
+        margin: '0 0 26px', maxWidth: 480,
+        fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.86)',
+      }}>{t(item.desc)}</p>
+      <a href={item.href || '#'} className="mono" style={{
+        display: 'inline-flex', alignItems: 'center', gap: 12,
+        fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
+        color: 'var(--ink)', background: 'var(--tangerine)', padding: '14px 22px',
+      }}>
+        {t('Explore', 'Explorar')} {nameStr}
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
+        </svg>
+      </a>
+    </div>
+  );
+};
+
 const FenceCategories = () => {
   const t = useT();
   const items = FENCE_CATEGORIES;
@@ -549,42 +602,12 @@ const FenceCategories = () => {
           </a>
         </div>
 
-        {/* Active-system detail — crossfades on change */}
-        <div key={item.id} className="fence-detail" style={{
-          maxWidth: 560, marginBottom: 'clamp(28px, 5vw, 56px)',
-        }}>
-          <div className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            fontSize: 10, letterSpacing: '0.22em', fontWeight: 700, textTransform: 'uppercase',
-            color: 'var(--ink)', background: r.c1, padding: '5px 9px', marginBottom: 16,
-          }}>
-            <span>{String(active + 1).padStart(2, '0')}</span>
-            <span style={{ opacity: 0.55 }}>/</span>
-            <span>{t(r.tier)}</span>
-          </div>
-          <h2 className="display" style={{
-            margin: '0 0 14px', color: 'var(--white)',
-            fontSize: 'clamp(40px, 6vw, 80px)', lineHeight: 0.92, letterSpacing: '-0.02em', fontWeight: 800,
-            textShadow: '0 4px 30px rgba(0,0,0,0.4)',
-          }}>{t(item.name)}</h2>
-          <div className="mono" style={{
-            fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
-            color: r.c1, marginBottom: 16, fontWeight: 700,
-          }}>{t(item.tag)}</div>
-          <p style={{
-            margin: '0 0 26px', maxWidth: 480,
-            fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.86)',
-          }}>{t(item.desc)}</p>
-          <a href={item.href || '#'} className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12,
-            fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
-            color: 'var(--ink)', background: 'var(--tangerine)', padding: '14px 22px',
-          }}>
-            {t('Explore', 'Explorar')} {t(item.name)}
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
-            </svg>
-          </a>
+        {/* Active-system detail — all panels stacked in one grid cell so the
+            block height stays fixed (tallest panel) and never reflows. */}
+        <div style={{ display: 'grid', marginBottom: 'clamp(28px, 5vw, 56px)' }}>
+          {items.map((c, i) => (
+            <FenceArenaDetail key={c.id} item={c} index={i} active={i === active} />
+          ))}
         </div>
 
         {/* The locker — selectable rail of all five systems */}
