@@ -449,7 +449,7 @@ const FenceArenaCard = ({ item, index, active, onSelect }) => {
     <a
       href={item.href || '#'}
       className={`fence-card${active ? ' is-active' : ''}`}
-      style={{ '--r1': r.c1, '--r2': r.c2 }}
+      style={{ '--r1': r.c1, '--r2': r.c2, maxHeight: 'min(42vh, 360px)' }}
       onMouseEnter={() => onSelect(index)}
       onFocus={() => onSelect(index)}
       onClick={(e) => { if (!active) { e.preventDefault(); onSelect(index); } }}
@@ -517,22 +517,22 @@ const FenceArenaDetail = ({ item, index, active }) => {
         <span>{t(r.tier)}</span>
       </div>
       <h2 className="display" style={{
-        margin: '0 0 14px', color: 'var(--white)',
-        fontSize: 'clamp(40px, 6vw, 80px)', lineHeight: 0.92, letterSpacing: '-0.02em', fontWeight: 800,
+        margin: '0 0 clamp(8px, 1.4vh, 14px)', color: 'var(--white)',
+        fontSize: 'clamp(30px, 2.6vw + 1.4vh, 60px)', lineHeight: 0.92, letterSpacing: '-0.02em', fontWeight: 800,
         textShadow: '0 4px 30px rgba(0,0,0,0.4)',
       }}>{nameStr}</h2>
       <div className="mono" style={{
         fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
-        color: r.c1, marginBottom: 16, fontWeight: 700,
+        color: r.c1, marginBottom: 'clamp(8px, 1.4vh, 16px)', fontWeight: 700,
       }}>{t(item.tag)}</div>
       <p style={{
-        margin: '0 0 26px', maxWidth: 480,
-        fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.86)',
+        margin: '0 0 clamp(14px, 2.4vh, 26px)', maxWidth: 480,
+        fontSize: 'clamp(13px, 1.4vh, 15px)', lineHeight: 1.55, color: 'rgba(255,255,255,0.86)',
       }}>{t(item.desc)}</p>
       <a href={item.href || '#'} className="mono" style={{
         display: 'inline-flex', alignItems: 'center', gap: 12,
         fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
-        color: 'var(--ink)', background: 'var(--tangerine)', padding: '14px 22px',
+        color: 'var(--ink)', background: 'var(--tangerine)', padding: 'clamp(11px, 1.6vh, 14px) 22px',
       }}>
         {t('Explore', 'Explorar')} {nameStr}
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -562,7 +562,11 @@ const FenceCategories = () => {
   const r = FENCE_RARITY[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)', tier: { EN: 'System', ES: 'Sistema' } };
 
   return (
-    <section id="fences" className="fence-arena" style={{ padding: 'clamp(56px, 7vw, 96px) 0' }}>
+    <section id="fences" className="fence-arena" style={{
+      minHeight: '100vh',
+      display: 'flex', flexDirection: 'column', justifyContent: 'center',
+      padding: 'clamp(104px, 13vh, 150px) 0 clamp(24px, 4vh, 48px)',
+    }}>
       {/* Crossfading environment photos */}
       {items.map((c, i) => (
         <div
@@ -581,7 +585,7 @@ const FenceCategories = () => {
         {/* Top eyebrow row */}
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          gap: 24, flexWrap: 'wrap', marginBottom: 'clamp(20px, 4vw, 44px)',
+          gap: 24, flexWrap: 'wrap', marginBottom: 'clamp(10px, 2.2vh, 30px)',
         }}>
           <div className="mono" style={{
             fontSize: 11, letterSpacing: '0.28em', fontWeight: 700, textTransform: 'uppercase',
@@ -604,7 +608,7 @@ const FenceCategories = () => {
 
         {/* Active-system detail — all panels stacked in one grid cell so the
             block height stays fixed (tallest panel) and never reflows. */}
-        <div style={{ display: 'grid', marginBottom: 'clamp(28px, 5vw, 56px)' }}>
+        <div style={{ display: 'grid', marginBottom: 'clamp(16px, 3vh, 40px)' }}>
           {items.map((c, i) => (
             <FenceArenaDetail key={c.id} item={c} index={i} active={i === active} />
           ))}
