@@ -505,7 +505,7 @@ const SystemCard = ({ item, index, active, onSelect, rarity, variant }) => {
 /* One detail panel (badge + title + tag + copy + CTA). All panels are stacked
    in the same grid cell so the container always reserves the tallest panel's
    height — switching systems never reflows the layout (no vertical jump). */
-const SystemDetail = ({ item, active, rarity, badge, align, ctaLabel }) => {
+const SystemDetail = ({ item, active, rarity, align, ctaLabel }) => {
   const t = useT();
   const r = rarity[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)' };
   const nameStr = t(item.name);
@@ -522,13 +522,6 @@ const SystemDetail = ({ item, active, rarity, badge, align, ctaLabel }) => {
       transition: 'opacity 0.45s ease, transform 0.45s ease',
       pointerEvents: active ? 'auto' : 'none',
     }}>
-      <div className="mono" style={{
-        display: 'inline-flex', alignItems: 'center', gap: 8,
-        fontSize: 10, letterSpacing: '0.22em', fontWeight: 700, textTransform: 'uppercase',
-        color: 'var(--ink)', background: r.c1, padding: '5px 9px', marginBottom: 16,
-      }}>
-        <span>{t(badge)}</span>
-      </div>
       <h2 className="display" style={{
         margin: '0 0 clamp(8px, 1.4vh, 14px)', color: 'var(--white)',
         fontSize: 'clamp(32px, 3vw + 1.6vh, 72px)', lineHeight: 0.92, letterSpacing: '-0.02em', fontWeight: 800,
@@ -560,7 +553,7 @@ const SystemDetail = ({ item, active, rarity, badge, align, ctaLabel }) => {
 /* Reusable full-viewport "arena": crossfading environment behind a selectable
    rail of systems. Fences and Gates share this; props differentiate them
    (palette, badge, side the copy sits on, mirrored card bevel). */
-const SystemArena = ({ sectionId, items, rarity, badge, align, variant, topLink, ctaLabel }) => {
+const SystemArena = ({ sectionId, items, rarity, label, chapter, align, variant, topLink, ctaLabel }) => {
   const t = useT();
   const [active, setActive] = React.useState(0);
   const [locked, setLocked] = React.useState(false);
@@ -598,14 +591,38 @@ const SystemArena = ({ sectionId, items, rarity, badge, align, variant, topLink,
       <div className="fence-arena__scrim" />
       <div className="fence-arena__grid" />
 
+      {/* Accent bar marking the seam between sections */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: r.c1, zIndex: 3, transition: 'background 0.6s ease' }} />
+
       <div className="container fence-arena__inner" style={{
         flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0, width: '100%',
       }}>
-        {/* Top row — catalog/quote link, on the opposite side from the copy */}
+        {/* Section masthead — chapter number + big section name + accent rule
+            on one side, catalog/quote link on the other, with a divider rule.
+            This clearly announces each section so Fences and Gates don't blur
+            into one continuous block. */}
         <div style={{
-          display: 'flex', justifyContent: right ? 'flex-start' : 'flex-end', alignItems: 'center',
-          gap: 24, flexWrap: 'wrap', marginBottom: 'clamp(10px, 2.2vh, 30px)',
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          flexDirection: right ? 'row-reverse' : 'row',
+          gap: 24, flexWrap: 'wrap',
+          borderBottom: '1px solid rgba(255,255,255,0.20)',
+          paddingBottom: 'clamp(12px, 1.8vh, 20px)',
+          marginBottom: 'clamp(14px, 2.6vh, 34px)',
         }}>
+          <div style={{
+            display: 'flex', alignItems: 'center', gap: 14,
+            flexDirection: right ? 'row-reverse' : 'row',
+          }}>
+            <span className="mono" style={{
+              fontSize: 11, fontWeight: 700, letterSpacing: '0.18em',
+              color: 'var(--ink)', background: r.c1, padding: '4px 8px',
+            }}>{chapter}</span>
+            <span className="display" style={{
+              fontSize: 'clamp(18px, 1.4vw + 0.8vh, 30px)', fontWeight: 800,
+              letterSpacing: '0.02em', color: 'var(--white)', lineHeight: 1,
+            }}>{t(label)}</span>
+            <span style={{ width: 'clamp(28px, 5vw, 88px)', height: 2, background: r.c1, transition: 'background 0.5s ease' }} />
+          </div>
           <a href={topLink.href} className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
@@ -623,7 +640,7 @@ const SystemArena = ({ sectionId, items, rarity, badge, align, variant, topLink,
         <div style={{ display: 'grid', marginBottom: 'clamp(16px, 3vh, 40px)', justifyItems: right ? 'end' : 'start' }}>
           {items.map((c, i) => (
             <SystemDetail key={c.id} item={c} active={i === active}
-              rarity={rarity} badge={badge} align={align} ctaLabel={ctaLabel} />
+              rarity={rarity} align={align} ctaLabel={ctaLabel} />
           ))}
         </div>
 
@@ -652,7 +669,8 @@ const FenceCategories = () => (
     sectionId="fences"
     items={FENCE_CATEGORIES}
     rarity={FENCE_RARITY}
-    badge={{ EN: 'Fences', ES: 'Cercas' }}
+    label={{ EN: 'Fences', ES: 'Cercas' }}
+    chapter="01"
     align="left"
     variant="fence"
     topLink={{ href: 'products.html', label: { EN: 'Full catalog', ES: 'Catálogo completo' } }}
@@ -667,7 +685,8 @@ const GateSystems = () => (
     sectionId="gates"
     items={GATE_SYSTEMS}
     rarity={GATE_RARITY}
-    badge={{ EN: 'Gates', ES: 'Portones' }}
+    label={{ EN: 'Gates', ES: 'Portones' }}
+    chapter="02"
     align="right"
     variant="gate"
     topLink={{ href: 'estimate.html', label: { EN: 'Custom quote', ES: 'Cotización a medida' } }}
