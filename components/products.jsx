@@ -428,71 +428,175 @@ const FenceStyleCard = ({ item, index }) => {
   );
 };
 
-const FenceCategories = () => {
+/* Rarity-style accent per fence — drives card frame, glow & background wash.
+   Keeps tangerine as the brand hero on metal/EC while giving each system its
+   own "tier" color for the game-UI feel. */
+const FENCE_RARITY = {
+  vinyl:     { tier: { EN: 'Privacy Class',   ES: 'Clase Privacidad' }, c1: '#36c5ff', c2: '#2e59c1' },
+  aluminum:  { tier: { EN: 'Versatile Class', ES: 'Clase Versátil' },   c1: '#b98bff', c2: '#6342c9' },
+  chainlink: { tier: { EN: 'Workhorse Class', ES: 'Clase Resistente' }, c1: '#46e3a0', c2: '#1f9d6b' },
+  metal:     { tier: { EN: 'Premium Class',   ES: 'Clase Premium' },    c1: '#ffb24d', c2: '#ff7133' },
+  ecfence:   { tier: { EN: 'Legendary',       ES: 'Legendaria' },       c1: '#ff7bd5', c2: '#ff3d8b' },
+};
+
+/* Single selectable card in the rail — Fortnite locker style */
+const FenceArenaCard = ({ item, index, active, onSelect }) => {
   const t = useT();
-  const visible = FENCE_CATEGORIES;
+  const num = String(index + 1).padStart(2, '0');
+  const nameStr = t(item.name);
+  const r = FENCE_RARITY[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)' };
   return (
-    <section id="fences" style={{ background: 'var(--white)', padding: '64px 0' }}>
-      <div className="container">
-        {/* Editorial header — title left, intro + catalog link right */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 48,
-          alignItems: 'end',
-          paddingBottom: 24,
-          marginBottom: 28,
-          borderBottom: '1px solid rgba(0,16,17,0.12)',
+    <a
+      href={item.href || '#'}
+      className={`fence-card${active ? ' is-active' : ''}`}
+      style={{ '--r1': r.c1, '--r2': r.c2 }}
+      onMouseEnter={() => onSelect(index)}
+      onFocus={() => onSelect(index)}
+      onClick={(e) => { if (!active) { e.preventDefault(); onSelect(index); } }}
+      aria-label={nameStr}
+    >
+      <div className="fence-card__inner">
+        <img className="fence-card__img" src={FENCE_IMG[item.img]} alt={nameStr} />
+        <div className="fence-card__scrim" />
+        <span className="fence-card__sheen" />
+
+        {/* index + rule, top-left */}
+        <div className="mono" style={{
+          position: 'absolute', top: 11, left: 11,
+          display: 'flex', alignItems: 'center', gap: 8,
+          fontSize: 10, letterSpacing: '0.22em', fontWeight: 700, color: 'var(--white)',
         }}>
-          <div>
-            <h2 className="display" style={{
-              margin: 0,
-              fontSize: 'clamp(28px, 3vw, 40px)',
-              lineHeight: 1, letterSpacing: '-0.02em',
-              fontWeight: 800,
-            }}>
-              {t('Five systems.', 'Cinco sistemas.')}<br/>
-              <span style={{ color: 'var(--tangerine)' }}>{t('One yard.', 'Una sucursal.')}</span>
-            </h2>
-          </div>
-          <div style={{
-            display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 18,
-          }}>
-            <p style={{
-              margin: 0, maxWidth: 360,
-              fontSize: 14, lineHeight: 1.55,
-              color: 'var(--charcoal)',
-              textAlign: 'right',
-            }}>
-              {t(
-                "Supplier-direct pricing for contractors, homeowners and DIY projects across SW Florida — factory-direct, stocked, and quoted in 24 hours. We supply the materials; we don't install.",
-                'Precios directos del proveedor para contratistas, propietarios y proyectos DIY en el suroeste de Florida — directo de fábrica, en stock y cotizado en 24 horas. Suministramos el material; no instalamos.'
-              )}
-            </p>
-            <a href="products.html" className="mono" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 10,
-              fontSize: 11, fontWeight: 700,
-              letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: 'var(--ink)',
-              borderBottom: '1px solid var(--ink)',
-              paddingBottom: 4,
-            }}>
-              {t('Full catalog', 'Catálogo completo')}
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
-              </svg>
-            </a>
-          </div>
+          <span>{num}</span>
+          <span style={{ width: 16, height: 2, background: r.c1, display: 'block' }} />
         </div>
 
-        {/* Equal 5-column grid — every fence card same size, image-led */}
+        {item.isNew && (
+          <span className="mono" style={{
+            position: 'absolute', top: 10, right: 10,
+            fontSize: 8, fontWeight: 700, letterSpacing: '0.2em',
+            color: 'var(--ink)', background: r.c1, padding: '4px 6px',
+          }}>{t('NEW', 'NUEVO')}</span>
+        )}
+
+        {/* name pinned bottom */}
+        <div style={{ position: 'absolute', left: 12, right: 12, bottom: 12 }}>
+          <h3 className="display" style={{
+            margin: 0, color: 'var(--white)',
+            fontSize: 'clamp(13px, 1.05vw, 17px)', lineHeight: 1, letterSpacing: '-0.01em',
+          }}>{nameStr}</h3>
+        </div>
+      </div>
+    </a>
+  );
+};
+
+const FenceCategories = () => {
+  const t = useT();
+  const items = FENCE_CATEGORIES;
+  const [active, setActive] = React.useState(0);
+  const [locked, setLocked] = React.useState(false);
+
+  // Auto-cycle the "ambiente" until the visitor takes over.
+  React.useEffect(() => {
+    if (locked) return;
+    const id = setInterval(() => setActive((a) => (a + 1) % items.length), 4200);
+    return () => clearInterval(id);
+  }, [locked, items.length]);
+
+  const select = React.useCallback((i) => { setActive(i); setLocked(true); }, []);
+
+  const item = items[active];
+  const r = FENCE_RARITY[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)', tier: { EN: 'System', ES: 'Sistema' } };
+
+  return (
+    <section id="fences" className="fence-arena" style={{ padding: 'clamp(56px, 7vw, 96px) 0' }}>
+      {/* Crossfading environment photos */}
+      {items.map((c, i) => (
+        <div
+          key={c.id}
+          className={`fence-arena__bg${i === active ? ' is-active' : ''}`}
+          style={{ backgroundImage: `url(${FENCE_IMG[c.img]})` }}
+        />
+      ))}
+      <div className="fence-arena__wash" style={{
+        background: `radial-gradient(90% 70% at 18% 30%, ${r.c1}88, transparent 60%), linear-gradient(180deg, ${r.c2}55, transparent 55%)`,
+      }} />
+      <div className="fence-arena__scrim" />
+      <div className="fence-arena__grid" />
+
+      <div className="container fence-arena__inner">
+        {/* Top eyebrow row */}
         <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          gap: 14,
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          gap: 24, flexWrap: 'wrap', marginBottom: 'clamp(20px, 4vw, 44px)',
         }}>
-          {visible.map((c, i) => (
-            <FenceStyleCard key={c.id} item={c} index={i}/>
+          <div className="mono" style={{
+            fontSize: 11, letterSpacing: '0.28em', fontWeight: 700, textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.72)',
+          }}>
+            {t('Five systems.', 'Cinco sistemas.')}{' '}
+            <span style={{ color: 'var(--tangerine)' }}>{t('One yard.', 'Una sucursal.')}</span>
+          </div>
+          <a href="products.html" className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+            color: 'var(--white)', borderBottom: '1px solid rgba(255,255,255,0.6)', paddingBottom: 4,
+          }}>
+            {t('Full catalog', 'Catálogo completo')}
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+            </svg>
+          </a>
+        </div>
+
+        {/* Active-system detail — crossfades on change */}
+        <div key={item.id} className="fence-detail" style={{
+          maxWidth: 560, marginBottom: 'clamp(28px, 5vw, 56px)',
+        }}>
+          <div className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            fontSize: 10, letterSpacing: '0.22em', fontWeight: 700, textTransform: 'uppercase',
+            color: 'var(--ink)', background: r.c1, padding: '5px 9px', marginBottom: 16,
+          }}>
+            <span>{String(active + 1).padStart(2, '0')}</span>
+            <span style={{ opacity: 0.55 }}>/</span>
+            <span>{t(r.tier)}</span>
+          </div>
+          <h2 className="display" style={{
+            margin: '0 0 14px', color: 'var(--white)',
+            fontSize: 'clamp(40px, 6vw, 80px)', lineHeight: 0.92, letterSpacing: '-0.02em', fontWeight: 800,
+            textShadow: '0 4px 30px rgba(0,0,0,0.4)',
+          }}>{t(item.name)}</h2>
+          <div className="mono" style={{
+            fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
+            color: r.c1, marginBottom: 16, fontWeight: 700,
+          }}>{t(item.tag)}</div>
+          <p style={{
+            margin: '0 0 26px', maxWidth: 480,
+            fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.86)',
+          }}>{t(item.desc)}</p>
+          <a href={item.href || '#'} className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 12,
+            fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
+            color: 'var(--ink)', background: 'var(--tangerine)', padding: '14px 22px',
+          }}>
+            {t('Explore', 'Explorar')} {t(item.name)}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
+            </svg>
+          </a>
+        </div>
+
+        {/* The locker — selectable rail of all five systems */}
+        <div className="fence-rail">
+          {items.map((c, i) => (
+            <FenceArenaCard
+              key={c.id}
+              item={c}
+              index={i}
+              active={i === active}
+              onSelect={select}
+            />
           ))}
         </div>
       </div>
