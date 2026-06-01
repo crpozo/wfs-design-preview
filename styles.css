@@ -436,6 +436,16 @@ section { position: relative; }
 }
 .fence-card:hover .fence-card__sheen { left: 160%; }
 
+/* Gate variant — mirror the bevels (cut top-left + bottom-right) so the gates
+   rail is a deliberate mirror of the fences rail */
+.gate-card {
+  clip-path: polygon(17px 0, 100% 0, 100% calc(100% - 17px), calc(100% - 17px) 100%, 0 100%, 0 17px);
+}
+.gate-card .fence-card__inner {
+  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+}
+.gate-card .fence-card__sheen { transform: rotate(-18deg); }
+
 /* Mobile: don't force a full-height section; rail becomes a scroll strip */
 @media (max-width: 720px) {
   .fence-arena { min-height: auto !important; }

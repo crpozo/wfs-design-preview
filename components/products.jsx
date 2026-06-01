@@ -35,34 +35,34 @@ const FENCE_CATEGORIES = [
 
 const GATE_SYSTEMS = [
   {
-    id: 'single-swing', name: { EN: 'Single Swing', ES: 'Batiente sencillo' }, tag: { EN: 'Walk gates & entry points', ES: 'Peatonal y puntos de entrada' },
+    id: 'single-swing', name: { EN: 'Single Gate', ES: 'Portón sencillo' }, tag: { EN: 'Walk & entry gates', ES: 'Peatonales y de entrada' },
     img: 'gate-single', href: 'gate-single.html',
-    desc: { EN: 'Standard pedestrian and entry gates from 3 to 6 ft wide. Mechanically assembled or welded, with hardware to match every fence material we stock.',
-            ES: 'Portones peatonales y de entrada estándar de 3 a 6 pies de ancho. Ensamblados mecánicamente o soldados, con hardware para cada material de cerca en stock.' },
+    desc: { EN: 'Single walk gates for entry points, fabricated in-house and available in vinyl, chain link, metal and aluminum to match your fence. Standard and custom sizes.',
+            ES: 'Portones peatonales para puntos de entrada, fabricados en planta y disponibles en vinilo, malla, metal y aluminio para combinar con tu cerca. Tamaños estándar y a medida.' },
   },
   {
-    id: 'double-swing', name: { EN: 'Double Swing', ES: 'Batiente doble' }, tag: { EN: 'Driveway access gates', ES: 'Portones de acceso vehicular' },
+    id: 'double-swing', name: { EN: 'Double Gate', ES: 'Portón doble' }, tag: { EN: 'Driveway drive gates', ES: 'Portones de acceso vehicular' },
     img: 'gate-double', href: 'gate-double.html',
-    desc: { EN: 'Driveway-width gates from 8 to 16 ft total opening. Pre-hung options for single-day install with drop rod and gate latch hardware included.',
-            ES: 'Portones de ancho vehicular de 8 a 16 pies de abertura total. Opciones preinstaladas para montaje en un día, con barra de caída y herrajes incluidos.' },
+    desc: { EN: 'Double drive gates for driveway access, fabricated in-house in vinyl, chain link, metal and aluminum — standard or custom sized, with matching hardware.',
+            ES: 'Portones dobles para acceso vehicular, fabricados en planta en vinilo, malla, metal y aluminio — estándar o a medida, con herrajes a juego.' },
   },
   {
-    id: 'sliding', name: { EN: 'Sliding Gates', ES: 'Portones corredizos' }, tag: { EN: 'Space-saving operation', ES: 'Operación que ahorra espacio' },
+    id: 'sliding', name: { EN: 'Sliding Gate', ES: 'Portón corredizo' }, tag: { EN: 'Space-saving access', ES: 'Acceso que ahorra espacio' },
     img: 'gate-sliding', href: 'gate-sliding.html',
-    desc: { EN: 'Track-mounted sliding gates for tight or graded openings. Manual or automated with operator and safety package available.',
-            ES: 'Portones corredizos sobre riel para aberturas estrechas o en pendiente. Manuales o automáticos con operador y paquete de seguridad disponibles.' },
+    desc: { EN: 'Sliding gates for openings with no room to swing. Fabricated in-house and available in standard and custom sizes.',
+            ES: 'Portones corredizos para aberturas sin espacio para abatir. Fabricados en planta, en tamaños estándar y a medida.' },
   },
   {
-    id: 'cantilever', name: { EN: 'Cantilever', ES: 'Cantilever' }, tag: { EN: 'No ground track needed', ES: 'Sin riel en el suelo' },
+    id: 'cantilever', name: { EN: 'Cantilever Gate', ES: 'Portón cantilever' }, tag: { EN: 'Commercial & industrial', ES: 'Comercial e industrial' },
     img: 'gate-cantilever', href: 'gate-cantilever.html',
-    desc: { EN: 'Counter-balanced rolling gates with no ground track — ideal for sites with sand, debris or grade change. Up to 50 ft single openings.',
-            ES: 'Portones rodantes contrabalanceados sin riel en el suelo — ideales para sitios con arena, escombros o cambios de nivel. Aberturas únicas hasta 50 pies.' },
+    desc: { EN: 'Cantilever gates built for easy operation and long-lasting use — quick, secure entry to and from your property.',
+            ES: 'Portones cantilever construidos para operación fácil y uso duradero — entrada y salida rápida y segura de tu propiedad.' },
   },
   {
     id: 'rolling', name: { EN: 'Rolling Gate', ES: 'Portón rodante' }, tag: { EN: 'Industrial rolling gates', ES: 'Portones rodantes industriales' },
     img: 'gate-rolling', href: 'gate-rolling.html',
-    desc: { EN: 'Industrial rolling gates with V-track and rollers. Built for high-cycle commercial use, secured perimeters, yards and operations.',
-            ES: 'Portones rodantes industriales con V-track y rodillos. Construidos para uso comercial de alto ciclo, perímetros seguros, patios y operaciones.' },
+    desc: { EN: 'Rolling gates built for easy operation and long-lasting use, for quick and secure entry to and from your property.',
+            ES: 'Portones rodantes construidos para operación fácil y uso duradero, para entrada y salida rápida y segura de tu propiedad.' },
   },
 ];
 
@@ -428,27 +428,37 @@ const FenceStyleCard = ({ item, index }) => {
   );
 };
 
-/* Rarity-style accent per fence — drives card frame, glow & background wash.
-   Keeps tangerine as the brand hero on metal/EC while giving each system its
-   own "tier" color for the game-UI feel. */
+/* Accent color per system — drives the card frame, glow and background wash.
+   Fences use a vivid set; gates use a metallic/industrial set so the two
+   sections read as the same family but clearly distinct. */
 const FENCE_RARITY = {
-  vinyl:     { tier: { EN: 'Privacy Class',   ES: 'Clase Privacidad' }, c1: '#36c5ff', c2: '#2e59c1' },
-  aluminum:  { tier: { EN: 'Versatile Class', ES: 'Clase Versátil' },   c1: '#b98bff', c2: '#6342c9' },
-  chainlink: { tier: { EN: 'Workhorse Class', ES: 'Clase Resistente' }, c1: '#46e3a0', c2: '#1f9d6b' },
-  metal:     { tier: { EN: 'Premium Class',   ES: 'Clase Premium' },    c1: '#ffb24d', c2: '#ff7133' },
-  ecfence:   { tier: { EN: 'Legendary',       ES: 'Legendaria' },       c1: '#ff7bd5', c2: '#ff3d8b' },
+  vinyl:     { c1: '#36c5ff', c2: '#2e59c1' },
+  aluminum:  { c1: '#b98bff', c2: '#6342c9' },
+  chainlink: { c1: '#46e3a0', c2: '#1f9d6b' },
+  metal:     { c1: '#ffb24d', c2: '#ff7133' },
+  ecfence:   { c1: '#ff7bd5', c2: '#ff3d8b' },
+};
+const GATE_RARITY = {
+  'single-swing': { c1: '#7fa8d8', c2: '#3a5a86' },  // steel blue
+  'double-swing': { c1: '#69c9c1', c2: '#2b7a73' },  // teal
+  'sliding':      { c1: '#c9b27f', c2: '#8a6f3a' },  // brass
+  'cantilever':   { c1: '#9aa3ad', c2: '#525a63' },  // graphite
+  'rolling':      { c1: '#e08a4a', c2: '#a8542a' },  // industrial orange
 };
 
-/* Single selectable card in the rail — Fortnite locker style */
-const FenceArenaCard = ({ item, index, active, onSelect }) => {
+/* Single selectable card in the rail — game-locker style.
+   variant 'gate' mirrors the bevel and flips the accents to the right so the
+   gates rail reads as a deliberate mirror of the fences rail. */
+const SystemCard = ({ item, index, active, onSelect, rarity, variant }) => {
   const t = useT();
   const num = String(index + 1).padStart(2, '0');
   const nameStr = t(item.name);
-  const r = FENCE_RARITY[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)' };
+  const r = rarity[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)' };
+  const right = variant === 'gate';
   return (
     <button
       type="button"
-      className={`fence-card${active ? ' is-active' : ''}`}
+      className={`fence-card${right ? ' gate-card' : ''}${active ? ' is-active' : ''}`}
       style={{ '--r1': r.c1, '--r2': r.c2, maxHeight: 'clamp(210px, 34vh, 440px)' }}
       onMouseEnter={() => onSelect(index)}
       onFocus={() => onSelect(index)}
@@ -461,10 +471,11 @@ const FenceArenaCard = ({ item, index, active, onSelect }) => {
         <div className="fence-card__scrim" />
         <span className="fence-card__sheen" />
 
-        {/* index + rule, top-left */}
+        {/* index + rule */}
         <div className="mono" style={{
-          position: 'absolute', top: 11, left: 11,
+          position: 'absolute', top: 11, [right ? 'right' : 'left']: 11,
           display: 'flex', alignItems: 'center', gap: 8,
+          flexDirection: right ? 'row-reverse' : 'row',
           fontSize: 10, letterSpacing: '0.22em', fontWeight: 700, color: 'var(--white)',
         }}>
           <span>{num}</span>
@@ -473,14 +484,14 @@ const FenceArenaCard = ({ item, index, active, onSelect }) => {
 
         {item.isNew && (
           <span className="mono" style={{
-            position: 'absolute', top: 10, right: 10,
+            position: 'absolute', top: 10, [right ? 'left' : 'right']: 10,
             fontSize: 8, fontWeight: 700, letterSpacing: '0.2em',
             color: 'var(--ink)', background: r.c1, padding: '4px 6px',
           }}>{t('NEW', 'NUEVO')}</span>
         )}
 
         {/* name pinned bottom */}
-        <div style={{ position: 'absolute', left: 14, right: 14, bottom: 14, textAlign: 'left' }}>
+        <div style={{ position: 'absolute', left: 14, right: 14, bottom: 14, textAlign: right ? 'right' : 'left' }}>
           <h3 className="display" style={{
             margin: 0, color: 'var(--white)',
             fontSize: 'clamp(13px, 0.95vw, 16px)', lineHeight: 1.05, letterSpacing: '-0.01em',
@@ -491,17 +502,20 @@ const FenceArenaCard = ({ item, index, active, onSelect }) => {
   );
 };
 
-/* One detail panel (badge + title + tag + copy + CTA). All five are stacked
+/* One detail panel (badge + title + tag + copy + CTA). All panels are stacked
    in the same grid cell so the container always reserves the tallest panel's
    height — switching systems never reflows the layout (no vertical jump). */
-const FenceArenaDetail = ({ item, index, active }) => {
+const SystemDetail = ({ item, active, rarity, badge, align, ctaLabel }) => {
   const t = useT();
-  const r = FENCE_RARITY[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)', tier: { EN: 'System', ES: 'Sistema' } };
+  const r = rarity[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)' };
   const nameStr = t(item.name);
+  const right = align === 'right';
   return (
     <div style={{
       gridArea: '1 / 1',
       maxWidth: 560,
+      justifySelf: right ? 'end' : 'start',
+      textAlign: right ? 'right' : 'left',
       opacity: active ? 1 : 0,
       visibility: active ? 'visible' : 'hidden',
       transform: active ? 'translateY(0)' : 'translateY(8px)',
@@ -513,9 +527,7 @@ const FenceArenaDetail = ({ item, index, active }) => {
         fontSize: 10, letterSpacing: '0.22em', fontWeight: 700, textTransform: 'uppercase',
         color: 'var(--ink)', background: r.c1, padding: '5px 9px', marginBottom: 16,
       }}>
-        <span>{String(index + 1).padStart(2, '0')}</span>
-        <span style={{ opacity: 0.55 }}>/</span>
-        <span>{t(r.tier)}</span>
+        <span>{t(badge)}</span>
       </div>
       <h2 className="display" style={{
         margin: '0 0 clamp(8px, 1.4vh, 14px)', color: 'var(--white)',
@@ -528,6 +540,7 @@ const FenceArenaDetail = ({ item, index, active }) => {
       }}>{t(item.tag)}</div>
       <p style={{
         margin: '0 0 clamp(14px, 2.4vh, 26px)', maxWidth: 480,
+        marginLeft: right ? 'auto' : 0,
         fontSize: 'clamp(13px, 1.4vh, 15px)', lineHeight: 1.55, color: 'rgba(255,255,255,0.86)',
       }}>{t(item.desc)}</p>
       <a href={item.href || '#'} className="mono" style={{
@@ -535,7 +548,7 @@ const FenceArenaDetail = ({ item, index, active }) => {
         fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
         color: 'var(--ink)', background: 'var(--tangerine)', padding: 'clamp(11px, 1.6vh, 14px) 22px',
       }}>
-        {t('Explore', 'Explorar')} {nameStr}
+        {t(ctaLabel)} {nameStr}
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
           <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
         </svg>
@@ -544,9 +557,11 @@ const FenceArenaDetail = ({ item, index, active }) => {
   );
 };
 
-const FenceCategories = () => {
+/* Reusable full-viewport "arena": crossfading environment behind a selectable
+   rail of systems. Fences and Gates share this; props differentiate them
+   (palette, badge, side the copy sits on, mirrored card bevel). */
+const SystemArena = ({ sectionId, items, rarity, badge, align, variant, topLink, ctaLabel }) => {
   const t = useT();
-  const items = FENCE_CATEGORIES;
   const [active, setActive] = React.useState(0);
   const [locked, setLocked] = React.useState(false);
 
@@ -560,10 +575,11 @@ const FenceCategories = () => {
   const select = React.useCallback((i) => { setActive(i); setLocked(true); }, []);
 
   const item = items[active];
-  const r = FENCE_RARITY[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)', tier: { EN: 'System', ES: 'Sistema' } };
+  const r = rarity[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)' };
+  const right = align === 'right';
 
   return (
-    <section id="fences" className="fence-arena" style={{
+    <section id={sectionId} className="fence-arena" style={{
       minHeight: '100vh',
       display: 'flex', flexDirection: 'column', justifyContent: 'center',
       padding: 'clamp(124px, 14vh, 152px) 0 clamp(24px, 4vh, 48px)',
@@ -577,7 +593,7 @@ const FenceCategories = () => {
         />
       ))}
       <div className="fence-arena__wash" style={{
-        background: `radial-gradient(90% 70% at 18% 30%, ${r.c1}88, transparent 60%), linear-gradient(180deg, ${r.c2}55, transparent 55%)`,
+        background: `radial-gradient(90% 70% at ${right ? '82%' : '18%'} 30%, ${r.c1}88, transparent 60%), linear-gradient(180deg, ${r.c2}55, transparent 55%)`,
       }} />
       <div className="fence-arena__scrim" />
       <div className="fence-arena__grid" />
@@ -585,24 +601,17 @@ const FenceCategories = () => {
       <div className="container fence-arena__inner" style={{
         flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0, width: '100%',
       }}>
-        {/* Top eyebrow row */}
+        {/* Top row — catalog/quote link, on the opposite side from the copy */}
         <div style={{
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          display: 'flex', justifyContent: right ? 'flex-start' : 'flex-end', alignItems: 'center',
           gap: 24, flexWrap: 'wrap', marginBottom: 'clamp(10px, 2.2vh, 30px)',
         }}>
-          <div className="mono" style={{
-            fontSize: 11, letterSpacing: '0.28em', fontWeight: 700, textTransform: 'uppercase',
-            color: 'rgba(255,255,255,0.72)',
-          }}>
-            {t('Five systems.', 'Cinco sistemas.')}{' '}
-            <span style={{ color: 'var(--tangerine)' }}>{t('One yard.', 'Una sucursal.')}</span>
-          </div>
-          <a href="products.html" className="mono" style={{
+          <a href={topLink.href} className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--white)', borderBottom: '1px solid rgba(255,255,255,0.6)', paddingBottom: 4,
           }}>
-            {t('Full catalog', 'Catálogo completo')}
+            {t(topLink.label)}
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
             </svg>
@@ -611,22 +620,25 @@ const FenceCategories = () => {
 
         {/* Active-system detail — all panels stacked in one grid cell so the
             block height stays fixed (tallest panel) and never reflows. */}
-        <div style={{ display: 'grid', marginBottom: 'clamp(16px, 3vh, 40px)' }}>
+        <div style={{ display: 'grid', marginBottom: 'clamp(16px, 3vh, 40px)', justifyItems: right ? 'end' : 'start' }}>
           {items.map((c, i) => (
-            <FenceArenaDetail key={c.id} item={c} index={i} active={i === active} />
+            <SystemDetail key={c.id} item={c} active={i === active}
+              rarity={rarity} badge={badge} align={align} ctaLabel={ctaLabel} />
           ))}
         </div>
 
-        {/* The locker — selectable rail of all five systems, pinned to the
-            bottom so the section fills the viewport top-to-bottom */}
+        {/* The locker — selectable rail, pinned to the bottom so the section
+            fills the viewport top-to-bottom */}
         <div className="fence-rail" style={{ marginTop: 'auto' }}>
           {items.map((c, i) => (
-            <FenceArenaCard
+            <SystemCard
               key={c.id}
               item={c}
               index={i}
               active={i === active}
               onSelect={select}
+              rarity={rarity}
+              variant={variant}
             />
           ))}
         </div>
@@ -635,79 +647,35 @@ const FenceCategories = () => {
   );
 };
 
-const GateSystems = () => {
-  const t = useT();
-  const visible = GATE_SYSTEMS.map(g => ({ ...g, href: g.href || 'estimate.html' }));
-  return (
-    <section id="gates" style={{ background: '#faf9f7', padding: '64px 0' }}>
-      <div className="container">
-        {/* Editorial header — title left, intro + custom-quote link right */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: 48,
-          alignItems: 'end',
-          paddingBottom: 24,
-          marginBottom: 28,
-          borderBottom: '1px solid rgba(0,16,17,0.12)',
-        }}>
-          <div>
-            <h2 className="display" style={{
-              margin: 0,
-              fontSize: 'clamp(28px, 3vw, 40px)',
-              lineHeight: 1, letterSpacing: '-0.02em',
-              fontWeight: 800,
-            }}>
-              {t('Welded in-house.', 'Soldados en planta.')}<br/>
-              <span style={{ color: 'var(--tangerine)' }}>{t('Sized to fit.', 'A la medida.')}</span>
-            </h2>
-          </div>
-          <div style={{
-            display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 18,
-          }}>
-            <p style={{
-              margin: 0, maxWidth: 360,
-              fontSize: 14, lineHeight: 1.55,
-              color: 'var(--charcoal)',
-              textAlign: 'right',
-            }}>
-              {t(
-                'From walk gates to industrial cantilever. Pre-hung options ship complete with hardware — quoted in 24 hours.',
-                'Desde portones peatonales hasta cantilever industriales. Opciones preinstaladas se envían completas con herrajes — cotizadas en 24 horas.'
-              )}
-            </p>
-            <a href="estimate.html" className="mono" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 10,
-              fontSize: 11, fontWeight: 700,
-              letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: 'var(--ink)',
-              borderBottom: '1px solid var(--ink)',
-              paddingBottom: 4,
-            }}>
-              {t('Custom quote', 'Cotización a medida')}
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
-              </svg>
-            </a>
-          </div>
-        </div>
+const FenceCategories = () => (
+  <SystemArena
+    sectionId="fences"
+    items={FENCE_CATEGORIES}
+    rarity={FENCE_RARITY}
+    badge={{ EN: 'Fences', ES: 'Cercas' }}
+    align="left"
+    variant="fence"
+    topLink={{ href: 'products.html', label: { EN: 'Full catalog', ES: 'Catálogo completo' } }}
+    ctaLabel={{ EN: 'Explore', ES: 'Explorar' }}
+  />
+);
 
-        {/* Equal 5-column grid — image-led cards, all same size */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(5, 1fr)',
-          gap: 14,
-        }}>
-          {visible.map((g, i) => (
-            <FenceStyleCard key={g.id} item={g} index={i}/>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+/* Gates — same arena, mirrored to the right with an industrial palette so it
+   reads as gates, not a second fences section. */
+const GateSystems = () => (
+  <SystemArena
+    sectionId="gates"
+    items={GATE_SYSTEMS}
+    rarity={GATE_RARITY}
+    badge={{ EN: 'Gates', ES: 'Portones' }}
+    align="right"
+    variant="gate"
+    topLink={{ href: 'estimate.html', label: { EN: 'Custom quote', ES: 'Cotización a medida' } }}
+    ctaLabel={{ EN: 'Explore', ES: 'Explorar' }}
+  />
+);
 
 Object.assign(window, {
-  FenceCategories, GateSystems,
+  FenceCategories, GateSystems, SystemArena,
   FENCE_CATEGORIES, GATE_SYSTEMS, FenceStyleCard,
 });
