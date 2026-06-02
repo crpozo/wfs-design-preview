@@ -447,7 +447,7 @@ const SystemCard = ({ item, index, active, onSelect, rarity, variant }) => {
     <button
       type="button"
       className={`fence-card${right ? ' gate-card' : ''}${active ? ' is-active' : ''}`}
-      style={{ '--r1': r.c1, '--r2': r.c2, maxHeight: 'clamp(210px, 34vh, 440px)' }}
+      style={{ '--r1': r.c1, '--r2': r.c2, maxHeight: 'clamp(180px, 28vh, 360px)' }}
       onMouseEnter={() => onSelect(index)}
       onFocus={() => onSelect(index)}
       onClick={() => onSelect(index)}
