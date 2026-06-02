@@ -421,11 +421,11 @@ const FenceStyleCard = ({ item, index }) => {
    Fences use a vivid set; gates use a metallic/industrial set so the two
    sections read as the same family but clearly distinct. */
 const FENCE_RARITY = {
-  vinyl:     { c1: '#36c5ff', c2: '#2e59c1' },
-  aluminum:  { c1: '#b98bff', c2: '#6342c9' },
-  chainlink: { c1: '#46e3a0', c2: '#1f9d6b' },
-  metal:     { c1: '#ffb24d', c2: '#ff7133' },
-  ecfence:   { c1: '#ff7bd5', c2: '#ff3d8b' },
+  vinyl:     { c1: '#2e59c1', c2: '#263166' },  // laser-blue → indigo
+  aluminum:  { c1: '#6381d6', c2: '#263166' },  // glaucous → indigo
+  chainlink: { c1: '#97baff', c2: '#2e59c1' },  // blue-ice → laser-blue
+  metal:     { c1: '#c1c1c1', c2: '#565656' },  // silver → charcoal
+  ecfence:   { c1: '#ff7133', c2: '#1a2548' },  // tangerine accent → ink
 };
 const GATE_RARITY = {
   'single-swing': { c1: '#7fa8d8', c2: '#3a5a86' },  // steel blue
