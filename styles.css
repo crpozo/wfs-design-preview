@@ -234,6 +234,11 @@ section { position: relative; }
   [style*="grid-template-columns: 2fr 1fr 1fr 1fr 1fr"] {
     grid-template-columns: 1fr !important;
   }
+  /* Stat strips: drop the vertical dividers + left indent once the row wraps,
+     and add spacing so the stacked numbers don't collide */
+  .wfs-stat-grid { gap: 28px 32px !important; }
+  .wfs-stat-cell { padding-left: 0 !important; border-left: none !important; }
+
   /* When the editorial 2-col header collapses, reset right-aligned paragraphs */
   [style*="grid-template-columns: 1fr 1fr"] [style*="text-align: right"],
   [style*="grid-template-columns: 1fr 1fr"] [style*="justify-self: end"] {

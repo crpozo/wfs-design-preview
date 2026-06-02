@@ -305,30 +305,35 @@ const SiteHeader = ({ active }) => {
             </button>
           </div>
 
-          {/* Mode toggle (mobile) */}
+          {/* Mode select (mobile) — pick a mode, page reloads in that mode */}
           <div style={{
             padding: '20px',
             borderBottom: '1px solid rgba(0,16,17,0.08)',
-            display: 'flex', alignItems: 'center', gap: 22,
+            display: 'flex', gap: 12,
           }}>
             {[
-              { key: 'HOMEOWNER',  label: { EN: 'HOMEOWNER',  ES: 'PROPIETARIO' } },
-              { key: 'CONTRACTOR', label: { EN: 'CONTRACTOR', ES: 'CONTRATISTA' } },
+              { key: 'HOMEOWNER',  label: { EN: "I'm a homeowner",  ES: 'Soy propietario' } },
+              { key: 'CONTRACTOR', label: { EN: "I'm a contractor", ES: 'Soy contratista' } },
             ].map((m) => {
               const isActive = curMode === m.key;
               return (
-                <button key={m.key} onClick={() => setCurMode(m.key)} className="mono" style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 8,
-                  padding: 0, background: 'transparent',
-                  fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: isActive ? 'var(--ink)' : 'var(--charcoal)',
-                  cursor: 'pointer',
-                }}>
+                <button key={m.key}
+                  onClick={() => { setCurMode(m.key); window.location.reload(); }}
+                  className="mono" style={{
+                    flex: 1,
+                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                    padding: '14px 12px',
+                    background: isActive ? 'var(--ink)' : 'var(--white)',
+                    color: isActive ? 'var(--white)' : 'var(--ink)',
+                    border: `1px solid ${isActive ? 'var(--ink)' : 'rgba(0,16,17,0.25)'}`,
+                    fontSize: 11, fontWeight: 700, letterSpacing: '0.12em',
+                    textTransform: 'uppercase', lineHeight: 1.3,
+                    cursor: 'pointer',
+                  }}>
                   <span style={{
+                    flexShrink: 0,
                     width: 6, height: 6, borderRadius: '50%',
-                    background: isActive ? 'var(--tangerine)' : 'transparent',
-                    border: isActive ? 'none' : '1px solid rgba(0,16,17,0.3)',
+                    background: isActive ? 'var(--tangerine)' : 'rgba(0,16,17,0.3)',
                   }}/>
                   {t(m.label)}
                 </button>

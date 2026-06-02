@@ -224,14 +224,14 @@ const HomeownerTrustStrip = () => {
     padding: '32px 0',
   }}>
     <div className="container">
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+      <div className="wfs-stat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
         {[
           ['22+',  { EN: 'Years family-owned', ES: 'Años familia propietaria' }],
           ['2',    { EN: 'Yards · FM + PC',    ES: 'Sucursales · FM + PC' }],
           ['480+', { EN: 'Active SKUs',         ES: 'SKUs activos' }],
           ['24h',  { EN: 'Quote turnaround',    ES: 'Cotización en 24h' }],
         ].map(([n, l], i) => (
-          <div key={n} style={{
+          <div key={n} className="wfs-stat-cell" style={{
             paddingLeft: i === 0 ? 0 : 24,
             borderLeft: i === 0 ? 'none' : '1px solid rgba(26,37,72,0.1)',
           }}>
@@ -1109,14 +1109,14 @@ const ContractorStatsStrip = () => {
     padding: '36px 0',
   }}>
     <div className="container">
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
+      <div className="wfs-stat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
         {[
           ['18–28%', { EN: 'Wholesale margin tiers',     ES: 'Niveles de margen mayorista' }],
           ['72h',    { EN: 'Avg priority fabrication',   ES: 'Fabricación prioritaria promedio' }],
           [{ EN: 'Free', ES: 'Gratis' }, { EN: 'Job-site drops · in-county', ES: 'Entregas a obra · mismo condado' }],
           ['$0',     { EN: 'Application fee',             ES: 'Costo de aplicación' }],
         ].map(([n, l], i) => (
-          <div key={i} style={{
+          <div key={i} className="wfs-stat-cell" style={{
             paddingLeft: i === 0 ? 0 : 24,
             borderLeft: i === 0 ? 'none' : '1px solid rgba(26,37,72,0.1)',
           }}>
