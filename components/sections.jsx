@@ -92,6 +92,7 @@ const FeaturedGrid = () => {
   );
 };
 
+/* Uniform card — used by the full archive grid on projects.html */
 const ProjectCard = ({ p, i, layout }) => {
   const [hover, setHover] = React.useState(false);
   return (
@@ -194,9 +195,143 @@ const ProjectCard = ({ p, i, layout }) => {
   );
 };
 
+const FeaturedProject = ({ p, num }) => {
+  const t = useT();
+  const [hover, setHover] = React.useState(false);
+  if (!p) return null;
+  return (
+    <a href="projects.html"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        position: 'relative', overflow: 'hidden',
+        background: '#1a2548', textDecoration: 'none',
+        display: 'block', minHeight: 460,
+      }}>
+      <img src={p.imgUrl || FENCE_IMG[p.img]} alt={p.name}
+        style={{
+          position: 'absolute', inset: 0, width: '100%', height: '100%',
+          objectFit: 'cover',
+          transform: hover ? 'scale(1.04)' : 'scale(1)',
+          transition: 'transform 0.7s ease',
+        }} />
+      <div style={{
+        position: 'absolute', inset: 0,
+        background: 'linear-gradient(180deg, rgba(20,30,55,0) 28%, rgba(20,30,55,0.55) 60%, rgba(20,30,55,0.94) 100%)',
+      }}/>
+
+      {/* Top meta */}
+      <div style={{
+        position: 'absolute', top: 20, left: 20, right: 20,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+      }}>
+        <span className="mono" style={{
+          fontSize: 11, letterSpacing: '0.18em',
+          color: 'var(--ink)', background: 'var(--white)',
+          padding: '6px 10px', fontWeight: 600,
+        }}>{String(num + 1).padStart(2, '0')} / {p.year}</span>
+        <span className="mono" style={{
+          fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
+          color: 'var(--white)', background: 'rgba(20,30,55,0.55)',
+          padding: '6px 10px', backdropFilter: 'blur(6px)',
+        }}>{p.material}</span>
+      </div>
+
+      {/* Bottom content */}
+      <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: 28, color: 'var(--white)' }}>
+        <div className="mono" style={{
+          fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
+          color: 'var(--alice-blue)', marginBottom: 10,
+          display: 'flex', gap: 12, alignItems: 'center',
+        }}>
+          <span>{p.loc}</span>
+          <span style={{ width: 4, height: 4, background: 'var(--tangerine)', borderRadius: '50%' }}/>
+          <span>{p.size}</span>
+        </div>
+        <h3 className="display" style={{
+          margin: 0, fontSize: 'clamp(26px, 3vw, 38px)',
+          lineHeight: 1.0, letterSpacing: '-0.02em', color: 'var(--white)',
+        }}>{p.name}</h3>
+        <p style={{
+          margin: '14px 0 0', maxWidth: 460,
+          fontSize: 14, lineHeight: 1.55, color: 'var(--alice-blue)',
+        }}>{p.type}</p>
+        <div style={{
+          marginTop: 18, display: 'flex', alignItems: 'center',
+          justifyContent: 'space-between', gap: 16, flexWrap: 'wrap',
+        }}>
+          <span className="mono" style={{ fontSize: 11, letterSpacing: '0.06em', color: 'rgba(255,255,255,0.7)' }}>
+            {t('Installed by', 'Instalado por')} {p.contractor}
+          </span>
+          <span className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 12,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.18em',
+            textTransform: 'uppercase', color: 'var(--white)',
+          }}>
+            {t('View project', 'Ver proyecto')}
+            <span style={{
+              width: 34, height: 34, background: 'var(--tangerine)', color: 'var(--ink)',
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              transform: hover ? 'translateX(3px)' : 'none', transition: 'transform 0.25s ease',
+            }}>
+              <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="square"/>
+              </svg>
+            </span>
+          </span>
+        </div>
+      </div>
+    </a>
+  );
+};
+
+const ProjectListRow = ({ p, active, onSelect }) => {
+  return (
+    <button
+      onClick={onSelect}
+      onMouseEnter={onSelect}
+      style={{
+        flex: 1,
+        display: 'grid', gridTemplateColumns: '78px 1fr auto', gap: 14, alignItems: 'center',
+        padding: 10, width: '100%', textAlign: 'left', cursor: 'pointer',
+        background: active ? '#f5f7fb' : 'transparent',
+        border: '1px solid',
+        borderColor: active ? 'rgba(26,37,72,0.22)' : 'rgba(0,16,17,0.10)',
+        borderLeftWidth: 3,
+        borderLeftColor: active ? 'var(--tangerine)' : 'transparent',
+        transition: 'background 0.2s ease, border-color 0.2s ease',
+      }}>
+      <span style={{ display: 'block', width: 78, height: 56, overflow: 'hidden', background: '#1a2548' }}>
+        <img src={p.imgUrl || FENCE_IMG[p.img]} alt={p.name}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+      </span>
+      <span style={{ display: 'block', minWidth: 0 }}>
+        <span className="mono" style={{
+          display: 'flex', gap: 8, alignItems: 'center',
+          fontSize: 9.5, letterSpacing: '0.16em', textTransform: 'uppercase',
+          color: 'var(--charcoal)', marginBottom: 4,
+        }}>
+          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.loc}</span>
+          <span style={{ width: 3, height: 3, background: 'var(--tangerine)', borderRadius: '50%', flexShrink: 0 }}/>
+          <span style={{ flexShrink: 0 }}>{p.size}</span>
+        </span>
+        <span className="display" style={{
+          display: 'block', fontSize: 15.5, lineHeight: 1.1, letterSpacing: '-0.01em',
+          color: 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+        }}>{p.name}</span>
+      </span>
+      <span className="mono" style={{
+        fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700,
+        color: active ? 'var(--ink)' : 'var(--charcoal)', flexShrink: 0,
+      }}>{p.material}</span>
+    </button>
+  );
+};
+
 const ProjectGallery = () => {
   const t = useT();
   const [filter, setFilter] = React.useState('All');
+  const [selected, setSelected] = React.useState(0);
   const projects = [
     { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, with double drive gate', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/gate-sliding.jpg' },
     { name: 'Estero Community', loc: 'Estero, FL', size: '38 lots', material: 'Metal', type: 'Aluminum board privacy, 6 ft, bronze finish', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: FENCE_IMG.metal },
@@ -208,6 +343,8 @@ const ProjectGallery = () => {
 
   const filters = ['All', 'Chain Link', 'Aluminum', 'Vinyl', 'Metal', 'EC Fence'];
   const visible = filter === 'All' ? projects : projects.filter(p => p.material === filter);
+  const sel = Math.min(selected, Math.max(0, visible.length - 1));
+  const feat = visible[sel];
 
   return (
     <section id="projects" style={{ background: 'var(--white)', padding: '48px 0' }}>
@@ -243,7 +380,7 @@ const ProjectGallery = () => {
               'EC Fence': { EN: 'EC Fence', ES: 'EC Fence' },
             };
             return (
-              <button key={f} onClick={() => setFilter(f)} className="mono"
+              <button key={f} onClick={() => { setFilter(f); setSelected(0); }} className="mono"
                 style={{
                   padding: '6px 12px',
                   fontSize: 10, letterSpacing: '0.18em',
@@ -272,17 +409,18 @@ const ProjectGallery = () => {
           </a>
         </div>
 
-        {/* Grid — 3 cols × 2 rows, equal cards */}
-        <div className="wfs-projects-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gridAutoRows: '220px',
-          gap: 14,
+        {/* Featured project (left) + selectable list (right) */}
+        <div style={{
+          display: 'grid', gridTemplateColumns: '1.4fr 1fr',
+          gap: 18, alignItems: 'stretch',
         }}>
-          {visible.map((p, i) => (
-            <ProjectCard key={p.name} p={p} i={i}
-              layout={{ col: 'span 1', row: 'span 1', featured: false }} />
-          ))}
+          <FeaturedProject p={feat} num={sel} />
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            {visible.map((p, i) => (
+              <ProjectListRow key={p.name} p={p} active={i === sel}
+                onSelect={() => setSelected(i)} />
+            ))}
+          </div>
         </div>
       </div>
     </section>
