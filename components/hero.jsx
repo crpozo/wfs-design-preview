@@ -56,10 +56,10 @@ const Hero = () => {
       flexDirection: 'column',
       justifyContent: 'flex-end',
     }}>
-      {/* Full-bleed photo backdrop */}
-      <img src="assets/hero-warehouse.webp" alt="" aria-hidden="true" style={{
+      {/* Full-bleed photo backdrop — WFS yard: branded building + palletized materials */}
+      <img src="assets/wfs-shop.webp" alt="" aria-hidden="true" style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%',
-        objectFit: 'cover', objectPosition: 'center 40%', zIndex: 0,
+        objectFit: 'cover', objectPosition: 'center 45%', zIndex: 0,
       }}/>
       {/* Dark scrim — strong on left, lighter on right */}
       <div style={{
