@@ -440,7 +440,6 @@ const GATE_RARITY = {
    gates rail reads as a deliberate mirror of the fences rail. */
 const SystemCard = ({ item, index, active, onSelect, rarity, variant }) => {
   const t = useT();
-  const num = String(index + 1).padStart(2, '0');
   const nameStr = t(item.name);
   const r = rarity[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)' };
   const right = variant === 'gate';
@@ -459,17 +458,6 @@ const SystemCard = ({ item, index, active, onSelect, rarity, variant }) => {
         <img className="fence-card__img" src={FENCE_IMG[item.img]} alt={nameStr} />
         <div className="fence-card__scrim" />
         <span className="fence-card__sheen" />
-
-        {/* index + rule */}
-        <div className="mono" style={{
-          position: 'absolute', top: 11, [right ? 'right' : 'left']: 11,
-          display: 'flex', alignItems: 'center', gap: 8,
-          flexDirection: right ? 'row-reverse' : 'row',
-          fontSize: 10, letterSpacing: '0.22em', fontWeight: 700, color: 'var(--white)',
-        }}>
-          <span>{num}</span>
-          <span style={{ width: 16, height: 2, background: r.c1, display: 'block' }} />
-        </div>
 
         {item.isNew && (
           <span className="mono" style={{
