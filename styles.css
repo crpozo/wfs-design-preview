@@ -225,6 +225,10 @@ section { position: relative; }
   [style*="grid-template-columns: 1.4fr 1fr"],
   [style*="grid-template-columns: 1fr 1.4fr"],
   [style*="grid-template-columns: 1fr 1.2fr"],
+  [style*="grid-template-columns: 1.2fr 1fr"],
+  [style*="grid-template-columns: 1fr 1.3fr"],
+  [style*="grid-template-columns: 1.7fr 1fr"],
+  [style*="grid-template-columns: 220px 1fr"],
   [style*="grid-template-columns: 1.1fr 1.2fr 1fr"],
   [style*="grid-template-columns: 1fr 320px"],
   [style*="grid-template-columns: 2fr 1fr 1fr 1fr 1fr"] {

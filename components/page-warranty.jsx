@@ -315,7 +315,7 @@ const WarrantyCTA = () => {
 
 const WarrantyPage = () => (
   <>
-    <SiteHeader active="Warranty" />
+    <SiteHeader active="Company" />
     <WarrantyHero />
     <WarrantyHighlights />
     <WarrantyMaterialTable />
@@ -655,7 +655,7 @@ const ClaimsCTA = () => {
 
 const WarrantyClaimsPage = () => (
   <>
-    <SiteHeader active="Warranty" />
+    <SiteHeader active="Company" />
     <ClaimsHero />
     <ClaimsProcess />
     <ClaimsForm />
@@ -905,7 +905,7 @@ const SpecsCTA = () => {
 
 const SpecsPage = () => (
   <>
-    <SiteHeader active="Warranty" />
+    <SiteHeader active="Company" />
     <SpecsHero />
     <SpecsLibrary />
     <SpecsStamped />

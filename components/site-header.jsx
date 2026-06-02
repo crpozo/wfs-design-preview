@@ -16,13 +16,9 @@ const SiteHeader = ({ active }) => {
 
   // NAV: id stays stable (used by `active` prop). label + items get translated.
   const NAV = [
+    { id: 'Full Catalog', label: { EN: 'Full Catalog', ES: 'Catálogo completo' }, def: { kind: 'link', href: 'products.html' } },
     { id: 'Fences', label: { EN: 'Fences', ES: 'Cercas' }, def: { kind: 'mega-fences' } },
     { id: 'Gates',  label: { EN: 'Gates',  ES: 'Portones' }, def: { kind: 'mega-gates' } },
-    { id: 'Warranty', label: { EN: 'Warranty', ES: 'Garantía' }, def: { kind: 'list', items: [
-      { label: { EN: 'Lifetime Warranty', ES: 'Garantía de por vida' },     href: 'warranty.html',         sub: { EN: 'Coverage details, what\'s included', ES: 'Detalles de cobertura, qué incluye' } },
-      { label: { EN: 'Warranty Claims',   ES: 'Reclamaciones de garantía' }, href: 'warranty-claims.html', sub: { EN: 'Submit a claim · 24h response',     ES: 'Envía un reclamo · respuesta 24h' } },
-      { label: { EN: 'Manufacturer Specs',ES: 'Specs del fabricante' },     href: 'specs.html',            sub: { EN: 'PDF spec sheets',                    ES: 'Hojas técnicas PDF' } },
-    ]}},
     { id: 'Get a Quote', label: { EN: 'Get a Quote', ES: 'Cotizar' }, def: { kind: 'list', items: [
       { label: { EN: 'Request Estimate',     ES: 'Pedir estimado' },        href: 'estimate.html', sub: { EN: 'Send measurements, get pricing in 24h',   ES: 'Envía medidas, recibe precios en 24h' } },
       { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html', sub: { EN: 'Mon–Fri · Fort Myers + Port Charlotte',   ES: 'Lun–Vie · Fort Myers + Port Charlotte' } },
@@ -32,6 +28,7 @@ const SiteHeader = ({ active }) => {
       { label: { EN: 'About WFS',       ES: 'Sobre WFS' },         href: 'about.html',     sub: { EN: 'Family-owned · fabricated in-house',            ES: 'Familiar · fabricado en planta' } },
       { label: { EN: 'Yard Locations',  ES: 'Sucursales' },        href: 'solutions.html', sub: { EN: '2 yards across SW Florida',                     ES: '2 sucursales en el suroeste de FL' } },
       { label: { EN: 'Projects',        ES: 'Proyectos' },         href: 'projects.html',  sub: { EN: 'Recent installs from Cape Coral to Naples',     ES: 'Instalaciones de Cape Coral a Naples' } },
+      { label: { EN: 'Warranty',        ES: 'Garantía' },          href: 'warranty.html',  sub: { EN: 'Lifetime coverage · submit a claim',            ES: 'Cobertura de por vida · envía un reclamo' } },
       { label: { EN: 'Contact',         ES: 'Contacto' },          href: 'estimate.html',  sub: { EN: 'Phone, email, hours by yard',                   ES: 'Teléfono, email, horarios por sucursal' } },
     ]}},
     { id: 'Fence Education Hub', label: { EN: 'Fence Education Hub', ES: 'Centro Educativo' }, def: { kind: 'list', items: [
@@ -104,16 +101,6 @@ const SiteHeader = ({ active }) => {
                 );
               })}
             </div>
-            <span style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.15)' }}/>
-            <a href="products.html" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              color: 'var(--alice-blue)', textDecoration: 'none',
-            }}>
-              {t('Full Catalog', 'Catálogo completo')}
-              <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
-              </svg>
-            </a>
           </div>
 
           {/* Center: featured CTA */}
@@ -191,19 +178,34 @@ const SiteHeader = ({ active }) => {
           {/* Nav */}
           <nav className="wfs-desktop-nav" style={{ display: 'flex', gap: 26, alignItems: 'center' }}>
             {NAV.map(({ id, label, def }) => (
-              <div key={id} style={{ position: 'static' }}
-                onMouseEnter={() => setOpenMenu(id)}>
-                <button style={{
-                  display: 'inline-flex', alignItems: 'center',
-                  fontSize: 15, fontWeight: 500,
-                  color: openMenu === id ? 'var(--laser-blue)' : 'var(--ink)',
-                  background: 'transparent', cursor: 'pointer', padding: '8px 0',
-                  borderBottom: (active === id || openMenu === id) ? '2px solid var(--tangerine)' : '2px solid transparent',
-                  transition: 'color 0.15s, border-color 0.15s',
-                }}>
-                  {t(label)} <Caret />
-                </button>
-              </div>
+              def.kind === 'link' ? (
+                <a key={id} href={def.href}
+                  onMouseEnter={() => setOpenMenu(null)}
+                  style={{
+                    display: 'inline-flex', alignItems: 'center',
+                    fontSize: 15, fontWeight: 500,
+                    color: active === id ? 'var(--laser-blue)' : 'var(--ink)',
+                    textDecoration: 'none', padding: '8px 0',
+                    borderBottom: active === id ? '2px solid var(--tangerine)' : '2px solid transparent',
+                    transition: 'color 0.15s, border-color 0.15s',
+                  }}>
+                  {t(label)}
+                </a>
+              ) : (
+                <div key={id} style={{ position: 'static' }}
+                  onMouseEnter={() => setOpenMenu(id)}>
+                  <button style={{
+                    display: 'inline-flex', alignItems: 'center',
+                    fontSize: 15, fontWeight: 500,
+                    color: openMenu === id ? 'var(--laser-blue)' : 'var(--ink)',
+                    background: 'transparent', cursor: 'pointer', padding: '8px 0',
+                    borderBottom: (active === id || openMenu === id) ? '2px solid var(--tangerine)' : '2px solid transparent',
+                    transition: 'color 0.15s, border-color 0.15s',
+                  }}>
+                    {t(label)} <Caret />
+                  </button>
+                </div>
+              )
             ))}
           </nav>
 
@@ -337,6 +339,23 @@ const SiteHeader = ({ active }) => {
           {/* Nav list (mobile) */}
           <nav style={{ flex: 1, padding: '8px 0' }}>
             {NAV.map(({ id, label, def }) => {
+              if (def.kind === 'link') {
+                return (
+                  <div key={id} style={{ borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
+                    <a href={def.href} style={{
+                      width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                      padding: '18px 20px',
+                      fontFamily: 'var(--sans)', fontSize: 18, fontWeight: 500,
+                      color: 'var(--ink)', textDecoration: 'none',
+                    }}>
+                      {t(label)}
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+                      </svg>
+                    </a>
+                  </div>
+                );
+              }
               const isExpanded = mobileExpanded === id;
               const fallbackHref = def.kind === 'mega-fences' ? 'products.html'
                 : def.kind === 'mega-gates' ? 'estimate.html'
@@ -526,7 +545,6 @@ const SiteHeader = ({ active }) => {
                         0{navIdx + 1} — {t(navItem.label)}
                       </span>
                       <h3 className="display" style={{ fontSize: 36, margin: '14px 0 0', lineHeight: 0.98, maxWidth: 240 }}>
-                        {openMenu === 'Warranty' && t('Backed by\nthe maker.',   'Respaldada por\nel fabricante.')}
                         {openMenu === 'Get a Quote' && t('Three ways\nto start.','Tres maneras\nde empezar.')}
                         {openMenu === 'Company' && t('About\nthe yard.',         'Sobre\nla empresa.')}
                         {openMenu === 'Fence Education Hub' && t('Pick the\nright fence.', 'Elige la\ncerca correcta.')}
