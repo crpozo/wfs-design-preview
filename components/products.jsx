@@ -711,7 +711,7 @@ const WhyWFS = () => {
           gap: 32, marginBottom: 'clamp(36px, 5vh, 56px)', flexWrap: 'wrap',
         }}>
           <div style={{ maxWidth: 620 }}>
-            <span className="eyebrow" style={{ color: 'var(--laser-blue)', display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+            <span className="eyebrow" style={{ color: 'var(--ink)', display: 'inline-flex', alignItems: 'center', gap: 10 }}>
               <span style={{ width: 8, height: 8, background: 'var(--tangerine)' }}/>
               {t('Why Western Fence Supply', 'Por qué Western Fence Supply')}
             </span>
