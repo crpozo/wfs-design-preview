@@ -671,7 +671,111 @@ const GateSystems = () => (
   />
 );
 
+/* Why WFS — a light value-props "breather" between the two dark arenas.
+   No chapter number so the 01 / 02 arena sequence stays intact. */
+const WHY_WFS = [
+  {
+    title: { EN: 'Manufacturing-direct', ES: 'Directo de fábrica' },
+    desc:  { EN: 'Supplier-direct floor pricing — no middleman markup between the plant and your project.',
+             ES: 'Precio directo de fábrica — sin intermediarios entre la planta y tu proyecto.' },
+    icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21V10l6 3V10l6 3V10l6 3v8Z"/><path d="M3 10 4 4h2l.5 4"/></svg>),
+  },
+  {
+    title: { EN: 'No minimums', ES: 'Sin mínimos' },
+    desc:  { EN: 'Order a single panel or a full subdivision — the same supplier-direct floor either way.',
+             ES: 'Pide un solo panel o una urbanización completa — el mismo precio directo en ambos casos.' },
+    icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3 21 8 12 13 3 8Z"/><path d="M3 13l9 5 9-5"/></svg>),
+  },
+  {
+    title: { EN: 'Free takeoff · 24h quotes', ES: 'Toma de medidas gratis · 24h' },
+    desc:  { EN: 'Send measurements and get itemized pricing back within 24 hours.',
+             ES: 'Envía medidas y recibe precios detallados en menos de 24 horas.' },
+    icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 3h9l5 5v13H5Z"/><path d="M14 3v5h5"/><path d="M8 13h7M8 17h5"/></svg>),
+  },
+  {
+    title: { EN: 'Certified installers', ES: 'Instaladores certificados' },
+    desc:  { EN: 'We connect you with vetted local crews to handle the build.',
+             ES: 'Te conectamos con cuadrillas locales verificadas para la instalación.' },
+    icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3 19 6v6q0 5-7 9-7-4-7-9V6Z"/><path d="M9 12l2 2 4-4"/></svg>),
+  },
+];
+
+const WhyWFS = () => {
+  const t = useT();
+  return (
+    <section style={{ background: 'var(--white)', padding: 'clamp(64px, 9vh, 100px) 0' }}>
+      <div className="container">
+        {/* Header */}
+        <div style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
+          gap: 32, marginBottom: 'clamp(36px, 5vh, 56px)', flexWrap: 'wrap',
+        }}>
+          <div style={{ maxWidth: 620 }}>
+            <span className="eyebrow" style={{ color: 'var(--laser-blue)', display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+              <span style={{ width: 8, height: 8, background: 'var(--tangerine)' }}/>
+              {t('Why Western Fence Supply', 'Por qué Western Fence Supply')}
+            </span>
+            <h2 className="display" style={{
+              margin: '14px 0 0', fontSize: 'clamp(34px, 5vw, 56px)',
+              lineHeight: 1.0, letterSpacing: '-0.02em',
+            }}>
+              {t('Built by fencers.', 'Hecho por cerqueros.')}<br/>
+              <span style={{ color: 'var(--tangerine)' }}>{t('Priced like a supplier.', 'Preciado como proveedor.')}</span>
+            </h2>
+            <p style={{ margin: '18px 0 0', fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>
+              {t(
+                'We were the contractors before we were the supplier — so the yard runs on installer logic, not catalog markup.',
+                'Fuimos los contratistas antes de ser el proveedor — por eso la sucursal funciona con lógica de instalador, no con margen de catálogo.'
+              )}
+            </p>
+          </div>
+          <a href="estimate.html" className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            padding: '13px 0', fontSize: 11, fontWeight: 700,
+            letterSpacing: '0.22em', textTransform: 'uppercase',
+            color: 'var(--ink)', borderBottom: '1px solid var(--ink)',
+          }}>
+            {t('Get started', 'Comenzar')}
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+            </svg>
+          </a>
+        </div>
+
+        {/* Value-prop cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+          {WHY_WFS.map((v, i) => (
+            <div key={i} style={{
+              border: '1px solid rgba(26,37,72,0.14)',
+              background: 'var(--white)',
+              padding: '24px 22px 26px',
+              display: 'flex', flexDirection: 'column',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -22px rgba(0,16,17,0.3)'; e.currentTarget.style.borderColor = 'var(--ink)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; e.currentTarget.style.borderColor = 'rgba(26,37,72,0.14)'; }}>
+              <span style={{
+                width: 46, height: 46, marginBottom: 18,
+                border: '1.5px solid var(--ink)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                color: 'var(--tangerine)',
+              }}>{v.icon}</span>
+              <h3 className="display" style={{
+                margin: '0 0 8px', fontSize: 18, lineHeight: 1.15,
+                letterSpacing: '-0.01em', color: 'var(--ink)',
+              }}>{t(v.title)}</h3>
+              <p className="mono" style={{
+                margin: 0, fontSize: 12.5, lineHeight: 1.55, color: 'var(--charcoal)',
+              }}>{t(v.desc)}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 Object.assign(window, {
-  FenceCategories, GateSystems, SystemArena,
+  FenceCategories, GateSystems, SystemArena, WhyWFS,
   FENCE_CATEGORIES, GATE_SYSTEMS, FenceStyleCard,
 });
