@@ -374,17 +374,6 @@ const FenceStyleCard = ({ item, index }) => {
         background: 'linear-gradient(180deg, rgba(20,30,55,0) 35%, rgba(20,30,55,0.55) 65%, rgba(20,30,55,0.92) 100%)',
       }}/>
 
-      {/* Number + rule, top-left */}
-      <div className="mono" style={{
-        position: 'absolute', top: 14, left: 14,
-        display: 'flex', alignItems: 'center', gap: 10,
-        fontSize: 10, letterSpacing: '0.22em', fontWeight: 700,
-        color: 'var(--white)',
-      }}>
-        <span>{num}</span>
-        <span style={{ width: 22, height: 1, background: 'var(--tangerine)' }}/>
-      </div>
-
       {/* New badge, top-right */}
       {item.isNew && (
         <span className="mono" style={{
