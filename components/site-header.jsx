@@ -450,27 +450,41 @@ const SiteHeader = ({ active }) => {
               }}/>
               {t('Call (239) 689-5496', 'Llamar (239) 689-5496')}
             </a>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
-              {['EN', 'ES'].map((l) => {
-                const isActive = curLang === l;
-                return (
-                  <button key={l} onClick={() => setCurLang(l)} className="mono" style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 8,
-                    padding: 0, background: 'transparent',
-                    fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
-                    textTransform: 'uppercase',
-                    color: isActive ? 'var(--ink)' : 'var(--charcoal)',
-                    cursor: 'pointer',
-                  }}>
-                    <span style={{
-                      width: 5, height: 5, borderRadius: '50%',
-                      background: isActive ? 'var(--tangerine)' : 'transparent',
-                      border: isActive ? 'none' : '1px solid rgba(0,16,17,0.3)',
-                    }}/>
-                    {l}
-                  </button>
-                );
-              })}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <span className="mono" style={{
+                fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+                textTransform: 'uppercase', color: 'var(--charcoal)',
+              }}>{t('Language', 'Idioma')}</span>
+              <div style={{ display: 'flex', gap: 12 }}>
+                {[
+                  { code: 'EN', label: 'English' },
+                  { code: 'ES', label: 'Español' },
+                ].map((l) => {
+                  const isActive = curLang === l.code;
+                  return (
+                    <button key={l.code} onClick={() => setCurLang(l.code)} className="mono" style={{
+                      flex: 1,
+                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
+                      padding: '13px 12px',
+                      background: isActive ? 'var(--ink)' : 'var(--white)',
+                      color: isActive ? 'var(--white)' : 'var(--ink)',
+                      border: `1px solid ${isActive ? 'var(--ink)' : 'rgba(0,16,17,0.25)'}`,
+                      fontSize: 12, fontWeight: 700, letterSpacing: '0.14em',
+                      textTransform: 'uppercase', cursor: 'pointer',
+                    }}>
+                      <span style={{
+                        flexShrink: 0,
+                        width: 6, height: 6, borderRadius: '50%',
+                        background: isActive ? 'var(--tangerine)' : 'rgba(0,16,17,0.3)',
+                      }}/>
+                      {l.code}
+                      <span style={{ fontWeight: 500, letterSpacing: '0.03em', textTransform: 'none', opacity: 0.75 }}>
+                        · {l.label}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>
