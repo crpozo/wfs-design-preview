@@ -122,7 +122,7 @@ const CTABand = ({ kicker, title, accent, body, primary, secondary, theme = 'cre
   const sub = theme === 'ink' ? 'var(--alice-blue)' : 'var(--charcoal)';
   return (
     <section style={{
-      background: bg, color: fg, padding: '88px 0',
+      background: bg, color: fg, padding: '112px 0',
       borderTop: theme === 'ink' ? 'none' : '1px solid rgba(0,16,17,0.08)',
     }}>
       <div className="container">
@@ -190,7 +190,7 @@ const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageRight = 
   const fg = dark ? 'var(--parchment)' : 'var(--ink)';
   const sub = dark ? 'var(--alice-blue)' : 'var(--charcoal)';
   return (
-    <section style={{ background: bg, color: fg, padding: '64px 0' }}>
+    <section style={{ background: bg, color: fg, padding: '88px 0' }}>
       <div className="container">
         <div style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56,

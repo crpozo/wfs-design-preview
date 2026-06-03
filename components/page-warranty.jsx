@@ -44,7 +44,7 @@ const WarrantyHighlights = () => {
     },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '112px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="01" label={t('At a glance', 'De un vistazo')}
@@ -83,7 +83,7 @@ const WarrantyHighlights = () => {
 const WarrantyMaterialTable = () => {
   const t = useT();
   return (
-  <section style={{ background: '#faf9f7', padding: '88px 0' }}>
+  <section style={{ background: '#faf9f7', padding: '112px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="02" label={t('Coverage by material', 'Cobertura por material')}
@@ -171,7 +171,7 @@ const WarrantyExclusions = () => {
         ES: 'Postes recortados en obra, paneles repintados con acabados no autorizados, etc.' }],
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '112px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="03" label={t('Exclusions', 'Exclusiones')}
@@ -241,7 +241,7 @@ const WarrantyProcess = () => {
                ES: 'Los reclamos aprobados envían material de reemplazo desde stock, la mayoría en 1-2 días hábiles.' } },
   ];
   return (
-    <section style={{ background: '#faf9f7', padding: '88px 0' }}>
+    <section style={{ background: '#faf9f7', padding: '112px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="04" label={t('Process', 'Proceso')}
@@ -368,7 +368,7 @@ const ClaimsProcess = () => {
                ES: 'En el condado, un representante WFS agenda inspección en 5 días hábiles. Fuera del condado coordinamos con tu instalador.' } },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '88px 0 64px' }}>
+    <section style={{ background: 'var(--white)', padding: '112px 0 88px' }}>
       <div className="container">
         <PageSectionHeader
           number="01" label={t('Process', 'Proceso')}
@@ -446,7 +446,7 @@ const ClaimsForm = () => {
   );
 
   return (
-    <section style={{ background: '#faf9f7', padding: '64px 0 96px' }}>
+    <section style={{ background: '#faf9f7', padding: '88px 0 120px' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1.7fr 1fr', gap: 56, alignItems: 'start' }}>
           {/* Left, form card */}
@@ -716,7 +716,7 @@ const SpecsLibrary = () => {
   const visible = filter === 'All' ? docs : docs.filter(d => d.cat === filter);
 
   return (
-    <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '112px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="01" label={t('Library', 'Biblioteca')}
@@ -837,7 +837,7 @@ const SpecsLibrary = () => {
 const SpecsStamped = () => {
   const t = useT();
   return (
-  <section style={{ background: '#faf9f7', padding: '88px 0' }}>
+  <section style={{ background: '#faf9f7', padding: '112px 0' }}>
     <div className="container">
       <div style={{
         display: 'grid', gridTemplateColumns: '1.2fr 1fr',

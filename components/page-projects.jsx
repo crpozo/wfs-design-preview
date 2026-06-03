@@ -31,7 +31,7 @@ const ProjectsBigGallery = () => {
   const filters = ['All', 'Chain Link', 'Aluminum', 'Vinyl', 'Metal', 'EC Fence'];
   const visible = filter === 'All' ? FULL_PROJECTS : FULL_PROJECTS.filter(p => p.material === filter);
   return (
-    <section style={{ background: 'var(--white)', padding: '64px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '88px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="01" label="Filter the archive"
@@ -78,7 +78,7 @@ const ProjectsBigGallery = () => {
 };
 
 const ProjectsCaseStudy = () => (
-  <section style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '72px 0' }}>
+  <section style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '96px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 56, alignItems: 'center' }}>
         <div style={{ position: 'relative', aspectRatio: '4 / 5', overflow: 'hidden' }}>

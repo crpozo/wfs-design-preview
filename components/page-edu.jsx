@@ -30,7 +30,7 @@ const ArticlesGrid = () => {
   const visible = filter === 'All' ? ALL_ARTICLES : ALL_ARTICLES.filter(a => a.tag === filter);
 
   return (
-    <section style={{ background: 'var(--white)', padding: '72px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '96px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="01" label="Browse the archive"
@@ -185,7 +185,7 @@ const MaterialsCompDeepDive = () => {
   ];
 
   return (
-    <section style={{ background: 'var(--white)', padding: '72px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '96px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="02" label="Profile by profile"
@@ -273,7 +273,7 @@ const PoolCodeRequirements = () => {
   ];
 
   return (
-    <section style={{ background: 'var(--white)', padding: '72px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '96px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="01" label="The actual rules"
@@ -310,7 +310,7 @@ const PoolCodeProfiles = () => {
   ];
 
   return (
-    <section style={{ background: 'var(--parchment)', padding: '72px 0' }}>
+    <section style={{ background: 'var(--parchment)', padding: '96px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="02" label="Profiles we stock"
@@ -352,7 +352,7 @@ const PoolCodeProfiles = () => {
 };
 
 const PoolCodeChecklist = () => (
-  <section style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '72px 0' }}>
+  <section style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '96px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>

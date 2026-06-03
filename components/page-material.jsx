@@ -216,7 +216,7 @@ const MaterialHero = ({ data }) => (
 );
 
 const MaterialQuickFacts = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '40px 0', borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
+  <section style={{ background: 'var(--white)', padding: '64px 0', borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
     <div className="container">
       <FeatureRow items={[
         ['Best for', data.bestFor],
@@ -229,7 +229,7 @@ const MaterialQuickFacts = ({ data }) => (
 );
 
 const MaterialProfiles = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '64px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="01" label="Profiles & styles"
@@ -257,7 +257,7 @@ const MaterialProfiles = ({ data }) => (
 );
 
 const MaterialSpecs = ({ data }) => (
-  <section style={{ background: 'var(--parchment)', padding: '64px 0' }}>
+  <section style={{ background: 'var(--parchment)', padding: '88px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
@@ -291,7 +291,7 @@ const MaterialSpecs = ({ data }) => (
 );
 
 const MaterialUseCases = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '64px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="03" label="Where it shines"
@@ -325,7 +325,7 @@ const MaterialOtherMaterials = ({ currentSlug }) => {
     { slug: 'ecfence',   href: 'ecfence.html',    name: 'EC Fence',            img: 'ecfence' },
   ].filter(m => m.slug !== currentSlug);
   return (
-    <section style={{ background: '#faf9f7', padding: '64px 0' }}>
+    <section style={{ background: '#faf9f7', padding: '88px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="04" label="Compare"

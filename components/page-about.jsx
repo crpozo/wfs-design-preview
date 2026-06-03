@@ -12,7 +12,7 @@ const AboutHero = () => (
 );
 
 const AboutStory = () => (
-  <section style={{ background: 'var(--white)', padding: '72px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '96px 0' }}>
     <div className="container">
       {/* Editorial header, single line, clean wrap */}
       <div style={{
@@ -142,7 +142,7 @@ const AboutStory = () => (
 );
 
 const AboutValues = () => (
-  <section style={{ background: 'var(--parchment)', padding: '72px 0' }}>
+  <section style={{ background: 'var(--parchment)', padding: '96px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="02" label="How we work"
@@ -197,7 +197,7 @@ const AboutStats = () => {
     ['24h',  'Quote turnaround',  '18-hour average this week'],
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '112px 0' }}>
       <div className="container">
         {/* Single editorial header row, no stacked headline */}
         <div style={{

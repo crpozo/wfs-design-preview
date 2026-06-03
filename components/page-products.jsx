@@ -19,7 +19,7 @@ const PRODUCT_INTRO_STATS = [
 ];
 
 const ProductsIntro = () => (
-  <section style={{ background: 'var(--white)', padding: '88px 0 64px' }}>
+  <section style={{ background: 'var(--white)', padding: '112px 0 88px' }}>
     <div className="container">
       <div style={{
         display: 'grid', gridTemplateColumns: '1.4fr 1fr', columnGap: 64, rowGap: 28, alignItems: 'end',
@@ -42,7 +42,7 @@ const ProductsIntro = () => (
 );
 
 const ProductHardware = () => (
-  <section style={{ background: 'var(--white)', padding: '64px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="03" label="Hardware & accessories"

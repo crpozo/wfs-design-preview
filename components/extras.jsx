@@ -8,7 +8,7 @@ const IconStrip = () => {
     { key: 'vinyl', label: 'Vinyl / PVC', href: '#products' },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '40px 0', borderBottom: '1px solid rgba(0,16,17,0.06)' }}>
+    <section style={{ background: 'var(--white)', padding: '64px 0', borderBottom: '1px solid rgba(0,16,17,0.06)' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
           {items.map((it, i) => (
@@ -41,7 +41,7 @@ const Gates = () => {
     { name: 'Chain Link Gates', desc: 'Welded chain link gates plus full hardware kit.', img: 'chainlink' },
   ];
   return (
-    <section style={{ background: 'var(--linen)', padding: '76px 0' }}>
+    <section style={{ background: 'var(--linen)', padding: '100px 0' }}>
       <div className="container">
         <div style={{ marginBottom: 48, maxWidth: 720 }}>
           <h2 className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 60px)', margin: '0' }}>
@@ -103,7 +103,7 @@ const Testimonials = () => {
       tag: { EN: 'Contractor', ES: 'Contratista' } },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '56px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '80px 0' }}>
       <div className="container">
         {/* Editorial header, matches the rest of the page */}
         <div style={{
@@ -202,7 +202,7 @@ const FAQ = () => {
   const [open, setOpen] = React.useState(0);
   const [ctaHover, setCtaHover] = React.useState(false);
   return (
-    <section style={{ background: 'var(--parchment)', padding: '64px 0' }}>
+    <section style={{ background: 'var(--parchment)', padding: '88px 0' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
           {/* Left: editorial header + CTA */}
@@ -333,7 +333,7 @@ const Articles = () => {
     { tag: 'Pricing', title: 'How Much Does a Fence Cost in Florida?', read: '8 min', img: 'vinyl' },
   ];
   return (
-    <section style={{ background: 'var(--parchment)', padding: '76px 0', borderTop: '1px solid rgba(0,16,17,0.08)' }}>
+    <section style={{ background: 'var(--parchment)', padding: '100px 0', borderTop: '1px solid rgba(0,16,17,0.08)' }}>
       <div className="container">
         <div style={{ marginBottom: 48, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 24 }}>
           <div>
@@ -386,7 +386,7 @@ const Articles = () => {
 };
 
 const ShopTour = () => (
-  <section style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '76px 0', position: 'relative', overflow: 'hidden' }}>
+  <section style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
     <div className="pat-diamond" style={{ position: 'absolute', inset: 0, opacity: 0.2 }}/>
     <div className="container" style={{ position: 'relative' }}>
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 60, alignItems: 'center' }}>
@@ -435,7 +435,7 @@ const AboutIntro = () => {
   const t = useT();
   const [ctaHover, setCtaHover] = React.useState(false);
   return (
-    <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '112px 0' }}>
       <div className="container" style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',

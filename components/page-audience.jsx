@@ -8,7 +8,7 @@ const HomeownerHero = () => {
   <section style={{
     background: 'var(--white)',
     minHeight: 'calc(100svh - 80px)',
-    padding: '40px 0',
+    padding: '64px 0',
     display: 'flex', alignItems: 'center',
     position: 'relative', overflow: 'hidden',
   }}>
@@ -312,7 +312,7 @@ const HomeownerSteps = () => {
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg>) },
   ];
   return (
-    <section style={{ background: '#fafafa', padding: '96px 0 112px' }}>
+    <section style={{ background: '#fafafa', padding: '120px 0 136px' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <h2 className="display" style={{
@@ -367,7 +367,7 @@ const HomeownerSteps = () => {
 const HomeownerStylePicker = () => {
   const t = useT();
   return (
-  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '112px 0' }}>
     <div className="container">
       <div style={{
         display: 'grid', gridTemplateColumns: '1fr 1fr',
@@ -465,7 +465,7 @@ const HomeownerInstallerSplit = () => {
   };
 
   return (
-    <section style={{ background: '#fafafa', padding: '96px 0' }}>
+    <section style={{ background: '#fafafa', padding: '120px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <h2 className="display" style={{
@@ -594,7 +594,7 @@ const HomeownerInstallerSplit = () => {
 const HomeownerTestimonial = () => {
   const t = useT();
   return (
-  <section style={{ background: 'var(--white)', padding: '96px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '120px 0' }}>
     <div className="container" style={{ maxWidth: 1200 }}>
       <div style={{
         display: 'grid', gridTemplateColumns: '1fr 1.4fr',
@@ -703,7 +703,7 @@ const HomeownerFAQ = () => {
   ];
   const [open, setOpen] = React.useState(1);
   return (
-    <section style={{ background: '#fafafa', padding: '96px 0' }}>
+    <section style={{ background: '#fafafa', padding: '120px 0' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
           {/* Left, title + contact sidebar */}
@@ -814,7 +814,7 @@ const HomeownerClosingCTA = () => {
   return (
   <section style={{
     background: 'var(--ink)', color: 'var(--white)',
-    padding: '88px 0',
+    padding: '112px 0',
     position: 'relative', overflow: 'hidden',
   }}>
     {/* Background pattern */}
@@ -893,7 +893,7 @@ const ContractorHero = () => {
   <section style={{
     background: 'var(--ink)', color: 'var(--white)',
     minHeight: 'calc(100svh - 80px)',
-    padding: '40px 0',
+    padding: '64px 0',
     display: 'flex', alignItems: 'center',
     position: 'relative', overflow: 'hidden',
   }}>
@@ -1180,7 +1180,7 @@ const ContractorBenefits = () => {
     },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '96px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '120px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <h2 className="display" style={{
@@ -1264,7 +1264,7 @@ const ContractorHowItWorks = () => {
     },
   ];
   return (
-    <section style={{ background: '#fafafa', padding: '96px 0' }}>
+    <section style={{ background: '#fafafa', padding: '120px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <h2 className="display" style={{
@@ -1363,7 +1363,7 @@ const ContractorWholesaleKit = () => {
     },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '96px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '120px 0' }}>
       <div className="container">
         <div style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr',
@@ -1431,7 +1431,7 @@ const ContractorWholesaleKit = () => {
 const ContractorTestimonial = () => {
   const t = useT();
   return (
-  <section style={{ background: '#fafafa', padding: '96px 0' }}>
+  <section style={{ background: '#fafafa', padding: '120px 0' }}>
     <div className="container" style={{ maxWidth: 1200 }}>
       <div style={{
         display: 'grid', gridTemplateColumns: '1fr 1.4fr',
@@ -1513,7 +1513,7 @@ const ContractorClosingCTA = () => {
   return (
   <section style={{
     background: 'var(--ink)', color: 'var(--white)',
-    padding: '96px 0',
+    padding: '120px 0',
     position: 'relative', overflow: 'hidden',
   }}>
     {/* Background pattern */}

@@ -11,7 +11,7 @@ const FEATURED = [
 
 const FeaturedGrid = () => {
   return (
-    <section style={{ background: 'var(--linen)', padding: '76px 0' }}>
+    <section style={{ background: 'var(--linen)', padding: '100px 0' }}>
       <div className="container">
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
@@ -383,7 +383,7 @@ const ProjectGallery = () => {
   const goPage = (n) => { const c = Math.max(0, Math.min(n, pageCount - 1)); setPage(c); setSelected(c * PER_PAGE); };
 
   return (
-    <section id="projects" style={{ background: 'var(--white)', padding: '48px 0' }}>
+    <section id="projects" style={{ background: 'var(--white)', padding: '72px 0' }}>
       <div className="container">
         {/* Editorial header */}
         <div style={{
@@ -505,7 +505,7 @@ const Calculator = () => {
   const total = matCost + gateCost;
 
   return (
-    <section id="calculator" style={{ background: 'var(--indigo-blue)', color: 'var(--parchment)', padding: '76px 0', position: 'relative', overflow: 'hidden' }}>
+    <section id="calculator" style={{ background: 'var(--indigo-blue)', color: 'var(--parchment)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, opacity: 0.18, pointerEvents: 'none' }}>
         <ChainLinkSVG color="#97baff" opacity={0.6} />
       </div>
@@ -653,7 +653,7 @@ const ServiceAreas = () => {
     { name: 'Marco Island', x: 42, y: 72 },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '56px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '80px 0' }}>
       <div className="container">
         {/* Editorial header, matches FenceCategories / GateSystems / Projects */}
         <div style={{
@@ -826,7 +826,7 @@ const FinalCTA = () => {
     marginBottom: 6, display: 'block',
   };
   return (
-    <section id="contact" style={{ background: 'var(--white)', padding: '96px 0', position: 'relative', overflow: 'hidden' }}>
+    <section id="contact" style={{ background: 'var(--white)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
       {/* Decorative background pattern + accent shapes */}
       <div aria-hidden style={{
         position: 'absolute', inset: 0,
@@ -903,7 +903,7 @@ const FinalCTA = () => {
             border: '1.5px solid var(--ink)', boxShadow: '8px 8px 0 var(--ink)',
           }}>
             {submitted ? (
-              <div style={{ padding: '40px 0', textAlign: 'center' }}>
+              <div style={{ padding: '64px 0', textAlign: 'center' }}>
                 <div className="mono" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--tangerine)', marginBottom: 16, textTransform: 'uppercase', fontWeight: 700 }}>{t('Submitted', 'Enviado')}</div>
                 <h3 className="display" style={{ fontSize: 32, margin: '0 0 12px', lineHeight: 1.1 }}>{t("Thanks, we'll be in touch.", 'Gracias, pronto te contactamos.')}</h3>
                 <p style={{ fontSize: 14, color: 'var(--charcoal)', maxWidth: 360, margin: '0 auto' }}>{t('One of our reps will reach out within 24 hours with stock, pricing and lead time for your project.', 'Uno de nuestros representantes se comunicará en 24 horas con stock, precios y plazo de entrega para tu proyecto.')}</p>
@@ -993,7 +993,7 @@ const Footer = () => {
     ]},
   ];
   return (
-    <footer style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '80px 0 32px' }}>
+    <footer style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '104px 0 32px' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 60 }}>
           <div>

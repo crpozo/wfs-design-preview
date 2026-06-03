@@ -216,7 +216,7 @@ const GateHero = ({ data }) => (
 );
 
 const GateQuickFacts = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '40px 0', borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
+  <section style={{ background: 'var(--white)', padding: '64px 0', borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
     <div className="container">
       <FeatureRow items={[
         ['Best for',   data.bestFor],
@@ -229,7 +229,7 @@ const GateQuickFacts = ({ data }) => (
 );
 
 const GateProfiles = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '64px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="01" label="Profiles & configurations"
@@ -257,7 +257,7 @@ const GateProfiles = ({ data }) => (
 );
 
 const GateSpecs = ({ data }) => (
-  <section style={{ background: 'var(--parchment)', padding: '64px 0' }}>
+  <section style={{ background: 'var(--parchment)', padding: '88px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
@@ -291,7 +291,7 @@ const GateSpecs = ({ data }) => (
 );
 
 const GateUseCases = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '64px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="03" label="Where it shines"
@@ -325,7 +325,7 @@ const GateOtherGates = ({ currentSlug }) => {
     { slug: 'rolling',    href: 'gate-rolling.html',    name: 'Rolling',      img: 'assets/gate-rolling.jpg' },
   ].filter(g => g.slug !== currentSlug);
   return (
-    <section style={{ background: '#faf9f7', padding: '64px 0' }}>
+    <section style={{ background: '#faf9f7', padding: '88px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="04" label="Compare"
