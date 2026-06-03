@@ -487,7 +487,7 @@ const AboutIntro = () => {
           </h2>
 
           <p style={{
-            marginTop: 20,
+            marginTop: 24,
             fontSize: 14.5, lineHeight: 1.55,
             color: 'var(--charcoal)',
             maxWidth: 540,
@@ -500,10 +500,10 @@ const AboutIntro = () => {
 
           {/* Stat strip */}
           <div style={{
-            marginTop: 20,
+            marginTop: 36,
             display: 'grid', gridTemplateColumns: 'repeat(3, auto)',
             gap: 32,
-            paddingTop: 16,
+            paddingTop: 28,
             borderTop: '1px solid rgba(0,16,17,0.12)',
           }}>
             {[
@@ -521,7 +521,7 @@ const AboutIntro = () => {
             ))}
           </div>
 
-          <div style={{ marginTop: 24, display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center' }}>
+          <div style={{ marginTop: 36, display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center' }}>
             <a href="estimate.html"
               onMouseEnter={() => setCtaHover(true)}
               onMouseLeave={() => setCtaHover(false)}

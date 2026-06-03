@@ -222,15 +222,6 @@ const FeaturedProject = ({ p, num, total }) => {
       {/* Tangerine top accent */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--tangerine)' }}/>
 
-      {/* Top badge */}
-      <div style={{ position: 'absolute', top: 20, left: 20 }}>
-        <span className="mono" style={{
-          fontSize: 11, letterSpacing: '0.18em',
-          color: 'var(--ink)', background: 'var(--white)',
-          padding: '6px 10px', fontWeight: 600,
-        }}>{t('Project', 'Proyecto')} {String(num + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}</span>
-      </div>
-
       {/* Bottom content */}
       <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: 28, color: 'var(--white)' }}>
         <div className="mono" style={{
@@ -305,14 +296,13 @@ const FeaturedProject = ({ p, num, total }) => {
   );
 };
 
-const ProjectListRow = ({ p, num, active, onSelect }) => {
+const ProjectListRow = ({ p, active, onSelect }) => {
   return (
     <button
       onClick={onSelect}
       onMouseEnter={onSelect}
       style={{
-        flex: 1,
-        display: 'grid', gridTemplateColumns: '22px 72px 1fr auto', gap: 14, alignItems: 'center',
+        display: 'grid', gridTemplateColumns: '78px 1fr auto', gap: 14, alignItems: 'center',
         padding: 10, width: '100%', textAlign: 'left', cursor: 'pointer',
         background: active ? '#f5f7fb' : 'transparent',
         border: '1px solid',
@@ -321,36 +311,25 @@ const ProjectListRow = ({ p, num, active, onSelect }) => {
         borderLeftColor: active ? 'var(--tangerine)' : 'transparent',
         transition: 'background 0.2s ease, border-color 0.2s ease',
       }}>
-      <span className="mono" style={{
-        fontSize: 11, fontWeight: 700, letterSpacing: '0.04em',
-        color: active ? 'var(--tangerine)' : 'rgba(0,16,17,0.35)',
-      }}>{String(num + 1).padStart(2, '0')}</span>
-      <span style={{ display: 'block', width: 72, height: 54, overflow: 'hidden', background: '#1a2548' }}>
+      <span style={{ display: 'block', width: 78, height: 56, overflow: 'hidden', background: '#1a2548' }}>
         <img src={p.imgUrl || FENCE_IMG[p.img]} alt={p.name}
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </span>
       <span style={{ display: 'block', minWidth: 0 }}>
         <span className="mono" style={{
-          display: 'flex', gap: 8, alignItems: 'center',
-          fontSize: 9.5, letterSpacing: '0.16em', textTransform: 'uppercase',
+          display: 'block', fontSize: 9.5, letterSpacing: '0.16em', textTransform: 'uppercase',
           color: 'var(--charcoal)', marginBottom: 4,
-        }}>
-          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{p.loc}</span>
-          <span style={{ width: 3, height: 3, background: 'var(--tangerine)', borderRadius: '50%', flexShrink: 0 }}/>
-          <span style={{ flexShrink: 0 }}>{p.size}</span>
-        </span>
+          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+        }}>{p.loc}</span>
         <span className="display" style={{
           display: 'block', fontSize: 15.5, lineHeight: 1.1, letterSpacing: '-0.01em',
           color: 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
         }}>{p.name}</span>
       </span>
-      <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 3, flexShrink: 0 }}>
-        <span className="mono" style={{
-          fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700,
-          color: active ? 'var(--ink)' : 'var(--charcoal)',
-        }}>{p.material}</span>
-        <span className="mono" style={{ fontSize: 9, letterSpacing: '0.14em', color: 'rgba(0,16,17,0.4)' }}>{p.year}</span>
-      </span>
+      <span className="mono" style={{
+        fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700,
+        color: active ? 'var(--ink)' : 'var(--charcoal)', flexShrink: 0,
+      }}>{p.material}</span>
     </button>
   );
 };
@@ -366,6 +345,13 @@ const ProjectGallery = () => {
     { name: 'Naples Pool Enclosure', loc: 'Naples, FL', size: '180 LF', material: 'Vinyl', type: 'Vinyl privacy by Veka, 6 ft, pool-code compliant', contractor: 'Naples Outdoor', year: '2025', imgUrl: FENCE_IMG.vinyl },
     { name: 'Bonita Springs Self-Storage', loc: 'Bonita Springs, FL', size: '0.9 mi', material: 'Chain Link', type: 'Galvanized 9-gauge, 8 ft + barbed extension', contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/gate-rolling.jpg' },
     { name: 'Punta Gorda Marina', loc: 'Punta Gorda, FL', size: '240 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, white finish', contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/ec-fence.jpg' },
+    { name: 'Lehigh Acres Warehouse', loc: 'Lehigh Acres, FL', size: '0.6 mi', material: 'Chain Link', type: 'Galvanized 9-gauge, 8 ft, with cantilever gate', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/gate-cantilever.jpg' },
+    { name: 'Marco Island Villa', loc: 'Marco Island, FL', size: '260 LF', material: 'Aluminum', type: 'Welded 3-rail aluminum, 5 ft, black estate finish', contractor: 'Estate Fence Pros', year: '2025', imgUrl: FENCE_IMG.metal },
+    { name: 'Sanibel Beachfront', loc: 'Sanibel, FL', size: '150 LF', material: 'Vinyl', type: 'Vinyl privacy by Veka, 6 ft, hurricane-rated posts', contractor: 'Naples Outdoor', year: '2024', imgUrl: FENCE_IMG.vinyl },
+    { name: 'Immokalee Ag Facility', loc: 'Immokalee, FL', size: '1.4 mi', material: 'Chain Link', type: 'Galvanized 11-gauge, 6 ft, agricultural perimeter', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/gate-sliding.jpg' },
+    { name: 'Port Charlotte HOA', loc: 'Port Charlotte, FL', size: '52 lots', material: 'EC Fence', type: 'EC Fence panels, 6 ft, community standard', contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/ec-fence.jpg' },
+    { name: 'Golden Gate Estates', loc: 'Golden Gate, FL', size: '300 LF', material: 'Metal', type: 'Aluminum board privacy, 6 ft, bronze finish', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: FENCE_IMG.metal },
+    { name: 'North Fort Myers Depot', loc: 'North Fort Myers, FL', size: '0.8 mi', material: 'Chain Link', type: 'Galvanized 9-gauge, 8 ft + barbed extension', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/gate-rolling.jpg' },
   ];
 
   const filters = ['All', 'Chain Link', 'Aluminum', 'Vinyl', 'Metal', 'EC Fence'];
