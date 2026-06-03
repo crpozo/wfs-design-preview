@@ -195,7 +195,7 @@ const ProjectCard = ({ p, i, layout }) => {
   );
 };
 
-const FeaturedProject = ({ p, num }) => {
+const FeaturedProject = ({ p, num, total }) => {
   const t = useT();
   const [hover, setHover] = React.useState(false);
   if (!p) return null;
@@ -206,7 +206,7 @@ const FeaturedProject = ({ p, num }) => {
       style={{
         position: 'relative', overflow: 'hidden',
         background: '#1a2548', textDecoration: 'none',
-        display: 'block', minHeight: 460,
+        display: 'block', minHeight: 500,
       }}>
       <img src={p.imgUrl || FENCE_IMG[p.img]} alt={p.name}
         style={{
@@ -217,24 +217,18 @@ const FeaturedProject = ({ p, num }) => {
         }} />
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(180deg, rgba(20,30,55,0) 28%, rgba(20,30,55,0.55) 60%, rgba(20,30,55,0.94) 100%)',
+        background: 'linear-gradient(180deg, rgba(20,30,55,0) 16%, rgba(20,30,55,0.6) 52%, rgba(20,30,55,0.95) 100%)',
       }}/>
+      {/* Tangerine top accent */}
+      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--tangerine)' }}/>
 
-      {/* Top meta */}
-      <div style={{
-        position: 'absolute', top: 20, left: 20, right: 20,
-        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      }}>
+      {/* Top badge */}
+      <div style={{ position: 'absolute', top: 20, left: 20 }}>
         <span className="mono" style={{
           fontSize: 11, letterSpacing: '0.18em',
           color: 'var(--ink)', background: 'var(--white)',
           padding: '6px 10px', fontWeight: 600,
-        }}>{String(num + 1).padStart(2, '0')} / {p.year}</span>
-        <span className="mono" style={{
-          fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
-          color: 'var(--white)', background: 'rgba(20,30,55,0.55)',
-          padding: '6px 10px', backdropFilter: 'blur(6px)',
-        }}>{p.material}</span>
+        }}>{t('Project', 'Proyecto')} {String(num + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}</span>
       </div>
 
       {/* Bottom content */}
@@ -253,9 +247,35 @@ const FeaturedProject = ({ p, num }) => {
           lineHeight: 1.0, letterSpacing: '-0.02em', color: 'var(--white)',
         }}>{p.name}</h3>
         <p style={{
-          margin: '14px 0 0', maxWidth: 460,
+          margin: '12px 0 0', maxWidth: 460,
           fontSize: 14, lineHeight: 1.55, color: 'var(--alice-blue)',
         }}>{p.type}</p>
+
+        {/* Spec strip */}
+        <div style={{
+          display: 'flex', marginTop: 18, paddingTop: 16,
+          borderTop: '1px solid rgba(255,255,255,0.18)',
+        }}>
+          {[
+            [{ EN: 'Scope', ES: 'Alcance' }, p.size],
+            [{ EN: 'System', ES: 'Sistema' }, p.material],
+            [{ EN: 'Completed', ES: 'Completado' }, p.year],
+          ].map(([k, v], i) => (
+            <div key={i} style={{
+              flex: 1,
+              paddingLeft: i ? 18 : 0,
+              borderLeft: i ? '1px solid rgba(255,255,255,0.18)' : 'none',
+            }}>
+              <div className="mono" style={{
+                fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase',
+                color: 'rgba(255,255,255,0.55)', marginBottom: 5,
+              }}>{t(k)}</div>
+              <div className="display" style={{ fontSize: 16, color: 'var(--white)', letterSpacing: '-0.01em' }}>{v}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Contractor + CTA */}
         <div style={{
           marginTop: 18, display: 'flex', alignItems: 'center',
           justifyContent: 'space-between', gap: 16, flexWrap: 'wrap',
@@ -285,14 +305,14 @@ const FeaturedProject = ({ p, num }) => {
   );
 };
 
-const ProjectListRow = ({ p, active, onSelect }) => {
+const ProjectListRow = ({ p, num, active, onSelect }) => {
   return (
     <button
       onClick={onSelect}
       onMouseEnter={onSelect}
       style={{
         flex: 1,
-        display: 'grid', gridTemplateColumns: '78px 1fr auto', gap: 14, alignItems: 'center',
+        display: 'grid', gridTemplateColumns: '22px 72px 1fr auto', gap: 14, alignItems: 'center',
         padding: 10, width: '100%', textAlign: 'left', cursor: 'pointer',
         background: active ? '#f5f7fb' : 'transparent',
         border: '1px solid',
@@ -301,7 +321,11 @@ const ProjectListRow = ({ p, active, onSelect }) => {
         borderLeftColor: active ? 'var(--tangerine)' : 'transparent',
         transition: 'background 0.2s ease, border-color 0.2s ease',
       }}>
-      <span style={{ display: 'block', width: 78, height: 56, overflow: 'hidden', background: '#1a2548' }}>
+      <span className="mono" style={{
+        fontSize: 11, fontWeight: 700, letterSpacing: '0.04em',
+        color: active ? 'var(--tangerine)' : 'rgba(0,16,17,0.35)',
+      }}>{String(num + 1).padStart(2, '0')}</span>
+      <span style={{ display: 'block', width: 72, height: 54, overflow: 'hidden', background: '#1a2548' }}>
         <img src={p.imgUrl || FENCE_IMG[p.img]} alt={p.name}
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </span>
@@ -320,10 +344,13 @@ const ProjectListRow = ({ p, active, onSelect }) => {
           color: 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
         }}>{p.name}</span>
       </span>
-      <span className="mono" style={{
-        fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700,
-        color: active ? 'var(--ink)' : 'var(--charcoal)', flexShrink: 0,
-      }}>{p.material}</span>
+      <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 3, flexShrink: 0 }}>
+        <span className="mono" style={{
+          fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700,
+          color: active ? 'var(--ink)' : 'var(--charcoal)',
+        }}>{p.material}</span>
+        <span className="mono" style={{ fontSize: 9, letterSpacing: '0.14em', color: 'rgba(0,16,17,0.4)' }}>{p.year}</span>
+      </span>
     </button>
   );
 };
@@ -362,6 +389,13 @@ const ProjectGallery = () => {
             {t('Real projects.', 'Proyectos reales.')}<br/>
             <span style={{ color: 'var(--tangerine)' }}>{t('Real perimeters.', 'Perímetros reales.')}</span>
           </h2>
+          <p className="mono" style={{
+            margin: '14px 0 0', fontSize: 11, letterSpacing: '0.16em',
+            textTransform: 'uppercase', color: 'var(--charcoal)',
+          }}>
+            {t('Flagship perimeters across Lee, Collier & Charlotte — pick one to preview.',
+               'Perímetros insignia en Lee, Collier y Charlotte — elige uno para verlo.')}
+          </p>
         </div>
 
         {/* Filter chips */}
@@ -414,10 +448,10 @@ const ProjectGallery = () => {
           display: 'grid', gridTemplateColumns: '1.4fr 1fr',
           gap: 18, alignItems: 'stretch',
         }}>
-          <FeaturedProject p={feat} num={sel} />
+          <FeaturedProject p={feat} num={sel} total={visible.length} />
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             {visible.map((p, i) => (
-              <ProjectListRow key={p.name} p={p} active={i === sel}
+              <ProjectListRow key={p.name} p={p} num={i} active={i === sel}
                 onSelect={() => setSelected(i)} />
             ))}
           </div>
