@@ -435,7 +435,7 @@ const AboutIntro = () => {
   const t = useT();
   const [ctaHover, setCtaHover] = React.useState(false);
   return (
-    <section style={{ background: 'var(--white)', padding: '48px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '88px 0' }}>
       <div className="container" style={{
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',

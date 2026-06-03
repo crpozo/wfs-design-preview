@@ -334,10 +334,38 @@ const ProjectListRow = ({ p, active, onSelect }) => {
   );
 };
 
+const PageBtn = ({ active, disabled, onClick, label, arrow }) => (
+  <button
+    onClick={onClick}
+    disabled={disabled}
+    aria-label={arrow === 'prev' ? 'Previous page' : arrow === 'next' ? 'Next page' : `Page ${label}`}
+    className="mono"
+    style={{
+      width: 32, height: 32,
+      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+      fontSize: 11, fontWeight: 700, letterSpacing: '0.04em',
+      border: '1px solid',
+      borderColor: active ? 'var(--ink)' : 'rgba(0,16,17,0.18)',
+      background: active ? 'var(--ink)' : 'transparent',
+      color: active ? 'var(--white)' : 'var(--ink)',
+      cursor: disabled ? 'not-allowed' : 'pointer',
+      opacity: disabled ? 0.32 : 1,
+      transition: 'background 0.2s ease, border-color 0.2s ease',
+    }}>
+    {arrow ? (
+      <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
+        style={{ transform: arrow === 'prev' ? 'scaleX(-1)' : 'none' }}>
+        <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+      </svg>
+    ) : label}
+  </button>
+);
+
 const ProjectGallery = () => {
   const t = useT();
   const [filter, setFilter] = React.useState('All');
   const [selected, setSelected] = React.useState(0);
+  const [page, setPage] = React.useState(0);
   const projects = [
     { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, with double drive gate', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/gate-sliding.jpg' },
     { name: 'Estero Community', loc: 'Estero, FL', size: '38 lots', material: 'Metal', type: 'Aluminum board privacy, 6 ft, bronze finish', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: FENCE_IMG.metal },
@@ -358,6 +386,13 @@ const ProjectGallery = () => {
   const visible = filter === 'All' ? projects : projects.filter(p => p.material === filter);
   const sel = Math.min(selected, Math.max(0, visible.length - 1));
   const feat = visible[sel];
+
+  const PER_PAGE = 5;
+  const pageCount = Math.max(1, Math.ceil(visible.length / PER_PAGE));
+  const pg = Math.min(page, pageCount - 1);
+  const start = pg * PER_PAGE;
+  const pageItems = visible.slice(start, start + PER_PAGE);
+  const goPage = (n) => { const c = Math.max(0, Math.min(n, pageCount - 1)); setPage(c); setSelected(c * PER_PAGE); };
 
   return (
     <section id="projects" style={{ background: 'var(--white)', padding: '48px 0' }}>
@@ -400,7 +435,7 @@ const ProjectGallery = () => {
               'EC Fence': { EN: 'EC Fence', ES: 'EC Fence' },
             };
             return (
-              <button key={f} onClick={() => { setFilter(f); setSelected(0); }} className="mono"
+              <button key={f} onClick={() => { setFilter(f); setSelected(0); setPage(0); }} className="mono"
                 style={{
                   padding: '6px 12px',
                   fontSize: 10, letterSpacing: '0.18em',
@@ -435,11 +470,33 @@ const ProjectGallery = () => {
           gap: 18, alignItems: 'stretch',
         }}>
           <FeaturedProject p={feat} num={sel} total={visible.length} />
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            {visible.map((p, i) => (
-              <ProjectListRow key={p.name} p={p} num={i} active={i === sel}
-                onSelect={() => setSelected(i)} />
-            ))}
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              {pageItems.map((p, i) => (
+                <ProjectListRow key={p.name} p={p} active={(start + i) === sel}
+                  onSelect={() => setSelected(start + i)} />
+              ))}
+            </div>
+
+            {pageCount > 1 && (
+              <div style={{
+                marginTop: 'auto', paddingTop: 18,
+                display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
+              }}>
+                <span className="mono" style={{
+                  fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)',
+                }}>
+                  {start + 1}–{Math.min(start + PER_PAGE, visible.length)} {t('of', 'de')} {visible.length}
+                </span>
+                <div style={{ display: 'flex', gap: 6 }}>
+                  <PageBtn disabled={pg === 0} onClick={() => goPage(pg - 1)} arrow="prev" />
+                  {Array.from({ length: pageCount }).map((_, n) => (
+                    <PageBtn key={n} active={n === pg} onClick={() => goPage(n)} label={n + 1} />
+                  ))}
+                  <PageBtn disabled={pg === pageCount - 1} onClick={() => goPage(pg + 1)} arrow="next" />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
