@@ -1,4 +1,4 @@
-/* Homeowner + Contractor landing pages — entered from the homepage hero buttons */
+/* Homeowner + Contractor landing pages, entered from the homepage hero buttons */
 
 /* ───────────────────────────── HOMEOWNER ───────────────────────────── */
 
@@ -26,7 +26,7 @@ const HomeownerHero = () => {
         display: 'grid', gridTemplateColumns: '1.2fr 1fr',
         gap: 64, alignItems: 'center',
       }}>
-        {/* Left — copy */}
+        {/* Left, copy */}
         <div>
           <span className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -110,7 +110,7 @@ const HomeownerHero = () => {
           </div>
         </div>
 
-        {/* Right — homeowner visual: illustrated home scene + benefits */}
+        {/* Right, homeowner visual: illustrated home scene + benefits */}
         <div style={{ position: 'relative', aspectRatio: '5 / 6', maxHeight: 'calc(100svh - 160px)' }}>
           {/* Outer ink frame */}
           <div style={{
@@ -162,7 +162,7 @@ const HomeownerHero = () => {
             </span>
           </div>
 
-          {/* Bottom card — what you'll love */}
+          {/* Bottom card, what you'll love */}
           <div style={{
             position: 'absolute', bottom: 24, left: 24, right: 24,
             border: '1px solid rgba(26,37,72,0.18)',
@@ -212,7 +212,7 @@ const HomeownerHero = () => {
   );
 };
 
-/* ───── Trust strip — 4 stats anchoring the hero ───── */
+/* ───── Trust strip, 4 stats anchoring the hero ───── */
 
 const HomeownerTrustStrip = () => {
   const t = useT();
@@ -252,7 +252,7 @@ const HomeownerTrustStrip = () => {
   );
 };
 
-/* ───── How it works — 6 steps with circle icons ───── */
+/* ───── How it works, 6 steps with circle icons ───── */
 
 const HomeownerSteps = () => {
   const t = useT();
@@ -384,7 +384,7 @@ const HomeownerStylePicker = () => {
             textTransform: 'uppercase',
             marginBottom: 18,
           }}>
-            <span>{t('02 — Styles', '02 — Estilos')}</span>
+            <span>{t('02, Styles', '02, Estilos')}</span>
             <span style={{ width: 32, height: 1, background: 'var(--tangerine)' }}/>
           </div>
           <h2 className="display" style={{
@@ -405,8 +405,8 @@ const HomeownerStylePicker = () => {
             textAlign: 'right',
           }}>
             {t(
-              'Five residential systems we manufacture in-house — pick the one that matches your priorities for privacy, pool-code, curb appeal or pet containment.',
-              'Cinco sistemas residenciales que fabricamos en planta — elige el que mejor encaja con tus prioridades: privacidad, código de piscinas, estética o contener mascotas.'
+              'Five residential systems we manufacture in-house, pick the one that matches your priorities for privacy, pool-code, curb appeal or pet containment.',
+              'Cinco sistemas residenciales que fabricamos en planta, elige el que mejor encaja con tus prioridades: privacidad, código de piscinas, estética o contener mascotas.'
             )}
           </p>
           <a href="products.html" className="mono" style={{
@@ -425,7 +425,7 @@ const HomeownerStylePicker = () => {
         </div>
       </div>
 
-      {/* Equal 5-column grid — same image-led cards as homepage */}
+      {/* Equal 5-column grid, same image-led cards as homepage */}
       <div style={{
         display: 'grid',
         gridTemplateColumns: 'repeat(5, 1fr)',
@@ -474,7 +474,7 @@ const HomeownerInstallerSplit = () => {
           }}>{t('WFS supplies. Certified installers build.', 'WFS suministra. Instaladores certificados construyen.')}</h2>
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, maxWidth: 1200, margin: '0 auto', alignItems: 'stretch' }}>
-          {/* Left — Certified Installer Alliance (white) */}
+          {/* Left, Certified Installer Alliance (white) */}
           <HoverCard theme="light">
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -528,7 +528,7 @@ const HomeownerInstallerSplit = () => {
             }}>{t('Find an Installer', 'Encontrar instalador')}</a>
           </HoverCard>
 
-          {/* Right — What You Get (black) */}
+          {/* Right, What You Get (black) */}
           <HoverCard theme="dark">
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -600,7 +600,7 @@ const HomeownerTestimonial = () => {
         display: 'grid', gridTemplateColumns: '1fr 1.4fr',
         gap: 56, alignItems: 'center',
       }}>
-        {/* Left — meta column */}
+        {/* Left, meta column */}
         <div>
           <h2 className="display" style={{
             margin: '0 0 24px',
@@ -618,7 +618,7 @@ const HomeownerTestimonial = () => {
           </p>
         </div>
 
-        {/* Right — quote card */}
+        {/* Right, quote card */}
         <article style={{
           position: 'relative',
           border: '1.5px solid var(--ink)',
@@ -686,16 +686,16 @@ const HomeownerFAQ = () => {
   const items = [
     [{ EN: 'Do I need a permit for my fence?',
         ES: '¿Necesito permiso para mi cerca?' },
-     { EN: 'Most Florida counties require a permit for fences over 4 ft, and pool barriers always require code-compliant permits. Your installer typically handles the filing — we provide the manufacturer specs and stamped wind-load data for AHJ submission.',
-       ES: 'La mayoría de condados de Florida exigen permiso para cercas de más de 4 pies, y los cerramientos de piscina siempre requieren permisos según código. Tu instalador suele encargarse del trámite — nosotros proveemos las specs del fabricante y datos sellados de carga eólica para la presentación AHJ.' }],
+     { EN: 'Most Florida counties require a permit for fences over 4 ft, and pool barriers always require code-compliant permits. Your installer typically handles the filing, we provide the manufacturer specs and stamped wind-load data for AHJ submission.',
+       ES: 'La mayoría de condados de Florida exigen permiso para cercas de más de 4 pies, y los cerramientos de piscina siempre requieren permisos según código. Tu instalador suele encargarse del trámite, nosotros proveemos las specs del fabricante y datos sellados de carga eólica para la presentación AHJ.' }],
     [{ EN: 'Does WFS handle HOA approvals?',
         ES: '¿WFS gestiona aprobaciones del HOA?' },
      { EN: "We don't submit on your behalf, but we provide every document your HOA needs: profile drawings, color samples, finish specs and a written quote in the format most boards expect. Your installer or a community manager submits.",
        ES: 'No presentamos por ti, pero proveemos cada documento que tu HOA necesita: dibujos de perfil, muestras de color, specs de acabado y una cotización por escrito en el formato que la mayoría de juntas espera. Tu instalador o un community manager presenta.' }],
     [{ EN: 'What is the lead time for orders?',
         ES: '¿Cuál es el tiempo de entrega de los pedidos?' },
-     { EN: 'Stocked items ship in 1–2 days. Custom welded gates run 3–7 days. Color-matched or non-stock heights take 2–4 weeks. We confirm the exact lead time before you approve the quote.',
-       ES: 'Los artículos en stock se envían en 1–2 días. Los portones soldados a medida toman 3–7 días. Colores específicos o alturas fuera de stock toman 2–4 semanas. Confirmamos el plazo exacto antes de que apruebes la cotización.' }],
+     { EN: 'Stocked items ship in 1-2 days. Custom welded gates run 3-7 days. Color-matched or non-stock heights take 2-4 weeks. We confirm the exact lead time before you approve the quote.',
+       ES: 'Los artículos en stock se envían en 1-2 días. Los portones soldados a medida toman 3-7 días. Colores específicos o alturas fuera de stock toman 2-4 semanas. Confirmamos el plazo exacto antes de que apruebes la cotización.' }],
     [{ EN: 'How do I connect with a certified installer?',
         ES: '¿Cómo me conecto con un instalador certificado?' },
      { EN: 'When you request a quote we route your project to the closest WFS-aligned installer in our certified alliance. They quote the labor side; the material side stays on your WFS line item.',
@@ -706,7 +706,7 @@ const HomeownerFAQ = () => {
     <section style={{ background: '#fafafa', padding: '96px 0' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
-          {/* Left — title + contact sidebar */}
+          {/* Left, title + contact sidebar */}
           <div style={{ position: 'sticky', top: 100 }}>
             <h2 className="display" style={{
               margin: '0 0 24px',
@@ -751,11 +751,11 @@ const HomeownerFAQ = () => {
                 borderTop: '1px solid rgba(26,37,72,0.1)',
                 fontSize: 10.5, letterSpacing: '0.18em',
                 textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 700,
-              }}>{t('Mon–Fri · 7am–4pm EST', 'Lun–Vie · 7am–4pm EST')}</div>
+              }}>{t('Mon-Fri · 7am-4pm EST', 'Lun-Vie · 7am-4pm EST')}</div>
             </div>
           </div>
 
-          {/* Right — accordion */}
+          {/* Right, accordion */}
           <div style={{ display: 'grid', gap: 14 }}>
             {items.map(([q, a], i) => {
               const isOpen = open === i;
@@ -843,8 +843,8 @@ const HomeownerClosingCTA = () => {
           color: 'rgba(255,255,255,0.7)',
         }}>
           {t(
-            'Linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery — and routes the labor side to a certified installer near you.',
-            'Pies lineales, altura, número de portones y código postal. Un representante sigue el pedido desde cotización hasta recogida o entrega — y enruta la mano de obra a un instalador certificado cercano.'
+            'Linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery, and routes the labor side to a certified installer near you.',
+            'Pies lineales, altura, número de portones y código postal. Un representante sigue el pedido desde cotización hasta recogida o entrega, y enruta la mano de obra a un instalador certificado cercano.'
           )}
         </p>
       </div>
@@ -914,7 +914,7 @@ const ContractorHero = () => {
         display: 'grid', gridTemplateColumns: '1.2fr 1fr',
         gap: 56, alignItems: 'center',
       }}>
-        {/* Left — copy block */}
+        {/* Left, copy block */}
         <div>
           <span className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -948,8 +948,8 @@ const ContractorHero = () => {
             color: 'rgba(255,255,255,0.72)',
           }}>
             {t(
-              "Partner with Southwest Florida's leading fence manufacturer. Wholesale pricing tiers, priority fabrication, and job-site delivery — without an out-of-state distributor in the middle.",
-              'Asóciate con el fabricante líder de cercas del suroeste de Florida. Niveles de precio mayorista, fabricación prioritaria y entrega a obra — sin distribuidor de otro estado en medio.'
+              "Partner with Southwest Florida's leading fence manufacturer. Wholesale pricing tiers, priority fabrication, and job-site delivery, without an out-of-state distributor in the middle.",
+              'Asóciate con el fabricante líder de cercas del suroeste de Florida. Niveles de precio mayorista, fabricación prioritaria y entrega a obra, sin distribuidor de otro estado en medio.'
             )}
           </p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 26 }}>
@@ -996,7 +996,7 @@ const ContractorHero = () => {
           </div>
         </div>
 
-        {/* Right — contractor visual: yard photo + "what you get" card */}
+        {/* Right, contractor visual: yard photo + "what you get" card */}
         <div style={{ position: 'relative', aspectRatio: '5 / 6', maxHeight: 'calc(100svh - 160px)' }}>
           {/* Outer white frame */}
           <div style={{
@@ -1048,7 +1048,7 @@ const ContractorHero = () => {
             </span>
           </div>
 
-          {/* Bottom card — what contractors get (mirrors homeowner pattern) */}
+          {/* Bottom card, what contractors get (mirrors homeowner pattern) */}
           <div style={{
             position: 'absolute', bottom: 24, left: 24, right: 24,
             border: '1px solid rgba(255,255,255,0.18)',
@@ -1066,13 +1066,13 @@ const ContractorHero = () => {
             </div>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: 11 }}>
               {[
-                { line: { EN: 'Wholesale pricing — save 18–28%',  ES: 'Precios mayoristas — ahorra 18–28%' },
+                { line: { EN: 'Wholesale pricing, save 18-28%',  ES: 'Precios mayoristas, ahorra 18-28%' },
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9 L12 4 L18 9 L18 19 H6 Z"/><path d="M9 19 V13 H15 V19"/></svg>) },
-                { line: { EN: 'Priority manufacturing — 72h on gates', ES: 'Fabricación prioritaria — 72h en portones' },
+                { line: { EN: 'Priority manufacturing, 72h on gates', ES: 'Fabricación prioritaria, 72h en portones' },
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15 14"/></svg>) },
                 { line: { EN: 'Free delivery to your job site',     ES: 'Entrega gratis a tu obra' },
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>) },
-                { line: { EN: 'Same rep on every order — Net 30',   ES: 'El mismo representante en cada orden — Net 30' },
+                { line: { EN: 'Same rep on every order, Net 30',   ES: 'El mismo representante en cada orden, Net 30' },
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20 Q5 14 12 14 Q19 14 19 20"/></svg>) },
               ].map((b, i) => (
                 <li key={i} style={{
@@ -1111,7 +1111,7 @@ const ContractorStatsStrip = () => {
     <div className="container">
       <div className="wfs-stat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
         {[
-          ['18–28%', { EN: 'Wholesale margin tiers',     ES: 'Niveles de margen mayorista' }],
+          ['18-28%', { EN: 'Wholesale margin tiers',     ES: 'Niveles de margen mayorista' }],
           ['72h',    { EN: 'Avg priority fabrication',   ES: 'Fabricación prioritaria promedio' }],
           [{ EN: 'Free', ES: 'Gratis' }, { EN: 'Job-site drops · in-county', ES: 'Entregas a obra · mismo condado' }],
           ['$0',     { EN: 'Application fee',             ES: 'Costo de aplicación' }],
@@ -1142,8 +1142,8 @@ const ContractorBenefits = () => {
   const benefits = [
     {
       title: { EN: 'Factory Direct Pricing', ES: 'Precios directos de fábrica' },
-      body:  { EN: 'Maximize your margins with true wholesale pricing tiered to your volume — no out-of-state distributor markup.',
-                ES: 'Maximiza tus márgenes con precios mayoristas reales escalonados por volumen — sin recargo de distribuidor de otro estado.' },
+      body:  { EN: 'Maximize your margins with true wholesale pricing tiered to your volume, no out-of-state distributor markup.',
+                ES: 'Maximiza tus márgenes con precios mayoristas reales escalonados por volumen, sin recargo de distribuidor de otro estado.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21 V11 L9 14 V11 L15 14 V11 L21 14 V21 Z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>),
       highlighted: true,
     },
@@ -1155,8 +1155,8 @@ const ContractorBenefits = () => {
     },
     {
       title: { EN: 'Job Site Delivery', ES: 'Entrega a obra' },
-      body:  { EN: 'Unbranded or branded drops directly to your job site. Curbside, will-call, or LTL — your choice per PO.',
-                ES: 'Entregas con o sin tu marca, directo a tu obra. Banqueta, recoge en planta o LTL — tú decides en cada orden.' },
+      body:  { EN: 'Unbranded or branded drops directly to your job site. Curbside, will-call, or LTL, your choice per PO.',
+                ES: 'Entregas con o sin tu marca, directo a tu obra. Banqueta, recoge en planta o LTL, tú decides en cada orden.' },
       svg: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21 Q4 14 4 9 A8 8 0 0 1 20 9 Q20 14 12 21 Z"/><circle cx="12" cy="9.5" r="2.6"/></svg>),
     },
     {
@@ -1174,8 +1174,8 @@ const ContractorBenefits = () => {
     },
     {
       title: { EN: 'Dedicated Rep', ES: 'Representante dedicado' },
-      body:  { EN: 'One named contractor account rep. Order by phone, email, or in-yard — same person from RFQ through PO close-out.',
-                ES: 'Un representante asignado a tu cuenta. Ordena por teléfono, email o en la sucursal — la misma persona desde la RFQ hasta el cierre de la orden.' },
+      body:  { EN: 'One named contractor account rep. Order by phone, email, or in-yard, same person from RFQ through PO close-out.',
+                ES: 'Un representante asignado a tu cuenta. Ordena por teléfono, email o en la sucursal, la misma persona desde la RFQ hasta el cierre de la orden.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20 Q5 14 12 14 Q19 14 19 20"/></svg>),
     },
   ];
@@ -1233,7 +1233,7 @@ const ContractorBenefits = () => {
   );
 };
 
-/* ───── How partnership works — 4 steps ───── */
+/* ───── How partnership works, 4 steps ───── */
 
 const ContractorHowItWorks = () => {
   const t = useT();
@@ -1290,7 +1290,7 @@ const ContractorHowItWorks = () => {
               border: '1.5px solid var(--ink)',
               padding: '24px 24px 28px',
             }}>
-              {/* Top row — number + icon */}
+              {/* Top row, number + icon */}
               <div style={{
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                 marginBottom: 24,
@@ -1320,7 +1320,7 @@ const ContractorHowItWorks = () => {
   );
 };
 
-/* ───── What's in the wholesale kit — resources ───── */
+/* ───── What's in the wholesale kit, resources ───── */
 
 const ContractorWholesaleKit = () => {
   const t = useT();
@@ -1333,8 +1333,8 @@ const ContractorWholesaleKit = () => {
     },
     {
       title: { EN: 'Spec Library', ES: 'Biblioteca de specs' },
-      body:  { EN: 'PDF profile drawings, wind-load data, color samples — formatted for AHJ and HOA submission.',
-                ES: 'Dibujos de perfil en PDF, datos de carga eólica, muestras de color — formateados para presentación AHJ y HOA.' },
+      body:  { EN: 'PDF profile drawings, wind-load data, color samples, formatted for AHJ and HOA submission.',
+                ES: 'Dibujos de perfil en PDF, datos de carga eólica, muestras de color, formateados para presentación AHJ y HOA.' },
       svg: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>),
     },
     {
@@ -1380,8 +1380,8 @@ const ContractorWholesaleKit = () => {
             fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
           }}>
             {t(
-              'Six things every active partner walks away with — not someday, on day one.',
-              'Seis cosas que todo socio activo se lleva — no algún día, el primer día.'
+              'Six things every active partner walks away with, not someday, on day one.',
+              'Seis cosas que todo socio activo se lleva, no algún día, el primer día.'
             )}
           </p>
         </div>
@@ -1437,7 +1437,7 @@ const ContractorTestimonial = () => {
         display: 'grid', gridTemplateColumns: '1fr 1.4fr',
         gap: 56, alignItems: 'center',
       }}>
-        {/* Left — meta */}
+        {/* Left, meta */}
         <div>
           <h2 className="display" style={{
             margin: '0 0 24px',
@@ -1455,7 +1455,7 @@ const ContractorTestimonial = () => {
           </p>
         </div>
 
-        {/* Right — quote card on dark */}
+        {/* Right, quote card on dark */}
         <article style={{
           position: 'relative',
           background: 'var(--ink)', color: 'var(--white)',
@@ -1506,7 +1506,7 @@ const ContractorTestimonial = () => {
   );
 };
 
-/* ───── Contractor closing CTA — dark band with form preview ───── */
+/* ───── Contractor closing CTA, dark band with form preview ───── */
 
 const ContractorClosingCTA = () => {
   const t = useT();
@@ -1570,7 +1570,7 @@ const ContractorClosingCTA = () => {
         </div>
       </div>
 
-      {/* Right — application checklist */}
+      {/* Right, application checklist */}
       <div style={{
         border: '1.5px solid rgba(255,255,255,0.25)',
         background: 'rgba(255,255,255,0.04)',

@@ -1,11 +1,11 @@
-/* Homepage product sections — Fences (5 types incl. EC Fence) + Gates (5 systems) */
+/* Homepage product sections, Fences (5 types incl. EC Fence) + Gates (5 systems) */
 
 const FENCE_CATEGORIES = [
   {
     id: 'vinyl', name: { EN: 'Vinyl / PVC', ES: 'Vinilo / PVC' }, tag: { EN: 'Privacy, Picket & Ranch', ES: 'Privacidad, picket y rancho' },
     img: 'vinyl', href: 'vinyl.html',
-    desc: { EN: "Low-maintenance vinyl in privacy, picket and ranch profiles. Won't rot, rust, peel or fade — engineered for Florida sun and salt air with a transferable lifetime warranty.",
-            ES: 'Vinilo de bajo mantenimiento en perfiles de privacidad, picket y rancho. No se pudre, no se oxida, no se pela ni decolora — diseñado para el sol y aire salino de Florida con garantía de por vida transferible.' },
+    desc: { EN: "Low-maintenance vinyl in privacy, picket and ranch profiles. Won't rot, rust, peel or fade, engineered for Florida sun and salt air with a transferable lifetime warranty.",
+            ES: 'Vinilo de bajo mantenimiento en perfiles de privacidad, picket y rancho. No se pudre, no se oxida, no se pela ni decolora, diseñado para el sol y aire salino de Florida con garantía de por vida transferible.' },
   },
   {
     id: 'aluminum', name: { EN: 'Aluminum', ES: 'Aluminio' }, tag: { EN: 'Residential & Commercial', ES: 'Residencial y comercial' },
@@ -22,8 +22,8 @@ const FENCE_CATEGORIES = [
   {
     id: 'metal', name: { EN: 'Metal / DuraFence', ES: 'Metal / DuraFence' }, tag: { EN: 'Aluminum Board Privacy', ES: 'Privacidad de tabla aluminio' },
     img: 'metal', href: 'metal.html',
-    desc: { EN: 'Aluminum board privacy fencing — the strength of metal with the look of solid board. Hurricane-rated, no warping, no painting, no replacement boards.',
-            ES: 'Cerca de privacidad de tabla aluminio — la fuerza del metal con el aspecto de tabla sólida. Resistente a huracanes, no se deforma, no se pinta, no se reemplazan tablas.' },
+    desc: { EN: 'Aluminum board privacy fencing, the strength of metal with the look of solid board. Hurricane-rated, no warping, no painting, no replacement boards.',
+            ES: 'Cerca de privacidad de tabla aluminio, la fuerza del metal con el aspecto de tabla sólida. Resistente a huracanes, no se deforma, no se pinta, no se reemplazan tablas.' },
   },
   {
     id: 'ecfence', name: { EN: 'EC Fence', ES: 'EC Fence' }, tag: { EN: 'Self-Mating Galvanized Steel', ES: 'Acero galv. autoensamblable' },
@@ -43,8 +43,8 @@ const GATE_SYSTEMS = [
   {
     id: 'double-swing', name: { EN: 'Double Gate', ES: 'Portón doble' }, tag: { EN: 'Driveway drive gates', ES: 'Portones de acceso vehicular' },
     img: 'gate-double', href: 'gate-double.html',
-    desc: { EN: 'Double drive gates for driveway access, fabricated in-house in vinyl, chain link, metal and aluminum — standard or custom sized, with matching hardware.',
-            ES: 'Portones dobles para acceso vehicular, fabricados en planta en vinilo, malla, metal y aluminio — estándar o a medida, con herrajes a juego.' },
+    desc: { EN: 'Double drive gates for driveway access, fabricated in-house in vinyl, chain link, metal and aluminum, standard or custom sized, with matching hardware.',
+            ES: 'Portones dobles para acceso vehicular, fabricados en planta en vinilo, malla, metal y aluminio, estándar o a medida, con herrajes a juego.' },
   },
   {
     id: 'sliding', name: { EN: 'Sliding Gate', ES: 'Portón corredizo' }, tag: { EN: 'Space-saving access', ES: 'Acceso que ahorra espacio' },
@@ -55,8 +55,8 @@ const GATE_SYSTEMS = [
   {
     id: 'cantilever', name: { EN: 'Cantilever Gate', ES: 'Portón cantilever' }, tag: { EN: 'Commercial & industrial', ES: 'Comercial e industrial' },
     img: 'gate-cantilever', href: 'gate-cantilever.html',
-    desc: { EN: 'Cantilever gates built for easy operation and long-lasting use — quick, secure entry to and from your property.',
-            ES: 'Portones cantilever construidos para operación fácil y uso duradero — entrada y salida rápida y segura de tu propiedad.' },
+    desc: { EN: 'Cantilever gates built for easy operation and long-lasting use, quick, secure entry to and from your property.',
+            ES: 'Portones cantilever construidos para operación fácil y uso duradero, entrada y salida rápida y segura de tu propiedad.' },
   },
   {
     id: 'rolling', name: { EN: 'Rolling Gate', ES: 'Portón rodante' }, tag: { EN: 'Industrial rolling gates', ES: 'Portones rodantes industriales' },
@@ -384,7 +384,7 @@ const FenceStyleCard = ({ item, index }) => {
         }}>{t('NEW', 'NUEVO')}</span>
       )}
 
-      {/* Caption — name + tag */}
+      {/* Caption, name + tag */}
       <div style={{
         position: 'absolute', left: 16, right: 16, bottom: 16,
       }}>
@@ -417,7 +417,7 @@ const FenceStyleCard = ({ item, index }) => {
   );
 };
 
-/* Accent color per system — drives the card frame, glow and background wash.
+/* Accent color per system, drives the card frame, glow and background wash.
    Fences use a vivid set; gates use a metallic/industrial set so the two
    sections read as the same family but clearly distinct. */
 const FENCE_RARITY = {
@@ -435,7 +435,7 @@ const GATE_RARITY = {
   'rolling':      { c1: '#e08a4a', c2: '#a8542a' },  // industrial orange
 };
 
-/* Single selectable card in the rail — game-locker style.
+/* Single selectable card in the rail, game-locker style.
    variant 'gate' mirrors the bevel and flips the accents to the right so the
    gates rail reads as a deliberate mirror of the fences rail. */
 const SystemCard = ({ item, index, active, onSelect, rarity, variant }) => {
@@ -481,7 +481,7 @@ const SystemCard = ({ item, index, active, onSelect, rarity, variant }) => {
 
 /* One detail panel (badge + title + tag + copy + CTA). All panels are stacked
    in the same grid cell so the container always reserves the tallest panel's
-   height — switching systems never reflows the layout (no vertical jump). */
+   height, switching systems never reflows the layout (no vertical jump). */
 const SystemDetail = ({ item, active, rarity, align, ctaLabel }) => {
   const t = useT();
   const r = rarity[item.id] || { c1: 'var(--glaucous)', c2: 'var(--indigo-blue)' };
@@ -574,7 +574,7 @@ const SystemArena = ({ sectionId, items, rarity, label, chapter, align, variant,
       <div className="container fence-arena__inner" style={{
         flex: 1, display: 'flex', flexDirection: 'column', minHeight: 0, width: '100%',
       }}>
-        {/* Section masthead — chapter number + big section name + accent rule
+        {/* Section masthead, chapter number + big section name + accent rule
             on one side, catalog/quote link on the other, with a divider rule.
             This clearly announces each section so Fences and Gates don't blur
             into one continuous block. */}
@@ -612,7 +612,7 @@ const SystemArena = ({ sectionId, items, rarity, label, chapter, align, variant,
           </a>
         </div>
 
-        {/* Active-system detail — all panels stacked in one grid cell so the
+        {/* Active-system detail, all panels stacked in one grid cell so the
             block height stays fixed (tallest panel) and never reflows. */}
         <div style={{ display: 'grid', marginBottom: 'clamp(16px, 3vh, 40px)', justifyItems: right ? 'end' : 'start' }}>
           {items.map((c, i) => (
@@ -621,7 +621,7 @@ const SystemArena = ({ sectionId, items, rarity, label, chapter, align, variant,
           ))}
         </div>
 
-        {/* The locker — selectable rail, pinned to the bottom so the section
+        {/* The locker, selectable rail, pinned to the bottom so the section
             fills the viewport top-to-bottom */}
         <div className="fence-rail" style={{ marginTop: 'auto' }}>
           {items.map((c, i) => (
@@ -655,7 +655,7 @@ const FenceCategories = () => (
   />
 );
 
-/* Gates — same arena, mirrored to the right with an industrial palette so it
+/* Gates, same arena, mirrored to the right with an industrial palette so it
    reads as gates, not a second fences section. */
 const GateSystems = () => (
   <SystemArena
@@ -671,19 +671,19 @@ const GateSystems = () => (
   />
 );
 
-/* Why WFS — a light value-props "breather" between the two dark arenas.
+/* Why WFS, a light value-props "breather" between the two dark arenas.
    No chapter number so the 01 / 02 arena sequence stays intact. */
 const WHY_WFS = [
   {
     title: { EN: 'Manufacturing-direct', ES: 'Directo de fábrica' },
-    desc:  { EN: 'Supplier-direct floor pricing — no middleman markup between the plant and your project.',
-             ES: 'Precio directo de fábrica — sin intermediarios entre la planta y tu proyecto.' },
+    desc:  { EN: 'Supplier-direct floor pricing, no middleman markup between the plant and your project.',
+             ES: 'Precio directo de fábrica, sin intermediarios entre la planta y tu proyecto.' },
     icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21V10l6 3V10l6 3V10l6 3v8Z"/><path d="M3 10 4 4h2l.5 4"/></svg>),
   },
   {
     title: { EN: 'No minimums', ES: 'Sin mínimos' },
-    desc:  { EN: 'Order a single panel or a full subdivision — the same supplier-direct floor either way.',
-             ES: 'Pide un solo panel o una urbanización completa — el mismo precio directo en ambos casos.' },
+    desc:  { EN: 'Order a single panel or a full subdivision, the same supplier-direct floor either way.',
+             ES: 'Pide un solo panel o una urbanización completa, el mismo precio directo en ambos casos.' },
     icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3 21 8 12 13 3 8Z"/><path d="M3 13l9 5 9-5"/></svg>),
   },
   {
@@ -724,8 +724,8 @@ const WhyWFS = () => {
             </h2>
             <p style={{ margin: '18px 0 0', fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>
               {t(
-                'We were the contractors before we were the supplier — so the yard runs on installer logic, not catalog markup.',
-                'Fuimos los contratistas antes de ser el proveedor — por eso la sucursal funciona con lógica de instalador, no con margen de catálogo.'
+                'We were the contractors before we were the supplier, so the yard runs on installer logic, not catalog markup.',
+                'Fuimos los contratistas antes de ser el proveedor, por eso la sucursal funciona con lógica de instalador, no con margen de catálogo.'
               )}
             </p>
           </div>

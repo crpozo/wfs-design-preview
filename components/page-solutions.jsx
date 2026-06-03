@@ -1,4 +1,4 @@
-/* Solutions page — who we serve + yard locations */
+/* Solutions page, who we serve + yard locations */
 
 const SolutionsHero = () => (
   <PageHero
@@ -20,8 +20,8 @@ const SolutionsAudiences = () => {
       body: 'Account-level pricing on volume, dedicated sales rep, dispatched delivery from Fort Myers. Pre-hung gates ship welded with hardware kits packed and labeled per opening.',
       bullets: [
         'Net-30 trade accounts after second order',
-        'Will-call staging — pull up to bay, walk out in 15 min',
-        'Custom welded gates in 5–7 business days',
+        'Will-call staging, pull up to bay, walk out in 15 min',
+        'Custom welded gates in 5-7 business days',
         'Job-site delivery across Lee, Collier, Charlotte, Sarasota',
       ],
       cta: ['Open a trade account', 'estimate.html'],
@@ -29,12 +29,12 @@ const SolutionsAudiences = () => {
     },
     {
       tag: 'For Homeowners',
-      title: 'Same supplier-direct floor —',
+      title: 'Same supplier-direct floor',
       accent: 'no contractor markup.',
       body: 'We sell to the public at the same price contractors pay. No minimums, no membership. We won\'t install, but we\'ll help you spec the material and recommend a trusted local installer.',
       bullets: [
-        'No order minimums — buy one panel or 400 ft',
-        'Hand-drawn layout or survey OK — we figure the takeoff',
+        'No order minimums, buy one panel or 400 ft',
+        'Hand-drawn layout or survey OK, we figure the takeoff',
         'Pickup at FM or PC; delivery available within Florida',
         'Trusted-installer list across 4 counties',
       ],
@@ -45,10 +45,10 @@ const SolutionsAudiences = () => {
       tag: 'For DIY',
       title: 'You\'re building it.',
       accent: 'We\'ll make sure the parts add up.',
-      body: 'DIY projects get the same takeoff treatment as contractors. Send us a sketch and we\'ll come back with the full parts list — panels, posts, rails, caps, concrete count and gate hardware.',
+      body: 'DIY projects get the same takeoff treatment as contractors. Send us a sketch and we\'ll come back with the full parts list, panels, posts, rails, caps, concrete count and gate hardware.',
       bullets: [
         'Free takeoff from your sketch or survey',
-        'Hardware kits packed per opening — no missing latch on Saturday morning',
+        'Hardware kits packed per opening, no missing latch on Saturday morning',
         'Install guides + spec sheets included with every order',
         'Phone support during install hours, both yards',
       ],
@@ -76,7 +76,7 @@ const SolutionsAudiences = () => {
       {audiences.map((a, i) => (
         <SplitBlock
           key={i}
-          kicker={`0${i+1} — ${a.tag}`}
+          kicker={`0${i+1}, ${a.tag}`}
           title={a.title}
           accent={a.accent}
           body={a.body}

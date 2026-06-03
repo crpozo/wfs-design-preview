@@ -6,7 +6,7 @@ const AboutHero = () => (
     eyebrow="About · Western Fence Supply"
     title="Family-owned."
     accent="Fabricated in Fort Myers."
-    subtitle="A material supplier for contractors, homeowners and DIY projects across Southwest Florida. We don't install — we stock, fabricate and ship the components your fence is built from."
+    subtitle="A material supplier for contractors, homeowners and DIY projects across Southwest Florida. We don't install, we stock, fabricate and ship the components your fence is built from."
     image="assets/wfs-shop.webp"
   />
 );
@@ -14,7 +14,7 @@ const AboutHero = () => (
 const AboutStory = () => (
   <section style={{ background: 'var(--white)', padding: '72px 0' }}>
     <div className="container">
-      {/* Editorial header — single line, clean wrap */}
+      {/* Editorial header, single line, clean wrap */}
       <div style={{
         display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 56, alignItems: 'end',
         paddingBottom: 32, marginBottom: 64,
@@ -36,7 +36,7 @@ const AboutStory = () => (
           margin: 0, maxWidth: 420, justifySelf: 'end', textAlign: 'right',
           fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
-          Founded in 2003 by a fence contractor tired of driving to Miami for material — built into a two-yard supplier across Lee, Collier, Charlotte and Sarasota.
+          Founded in 2003 by a fence contractor tired of driving to Miami for material, built into a two-yard supplier across Lee, Collier, Charlotte and Sarasota.
         </p>
       </div>
 
@@ -95,7 +95,7 @@ const AboutStory = () => (
           }}/>
           {[
             ['2003', 'Founded',             'Family launches WFS out of a single Fort Myers yard with one truck and four chain-link product lines.'],
-            ['2008', 'Fabrication shop',    'Welding shop opens in-house — drives custom gate lead times from weeks down to days.'],
+            ['2008', 'Fabrication shop',    'Welding shop opens in-house, drives custom gate lead times from weeks down to days.'],
             ['2016', 'Aluminum + Vinyl',    'Catalog expands to factory-direct aluminum and Veka-extruded vinyl. Residential business grows 4×.'],
             ['2021', 'Port Charlotte yard', 'Second location opens to serve Charlotte and Sarasota counties with same-day pickup.'],
             ['2024', 'EC Fence',            'WFS becomes a Southwest Florida distributor for EC Fence self-mating galvanized panels.'],
@@ -153,7 +153,7 @@ const AboutValues = () => (
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
         {[
           ['01', 'No low-grade material', 'If we wouldn\'t put it on our own job, we don\'t stock it. We turn down lower price points every quarter to protect the catalog.'],
-          ['02', 'Real lead-time honesty', 'Stocked items ship in 1–2 days. Custom takes 6–8 weeks. We tell you the truth on the first call — no soft dates.'],
+          ['02', 'Real lead-time honesty', 'Stocked items ship in 1-2 days. Custom takes 6-8 weeks. We tell you the truth on the first call, no soft dates.'],
           ['03', 'Pricing without games', 'Same supplier-direct floor for contractors, homeowners and DIY. No minimums, no contractor-only tiers.'],
         ].map(([n, t, body]) => (
           <div key={n} style={{
@@ -172,10 +172,10 @@ const AboutValues = () => (
 
 const AboutShop = () => (
   <SplitBlock
-    kicker="03 — In-house fabrication"
+    kicker="03, In-house fabrication"
     title="Welded, cut and"
     accent="packed in Fort Myers."
-    body="Most of our gates ship pre-hung from our fabrication shop. Aluminum, chain link, EC Fence — cut and welded to spec in-house, so what arrives on your jobsite is ready to install the same day."
+    body="Most of our gates ship pre-hung from our fabrication shop. Aluminum, chain link, EC Fence, cut and welded to spec in-house, so what arrives on your jobsite is ready to install the same day."
     bullets={[
       'Custom gate fabrication, up to 50 ft cantilever',
       'Hardware kits packed and labeled to the order',
@@ -199,7 +199,7 @@ const AboutStats = () => {
   return (
     <section style={{ background: 'var(--white)', padding: '88px 0' }}>
       <div className="container">
-        {/* Single editorial header row — no stacked headline */}
+        {/* Single editorial header row, no stacked headline */}
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
           gap: 32, flexWrap: 'wrap',
@@ -218,7 +218,7 @@ const AboutStats = () => {
           </div>
         </div>
 
-        {/* Stat grid — big numerals, vertical dividers, no double rule */}
+        {/* Stat grid, big numerals, vertical dividers, no double rule */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: `repeat(${stats.length}, 1fr)`,
@@ -258,7 +258,7 @@ const AboutCTA = () => (
     kicker="Visit the yard"
     title="Walk the shop,"
     accent="meet the team."
-    body="Both yards are open Mon–Fri 7am–4pm. Call ahead and we'll have your materials staged when you pull in."
+    body="Both yards are open Mon-Fri 7am-4pm. Call ahead and we'll have your materials staged when you pull in."
     primary={['Get a quote', 'estimate.html']}
     secondary={['Yard locations', 'solutions.html#yards']}
   />

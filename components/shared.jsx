@@ -15,7 +15,7 @@ const Logo = ({ light = false }) => (
 );
 
 const FENCE_IMG = {
-  // Material thumbs — local assets only (Unsplash IDs we tried showed up
+  // Material thumbs, local assets only (Unsplash IDs we tried showed up
   // as flowers / library / cabin). chainlink keeps the one Unsplash ID
   // we've actually visually verified renders as a chain-link fence.
   aluminum:  'assets/gate-single-swing.jpg',   // black walk-gate · residential fence stand-in
@@ -168,7 +168,7 @@ const useLang = () => {
   return [lang, set];
 };
 
-/* useT — returns a t(en, es) helper for inline translations
+/* useT, returns a t(en, es) helper for inline translations
    Also accepts an object: t({ EN: 'hello', ES: 'hola' })
    If only `en` is supplied and lang === 'ES', falls back to `en`. */
 const useT = () => {

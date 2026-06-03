@@ -6,7 +6,7 @@ const ProductsHero = () => (
     eyebrow="Full catalog · 480+ SKUs"
     title="Five fence systems."
     accent="One Fort Myers yard."
-    subtitle="Factory-direct material — vinyl, aluminum, chain link, metal and EC Fence — plus gates, hardware and accessories. Same supplier-direct pricing for contractors, homeowners and DIY projects."
+    subtitle="Factory-direct material, vinyl, aluminum, chain link, metal and EC Fence, plus gates, hardware and accessories. Same supplier-direct pricing for contractors, homeowners and DIY projects."
     image="assets/hero-warehouse.webp"
   />
 );
@@ -26,7 +26,7 @@ const ProductsIntro = () => (
       }}>
         <div>
           <h2 className="display" style={{ margin: 0, fontSize: 'clamp(26px, 2.6vw, 36px)', lineHeight: 1.12, letterSpacing: '-0.02em' }}>
-            Everything you need to build the perimeter —<br/>
+            Everything you need to build the perimeter,<br/>
             <span style={{ color: 'var(--tangerine)' }}>and nothing we wouldn't put on our own job.</span>
           </h2>
         </div>
@@ -55,7 +55,7 @@ const ProductHardware = () => (
         {[
           ['Posts & rails', 'Galv steel + aluminum line posts, terminal posts and rails sized for every system.'],
           ['Hinges & latches', 'Stainless hinges, drop rods, magnetic latches, padlockable kits.'],
-          ['Mesh + caps', '6–12 gauge mesh by the roll, post caps, tension bands, brace bands.'],
+          ['Mesh + caps', '6-12 gauge mesh by the roll, post caps, tension bands, brace bands.'],
           ['Operators', 'LiftMaster gate openers, photo-eye safety, keypads and loop detectors.'],
         ].map(([t, body]) => (
           <article key={t} style={{
@@ -78,7 +78,7 @@ const ProductHardware = () => (
 const ProductsCTA = () => (
   <CTABand
     kicker="Spec your run"
-    title="Send your dimensions —"
+    title="Send your dimensions"
     accent="we'll come back with stock + price."
     body="Linear feet, height, color, gate count. We'll quote it in 24 hours with delivery and pickup options for both yards."
     primary={['Request a quote', 'estimate.html']}

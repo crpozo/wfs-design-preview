@@ -7,7 +7,7 @@ const ArticlesHero = () => (
     eyebrow="Articles & Guides"
     title="Plain-English writeups"
     accent="on picking the right fence."
-    subtitle="Written by the people who fabricate this stuff every day — sized to read in under 10 minutes."
+    subtitle="Written by the people who fabricate this stuff every day, sized to read in under 10 minutes."
     image={FENCE_IMG.aluminum}
   />
 );
@@ -17,7 +17,7 @@ const ALL_ARTICLES = [
   { tag: 'How-to',      title: 'How to Measure for Fence Material in Florida',           read: '4 min', img: 'chainlink' },
   { tag: 'Pricing',     title: 'How Much Does a Fence Cost in Florida in 2026?',         read: '8 min', img: 'vinyl' },
   { tag: 'Code',        title: 'Florida Pool Code: Enclosure Requirements Explained',    read: '7 min', img: 'metal' },
-  { tag: 'Comparison',  title: 'Aluminum vs Vinyl vs Chain Link — Picking a System',     read: '9 min', img: 'aluminum' },
+  { tag: 'Comparison',  title: 'Aluminum vs Vinyl vs Chain Link, Picking a System',     read: '9 min', img: 'aluminum' },
   { tag: 'HVHZ',        title: 'Hurricane Zone Fencing: EC Fence vs DuraFence',          read: '5 min', img: 'ecfence' },
   { tag: 'Install',     title: 'When to Hire an Installer vs DIY Your Fence Project',   read: '6 min', img: 'vinyl' },
   { tag: 'Maintenance', title: 'Aluminum Fence Care in Salt Air: 4 Tips for Coastal FL',read: '4 min', img: 'aluminum' },
@@ -117,7 +117,7 @@ const FaqHero = () => (
     eyebrow="Frequently asked"
     title="The questions we"
     accent="get every week."
-    subtitle="Lead times, pricing, install policy, delivery, pickup — answered here, with phone numbers if you'd rather just call."
+    subtitle="Lead times, pricing, install policy, delivery, pickup, answered here, with phone numbers if you'd rather just call."
     image={FENCE_IMG.metal}
   />
 );
@@ -127,7 +127,7 @@ const FaqCTA = () => (
     kicker="Didn't find your question?"
     title="Call (239) 689-5496"
     accent="or send the project."
-    body="Two reps splitting calls Mon–Fri 7am–4pm. Avg pickup under 18 seconds during business hours."
+    body="Two reps splitting calls Mon-Fri 7am-4pm. Avg pickup under 18 seconds during business hours."
     primary={['Request a quote', 'estimate.html']}
     secondary={['Call the yard', 'tel:2396895496']}
   />
@@ -140,7 +140,7 @@ const MaterialsCompHero = () => (
     eyebrow="Materials Comparison"
     title="Side by side,"
     accent="no marketing fluff."
-    subtitle="Aluminum vs vinyl vs chain link vs metal vs EC Fence — picked apart by spec, lead time and starting price."
+    subtitle="Aluminum vs vinyl vs chain link vs metal vs EC Fence, picked apart by spec, lead time and starting price."
     image={FENCE_IMG.vinyl}
   />
 );
@@ -151,7 +151,7 @@ const MaterialsCompDeepDive = () => {
       slug: 'vinyl', name: 'Vinyl / PVC', href: 'vinyl.html',
       tag: 'Veka-extruded · Lifetime warranty',
       bestFor: 'Backyard privacy, residential subdivisions',
-      strength: 'No maintenance, no painting, no fading — the SW Florida default',
+      strength: 'No maintenance, no painting, no fading, the SW Florida default',
       caveat: 'Less impact resistance than aluminum or metal in hurricane wind',
     },
     {
@@ -159,28 +159,28 @@ const MaterialsCompDeepDive = () => {
       tag: 'Powder-coat · 6063-T6',
       bestFor: 'Pool enclosures, ornamental perimeters, HVHZ',
       strength: 'Code-compliant out of the box, 150 mph wind rated, 20-yr finish',
-      caveat: 'Open picket — limited privacy by design',
+      caveat: 'Open picket, limited privacy by design',
     },
     {
       slug: 'chain-link', name: 'Chain Link', href: 'chain-link.html',
       tag: 'Galvanized + Vinyl-coated',
       bestFor: 'Security, sports fields, industrial perimeters',
       strength: 'Lowest cost per LF, fastest install, ships same day',
-      caveat: 'Industrial look — not for ornamental front yards',
+      caveat: 'Industrial look, not for ornamental front yards',
     },
     {
       slug: 'metal', name: 'Metal / DuraFence', href: 'metal.html',
       tag: 'Aluminum board privacy',
       bestFor: 'Hurricane-zone privacy, modern residential',
-      strength: 'Full 6–8 ft privacy with HVHZ wind rating — sleek board look',
-      caveat: 'Longer lead time (1–2 weeks for color-matched runs)',
+      strength: 'Full 6-8 ft privacy with HVHZ wind rating, sleek board look',
+      caveat: 'Longer lead time (1-2 weeks for color-matched runs)',
     },
     {
       slug: 'ecfence', name: 'EC Fence', href: 'ecfence.html',
       tag: 'Self-mating galvanized steel',
       bestFor: 'Coastal HVHZ, commercial perimeters, modern residential',
       strength: 'Engineered for Exposure C wind, 15-yr finish, salt-air tough',
-      caveat: 'Quote-based pricing — call for run-specific cost',
+      caveat: 'Quote-based pricing, call for run-specific cost',
     },
   ];
 
@@ -242,7 +242,7 @@ const MaterialsCompDeepDive = () => {
 const MaterialsCompCTA = () => (
   <CTABand
     kicker="Pick one. Get a quote."
-    title="Send your dimensions —"
+    title="Send your dimensions"
     accent="we'll come back in 24h."
     body="Don't have a material picked? Tell us the use case and your rep will recommend one based on stock and lead time."
     primary={['Request a quote', 'estimate.html']}
@@ -257,7 +257,7 @@ const PoolCodeHero = () => (
     eyebrow="Florida Pool Code"
     title="Code-compliant"
     accent="enclosure profiles."
-    subtitle="What the Florida Building Code says about residential pool barriers — and which of our stocked profiles meet it."
+    subtitle="What the Florida Building Code says about residential pool barriers, and which of our stocked profiles meet it."
     image={FENCE_IMG.aluminum}
   />
 );
@@ -266,7 +266,7 @@ const PoolCodeRequirements = () => {
   const reqs = [
     { code: 'FBC R 4501.17.1.1', title: 'Minimum height',           body: '4 ft (48") minimum measured on the side facing away from the pool. No horizontal handhold below 45" on the outside face.' },
     { code: 'FBC R 4501.17.1.2', title: 'Picket spacing',           body: 'Vertical pickets ≤ 1.75" apart (2.25" cluster allowed at decorative element). No openings between rails ≥ 4".' },
-    { code: 'FBC R 4501.17.1.4', title: 'Gates — self-closing',     body: 'Every gate opening into the pool barrier must be self-closing and self-latching, with the latch handle ≥ 54" from grade.' },
+    { code: 'FBC R 4501.17.1.4', title: 'Gates, self-closing',     body: 'Every gate opening into the pool barrier must be self-closing and self-latching, with the latch handle ≥ 54" from grade.' },
     { code: 'FBC R 4501.17.1.5', title: 'Gate swing direction',     body: 'Pedestrian access gates must swing OUTWARD, away from the pool area.' },
     { code: 'FBC R 4501.17.1.6', title: 'Latch release location',   body: 'If the latch release is < 54" from grade, it must be on the pool side, no openings > 0.5" within 18" of the release.' },
     { code: 'FBC R 4501.17.1.9', title: 'Wall as barrier',          body: 'If a wall of the dwelling serves as part of the barrier, doors leading to the pool need an audible alarm OR a self-closing/self-latching mechanism.' },
@@ -279,7 +279,7 @@ const PoolCodeRequirements = () => {
           number="01" label="The actual rules"
           title="What FBC R 4501.17"
           accent="actually says."
-          sub="Excerpts paraphrased — pull the sealed spec from your AHJ for permit submissions."
+          sub="Excerpts paraphrased, pull the sealed spec from your AHJ for permit submissions."
         />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
           {reqs.map((r, i) => (

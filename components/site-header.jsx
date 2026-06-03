@@ -1,4 +1,4 @@
-/* Unified site header — matches the wireframe header */
+/* Unified site header, matches the wireframe header */
 
 const SiteHeader = ({ active }) => {
   const t = useT();
@@ -21,7 +21,7 @@ const SiteHeader = ({ active }) => {
     { id: 'Full Catalog', label: { EN: 'Full Catalog', ES: 'Catálogo completo' }, def: { kind: 'link', href: 'products.html' } },
     { id: 'Get a Quote', label: { EN: 'Get a Quote', ES: 'Cotizar' }, def: { kind: 'list', items: [
       { label: { EN: 'Request Estimate',     ES: 'Pedir estimado' },        href: 'estimate.html', sub: { EN: 'Send measurements, get pricing in 24h',   ES: 'Envía medidas, recibe precios en 24h' } },
-      { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html', sub: { EN: 'Mon–Fri · Fort Myers + Port Charlotte',   ES: 'Lun–Vie · Fort Myers + Port Charlotte' } },
+      { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte',   ES: 'Lun-Vie · Fort Myers + Port Charlotte' } },
       { label: { EN: 'Call (239) 689-5496',  ES: 'Llamar (239) 689-5496' }, href: 'tel:2396895496', sub: { EN: 'Avg pickup under 18s in business hours', ES: 'Tiempo medio de respuesta: 18s en horario' } },
     ]}},
     { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [
@@ -75,7 +75,7 @@ const SiteHeader = ({ active }) => {
         }}>
           {/* Left: mode toggle + catalog link */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-            {/* Mode toggle — dot indicator */}
+            {/* Mode toggle, dot indicator */}
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: 18 }}>
               {[
                 { key: 'HOMEOWNER',  label: { EN: 'HOMEOWNER',  ES: 'PROPIETARIO' } },
@@ -114,7 +114,7 @@ const SiteHeader = ({ active }) => {
               width: 5, height: 5, borderRadius: '50%',
               background: 'var(--tangerine)',
             }}/>
-            {t('Get a quote — 24h turnaround', 'Cotiza — respuesta en 24h')}
+            {t('Get a quote, 24h turnaround', 'Cotiza, respuesta en 24h')}
             <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
             </svg>
@@ -305,7 +305,7 @@ const SiteHeader = ({ active }) => {
             </button>
           </div>
 
-          {/* Mode select (mobile) — pick a mode, page reloads in that mode */}
+          {/* Mode select (mobile), pick a mode, page reloads in that mode */}
           <div style={{
             padding: '20px',
             borderBottom: '1px solid rgba(0,16,17,0.08)',
@@ -508,7 +508,7 @@ const SiteHeader = ({ active }) => {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 4fr', gap: 56 }}>
                     <div>
                       <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>
-                        0{navIdx + 1} — {def.kind === 'mega-fences' ? t('By material', 'Por material') : t('By gate type', 'Por tipo de portón')}
+                        0{navIdx + 1}, {def.kind === 'mega-fences' ? t('By material', 'Por material') : t('By gate type', 'Por tipo de portón')}
                       </span>
                       <h3 className="display" style={{ fontSize: 36, lineHeight: 0.98, margin: '14px 0 16px', maxWidth: 240 }}>
                         {def.kind === 'mega-fences'
@@ -561,7 +561,7 @@ const SiteHeader = ({ active }) => {
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 3fr', gap: 56 }}>
                     <div>
                       <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>
-                        0{navIdx + 1} — {t(navItem.label)}
+                        0{navIdx + 1}, {t(navItem.label)}
                       </span>
                       <h3 className="display" style={{ fontSize: 36, margin: '14px 0 0', lineHeight: 0.98, maxWidth: 240 }}>
                         {openMenu === 'Get a Quote' && t('Three ways\nto start.','Tres maneras\nde empezar.')}

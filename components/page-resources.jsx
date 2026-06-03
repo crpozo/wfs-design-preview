@@ -1,10 +1,10 @@
-/* Resources page — articles, materials comparison, pool code, downloads */
+/* Resources page, articles, materials comparison, pool code, downloads */
 
 const ResourcesHero = () => (
   <PageHero
     crumbs={[['Home', 'Homepage.html'], ['Resources', null]]}
     eyebrow="Fence Education Hub"
-    title="Pick the right fence —"
+    title="Pick the right fence"
     accent="the first time."
     subtitle="Guides, materials comparisons, Florida code references and downloadable spec sheets. Written by the people who fabricate this stuff every day."
     image="assets/gate-rolling.jpg"
@@ -17,7 +17,7 @@ const ResourceArticles = () => {
     { tag: 'How-to',     title: 'How to Measure for Fence Material in Florida',     read: '4 min', img: 'chainlink' },
     { tag: 'Pricing',    title: 'How Much Does a Fence Cost in Florida in 2026?',   read: '8 min', img: 'vinyl' },
     { tag: 'Code',       title: 'Florida Pool Code: Enclosure Requirements Explained', read: '7 min', img: 'metal' },
-    { tag: 'Comparison', title: 'Aluminum vs Vinyl vs Chain Link — Picking a System', read: '9 min', img: 'aluminum' },
+    { tag: 'Comparison', title: 'Aluminum vs Vinyl vs Chain Link, Picking a System', read: '9 min', img: 'aluminum' },
     { tag: 'HVHZ',       title: 'Hurricane Zone Fencing: EC Fence vs DuraFence',     read: '5 min', img: 'ecfence' },
   ];
   return (
@@ -26,7 +26,7 @@ const ResourceArticles = () => {
         <PageSectionHeader
           number="01" label="Articles & guides"
           title="Read before you buy."
-          accent="Or call us — both work."
+          accent="Or call us, both work."
           sub="Plain-English writeups on the questions we hear in the yard every week."
           link={['All articles', 'resources.html#articles']}
         />
@@ -97,11 +97,11 @@ const MaterialsComparison = () => (
         </div>
         {[
           ['Best for',       'Privacy', 'Pool + ornamental', 'Security + perimeter', 'Hurricane-zone privacy'],
-          ['Heights',        '4–8 ft', '4–6 ft', '4–12 ft', '6–8 ft'],
+          ['Heights',        '4-8 ft', '4-6 ft', '4-12 ft', '6-8 ft'],
           ['Maintenance',    'Wash with hose', 'None', 'None (galv) / wash (PVC-coated)', 'None'],
           ['Wind rating',    'Up to 130 mph', 'Up to 150 mph (HVHZ)', 'Up to 150 mph', '150 mph HVHZ'],
           ['Warranty',       'Lifetime', '20 yr finish', 'Galvanized rust-thru', '10 yr finish'],
-          ['Lead time',      '1–2 days stocked', '1–2 days stocked', 'Same day', '1–2 weeks'],
+          ['Lead time',      '1-2 days stocked', '1-2 days stocked', 'Same day', '1-2 weeks'],
           ['Starts at',      '$28 / ft', '$24.50 / ft', '$8.40 / ft', '$22 / ft'],
         ].map((row, ri) => (
           <div key={ri} style={{
@@ -152,10 +152,10 @@ const MaterialsComparison = () => (
 
 const PoolCodeSection = () => (
   <SplitBlock
-    kicker="03 — Florida Pool Code"
+    kicker="03, Florida Pool Code"
     title="Code-compliant"
     accent="enclosure profiles."
-    body="Florida Building Code requires a 4 ft minimum barrier around residential pools, with specific opening, latch and self-closing requirements. We stock multiple aluminum and vinyl profiles that meet the spec — and we'll annotate the cut sheet for your AHJ."
+    body="Florida Building Code requires a 4 ft minimum barrier around residential pools, with specific opening, latch and self-closing requirements. We stock multiple aluminum and vinyl profiles that meet the spec, and we'll annotate the cut sheet for your AHJ."
     bullets={[
       '4 ft minimum height with no horizontal handhold below 45"',
       'Pickets spaced ≤ 1.75" apart for residential code',
@@ -178,10 +178,10 @@ const DownloadsSection = () => (
       />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
         {[
-          ['EC Fence — Exposure C Wind', 'PDF · 1.2 MB'],
+          ['EC Fence, Exposure C Wind', 'PDF · 1.2 MB'],
           ['Aluminum 3/4/5 Rail Profiles', 'PDF · 980 KB'],
           ['DuraFence Aluminum Board', 'PDF · 1.4 MB'],
-          ['Veka Vinyl — Privacy + Picket', 'PDF · 1.1 MB'],
+          ['Veka Vinyl, Privacy + Picket', 'PDF · 1.1 MB'],
           ['Chain Link Gauges & Mesh', 'PDF · 620 KB'],
           ['Florida Pool Code Profiles', 'PDF · 1.6 MB'],
         ].map(([t, meta], i) => (
@@ -216,7 +216,7 @@ const ResourcesCTA = () => (
     kicker="Still got questions?"
     title="Call the yard,"
     accent="or send the project."
-    body="Two reps splitting calls, Mon–Fri 7am–4pm. Or send a sketch + ZIP and we'll come back inside a day."
+    body="Two reps splitting calls, Mon-Fri 7am-4pm. Or send a sketch + ZIP and we'll come back inside a day."
     primary={['Request a quote', 'estimate.html']}
     secondary={['Call (239) 689-5496', 'tel:2396895496']}
   />

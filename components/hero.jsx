@@ -56,14 +56,15 @@ const Hero = () => {
       flexDirection: 'column',
       justifyContent: 'flex-end',
     }}>
-      {/* Full-bleed photo backdrop — WFS showroom */}
+      {/* Full-bleed photo backdrop, WFS showroom */}
       <img src="assets/Showroom.png" alt="" aria-hidden="true"
         onError={e => { if (!e.currentTarget.dataset.fb) { e.currentTarget.dataset.fb = '1'; e.currentTarget.src = 'assets/wfs-shop.webp'; } }}
         style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%',
-        objectFit: 'cover', objectPosition: 'center 52%', zIndex: 0,
+        objectFit: 'cover', objectPosition: 'left 60%', zIndex: 0,
+        transform: 'scale(1.12)', transformOrigin: 'left 62%',
       }}/>
-      {/* Dark scrim — strong on left, lighter on right */}
+      {/* Dark scrim, strong on left, lighter on right */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
         background: 'linear-gradient(95deg, rgba(16,24,48,0.92) 0%, rgba(16,24,48,0.78) 38%, rgba(20,30,55,0.45) 68%, rgba(20,30,55,0.28) 100%)',
@@ -114,8 +115,8 @@ const Hero = () => {
             color: 'rgba(255,255,255,0.85)',
           }}>
             {t(
-              'SW Florida supplier — not an installer. Stocked in Fort Myers.',
-              'Proveedor del suroeste de Florida — no instaladores. En stock en Fort Myers.'
+              'Buy fence straight from the yard, no middleman markup. SW Florida supplier, not an installer. Stocked in Fort Myers.',
+              'Compra cerca directo del almacén, sin sobreprecio de intermediarios. Proveedor del suroeste de Florida, no instaladores. En stock en Fort Myers.'
             )}
           </p>
 

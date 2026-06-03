@@ -1,4 +1,4 @@
-/* Estimate page — hero + live agent (form comes from FinalCTA in sections.jsx) */
+/* Estimate page, hero + live agent (form comes from FinalCTA in sections.jsx) */
 
 const EstimateHero = () => (
   <section style={{
@@ -13,7 +13,7 @@ const EstimateHero = () => (
       objectFit: 'cover', objectPosition: 'center 55%', zIndex: 0,
       filter: 'saturate(0.85) contrast(1.05)',
     }}/>
-    {/* Dark scrim — stronger on left, lighter on right for hierarchy */}
+    {/* Dark scrim, stronger on left, lighter on right for hierarchy */}
     <div aria-hidden style={{
       position: 'absolute', inset: 0, zIndex: 1,
       background:
@@ -113,8 +113,8 @@ const EstimateHero = () => (
       }}>
         {[
           ['01', 'Send your run',         'Linear feet · height · gate count · ZIP. Survey or sketch optional.'],
-          ['02', 'We quote in 24h',       'Stock, lead time, delivery or pickup window — all in one email.'],
-          ['03', 'Pickup or delivery',    'FM or PC yard · Mon–Fri 7am–4pm. Same-day staging if called ahead.'],
+          ['02', 'We quote in 24h',       'Stock, lead time, delivery or pickup window, all in one email.'],
+          ['03', 'Pickup or delivery',    'FM or PC yard · Mon-Fri 7am-4pm. Same-day staging if called ahead.'],
         ].map(([n, t, sub], i, arr) => (
           <div key={n} style={{
             paddingLeft: i === 0 ? 0 : 28,
@@ -159,20 +159,20 @@ const LiveAgentBand = () => (
             maxWidth: 620,
           }}>
             Talk to a <span style={{ color: 'var(--tangerine)' }}>real sales rep</span>
-            <span style={{ color: 'var(--charcoal)', fontWeight: 700 }}> — no chatbot.</span>
+            <span style={{ color: 'var(--charcoal)', fontWeight: 700 }}>, no chatbot.</span>
           </h2>
         </div>
         <p style={{
           margin: 0, maxWidth: 320, justifySelf: 'end', textAlign: 'right',
           fontSize: 13.5, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
-          Two reps splitting calls Mon–Fri. Avg pickup under 18 seconds during business hours.
+          Two reps splitting calls Mon-Fri. Avg pickup under 18 seconds during business hours.
         </p>
       </div>
 
-      {/* Two contact cards — ink + white for visual rhythm */}
+      {/* Two contact cards, ink + white for visual rhythm */}
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
-        {/* CALL card — ink */}
+        {/* CALL card, ink */}
         <a href="tel:2396895496" style={{
           display: 'block', padding: '40px 36px',
           background: 'var(--ink)', color: 'var(--parchment)',
@@ -194,7 +194,7 @@ const LiveAgentBand = () => (
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                 <path d="M3 3h3l1.5 4-2 1c1 2 2.5 3.5 4.5 4.5l1-2 4 1.5v3c0 0.5-0.5 1-1 1C8 16 0 8 0 4c0-0.5 0.5-1 1-1z" stroke="currentColor" strokeWidth="1.4" fill="none"/>
               </svg>
-              01 — Call
+              01, Call
             </div>
             <span style={{
               width: 38, height: 38, borderRadius: '50%',
@@ -222,7 +222,7 @@ const LiveAgentBand = () => (
           </div>
         </a>
 
-        {/* EMAIL card — white */}
+        {/* EMAIL card, white */}
         <a href="mailto:sales@westernfencesupply.com" style={{
           display: 'block', padding: '40px 36px',
           background: 'var(--white)', color: 'var(--ink)',
@@ -245,7 +245,7 @@ const LiveAgentBand = () => (
                 <rect x="1.5" y="3" width="13" height="10" stroke="currentColor" strokeWidth="1.4"/>
                 <path d="M1.5 4 L8 9 L14.5 4" stroke="currentColor" strokeWidth="1.4"/>
               </svg>
-              02 — Email
+              02, Email
             </div>
             <span style={{
               width: 38, height: 38, borderRadius: '50%',

@@ -35,7 +35,7 @@ const IconStrip = () => {
 
 const Gates = () => {
   const gates = [
-    { name: 'Single Walk Gates', desc: 'Mechanically assembled or welded. Standard widths 3–4 ft.', img: 'aluminum' },
+    { name: 'Single Walk Gates', desc: 'Mechanically assembled or welded. Standard widths 3-4 ft.', img: 'aluminum' },
     { name: 'Double Drive Gates', desc: 'Welded heavy-duty up to 16 ft total. Stainless steel hardware.', img: 'metal' },
     { name: 'Custom Estate Gates', desc: 'Welded estate-grade aluminum, fully fabricated in-house.', img: 'vinyl' },
     { name: 'Chain Link Gates', desc: 'Welded chain link gates plus full hardware kit.', img: 'chainlink' },
@@ -94,8 +94,8 @@ const Testimonials = () => {
               ES: 'Sus precios son los mejores del condado de Lee. Comparé con varios competidores y ni se acercaron.' },
       tag: { EN: 'Chain Link', ES: 'Malla ciclónica' } },
     { name: 'Yanier Ortiz',
-      text: { EN: "Best company in town, best materials at a great price. You don't have to drive to Miami anymore — everything you need is right here.",
-              ES: 'La mejor empresa de la ciudad, los mejores materiales a buen precio. Ya no tienes que manejar hasta Miami — todo lo que necesitas está aquí.' },
+      text: { EN: "Best company in town, best materials at a great price. You don't have to drive to Miami anymore, everything you need is right here.",
+              ES: 'La mejor empresa de la ciudad, los mejores materiales a buen precio. Ya no tienes que manejar hasta Miami, todo lo que necesitas está aquí.' },
       tag: { EN: 'Vinyl', ES: 'Vinilo' } },
     { name: 'Reinier Carmenates',
       text: { EN: "I've installed fences in Lee County for 5 years. I've never paid such a low price for such good material.",
@@ -105,7 +105,7 @@ const Testimonials = () => {
   return (
     <section style={{ background: 'var(--white)', padding: '56px 0' }}>
       <div className="container">
-        {/* Editorial header — matches the rest of the page */}
+        {/* Editorial header, matches the rest of the page */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr auto',
@@ -172,14 +172,14 @@ const FAQ = () => {
   const t = useT();
   const items = [
     [{ EN: 'Do you sell to the general public?', ES: '¿Le venden al público en general?' },
-     { EN: 'Yes. We sell to homeowners, DIY customers and contractors alike — same supplier-direct prices, no minimums.',
-       ES: 'Sí. Vendemos a propietarios, clientes DIY y contratistas por igual — los mismos precios directos del proveedor, sin mínimos.' }],
+     { EN: 'Yes. We sell to homeowners, DIY customers and contractors alike, same supplier-direct prices, no minimums.',
+       ES: 'Sí. Vendemos a propietarios, clientes DIY y contratistas por igual, los mismos precios directos del proveedor, sin mínimos.' }],
     [{ EN: 'What are the lead times on fencing material?', ES: '¿Cuáles son los plazos de entrega del material?' },
-     { EN: 'Stocked items typically ship in 1–2 days. Custom or non-stock items can take 6–8 weeks.',
-       ES: 'Los artículos en stock normalmente se envían en 1–2 días. Los artículos a medida o fuera de stock pueden tardar 6–8 semanas.' }],
+     { EN: 'Stocked items typically ship in 1-2 days. Custom or non-stock items can take 6-8 weeks.',
+       ES: 'Los artículos en stock normalmente se envían en 1-2 días. Los artículos a medida o fuera de stock pueden tardar 6-8 semanas.' }],
     [{ EN: 'Do you install fences?', ES: '¿Instalan cercas?' },
-     { EN: 'No — we are solely a supply company. We can recommend trusted local installers who use our materials.',
-       ES: 'No — somos solamente una empresa de suministro. Podemos recomendar instaladores locales de confianza que usan nuestros materiales.' }],
+     { EN: 'No, we are solely a supply company. We can recommend trusted local installers who use our materials.',
+       ES: 'No, somos solamente una empresa de suministro. Podemos recomendar instaladores locales de confianza que usan nuestros materiales.' }],
     [{ EN: 'Do you come out to measure?', ES: '¿Vienen a tomar medidas?' },
      { EN: 'No. We ask you to provide a survey or hand-drawn layout with measurements per side, plus height, color and style.',
        ES: 'No. Te pedimos un plano o boceto a mano con medidas por lado, además de altura, color y estilo.' }],
@@ -190,14 +190,14 @@ const FAQ = () => {
      { EN: 'Most materials we sell carry a limited lifetime warranty from the manufacturer.',
        ES: 'La mayoría de los materiales que vendemos tienen una garantía limitada de por vida del fabricante.' }],
     [{ EN: 'Do you offer delivery?', ES: '¿Ofrecen entrega?' },
-     { EN: "Yes — we deliver throughout Florida from our Fort Myers warehouse. Delivery fees vary by location and order size; we'll confirm both when you place your order.",
-       ES: 'Sí — entregamos en toda Florida desde nuestro almacén de Fort Myers. Los costos varían por ubicación y tamaño de la orden; confirmamos ambos al hacer el pedido.' }],
+     { EN: "Yes, we deliver throughout Florida from our Fort Myers warehouse. Delivery fees vary by location and order size; we'll confirm both when you place your order.",
+       ES: 'Sí, entregamos en toda Florida desde nuestro almacén de Fort Myers. Los costos varían por ubicación y tamaño de la orden; confirmamos ambos al hacer el pedido.' }],
     [{ EN: 'Can I pick up my order?', ES: '¿Puedo recoger mi pedido?' },
      { EN: 'Yes. Pickup is available from our Fort Myers or Port Charlotte yards depending on material stock. Please contact us first to confirm availability and pickup location before coming in.',
        ES: 'Sí. Puedes recoger en nuestras sucursales de Fort Myers o Port Charlotte según el stock del material. Contáctanos primero para confirmar disponibilidad y ubicación antes de venir.' }],
     [{ EN: 'Do you deliver outside Florida?', ES: '¿Entregan fuera de Florida?' },
-     { EN: 'Not at this time — we currently deliver within Florida only.',
-       ES: 'Por ahora no — actualmente entregamos solamente dentro de Florida.' }],
+     { EN: 'Not at this time, we currently deliver within Florida only.',
+       ES: 'Por ahora no, actualmente entregamos solamente dentro de Florida.' }],
   ];
   const [open, setOpen] = React.useState(0);
   const [ctaHover, setCtaHover] = React.useState(false);
@@ -397,7 +397,7 @@ const ShopTour = () => (
           </h2>
           <p style={{ fontSize: 17, lineHeight: 1.55, color: 'var(--alice-blue)', maxWidth: 460, marginBottom: 24 }}>
             Western Fence Supply is led by management with over a decade of fence installation
-            and fabrication experience. We refuse to sell low-quality components — same standard
+            and fabrication experience. We refuse to sell low-quality components, same standard
             we held when we were the contractors.
           </p>
           <p style={{ fontSize: 15, lineHeight: 1.55, color: 'var(--silver)', maxWidth: 460, marginBottom: 32 }}>
@@ -467,7 +467,7 @@ const AboutIntro = () => {
               loop
               playsInline
               preload="auto"
-              aria-label="Western Fence Supply — fencing material supplier in Southwest Florida"
+              aria-label="Western Fence Supply, fencing material supplier in Southwest Florida"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
           </div>
@@ -493,8 +493,8 @@ const AboutIntro = () => {
             maxWidth: 540,
           }}>
             {t(
-              "Southwest Florida's best source for high-quality vinyl, aluminum and chain-link fence materials. Family-owned and led by management with over a decade of installation and fabrication experience — same standard we held when we were the contractors.",
-              'La mejor fuente del suroeste de Florida para materiales de cerca de vinilo, aluminio y malla ciclónica de alta calidad. Empresa familiar dirigida por gerencia con más de una década de experiencia en instalación y fabricación — el mismo estándar que mantuvimos cuando éramos los contratistas.'
+              "Southwest Florida's best source for high-quality vinyl, aluminum and chain-link fence materials. Family-owned and led by management with over a decade of installation and fabrication experience, same standard we held when we were the contractors.",
+              'La mejor fuente del suroeste de Florida para materiales de cerca de vinilo, aluminio y malla ciclónica de alta calidad. Empresa familiar dirigida por gerencia con más de una década de experiencia en instalación y fabricación, el mismo estándar que mantuvimos cuando éramos los contratistas.'
             )}
           </p>
 

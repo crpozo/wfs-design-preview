@@ -18,7 +18,7 @@ const FeaturedGrid = () => {
           gap: 32, marginBottom: 48, flexWrap: 'wrap',
         }}>
           <div>
-            <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>03 — Bestsellers</span>
+            <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>03, Bestsellers</span>
             <h2 className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 60px)', margin: '12px 0 0' }}>
               In stock,<br/>ready to ship.
             </h2>
@@ -92,7 +92,7 @@ const FeaturedGrid = () => {
   );
 };
 
-/* Uniform card — used by the full archive grid on projects.html */
+/* Uniform card, used by the full archive grid on projects.html */
 const ProjectCard = ({ p, i, layout }) => {
   const [hover, setHover] = React.useState(false);
   return (
@@ -402,8 +402,8 @@ const ProjectGallery = () => {
             margin: '14px 0 0', fontSize: 11, letterSpacing: '0.16em',
             textTransform: 'uppercase', color: 'var(--charcoal)',
           }}>
-            {t('Flagship perimeters across Lee, Collier & Charlotte — pick one to preview.',
-               'Perímetros insignia en Lee, Collier y Charlotte — elige uno para verlo.')}
+            {t('Flagship perimeters across Lee, Collier & Charlotte, pick one to preview.',
+               'Perímetros insignia en Lee, Collier y Charlotte, elige uno para verlo.')}
           </p>
         </div>
 
@@ -474,7 +474,7 @@ const ProjectGallery = () => {
                 <span className="mono" style={{
                   fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)',
                 }}>
-                  {start + 1}–{Math.min(start + PER_PAGE, visible.length)} {t('of', 'de')} {visible.length}
+                  {start + 1}-{Math.min(start + PER_PAGE, visible.length)} {t('of', 'de')} {visible.length}
                 </span>
                 <div style={{ display: 'flex', gap: 6 }}>
                   <PageBtn disabled={pg === 0} onClick={() => goPage(pg - 1)} arrow="prev" />
@@ -630,7 +630,7 @@ const Calculator = () => {
               </div>
 
               <button className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '18px 22px' }}>
-                Lock this estimate — get binding quote <ArrowRight />
+                Lock this estimate, get binding quote <ArrowRight />
               </button>
             </div>
           </div>
@@ -655,7 +655,7 @@ const ServiceAreas = () => {
   return (
     <section style={{ background: 'var(--white)', padding: '56px 0' }}>
       <div className="container">
-        {/* Editorial header — matches FenceCategories / GateSystems / Projects */}
+        {/* Editorial header, matches FenceCategories / GateSystems / Projects */}
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
@@ -679,8 +679,8 @@ const ServiceAreas = () => {
             fontSize: 14, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
           }}>
             {t(
-              'Two yards in Fort Myers and Port Charlotte — same-day pickup, scheduled delivery from Sarasota to Marco Island.',
-              'Dos sucursales en Fort Myers y Port Charlotte — recogida el mismo día, entrega programada desde Sarasota a Marco Island.'
+              'Two yards in Fort Myers and Port Charlotte, same-day pickup, scheduled delivery from Sarasota to Marco Island.',
+              'Dos sucursales en Fort Myers y Port Charlotte, recogida el mismo día, entrega programada desde Sarasota a Marco Island.'
             )}
           </p>
         </div>
@@ -697,14 +697,14 @@ const ServiceAreas = () => {
             overflow: 'hidden',
             aspectRatio: '192 / 152',
           }}>
-            {/* Map — viewBox cropped to Florida (624 432 192 152) */}
+            {/* Map, viewBox cropped to Florida (624 432 192 152) */}
             <img src="assets/us-map.svg" alt="Florida map showing WFS service area"
               style={{
                 position: 'absolute', inset: 0,
                 width: '100%', height: '100%', objectFit: 'cover',
               }}/>
 
-            {/* Pins — anchored to exact SVG coords within viewBox 624 432 192 152.
+            {/* Pins, anchored to exact SVG coords within viewBox 624 432 192 152.
                 Computed by parsing FL path: FM west-coast inland (757, 534);
                 PC west-coast inland (755, 528). */}
             {[
@@ -712,7 +712,7 @@ const ServiceAreas = () => {
               { name: 'Port Charlotte', xPct: 68.2, yPct: 63.2, labelLeft: true },
             ].map((p) => (
               <React.Fragment key={p.name}>
-                {/* Dot — sits exactly on the target SVG point */}
+                {/* Dot, sits exactly on the target SVG point */}
                 <span style={{
                   position: 'absolute',
                   left: `${p.xPct}%`, top: `${p.yPct}%`,
@@ -724,7 +724,7 @@ const ServiceAreas = () => {
                   pointerEvents: 'none',
                   zIndex: 2,
                 }}/>
-                {/* Label — offset 16px to the side of the dot */}
+                {/* Label, offset 16px to the side of the dot */}
                 <span className="mono" style={{
                   position: 'absolute',
                   left: p.labelLeft ? `calc(${p.xPct}% - 16px)` : `calc(${p.xPct}% + 16px)`,
@@ -776,7 +776,7 @@ const ServiceAreas = () => {
             {[
               { city: 'Fort Myers · HQ', addr: '2611 Fowler St, FL 33901', phone: '(239) 689-5496' },
               { city: 'Port Charlotte', addr: '1145 Enterprise Dr, FL 33953', phone: '(941) 391-6613' },
-              { city: 'Counties served', addr: 'Lee · Collier · Charlotte · Hendry · Sarasota', phone: 'Mon–Fri · 7am–4pm' },
+              { city: 'Counties served', addr: 'Lee · Collier · Charlotte · Hendry · Sarasota', phone: 'Mon-Fri · 7am-4pm' },
             ].map((y, i) => (
               <div key={i} style={{
                 border: '1px solid rgba(0,16,17,0.18)',
@@ -867,8 +867,8 @@ const FinalCTA = () => {
             fontSize: 14, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
           }}>
             {t(
-              "Tell us about your project — we'll come back within 24 hours with stock, pricing and lead time.",
-              'Cuéntanos sobre tu proyecto — respondemos en 24 horas con stock, precios y plazo de entrega.'
+              "Tell us about your project, we'll come back within 24 hours with stock, pricing and lead time.",
+              'Cuéntanos sobre tu proyecto, respondemos en 24 horas con stock, precios y plazo de entrega.'
             )}
           </p>
         </div>
@@ -879,7 +879,7 @@ const FinalCTA = () => {
             <div style={{ marginBottom: 32 }}>
               <div style={labelStyle}>{t('Call us', 'Llámanos')}</div>
               <a href="tel:2396895496" className="display" style={{ fontSize: 32, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.1 }}>(239) 689-5496</a>
-              <div style={{ fontSize: 13, color: 'var(--charcoal)', marginTop: 6 }}>{t('Mon–Fri · 7am–4pm EST', 'Lun–Vie · 7am–4pm EST')}</div>
+              <div style={{ fontSize: 13, color: 'var(--charcoal)', marginTop: 6 }}>{t('Mon-Fri · 7am-4pm EST', 'Lun-Vie · 7am-4pm EST')}</div>
             </div>
             <div style={{ marginBottom: 32 }}>
               <div style={labelStyle}>{t('Email', 'Correo')}</div>
@@ -905,7 +905,7 @@ const FinalCTA = () => {
             {submitted ? (
               <div style={{ padding: '40px 0', textAlign: 'center' }}>
                 <div className="mono" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--tangerine)', marginBottom: 16, textTransform: 'uppercase', fontWeight: 700 }}>{t('Submitted', 'Enviado')}</div>
-                <h3 className="display" style={{ fontSize: 32, margin: '0 0 12px', lineHeight: 1.1 }}>{t("Thanks — we'll be in touch.", 'Gracias — pronto te contactamos.')}</h3>
+                <h3 className="display" style={{ fontSize: 32, margin: '0 0 12px', lineHeight: 1.1 }}>{t("Thanks, we'll be in touch.", 'Gracias, pronto te contactamos.')}</h3>
                 <p style={{ fontSize: 14, color: 'var(--charcoal)', maxWidth: 360, margin: '0 auto' }}>{t('One of our reps will reach out within 24 hours with stock, pricing and lead time for your project.', 'Uno de nuestros representantes se comunicará en 24 horas con stock, precios y plazo de entrega para tu proyecto.')}</p>
               </div>
             ) : (
@@ -1000,8 +1000,8 @@ const Footer = () => {
             <Logo light />
             <p style={{ fontSize: 14, color: 'var(--alice-blue)', lineHeight: 1.5, marginTop: 20, maxWidth: 320 }}>
               {t(
-                "Fencing material supplier for contractors, homeowners and DIY projects. Family-owned, factory-direct since 2003 — we supply, we don't install.",
-                'Proveedor de material de cercado para contratistas, propietarios y proyectos DIY. Empresa familiar, directo de fábrica desde 2003 — suministramos, no instalamos.'
+                "Fencing material supplier for contractors, homeowners and DIY projects. Family-owned, factory-direct since 2003, we supply, we don't install.",
+                'Proveedor de material de cercado para contratistas, propietarios y proyectos DIY. Empresa familiar, directo de fábrica desde 2003, suministramos, no instalamos.'
               )}
             </p>
           </div>

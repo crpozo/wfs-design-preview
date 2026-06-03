@@ -1,4 +1,4 @@
-/* Projects page — extended gallery + case study */
+/* Projects page, extended gallery + case study */
 
 const FULL_PROJECTS = [
   { name: 'Cape Coral Residential',      loc: 'Cape Coral, FL',     size: '320 LF',  material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, with double drive gate', contractor: 'Coastline Fence Co.',   year: '2024', imgUrl: 'assets/gate-sliding.jpg' },
@@ -18,7 +18,7 @@ const FULL_PROJECTS = [
 const ProjectsHero = () => (
   <PageHero
     crumbs={[['Home', 'Homepage.html'], ['Projects', null]]}
-    eyebrow="Project archive · 2024–2025"
+    eyebrow="Project archive · 2024-2025"
     title="Real projects."
     accent="Real perimeters."
     subtitle="Forty-plus completed jobs across Lee, Collier, Charlotte and Sarasota. Filter by material below."
@@ -37,7 +37,7 @@ const ProjectsBigGallery = () => {
           number="01" label="Filter the archive"
           title="By material,"
           accent="across SW Florida."
-          sub="Twelve highlighted jobs shown — full archive available on request."
+          sub="Twelve highlighted jobs shown, full archive available on request."
         />
         <div style={{
           display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 28,
@@ -100,7 +100,7 @@ const ProjectsCaseStudy = () => (
             Eleven weeks.
           </h2>
           <p style={{ marginTop: 18, fontSize: 15.5, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 520 }}>
-            Fort Myers Industrial Park — 11.5 ga galvanized chain link, 8 ft tall, with six WFS-fabricated cantilever gates ranging from 24 ft to 42 ft openings. Phased deliveries against a tight release schedule.
+            Fort Myers Industrial Park, 11.5 ga galvanized chain link, 8 ft tall, with six WFS-fabricated cantilever gates ranging from 24 ft to 42 ft openings. Phased deliveries against a tight release schedule.
           </p>
           <div style={{ marginTop: 24 }}>
             <StatStrip dark items={[

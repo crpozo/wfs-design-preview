@@ -1,7 +1,7 @@
 /* Warranty + Warranty Claims + Manufacturer Specs pages */
 
 /* ═══════════════════════════════════════════════════════════
-   1. WARRANTY — Lifetime warranty coverage details
+   1. WARRANTY, Lifetime warranty coverage details
    ═══════════════════════════════════════════════════════════ */
 
 const WarrantyHero = () => {
@@ -32,8 +32,8 @@ const WarrantyHighlights = () => {
     },
     {
       title: { EN: 'Transferable', ES: 'Transferible' },
-      body:  { EN: 'Sell the house — the warranty goes with it. New owners can register with original PO + closing date and keep full coverage.',
-                ES: 'Vendes la casa — la garantía va con ella. Los nuevos dueños se registran con la PO original + fecha de cierre y mantienen cobertura completa.' },
+      body:  { EN: 'Sell the house, the warranty goes with it. New owners can register with original PO + closing date and keep full coverage.',
+                ES: 'Vendes la casa, la garantía va con ella. Los nuevos dueños se registran con la PO original + fecha de cierre y mantienen cobertura completa.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12 H20"/><path d="M14 6 L20 12 L14 18"/><path d="M10 18 L4 12 L10 6"/></svg>),
     },
     {
@@ -51,8 +51,8 @@ const WarrantyHighlights = () => {
           title={t('What you get', 'Qué obtienes')}
           accent={t('on day one.', 'desde el día uno.')}
           sub={t(
-            'Coverage starts the day material leaves the yard. Register your PO online or by phone — both work.',
-            'La cobertura empieza el día que el material sale de la sucursal. Registra tu orden en línea o por teléfono — ambas funcionan.'
+            'Coverage starts the day material leaves the yard. Register your PO online or by phone, both work.',
+            'La cobertura empieza el día que el material sale de la sucursal. Registra tu orden en línea o por teléfono, ambas funcionan.'
           )}
         />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 18 }}>
@@ -237,8 +237,8 @@ const WarrantyProcess = () => {
       body: { EN: 'A WFS rep visits in-county (FM + PC) or coordinates with your certified installer.',
                ES: 'Un representante WFS visita en el condado (FM + PC) o coordina con tu instalador certificado.' } },
     { n: '04', title: { EN: 'Replace',  ES: 'Reemplazo' },
-      body: { EN: 'Approved claims ship replacement material from stock — most within 1–2 business days.',
-               ES: 'Los reclamos aprobados envían material de reemplazo desde stock — la mayoría en 1–2 días hábiles.' } },
+      body: { EN: 'Approved claims ship replacement material from stock, most within 1-2 business days.',
+               ES: 'Los reclamos aprobados envían material de reemplazo desde stock, la mayoría en 1-2 días hábiles.' } },
   ];
   return (
     <section style={{ background: '#faf9f7', padding: '88px 0' }}>
@@ -327,7 +327,7 @@ const WarrantyPage = () => (
 );
 
 /* ═══════════════════════════════════════════════════════════
-   2. WARRANTY CLAIMS — Submit a claim
+   2. WARRANTY CLAIMS, Submit a claim
    ═══════════════════════════════════════════════════════════ */
 
 const ClaimsHero = () => {
@@ -355,8 +355,8 @@ const ClaimsProcess = () => {
   const t = useT();
   const steps = [
     { n: '01', title: { EN: 'Find your PO', ES: 'Localiza tu orden' },
-      body: { EN: "PO number is on your invoice or pickup slip. Don't have it? Call the yard — we look it up by phone, address or last name.",
-               ES: 'El número de orden está en tu factura o ticket de recogida. ¿No lo tienes? Llama a la sucursal — lo buscamos por teléfono, dirección o apellido.' } },
+      body: { EN: "PO number is on your invoice or pickup slip. Don't have it? Call the yard, we look it up by phone, address or last name.",
+               ES: 'El número de orden está en tu factura o ticket de recogida. ¿No lo tienes? Llama a la sucursal, lo buscamos por teléfono, dirección o apellido.' } },
     { n: '02', title: { EN: 'Photograph the issue', ES: 'Fotografía el problema' },
       body: { EN: 'Three dated photos minimum: wide shot, close-up, and one showing scale. Phone camera is fine.',
                ES: 'Mínimo tres fotos fechadas: toma abierta, primer plano y una que muestre escala. La cámara del celular funciona perfecto.' } },
@@ -449,7 +449,7 @@ const ClaimsForm = () => {
     <section style={{ background: '#faf9f7', padding: '64px 0 96px' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1.7fr 1fr', gap: 56, alignItems: 'start' }}>
-          {/* Left — form card */}
+          {/* Left, form card */}
           <article style={{
             background: 'var(--white)',
             border: '1.5px solid var(--ink)',
@@ -470,7 +470,7 @@ const ClaimsForm = () => {
               }}>{t('≈ 4 minutes', '≈ 4 minutos')}</span>
             </div>
 
-            <form onSubmit={e => { e.preventDefault(); alert(t('Demo form — would submit to claims@westernfencesupply.com', 'Formulario demo — se enviaría a claims@westernfencesupply.com')); }}
+            <form onSubmit={e => { e.preventDefault(); alert(t('Demo form, would submit to claims@westernfencesupply.com', 'Formulario demo, se enviaría a claims@westernfencesupply.com')); }}
               style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
 
               <Field label={t('Full name', 'Nombre completo')} name="name" required placeholder="Marisol R."/>
@@ -562,7 +562,7 @@ const ClaimsForm = () => {
             </form>
           </article>
 
-          {/* Right — help sidebar */}
+          {/* Right, help sidebar */}
           <aside style={{ position: 'sticky', top: 100, display: 'grid', gap: 16 }}>
             <div style={{
               background: 'var(--ink)', color: 'var(--white)',
@@ -575,7 +575,7 @@ const ClaimsForm = () => {
                 display: 'flex', alignItems: 'center', gap: 10,
               }}>
                 <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 0 3px rgba(34,197,94,0.25)' }}/>
-                {t('Live · 7am – 4pm EST', 'En vivo · 7am – 4pm EST')}
+                {t('Live · 7am - 4pm EST', 'En vivo · 7am - 4pm EST')}
               </div>
               <h3 className="display" style={{
                 margin: '0 0 16px', fontSize: 22, lineHeight: 1.1, color: 'var(--white)',
@@ -614,8 +614,8 @@ const ClaimsForm = () => {
                 {[
                   [{ EN: 'Response window',    ES: 'Ventana de respuesta' },     { EN: '≤ 24 business hrs',  ES: '≤ 24 hrs hábiles' }],
                   [{ EN: 'In-county inspect',  ES: 'Inspección en el condado' }, { EN: '≤ 5 business days',  ES: '≤ 5 días hábiles' }],
-                  [{ EN: 'Stock-item replace', ES: 'Reemplazo en stock' },        { EN: '1–2 business days',  ES: '1–2 días hábiles' }],
-                  [{ EN: 'Welded re-fab',      ES: 'Re-fabricación soldada' },    { EN: '5–10 business days', ES: '5–10 días hábiles' }],
+                  [{ EN: 'Stock-item replace', ES: 'Reemplazo en stock' },        { EN: '1-2 business days',  ES: '1-2 días hábiles' }],
+                  [{ EN: 'Welded re-fab',      ES: 'Re-fabricación soldada' },    { EN: '5-10 business days', ES: '5-10 días hábiles' }],
                 ].map(([k, v], i) => (
                   <li key={i} style={{
                     display: 'flex', justifyContent: 'space-between',
@@ -665,7 +665,7 @@ const WarrantyClaimsPage = () => (
 );
 
 /* ═══════════════════════════════════════════════════════════
-   3. SPECS — Manufacturer Specs library
+   3. SPECS, Manufacturer Specs library
    ═══════════════════════════════════════════════════════════ */
 
 const SpecsHero = () => {
@@ -696,21 +696,21 @@ const SpecsLibrary = () => {
     // Fences
     { cat: 'Fences', title: 'Vinyl Privacy + Picket Profiles',     meta: 'PDF · 1.1 MB · 24 pages',  rev: 'Rev. 2026.02' },
     { cat: 'Fences', title: 'Aluminum 3 / 4 / 5 Rail Systems',     meta: 'PDF · 980 KB · 18 pages',  rev: 'Rev. 2026.01' },
-    { cat: 'Fences', title: 'Chain Link — Gauges + Mesh Chart',    meta: 'PDF · 620 KB · 8 pages',   rev: 'Rev. 2025.11' },
-    { cat: 'Fences', title: 'DuraFence — Aluminum Board Privacy',  meta: 'PDF · 1.4 MB · 22 pages',  rev: 'Rev. 2025.12' },
-    { cat: 'Fences', title: 'EC Fence — Exposure C Wind Load',     meta: 'PDF · 1.2 MB · 16 pages',  rev: 'Rev. 2026.01', isNew: true },
+    { cat: 'Fences', title: 'Chain Link, Gauges + Mesh Chart',    meta: 'PDF · 620 KB · 8 pages',   rev: 'Rev. 2025.11' },
+    { cat: 'Fences', title: 'DuraFence, Aluminum Board Privacy',  meta: 'PDF · 1.4 MB · 22 pages',  rev: 'Rev. 2025.12' },
+    { cat: 'Fences', title: 'EC Fence, Exposure C Wind Load',     meta: 'PDF · 1.2 MB · 16 pages',  rev: 'Rev. 2026.01', isNew: true },
     // Gates
     { cat: 'Gates',  title: 'Single + Double Swing Gates',         meta: 'PDF · 740 KB · 12 pages',  rev: 'Rev. 2025.10' },
     { cat: 'Gates',  title: 'Sliding + Cantilever Gates',          meta: 'PDF · 980 KB · 18 pages',  rev: 'Rev. 2025.12' },
     { cat: 'Gates',  title: 'Industrial Rolling Gates',            meta: 'PDF · 820 KB · 14 pages',  rev: 'Rev. 2025.10' },
     { cat: 'Gates',  title: 'Gate Hardware + Latch Catalog',       meta: 'PDF · 540 KB · 10 pages',  rev: 'Rev. 2025.09' },
     // Code
-    { cat: 'Code',   title: 'Florida Pool Code — Profile Sheet',   meta: 'PDF · 1.6 MB · 20 pages',  rev: 'Rev. 2026.01' },
+    { cat: 'Code',   title: 'Florida Pool Code, Profile Sheet',   meta: 'PDF · 1.6 MB · 20 pages',  rev: 'Rev. 2026.01' },
     { cat: 'Code',   title: 'HVHZ Wind-Load Letter (Miami-Dade)',  meta: 'PDF · 320 KB · 4 pages',   rev: 'Rev. 2026.01' },
     { cat: 'Code',   title: 'NEC Bonding for Metallic Fences',     meta: 'PDF · 280 KB · 4 pages',   rev: 'Rev. 2025.08' },
     // Finishes
     { cat: 'Finishes', title: 'Powder-coat Color Library',         meta: 'PDF · 1.8 MB · 32 pages',  rev: 'Rev. 2026.01' },
-    { cat: 'Finishes', title: 'PVC Color Chart — Vinyl-coated',    meta: 'PDF · 460 KB · 4 pages',   rev: 'Rev. 2025.11' },
+    { cat: 'Finishes', title: 'PVC Color Chart, Vinyl-coated',    meta: 'PDF · 460 KB · 4 pages',   rev: 'Rev. 2025.11' },
   ];
   const cats = ['All', 'Fences', 'Gates', 'Code', 'Finishes'];
   const visible = filter === 'All' ? docs : docs.filter(d => d.cat === filter);
@@ -723,8 +723,8 @@ const SpecsLibrary = () => {
           title={t('The full library,', 'La biblioteca completa,')}
           accent={t('filtered or browsed.', 'filtrada o explorada.')}
           sub={t(
-            'Pick a category or scan the whole list. Every doc carries a revision date — older revs available on request.',
-            'Elige una categoría o explora la lista completa. Cada documento tiene fecha de revisión — versiones anteriores disponibles a solicitud.'
+            'Pick a category or scan the whole list. Every doc carries a revision date, older revs available on request.',
+            'Elige una categoría o explora la lista completa. Cada documento tiene fecha de revisión, versiones anteriores disponibles a solicitud.'
           )}
         />
         {/* Filter chips */}
@@ -858,8 +858,8 @@ const SpecsStamped = () => {
             color: 'rgba(255,255,255,0.78)', maxWidth: 480,
           }}>
             {t(
-              'We have a licensed FL Professional Engineer on retainer for stamped wind-load letters, structural calcs and HVHZ submission packages. Most stamped requests close in 5–7 business days.',
-              'Tenemos un Ingeniero Profesional licenciado de FL en retainer para cartas selladas de carga eólica, cálculos estructurales y paquetes de presentación HVHZ. La mayoría de solicitudes selladas se cierran en 5–7 días hábiles.'
+              'We have a licensed FL Professional Engineer on retainer for stamped wind-load letters, structural calcs and HVHZ submission packages. Most stamped requests close in 5-7 business days.',
+              'Tenemos un Ingeniero Profesional licenciado de FL en retainer para cartas selladas de carga eólica, cálculos estructurales y paquetes de presentación HVHZ. La mayoría de solicitudes selladas se cierran en 5-7 días hábiles.'
             )}
           </p>
         </div>
@@ -894,8 +894,8 @@ const SpecsCTA = () => {
     title={t('Email engineering,', 'Escribe a ingeniería,')}
     accent={t("we'll cut it for you.", 'lo preparamos para ti.')}
     body={t(
-      'Custom specs, color drops, project-specific cut sheets — we generate one-off PDFs for HOAs, AHJs and commercial submittals.',
-      'Specs a medida, paletas de color, hojas de corte por proyecto — generamos PDFs únicos para HOAs, AHJs y presentaciones comerciales.'
+      'Custom specs, color drops, project-specific cut sheets, we generate one-off PDFs for HOAs, AHJs and commercial submittals.',
+      'Specs a medida, paletas de color, hojas de corte por proyecto, generamos PDFs únicos para HOAs, AHJs y presentaciones comerciales.'
     )}
     primary={[t('Request custom spec', 'Solicitar spec a medida'), 'mailto:engineering@westernfencesupply.com']}
     secondary={[t('Browse warranty', 'Ver garantía'), 'warranty.html']}

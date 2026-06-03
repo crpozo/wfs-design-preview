@@ -7,7 +7,7 @@ const MATERIAL_DATA = {
     tag: 'Veka-extruded · Lifetime warranty',
     heroTitle: 'Veka-extruded vinyl.',
     heroAccent: 'Built for the Florida sun.',
-    heroBody: 'Privacy, semi-private, picket and ranch rail in white, tan and khaki. Won\'t rot, rust, peel or fade — engineered for Florida UV with a transferable lifetime warranty.',
+    heroBody: 'Privacy, semi-private, picket and ranch rail in white, tan and khaki. Won\'t rot, rust, peel or fade, engineered for Florida UV with a transferable lifetime warranty.',
     heroImg: FENCE_IMG.vinyl,
     bestFor: 'Backyard privacy, pool enclosures, residential subdivisions',
     profiles: [
@@ -22,20 +22,20 @@ const MATERIAL_DATA = {
       ['Material', 'Veka-extruded virgin vinyl'],
       ['Wind rating', 'Up to 130 mph (system + posts)'],
       ['Warranty', 'Transferable lifetime'],
-      ['Lead time', '1–2 days stocked · 3–4 weeks custom'],
+      ['Lead time', '1-2 days stocked · 3-4 weeks custom'],
       ['Starts at', '$28 / linear ft'],
     ],
     useCases: [
-      ['Backyard privacy', 'The default for SW Florida homeowners — full 6 ft privacy without maintenance.'],
+      ['Backyard privacy', 'The default for SW Florida homeowners, full 6 ft privacy without maintenance.'],
       ['Pool enclosures', 'Code-compliant profiles meet the 4 ft minimum with pickets ≤ 1.75" spaced.'],
-      ['HOA boundaries', 'Uniform white/tan finish across subdivisions — stocked in volume.'],
+      ['HOA boundaries', 'Uniform white/tan finish across subdivisions, stocked in volume.'],
     ],
     contractor: {
       tag: 'Veka-extruded · Trade pickup',
       heroBody: 'Veka-extruded vinyl in white, tan and khaki across privacy, semi-private, picket and ranch rail. All profiles stocked for same-day will-call. Net-30 trade accounts available after the second order.',
       bestFor: 'HOA + subdivision rollouts, repeat residential privacy',
       useCases: [
-        ['HOA rollouts',         'Uniform 6 ft privacy across 50+ lots — stocked in volume, packed by run.'],
+        ['HOA rollouts',         'Uniform 6 ft privacy across 50+ lots, stocked in volume, packed by run.'],
         ['Repeat residential',   'Pull, pick, install. Same-day pickup on most stock widths.'],
         ['Custom color runs',    'Khaki + tan run-outs from Veka for community-specific specs.'],
       ],
@@ -62,22 +62,22 @@ const MATERIAL_DATA = {
       ['Material', '6063-T6 alloy, fully welded or mechanical'],
       ['Wind rating', 'Up to 150 mph HVHZ'],
       ['Warranty', '20-year finish'],
-      ['Lead time', '1–2 days stocked · 2–3 weeks custom color'],
+      ['Lead time', '1-2 days stocked · 2-3 weeks custom color'],
       ['Starts at', '$24.50 / linear ft'],
     ],
     useCases: [
-      ['Pool enclosures', '4 ft profiles meet Florida pool code — picket spacing, latch height, self-closing gates.'],
+      ['Pool enclosures', '4 ft profiles meet Florida pool code, picket spacing, latch height, self-closing gates.'],
       ['Ornamental front yards', 'Decorative spear-top and finial caps for residential front perimeters.'],
       ['HVHZ perimeters', 'Welded commercial grade rated for 150 mph in HVHZ counties.'],
     ],
     contractor: {
       tag: 'Powder-coat · Pool-code + HVHZ',
-      heroBody: 'Powder-coated aluminum in 3, 4 and 5-rail. Pool-code compliant by default, rackable on grade. Residential, commercial and industrial grades stocked — sealed wind-load specs available for HVHZ submissions.',
+      heroBody: 'Powder-coated aluminum in 3, 4 and 5-rail. Pool-code compliant by default, rackable on grade. Residential, commercial and industrial grades stocked, sealed wind-load specs available for HVHZ submissions.',
       bestFor: 'Pool enclosures, code-required perimeters, HVHZ residential',
       useCases: [
-        ['Pool code at volume', 'FBC R 4501.17 profiles — paperwork-ready, no field surprises on AHJ check.'],
-        ['HVHZ residential',   '150 mph welded commercial spec — sealed wind load on request.'],
-        ['HOA ornamental',     'Black powder-coat repeat sections — pickup-ready for repeat jobs.'],
+        ['Pool code at volume', 'FBC R 4501.17 profiles, paperwork-ready, no field surprises on AHJ check.'],
+        ['HVHZ residential',   '150 mph welded commercial spec, sealed wind load on request.'],
+        ['HOA ornamental',     'Black powder-coat repeat sections, pickup-ready for repeat jobs.'],
       ],
     },
   },
@@ -112,12 +112,12 @@ const MATERIAL_DATA = {
     ],
     contractor: {
       tag: 'Galv + PVC-coated · Same-day will-call',
-      heroBody: 'Galvanized and PVC-coated mesh from 6 to 12 gauge — same-day pickup on stocked rolls and posts. Phased commercial dispatch for industrial perimeters, net-30 trade accounts available.',
+      heroBody: 'Galvanized and PVC-coated mesh from 6 to 12 gauge, same-day pickup on stocked rolls and posts. Phased commercial dispatch for industrial perimeters, net-30 trade accounts available.',
       bestFor: 'Industrial perimeters, security fencing, sports fields',
       useCases: [
         ['Industrial perimeters','Mile+ runs of 9-ga galv with phased delivery against release schedule.'],
         ['Sports + recreation', '10 ft and 12 ft mesh stocked for tennis, baseball, soccer fields.'],
-        ['Same-day will-call',  'Order before 2pm — pickup ready by 4pm at FM or PC yard.'],
+        ['Same-day will-call',  'Order before 2pm, pickup ready by 4pm at FM or PC yard.'],
       ],
     },
   },
@@ -127,7 +127,7 @@ const MATERIAL_DATA = {
     tag: 'Aluminum board privacy',
     heroTitle: 'DuraFence aluminum board.',
     heroAccent: 'The look of board, the strength of metal.',
-    heroBody: 'Horizontal aluminum board privacy — solid 6–8 ft privacy with the strength of aluminum and the silhouette of solid board. Hurricane-rated, no warping, no painting, no replacement boards.',
+    heroBody: 'Horizontal aluminum board privacy, solid 6-8 ft privacy with the strength of aluminum and the silhouette of solid board. Hurricane-rated, no warping, no painting, no replacement boards.',
     heroImg: FENCE_IMG.metal,
     bestFor: 'Modern privacy in HVHZ counties',
     profiles: [
@@ -142,20 +142,20 @@ const MATERIAL_DATA = {
       ['Material', 'Extruded aluminum board + posts'],
       ['Wind rating', '150 mph HVHZ-rated'],
       ['Warranty', '10-year finish'],
-      ['Lead time', '1–2 weeks (color-matched)'],
+      ['Lead time', '1-2 weeks (color-matched)'],
       ['Starts at', '$22 / linear ft'],
     ],
     useCases: [
-      ['Hurricane-zone privacy', 'HVHZ-rated to 150 mph — keeps full privacy through a Cat 4.'],
+      ['Hurricane-zone privacy', 'HVHZ-rated to 150 mph, keeps full privacy through a Cat 4.'],
       ['Modern residential', 'Horizontal board lines + matte powder-coat for contemporary designs.'],
       ['Commercial screens', 'Dumpster enclosures, AC screens, utility-yard perimeters.'],
     ],
     contractor: {
       tag: 'Aluminum board · HVHZ + custom color',
-      heroBody: 'Aluminum board privacy in 6 and 8 ft — HVHZ-rated to 150 mph. Commercial and residential builds, phased delivery against release schedules, custom powder-coat color match on volume orders.',
+      heroBody: 'Aluminum board privacy in 6 and 8 ft, HVHZ-rated to 150 mph. Commercial and residential builds, phased delivery against release schedules, custom powder-coat color match on volume orders.',
       bestFor: 'HVHZ residential, commercial screens, modern privacy builds',
       useCases: [
-        ['HVHZ residential',  '150 mph rated — full privacy through a Cat 4 hurricane.'],
+        ['HVHZ residential',  '150 mph rated, full privacy through a Cat 4 hurricane.'],
         ['Commercial screens','AC enclosures, dumpster screens, utility-yard perimeters.'],
         ['Color-match runs',  'Powder-coat custom color on commercial volume orders.'],
       ],
@@ -167,7 +167,7 @@ const MATERIAL_DATA = {
     tag: 'Self-mating galvanized steel',
     heroTitle: 'EC Fence.',
     heroAccent: 'Self-mating galvanized steel panels.',
-    heroBody: 'Our newest system — self-mating galvanized steel panels installed every 12 ft. 6 ft tall, available in bronze and white, engineered for Exposure C wind loads. Engineered for the Florida coast.',
+    heroBody: 'Our newest system, self-mating galvanized steel panels installed every 12 ft. 6 ft tall, available in bronze and white, engineered for Exposure C wind loads. Engineered for the Florida coast.',
     heroImg: 'assets/ec-fence.jpg',
     bestFor: 'Coastal HVHZ perimeters, commercial sites, modern residential',
     profiles: [
@@ -177,13 +177,13 @@ const MATERIAL_DATA = {
       { name: 'Sloped runs', tag: 'Grade follow', notes: 'Stair-stepped or racked panels' },
     ],
     specs: [
-      ['Heights', '6 ft (custom 5–8 ft available)'],
+      ['Heights', '6 ft (custom 5-8 ft available)'],
       ['Post spacing', 'Every 12 ft'],
       ['Colors', 'Bronze, White'],
       ['Material', 'Self-mating galvanized steel'],
       ['Wind rating', 'Exposure C (HVHZ engineered)'],
       ['Warranty', '15-year finish'],
-      ['Lead time', '2–3 weeks'],
+      ['Lead time', '2-3 weeks'],
       ['Starts at', 'Quote-based'],
     ],
     useCases: [
@@ -196,8 +196,8 @@ const MATERIAL_DATA = {
       heroBody: 'Self-mating galvanized steel panels engineered for Exposure C wind loads. Modern panel face for coastal commercial and HVHZ residential builds. Sealed manufacturer specs available for AHJ submission.',
       bestFor: 'Coastal commercial, modern residential, HVHZ contracts',
       useCases: [
-        ['Coastal commercial','Hot-dip galv core stands up to salt air — marina + coastal yards.'],
-        ['HVHZ contracts',   'Engineered Exposure C — sealed AHJ-ready specs on request.'],
+        ['Coastal commercial','Hot-dip galv core stands up to salt air, marina + coastal yards.'],
+        ['HVHZ contracts',   'Engineered Exposure C, sealed AHJ-ready specs on request.'],
         ['Modern panel face','Clean architectural alternative to vinyl board for modern builds.'],
       ],
     },
@@ -233,7 +233,7 @@ const MaterialProfiles = ({ data }) => (
     <div className="container">
       <PageSectionHeader
         number="01" label="Profiles & styles"
-        title={`${data.name} —`}
+        title={`${data.name}`}
         accent="four ways to spec it."
         sub={`We stock all four configurations. Custom heights and colors available on request.`}
       />
@@ -266,7 +266,7 @@ const MaterialSpecs = ({ data }) => (
             <span style={{ color: 'var(--tangerine)' }}>no marketing.</span>
           </h2>
           <p style={{ marginTop: 20, fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)', maxWidth: 320 }}>
-            Need a sealed manufacturer spec? Ask your rep — we'll send the PDF before quote.
+            Need a sealed manufacturer spec? Ask your rep, we'll send the PDF before quote.
           </p>
         </div>
         <div style={{ background: 'var(--white)', border: '1px solid var(--ink)' }}>
