@@ -17,7 +17,7 @@ const SolutionsAudiences = () => {
       tag: 'For Contractors',
       title: 'Predictable lead times,',
       accent: 'better job margins.',
-      body: 'Account-level pricing on volume, dedicated sales rep, dispatched delivery from Fort Myers. Pre-hung gates ship welded with hardware kits packed and labeled per opening.',
+      body: 'Account-level pricing on volume, dedicated sales rep, dispatched delivery from Fort Myers. Ready-to-assemble gates ship welded with hardware kits packed and labeled per opening.',
       bullets: [
         'Net-30 trade accounts after second order',
         'Will-call staging, pull up to bay, walk out in 15 min',

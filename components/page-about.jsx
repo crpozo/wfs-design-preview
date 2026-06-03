@@ -175,7 +175,7 @@ const AboutShop = () => (
     kicker="03, In-house fabrication"
     title="Welded, cut and"
     accent="packed in Fort Myers."
-    body="Most of our gates ship pre-hung from our fabrication shop. Aluminum, chain link, EC Fence, cut and welded to spec in-house, so what arrives on your jobsite is ready to install the same day."
+    body="Most of our gates ship ready-to-assemble from our fabrication shop. Aluminum, chain link, EC Fence, cut and welded to spec in-house, so what arrives on your jobsite is ready to install the same day."
     bullets={[
       'Custom gate fabrication, up to 50 ft cantilever',
       'Hardware kits packed and labeled to the order',

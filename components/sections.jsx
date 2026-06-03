@@ -148,9 +148,9 @@ const ProjectCard = ({ p, i, layout }) => {
           color: 'var(--alice-blue)', marginBottom: 8,
           display: 'flex', gap: 12, alignItems: 'center',
         }}>
-          <span>{p.loc}</span>
+          <span>{p.material}</span>
           <span style={{ width: 4, height: 4, background: 'var(--tangerine)', borderRadius: '50%' }}/>
-          <span>{p.size}</span>
+          <span>{p.type}</span>
         </div>
         <h3 className="display" style={{
           margin: 0,
@@ -308,7 +308,7 @@ const ProjectListRow = ({ p, active, onSelect }) => {
           display: 'block', fontSize: 9.5, letterSpacing: '0.16em', textTransform: 'uppercase',
           color: 'var(--charcoal)', marginBottom: 4,
           overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-        }}>{p.loc}</span>
+        }}>{p.type}</span>
         <span className="display" style={{
           display: 'block', fontSize: 15.5, lineHeight: 1.1, letterSpacing: '-0.01em',
           color: 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
@@ -670,8 +670,8 @@ const ServiceAreas = () => {
               lineHeight: 1, letterSpacing: '-0.02em',
               fontWeight: 800,
             }}>
-              {t('Serving all of', 'Atendemos todo')}<br/>
-              <span style={{ color: 'var(--tangerine)' }}>{t('Southwest Florida.', 'el suroeste de Florida.')}</span>
+              {t('Serving all of', 'Atendemos toda')}<br/>
+              <span style={{ color: 'var(--tangerine)' }}>{t('Florida.', 'Florida.')}</span>
             </h2>
           </div>
           <p style={{
@@ -679,8 +679,8 @@ const ServiceAreas = () => {
             fontSize: 14, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
           }}>
             {t(
-              'Two yards in Fort Myers and Port Charlotte, same-day pickup, scheduled delivery from Sarasota to Marco Island.',
-              'Dos sucursales en Fort Myers y Port Charlotte, recogida el mismo día, entrega programada desde Sarasota a Marco Island.'
+              'Two yards in Fort Myers and Port Charlotte, same-day pickup, with delivery available across the state of Florida.',
+              'Dos sucursales en Fort Myers y Port Charlotte, recogida el mismo día, con entrega disponible en todo el estado de Florida.'
             )}
           </p>
         </div>

@@ -21,7 +21,7 @@ const ALL_ARTICLES = [
   { tag: 'HVHZ',        title: 'Hurricane Zone Fencing: EC Fence vs DuraFence',          read: '5 min', img: 'ecfence' },
   { tag: 'Install',     title: 'When to Hire an Installer vs DIY Your Fence Project',   read: '6 min', img: 'vinyl' },
   { tag: 'Maintenance', title: 'Aluminum Fence Care in Salt Air: 4 Tips for Coastal FL',read: '4 min', img: 'aluminum' },
-  { tag: 'Gates',       title: 'Pre-Hung Gates vs Field-Built: What to Order',          read: '5 min', img: 'chainlink' },
+  { tag: 'Gates',       title: 'Ready-to-assemble Gates vs Field-Built: What to Order',          read: '5 min', img: 'chainlink' },
 ];
 
 const ArticlesGrid = () => {

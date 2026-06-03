@@ -23,7 +23,7 @@ const MATERIAL_DATA = {
       ['Wind rating', 'Up to 130 mph (system + posts)'],
       ['Warranty', 'Transferable lifetime'],
       ['Lead time', '1-2 days stocked · 3-4 weeks custom'],
-      ['Starts at', '$28 / linear ft'],
+      ['Starts at', 'Quote-based'],
     ],
     useCases: [
       ['Backyard privacy', 'The default for SW Florida homeowners, full 6 ft privacy without maintenance.'],
@@ -63,7 +63,7 @@ const MATERIAL_DATA = {
       ['Wind rating', 'Up to 150 mph HVHZ'],
       ['Warranty', '20-year finish'],
       ['Lead time', '1-2 days stocked · 2-3 weeks custom color'],
-      ['Starts at', '$24.50 / linear ft'],
+      ['Starts at', 'Quote-based'],
     ],
     useCases: [
       ['Pool enclosures', '4 ft profiles meet Florida pool code, picket spacing, latch height, self-closing gates.'],
@@ -103,7 +103,7 @@ const MATERIAL_DATA = {
       ['Material', 'ASTM A392 mesh, schedule 40 posts'],
       ['Wind rating', 'Up to 150 mph (open mesh)'],
       ['Lead time', 'Same day stocked rolls + posts'],
-      ['Starts at', '$8.40 / linear ft'],
+      ['Starts at', 'Quote-based'],
     ],
     useCases: [
       ['Security perimeter', '9 ga galvanized, 8 ft + barbed extension, with cantilever gates.'],
@@ -134,7 +134,7 @@ const MATERIAL_DATA = {
       { name: 'Standard board', tag: '6 ft', notes: 'Horizontal aluminum board, flush mount' },
       { name: 'Tall board', tag: '8 ft', notes: 'For commercial / luxury residential' },
       { name: 'Slatted privacy', tag: '6 ft', notes: 'Slight gap between boards for airflow' },
-      { name: 'Modern gate', tag: 'Matching', notes: 'Welded matching pre-hung gates' },
+      { name: 'Modern gate', tag: 'Matching', notes: 'Welded matching ready-to-assemble gates' },
     ],
     specs: [
       ['Heights', '6 ft, 8 ft'],
@@ -143,7 +143,7 @@ const MATERIAL_DATA = {
       ['Wind rating', '150 mph HVHZ-rated'],
       ['Warranty', '10-year finish'],
       ['Lead time', '1-2 weeks (color-matched)'],
-      ['Starts at', '$22 / linear ft'],
+      ['Starts at', 'Quote-based'],
     ],
     useCases: [
       ['Hurricane-zone privacy', 'HVHZ-rated to 150 mph, keeps full privacy through a Cat 4.'],
@@ -173,7 +173,7 @@ const MATERIAL_DATA = {
     profiles: [
       { name: 'Bronze 6 ft', tag: 'Standard', notes: 'Bronze powder over hot-dip galv' },
       { name: 'White 6 ft', tag: 'Standard', notes: 'White finish, same panel system' },
-      { name: 'Matching gate', tag: 'Single / double swing', notes: 'Same panel face, pre-hung' },
+      { name: 'Matching gate', tag: 'Single / double swing', notes: 'Same panel face, ready-to-assemble' },
       { name: 'Sloped runs', tag: 'Grade follow', notes: 'Stair-stepped or racked panels' },
     ],
     specs: [

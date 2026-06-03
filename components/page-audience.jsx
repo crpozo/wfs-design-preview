@@ -1114,7 +1114,7 @@ const ContractorStatsStrip = () => {
           ['18-28%', { EN: 'Wholesale margin tiers',     ES: 'Niveles de margen mayorista' }],
           ['72h',    { EN: 'Avg priority fabrication',   ES: 'Fabricación prioritaria promedio' }],
           [{ EN: 'Free', ES: 'Gratis' }, { EN: 'Job-site drops · in-county', ES: 'Entregas a obra · mismo condado' }],
-          ['$0',     { EN: 'Application fee',             ES: 'Costo de aplicación' }],
+          ['Free',     { EN: 'Application fee',             ES: 'Costo de aplicación' }],
         ].map(([n, l], i) => (
           <div key={i} className="wfs-stat-cell" style={{
             paddingLeft: i === 0 ? 0 : 24,

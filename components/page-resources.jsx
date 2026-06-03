@@ -102,7 +102,7 @@ const MaterialsComparison = () => (
           ['Wind rating',    'Up to 130 mph', 'Up to 150 mph (HVHZ)', 'Up to 150 mph', '150 mph HVHZ'],
           ['Warranty',       'Lifetime', '20 yr finish', 'Galvanized rust-thru', '10 yr finish'],
           ['Lead time',      '1-2 days stocked', '1-2 days stocked', 'Same day', '1-2 weeks'],
-          ['Starts at',      '$28 / ft', '$24.50 / ft', '$8.40 / ft', '$22 / ft'],
+          ['Starts at',      'Quote-based', 'Quote-based', 'Quote-based', 'Quote-based'],
         ].map((row, ri) => (
           <div key={ri} style={{
             display: 'grid', gridTemplateColumns: '1.2fr repeat(4, 1fr)',

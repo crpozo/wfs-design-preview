@@ -22,8 +22,8 @@ const GATE_DATA = {
       ['Material',   'Chain link, aluminum, vinyl, EC Fence, to match run'],
       ['Hardware',   'Self-latching gravity latch + padlock hasp included'],
       ['Automation', 'Pre-engineered for LiftMaster actuator add-on'],
-      ['Lead time',  'Same day stocked widths · 3-5 days fabricated'],
-      ['Starts at',  '$280 / opening (4 ft chain link)'],
+      ['Lead time',  '24h or less on stocked kits · 3-5 days fabricated'],
+      ['Starts at',  'Quote-based'],
     ],
     useCases: [
       ['Pedestrian access',   'Side-yard, gardens and walk-through openings where a driveway gate is too much.'],
@@ -32,10 +32,10 @@ const GATE_DATA = {
     ],
     contractor: {
       tag: 'Walk gates · Trade-account pickup',
-      heroBody: 'Pre-hung kits or in-house welded custom from 3 to 6 ft. Hardware kits packed and labeled per opening. Net-30 trade accounts after the second order, pull up to the bay, walk out in 15 minutes.',
+      heroBody: 'Ready-to-assemble kits or in-house welded custom from 3 to 6 ft. Hardware kits packed and labeled per opening. Net-30 trade accounts after the second order, pull up to the bay, walk out in 15 minutes.',
       bestFor: 'Volume residential, code-compliant pool runs, will-call pickup',
       useCases: [
-        ['Trade volume',         'Stocked widths for repeat residential jobs. Pre-hung kits cut field install time.'],
+        ['Trade volume',         'Stocked widths for repeat residential jobs. Ready-to-assemble kits cut field install time.'],
         ['Code-compliant builds','Pool-code profiles meet FBC R 4501.17, paperwork ready for AHJ.'],
         ['Will-call staging',    'Order before 2pm, pickup ready by 4pm. Hardware packed per opening.'],
       ],
@@ -47,7 +47,7 @@ const GATE_DATA = {
     tag: 'Driveway access · Symmetrical',
     heroTitle: 'Double-swing gates.',
     heroAccent: 'Driveway openings, single-day install.',
-    heroBody: 'Symmetrical driveway-width gates from 8 to 16 ft total opening. Pre-hung with drop rod, gate latch and stainless hardware kit packed per opening, single-day install for most layouts.',
+    heroBody: 'Symmetrical driveway-width gates from 8 to 16 ft total opening. Ready-to-assemble with drop rod, gate latch and stainless hardware kit packed per opening, single-day install for most layouts.',
     heroImg: 'assets/gate-double.jpg',
     bestFor: 'Residential driveways, estate entries, vehicle access',
     profiles: [
@@ -62,8 +62,8 @@ const GATE_DATA = {
       ['Material',   'Chain link, aluminum, vinyl, EC Fence, DuraFence'],
       ['Hardware',   'Hinge sets, drop rod, center latch, stainless fasteners'],
       ['Automation', 'Dual-leaf LiftMaster kit with photo-eye + keypad add-on'],
-      ['Lead time',  '3-5 days fabricated · 1-2 days stocked widths'],
-      ['Starts at',  '$680 / opening (10 ft chain link)'],
+      ['Lead time',  '24h or less on stocked kits · 3-5 days fabricated'],
+      ['Starts at',  'Quote-based'],
     ],
     useCases: [
       ['Wide driveways',       'Two leaves meeting in the middle clear 8-16 ft openings cleanly.'],
@@ -71,8 +71,8 @@ const GATE_DATA = {
       ['Vehicle + pedestrian', 'Open one leaf for walk-in, both for vehicle access.'],
     ],
     contractor: {
-      tag: 'Driveway gates · Pre-hung kits',
-      heroBody: 'Pre-hung driveway gates from 8 to 16 ft, welded in Fort Myers, drop rod + hardware kit packed per opening. Trade accounts get net-30 + dedicated rep + job-site dispatch.',
+      tag: 'Driveway gates · Ready-to-assemble kits',
+      heroBody: 'Ready-to-assemble driveway gates from 8 to 16 ft, welded in Fort Myers, drop rod + hardware kit packed per opening. Trade accounts get net-30 + dedicated rep + job-site dispatch.',
       bestFor: 'Volume residential drives, custom welded estate runs, trade kits',
       useCases: [
         ['Volume residential', 'Same-day pickup on stocked 10/12/14 ft openings, cuts site time.'],
@@ -102,8 +102,8 @@ const GATE_DATA = {
       ['Material',   'Galv chain link, vinyl-coated, EC Fence, DuraFence'],
       ['Track',      'Galvanized V-track or pipe-track + end stops included'],
       ['Wind rating','130 mph closed · 150 mph HVHZ on heavy commercial spec'],
-      ['Lead time',  '2-3 weeks custom · 1-2 days stocked widths up to 18 ft'],
-      ['Starts at',  '$820 / opening (10 ft galvanized)'],
+      ['Lead time',  '24h or less on stocked kits · 2-3 weeks custom'],
+      ['Starts at',  'Quote-based'],
     ],
     useCases: [
       ['Limited swing clearance', 'Slides parallel to the fence, no arc to block walkways or planters.'],
@@ -143,7 +143,7 @@ const GATE_DATA = {
       ['Overhang',   '50% of opening on receiving side (30 ft → 15 ft)'],
       ['Wind rating','Up to 150 mph HVHZ on mesh or vinyl-coated specs'],
       ['Lead time',  '3-4 weeks fabricated in Fort Myers'],
-      ['Starts at',  '$2,400 / opening (20 ft galvanized)'],
+      ['Starts at',  'Quote-based'],
     ],
     useCases: [
       ['No ground track',      'Nothing in the driveway path, no debris jam, no track to clear.'],
@@ -183,7 +183,7 @@ const GATE_DATA = {
       ['Track',      'V-track kit + end stops + follower rollers + tensioner'],
       ['Cycle rating','400 cycles/day standard · continuous-duty heavy frame'],
       ['Lead time',  '3-4 weeks fabricated · stocked widths 1-2 weeks'],
-      ['Starts at',  '$3,200 / opening (20 ft galvanized)'],
+      ['Starts at',  'Quote-based'],
     ],
     useCases: [
       ['Commercial perimeters', 'Industrial yards, self-storage, transit hubs.'],
