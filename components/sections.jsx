@@ -224,15 +224,6 @@ const FeaturedProject = ({ p, num, total }) => {
 
       {/* Bottom content */}
       <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, padding: 28, color: 'var(--white)' }}>
-        <div className="mono" style={{
-          fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
-          color: 'var(--alice-blue)', marginBottom: 10,
-          display: 'flex', gap: 12, alignItems: 'center',
-        }}>
-          <span>{p.loc}</span>
-          <span style={{ width: 4, height: 4, background: 'var(--tangerine)', borderRadius: '50%' }}/>
-          <span>{p.size}</span>
-        </div>
         <h3 className="display" style={{
           margin: 0, fontSize: 'clamp(26px, 3vw, 38px)',
           lineHeight: 1.0, letterSpacing: '-0.02em', color: 'var(--white)',
