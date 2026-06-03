@@ -266,14 +266,11 @@ const FeaturedProject = ({ p, num, total }) => {
           ))}
         </div>
 
-        {/* Contractor + CTA */}
+        {/* CTA */}
         <div style={{
           marginTop: 18, display: 'flex', alignItems: 'center',
-          justifyContent: 'space-between', gap: 16, flexWrap: 'wrap',
+          justifyContent: 'flex-end', gap: 16, flexWrap: 'wrap',
         }}>
-          <span className="mono" style={{ fontSize: 11, letterSpacing: '0.06em', color: 'rgba(255,255,255,0.7)' }}>
-            {t('Installed by', 'Instalado por')} {p.contractor}
-          </span>
           <span className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12,
             fontSize: 11, fontWeight: 700, letterSpacing: '0.18em',
