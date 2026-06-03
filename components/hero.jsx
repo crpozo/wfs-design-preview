@@ -56,10 +56,12 @@ const Hero = () => {
       flexDirection: 'column',
       justifyContent: 'flex-end',
     }}>
-      {/* Full-bleed photo backdrop — WFS yard: branded building + palletized materials */}
-      <img src="assets/wfs-shop.webp" alt="" aria-hidden="true" style={{
+      {/* Full-bleed photo backdrop — WFS Fort Myers yard: branded building, vinyl + chain-link fence, pool */}
+      <img src="assets/hero-yard.jpg" alt="" aria-hidden="true"
+        onError={e => { if (!e.currentTarget.dataset.fb) { e.currentTarget.dataset.fb = '1'; e.currentTarget.src = 'assets/wfs-shop.webp'; } }}
+        style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%',
-        objectFit: 'cover', objectPosition: 'center 45%', zIndex: 0,
+        objectFit: 'cover', objectPosition: 'center 52%', zIndex: 0,
       }}/>
       {/* Dark scrim — strong on left, lighter on right */}
       <div style={{
