@@ -61,8 +61,8 @@ const Hero = () => {
         onError={e => { if (!e.currentTarget.dataset.fb) { e.currentTarget.dataset.fb = '1'; e.currentTarget.src = 'assets/wfs-shop.webp'; } }}
         style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%',
-        objectFit: 'cover', objectPosition: 'left 74%', zIndex: 0,
-        transform: 'scale(1.12)', transformOrigin: 'left 72%',
+        objectFit: 'cover', objectPosition: 'left 92%', zIndex: 0,
+        transform: 'scale(1.22)', transformOrigin: 'left 90%',
       }}/>
       {/* Dark scrim, strong on left, lighter on right */}
       <div style={{
