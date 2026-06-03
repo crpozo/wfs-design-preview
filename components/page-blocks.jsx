@@ -100,14 +100,14 @@ const PageSectionHeader = ({ number, label, title, accent, sub, link }) => (
 
 const StatStrip = ({ items, dark = false }) => (
   <div style={{
-    display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 24,
-    paddingTop: 22, borderTop: `1px solid ${dark ? 'rgba(255,255,255,0.18)' : 'rgba(0,16,17,0.12)'}`,
+    display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 28,
+    paddingTop: 30, borderTop: `1px solid ${dark ? 'rgba(255,255,255,0.18)' : 'rgba(0,16,17,0.12)'}`,
   }}>
     {items.map(([n, l]) => (
       <div key={l}>
         <div className="display" style={{ fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, color: dark ? 'var(--white)' : 'var(--ink)' }}>{n}</div>
         <div className="mono" style={{
-          marginTop: 8, fontSize: 10, letterSpacing: '0.18em',
+          marginTop: 12, fontSize: 10, letterSpacing: '0.18em',
           textTransform: 'uppercase',
           color: dark ? 'var(--alice-blue)' : 'var(--charcoal)',
         }}>{l}</div>

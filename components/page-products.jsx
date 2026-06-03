@@ -19,22 +19,22 @@ const PRODUCT_INTRO_STATS = [
 ];
 
 const ProductsIntro = () => (
-  <section style={{ background: 'var(--white)', padding: '56px 0 32px' }}>
+  <section style={{ background: 'var(--white)', padding: '88px 0 64px' }}>
     <div className="container">
       <div style={{
-        display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 56, alignItems: 'end',
+        display: 'grid', gridTemplateColumns: '1.4fr 1fr', columnGap: 64, rowGap: 28, alignItems: 'end',
       }}>
         <div>
-          <h2 className="display" style={{ margin: 0, fontSize: 'clamp(26px, 2.6vw, 36px)', lineHeight: 1.05, letterSpacing: '-0.02em' }}>
+          <h2 className="display" style={{ margin: 0, fontSize: 'clamp(26px, 2.6vw, 36px)', lineHeight: 1.12, letterSpacing: '-0.02em' }}>
             Everything you need to build the perimeter —<br/>
             <span style={{ color: 'var(--tangerine)' }}>and nothing we wouldn't put on our own job.</span>
           </h2>
         </div>
-        <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)', maxWidth: 420 }}>
+        <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.7, color: 'var(--charcoal)', maxWidth: 420 }}>
           We curate every SKU we carry. If a manufacturer can't meet our spec, it doesn't make it onto the floor. Browse by material below, or jump straight to gates and hardware.
         </p>
       </div>
-      <div style={{ marginTop: 36 }}>
+      <div style={{ marginTop: 64 }}>
         <StatStrip items={PRODUCT_INTRO_STATS}/>
       </div>
     </div>
