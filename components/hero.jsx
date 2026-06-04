@@ -67,12 +67,12 @@ const Hero = () => {
       {/* Dark scrim, strong on left, lighter on right */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
-        background: 'linear-gradient(95deg, rgba(38, 49, 102,0.92) 0%, rgba(38, 49, 102,0.78) 38%, rgba(38, 49, 102,0.45) 68%, rgba(38, 49, 102,0.28) 100%)',
+        background: 'linear-gradient(95deg, rgba(38, 49, 103,0.82) 0%, rgba(38, 49, 103,0.66) 38%, rgba(38, 49, 103,0.38) 68%, rgba(38, 49, 103,0.22) 100%)',
       }}/>
       {/* Bottom fade for fence-card band */}
       <div style={{
         position: 'absolute', left: 0, right: 0, bottom: 0, height: '50%', zIndex: 1,
-        background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 0%, rgba(38, 49, 102,0.4) 60%, rgba(38, 49, 102,0.75) 100%)',
+        background: 'linear-gradient(180deg, rgba(38, 49, 103,0) 0%, rgba(38, 49, 103,0.35) 60%, rgba(38, 49, 103,0.7) 100%)',
       }}/>
 
       {/* Main content */}

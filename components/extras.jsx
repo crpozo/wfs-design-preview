@@ -202,7 +202,7 @@ const FAQ = () => {
   const [open, setOpen] = React.useState(0);
   const [ctaHover, setCtaHover] = React.useState(false);
   return (
-    <section style={{ background: 'var(--parchment)', padding: '88px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '88px 0' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
           {/* Left: editorial header + CTA */}
@@ -234,7 +234,7 @@ const FAQ = () => {
                 display: 'inline-flex', alignItems: 'center', gap: 14,
                 padding: '14px 14px 14px 26px',
                 borderRadius: 999,
-                background: ctaHover ? '#263166' : 'var(--ink)',
+                background: ctaHover ? 'var(--laser-blue)' : 'var(--ink)',
                 color: 'var(--white)',
                 textDecoration: 'none',
                 fontFamily: 'var(--sans)',
@@ -529,7 +529,7 @@ const AboutIntro = () => {
                 display: 'inline-flex', alignItems: 'center', gap: 16,
                 padding: '14px 14px 14px 26px',
                 borderRadius: 999,
-                background: ctaHover ? '#263166' : 'var(--ink)',
+                background: ctaHover ? 'var(--laser-blue)' : 'var(--ink)',
                 color: 'var(--white)',
                 textDecoration: 'none',
                 fontFamily: 'var(--sans)',
