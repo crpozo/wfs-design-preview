@@ -20,8 +20,8 @@ const SiteHeader = ({ active }) => {
     { id: 'Gates',  label: { EN: 'Gates',  ES: 'Portones' }, def: { kind: 'mega-gates' } },
     { id: 'Full Catalog', label: { EN: 'Full Catalog', ES: 'Catálogo completo' }, def: { kind: 'link', href: 'products.html' } },
     { id: 'Get a Quote', label: { EN: 'Get a Quote', ES: 'Cotizar' }, def: { kind: 'list', items: [
-      { label: { EN: 'Request Estimate',     ES: 'Pedir estimado' },        href: 'estimate.html', sub: { EN: 'Send measurements, get pricing in 24h',   ES: 'Envía medidas, recibe precios en 24h' } },
-      { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte',   ES: 'Lun-Vie · Fort Myers + Port Charlotte' } },
+      { label: { EN: 'Draw Your Fence',       ES: 'Dibuja tu cerca' },        href: 'estimate.html', sub: { EN: 'Sketch or send measurements, pricing in 24h',   ES: 'Dibuja o envía medidas, precios en 24h' } },
+      { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html', sub: { EN: 'Mon-Sat · Fort Myers + Port Charlotte',   ES: 'Lun-Sáb · Fort Myers + Port Charlotte' } },
       { label: { EN: 'Call (239) 689-5496',  ES: 'Llamar (239) 689-5496' }, href: 'tel:2396895496', sub: { EN: 'Avg pickup under 18s in business hours', ES: 'Tiempo medio de respuesta: 18s en horario' } },
     ]}},
     { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [
@@ -145,11 +145,11 @@ const SiteHeader = ({ active }) => {
                     color: isActive ? 'var(--white)' : 'rgba(219,233,238,0.55)',
                     cursor: 'pointer',
                   }}>
-                    <span style={{
-                      width: 5, height: 5, borderRadius: '50%',
-                      background: isActive ? 'var(--tangerine)' : 'transparent',
-                      border: isActive ? 'none' : '1px solid rgba(219,233,238,0.4)',
-                    }}/>
+                    <span aria-hidden style={{
+                      fontSize: 14, lineHeight: 1,
+                      filter: isActive ? 'none' : 'grayscale(0.55)',
+                      opacity: isActive ? 1 : 0.75,
+                    }}>{l === 'EN' ? '🇺🇸' : '🇪🇸'}</span>
                     {l}
                   </button>
                 );
@@ -222,7 +222,7 @@ const SiteHeader = ({ active }) => {
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                 <path d="M3 3 H13 V13 H3 Z M3 6 H13 M6 3 V13" stroke="currentColor" strokeWidth="1.4"/>
               </svg>
-              {t('Request Estimate', 'Pedir estimado')}
+              {t('Draw Your Fence', 'Dibuja tu cerca')}
             </a>
             <a href="estimate.html" style={{
               display: 'inline-flex', alignItems: 'center', gap: 12,
@@ -472,11 +472,7 @@ const SiteHeader = ({ active }) => {
                       fontSize: 12, fontWeight: 700, letterSpacing: '0.14em',
                       textTransform: 'uppercase', cursor: 'pointer',
                     }}>
-                      <span style={{
-                        flexShrink: 0,
-                        width: 6, height: 6, borderRadius: '50%',
-                        background: isActive ? 'var(--tangerine)' : 'rgba(0,16,17,0.3)',
-                      }}/>
+                      <span aria-hidden style={{ flexShrink: 0, fontSize: 15, lineHeight: 1 }}>{l.code === 'EN' ? '🇺🇸' : '🇪🇸'}</span>
                       {l.code}
                       <span style={{ fontWeight: 500, letterSpacing: '0.03em', textTransform: 'none', opacity: 0.75 }}>
                         · {l.label}

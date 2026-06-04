@@ -216,7 +216,7 @@ const ResourcesCTA = () => (
     kicker="Still got questions?"
     title="Call the yard,"
     accent="or send the project."
-    body="Two reps splitting calls, Mon-Fri 7am-4pm. Or send a sketch + ZIP and we'll come back inside a day."
+    body="Two reps splitting calls, Mon-Sat 7am-4pm. Or send a sketch + ZIP and we'll come back inside a day."
     primary={['Request a quote', 'estimate.html']}
     secondary={['Call (239) 689-5496', 'tel:2396895496']}
   />

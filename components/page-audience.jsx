@@ -751,7 +751,7 @@ const HomeownerFAQ = () => {
                 borderTop: '1px solid rgba(26,37,72,0.1)',
                 fontSize: 10.5, letterSpacing: '0.18em',
                 textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 700,
-              }}>{t('Mon-Fri · 7am-4pm EST', 'Lun-Vie · 7am-4pm EST')}</div>
+              }}>{t('Mon-Sat · 7am-4pm EST', 'Lun-Sáb · 7am-4pm EST')}</div>
             </div>
           </div>
 
@@ -1066,13 +1066,13 @@ const ContractorHero = () => {
             </div>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: 11 }}>
               {[
-                { line: { EN: 'Wholesale pricing, save 18-28%',  ES: 'Precios mayoristas, ahorra 18-28%' },
+                { line: { EN: 'Wholesale pricing, manufacturer-direct',  ES: 'Precios mayoristas, directo del fabricante' },
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9 L12 4 L18 9 L18 19 H6 Z"/><path d="M9 19 V13 H15 V19"/></svg>) },
                 { line: { EN: 'Priority manufacturing, 72h on gates', ES: 'Fabricación prioritaria, 72h en portones' },
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15 14"/></svg>) },
                 { line: { EN: 'Free delivery to your job site',     ES: 'Entrega gratis a tu obra' },
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>) },
-                { line: { EN: 'Same rep on every order, Net 30',   ES: 'El mismo representante en cada orden, Net 30' },
+                { line: { EN: 'Same rep on every order, flexible terms',   ES: 'El mismo representante en cada orden, términos flexibles' },
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20 Q5 14 12 14 Q19 14 19 20"/></svg>) },
               ].map((b, i) => (
                 <li key={i} style={{
@@ -1111,7 +1111,7 @@ const ContractorStatsStrip = () => {
     <div className="container">
       <div className="wfs-stat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
         {[
-          ['18-28%', { EN: 'Wholesale margin tiers',     ES: 'Niveles de margen mayorista' }],
+          ['Tiered', { EN: 'Wholesale margin tiers',     ES: 'Niveles de margen mayorista' }],
           ['72h',    { EN: 'Avg priority fabrication',   ES: 'Fabricación prioritaria promedio' }],
           [{ EN: 'Free', ES: 'Gratis' }, { EN: 'Job-site drops · in-county', ES: 'Entregas a obra · mismo condado' }],
           ['Free',     { EN: 'Application fee',             ES: 'Costo de aplicación' }],
@@ -1166,7 +1166,7 @@ const ContractorBenefits = () => {
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 19 Q9 14 15 19"/><path d="M14 18 Q17.5 15 21 18"/></svg>),
     },
     {
-      title: { EN: 'Net 30 Terms', ES: 'Términos Net 30' },
+      title: { EN: 'Payment Terms', ES: 'Términos de pago' },
       body:  { EN: 'Flexible payment terms available for qualified high-volume partners after a short trade-reference review.',
                 ES: 'Términos de pago flexibles disponibles para socios de alto volumen calificados, tras una breve revisión de referencias comerciales.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="6" width="18" height="13" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><rect x="6" y="14" width="4" height="2" rx="0.4" fill="currentColor"/></svg>),

@@ -258,7 +258,7 @@ const AboutCTA = () => (
     kicker="Visit the yard"
     title="Walk the shop,"
     accent="meet the team."
-    body="Both yards are open Mon-Fri 7am-4pm. Call ahead and we'll have your materials staged when you pull in."
+    body="Both yards are open Mon-Sat 7am-4pm. Call ahead and we'll have your materials staged when you pull in."
     primary={['Get a quote', 'estimate.html']}
     secondary={['Yard locations', 'solutions.html#yards']}
   />

@@ -32,7 +32,7 @@ const GATE_DATA = {
     ],
     contractor: {
       tag: 'Walk gates · Trade-account pickup',
-      heroBody: 'Ready-to-assemble kits or in-house welded custom from 3 to 6 ft. Hardware kits packed and labeled per opening. Net-30 trade accounts after the second order, pull up to the bay, walk out in 15 minutes.',
+      heroBody: 'Ready-to-assemble kits or in-house welded custom from 3 to 6 ft. Hardware kits packed and labeled per opening. Trade accounts after the second order, pull up to the bay, walk out in 15 minutes.',
       bestFor: 'Volume residential, code-compliant pool runs, will-call pickup',
       useCases: [
         ['Trade volume',         'Stocked widths for repeat residential jobs. Ready-to-assemble kits cut field install time.'],
@@ -72,7 +72,7 @@ const GATE_DATA = {
     ],
     contractor: {
       tag: 'Driveway gates · Ready-to-assemble kits',
-      heroBody: 'Ready-to-assemble driveway gates from 8 to 16 ft, welded in Fort Myers, drop rod + hardware kit packed per opening. Trade accounts get net-30 + dedicated rep + job-site dispatch.',
+      heroBody: 'Ready-to-assemble driveway gates from 8 to 16 ft, welded in Fort Myers, drop rod + hardware kit packed per opening. Trade accounts get a dedicated rep + job-site dispatch.',
       bestFor: 'Volume residential drives, custom welded estate runs, trade kits',
       useCases: [
         ['Volume residential', 'Same-day pickup on stocked 10/12/14 ft openings, cuts site time.'],
@@ -112,7 +112,7 @@ const GATE_DATA = {
     ],
     contractor: {
       tag: 'Track-mounted · Trade-account fab',
-      heroBody: 'V-track and pipe-track slide gates fabricated for tight residential drives and sloped lots. Net-30 trade accounts, dedicated rep, will-call staging, kit ships with track, rollers and end stops.',
+      heroBody: 'V-track and pipe-track slide gates fabricated for tight residential drives and sloped lots. Trade accounts, dedicated rep, will-call staging, kit ships with track, rollers and end stops.',
       bestFor: 'Tight residential lots, sloped driveway jobs, repeat HOA work',
       useCases: [
         ['HOA + subdivision', 'Repeat 12-14 ft openings with uniform finish across the run.'],

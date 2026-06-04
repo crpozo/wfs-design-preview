@@ -67,14 +67,14 @@ const EstimateHero = () => (
           textTransform: 'none',
           color: 'var(--white)',
         }}>
-          Send your run.{' '}
+          Draw your fence.{' '}
           <span style={{ color: 'var(--tangerine)' }}>Get a binding quote in 24 hours.</span>
         </h1>
         <p style={{
           fontSize: 16, lineHeight: 1.5, maxWidth: 460, margin: 0,
           color: 'rgba(255,255,255,0.85)',
         }}>
-          Linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery.
+          Sketch your layout or send linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery.
         </p>
         <div style={{ marginTop: 32, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
           <a href="#form" style={{
@@ -114,7 +114,7 @@ const EstimateHero = () => (
         {[
           ['01', 'Send your run',         'Linear feet · height · gate count · ZIP. Survey or sketch optional.'],
           ['02', 'We quote in 24h',       'Stock, lead time, delivery or pickup window, all in one email.'],
-          ['03', 'Pickup or delivery',    'FM or PC yard · Mon-Fri 7am-4pm. Same-day staging if called ahead.'],
+          ['03', 'Pickup or delivery',    'FM or PC yard · Mon-Sat 7am-4pm. Same-day staging if called ahead.'],
         ].map(([n, t, sub], i, arr) => (
           <div key={n} style={{
             paddingLeft: i === 0 ? 0 : 28,
@@ -166,7 +166,7 @@ const LiveAgentBand = () => (
           margin: 0, maxWidth: 320, justifySelf: 'end', textAlign: 'right',
           fontSize: 13.5, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
-          Two reps splitting calls Mon-Fri. Avg pickup under 18 seconds during business hours.
+          Two reps splitting calls Mon-Sat. Avg pickup under 18 seconds during business hours.
         </p>
       </div>
 

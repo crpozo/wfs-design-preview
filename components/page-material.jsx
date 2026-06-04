@@ -32,7 +32,7 @@ const MATERIAL_DATA = {
     ],
     contractor: {
       tag: 'Veka-extruded · Trade pickup',
-      heroBody: 'Veka-extruded vinyl in white, tan and khaki across privacy, semi-private, picket and ranch rail. All profiles stocked for same-day will-call. Net-30 trade accounts available after the second order.',
+      heroBody: 'Veka-extruded vinyl in white, tan and khaki across privacy, semi-private, picket and ranch rail. All profiles stocked for same-day will-call. Trade accounts available after the second order.',
       bestFor: 'HOA + subdivision rollouts, repeat residential privacy',
       useCases: [
         ['HOA rollouts',         'Uniform 6 ft privacy across 50+ lots, stocked in volume, packed by run.'],
@@ -112,7 +112,7 @@ const MATERIAL_DATA = {
     ],
     contractor: {
       tag: 'Galv + PVC-coated · Same-day will-call',
-      heroBody: 'Galvanized and PVC-coated mesh from 6 to 12 gauge, same-day pickup on stocked rolls and posts. Phased commercial dispatch for industrial perimeters, net-30 trade accounts available.',
+      heroBody: 'Galvanized and PVC-coated mesh from 6 to 12 gauge, same-day pickup on stocked rolls and posts. Phased commercial dispatch for industrial perimeters, trade accounts available.',
       bestFor: 'Industrial perimeters, security fencing, sports fields',
       useCases: [
         ['Industrial perimeters','Mile+ runs of 9-ga galv with phased delivery against release schedule.'],
