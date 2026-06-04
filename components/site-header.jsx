@@ -149,7 +149,7 @@ const SiteHeader = ({ active }) => {
                       fontSize: 14, lineHeight: 1,
                       filter: isActive ? 'none' : 'grayscale(0.55)',
                       opacity: isActive ? 1 : 0.75,
-                    }}>{l === 'EN' ? '🇺🇸' : '🇪🇸'}</span>
+                    }}>{l === 'EN' ? '🇺🇸' : '🇲🇽'}</span>
                     {l}
                   </button>
                 );
@@ -472,7 +472,7 @@ const SiteHeader = ({ active }) => {
                       fontSize: 12, fontWeight: 700, letterSpacing: '0.14em',
                       textTransform: 'uppercase', cursor: 'pointer',
                     }}>
-                      <span aria-hidden style={{ flexShrink: 0, fontSize: 15, lineHeight: 1 }}>{l.code === 'EN' ? '🇺🇸' : '🇪🇸'}</span>
+                      <span aria-hidden style={{ flexShrink: 0, fontSize: 15, lineHeight: 1 }}>{l.code === 'EN' ? '🇺🇸' : '🇲🇽'}</span>
                       {l.code}
                       <span style={{ fontWeight: 500, letterSpacing: '0.03em', textTransform: 'none', opacity: 0.75 }}>
                         · {l.label}
