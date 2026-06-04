@@ -130,7 +130,7 @@ const HomeownerHero = () => {
             height: '52%',
             overflow: 'hidden',
             border: '1px solid rgba(38, 49, 102,0.18)',
-            background: '#f9efe4',
+            background: '#ffffff',
           }}>
             <img
               src="assets/gate-double.jpg"
