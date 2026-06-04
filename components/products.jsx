@@ -504,10 +504,6 @@ const SystemDetail = ({ item, active, rarity, align, ctaLabel }) => {
         fontSize: 'clamp(32px, 3vw + 1.6vh, 72px)', lineHeight: 0.92, letterSpacing: '-0.02em', fontWeight: 800,
         textShadow: '0 4px 30px rgba(0,0,0,0.4)',
       }}>{nameStr}</h2>
-      <div className="mono" style={{
-        fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
-        color: r.c1, marginBottom: 'clamp(8px, 1.4vh, 16px)', fontWeight: 700,
-      }}>{t(item.tag)}</div>
       <p style={{
         margin: '0 0 clamp(14px, 2.4vh, 26px)', maxWidth: 480,
         marginLeft: right ? 'auto' : 0,
