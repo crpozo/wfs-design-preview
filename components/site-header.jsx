@@ -234,7 +234,7 @@ const SiteHeader = ({ active }) => {
               letterSpacing: '0.22em', textTransform: 'uppercase',
               transition: 'background 0.2s ease, transform 0.2s ease',
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#263166'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--laser-blue)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'var(--ink)'; e.currentTarget.style.transform = 'none'; }}>
               <span style={{
                 width: 6, height: 6, borderRadius: '50%', background: '#ff7133',
