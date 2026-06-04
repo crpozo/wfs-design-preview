@@ -74,7 +74,7 @@ const ArticlesGrid = () => {
               display: 'flex', flexDirection: 'column',
               cursor: 'pointer',
             }}>
-              <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', background: '#1a2548' }}>
+              <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', background: '#263166' }}>
                 <img src={FENCE_IMG[p.img]} alt=""
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
                 <span className="mono" style={{
@@ -199,7 +199,7 @@ const MaterialsCompDeepDive = () => {
               display: 'grid', gridTemplateColumns: '160px 1fr 1.4fr 1.4fr auto',
               gap: 28, alignItems: 'center',
               padding: '24px 28px',
-              background: i % 2 === 0 ? 'var(--white)' : '#faf9f7',
+              background: i % 2 === 0 ? 'var(--white)' : '#fcf6f0',
               border: '1px solid rgba(0,16,17,0.12)',
               color: 'var(--ink)',
             }}>
@@ -325,7 +325,7 @@ const PoolCodeProfiles = () => {
               display: 'block', textDecoration: 'none', color: 'var(--ink)',
               background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)',
             }}>
-              <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', background: '#1a2548' }}>
+              <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', background: '#263166' }}>
                 <img src={FENCE_IMG[p.img]} alt=""
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
                 <span className="mono" style={{

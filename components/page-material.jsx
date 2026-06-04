@@ -279,7 +279,7 @@ const MaterialSpecs = ({ data }) => (
                 padding: '14px 18px',
                 fontSize: 10.5, letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--charcoal)', fontWeight: 700,
-                background: '#faf9f7',
+                background: '#fcf6f0',
               }}>{k}</div>
               <div style={{ padding: '14px 18px', fontSize: 14, color: 'var(--ink)' }}>{v}</div>
             </div>
@@ -325,7 +325,7 @@ const MaterialOtherMaterials = ({ currentSlug }) => {
     { slug: 'ecfence',   href: 'ecfence.html',    name: 'EC Fence',            img: 'ecfence' },
   ].filter(m => m.slug !== currentSlug);
   return (
-    <section style={{ background: '#faf9f7', padding: '88px 0' }}>
+    <section style={{ background: '#fcf6f0', padding: '88px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="04" label="Compare"
@@ -338,11 +338,11 @@ const MaterialOtherMaterials = ({ currentSlug }) => {
             <a key={m.slug} href={m.href} style={{
               position: 'relative', display: 'block',
               aspectRatio: '4 / 5', overflow: 'hidden',
-              background: '#1a2548', textDecoration: 'none', color: 'var(--white)',
+              background: '#263166', textDecoration: 'none', color: 'var(--white)',
             }}>
               <img src={FENCE_IMG[m.img]} alt={m.name}
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(20,30,55,0) 35%, rgba(20,30,55,0.85) 100%)' }}/>
+              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 35%, rgba(38, 49, 102,0.85) 100%)' }}/>
               <div style={{ position: 'absolute', bottom: 16, left: 16, right: 16 }}>
                 <div className="display" style={{ fontSize: 18, lineHeight: 1.1 }}>{m.name}</div>
                 <div className="mono" style={{ marginTop: 6, fontSize: 10, letterSpacing: '0.18em', color: 'var(--alice-blue)' }}>Explore →</div>

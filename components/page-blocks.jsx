@@ -22,7 +22,7 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, height = 'c
     position: 'relative', color: 'var(--white)', overflow: 'hidden',
     minHeight: height,
     display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
-    background: '#1a2548',
+    background: '#263166',
   }}>
     {image && (
       <img src={image} alt="" aria-hidden="true" style={{
@@ -32,7 +32,7 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, height = 'c
     )}
     <div aria-hidden style={{
       position: 'absolute', inset: 0, zIndex: 1,
-      background: 'linear-gradient(95deg, rgba(20,30,55,0.88) 0%, rgba(20,30,55,0.68) 55%, rgba(20,30,55,0.40) 100%)',
+      background: 'linear-gradient(95deg, rgba(38, 49, 102,0.88) 0%, rgba(38, 49, 102,0.68) 55%, rgba(38, 49, 102,0.40) 100%)',
     }}/>
     <div className="container" style={{
       position: 'relative', zIndex: 2,
@@ -117,7 +117,7 @@ const StatStrip = ({ items, dark = false }) => (
 );
 
 const CTABand = ({ kicker, title, accent, body, primary, secondary, theme = 'cream' }) => {
-  const bg = theme === 'ink' ? 'var(--ink)' : theme === 'parchment' ? 'var(--parchment)' : '#faf9f7';
+  const bg = theme === 'ink' ? 'var(--ink)' : theme === 'parchment' ? 'var(--parchment)' : '#fcf6f0';
   const fg = theme === 'ink' ? 'var(--parchment)' : 'var(--ink)';
   const sub = theme === 'ink' ? 'var(--alice-blue)' : 'var(--charcoal)';
   return (
@@ -232,7 +232,7 @@ const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageRight = 
           <div style={{
             order: imageRight ? 2 : 1,
             position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden',
-            background: '#1a2548',
+            background: '#263166',
           }}>
             {image && (
               <img src={image} alt=""

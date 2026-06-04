@@ -15,7 +15,7 @@ const HomeownerHero = () => {
     {/* Faint dotted grid texture behind */}
     <div aria-hidden style={{
       position: 'absolute', inset: 0,
-      backgroundImage: 'radial-gradient(rgba(26,37,72,0.06) 1px, transparent 1px)',
+      backgroundImage: 'radial-gradient(rgba(38, 49, 102,0.06) 1px, transparent 1px)',
       backgroundSize: '24px 24px',
       maskImage: 'radial-gradient(ellipse at center, #000 0%, transparent 70%)',
       WebkitMaskImage: 'radial-gradient(ellipse at center, #000 0%, transparent 70%)',
@@ -116,7 +116,7 @@ const HomeownerHero = () => {
           <div style={{
             position: 'absolute', inset: 0,
             border: '1.5px solid var(--ink)',
-            background: '#fafafa',
+            background: '#ffffff',
           }}/>
           {/* Tangerine offset shadow plate */}
           <div aria-hidden style={{
@@ -129,8 +129,8 @@ const HomeownerHero = () => {
             position: 'absolute', top: 24, left: 24, right: 24,
             height: '52%',
             overflow: 'hidden',
-            border: '1px solid rgba(26,37,72,0.18)',
-            background: '#eef0e8',
+            border: '1px solid rgba(38, 49, 102,0.18)',
+            background: '#f9efe4',
           }}>
             <img
               src="assets/gate-double.jpg"
@@ -165,7 +165,7 @@ const HomeownerHero = () => {
           {/* Bottom card, what you'll love */}
           <div style={{
             position: 'absolute', bottom: 24, left: 24, right: 24,
-            border: '1px solid rgba(26,37,72,0.18)',
+            border: '1px solid rgba(38, 49, 102,0.18)',
             background: 'var(--white)',
             padding: '20px 22px',
           }}>
@@ -219,8 +219,8 @@ const HomeownerTrustStrip = () => {
   return (
   <section style={{
     background: 'var(--white)',
-    borderTop: '1px solid rgba(26,37,72,0.1)',
-    borderBottom: '1px solid rgba(26,37,72,0.1)',
+    borderTop: '1px solid rgba(38, 49, 102,0.1)',
+    borderBottom: '1px solid rgba(38, 49, 102,0.1)',
     padding: '32px 0',
   }}>
     <div className="container">
@@ -233,7 +233,7 @@ const HomeownerTrustStrip = () => {
         ].map(([n, l], i) => (
           <div key={n} className="wfs-stat-cell" style={{
             paddingLeft: i === 0 ? 0 : 24,
-            borderLeft: i === 0 ? 'none' : '1px solid rgba(26,37,72,0.1)',
+            borderLeft: i === 0 ? 'none' : '1px solid rgba(38, 49, 102,0.1)',
           }}>
             <div className="display" style={{
               fontSize: 'clamp(32px, 3.6vw, 48px)', lineHeight: 1,
@@ -270,7 +270,7 @@ const HomeownerSteps = () => {
       {/* Inner solid circle */}
       <div style={{
         position: 'absolute', inset: 6, borderRadius: '50%',
-        background: '#f5f5f5',
+        background: '#ffffff',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         color: 'var(--ink)',
       }}>{children}</div>
@@ -312,7 +312,7 @@ const HomeownerSteps = () => {
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg>) },
   ];
   return (
-    <section style={{ background: '#fafafa', padding: '120px 0 136px' }}>
+    <section style={{ background: '#ffffff', padding: '120px 0 136px' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <h2 className="display" style={{
@@ -332,12 +332,12 @@ const HomeownerSteps = () => {
           {/* Subtle horizontal connector lines behind row 1 and row 2 */}
           <div aria-hidden style={{
             position: 'absolute', top: 48, left: '12%', right: '12%', height: 1,
-            borderTop: '1px dashed rgba(26,37,72,0.18)',
+            borderTop: '1px dashed rgba(38, 49, 102,0.18)',
             zIndex: 0, pointerEvents: 'none',
           }}/>
           <div aria-hidden style={{
             position: 'absolute', top: 'calc(50% + 24px)', left: '12%', right: '12%', height: 1,
-            borderTop: '1px dashed rgba(26,37,72,0.18)',
+            borderTop: '1px dashed rgba(38, 49, 102,0.18)',
             zIndex: 0, pointerEvents: 'none',
           }}/>
           {steps.map(s => (
@@ -373,7 +373,7 @@ const HomeownerStylePicker = () => {
         display: 'grid', gridTemplateColumns: '1fr 1fr',
         gap: 48, alignItems: 'end', marginBottom: 40,
         paddingBottom: 24,
-        borderBottom: '1px solid rgba(26,37,72,0.12)',
+        borderBottom: '1px solid rgba(38, 49, 102,0.12)',
       }}>
         <div>
           <div className="mono" style={{
@@ -465,7 +465,7 @@ const HomeownerInstallerSplit = () => {
   };
 
   return (
-    <section style={{ background: '#fafafa', padding: '120px 0' }}>
+    <section style={{ background: '#ffffff', padding: '120px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <h2 className="display" style={{
@@ -644,7 +644,7 @@ const HomeownerTestimonial = () => {
           </p>
           <div style={{
             display: 'flex', alignItems: 'center', gap: 16,
-            paddingTop: 24, borderTop: '1px dashed rgba(26,37,72,0.2)',
+            paddingTop: 24, borderTop: '1px dashed rgba(38, 49, 102,0.2)',
           }}>
             <div style={{
               width: 48, height: 48, borderRadius: '50%',
@@ -703,7 +703,7 @@ const HomeownerFAQ = () => {
   ];
   const [open, setOpen] = React.useState(1);
   return (
-    <section style={{ background: '#fafafa', padding: '120px 0' }}>
+    <section style={{ background: '#ffffff', padding: '120px 0' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
           {/* Left, title + contact sidebar */}
@@ -735,7 +735,7 @@ const HomeownerFAQ = () => {
                 marginBottom: 14,
                 display: 'flex', alignItems: 'center', gap: 8,
               }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 0 3px rgba(34,197,94,0.25)' }}/>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff7133', boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)' }}/>
                 {t('Still got questions?', '¿Aún tienes preguntas?')}
               </div>
               <a href="tel:2396895496" className="display" style={{
@@ -748,7 +748,7 @@ const HomeownerFAQ = () => {
               }}>sales@westernfencesupply.com</a>
               <div className="mono" style={{
                 marginTop: 14, paddingTop: 14,
-                borderTop: '1px solid rgba(26,37,72,0.1)',
+                borderTop: '1px solid rgba(38, 49, 102,0.1)',
                 fontSize: 10.5, letterSpacing: '0.18em',
                 textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 700,
               }}>{t('Mon-Sat · 7am-4pm EST', 'Lun-Sáb · 7am-4pm EST')}</div>
@@ -762,7 +762,7 @@ const HomeownerFAQ = () => {
               return (
                 <div key={i} style={{
                   border: '1.5px solid var(--ink)',
-                  background: isOpen ? '#f5f8fc' : 'var(--white)',
+                  background: isOpen ? '#ffffff' : 'var(--white)',
                   transition: 'background 0.2s ease',
                 }}>
                   <button onClick={() => setOpen(isOpen ? -1 : i)} style={{
@@ -1016,7 +1016,7 @@ const ContractorHero = () => {
             height: '52%',
             overflow: 'hidden',
             border: '1px solid rgba(255,255,255,0.18)',
-            background: '#1a2548',
+            background: '#263166',
           }}>
             <img
               src="assets/hero-warehouse.webp"
@@ -1038,12 +1038,12 @@ const ContractorHero = () => {
             <span className="mono" style={{
               position: 'absolute', bottom: 14, right: 14,
               padding: '6px 12px',
-              background: 'rgba(26,37,72,0.92)', color: 'var(--white)',
+              background: 'rgba(38, 49, 102,0.92)', color: 'var(--white)',
               fontSize: 9.5, fontWeight: 700, letterSpacing: '0.18em',
               textTransform: 'uppercase',
               display: 'inline-flex', alignItems: 'center', gap: 8,
             }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e' }}/>
+              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ff7133' }}/>
               {t('2 yards · FM + PC', '2 sucursales · FM + PC')}
             </span>
           </div>
@@ -1105,7 +1105,7 @@ const ContractorStatsStrip = () => {
   return (
   <section style={{
     background: 'var(--white)',
-    borderBottom: '1px solid rgba(26,37,72,0.1)',
+    borderBottom: '1px solid rgba(38, 49, 102,0.1)',
     padding: '36px 0',
   }}>
     <div className="container">
@@ -1118,7 +1118,7 @@ const ContractorStatsStrip = () => {
         ].map(([n, l], i) => (
           <div key={i} className="wfs-stat-cell" style={{
             paddingLeft: i === 0 ? 0 : 24,
-            borderLeft: i === 0 ? 'none' : '1px solid rgba(26,37,72,0.1)',
+            borderLeft: i === 0 ? 'none' : '1px solid rgba(38, 49, 102,0.1)',
           }}>
             <div className="display" style={{
               fontSize: 'clamp(28px, 3.2vw, 42px)', lineHeight: 1,
@@ -1264,7 +1264,7 @@ const ContractorHowItWorks = () => {
     },
   ];
   return (
-    <section style={{ background: '#fafafa', padding: '120px 0' }}>
+    <section style={{ background: '#ffffff', padding: '120px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <h2 className="display" style={{
@@ -1280,7 +1280,7 @@ const ContractorHowItWorks = () => {
           {/* Connector */}
           <div aria-hidden style={{
             position: 'absolute', top: 36, left: '10%', right: '10%', height: 1,
-            borderTop: '1px dashed rgba(26,37,72,0.2)',
+            borderTop: '1px dashed rgba(38, 49, 102,0.2)',
             zIndex: 0, pointerEvents: 'none',
           }}/>
           {steps.map((s, i) => (
@@ -1398,7 +1398,7 @@ const ContractorWholesaleKit = () => {
               background: 'var(--white)',
               transition: 'background 0.2s ease',
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#fafafa'; }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#ffffff'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'var(--white)'; }}>
               <div style={{
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -1431,7 +1431,7 @@ const ContractorWholesaleKit = () => {
 const ContractorTestimonial = () => {
   const t = useT();
   return (
-  <section style={{ background: '#fafafa', padding: '120px 0' }}>
+  <section style={{ background: '#ffffff', padding: '120px 0' }}>
     <div className="container" style={{ maxWidth: 1200 }}>
       <div style={{
         display: 'grid', gridTemplateColumns: '1fr 1.4fr',

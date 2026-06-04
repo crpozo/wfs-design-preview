@@ -5,7 +5,7 @@ const EstimateHero = () => (
     position: 'relative', color: 'var(--white)', overflow: 'hidden',
     minHeight: 'clamp(520px, 78vh, 680px)',
     display: 'flex', flexDirection: 'column',
-    background: '#1a2548',
+    background: '#263166',
   }}>
     {/* Industrial warehouse backdrop */}
     <img src="assets/hero-warehouse.webp" alt="" aria-hidden style={{
@@ -17,12 +17,12 @@ const EstimateHero = () => (
     <div aria-hidden style={{
       position: 'absolute', inset: 0, zIndex: 1,
       background:
-        'linear-gradient(100deg, rgba(20,30,55,0.92) 0%, rgba(20,30,55,0.78) 38%, rgba(20,30,55,0.52) 70%, rgba(20,30,55,0.35) 100%)',
+        'linear-gradient(100deg, rgba(38, 49, 102,0.92) 0%, rgba(38, 49, 102,0.78) 38%, rgba(38, 49, 102,0.52) 70%, rgba(38, 49, 102,0.35) 100%)',
     }}/>
     {/* Bottom fade so the process strip stays anchored */}
     <div aria-hidden style={{
       position: 'absolute', left: 0, right: 0, bottom: 0, height: '40%', zIndex: 1,
-      background: 'linear-gradient(180deg, rgba(20,30,55,0) 0%, rgba(20,30,55,0.55) 60%, rgba(20,30,55,0.85) 100%)',
+      background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 0%, rgba(38, 49, 102,0.55) 60%, rgba(38, 49, 102,0.85) 100%)',
     }}/>
 
     {/* Hero body */}
@@ -47,8 +47,8 @@ const EstimateHero = () => (
         }}>
           <span style={{
             width: 7, height: 7, borderRadius: '50%',
-            background: '#22c55e',
-            boxShadow: '0 0 0 3px rgba(34,197,94,0.25)',
+            background: '#ff7133',
+            boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)',
           }}/>
           18h avg turnaround · this week
         </div>
@@ -83,11 +83,11 @@ const EstimateHero = () => (
             background: 'var(--tangerine)', color: 'var(--white)',
             fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600,
             letterSpacing: '0.06em', textTransform: 'uppercase',
-            boxShadow: '0 10px 28px rgba(231,114,53,0.4)',
+            boxShadow: '0 10px 28px rgba(255, 113, 51,0.4)',
             transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s',
           }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(231,114,53,0.5)'; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(231,114,53,0.4)'; }}>
+          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(255, 113, 51,0.5)'; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(255, 113, 51,0.4)'; }}>
             Send the project
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
@@ -142,7 +142,7 @@ const EstimateHero = () => (
 
 const LiveAgentBand = () => (
   <section style={{
-    background: '#faf9f7', padding: '112px 0',
+    background: '#fcf6f0', padding: '112px 0',
     borderTop: '1px solid rgba(0,16,17,0.08)',
   }}>
     <div className="container">
@@ -180,7 +180,7 @@ const LiveAgentBand = () => (
           border: '1px solid var(--ink)',
           transition: 'transform 0.18s ease, box-shadow 0.18s ease',
         }}
-        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 18px 36px -18px rgba(26,37,72,0.5)'; }}
+        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 18px 36px -18px rgba(38, 49, 102,0.5)'; }}
         onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
           <div style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between',

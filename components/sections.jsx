@@ -1,11 +1,11 @@
 /* Featured products grid + Project gallery + Calculator + Service areas + Footer */
 
 const FEATURED = [
-  { sku: 'CL-9G-72', name: '9-Gauge Galvanized Mesh', cat: 'Chain Link', height: '6 ft', img: 'chainlink', color: '#1a2548' },
+  { sku: 'CL-9G-72', name: '9-Gauge Galvanized Mesh', cat: 'Chain Link', height: '6 ft', img: 'chainlink', color: '#263166' },
   { sku: 'AL-WLD-S', name: 'Welded Aluminum Section', cat: 'Aluminum', height: '6 ft', img: 'aluminum', color: '#263166' },
   { sku: 'PV-PRV-W', name: 'Veka Privacy Vinyl, White', cat: 'Vinyl', height: '6 ft', img: 'vinyl', color: '#2e59c1' },
   { sku: 'MT-PRV-72', name: 'Aluminum Board Privacy', cat: 'Metal', height: '6 ft', img: 'metal', color: '#001011' },
-  { sku: 'GT-DBL-12', name: '12 ft Welded Double Gate', cat: 'Gates', height: '12 ft', img: 'aluminum', color: '#1a2548' },
+  { sku: 'GT-DBL-12', name: '12 ft Welded Double Gate', cat: 'Gates', height: '12 ft', img: 'aluminum', color: '#263166' },
   { sku: 'CL-VC-BK', name: 'Vinyl-Coated Black Mesh', cat: 'Chain Link', height: '6 ft', img: 'chainlink', color: '#263166' },
 ];
 
@@ -104,7 +104,7 @@ const ProjectCard = ({ p, i, layout }) => {
         gridRow: layout.row,
         position: 'relative',
         overflow: 'hidden',
-        background: '#1a2548',
+        background: '#263166',
         textDecoration: 'none',
         display: 'block',
       }}>
@@ -205,7 +205,7 @@ const FeaturedProject = ({ p, num, total }) => {
       onMouseLeave={() => setHover(false)}
       style={{
         position: 'relative', overflow: 'hidden',
-        background: '#1a2548', textDecoration: 'none',
+        background: '#263166', textDecoration: 'none',
         display: 'block', minHeight: 500,
       }}>
       <img src={p.imgUrl || FENCE_IMG[p.img]} alt={p.name}
@@ -217,7 +217,7 @@ const FeaturedProject = ({ p, num, total }) => {
         }} />
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(180deg, rgba(20,30,55,0) 16%, rgba(20,30,55,0.6) 52%, rgba(20,30,55,0.95) 100%)',
+        background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 16%, rgba(38, 49, 102,0.6) 52%, rgba(38, 49, 102,0.95) 100%)',
       }}/>
       {/* Tangerine top accent */}
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--tangerine)' }}/>
@@ -292,14 +292,14 @@ const ProjectListRow = ({ p, active, onSelect }) => {
       style={{
         display: 'grid', gridTemplateColumns: '78px 1fr auto', gap: 14, alignItems: 'center',
         padding: 10, width: '100%', textAlign: 'left', cursor: 'pointer',
-        background: active ? '#f5f7fb' : 'transparent',
+        background: active ? '#ffffff' : 'transparent',
         border: '1px solid',
-        borderColor: active ? 'rgba(26,37,72,0.22)' : 'rgba(0,16,17,0.10)',
+        borderColor: active ? 'rgba(38, 49, 102,0.22)' : 'rgba(0,16,17,0.10)',
         borderLeftWidth: 3,
         borderLeftColor: active ? 'var(--tangerine)' : 'transparent',
         transition: 'background 0.2s ease, border-color 0.2s ease',
       }}>
-      <span style={{ display: 'block', width: 78, height: 56, overflow: 'hidden', background: '#1a2548' }}>
+      <span style={{ display: 'block', width: 78, height: 56, overflow: 'hidden', background: '#263166' }}>
         <img src={p.imgUrl || FENCE_IMG[p.img]} alt={p.name}
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </span>
@@ -720,7 +720,7 @@ const ServiceAreas = () => {
                   width: 14, height: 14, borderRadius: '50%',
                   background: 'var(--white)',
                   border: '3px solid var(--ink)',
-                  boxShadow: '0 0 0 4px rgba(26,37,72,0.35)',
+                  boxShadow: '0 0 0 4px rgba(38, 49, 102,0.35)',
                   pointerEvents: 'none',
                   zIndex: 2,
                 }}/>
@@ -754,7 +754,7 @@ const ServiceAreas = () => {
             {/* Legend, bottom-left */}
             <div style={{
               position: 'absolute', bottom: 16, left: 16,
-              background: 'rgba(26,37,72,0.85)', backdropFilter: 'blur(6px)',
+              background: 'rgba(38, 49, 102,0.85)', backdropFilter: 'blur(6px)',
               border: '1px solid rgba(255,113,51,0.4)',
               padding: '10px 14px',
               display: 'flex', alignItems: 'center', gap: 10,
@@ -831,8 +831,8 @@ const FinalCTA = () => {
       <div aria-hidden style={{
         position: 'absolute', inset: 0,
         backgroundImage:
-          'linear-gradient(rgba(26,37,72,0.04) 1px, transparent 1px), ' +
-          'linear-gradient(90deg, rgba(26,37,72,0.04) 1px, transparent 1px)',
+          'linear-gradient(rgba(38, 49, 102,0.04) 1px, transparent 1px), ' +
+          'linear-gradient(90deg, rgba(38, 49, 102,0.04) 1px, transparent 1px)',
         backgroundSize: '56px 56px',
         maskImage: 'radial-gradient(circle at 70% 0%, #000 0%, transparent 70%)',
         WebkitMaskImage: 'radial-gradient(circle at 70% 0%, #000 0%, transparent 70%)',
@@ -891,7 +891,7 @@ const FinalCTA = () => {
             </div>
             <div style={{ paddingTop: 24, borderTop: '1px solid rgba(0,16,17,0.15)' }}>
               <div className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', color: 'var(--ink)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ width: 8, height: 8, background: '#10b981', borderRadius: '50%' }}/>
+                <span style={{ width: 8, height: 8, background: '#ff7133', borderRadius: '50%' }}/>
                 {t('Currently quoting in 18hrs avg', 'Cotizando en 18 hrs en promedio')}
               </div>
             </div>

@@ -67,12 +67,12 @@ const Hero = () => {
       {/* Dark scrim, strong on left, lighter on right */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
-        background: 'linear-gradient(95deg, rgba(16,24,48,0.92) 0%, rgba(16,24,48,0.78) 38%, rgba(20,30,55,0.45) 68%, rgba(20,30,55,0.28) 100%)',
+        background: 'linear-gradient(95deg, rgba(38, 49, 102,0.92) 0%, rgba(38, 49, 102,0.78) 38%, rgba(38, 49, 102,0.45) 68%, rgba(38, 49, 102,0.28) 100%)',
       }}/>
       {/* Bottom fade for fence-card band */}
       <div style={{
         position: 'absolute', left: 0, right: 0, bottom: 0, height: '50%', zIndex: 1,
-        background: 'linear-gradient(180deg, rgba(20,30,55,0) 0%, rgba(20,30,55,0.4) 60%, rgba(20,30,55,0.75) 100%)',
+        background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 0%, rgba(38, 49, 102,0.4) 60%, rgba(38, 49, 102,0.75) 100%)',
       }}/>
 
       {/* Main content */}
@@ -128,11 +128,11 @@ const Hero = () => {
                 background: 'var(--tangerine)', color: 'var(--white)',
                 fontFamily: 'var(--sans)', fontSize: 15, fontWeight: 600,
                 letterSpacing: '0.01em',
-                boxShadow: '0 8px 24px rgba(231,114,53,0.35)',
+                boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)',
                 transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s',
               }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(231,114,53,0.45)'; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(231,114,53,0.35)'; }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 113, 51,0.35)'; }}
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 11 L12 4 L21 11"/>

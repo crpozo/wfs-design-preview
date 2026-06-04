@@ -38,7 +38,7 @@ const ResourceArticles = () => {
               display: 'flex', flexDirection: 'column',
               cursor: 'pointer',
             }}>
-              <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', background: '#1a2548' }}>
+              <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', background: '#263166' }}>
                 <img src={FENCE_IMG[p.img]} alt=""
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
                 <span className="mono" style={{
@@ -106,7 +106,7 @@ const MaterialsComparison = () => (
         ].map((row, ri) => (
           <div key={ri} style={{
             display: 'grid', gridTemplateColumns: '1.2fr repeat(4, 1fr)',
-            background: ri % 2 === 0 ? 'var(--white)' : '#faf9f7',
+            background: ri % 2 === 0 ? 'var(--white)' : '#fcf6f0',
             borderTop: '1px solid rgba(0,16,17,0.08)',
           }}>
             {row.map((cell, ci) => (

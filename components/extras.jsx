@@ -58,7 +58,7 @@ const Gates = () => {
               overflow: 'hidden',
               border: '1px solid rgba(0,16,17,0.06)',
             }}>
-              <div style={{ position: 'relative', height: 200, background: '#1a2548' }}>
+              <div style={{ position: 'relative', height: 200, background: '#263166' }}>
                 <img src={FENCE_IMG[g.img]} alt={g.name}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,16,17,0) 50%, rgba(0,16,17,0.5) 100%)' }}/>
@@ -234,7 +234,7 @@ const FAQ = () => {
                 display: 'inline-flex', alignItems: 'center', gap: 14,
                 padding: '14px 14px 14px 26px',
                 borderRadius: 999,
-                background: ctaHover ? '#0f1832' : 'var(--ink)',
+                background: ctaHover ? '#263166' : 'var(--ink)',
                 color: 'var(--white)',
                 textDecoration: 'none',
                 fontFamily: 'var(--sans)',
@@ -242,7 +242,7 @@ const FAQ = () => {
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 transition: 'background 0.2s ease, transform 0.2s ease',
                 transform: ctaHover ? 'translateY(-1px)' : 'none',
-                boxShadow: '0 18px 36px -18px rgba(26,37,72,0.5)',
+                boxShadow: '0 18px 36px -18px rgba(38, 49, 102,0.5)',
               }}>
               {t('Talk to a sales rep', 'Habla con un representante')}
               <span style={{
@@ -357,7 +357,7 @@ const Articles = () => {
             }}
             onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
             onMouseLeave={e => e.currentTarget.style.transform = ''}>
-              <div style={{ position: 'relative', height: 240, background: '#1a2548' }}>
+              <div style={{ position: 'relative', height: 240, background: '#263166' }}>
                 <img src={FENCE_IMG[p.img]} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                 <span className="mono" style={{
                   position: 'absolute', top: 16, left: 16,
@@ -446,7 +446,7 @@ const AboutIntro = () => {
         <div style={{ position: 'relative', aspectRatio: '16 / 9' }}>
           <div style={{
             position: 'absolute', inset: 0,
-            background: '#f3f1ee',
+            background: '#fcf6f0',
             WebkitMask:
               'radial-gradient(circle 42px at 100% 0, transparent 42px, #000 43px) top right / 50% 50% no-repeat, ' +
               'radial-gradient(circle 42px at 0 100%, transparent 42px, #000 43px) bottom left / 50% 50% no-repeat, ' +
@@ -529,7 +529,7 @@ const AboutIntro = () => {
                 display: 'inline-flex', alignItems: 'center', gap: 16,
                 padding: '14px 14px 14px 26px',
                 borderRadius: 999,
-                background: ctaHover ? '#0f1832' : 'var(--ink)',
+                background: ctaHover ? '#263166' : 'var(--ink)',
                 color: 'var(--white)',
                 textDecoration: 'none',
                 fontFamily: 'var(--sans)',
@@ -538,7 +538,7 @@ const AboutIntro = () => {
                 textTransform: 'uppercase',
                 transition: 'background 0.2s ease, transform 0.2s ease',
                 transform: ctaHover ? 'translateY(-1px)' : 'none',
-                boxShadow: '0 18px 36px -18px rgba(26,37,72,0.5)',
+                boxShadow: '0 18px 36px -18px rgba(38, 49, 102,0.5)',
               }}>
               {t('Start Your Fence Project', 'Inicia tu proyecto de cerca')}
               <span style={{

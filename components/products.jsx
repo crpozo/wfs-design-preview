@@ -145,7 +145,7 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
               style={{
                 display: 'flex', alignItems: 'center', gap: 18,
                 padding: '20px 18px',
-                background: isActive ? '#f3f1ee' : 'transparent',
+                background: isActive ? '#fcf6f0' : 'transparent',
                 border: 'none',
                 borderBottom: isLast ? 'none' : '1px solid rgba(0,16,17,0.12)',
                 color: 'var(--ink)',
@@ -189,7 +189,7 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
           position: 'absolute', inset: '6%',
           border: '1px solid rgba(0,16,17,0.18)',
           borderRadius: '50%',
-          background: '#faf9f7',
+          background: '#fcf6f0',
         }}/>
         {/* Active image */}
         <img
@@ -259,7 +259,7 @@ const FenceCard = ({ item, index, featured }) => {
         position: 'relative',
         aspectRatio: featured ? '4 / 3.2' : '4 / 3.2',
         overflow: 'hidden',
-        background: '#f3f1ee',
+        background: '#fcf6f0',
       }}>
         <img src={FENCE_IMG[item.img]} alt={item.name}
           style={{
@@ -357,7 +357,7 @@ const FenceStyleCard = ({ item, index }) => {
         textDecoration: 'none', color: 'var(--white)',
         aspectRatio: '4 / 5',
         overflow: 'hidden',
-        background: '#1a2548',
+        background: '#263166',
         transition: 'transform 0.35s ease',
         transform: hover ? 'translateY(-4px)' : 'none',
       }}>
@@ -371,7 +371,7 @@ const FenceStyleCard = ({ item, index }) => {
       {/* Bottom scrim for legibility */}
       <div style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(180deg, rgba(20,30,55,0) 35%, rgba(20,30,55,0.55) 65%, rgba(20,30,55,0.92) 100%)',
+        background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 35%, rgba(38, 49, 102,0.55) 65%, rgba(38, 49, 102,0.92) 100%)',
       }}/>
 
       {/* New badge, top-right */}
@@ -425,14 +425,14 @@ const FENCE_RARITY = {
   aluminum:  { c1: '#6381d6', c2: '#263166' },  // glaucous → indigo
   chainlink: { c1: '#97baff', c2: '#2e59c1' },  // blue-ice → laser-blue
   metal:     { c1: '#c1c1c1', c2: '#565656' },  // silver → charcoal
-  ecfence:   { c1: '#ff7133', c2: '#1a2548' },  // tangerine accent → ink
+  ecfence:   { c1: '#ff7133', c2: '#263166' },  // tangerine accent → ink
 };
 const GATE_RARITY = {
-  'single-swing': { c1: '#7fa8d8', c2: '#3a5a86' },  // steel blue
-  'double-swing': { c1: '#69c9c1', c2: '#2b7a73' },  // teal
-  'sliding':      { c1: '#c9b27f', c2: '#8a6f3a' },  // brass
-  'cantilever':   { c1: '#9aa3ad', c2: '#525a63' },  // graphite
-  'rolling':      { c1: '#e08a4a', c2: '#a8542a' },  // industrial orange
+  'single-swing': { c1: '#97baff', c2: '#6381d6' },  // steel blue
+  'double-swing': { c1: '#6381d6', c2: '#263166' },  // teal
+  'sliding':      { c1: '#e5d8ca', c2: '#565656' },  // brass
+  'cantilever':   { c1: '#c1c1c1', c2: '#565656' },  // graphite
+  'rolling':      { c1: '#ffa180', c2: '#ff7133' },  // industrial orange
 };
 
 /* Single selectable card in the rail, game-locker style.
@@ -746,14 +746,14 @@ const WhyWFS = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
           {WHY_WFS.map((v, i) => (
             <div key={i} style={{
-              border: '1px solid rgba(26,37,72,0.14)',
+              border: '1px solid rgba(38, 49, 102,0.14)',
               background: 'var(--white)',
               padding: '24px 22px 26px',
               display: 'flex', flexDirection: 'column',
               transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease',
             }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -22px rgba(0,16,17,0.3)'; e.currentTarget.style.borderColor = 'var(--ink)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; e.currentTarget.style.borderColor = 'rgba(26,37,72,0.14)'; }}>
+            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; e.currentTarget.style.borderColor = 'rgba(38, 49, 102,0.14)'; }}>
               <span style={{
                 width: 46, height: 46, marginBottom: 18,
                 border: '1.5px solid var(--ink)',

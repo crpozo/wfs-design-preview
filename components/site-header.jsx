@@ -234,11 +234,11 @@ const SiteHeader = ({ active }) => {
               letterSpacing: '0.22em', textTransform: 'uppercase',
               transition: 'background 0.2s ease, transform 0.2s ease',
             }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#0f1832'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#263166'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'var(--ink)'; e.currentTarget.style.transform = 'none'; }}>
               <span style={{
-                width: 6, height: 6, borderRadius: '50%', background: '#22c55e',
-                boxShadow: '0 0 0 3px rgba(34,197,94,0.25)',
+                width: 6, height: 6, borderRadius: '50%', background: '#ff7133',
+                boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)',
               }}/>
               {t('Live Agent', 'Agente en vivo')}
               <span style={{
@@ -294,7 +294,7 @@ const SiteHeader = ({ active }) => {
               width: 44, height: 44,
               display: 'flex', alignItems: 'center', justifyContent: 'center',
               gap: 0,
-              background: '#1a2548',
+              background: '#263166',
               border: 'none',
               cursor: 'pointer',
               padding: 0,
@@ -400,7 +400,7 @@ const SiteHeader = ({ active }) => {
                       maxHeight: isExpanded ? 500 : 0,
                       overflow: 'hidden',
                       transition: 'max-height 0.3s ease',
-                      background: '#faf9f7',
+                      background: '#fcf6f0',
                     }}>
                       {def.items.map((it, i) => (
                         <a key={i} href={it.href} style={{
@@ -418,7 +418,7 @@ const SiteHeader = ({ active }) => {
                     <a href={fallbackHref} style={{
                       display: 'block', padding: '14px 20px 14px 36px',
                       borderTop: '1px solid rgba(0,16,17,0.06)',
-                      background: '#faf9f7',
+                      background: '#fcf6f0',
                       fontSize: 14, color: 'var(--ink)', fontWeight: 500,
                     }}>
                       {def.kind === 'mega-fences'
@@ -445,8 +445,8 @@ const SiteHeader = ({ active }) => {
               letterSpacing: '0.18em', textTransform: 'uppercase',
             }}>
               <span style={{
-                width: 7, height: 7, borderRadius: '50%', background: '#22c55e',
-                boxShadow: '0 0 0 3px rgba(34,197,94,0.25)',
+                width: 7, height: 7, borderRadius: '50%', background: '#ff7133',
+                boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)',
               }}/>
               {t('Call (239) 689-5496', 'Llamar (239) 689-5496')}
             </a>
@@ -573,7 +573,7 @@ const SiteHeader = ({ active }) => {
                           borderRight: i % 2 === 0 ? '1px solid rgba(0,16,17,0.08)' : 'none',
                           transition: 'background 0.15s',
                         }}
-                        onMouseEnter={e => { e.currentTarget.style.background = '#fafafa'; }}
+                        onMouseEnter={e => { e.currentTarget.style.background = '#ffffff'; }}
                         onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
                             <span className="eyebrow" style={{ color: 'var(--tangerine)', fontSize: 10 }}>

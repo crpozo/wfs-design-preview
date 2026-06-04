@@ -17,10 +17,10 @@
   --coral: #ffa180;
   /* Neutrals */
   --white: #ffffff;
-  --parchment: #ffffff;
-  --linen: #ffffff;
+  --parchment: #fcf6f0;
+  --linen: #f9efe4;
   --almond: #e5d8ca;
-  --ink: #1a2548;
+  --ink: #001011;
 
   --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --sans: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
@@ -89,7 +89,7 @@ img { display: block; max-width: 100%; }
 }
 .btn:hover { transform: translateY(-1px); }
 .btn-primary { background: var(--tangerine); color: var(--ink); }
-.btn-primary:hover { background: #ff5a14; }
+.btn-primary:hover { background: #ff7133; }
 .btn-dark { background: var(--ink); color: var(--parchment); }
 .btn-dark:hover { background: var(--indigo-blue); }
 .btn-light { background: var(--parchment); color: var(--ink); }
@@ -140,7 +140,7 @@ section { position: relative; }
   color: var(--charcoal);
 }
 .img-placeholder.dark {
-  background: #1a2548;
+  background: #263166;
   background-image:
     repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 14px);
   color: var(--blue-ice);
@@ -316,7 +316,7 @@ section { position: relative; }
 .fence-arena {
   position: relative;
   overflow: hidden;
-  background: #0a1020;
+  background: #001011;
   isolation: isolate;
 }
 /* Stacked background layers crossfade between fence environments */
@@ -350,8 +350,8 @@ section { position: relative; }
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(10,16,32,0.62) 0%, rgba(10,16,32,0.22) 26%, rgba(10,16,32,0.55) 62%, rgba(10,16,32,0.93) 100%),
-    radial-gradient(130% 90% at 12% 22%, rgba(10,16,32,0) 38%, rgba(10,16,32,0.6) 100%);
+    linear-gradient(180deg, rgba(0, 16, 17,0.62) 0%, rgba(0, 16, 17,0.22) 26%, rgba(0, 16, 17,0.55) 62%, rgba(0, 16, 17,0.93) 100%),
+    radial-gradient(130% 90% at 12% 22%, rgba(0, 16, 17,0) 38%, rgba(0, 16, 17,0.6) 100%);
 }
 /* Faint moving grid for the "game UI" feel */
 .fence-arena__grid {
@@ -413,7 +413,7 @@ section { position: relative; }
   inset: 2.5px;
   overflow: hidden;
   clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
-  background: #0a1020;
+  background: #001011;
 }
 .fence-card__img {
   position: absolute;
@@ -429,7 +429,7 @@ section { position: relative; }
 .fence-card__scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(10,16,32,0) 32%, rgba(10,16,32,0.6) 66%, rgba(10,16,32,0.95) 100%);
+  background: linear-gradient(180deg, rgba(0, 16, 17,0) 32%, rgba(0, 16, 17,0.6) 66%, rgba(0, 16, 17,0.95) 100%);
 }
 /* diagonal gloss sweep */
 .fence-card__sheen {

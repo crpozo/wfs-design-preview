@@ -46,13 +46,13 @@ const AboutStory = () => (
         <div style={{ position: 'sticky', top: 120 }}>
           <div style={{
             position: 'relative', aspectRatio: '4 / 5', overflow: 'hidden',
-            background: '#1a2548',
+            background: '#263166',
           }}>
             <img src="assets/hero-warehouse.webp" alt="WFS Fort Myers warehouse"
               style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
             <div aria-hidden style={{
               position: 'absolute', inset: 0,
-              background: 'linear-gradient(180deg, rgba(20,30,55,0) 50%, rgba(20,30,55,0.55) 100%)',
+              background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 50%, rgba(38, 49, 102,0.55) 100%)',
             }}/>
             {/* HQ chip */}
             <div className="mono" style={{

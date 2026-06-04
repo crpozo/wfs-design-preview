@@ -83,7 +83,7 @@ const WarrantyHighlights = () => {
 const WarrantyMaterialTable = () => {
   const t = useT();
   return (
-  <section style={{ background: '#faf9f7', padding: '112px 0' }}>
+  <section style={{ background: '#fcf6f0', padding: '112px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="02" label={t('Coverage by material', 'Cobertura por material')}
@@ -125,7 +125,7 @@ const WarrantyMaterialTable = () => {
         ].map((row, ri) => (
           <div key={ri} style={{
             display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.2fr',
-            background: ri % 2 === 0 ? 'var(--white)' : '#faf9f7',
+            background: ri % 2 === 0 ? 'var(--white)' : '#fcf6f0',
             borderTop: '1px solid rgba(0,16,17,0.08)',
           }}>
             {row.map((cell, ci) => (
@@ -241,7 +241,7 @@ const WarrantyProcess = () => {
                ES: 'Los reclamos aprobados envían material de reemplazo desde stock, la mayoría en 1-2 días hábiles.' } },
   ];
   return (
-    <section style={{ background: '#faf9f7', padding: '112px 0' }}>
+    <section style={{ background: '#fcf6f0', padding: '112px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="04" label={t('Process', 'Proceso')}
@@ -261,7 +261,7 @@ const WarrantyProcess = () => {
           {/* Connector */}
           <div aria-hidden style={{
             position: 'absolute', top: 36, left: '10%', right: '10%', height: 1,
-            borderTop: '1px dashed rgba(26,37,72,0.2)',
+            borderTop: '1px dashed rgba(38, 49, 102,0.2)',
             zIndex: 0, pointerEvents: 'none',
           }}/>
           {steps.map((s, i) => (
@@ -386,7 +386,7 @@ const ClaimsProcess = () => {
         }}>
           <div aria-hidden style={{
             position: 'absolute', top: 36, left: '10%', right: '10%', height: 1,
-            borderTop: '1px dashed rgba(26,37,72,0.2)',
+            borderTop: '1px dashed rgba(38, 49, 102,0.2)',
             zIndex: 0, pointerEvents: 'none',
           }}/>
           {steps.map((s, i) => (
@@ -446,7 +446,7 @@ const ClaimsForm = () => {
   );
 
   return (
-    <section style={{ background: '#faf9f7', padding: '88px 0 120px' }}>
+    <section style={{ background: '#fcf6f0', padding: '88px 0 120px' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1.7fr 1fr', gap: 56, alignItems: 'start' }}>
           {/* Left, form card */}
@@ -459,7 +459,7 @@ const ClaimsForm = () => {
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
               paddingBottom: 22, marginBottom: 28,
-              borderBottom: '1px dashed rgba(26,37,72,0.18)',
+              borderBottom: '1px dashed rgba(38, 49, 102,0.18)',
             }}>
               <h3 className="display" style={{
                 margin: 0, fontSize: 22, letterSpacing: '-0.01em', color: 'var(--ink)',
@@ -517,7 +517,7 @@ const ClaimsForm = () => {
 
               <Field label={t('Photos (min. 3)', 'Fotos (mín. 3)')} name="photos" span={2}>
                 <div style={{
-                  border: '1.5px dashed var(--ink)', background: '#faf9f7',
+                  border: '1.5px dashed var(--ink)', background: '#fcf6f0',
                   padding: '28px 22px', textAlign: 'center',
                   display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
                 }}>
@@ -574,7 +574,7 @@ const ClaimsForm = () => {
                 marginBottom: 14,
                 display: 'flex', alignItems: 'center', gap: 10,
               }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e', boxShadow: '0 0 0 3px rgba(34,197,94,0.25)' }}/>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff7133', boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)' }}/>
                 {t('Live · 7am - 4pm EST', 'En vivo · 7am - 4pm EST')}
               </div>
               <h3 className="display" style={{
@@ -619,7 +619,7 @@ const ClaimsForm = () => {
                 ].map(([k, v], i) => (
                   <li key={i} style={{
                     display: 'flex', justifyContent: 'space-between',
-                    paddingBottom: 10, borderBottom: '1px dashed rgba(26,37,72,0.18)',
+                    paddingBottom: 10, borderBottom: '1px dashed rgba(38, 49, 102,0.18)',
                   }}>
                     <span className="mono" style={{ fontSize: 12, color: 'var(--charcoal)' }}>{t(k)}</span>
                     <span className="mono" style={{
@@ -837,7 +837,7 @@ const SpecsLibrary = () => {
 const SpecsStamped = () => {
   const t = useT();
   return (
-  <section style={{ background: '#faf9f7', padding: '112px 0' }}>
+  <section style={{ background: '#fcf6f0', padding: '112px 0' }}>
     <div className="container">
       <div style={{
         display: 'grid', gridTemplateColumns: '1.2fr 1fr',
