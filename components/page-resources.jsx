@@ -106,7 +106,7 @@ const MaterialsComparison = () => (
         ].map((row, ri) => (
           <div key={ri} style={{
             display: 'grid', gridTemplateColumns: '1.2fr repeat(4, 1fr)',
-            background: ri % 2 === 0 ? 'var(--white)' : '#fcf6f0',
+            background: ri % 2 === 0 ? 'var(--white)' : '#ffffff',
             borderTop: '1px solid rgba(0,16,17,0.08)',
           }}>
             {row.map((cell, ci) => (

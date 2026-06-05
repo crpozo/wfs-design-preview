@@ -83,7 +83,7 @@ const WarrantyHighlights = () => {
 const WarrantyMaterialTable = () => {
   const t = useT();
   return (
-  <section style={{ background: '#fcf6f0', padding: '112px 0' }}>
+  <section style={{ background: '#ffffff', padding: '112px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="02" label={t('Coverage by material', 'Cobertura por material')}
@@ -125,7 +125,7 @@ const WarrantyMaterialTable = () => {
         ].map((row, ri) => (
           <div key={ri} style={{
             display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.2fr',
-            background: ri % 2 === 0 ? 'var(--white)' : '#fcf6f0',
+            background: ri % 2 === 0 ? 'var(--white)' : '#ffffff',
             borderTop: '1px solid rgba(0,16,17,0.08)',
           }}>
             {row.map((cell, ci) => (
@@ -241,7 +241,7 @@ const WarrantyProcess = () => {
                ES: 'Los reclamos aprobados envían material de reemplazo desde stock, la mayoría en 1-2 días hábiles.' } },
   ];
   return (
-    <section style={{ background: '#fcf6f0', padding: '112px 0' }}>
+    <section style={{ background: '#ffffff', padding: '112px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="04" label={t('Process', 'Proceso')}
@@ -446,7 +446,7 @@ const ClaimsForm = () => {
   );
 
   return (
-    <section style={{ background: '#fcf6f0', padding: '88px 0 120px' }}>
+    <section style={{ background: '#ffffff', padding: '88px 0 120px' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1.7fr 1fr', gap: 56, alignItems: 'start' }}>
           {/* Left, form card */}
@@ -517,7 +517,7 @@ const ClaimsForm = () => {
 
               <Field label={t('Photos (min. 3)', 'Fotos (mín. 3)')} name="photos" span={2}>
                 <div style={{
-                  border: '1.5px dashed var(--ink)', background: '#fcf6f0',
+                  border: '1.5px dashed var(--ink)', background: '#ffffff',
                   padding: '28px 22px', textAlign: 'center',
                   display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 10,
                 }}>
@@ -837,7 +837,7 @@ const SpecsLibrary = () => {
 const SpecsStamped = () => {
   const t = useT();
   return (
-  <section style={{ background: '#fcf6f0', padding: '112px 0' }}>
+  <section style={{ background: '#ffffff', padding: '112px 0' }}>
     <div className="container">
       <div style={{
         display: 'grid', gridTemplateColumns: '1.2fr 1fr',

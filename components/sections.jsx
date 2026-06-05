@@ -304,11 +304,6 @@ const ProjectListRow = ({ p, active, onSelect }) => {
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </span>
       <span style={{ display: 'block', minWidth: 0 }}>
-        <span className="mono" style={{
-          display: 'block', fontSize: 9.5, letterSpacing: '0.16em', textTransform: 'uppercase',
-          color: 'var(--charcoal)', marginBottom: 4,
-          overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-        }}>{p.type}</span>
         <span className="display" style={{
           display: 'block', fontSize: 15.5, lineHeight: 1.1, letterSpacing: '-0.01em',
           color: 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',

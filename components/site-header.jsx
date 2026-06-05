@@ -400,7 +400,7 @@ const SiteHeader = ({ active }) => {
                       maxHeight: isExpanded ? 500 : 0,
                       overflow: 'hidden',
                       transition: 'max-height 0.3s ease',
-                      background: '#fcf6f0',
+                      background: '#ffffff',
                     }}>
                       {def.items.map((it, i) => (
                         <a key={i} href={it.href} style={{
@@ -418,7 +418,7 @@ const SiteHeader = ({ active }) => {
                     <a href={fallbackHref} style={{
                       display: 'block', padding: '14px 20px 14px 36px',
                       borderTop: '1px solid rgba(0,16,17,0.06)',
-                      background: '#fcf6f0',
+                      background: '#ffffff',
                       fontSize: 14, color: 'var(--ink)', fontWeight: 500,
                     }}>
                       {def.kind === 'mega-fences'

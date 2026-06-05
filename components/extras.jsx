@@ -446,7 +446,7 @@ const AboutIntro = () => {
         <div style={{ position: 'relative', aspectRatio: '16 / 9' }}>
           <div style={{
             position: 'absolute', inset: 0,
-            background: '#fcf6f0',
+            background: '#ffffff',
             WebkitMask:
               'radial-gradient(circle 42px at 100% 0, transparent 42px, #000 43px) top right / 50% 50% no-repeat, ' +
               'radial-gradient(circle 42px at 0 100%, transparent 42px, #000 43px) bottom left / 50% 50% no-repeat, ' +

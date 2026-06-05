@@ -142,7 +142,7 @@ const EstimateHero = () => (
 
 const LiveAgentBand = () => (
   <section style={{
-    background: '#fcf6f0', padding: '112px 0',
+    background: 'var(--white)', padding: '112px 0',
     borderTop: '1px solid rgba(0,16,17,0.08)',
   }}>
     <div className="container">

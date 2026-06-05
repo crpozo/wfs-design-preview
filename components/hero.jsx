@@ -11,7 +11,7 @@ const Nav = () => {
   return (
     <header style={{
       position: 'sticky', top: 0, zIndex: 50,
-      background: scrolled ? 'rgba(252,246,240,0.92)' : 'transparent',
+      background: scrolled ? 'rgba(255,255,255,0.92)' : 'transparent',
       backdropFilter: scrolled ? 'blur(10px)' : 'none',
       borderBottom: scrolled ? '1px solid rgba(0,16,17,0.08)' : '1px solid transparent',
       transition: 'all 0.2s ease',

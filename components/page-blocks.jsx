@@ -117,7 +117,7 @@ const StatStrip = ({ items, dark = false }) => (
 );
 
 const CTABand = ({ kicker, title, accent, body, primary, secondary, theme = 'cream' }) => {
-  const bg = theme === 'ink' ? 'var(--ink)' : theme === 'parchment' ? 'var(--parchment)' : '#fcf6f0';
+  const bg = theme === 'ink' ? 'var(--ink)' : theme === 'parchment' ? 'var(--parchment)' : '#ffffff';
   const fg = theme === 'ink' ? 'var(--parchment)' : 'var(--ink)';
   const sub = theme === 'ink' ? 'var(--alice-blue)' : 'var(--charcoal)';
   return (

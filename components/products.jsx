@@ -145,7 +145,7 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
               style={{
                 display: 'flex', alignItems: 'center', gap: 18,
                 padding: '20px 18px',
-                background: isActive ? '#fcf6f0' : 'transparent',
+                background: isActive ? '#ffffff' : 'transparent',
                 border: 'none',
                 borderBottom: isLast ? 'none' : '1px solid rgba(0,16,17,0.12)',
                 color: 'var(--ink)',
@@ -189,7 +189,7 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
           position: 'absolute', inset: '6%',
           border: '1px solid rgba(0,16,17,0.18)',
           borderRadius: '50%',
-          background: '#fcf6f0',
+          background: '#ffffff',
         }}/>
         {/* Active image */}
         <img
@@ -259,7 +259,7 @@ const FenceCard = ({ item, index, featured }) => {
         position: 'relative',
         aspectRatio: featured ? '4 / 3.2' : '4 / 3.2',
         overflow: 'hidden',
-        background: '#fcf6f0',
+        background: '#ffffff',
       }}>
         <img src={FENCE_IMG[item.img]} alt={item.name}
           style={{

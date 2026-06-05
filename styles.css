@@ -17,7 +17,7 @@
   --coral: #ffa180;
   /* Neutrals */
   --white: #ffffff;
-  --parchment: #fcf6f0;
+  --parchment: #ffffff;
   --linen: #ffffff;
   --almond: #e5d8ca;
   --ink: #263167;
@@ -151,7 +151,7 @@ section { position: relative; }
   text-transform: uppercase;
   letter-spacing: 0.12em;
   padding: 14px 16px;
-  background: rgba(252,246,240,0.85);
+  background: rgba(255,255,255,0.85);
   color: var(--ink);
   border-radius: 6px;
   margin: 16px;

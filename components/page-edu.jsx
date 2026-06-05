@@ -199,7 +199,7 @@ const MaterialsCompDeepDive = () => {
               display: 'grid', gridTemplateColumns: '160px 1fr 1.4fr 1.4fr auto',
               gap: 28, alignItems: 'center',
               padding: '24px 28px',
-              background: i % 2 === 0 ? 'var(--white)' : '#fcf6f0',
+              background: i % 2 === 0 ? 'var(--white)' : '#ffffff',
               border: '1px solid rgba(0,16,17,0.12)',
               color: 'var(--ink)',
             }}>

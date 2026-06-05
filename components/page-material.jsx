@@ -279,7 +279,7 @@ const MaterialSpecs = ({ data }) => (
                 padding: '14px 18px',
                 fontSize: 10.5, letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--charcoal)', fontWeight: 700,
-                background: '#fcf6f0',
+                background: '#ffffff',
               }}>{k}</div>
               <div style={{ padding: '14px 18px', fontSize: 14, color: 'var(--ink)' }}>{v}</div>
             </div>
@@ -325,7 +325,7 @@ const MaterialOtherMaterials = ({ currentSlug }) => {
     { slug: 'ecfence',   href: 'ecfence.html',    name: 'EC Fence',            img: 'ecfence' },
   ].filter(m => m.slug !== currentSlug);
   return (
-    <section style={{ background: '#fcf6f0', padding: '88px 0' }}>
+    <section style={{ background: '#ffffff', padding: '88px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="04" label="Compare"
