@@ -1145,7 +1145,6 @@ const ContractorBenefits = () => {
       body:  { EN: 'Maximize your margins with true wholesale pricing tiered to your volume, no out-of-state distributor markup.',
                 ES: 'Maximiza tus márgenes con precios mayoristas reales escalonados por volumen, sin recargo de distribuidor de otro estado.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21 V11 L9 14 V11 L15 14 V11 L21 14 V21 Z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>),
-      highlighted: true,
     },
     {
       title: { EN: 'Priority Fabrication', ES: 'Fabricación prioritaria' },
@@ -1170,7 +1169,6 @@ const ContractorBenefits = () => {
       body:  { EN: 'Flexible payment terms available for qualified high-volume partners after a short trade-reference review.',
                 ES: 'Términos de pago flexibles disponibles para socios de alto volumen calificados, tras una breve revisión de referencias comerciales.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="6" width="18" height="13" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><rect x="6" y="14" width="4" height="2" rx="0.4" fill="currentColor"/></svg>),
-      highlighted: true,
     },
     {
       title: { EN: 'Dedicated Rep', ES: 'Representante dedicado' },
@@ -1298,7 +1296,7 @@ const ContractorHowItWorks = () => {
                 <span className="mono" style={{
                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                   width: 36, height: 36,
-                  background: i === 0 ? 'var(--tangerine)' : 'var(--ink)',
+                  background: 'var(--ink)',
                   color: 'var(--white)',
                   fontSize: 11, fontWeight: 700, letterSpacing: '0.05em',
                 }}>{s.n}</span>
