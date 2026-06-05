@@ -964,16 +964,16 @@ const ContractorHero = () => {
             }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px, -2px)'; e.currentTarget.style.boxShadow = '8px 8px 0 rgba(255,255,255,0.22)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '6px 6px 0 rgba(255,255,255,0.18)'; }}>
-              {t('Contact Wholesale Team', 'Contactar al equipo mayorista')}
+              {t('Get a Quick Quote', 'Cotización rápida')}
             </a>
-            <a href="resources.html" style={{
+            <a href="estimate.html" style={{
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
               padding: '14px 28px',
               background: 'transparent', color: 'var(--white)',
               border: '1.5px solid rgba(255,255,255,0.5)',
               fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
-            }}>{t('Request Price List', 'Solicitar lista de precios')}</a>
+            }}>{t('Verify Stock', 'Verificar stock')}</a>
           </div>
           {/* Trust micro-bullets */}
           <div className="mono" style={{
@@ -984,7 +984,7 @@ const ContractorHero = () => {
             {[
               { EN: 'No application fee',   ES: 'Sin costo de aplicación' },
               { EN: 'Volume tiers',          ES: 'Niveles por volumen' },
-              { EN: 'Net terms available',   ES: 'Términos Net disponibles' },
+              { EN: 'Flexible payment terms',   ES: 'Términos de pago flexibles' },
             ].map((b, i) => (
               <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
@@ -1072,8 +1072,6 @@ const ContractorHero = () => {
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15 14"/></svg>) },
                 { line: { EN: 'Free delivery to your job site',     ES: 'Entrega gratis a tu obra' },
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>) },
-                { line: { EN: 'Same rep on every order, flexible terms',   ES: 'El mismo representante en cada orden, términos flexibles' },
-                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20 Q5 14 12 14 Q19 14 19 20"/></svg>) },
               ].map((b, i) => (
                 <li key={i} style={{
                   display: 'flex', alignItems: 'center', gap: 12,
