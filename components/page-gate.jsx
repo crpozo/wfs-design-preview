@@ -8,7 +8,7 @@ const GATE_DATA = {
     heroTitle: 'Single-swing gates.',
     heroAccent: 'Walk-through and pedestrian openings.',
     heroBody: 'Standard pedestrian and entry gates from 3 to 6 ft wide. Mechanically assembled or welded, with hardware to match every fence material we stock, every kit ships with a self-latching gravity latch and padlockable hasp.',
-    heroImg: 'assets/gate-single-swing.jpg',
+    heroImg: 'assets/SINGLE_SWING_GATE.png',
     bestFor: 'Walk gates, residential side-yards, pool enclosures',
     profiles: [
       { name: 'Standard Walk',       tag: 'Residential',    notes: '3-4 ft wide mechanical kit, gravity latch + padlock hasp included.' },
@@ -48,7 +48,7 @@ const GATE_DATA = {
     heroTitle: 'Double-swing gates.',
     heroAccent: 'Driveway openings, single-day install.',
     heroBody: 'Symmetrical driveway-width gates from 8 to 16 ft total opening. Ready-to-assemble with drop rod, gate latch and stainless hardware kit packed per opening, single-day install for most layouts.',
-    heroImg: 'assets/gate-double.jpg',
+    heroImg: 'assets/DOUBLE_GATE.png',
     bestFor: 'Residential driveways, estate entries, vehicle access',
     profiles: [
       { name: 'Standard Drive',      tag: 'Residential',    notes: '8-12 ft total, mechanically assembled, drop rod + center latch.' },
@@ -88,7 +88,7 @@ const GATE_DATA = {
     heroTitle: 'Sliding gates.',
     heroAccent: 'For tight or graded openings.',
     heroBody: 'Track-mounted sliding gates for tight or graded driveways where a swing arc won\'t work. Manual or automated with operator and safety package, slides parallel to the fence.',
-    heroImg: 'assets/gate-sliding.jpg',
+    heroImg: 'assets/SLIDING_GATE.png',
     bestFor: 'Tight residential driveways, sloped sites, repeat daily use',
     profiles: [
       { name: 'Galvanized Mesh',     tag: 'Standard',    notes: 'V-track mounted chain-link mesh with twin rollers.' },
@@ -128,7 +128,7 @@ const GATE_DATA = {
     heroTitle: 'Cantilever gates.',
     heroAccent: 'Counter-balanced, no ground track.',
     heroBody: 'Counter-balanced rolling gates with no ground track, ideal for sites with sand, debris or grade change. Internal V-rollers and an overhang section that floats clear of the driveway. Single openings up to 50 ft.',
-    heroImg: 'assets/gate-cantilever.jpg',
+    heroImg: 'assets/CANTILEVER.png',
     bestFor: 'Industrial yards, coastal sites, long openings',
     profiles: [
       { name: 'Galvanized Frame',    tag: 'Industrial',   notes: 'Hot-dip galv welded frame with V-rollers, mesh or vinyl-coated.' },
@@ -168,7 +168,7 @@ const GATE_DATA = {
     heroTitle: 'Rolling gates.',
     heroAccent: 'Industrial V-track and rollers.',
     heroBody: 'Industrial rolling gates with V-track and ground rollers, built for high-cycle commercial use, secured perimeters and yards. Heavy galvanized frame with stainless-steel hardware, rated for hundreds of cycles a day.',
-    heroImg: 'assets/gate-rolling.jpg',
+    heroImg: 'assets/ROLLING_GATE.png',
     bestFor: 'Commercial perimeters, industrial yards, self-storage',
     profiles: [
       { name: 'V-Track Standard',    tag: 'Industrial',  notes: 'Heavy galvanized frame on V-track with stainless rollers.' },

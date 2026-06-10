@@ -48,11 +48,11 @@ const SiteHeader = ({ active }) => {
   ];
 
   const GATE_TILES = [
-    { key: 'aluminum',  name: { EN: 'Single Swing', ES: 'Batiente sencillo' },   tag: { EN: 'Walk + entry gates', ES: 'Peatonal + entrada' },       href: 'gate-single.html' },
-    { key: 'metal',     name: { EN: 'Double Swing', ES: 'Batiente doble' },      tag: { EN: 'Driveway access',    ES: 'Acceso vehicular' },          href: 'gate-double.html' },
-    { key: 'vinyl',     name: { EN: 'Sliding',      ES: 'Corredizo' },           tag: { EN: 'Track-mounted',      ES: 'Sobre riel' },                href: 'gate-sliding.html' },
-    { key: 'chainlink', name: { EN: 'Cantilever',   ES: 'Cantilever' },          tag: { EN: 'No-ground-track',    ES: 'Sin riel en piso' },          href: 'gate-cantilever.html' },
-    { key: 'ecfence',   name: { EN: 'Rolling',      ES: 'Rodante industrial' },  tag: { EN: 'Industrial V-track', ES: 'V-track industrial' },        href: 'gate-rolling.html' },
+    { key: 'gate-single',  name: { EN: 'Single Swing', ES: 'Batiente sencillo' },   tag: { EN: 'Walk + entry gates', ES: 'Peatonal + entrada' },       href: 'gate-single.html' },
+    { key: 'gate-double',     name: { EN: 'Double Swing', ES: 'Batiente doble' },      tag: { EN: 'Driveway access',    ES: 'Acceso vehicular' },          href: 'gate-double.html' },
+    { key: 'gate-sliding',     name: { EN: 'Sliding',      ES: 'Corredizo' },           tag: { EN: 'Track-mounted',      ES: 'Sobre riel' },                href: 'gate-sliding.html' },
+    { key: 'gate-cantilever', name: { EN: 'Cantilever',   ES: 'Cantilever' },          tag: { EN: 'No-ground-track',    ES: 'Sin riel en piso' },          href: 'gate-cantilever.html' },
+    { key: 'gate-rolling',   name: { EN: 'Rolling',      ES: 'Rodante industrial' },  tag: { EN: 'Industrial V-track', ES: 'V-track industrial' },        href: 'gate-rolling.html' },
   ];
 
   const Caret = () => (
