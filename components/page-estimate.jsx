@@ -60,15 +60,16 @@ const EstimateHero = () => (
           margin: '0 0 20px',
           fontFamily: 'var(--display)',
           fontVariationSettings: "'wdth' 100",
-          fontWeight: 700,
-          fontSize: 'clamp(32px, 3.6vw, 52px)',
-          lineHeight: 1.05,
-          letterSpacing: '-0.02em',
-          textTransform: 'none',
+          fontWeight: 800,
+          fontSize: 'clamp(30px, 3.4vw, 48px)',
+          lineHeight: 1.02,
+          letterSpacing: '-0.015em',
+          textTransform: 'uppercase',
           color: 'var(--white)',
+          textShadow: '0 2px 28px rgba(0,0,0,0.28)',
         }}>
           Draw your fence.{' '}
-          <span style={{ color: 'var(--tangerine)' }}>Get a binding quote in 24 hours.</span>
+          <span style={{ color: 'var(--blue-ice)' }}>Get a binding quote in 24 hours.</span>
         </h1>
         <p style={{
           fontSize: 16, lineHeight: 1.5, maxWidth: 460, margin: 0,

@@ -17,11 +17,11 @@ const Breadcrumb = ({ items, light = true }) => (
   </nav>
 );
 
-const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, height = 'clamp(380px, 56vh, 520px)' }) => (
+const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, height = 'clamp(420px, 58vh, 560px)' }) => (
   <section style={{
     position: 'relative', color: 'var(--white)', overflow: 'hidden',
     minHeight: height,
-    display: 'flex', flexDirection: 'column', justifyContent: 'flex-end',
+    display: 'flex', flexDirection: 'column', justifyContent: 'center',
     background: '#263166',
   }}>
     {image && (
@@ -30,27 +30,45 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, height = 'c
         objectFit: 'cover', objectPosition: 'center 45%', zIndex: 0,
       }}/>
     )}
+    {/* Scrim, strong left to light right, same recipe as the home banner */}
     <div aria-hidden style={{
       position: 'absolute', inset: 0, zIndex: 1,
-      background: 'linear-gradient(95deg, rgba(38, 49, 102,0.88) 0%, rgba(38, 49, 102,0.68) 55%, rgba(38, 49, 102,0.40) 100%)',
+      background: 'linear-gradient(95deg, rgba(38, 49, 103,0.86) 0%, rgba(38, 49, 103,0.68) 38%, rgba(38, 49, 103,0.42) 68%, rgba(38, 49, 103,0.26) 100%)',
     }}/>
     <div className="container" style={{
       position: 'relative', zIndex: 2,
       width: '100%',
-      paddingTop: 80, paddingBottom: 56,
+      paddingTop: 72, paddingBottom: 56,
     }}>
-      <h1 className="display" style={{
+      {eyebrow && (
+        <div className="mono" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 14,
+          marginBottom: 22,
+          fontSize: 'clamp(10px, 1vw, 12px)', fontWeight: 700,
+          letterSpacing: '0.22em', textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.85)',
+        }}>
+          <span aria-hidden style={{ width: 34, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
+          {eyebrow}
+        </div>
+      )}
+      <h1 style={{
         margin: '0 0 18px',
-        fontSize: 'clamp(28px, 3.4vw, 44px)',
-        lineHeight: 1, letterSpacing: '-0.02em',
+        fontFamily: 'var(--display)',
+        fontVariationSettings: "'wdth' 100",
+        fontWeight: 800,
+        fontSize: 'clamp(30px, 3.6vw, 50px)',
+        lineHeight: 1.02, letterSpacing: '-0.015em',
+        textTransform: 'uppercase',
         color: 'var(--white)',
-        maxWidth: 820,
+        textShadow: '0 2px 28px rgba(0,0,0,0.28)',
+        maxWidth: 880,
       }}>
-        {title}{accent && <><br/><span style={{ color: 'var(--tangerine)' }}>{accent}</span></>}
+        {title}{accent && <>{' '}<span style={{ color: 'var(--blue-ice)' }}>{accent}</span></>}
       </h1>
       {subtitle && (
         <p style={{
-          fontSize: 16, lineHeight: 1.55, maxWidth: 640, margin: 0,
+          fontSize: 16, lineHeight: 1.55, maxWidth: 600, margin: 0,
           color: 'rgba(255,255,255,0.85)',
         }}>{subtitle}</p>
       )}
