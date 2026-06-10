@@ -492,3 +492,10 @@ section { position: relative; }
   .wfs-slats { flex-direction: column; }
   .wfs-slat__vlabel { writing-mode: horizontal-tb; }
 }
+
+/* WFS brand line texture (elongated hexagons, like the yard banner) */
+.wfs-brand-texture {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22240%22%20height%3D%22456%22%20viewBox%3D%220%200%20240%20456%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-opacity%3D%220.07%22%20stroke-width%3D%221.5%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M60%2010%20L110%2062%20L110%20166%20L60%20218%20L10%20166%20L10%2062%20Z%22%2F%3E%3Cpath%20d%3D%22M60%20238%20L110%20290%20L110%20394%20L60%20446%20L10%20394%20L10%20290%20Z%22%2F%3E%3Cpath%20d%3D%22M180%20-104%20L230%20-52%20L230%2052%20L180%20104%20L130%2052%20L130%20-52%20Z%22%2F%3E%3Cpath%20d%3D%22M180%20124%20L230%20176%20L230%20280%20L180%20332%20L130%20280%20L130%20176%20Z%22%2F%3E%3Cpath%20d%3D%22M180%20352%20L230%20404%20L230%20508%20L180%20560%20L130%20508%20L130%20404%20Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size: 240px 456px;
+  background-repeat: repeat;
+}

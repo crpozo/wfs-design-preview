@@ -208,7 +208,7 @@ const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageRight = 
   const fg = dark ? 'var(--parchment)' : 'var(--ink)';
   const sub = dark ? 'var(--alice-blue)' : 'var(--charcoal)';
   return (
-    <section style={{ background: bg, color: fg, padding: '88px 0' }}>
+    <section className={dark ? 'wfs-brand-texture' : undefined} style={{ backgroundColor: bg, color: fg, padding: '88px 0' }}>
       <div className="container">
         <div style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56,
