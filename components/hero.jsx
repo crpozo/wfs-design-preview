@@ -103,8 +103,8 @@ const Hero = () => {
             color: 'var(--white)',
             textShadow: '0 2px 28px rgba(0,0,0,0.28)',
           }}>
-            {t('Fence materials,', 'Material de cercas,')}<br/>
-            <span style={{ color: 'var(--tangerine)' }}>{t('factory direct.', 'directo de fábrica.')}</span>
+            {t('The Best Place to Buy Fence in', 'El mejor lugar para comprar cercas en el')}{' '}
+            <span style={{ color: 'var(--tangerine)' }}>{t('Southwest Florida', 'suroeste de Florida')}</span>
           </h1>
 
           <p style={{
@@ -115,8 +115,8 @@ const Hero = () => {
             color: 'rgba(255,255,255,0.85)',
           }}>
             {t(
-              'Buy fence straight from the yard, no middleman markup. SW Florida supplier, not an installer. Stocked in Fort Myers.',
-              'Compra cerca directo del almacén, sin sobreprecio de intermediarios. Proveedor del suroeste de Florida, no instaladores. En stock en Fort Myers.'
+              "We're a one stop fence supply shop selling superior fences and gates at wholesale prices.",
+              'Somos una tienda integral de suministro de cercas que vende cercas y portones superiores a precios mayoristas.'
             )}
           </p>
 
