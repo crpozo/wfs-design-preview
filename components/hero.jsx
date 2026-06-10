@@ -85,26 +85,32 @@ const Hero = () => {
         paddingTop: 72, paddingBottom: 40,
       }}>
         <div className="container" style={{ width: '100%' }}>
-          <div style={{ maxWidth: 640, width: '100%' }}>
-          {/* Thin accent bar */}
-          <div aria-hidden style={{
-            width: 56, height: 4, background: 'var(--tangerine)',
-            marginBottom: 28, borderRadius: 2,
-          }}/>
+          <div style={{ maxWidth: 720, width: '100%' }}>
+          {/* Eyebrow */}
+          <div className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 14,
+            marginBottom: 24,
+            fontSize: 'clamp(10px, 1vw, 12px)', fontWeight: 700,
+            letterSpacing: '0.22em', textTransform: 'uppercase',
+            color: 'rgba(255,255,255,0.85)',
+          }}>
+            <span aria-hidden style={{ width: 34, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
+            {t('Factory direct fence supply · Fort Myers, FL', 'Suministro de cercas directo de fábrica · Fort Myers, FL')}
+          </div>
           <h1 style={{
-            margin: '0 0 20px',
+            margin: '0 0 22px',
             fontFamily: 'var(--display)',
             fontVariationSettings: "'wdth' 100",
             fontWeight: 800,
-            fontSize: 'clamp(34px, 3.8vw, 56px)',
-            lineHeight: 1.04,
-            letterSpacing: '-0.015em',
+            fontSize: 'clamp(40px, 5.6vw, 72px)',
+            lineHeight: 0.98,
+            letterSpacing: '-0.02em',
             textTransform: 'uppercase',
             color: 'var(--white)',
             textShadow: '0 2px 28px rgba(0,0,0,0.28)',
           }}>
             {t('The Best Place to Buy Fence in', 'El mejor lugar para comprar cercas en el')}{' '}
-            <span style={{ color: 'var(--tangerine)' }}>{t('Southwest Florida', 'suroeste de Florida')}</span>
+            <span style={{ color: 'var(--blue-ice)' }}>{t('Southwest Florida', 'suroeste de Florida')}</span>
           </h1>
 
           <p style={{
