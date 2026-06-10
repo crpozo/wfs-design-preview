@@ -143,15 +143,6 @@ const ProjectCard = ({ p, i, layout }) => {
 
       {/* Bottom content */}
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, padding: '20px', color: 'var(--white)' }}>
-        <div className="mono" style={{
-          fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
-          color: 'var(--alice-blue)', marginBottom: 8,
-          display: 'flex', gap: 12, alignItems: 'center',
-        }}>
-          <span>{p.material}</span>
-          <span style={{ width: 4, height: 4, background: 'var(--tangerine)', borderRadius: '50%' }}/>
-          <span>{p.type}</span>
-        </div>
         <h3 className="display" style={{
           margin: 0,
           fontSize: 'clamp(18px, 1.5vw, 22px)',
