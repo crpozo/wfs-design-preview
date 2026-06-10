@@ -469,3 +469,26 @@ section { position: relative; }
   .fence-rail > * { flex: 0 0 46%; scroll-snap-align: center; max-height: none !important; }
   .fence-card.is-active { transform: translateY(-8px) scale(1.02); }
 }
+
+/* Expanding fence slats (homepage fences section) */
+.wfs-slats {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+.wfs-slat {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  min-width: 0;
+  text-decoration: none;
+  transition: flex-grow 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.wfs-slat__vlabel {
+  writing-mode: vertical-rl;
+}
+@media (max-width: 900px) {
+  .wfs-slats { flex-direction: column; }
+  .wfs-slat__vlabel { writing-mode: horizontal-tb; }
+}

@@ -493,8 +493,19 @@ const AboutIntro = () => {
             maxWidth: 540,
           }}>
             {t(
-              "Southwest Florida's best source for high-quality vinyl, aluminum and chain-link fence materials. Family-owned and led by management with over a decade of installation and fabrication experience, same standard we held when we were the contractors.",
-              'La mejor fuente del suroeste de Florida para materiales de cerca de vinilo, aluminio y malla ciclónica de alta calidad. Empresa familiar dirigida por gerencia con más de una década de experiencia en instalación y fabricación, el mismo estándar que mantuvimos cuando éramos los contratistas.'
+              "Western Fence Supply is Southwest Florida's best source for high-quality vinyl fence, aluminum fence, and chain-link fence materials. We sell to fence companies and homeowners in Lee County, Collier County, Charlotte County, and Hendry County.",
+              'Western Fence Supply es la mejor fuente del suroeste de Florida para materiales de cerca de vinilo, aluminio y malla ciclónica de alta calidad. Vendemos a empresas de cercas y propietarios en los condados de Lee, Collier, Charlotte y Hendry.'
+            )}
+          </p>
+          <p style={{
+            marginTop: 14,
+            fontSize: 14.5, lineHeight: 1.55,
+            color: 'var(--charcoal)',
+            maxWidth: 540,
+          }}>
+            {t(
+              'Our goal is to sell superior quality fence products at wholesale prices and to deliver our fencing products to you with the highest attention to detail and with the best customer service in our industry. Take a tour of our shop, read our reviews, then contact us to get started on your dream fence project today.',
+              'Nuestra meta es vender productos de cerca de calidad superior a precios mayoristas y entregarlos con la mayor atención al detalle y el mejor servicio al cliente de nuestra industria. Recorre nuestra tienda, lee nuestras reseñas y contáctanos para comenzar hoy el proyecto de la cerca de tus sueños.'
             )}
           </p>
 

@@ -637,19 +637,121 @@ const SystemArena = ({ sectionId, items, rarity, label, chapter, align, variant,
   );
 };
 
-const FenceCategories = () => (
-  <SystemArena
-    sectionId="fences"
-    items={FENCE_CATEGORIES}
-    rarity={FENCE_RARITY}
-    label={{ EN: 'Fences', ES: 'Cercas' }}
-    chapter="01"
-    align="left"
-    variant="fence"
-    topLink={{ href: 'products.html', label: { EN: 'Full catalog', ES: 'Catálogo completo' } }}
-    ctaLabel={{ EN: 'Explore', ES: 'Explorar' }}
-  />
-);
+/* Fences, full-bleed expanding slats: hover a slat and it grows while the
+   others compress. Collapsed slats show a vertical label; the expanded one
+   reveals title + copy + explore link. */
+const FenceCategories = () => {
+  const t = useT();
+  const [active, setActive] = React.useState(0);
+  return (
+    <section id="fences" style={{
+      background: 'var(--indigo-blue)',
+      height: 'max(640px, calc(100svh - 80px))',
+      display: 'flex', flexDirection: 'column',
+      overflow: 'hidden',
+    }}>
+      {/* Header */}
+      <div className="container" style={{
+        width: '100%',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        gap: 24, flexWrap: 'wrap',
+        padding: 'clamp(28px, 4.5vh, 44px) var(--pad)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+          <span className="mono" style={{
+            background: 'var(--laser-blue)', color: 'var(--white)',
+            padding: '3px 7px', fontSize: 13, fontWeight: 700, lineHeight: 1,
+          }}>01</span>
+          <h2 className="display" style={{
+            margin: 0, fontSize: 'clamp(28px, 2.6vw, 40px)', fontWeight: 800,
+            letterSpacing: '-0.01em', textTransform: 'uppercase', color: 'var(--white)',
+            lineHeight: 1,
+          }}>{t('Fences', 'Cercas')}</h2>
+          <span aria-hidden style={{ width: 90, height: 2, background: 'var(--laser-blue)' }}/>
+        </div>
+        <a href="products.html" className="mono" style={{
+          fontSize: 'clamp(12px, 1vw, 15px)', fontWeight: 700,
+          letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--white)',
+        }}>{t('Full catalog', 'Catálogo completo')} →</a>
+      </div>
+
+      {/* Slats */}
+      <div className="wfs-slats">
+        {FENCE_CATEGORIES.map((c, i) => {
+          const exp = i === active;
+          return (
+            <a key={c.id} href={c.href}
+              className="wfs-slat"
+              onMouseEnter={() => setActive(i)}
+              onFocus={() => setActive(i)}
+              style={{ flexGrow: exp ? 3.2 : 1, flexBasis: 0 }}>
+              <img src={FENCE_IMG[c.img]} alt={t(c.name)} style={{
+                position: 'absolute', inset: 0, width: '100%', height: '100%',
+                objectFit: 'cover',
+              }}/>
+              {/* Navy overlay, lighter on the expanded slat */}
+              <div aria-hidden style={{
+                position: 'absolute', inset: 0,
+                background: exp ? 'rgba(38, 49, 102, 0.14)' : 'rgba(38, 49, 102, 0.66)',
+                transition: 'background 0.5s ease',
+              }}/>
+              {/* Number */}
+              <span className="mono" style={{
+                position: 'absolute', top: 24, left: 24,
+                fontSize: 15, fontWeight: 700, lineHeight: 1,
+                color: exp ? 'var(--tangerine)' : 'var(--blue-ice)',
+                transition: 'color 0.35s ease',
+              }}>0{i + 1}</span>
+              {/* New chip */}
+              {c.isNew && (
+                <span className="mono" style={{
+                  position: 'absolute', top: 22, right: 22,
+                  background: 'var(--tangerine)', color: 'var(--white)',
+                  padding: '4px 8px', fontSize: 10, fontWeight: 700,
+                  letterSpacing: '0.22em', textTransform: 'uppercase', lineHeight: 1,
+                }}>{t('New', 'Nuevo')}</span>
+              )}
+              {/* Collapsed, vertical label */}
+              <span className="mono wfs-slat__vlabel" style={{
+                position: 'absolute', bottom: 26, left: 22,
+                fontSize: 'clamp(13px, 1.1vw, 19px)', fontWeight: 600,
+                letterSpacing: '0.18em', textTransform: 'uppercase',
+                color: 'var(--white)', whiteSpace: 'nowrap',
+                opacity: exp ? 0 : 1,
+                transition: 'opacity 0.3s ease',
+              }}>{t(c.name)}</span>
+              {/* Expanded content */}
+              <div style={{
+                position: 'absolute', left: 'clamp(24px, 3vw, 44px)', right: 'clamp(20px, 2.5vw, 40px)', bottom: 'clamp(26px, 4.5vh, 44px)',
+                opacity: exp ? 1 : 0,
+                transform: exp ? 'translateY(0)' : 'translateY(12px)',
+                transition: exp ? 'opacity 0.4s ease 0.18s, transform 0.4s ease 0.18s' : 'opacity 0.2s ease, transform 0.2s ease',
+                pointerEvents: exp ? 'auto' : 'none',
+              }}>
+                <h3 className="display" style={{
+                  margin: '0 0 12px', fontSize: 'clamp(26px, 2.9vw, 56px)',
+                  fontWeight: 800, lineHeight: 0.98, letterSpacing: '-0.01em',
+                  textTransform: 'uppercase', color: 'var(--white)',
+                }}>{t(c.name)}</h3>
+                <p style={{
+                  margin: '0 0 18px', maxWidth: 520,
+                  fontSize: 'clamp(13px, 1.05vw, 16px)', lineHeight: 1.5,
+                  color: 'var(--alice-blue)',
+                }}>{t(c.desc)}</p>
+                <span className="mono" style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 12,
+                  fontSize: 'clamp(12px, 1vw, 15px)', fontWeight: 700,
+                  letterSpacing: '0.16em', textTransform: 'uppercase',
+                  color: 'var(--tangerine)',
+                }}>{t('Explore', 'Explora')} {t(c.name)} <span style={{ fontSize: '1.25em' }}>→</span></span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </section>
+  );
+};
 
 /* Gates, same arena, mirrored to the right with an industrial palette so it
    reads as gates, not a second fences section. */
