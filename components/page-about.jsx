@@ -36,7 +36,7 @@ const AboutStory = () => (
           margin: 0, maxWidth: 420, justifySelf: 'end', textAlign: 'right',
           fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
-          Founded in 2003 by a fence contractor tired of driving to Miami for material, built into a two-yard supplier across Lee, Collier, Charlotte and Sarasota.
+          A family-run Southwest Florida fence supplier, led by management with over a decade of fencing installation and fabrication experience. Two yards across Lee, Collier, Charlotte and Hendry.
         </p>
       </div>
 
@@ -65,7 +65,7 @@ const AboutStory = () => (
               position: 'absolute', bottom: 18, left: 18, right: 18,
               color: 'var(--white)',
             }}>
-              <div className="display" style={{ fontSize: 18, lineHeight: 1.1 }}>2611 Fowler St</div>
+              <div className="display" style={{ fontSize: 18, lineHeight: 1.1 }}>2621 Fowler St</div>
               <div className="mono" style={{ marginTop: 6, fontSize: 10, letterSpacing: '0.18em', color: 'rgba(255,255,255,0.85)' }}>FORT MYERS, FL 33901</div>
             </div>
           </div>
@@ -76,12 +76,12 @@ const AboutStory = () => (
             paddingTop: 20, borderTop: '1px solid rgba(0,16,17,0.12)',
           }}>
             <div>
-              <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--ink)' }}>22+</div>
-              <div className="mono" style={{ marginTop: 8, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>Years family-owned</div>
+              <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--ink)' }}>10+</div>
+              <div className="mono" style={{ marginTop: 8, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>Years experience</div>
             </div>
             <div>
-              <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--ink)' }}>5</div>
-              <div className="mono" style={{ marginTop: 8, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>Catalog expansions</div>
+              <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--ink)' }}>2</div>
+              <div className="mono" style={{ marginTop: 8, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>Yards · FM + PC</div>
             </div>
           </div>
         </div>
@@ -94,11 +94,11 @@ const AboutStory = () => (
             width: 1, background: 'rgba(255,113,51,0.35)',
           }}/>
           {[
-            ['2003', 'Founded',             'Family launches WFS out of a single Fort Myers yard with one truck and four chain-link product lines.'],
-            ['2008', 'Fabrication shop',    'Welding shop opens in-house, drives custom gate lead times from weeks down to days.'],
-            ['2016', 'Aluminum + Vinyl',    'Catalog expands to factory-direct aluminum and Veka-extruded vinyl. Residential business grows 4×.'],
-            ['2021', 'Port Charlotte yard', 'Second location opens to serve Charlotte and Sarasota counties with same-day pickup.'],
-            ['2024', 'EC Fence',            'WFS becomes a Southwest Florida distributor for EC Fence self-mating galvanized panels.'],
+            ['01', 'Supply only',          'We are a supply company, not an installer. We sell the material your fence is built from and can recommend trusted local installers for the build.'],
+            ['02', 'In-house fabrication', 'Gates and custom work are fabricated in-house at our Fort Myers yard.'],
+            ['03', 'Four fence systems',   'Premium vinyl, aluminum, chain link and metal fencing, sold to fence companies and homeowners alike.'],
+            ['04', 'Two yards',            'Fort Myers and Port Charlotte, serving Lee, Collier, Charlotte and Hendry counties.'],
+            ['05', 'Delivery or pickup',   'Job-site delivery on our own trucks, or same-day pickup on standard qualifying orders.'],
           ].map(([y, t, body], i, arr) => (
             <div key={y} style={{
               position: 'relative',
@@ -190,11 +190,11 @@ const AboutShop = () => (
 
 const AboutStats = () => {
   const stats = [
-    ['22+',  'Years in business', 'Family-owned since 2003'],
-    ['480+', 'Active SKUs',       'Across five fence systems'],
+    ['10+',  'Years experience',  'Fencing install + fabrication'],
+    ['4',    'Fence materials',   'Vinyl · Aluminum · Chain link · Metal'],
     ['2',    'Yards',             'Fort Myers + Port Charlotte'],
-    ['4',    'Counties served',   'Lee · Collier · Charlotte · Sarasota'],
-    ['24h',  'Quote turnaround',  '18-hour average this week'],
+    ['4',    'Counties served',   'Lee · Collier · Charlotte · Hendry'],
+    ['Lifetime', 'Warranty',      'On most materials we sell'],
   ];
   return (
     <section style={{ background: 'var(--white)', padding: '112px 0' }}>
@@ -211,7 +211,7 @@ const AboutStats = () => {
           }}>
             <span className="display" style={{
               fontSize: 22, lineHeight: 1, color: 'var(--ink)',
-            }}>Family-owned since 2003.</span>
+            }}>Family-owned and run.</span>
             <span style={{ fontSize: 13.5, color: 'var(--charcoal)' }}>
               Two yards, zero plans to franchise.
             </span>

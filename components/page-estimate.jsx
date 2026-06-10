@@ -50,7 +50,7 @@ const EstimateHero = () => (
             background: '#ff7133',
             boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)',
           }}/>
-          18h avg turnaround · this week
+          Supplier-direct · no middleman
         </div>
       </div>
 
@@ -167,7 +167,7 @@ const LiveAgentBand = () => (
           margin: 0, maxWidth: 320, justifySelf: 'end', textAlign: 'right',
           fontSize: 13.5, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
-          Two reps splitting calls Mon-Sat. Avg pickup under 18 seconds during business hours.
+          Two reps splitting calls Mon-Sat during business hours.
         </p>
       </div>
 
@@ -218,7 +218,7 @@ const LiveAgentBand = () => (
             fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
             color: 'var(--alice-blue)', lineHeight: 1.5,
           }}>
-            Avg pickup · under 18 seconds<br/>
+            Real sales reps, no bots<br/>
             Fort Myers + Port Charlotte yards
           </div>
         </a>
@@ -270,7 +270,7 @@ const LiveAgentBand = () => (
             fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
             color: 'var(--charcoal)', lineHeight: 1.5,
           }}>
-            Quote turnaround · 18 hrs avg this week<br/>
+            We follow up with a detailed quote<br/>
             Attach a sketch or survey if you have one
           </div>
         </a>

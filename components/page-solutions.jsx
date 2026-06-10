@@ -21,8 +21,8 @@ const SolutionsAudiences = () => {
       bullets: [
         'Trade accounts after second order',
         'Will-call staging, pull up to bay, walk out in 15 min',
-        'Custom welded gates in 5-7 business days',
-        'Job-site delivery across Lee, Collier, Charlotte, Sarasota',
+        'Custom welded gates fabricated in-house',
+        'Job-site delivery across Lee, Collier, Charlotte, Hendry',
       ],
       cta: ['Open a trade account', 'estimate.html'],
       image: 'assets/wfs-shop.webp',

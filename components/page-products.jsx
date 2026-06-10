@@ -3,7 +3,7 @@
 const ProductsHero = () => (
   <PageHero
     crumbs={[['Home', 'Homepage.html'], ['Products', null]]}
-    eyebrow="Full catalog · 480+ SKUs"
+    eyebrow="Full catalog"
     title="Five fence systems."
     accent="One Fort Myers yard."
     subtitle="Factory-direct material, vinyl, aluminum, chain link, metal and EC Fence, plus gates, hardware and accessories. Same supplier-direct pricing for contractors, homeowners and DIY projects."
@@ -14,8 +14,8 @@ const ProductsHero = () => (
 const PRODUCT_INTRO_STATS = [
   ['5', 'Fence systems'],
   ['5', 'Gate systems'],
-  ['480+', 'Active SKUs'],
-  ['24h', 'Quote turnaround'],
+  ['2', 'Yards · FM + PC'],
+  ['Lifetime', 'Warranty'],
 ];
 
 const ProductsIntro = () => (

@@ -21,7 +21,7 @@ const ProjectsHero = () => (
     eyebrow="Project archive · 2024-2025"
     title="Real projects."
     accent="Real perimeters."
-    subtitle="Forty-plus completed jobs across Lee, Collier, Charlotte and Sarasota. Filter by material below."
+    subtitle="Forty-plus completed jobs across Lee, Collier, Charlotte and Hendry. Filter by material below."
     image="assets/hero-warehouse.webp"
   />
 );

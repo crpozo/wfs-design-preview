@@ -32,7 +32,7 @@ const GATE_DATA = {
     ],
     contractor: {
       tag: 'Walk gates · Trade-account pickup',
-      heroBody: 'Ready-to-assemble kits or in-house welded custom from 3 to 6 ft. Hardware kits packed and labeled per opening. Trade accounts after the second order, pull up to the bay, walk out in 15 minutes.',
+      heroBody: 'Ready-to-assemble kits or in-house welded custom from 3 to 6 ft. Hardware kits packed and labeled per opening. Trade accounts after the second order, pull up to the bay, walk out fast.',
       bestFor: 'Volume residential, code-compliant pool runs, will-call pickup',
       useCases: [
         ['Trade volume',         'Stocked widths for repeat residential jobs. Ready-to-assemble kits cut field install time.'],
@@ -77,7 +77,7 @@ const GATE_DATA = {
       useCases: [
         ['Volume residential', 'Same-day pickup on stocked 10/12/14 ft openings, cuts site time.'],
         ['Custom welded fab',  'Estate runs and non-stock widths welded in-house in 5-7 days.'],
-        ['Trade dispatch',     'Job-site delivery across Lee, Collier, Charlotte and Sarasota.'],
+        ['Trade dispatch',     'Job-site delivery across Lee, Collier, Charlotte and Hendry.'],
       ],
     },
   },

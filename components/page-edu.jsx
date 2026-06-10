@@ -127,7 +127,7 @@ const FaqCTA = () => (
     kicker="Didn't find your question?"
     title="Call (239) 689-5496"
     accent="or send the project."
-    body="Two reps splitting calls Mon-Sat 7am-4pm. Avg pickup under 18 seconds during business hours."
+    body="Two reps splitting calls Mon-Sat 7am-4pm during business hours."
     primary={['Request a quote', 'estimate.html']}
     secondary={['Call the yard', 'tel:2396895496']}
   />

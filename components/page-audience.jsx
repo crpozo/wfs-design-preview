@@ -228,7 +228,7 @@ const HomeownerTrustStrip = () => {
         {[
           ['22+',  { EN: 'Years family-owned', ES: 'Años familia propietaria' }],
           ['2',    { EN: 'Yards · FM + PC',    ES: 'Sucursales · FM + PC' }],
-          ['480+', { EN: 'Active SKUs',         ES: 'SKUs activos' }],
+          ['2', { EN: 'Yards · FM + PC',       ES: 'Sucursales · FM + PC' }],
           ['24h',  { EN: 'Quote turnaround',    ES: 'Cotización en 24h' }],
         ].map(([n, l], i) => (
           <div key={n} className="wfs-stat-cell" style={{
@@ -1068,7 +1068,7 @@ const ContractorHero = () => {
               {[
                 { line: { EN: 'Wholesale pricing, manufacturer-direct',  ES: 'Precios mayoristas, directo del fabricante' },
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9 L12 4 L18 9 L18 19 H6 Z"/><path d="M9 19 V13 H15 V19"/></svg>) },
-                { line: { EN: 'Priority manufacturing, 72h on gates', ES: 'Fabricación prioritaria, 72h en portones' },
+                { line: { EN: 'Priority manufacturing on gates', ES: 'Fabricación prioritaria en portones' },
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15 14"/></svg>) },
                 { line: { EN: 'Free delivery to your job site',     ES: 'Entrega gratis a tu obra' },
                   icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>) },
@@ -1110,7 +1110,7 @@ const ContractorStatsStrip = () => {
       <div className="wfs-stat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
         {[
           ['Tiered', { EN: 'Wholesale margin tiers',     ES: 'Niveles de margen mayorista' }],
-          ['72h',    { EN: 'Avg priority fabrication',   ES: 'Fabricación prioritaria promedio' }],
+          ['In-house', { EN: 'Gate fabrication',          ES: 'Fabricación de portones' }],
           [{ EN: 'Free', ES: 'Gratis' }, { EN: 'Job-site drops · in-county', ES: 'Entregas a obra · mismo condado' }],
           ['Free',     { EN: 'Application fee',             ES: 'Costo de aplicación' }],
         ].map(([n, l], i) => (
@@ -1146,8 +1146,8 @@ const ContractorBenefits = () => {
     },
     {
       title: { EN: 'Priority Fabrication', ES: 'Fabricación prioritaria' },
-      body:  { EN: 'Skip the line. Wholesale partners get priority manufacturing slots and 72-hour standard turnaround on gates.',
-                ES: 'Sáltate la fila. Los socios mayoristas obtienen turnos prioritarios de fabricación y entrega estándar de 72 horas en portones.' },
+      body:  { EN: 'Skip the line. Wholesale partners get priority manufacturing slots and turnaround on gates.',
+                ES: 'Sáltate la fila. Los socios mayoristas obtienen turnos prioritarios de fabricación y entrega en portones.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>),
     },
     {

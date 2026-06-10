@@ -24,7 +24,7 @@ const FeaturedGrid = () => {
             </h2>
           </div>
           <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 500, fontSize: 14 }}>
-            View all 480+ SKUs <ArrowRight />
+            View full catalog <ArrowRight />
           </a>
         </div>
 
@@ -769,9 +769,9 @@ const ServiceAreas = () => {
           {/* Yard cards stacked */}
           <div style={{ display: 'grid', gridTemplateRows: 'repeat(3, 1fr)', gap: 12 }}>
             {[
-              { city: 'Fort Myers · HQ', addr: '2611 Fowler St, FL 33901', phone: '(239) 689-5496' },
+              { city: 'Fort Myers · HQ', addr: '2621 Fowler St, FL 33901', phone: '(239) 689-5496' },
               { city: 'Port Charlotte', addr: '1145 Enterprise Dr, FL 33953', phone: '(941) 391-6613' },
-              { city: 'Counties served', addr: 'Lee · Collier · Charlotte · Hendry · Sarasota', phone: 'Mon-Sat · 7am-4pm' },
+              { city: 'Counties served', addr: 'Lee · Collier · Charlotte · Hendry · Hendry', phone: 'Mon-Sat · 7am-4pm' },
             ].map((y, i) => (
               <div key={i} style={{
                 border: '1px solid rgba(0,16,17,0.18)',
@@ -882,12 +882,12 @@ const FinalCTA = () => {
             </div>
             <div style={{ marginBottom: 32 }}>
               <div style={labelStyle}>{t('Visit', 'Visítanos')}</div>
-              <div style={{ fontSize: 14, color: 'var(--ink)', lineHeight: 1.5 }}>2611 Fowler St<br/>Fort Myers, FL 33901</div>
+              <div style={{ fontSize: 14, color: 'var(--ink)', lineHeight: 1.5 }}>2621 Fowler St<br/>Fort Myers, FL 33901</div>
             </div>
             <div style={{ paddingTop: 24, borderTop: '1px solid rgba(0,16,17,0.15)' }}>
               <div className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', color: 'var(--ink)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ width: 8, height: 8, background: '#ff7133', borderRadius: '50%' }}/>
-                {t('Currently quoting in 18hrs avg', 'Cotizando en 18 hrs en promedio')}
+                {t('Get a detailed quote', 'Pide tu cotización')}
               </div>
             </div>
           </div>
@@ -995,8 +995,8 @@ const Footer = () => {
             <Logo light />
             <p style={{ fontSize: 14, color: 'var(--alice-blue)', lineHeight: 1.5, marginTop: 20, maxWidth: 320 }}>
               {t(
-                "Fencing material supplier for contractors, homeowners and DIY projects. Family-owned, factory-direct since 2003, we supply, we don't install.",
-                'Proveedor de material de cercado para contratistas, propietarios y proyectos DIY. Empresa familiar, directo de fábrica desde 2003, suministramos, no instalamos.'
+                "Fencing material supplier for contractors, homeowners and DIY projects. Family-owned, factory-direct, we supply, we don't install.",
+                'Proveedor de material de cercado para contratistas, propietarios y proyectos DIY. Empresa familiar, directo de fábrica, suministramos, no instalamos.'
               )}
             </p>
           </div>

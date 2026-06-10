@@ -858,7 +858,7 @@ const SpecsStamped = () => {
             color: 'rgba(255,255,255,0.78)', maxWidth: 480,
           }}>
             {t(
-              'We have a licensed FL Professional Engineer on retainer for stamped wind-load letters, structural calcs and HVHZ submission packages. Most stamped requests close in 5-7 business days.',
+              'We have a licensed FL Professional Engineer on retainer for stamped wind-load letters, structural calcs and HVHZ submission packages. Stamped requests are available on most products.',
               'Tenemos un Ingeniero Profesional licenciado de FL en retainer para cartas selladas de carga eólica, cálculos estructurales y paquetes de presentación HVHZ. La mayoría de solicitudes selladas se cierran en 5-7 días hábiles.'
             )}
           </p>
