@@ -15,21 +15,19 @@ const Logo = ({ light = false }) => (
 );
 
 const FENCE_IMG = {
-  // Material thumbs, local assets only (Unsplash IDs we tried showed up
-  // as flowers / library / cabin). chainlink keeps the one Unsplash ID
-  // we've actually visually verified renders as a chain-link fence.
-  aluminum:  'assets/gate-single-swing.jpg',   // black walk-gate · residential fence stand-in
-  chainlink: 'https://images.unsplash.com/photo-1519478224231-4f91b359198b?auto=format&fit=crop&w=1200&q=80',
-  metal:     'assets/ec-fence.jpg',            // horizontal aluminum board · same family as DuraFence
-  vinyl:     'assets/gate-double.jpg',         // white vinyl double swing
-  ecfence:   'assets/ec-fence.jpg',
+  // Real product photos uploaded to assets/
+  aluminum:  'assets/ALUM.png',
+  chainlink: 'assets/CHAINLINK.png',
+  metal:     'assets/MET.png',
+  vinyl:     'assets/PVC.png',
+  ecfence:   'assets/ECFENCE.png',
   shop:      'assets/wfs-shop.webp',
   // Gate systems
-  'gate-single':     'assets/gate-single-swing.jpg',
-  'gate-double':     'assets/gate-double.jpg',
-  'gate-sliding':    'assets/gate-sliding.jpg',
-  'gate-cantilever': 'assets/gate-cantilever.jpg',
-  'gate-rolling':    'assets/gate-rolling.jpg',
+  'gate-single':     'assets/SINGLE_SWING_GATE.png',
+  'gate-double':     'assets/DOUBLE_GATE.png',
+  'gate-sliding':    'assets/SLIDING_GATE.png',
+  'gate-cantilever': 'assets/CANTILEVER.png',
+  'gate-rolling':    'assets/ROLLING_GATE.png',
 };
 
 const FENCE_ICON = {
