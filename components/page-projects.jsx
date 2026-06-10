@@ -78,10 +78,10 @@ const ProjectsBigGallery = () => {
 };
 
 const ProjectsCaseStudy = () => (
-  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', color: 'var(--parchment)', padding: '96px 0' }}>
+  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', color: 'var(--parchment)', padding: 'clamp(40px, 7vh, 72px) 0', display: 'flex', alignItems: 'center', minHeight: 0, maxHeight: 'none' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 56, alignItems: 'center' }}>
-        <div style={{ position: 'relative', aspectRatio: '4 / 5', overflow: 'hidden' }}>
+        <div style={{ position: 'relative', aspectRatio: '4 / 5', overflow: 'hidden', width: 'min(100%, calc(min(60vh, 540px) * 0.8))', justifySelf: 'center' }}>
           <img src="assets/gate-rolling.jpg"
             alt="Fort Myers Industrial Park perimeter"
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>

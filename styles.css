@@ -493,10 +493,13 @@ section { position: relative; }
   .wfs-slat__vlabel { writing-mode: horizontal-tb; }
 }
 
-/* WFS brand texture: logo-style bars rising from the bottom */
+/* WFS brand texture: subtle vertical pinstripes, like the brand card */
 .wfs-brand-texture {
-  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22192%22%20height%3D%22360%22%20viewBox%3D%220%200%20192%20360%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.12%22%3E%3Cpath%20d%3D%22M0%20360%20L0%20140%20Q0%20110%2036%20110%20L36%20360%20Z%22%2F%3E%3Cpath%20d%3D%22M64%20360%20L64%2095%20Q64%2065%20100%2065%20L100%20360%20Z%22%2F%3E%3Cpath%20d%3D%22M128%20360%20L128%2050%20Q128%2020%20164%2020%20L164%20360%20Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
-  background-size: 192px 360px;
-  background-repeat: repeat-x;
-  background-position: left bottom;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.045) 0px,
+    rgba(255, 255, 255, 0.045) 26px,
+    transparent 26px,
+    transparent 56px
+  );
 }
