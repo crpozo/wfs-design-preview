@@ -876,7 +876,7 @@ const HomeownerPage = () => (
     <HomeownerHero />
     <HomeownerTrustStrip />
     <HomeownerSteps />
-    <HomeownerStylePicker />
+    <FenceCategories />
     <HomeownerInstallerSplit />
     <HomeownerTestimonial />
     <HomeownerFAQ />
