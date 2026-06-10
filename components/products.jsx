@@ -36,31 +36,31 @@ const FENCE_CATEGORIES = [
 const GATE_SYSTEMS = [
   {
     id: 'single-swing', name: { EN: 'Single Gate', ES: 'Portón sencillo' }, tag: { EN: 'Walk & entry gates', ES: 'Peatonales y de entrada' },
-    img: 'gate-single', href: 'gate-single.html',
+    img: 'aluminum', href: 'gate-single.html',
     desc: { EN: 'Single walk gates for entry points, fabricated in-house and available in vinyl, chain link, metal and aluminum to match your fence. Standard and custom sizes.',
             ES: 'Portones peatonales para puntos de entrada, fabricados en planta y disponibles en vinilo, malla, metal y aluminio para combinar con tu cerca. Tamaños estándar y a medida.' },
   },
   {
     id: 'double-swing', name: { EN: 'Double Gate', ES: 'Portón doble' }, tag: { EN: 'Driveway drive gates', ES: 'Portones de acceso vehicular' },
-    img: 'gate-double', href: 'gate-double.html',
+    img: 'metal', href: 'gate-double.html',
     desc: { EN: 'Double drive gates for driveway access, fabricated in-house in vinyl, chain link, metal and aluminum, standard or custom sized, with matching hardware.',
             ES: 'Portones dobles para acceso vehicular, fabricados en planta en vinilo, malla, metal y aluminio, estándar o a medida, con herrajes a juego.' },
   },
   {
     id: 'sliding', name: { EN: 'Sliding Gate', ES: 'Portón corredizo' }, tag: { EN: 'Space-saving access', ES: 'Acceso que ahorra espacio' },
-    img: 'gate-sliding', href: 'gate-sliding.html',
+    img: 'vinyl', href: 'gate-sliding.html',
     desc: { EN: 'Sliding gates for openings with no room to swing. Fabricated in-house and available in standard and custom sizes.',
             ES: 'Portones corredizos para aberturas sin espacio para abatir. Fabricados en planta, en tamaños estándar y a medida.' },
   },
   {
     id: 'cantilever', name: { EN: 'Cantilever Gate', ES: 'Portón cantilever' }, tag: { EN: 'Commercial & industrial', ES: 'Comercial e industrial' },
-    img: 'gate-cantilever', href: 'gate-cantilever.html',
+    img: 'chainlink', href: 'gate-cantilever.html',
     desc: { EN: 'Cantilever gates built for easy operation and long-lasting use, quick, secure entry to and from your property.',
             ES: 'Portones cantilever construidos para operación fácil y uso duradero, entrada y salida rápida y segura de tu propiedad.' },
   },
   {
     id: 'rolling', name: { EN: 'Rolling Gate', ES: 'Portón rodante' }, tag: { EN: 'Industrial rolling gates', ES: 'Portones rodantes industriales' },
-    img: 'gate-rolling', href: 'gate-rolling.html',
+    img: 'ecfence', href: 'gate-rolling.html',
     desc: { EN: 'Rolling gates built for easy operation and long-lasting use, for quick and secure entry to and from your property.',
             ES: 'Portones rodantes construidos para operación fácil y uso duradero, para entrada y salida rápida y segura de tu propiedad.' },
   },
