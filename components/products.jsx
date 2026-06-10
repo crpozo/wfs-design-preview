@@ -646,7 +646,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
   return (
     <section id={id} style={{
       background: 'var(--indigo-blue)',
-      height: 'max(640px, calc(100svh - 80px))',
+      height: 'clamp(540px, calc(100svh - 118px), 880px)',
       display: 'flex', flexDirection: 'column',
       overflow: 'hidden',
     }}>
@@ -655,7 +655,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
         width: '100%',
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         gap: 24, flexWrap: 'wrap',
-        padding: 'clamp(28px, 4.5vh, 44px) var(--pad)',
+        padding: 'clamp(18px, 3vh, 30px) var(--pad)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
           <span className="mono" style={{
