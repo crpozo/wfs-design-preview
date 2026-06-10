@@ -637,14 +637,14 @@ const SystemArena = ({ sectionId, items, rarity, label, chapter, align, variant,
   );
 };
 
-/* Fences, full-bleed expanding slats: hover a slat and it grows while the
-   others compress. Collapsed slats show a vertical label; the expanded one
-   reveals title + copy + explore link. */
-const FenceCategories = () => {
+/* Full-bleed expanding slats: hover a slat and it grows while the others
+   compress. Collapsed slats show a vertical label; the expanded one reveals
+   title + copy + explore link. Shared by Fences and Gates. */
+const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
   const t = useT();
   const [active, setActive] = React.useState(0);
   return (
-    <section id="fences" style={{
+    <section id={id} style={{
       background: 'var(--indigo-blue)',
       height: 'max(640px, calc(100svh - 80px))',
       display: 'flex', flexDirection: 'column',
@@ -661,23 +661,23 @@ const FenceCategories = () => {
           <span className="mono" style={{
             background: 'var(--laser-blue)', color: 'var(--white)',
             padding: '3px 7px', fontSize: 13, fontWeight: 700, lineHeight: 1,
-          }}>01</span>
+          }}>{chapter}</span>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 2.6vw, 40px)', fontWeight: 800,
             letterSpacing: '-0.01em', textTransform: 'uppercase', color: 'var(--white)',
             lineHeight: 1,
-          }}>{t('Fences', 'Cercas')}</h2>
+          }}>{t(label)}</h2>
           <span aria-hidden style={{ width: 90, height: 2, background: 'var(--laser-blue)' }}/>
         </div>
-        <a href="products.html" className="mono" style={{
+        <a href={topLink.href} className="mono" style={{
           fontSize: 'clamp(12px, 1vw, 15px)', fontWeight: 700,
           letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--white)',
-        }}>{t('Full catalog', 'Catálogo completo')} →</a>
+        }}>{t(topLink.label)} →</a>
       </div>
 
       {/* Slats */}
       <div className="wfs-slats">
-        {FENCE_CATEGORIES.map((c, i) => {
+        {items.map((c, i) => {
           const exp = i === active;
           return (
             <a key={c.id} href={c.href}
@@ -743,7 +743,7 @@ const FenceCategories = () => {
                   fontSize: 'clamp(12px, 1vw, 15px)', fontWeight: 700,
                   letterSpacing: '0.16em', textTransform: 'uppercase',
                   color: 'var(--tangerine)',
-                }}>{t('Explore', 'Explora')} {t(c.name)} <span style={{ fontSize: '1.25em' }}>→</span></span>
+                }}>{t(ctaLabel)} {t(c.name)} <span style={{ fontSize: '1.25em' }}>→</span></span>
               </div>
             </a>
           );
@@ -753,19 +753,25 @@ const FenceCategories = () => {
   );
 };
 
+const FenceCategories = () => (
+  <SlatArena
+    id="fences" chapter="01"
+    label={{ EN: 'Fences', ES: 'Cercas' }}
+    items={FENCE_CATEGORIES}
+    topLink={{ href: 'products.html', label: { EN: 'Full catalog', ES: 'Catálogo completo' } }}
+    ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
+  />
+);
+
 /* Gates, same arena, mirrored to the right with an industrial palette so it
    reads as gates, not a second fences section. */
 const GateSystems = () => (
-  <SystemArena
-    sectionId="gates"
-    items={GATE_SYSTEMS}
-    rarity={GATE_RARITY}
+  <SlatArena
+    id="gates" chapter="02"
     label={{ EN: 'Gates', ES: 'Portones' }}
-    chapter="02"
-    align="right"
-    variant="gate"
+    items={GATE_SYSTEMS}
     topLink={{ href: 'estimate.html', label: { EN: 'Custom quote', ES: 'Cotización a medida' } }}
-    ctaLabel={{ EN: 'Explore', ES: 'Explorar' }}
+    ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
   />
 );
 
