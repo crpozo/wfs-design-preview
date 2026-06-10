@@ -266,7 +266,7 @@ const FAQ = () => {
                   borderBottom: '1px solid rgba(0,16,17,0.12)',
                   borderLeft: `2px solid ${isOpen ? 'var(--tangerine)' : 'transparent'}`,
                   paddingLeft: isOpen ? 20 : 0,
-                  background: isOpen ? 'rgba(255,113,51,0.04)' : 'transparent',
+                  background: 'transparent',
                   transition: 'all 0.25s ease',
                 }}>
                   <button onClick={() => setOpen(isOpen ? -1 : i)} style={{

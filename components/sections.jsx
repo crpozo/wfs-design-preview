@@ -833,12 +833,6 @@ const FinalCTA = () => {
         WebkitMaskImage: 'radial-gradient(circle at 70% 0%, #000 0%, transparent 70%)',
         pointerEvents: 'none',
       }}/>
-      <div aria-hidden style={{
-        position: 'absolute', top: -120, right: -120,
-        width: 360, height: 360, borderRadius: '50%',
-        background: 'radial-gradient(circle, rgba(255,113,51,0.18) 0%, rgba(255,113,51,0) 70%)',
-        pointerEvents: 'none',
-      }}/>
       <div className="container" style={{ position: 'relative' }}>
         <div style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48,
