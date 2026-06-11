@@ -42,7 +42,7 @@ const ProductsIntro = () => (
 );
 
 const ProductHardware = () => (
-  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '112px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="03" label="Hardware & accessories"

@@ -103,7 +103,7 @@ const Testimonials = () => {
       tag: { EN: 'Contractor', ES: 'Contratista' } },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '80px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '112px 0' }}>
       <div className="container">
         {/* Editorial header, matches the rest of the page */}
         <div style={{
@@ -202,7 +202,7 @@ const FAQ = () => {
   const [open, setOpen] = React.useState(0);
   const [ctaHover, setCtaHover] = React.useState(false);
   return (
-    <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '112px 0' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
           {/* Left: editorial header + CTA */}

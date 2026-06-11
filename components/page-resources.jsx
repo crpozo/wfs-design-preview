@@ -21,7 +21,7 @@ const ResourceArticles = () => {
     { tag: 'HVHZ',       title: 'Hurricane Zone Fencing: EC Fence vs DuraFence',     read: '5 min', img: 'ecfence' },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '112px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="01" label="Articles & guides"
@@ -71,7 +71,7 @@ const ResourceArticles = () => {
 };
 
 const MaterialsComparison = () => (
-  <section style={{ background: 'var(--parchment)', padding: '88px 0' }}>
+  <section style={{ background: 'var(--parchment)', padding: '112px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="02" label="Materials comparison"
@@ -168,7 +168,7 @@ const PoolCodeSection = () => (
 );
 
 const DownloadsSection = () => (
-  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '112px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="04" label="Spec sheets & downloads"

@@ -229,7 +229,7 @@ const MaterialQuickFacts = ({ data }) => (
 );
 
 const MaterialProfiles = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '112px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="01" label={useT()("Profiles & styles", "Perfiles y estilos")}
@@ -257,7 +257,7 @@ const MaterialProfiles = ({ data }) => (
 );
 
 const MaterialSpecs = ({ data }) => (
-  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '88px 0' }}>
+  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '112px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
@@ -312,7 +312,7 @@ const MaterialSpecs = ({ data }) => (
 );
 
 const MaterialUseCases = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '112px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="03" label={useT()("Where it shines", "Donde brilla")}

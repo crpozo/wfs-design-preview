@@ -12,7 +12,7 @@ const AboutHero = () => (
 );
 
 const AboutStory = () => (
-  <section style={{ background: 'var(--white)', padding: '96px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '120px 0' }}>
     <div className="container">
       {/* Editorial header, single line, clean wrap */}
       <div style={{
@@ -142,7 +142,7 @@ const AboutStory = () => (
 );
 
 const AboutValues = () => (
-  <section style={{ background: 'var(--parchment)', padding: '96px 0' }}>
+  <section style={{ background: 'var(--parchment)', padding: '120px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="02" label="How we work"

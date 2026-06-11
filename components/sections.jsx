@@ -369,7 +369,7 @@ const ProjectGallery = () => {
   const goPage = (n) => { const c = Math.max(0, Math.min(n, pageCount - 1)); setPage(c); setSelected(c * PER_PAGE); };
 
   return (
-    <section id="projects" style={{ background: 'var(--white)', padding: '72px 0' }}>
+    <section id="projects" style={{ background: 'var(--white)', padding: '120px 0' }}>
       <div className="container">
         {/* Editorial header */}
         <div style={{
@@ -639,7 +639,7 @@ const ServiceAreas = () => {
     { name: 'Marco Island', x: 42, y: 72 },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '80px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '112px 0' }}>
       <div className="container">
         {/* Editorial header, matches FenceCategories / GateSystems / Projects */}
         <div style={{

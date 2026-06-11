@@ -229,7 +229,7 @@ const GateQuickFacts = ({ data }) => (
 );
 
 const GateProfiles = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '112px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="01" label={useT()("Profiles & configurations", "Perfiles y configuraciones")}
@@ -257,7 +257,7 @@ const GateProfiles = ({ data }) => (
 );
 
 const GateSpecs = ({ data }) => (
-  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '88px 0' }}>
+  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '112px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
@@ -312,7 +312,7 @@ const GateSpecs = ({ data }) => (
 );
 
 const GateUseCases = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '112px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="03" label={useT()("Where it shines", "Donde brilla")}

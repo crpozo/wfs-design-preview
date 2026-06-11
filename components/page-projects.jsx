@@ -31,7 +31,7 @@ const ProjectsBigGallery = () => {
   const filters = ['All', 'Chain Link', 'Aluminum', 'Vinyl', 'Metal', 'EC Fence'];
   const visible = filter === 'All' ? FULL_PROJECTS : FULL_PROJECTS.filter(p => p.material === filter);
   return (
-    <section style={{ background: 'var(--white)', padding: '88px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '112px 0' }}>
       <div className="container">
         <PageSectionHeader
           number="01" label="Filter the archive"
