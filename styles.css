@@ -507,3 +507,7 @@ section { position: relative; }
   background-repeat: repeat-x;
   background-position: left bottom;
 }
+
+@media (max-width: 900px) {
+  .wfs-articles-hero { grid-template-columns: 1fr !important; }
+}
