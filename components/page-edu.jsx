@@ -24,37 +24,6 @@ const ALL_ARTICLES = [
   { tag: 'Gates',       title: 'Ready-to-assemble Gates vs Field-Built: What to Order',          read: '5 min', img: 'chainlink' },
 ];
 
-/* Small avatar + meta row, shared by featured and grid cards */
-const ArticleMeta = ({ read, light = false }) => {
-  const t = useT();
-  return (
-    <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-      <span aria-hidden style={{
-        width: 28, height: 28, borderRadius: '50%',
-        background: 'var(--tangerine)', color: 'var(--white)',
-        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: 11, fontWeight: 700, fontFamily: 'var(--mono)',
-      }}>W</span>
-      <span style={{ fontSize: 12.5, fontWeight: 600, color: light ? 'var(--white)' : 'var(--ink)' }}>
-        {t('WFS Team', 'Equipo WFS')}
-      </span>
-      <span aria-hidden style={{ width: 3, height: 3, borderRadius: '50%', background: light ? 'rgba(255,255,255,0.6)' : 'var(--silver)' }}/>
-      <span style={{ fontSize: 12.5, color: light ? 'rgba(255,255,255,0.75)' : 'var(--charcoal)' }}>
-        {read} {t('read', 'de lectura')}
-      </span>
-    </div>
-  );
-};
-
-const TagPill = ({ children }) => (
-  <span style={{
-    display: 'inline-block',
-    background: 'var(--white)', color: 'var(--ink)',
-    padding: '6px 14px', borderRadius: 999,
-    fontSize: 12, fontWeight: 600,
-  }}>{children}</span>
-);
-
 /* Magazine-style featured row: one large story + two stacked side cards */
 const ArticlesFeatured = () => {
   const t = useT();
@@ -75,14 +44,12 @@ const ArticlesFeatured = () => {
         background: 'linear-gradient(180deg, rgba(38, 49, 103,0.05) 30%, rgba(38, 49, 103,0.85) 100%)',
       }}/>
       <div style={{ position: 'relative', padding: big ? 'clamp(24px, 3vw, 44px)' : 22 }}>
-        <TagPill>{a.tag}</TagPill>
         <h2 className="display" style={{
-          margin: '14px 0 14px', color: 'var(--white)',
+          margin: 0, color: 'var(--white)',
           fontSize: big ? 'clamp(20px, 2.1vw, 32px)' : 'clamp(15px, 1.2vw, 18px)',
           lineHeight: 1.18, letterSpacing: '-0.01em', fontWeight: 700,
           textTransform: 'capitalize',
         }}>{a.title}</h2>
-        <ArticleMeta read={a.read} light />
       </div>
     </a>
   );
@@ -132,24 +99,6 @@ const ArticleCard = ({ p }) => {
           margin: 0, fontSize: 15.5, fontWeight: 700, lineHeight: 1.35,
           color: 'var(--ink)', letterSpacing: '-0.005em', textTransform: 'capitalize',
         }}>{p.title}</h3>
-        {/* Hover reveal: author + category + read time */}
-        <div style={{
-          maxHeight: hover ? 90 : 0,
-          opacity: hover ? 1 : 0,
-          overflow: 'hidden',
-          marginTop: hover ? 16 : 0,
-          transition: 'all 0.3s ease',
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-            <ArticleMeta read={p.read} />
-            <span style={{
-              flexShrink: 0,
-              background: 'var(--alice-blue)', color: 'var(--ink)',
-              padding: '4px 12px', borderRadius: 999,
-              fontSize: 11.5, fontWeight: 600,
-            }}>{p.tag}</span>
-          </div>
-        </div>
       </div>
     </article>
   );
