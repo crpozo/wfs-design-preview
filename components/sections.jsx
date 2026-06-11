@@ -369,7 +369,7 @@ const ProjectGallery = () => {
   const goPage = (n) => { const c = Math.max(0, Math.min(n, pageCount - 1)); setPage(c); setSelected(c * PER_PAGE); };
 
   return (
-    <section id="projects" style={{ background: 'var(--white)', padding: '120px 0' }}>
+    <section id="projects" style={{ background: 'var(--white)', padding: '56px 0 140px' }}>
       <div className="container">
         {/* Editorial header */}
         <div style={{
