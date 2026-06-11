@@ -257,19 +257,19 @@ const MaterialProfiles = ({ data }) => (
 );
 
 const MaterialSpecs = ({ data }) => (
-  <section style={{ background: 'var(--alice-blue)', padding: '88px 0' }}>
+  <section className="wfs-bars-texture" style={{ backgroundColor: 'var(--laser-blue)', padding: '88px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
-          <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em' }}>
+          <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', color: 'var(--white)' }}>
             Real numbers,<br/>
             <span style={{ color: 'var(--tangerine)' }}>no marketing.</span>
           </h2>
-          <p style={{ marginTop: 20, fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)', maxWidth: 320 }}>
+          <p style={{ marginTop: 20, fontSize: 14, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 320 }}>
             Need a sealed manufacturer spec? Ask your rep, we'll send the PDF before quote.
           </p>
         </div>
-        <div style={{ background: 'var(--white)', border: '1px solid var(--ink)' }}>
+        <div style={{ background: 'var(--white)' }}>
           {data.specs.map(([k, v], i) => (
             <div key={k} style={{
               display: 'grid', gridTemplateColumns: '220px 1fr',
