@@ -257,7 +257,7 @@ const GateProfiles = ({ data }) => (
 );
 
 const GateSpecs = ({ data }) => (
-  <section style={{ background: 'var(--parchment)', padding: '88px 0' }}>
+  <section style={{ background: 'var(--alice-blue)', padding: '88px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
