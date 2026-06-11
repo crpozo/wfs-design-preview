@@ -127,7 +127,7 @@ const AboutStory = () => (
 );
 
 const AboutValues = () => (
-  <section style={{ background: 'var(--parchment)', padding: '120px 0' }}>
+  <section style={{ background: 'var(--alice-blue)', padding: '120px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="02" label="How we work"
