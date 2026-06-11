@@ -54,8 +54,28 @@ const ArticlesFeatured = () => {
     </a>
   );
   return (
-    <section style={{ background: 'var(--white)', padding: '64px 0 0' }}>
+    <section style={{ background: 'var(--white)', padding: '88px 0 0' }}>
       <div className="container">
+        {/* White editorial break between the navy banner and the dark cards */}
+        <div style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
+          gap: 24, flexWrap: 'wrap', marginBottom: 36,
+        }}>
+          <h2 className="display" style={{
+            margin: 0, fontSize: 'clamp(26px, 2.8vw, 38px)', fontWeight: 800,
+            letterSpacing: '-0.015em', color: 'var(--ink)',
+          }}>
+            {t('Start with', 'Empieza con')}{' '}
+            <span style={{ color: 'var(--tangerine)' }}>{t('these guides.', 'estas guías.')}</span>
+          </h2>
+          <p style={{
+            margin: 0, maxWidth: 380, fontSize: 14, lineHeight: 1.55,
+            color: 'var(--charcoal)',
+          }}>
+            {t('The three reads that answer most first-time fence questions.',
+               'Las tres lecturas que responden la mayoría de las dudas de primera vez.')}
+          </p>
+        </div>
         <div className="wfs-articles-hero" style={{
           display: 'grid', gridTemplateColumns: '1.7fr 1fr', gap: 18, alignItems: 'stretch',
         }}>
