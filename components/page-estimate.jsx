@@ -31,29 +31,6 @@ const EstimateHero = () => (
       flex: 1, display: 'flex', flexDirection: 'column',
       paddingTop: 96, paddingBottom: 40,
     }}>
-      {/* Top: eyebrow + ticker chip */}
-      <div style={{
-        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-        flexWrap: 'wrap', gap: 16, marginBottom: 28,
-      }}>
-        <div className="mono" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 10,
-          padding: '6px 12px',
-          background: 'rgba(255,255,255,0.08)',
-          border: '1px solid rgba(255,255,255,0.18)',
-          backdropFilter: 'blur(6px)',
-          fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
-          color: 'rgba(255,255,255,0.85)', textTransform: 'uppercase',
-        }}>
-          <span style={{
-            width: 7, height: 7, borderRadius: '50%',
-            background: '#ff7133',
-            boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)',
-          }}/>
-          Supplier-direct · no middleman
-        </div>
-      </div>
-
       {/* Main heading */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: 720 }}>
         <h1 style={{
@@ -64,7 +41,7 @@ const EstimateHero = () => (
           fontSize: 'clamp(30px, 3.4vw, 48px)',
           lineHeight: 1.02,
           letterSpacing: '-0.015em',
-          textTransform: 'uppercase',
+          textTransform: 'capitalize',
           color: 'var(--white)',
           textShadow: '0 2px 28px rgba(0,0,0,0.28)',
         }}>

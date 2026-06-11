@@ -664,7 +664,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
           }}>{chapter}</span>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 2.6vw, 40px)', fontWeight: 800,
-            letterSpacing: '-0.01em', textTransform: 'uppercase', color: 'var(--white)',
+            letterSpacing: '-0.01em', textTransform: 'capitalize', color: 'var(--white)',
             lineHeight: 1,
           }}>{t(label)}</h2>
           <span aria-hidden style={{ width: 90, height: 2, background: 'var(--laser-blue)' }}/>
@@ -731,7 +731,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
                 <h3 className="display" style={{
                   margin: '0 0 12px', fontSize: 'clamp(26px, 2.9vw, 56px)',
                   fontWeight: 800, lineHeight: 0.98, letterSpacing: '-0.01em',
-                  textTransform: 'uppercase', color: 'var(--white)',
+                  textTransform: 'capitalize', color: 'var(--white)',
                 }}>{t(c.name)}</h3>
                 <p style={{
                   margin: '0 0 18px', maxWidth: 520,

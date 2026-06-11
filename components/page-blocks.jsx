@@ -59,7 +59,7 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, height = 'c
         fontWeight: 800,
         fontSize: 'clamp(30px, 3.6vw, 50px)',
         lineHeight: 1.02, letterSpacing: '-0.015em',
-        textTransform: 'uppercase',
+        textTransform: 'capitalize',
         color: 'var(--white)',
         textShadow: '0 2px 28px rgba(0,0,0,0.28)',
         maxWidth: 880,
