@@ -261,6 +261,15 @@ const GateSpecs = ({ data }) => (
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
+          <div className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 12,
+            marginBottom: 18,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
+            textTransform: 'uppercase', color: 'var(--blue-ice)',
+          }}>
+            <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
+            {useT()('Tech specs', 'Especificaciones')}
+          </div>
           <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', color: 'var(--white)' }}>
             {useT()('Real numbers,', 'Números reales,')}<br/>
             <span style={{ color: 'var(--tangerine)' }}>{useT()('no marketing.', 'sin marketing.')}</span>
@@ -268,8 +277,19 @@ const GateSpecs = ({ data }) => (
           <p style={{ marginTop: 20, fontSize: 14, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 320 }}>
             {useT()("Need a sealed manufacturer spec? Ask your rep, we'll send the PDF before quote.", '¿Necesitas una especificación sellada del fabricante? Pídela a tu representante, te enviamos el PDF antes de cotizar.')}
           </p>
+          <a href="estimate.html" className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 10,
+            marginTop: 24, paddingBottom: 4,
+            fontSize: 11, fontWeight: 700, letterSpacing: '0.2em',
+            textTransform: 'uppercase', color: 'var(--white)',
+            borderBottom: '1px solid rgba(255,255,255,0.45)',
+          }}>
+            {useT()('Ask for the sealed spec PDF', 'Pide el PDF de especificación sellada')} →
+          </a>
         </div>
-        <div style={{ background: 'var(--white)' }}>
+        <div style={{ position: 'relative' }}>
+          <div aria-hidden style={{ position: 'absolute', inset: '14px -14px -14px 14px', background: 'var(--laser-blue)' }}/>
+          <div style={{ position: 'relative', background: 'var(--white)', borderTop: '4px solid var(--tangerine)' }}>
           {data.specs.map(([k, v], i) => (
             <div key={k} style={{
               display: 'grid', gridTemplateColumns: '220px 1fr',
@@ -284,6 +304,7 @@ const GateSpecs = ({ data }) => (
               <div style={{ padding: '14px 18px', fontSize: 14, color: 'var(--ink)' }}>{v}</div>
             </div>
           ))}
+          </div>
         </div>
       </div>
     </div>
