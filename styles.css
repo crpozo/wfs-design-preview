@@ -52,7 +52,7 @@ img { display: block; max-width: 100%; }
   font-variation-settings: 'wdth' 125;
   font-weight: 700;
   letter-spacing: -0.005em;
-  text-transform: uppercase;
+  text-transform: capitalize;
   line-height: 0.92;
 }
 .display-extended {

@@ -374,7 +374,6 @@ const ProjectGallery = () => {
         {/* Editorial header */}
         <div style={{
           paddingBottom: 24, marginBottom: 28,
-          borderBottom: '1px solid rgba(0,16,17,0.12)',
         }}>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3vw, 40px)',
