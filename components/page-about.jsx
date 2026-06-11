@@ -69,21 +69,6 @@ const AboutStory = () => (
               <div className="mono" style={{ marginTop: 6, fontSize: 10, letterSpacing: '0.18em', color: 'rgba(255,255,255,0.85)' }}>FORT MYERS, FL 33901</div>
             </div>
           </div>
-          {/* Inline stats under photo */}
-          <div style={{
-            marginTop: 24,
-            display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16,
-            paddingTop: 20, borderTop: '1px solid rgba(0,16,17,0.12)',
-          }}>
-            <div>
-              <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--ink)' }}>10+</div>
-              <div className="mono" style={{ marginTop: 8, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>Years experience</div>
-            </div>
-            <div>
-              <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--ink)' }}>2</div>
-              <div className="mono" style={{ marginTop: 8, fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>Yards · FM + PC</div>
-            </div>
-          </div>
         </div>
 
         {/* Right: editorial timeline with vertical spine */}
