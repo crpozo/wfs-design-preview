@@ -312,7 +312,7 @@ const HomeownerSteps = () => {
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg>) },
   ];
   return (
-    <section style={{ background: '#ffffff', padding: '120px 0 136px' }}>
+    <section style={{ background: '#ffffff', padding: '120px 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <h2 className="display" style={{
@@ -367,7 +367,7 @@ const HomeownerSteps = () => {
 const HomeownerStylePicker = () => {
   const t = useT();
   return (
-  <section style={{ background: 'var(--white)', padding: '112px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '120px 0' }}>
     <div className="container">
       <div style={{
         display: 'grid', gridTemplateColumns: '1fr 1fr',
@@ -814,7 +814,7 @@ const HomeownerClosingCTA = () => {
   return (
   <section style={{
     background: 'var(--ink)', color: 'var(--white)',
-    padding: '112px 0',
+    padding: '120px 0',
     position: 'relative', overflow: 'hidden',
   }}>
     {/* Background pattern */}

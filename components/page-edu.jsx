@@ -54,7 +54,7 @@ const ArticlesFeatured = () => {
     </a>
   );
   return (
-    <section style={{ background: 'var(--white)', padding: '88px 0 0' }}>
+    <section style={{ background: 'var(--white)', padding: '120px 0 0' }}>
       <div className="container">
         {/* White editorial break between the navy banner and the dark cards */}
         <div style={{
@@ -132,7 +132,7 @@ const ArticlesGrid = () => {
   const visible = filter === 'All' ? ALL_ARTICLES : ALL_ARTICLES.filter(a => a.tag === filter);
 
   return (
-    <section id="featured" style={{ background: 'var(--white)', padding: '88px 0 112px' }}>
+    <section id="featured" style={{ background: 'var(--white)', padding: '120px 0' }}>
       <div className="container">
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',

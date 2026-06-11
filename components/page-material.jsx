@@ -229,7 +229,7 @@ const MaterialQuickFacts = ({ data }) => (
 );
 
 const MaterialProfiles = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '112px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '120px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="01" label={useT()("Profiles & styles", "Perfiles y estilos")}
@@ -257,7 +257,7 @@ const MaterialProfiles = ({ data }) => (
 );
 
 const MaterialSpecs = ({ data }) => (
-  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '112px 0' }}>
+  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
@@ -312,7 +312,7 @@ const MaterialSpecs = ({ data }) => (
 );
 
 const MaterialUseCases = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '112px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '120px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="03" label={useT()("Where it shines", "Donde brilla")}
@@ -322,14 +322,14 @@ const MaterialUseCases = ({ data }) => (
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
         {data.useCases.map(([t, body], i) => (
           <div key={t} style={{
-            background: i === 1 ? 'var(--ink)' : 'var(--parchment)',
-            color: i === 1 ? 'var(--parchment)' : 'var(--ink)',
+            background: 'var(--white)',
+            color: 'var(--ink)',
             padding: '32px 28px',
-            border: i === 1 ? 'none' : '1px solid rgba(0,16,17,0.1)',
+            border: '1px solid rgba(0,16,17,0.1)',
           }}>
             <div className="display" style={{ fontSize: 36, color: 'var(--tangerine)', lineHeight: 1, marginBottom: 18 }}>0{i+1}</div>
             <h3 className="display" style={{ fontSize: 22, lineHeight: 1.1, margin: '0 0 12px' }}>{t}</h3>
-            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: i === 1 ? 'var(--alice-blue)' : 'var(--charcoal)' }}>{body}</p>
+            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)' }}>{body}</p>
           </div>
         ))}
       </div>

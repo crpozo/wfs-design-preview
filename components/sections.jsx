@@ -11,7 +11,7 @@ const FEATURED = [
 
 const FeaturedGrid = () => {
   return (
-    <section style={{ background: 'var(--linen)', padding: '100px 0' }}>
+    <section style={{ background: 'var(--linen)', padding: '120px 0' }}>
       <div className="container">
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
@@ -369,7 +369,7 @@ const ProjectGallery = () => {
   const goPage = (n) => { const c = Math.max(0, Math.min(n, pageCount - 1)); setPage(c); setSelected(c * PER_PAGE); };
 
   return (
-    <section id="projects" style={{ background: 'var(--white)', padding: '56px 0 140px' }}>
+    <section id="projects" style={{ background: 'var(--white)', padding: '120px 0' }}>
       <div className="container">
         {/* Editorial header */}
         <div style={{
@@ -490,7 +490,7 @@ const Calculator = () => {
   const total = matCost + gateCost;
 
   return (
-    <section id="calculator" style={{ background: 'var(--indigo-blue)', color: 'var(--parchment)', padding: '100px 0', position: 'relative', overflow: 'hidden' }}>
+    <section id="calculator" style={{ background: 'var(--indigo-blue)', color: 'var(--parchment)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, opacity: 0.18, pointerEvents: 'none' }}>
         <ChainLinkSVG color="#97baff" opacity={0.6} />
       </div>
@@ -638,7 +638,7 @@ const ServiceAreas = () => {
     { name: 'Marco Island', x: 42, y: 72 },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '112px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '120px 0' }}>
       <div className="container">
         {/* Editorial header, matches FenceCategories / GateSystems / Projects */}
         <div style={{

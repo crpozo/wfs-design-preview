@@ -197,7 +197,7 @@ const AboutStats = () => {
     ['Lifetime', 'Warranty',      'On most materials we sell'],
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '112px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '120px 0' }}>
       <div className="container">
         {/* Single editorial header row, no stacked headline */}
         <div style={{
