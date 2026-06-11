@@ -317,41 +317,17 @@ const GateUseCases = ({ data }) => (
 );
 
 const GateOtherGates = ({ currentSlug }) => {
-  const others = [
-    { slug: 'single',     href: 'gate-single.html',     name: 'Single Swing', img: 'assets/gate-single-swing.jpg' },
-    { slug: 'double',     href: 'gate-double.html',     name: 'Double Swing', img: 'assets/gate-double.jpg' },
-    { slug: 'sliding',    href: 'gate-sliding.html',    name: 'Sliding',      img: 'assets/gate-sliding.jpg' },
-    { slug: 'cantilever', href: 'gate-cantilever.html', name: 'Cantilever',   img: 'assets/gate-cantilever.jpg' },
-    { slug: 'rolling',    href: 'gate-rolling.html',    name: 'Rolling',      img: 'assets/gate-rolling.jpg' },
-  ].filter(g => g.slug !== currentSlug);
+  const cur = currentSlug === 'single' ? 'single-swing'
+    : currentSlug === 'double' ? 'double-swing' : currentSlug;
+  const items = GATE_SYSTEMS.filter(g => g.id !== cur);
   return (
-    <section style={{ background: '#ffffff', padding: '88px 0' }}>
-      <div className="container">
-        <PageSectionHeader
-          number="04" label="Compare"
-          title="Or check"
-          accent="another gate."
-          link={['All gates', 'products.html#gates']}
-        />
-        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${others.length}, 1fr)`, gap: 14 }}>
-          {others.map(g => (
-            <a key={g.slug} href={g.href} style={{
-              position: 'relative', display: 'block',
-              aspectRatio: '4 / 5', overflow: 'hidden',
-              background: '#263166', textDecoration: 'none', color: 'var(--white)',
-            }}>
-              <img src={g.img} alt={g.name}
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 35%, rgba(38, 49, 102,0.85) 100%)' }}/>
-              <div style={{ position: 'absolute', bottom: 16, left: 16, right: 16 }}>
-                <div className="display" style={{ fontSize: 18, lineHeight: 1.1 }}>{g.name}</div>
-                <div className="mono" style={{ marginTop: 6, fontSize: 10, letterSpacing: '0.18em', color: 'var(--alice-blue)' }}>Explore →</div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
+    <SlatArena
+      id="other-gates" chapter="04"
+      label={{ EN: 'More Gates', ES: 'Más portones' }}
+      items={items}
+      topLink={{ href: 'products.html#gates', label: { EN: 'All gates', ES: 'Todos los portones' } }}
+      ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
+    />
   );
 };
 

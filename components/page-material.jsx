@@ -317,41 +317,16 @@ const MaterialUseCases = ({ data }) => (
 );
 
 const MaterialOtherMaterials = ({ currentSlug }) => {
-  const others = [
-    { slug: 'vinyl',     href: 'vinyl.html',      name: 'Vinyl / PVC',         img: 'vinyl' },
-    { slug: 'aluminum',  href: 'aluminum.html',   name: 'Aluminum',            img: 'aluminum' },
-    { slug: 'chain-link',href: 'chain-link.html', name: 'Chain Link',          img: 'chainlink' },
-    { slug: 'metal',     href: 'metal.html',      name: 'Metal / DuraFence',   img: 'metal' },
-    { slug: 'ecfence',   href: 'ecfence.html',    name: 'EC Fence',            img: 'ecfence' },
-  ].filter(m => m.slug !== currentSlug);
+  const cur = currentSlug === 'chain-link' ? 'chainlink' : currentSlug;
+  const items = FENCE_CATEGORIES.filter(c => c.id !== cur);
   return (
-    <section style={{ background: '#ffffff', padding: '88px 0' }}>
-      <div className="container">
-        <PageSectionHeader
-          number="04" label="Compare"
-          title="Or check"
-          accent="another system."
-          link={['Materials comparison', 'resources.html#materials']}
-        />
-        <div style={{ display: 'grid', gridTemplateColumns: `repeat(${others.length}, 1fr)`, gap: 14 }}>
-          {others.map(m => (
-            <a key={m.slug} href={m.href} style={{
-              position: 'relative', display: 'block',
-              aspectRatio: '4 / 5', overflow: 'hidden',
-              background: '#263166', textDecoration: 'none', color: 'var(--white)',
-            }}>
-              <img src={FENCE_IMG[m.img]} alt={m.name}
-                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
-              <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 35%, rgba(38, 49, 102,0.85) 100%)' }}/>
-              <div style={{ position: 'absolute', bottom: 16, left: 16, right: 16 }}>
-                <div className="display" style={{ fontSize: 18, lineHeight: 1.1 }}>{m.name}</div>
-                <div className="mono" style={{ marginTop: 6, fontSize: 10, letterSpacing: '0.18em', color: 'var(--alice-blue)' }}>Explore →</div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
+    <SlatArena
+      id="other-systems" chapter="04"
+      label={{ EN: 'More Systems', ES: 'Más sistemas' }}
+      items={items}
+      topLink={{ href: 'materials-comparison.html', label: { EN: 'Materials comparison', ES: 'Comparativa de materiales' } }}
+      ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
+    />
   );
 };
 
