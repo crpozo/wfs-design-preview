@@ -14,14 +14,14 @@ const ArticlesHero = () => (
 
 const ALL_ARTICLES = [
   { tag: 'Materials',   title: 'Top 4 Durable Fence Materials for SW Florida',           read: '6 min', img: 'aluminum' },
-  { tag: 'How-to',      title: 'How to Measure for Fence Material in Florida',           read: '4 min', img: 'chainlink' },
+  { tag: 'How-to',      title: 'How to Measure for Fence Material in Florida',           read: '4 min', img: 'gate-sliding' },
   { tag: 'Pricing',     title: 'How Much Does a Fence Cost in Florida in 2026?',         read: '8 min', img: 'vinyl' },
-  { tag: 'Code',        title: 'Florida Pool Code: Enclosure Requirements Explained',    read: '7 min', img: 'metal' },
-  { tag: 'Comparison',  title: 'Aluminum vs Vinyl vs Chain Link, Picking a System',     read: '9 min', img: 'aluminum' },
+  { tag: 'Code',        title: 'Florida Pool Code: Enclosure Requirements Explained',    read: '7 min', img: 'gate-single' },
+  { tag: 'Comparison',  title: 'Aluminum vs Vinyl vs Chain Link, Picking a System',     read: '9 min', img: 'metal' },
   { tag: 'HVHZ',        title: 'Hurricane Zone Fencing: EC Fence vs DuraFence',          read: '5 min', img: 'ecfence' },
-  { tag: 'Install',     title: 'When to Hire an Installer vs DIY Your Fence Project',   read: '6 min', img: 'vinyl' },
-  { tag: 'Maintenance', title: 'Aluminum Fence Care in Salt Air: 4 Tips for Coastal FL',read: '4 min', img: 'aluminum' },
-  { tag: 'Gates',       title: 'Ready-to-assemble Gates vs Field-Built: What to Order',          read: '5 min', img: 'chainlink' },
+  { tag: 'Install',     title: 'When to Hire an Installer vs DIY Your Fence Project',   read: '6 min', img: 'shop' },
+  { tag: 'Maintenance', title: 'Aluminum Fence Care in Salt Air: 4 Tips for Coastal FL',read: '4 min', img: 'gate-cantilever' },
+  { tag: 'Gates',       title: 'Ready-to-assemble Gates vs Field-Built: What to Order',          read: '5 min', img: 'gate-double' },
 ];
 
 /* Magazine-style featured row: one large story + two stacked side cards */
