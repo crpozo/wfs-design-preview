@@ -219,10 +219,10 @@ const MaterialQuickFacts = ({ data }) => (
   <section style={{ background: 'var(--white)', padding: '64px 0', borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
     <div className="container">
       <FeatureRow items={[
-        ['Best for', data.bestFor],
-        ['Material', data.specs.find(s => s[0] === 'Material')?.[1] || '—'],
-        ['Starts at', data.specs.find(s => s[0] === 'Starts at')?.[1] || '—'],
-        ['Lead time', data.specs.find(s => s[0] === 'Lead time')?.[1] || '—'],
+        [useT()('Best for', 'Ideal para'), data.bestFor],
+        [useT()('Material', 'Material'), data.specs.find(s => s[0] === 'Material')?.[1] || '—'],
+        [useT()('Starts at', 'Desde'), data.specs.find(s => s[0] === 'Starts at')?.[1] || '—'],
+        [useT()('Lead time', 'Plazo de entrega'), data.specs.find(s => s[0] === 'Lead time')?.[1] || '—'],
       ]}/>
     </div>
   </section>
@@ -232,10 +232,10 @@ const MaterialProfiles = ({ data }) => (
   <section style={{ background: 'var(--white)', padding: '88px 0' }}>
     <div className="container">
       <PageSectionHeader
-        number="01" label="Profiles & styles"
+        number="01" label={useT()("Profiles & styles", "Perfiles y estilos")}
         title={`${data.name}`}
-        accent="four ways to spec it."
-        sub={`We stock all four configurations. Custom heights and colors available on request.`}
+        accent={useT()("four ways to spec it.", "cuatro formas de configurarlo.")}
+        sub={useT()("We stock all four configurations. Custom heights and colors available on request.", "Tenemos en stock las cuatro configuraciones. Alturas y colores a medida bajo pedido.")}
       />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14 }}>
         {data.profiles.map((p, i) => (
@@ -257,16 +257,16 @@ const MaterialProfiles = ({ data }) => (
 );
 
 const MaterialSpecs = ({ data }) => (
-  <section className="wfs-bars-texture" style={{ backgroundColor: 'var(--laser-blue)', padding: '88px 0' }}>
+  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '88px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
           <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', color: 'var(--white)' }}>
-            Real numbers,<br/>
-            <span style={{ color: 'var(--tangerine)' }}>no marketing.</span>
+            {useT()('Real numbers,', 'Números reales,')}<br/>
+            <span style={{ color: 'var(--tangerine)' }}>{useT()('no marketing.', 'sin marketing.')}</span>
           </h2>
           <p style={{ marginTop: 20, fontSize: 14, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 320 }}>
-            Need a sealed manufacturer spec? Ask your rep, we'll send the PDF before quote.
+            {useT()("Need a sealed manufacturer spec? Ask your rep, we'll send the PDF before quote.", '¿Necesitas una especificación sellada del fabricante? Pídela a tu representante, te enviamos el PDF antes de cotizar.')}
           </p>
         </div>
         <div style={{ background: 'var(--white)' }}>
@@ -294,9 +294,9 @@ const MaterialUseCases = ({ data }) => (
   <section style={{ background: 'var(--white)', padding: '88px 0' }}>
     <div className="container">
       <PageSectionHeader
-        number="03" label="Where it shines"
-        title="Three jobs"
-        accent="this material wins."
+        number="03" label={useT()("Where it shines", "Donde brilla")}
+        title={useT()("Three jobs", "Tres trabajos")}
+        accent={useT()("this material wins.", "que este material gana.")}
       />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
         {data.useCases.map(([t, body], i) => (
@@ -332,11 +332,11 @@ const MaterialOtherMaterials = ({ currentSlug }) => {
 
 const MaterialCTA = ({ data }) => (
   <CTABand
-    kicker={`Quote your ${data.name.toLowerCase()} run`}
-    title="Send us your"
-    accent="dimensions."
-    body={`We'll come back with stocked components, lead time and a delivery or pickup plan from Fort Myers or Port Charlotte.`}
-    primary={['Request a quote', 'estimate.html']}
+    kicker={useT()(`Quote your ${data.name.toLowerCase()} run`, `Cotiza tu corrida de ${data.name.toLowerCase()}`)}
+    title={useT()("Send us your", "Envíanos tus")}
+    accent={useT()("dimensions.", "medidas.")}
+    body={useT()("We'll come back with stocked components, lead time and a delivery or pickup plan from Fort Myers or Port Charlotte.", 'Te respondemos con componentes en stock, plazo de entrega y un plan de entrega o recogida desde Fort Myers o Port Charlotte.')}
+    primary={[useT()('Request a quote', 'Solicitar cotización'), 'estimate.html']}
     secondary={['Call (239) 689-5496', 'tel:2396895496']}
   />
 );
@@ -349,7 +349,7 @@ const MaterialPage = ({ slug }) => {
   // merges in the trade-focused overrides. useMode() subscribes to the
   // wfs:mode-change event so flipping the toggle re-renders the page.
   const override = (mode === 'CONTRACTOR' && base.contractor) || {};
-  const data = { ...base, ...override };
+  const data = useTrData({ ...base, ...override });
   return (
     <>
       <SiteHeader active="Fences" />
