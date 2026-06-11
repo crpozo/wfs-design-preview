@@ -2,6 +2,16 @@
 
 /* ───── Articles & Guides ───── */
 
+const ArticlesHero = () => (
+  <PageHero
+    eyebrow="Articles & Guides"
+    title="Plain-English writeups"
+    accent="on picking the right fence."
+    subtitle="Written by the people who fabricate this stuff every day, sized to read in under 10 minutes."
+    image={FENCE_IMG.aluminum}
+  />
+);
+
 const ALL_ARTICLES = [
   { tag: 'Materials',   title: 'Top 4 Durable Fence Materials for SW Florida',           read: '6 min', img: 'aluminum' },
   { tag: 'How-to',      title: 'How to Measure for Fence Material in Florida',           read: '4 min', img: 'chainlink' },
@@ -45,8 +55,8 @@ const TagPill = ({ children }) => (
   }}>{children}</span>
 );
 
-/* Magazine-style featured hero: one large story + two stacked side cards */
-const ArticlesHero = () => {
+/* Magazine-style featured row: one large story + two stacked side cards */
+const ArticlesFeatured = () => {
   const t = useT();
   const [feat, side1, side2] = [ALL_ARTICLES[0], ALL_ARTICLES[3], ALL_ARTICLES[5]];
   const Card = ({ a, big = false }) => (
@@ -68,15 +78,16 @@ const ArticlesHero = () => {
         <TagPill>{a.tag}</TagPill>
         <h2 className="display" style={{
           margin: '14px 0 14px', color: 'var(--white)',
-          fontSize: big ? 'clamp(24px, 2.6vw, 40px)' : 'clamp(16px, 1.4vw, 21px)',
-          lineHeight: 1.15, letterSpacing: '-0.01em', fontWeight: 700,
+          fontSize: big ? 'clamp(20px, 2.1vw, 32px)' : 'clamp(15px, 1.2vw, 18px)',
+          lineHeight: 1.18, letterSpacing: '-0.01em', fontWeight: 700,
+          textTransform: 'capitalize',
         }}>{a.title}</h2>
         <ArticleMeta read={a.read} light />
       </div>
     </a>
   );
   return (
-    <section style={{ background: 'var(--white)', padding: '48px 0 0' }}>
+    <section style={{ background: 'var(--white)', padding: '64px 0 0' }}>
       <div className="container">
         <div className="wfs-articles-hero" style={{
           display: 'grid', gridTemplateColumns: '1.7fr 1fr', gap: 18, alignItems: 'stretch',
@@ -89,6 +100,58 @@ const ArticlesHero = () => {
         </div>
       </div>
     </section>
+  );
+};
+
+/* Grid card: clean by default, hover reveals author + category detail */
+const ArticleCard = ({ p }) => {
+  const t = useT();
+  const [hover, setHover] = React.useState(false);
+  return (
+    <article
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        display: 'flex', flexDirection: 'column',
+        cursor: 'pointer', borderRadius: 20, overflow: 'hidden',
+        background: 'var(--white)',
+        border: '1px solid rgba(0,16,17,0.08)',
+        transform: hover ? 'translateY(-4px)' : 'none',
+        boxShadow: hover ? '0 22px 44px -22px rgba(38, 49, 103,0.35)' : 'none',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+      }}>
+      <div style={{ position: 'relative', aspectRatio: '16 / 10', overflow: 'hidden', background: '#263166' }}>
+        <img src={FENCE_IMG[p.img]} alt=""
+          style={{
+            position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
+            transform: hover ? 'scale(1.04)' : 'scale(1)', transition: 'transform 0.5s ease',
+          }}/>
+      </div>
+      <div style={{ padding: '18px 20px 20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <h3 style={{
+          margin: 0, fontSize: 15.5, fontWeight: 700, lineHeight: 1.35,
+          color: 'var(--ink)', letterSpacing: '-0.005em', textTransform: 'capitalize',
+        }}>{p.title}</h3>
+        {/* Hover reveal: author + category + read time */}
+        <div style={{
+          maxHeight: hover ? 90 : 0,
+          opacity: hover ? 1 : 0,
+          overflow: 'hidden',
+          marginTop: hover ? 16 : 0,
+          transition: 'all 0.3s ease',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+            <ArticleMeta read={p.read} />
+            <span style={{
+              flexShrink: 0,
+              background: 'var(--alice-blue)', color: 'var(--ink)',
+              padding: '4px 12px', borderRadius: 999,
+              fontSize: 11.5, fontWeight: 600,
+            }}>{p.tag}</span>
+          </div>
+        </div>
+      </div>
+    </article>
   );
 };
 
@@ -136,93 +199,14 @@ const ArticlesGrid = () => {
 
         {/* Cards */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 22 }}>
-          {visible.map((p, i) => (
-            <article key={i} style={{
-              display: 'flex', flexDirection: 'column',
-              cursor: 'pointer', borderRadius: 20, overflow: 'hidden',
-              background: 'var(--white)',
-              border: '1px solid rgba(0,16,17,0.08)',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 22px 44px -22px rgba(38, 49, 103,0.35)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-              <div style={{ position: 'relative', aspectRatio: '16 / 10', overflow: 'hidden', background: '#263166' }}>
-                <img src={FENCE_IMG[p.img]} alt=""
-                  style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
-                <span style={{
-                  position: 'absolute', top: 14, left: 14,
-                  background: 'var(--white)', color: 'var(--ink)',
-                  padding: '5px 12px', borderRadius: 999,
-                  fontSize: 11.5, fontWeight: 600,
-                }}>{p.tag}</span>
-              </div>
-              <div style={{ padding: '20px 22px 22px', flex: 1, display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <h3 style={{
-                  margin: 0, fontSize: 17.5, fontWeight: 700, lineHeight: 1.3,
-                  color: 'var(--ink)', letterSpacing: '-0.01em',
-                }}>{p.title}</h3>
-                <div style={{ marginTop: 'auto' }}>
-                  <ArticleMeta read={p.read} />
-                </div>
-              </div>
-            </article>
-          ))}
+          {visible.map((p, i) => <ArticleCard key={p.title} p={p} />)}
         </div>
       </div>
     </section>
   );
 };
 
-/* Newsletter band, rounded brand-blue panel */
-const ArticlesCTA = () => {
-  const t = useT();
-  const [done, setDone] = React.useState(false);
-  return (
-    <section style={{ background: 'var(--white)', padding: '0 0 112px' }}>
-      <div className="container">
-        <div className="wfs-brand-texture" style={{
-          backgroundColor: 'var(--laser-blue)', borderRadius: 28,
-          padding: 'clamp(48px, 7vw, 80px)', textAlign: 'center',
-        }}>
-          <h2 className="display" style={{
-            margin: '0 0 14px', color: 'var(--white)',
-            fontSize: 'clamp(26px, 3vw, 40px)', fontWeight: 800, letterSpacing: '-0.015em',
-          }}>{t('Subscribe to Our Newsletter', 'Suscríbete a nuestro boletín')}</h2>
-          <p style={{
-            margin: '0 auto 30px', maxWidth: 520,
-            fontSize: 15, lineHeight: 1.6, color: 'var(--alice-blue)',
-          }}>
-            {t('New fence guides, product arrivals and yard updates. No spam, unsubscribe any time.',
-               'Nuevas guías de cercas, llegadas de producto y novedades de las sucursales. Sin spam, cancela cuando quieras.')}
-          </p>
-          {done ? (
-            <p className="mono" style={{
-              margin: 0, fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
-              color: 'var(--white)', fontWeight: 700,
-            }}>{t("Thanks, you're on the list.", 'Gracias, ya estás en la lista.')}</p>
-          ) : (
-            <form onSubmit={(e) => { e.preventDefault(); setDone(true); }} style={{
-              display: 'flex', gap: 10, justifyContent: 'center', flexWrap: 'wrap',
-            }}>
-              <input type="email" required placeholder={t('Your email address', 'Tu correo electrónico')}
-                style={{
-                  padding: '14px 20px', borderRadius: 999, border: 'none',
-                  minWidth: 'min(300px, 70vw)', fontSize: 14, fontFamily: 'var(--sans)',
-                  background: 'var(--white)', color: 'var(--ink)',
-                }}/>
-              <button type="submit" style={{
-                padding: '14px 26px', borderRadius: 999, border: 'none',
-                background: 'var(--tangerine)', color: 'var(--white)',
-                fontSize: 13, fontWeight: 700, letterSpacing: '0.08em',
-                textTransform: 'uppercase', fontFamily: 'var(--sans)', cursor: 'pointer',
-              }}>{t('Sign Up', 'Suscribirme')}</button>
-            </form>
-          )}
-        </div>
-      </div>
-    </section>
-  );
-};
+
 
 /* ───── FAQ ───── */
 
@@ -523,7 +507,7 @@ const PoolCodeCTA = () => (
 );
 
 Object.assign(window, {
-  ArticlesHero, ArticlesGrid, ArticlesCTA,
+  ArticlesHero, ArticlesFeatured, ArticlesGrid,
   FaqHero, FaqCTA,
   MaterialsCompHero, MaterialsCompDeepDive, MaterialsCompCTA,
   PoolCodeHero, PoolCodeRequirements, PoolCodeProfiles, PoolCodeChecklist, PoolCodeCTA,

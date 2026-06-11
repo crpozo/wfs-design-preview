@@ -41,7 +41,7 @@ const EstimateHero = () => (
           fontSize: 'clamp(30px, 3.4vw, 48px)',
           lineHeight: 1.02,
           letterSpacing: '-0.015em',
-          textTransform: 'capitalize',
+          textTransform: 'uppercase',
           color: 'var(--white)',
           textShadow: '0 2px 28px rgba(0,0,0,0.28)',
         }}>
