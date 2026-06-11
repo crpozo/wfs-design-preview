@@ -28,9 +28,14 @@ const ALL_ARTICLES = [
 const ArticlesFeatured = () => {
   const t = useT();
   const [feat, side1, side2] = [ALL_ARTICLES[0], ALL_ARTICLES[3], ALL_ARTICLES[5]];
-  const Card = ({ a, big = false }) => (
-    <a href="#featured" style={{
-      position: 'relative', display: 'flex', alignItems: 'flex-end',
+  const Card = ({ a, big = false }) => {
+    const [hover, setHover] = React.useState(false);
+    return (
+    <a href="#featured"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        position: 'relative', display: 'flex', alignItems: 'flex-end',
       borderRadius: 24, overflow: 'hidden',
       background: '#263166', textDecoration: 'none',
       minHeight: big ? 'clamp(380px, 56vh, 560px)' : 'clamp(180px, 26vh, 268px)',
@@ -38,21 +43,44 @@ const ArticlesFeatured = () => {
     }}>
       <img src={FENCE_IMG[a.img]} alt="" style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
+        transform: hover ? 'scale(1.05)' : 'scale(1)', transition: 'transform 0.6s ease',
       }}/>
       <div aria-hidden style={{
         position: 'absolute', inset: 0,
-        background: 'linear-gradient(180deg, rgba(38, 49, 103,0.05) 30%, rgba(38, 49, 103,0.85) 100%)',
+        background: 'linear-gradient(180deg, rgba(38, 49, 103,0.05) 30%, rgba(38, 49, 103,0.88) 100%)',
       }}/>
-      <div style={{ position: 'relative', padding: big ? 'clamp(24px, 3vw, 44px)' : 22 }}>
+      {/* Category chip, top-left */}
+      <span className="mono" style={{
+        position: 'absolute', top: big ? 24 : 18, left: big ? 24 : 18,
+        background: 'var(--tangerine)', color: 'var(--white)',
+        padding: '5px 12px', fontSize: 10, fontWeight: 700,
+        letterSpacing: '0.16em', textTransform: 'uppercase',
+      }}>{a.tag}</span>
+      <div style={{ position: 'relative', padding: big ? 'clamp(24px, 3vw, 44px)' : 22, width: '100%' }}>
         <h2 className="display" style={{
           margin: 0, color: 'var(--white)',
           fontSize: big ? 'clamp(20px, 2.1vw, 32px)' : 'clamp(15px, 1.2vw, 18px)',
           lineHeight: 1.18, letterSpacing: '-0.01em', fontWeight: 700,
           textTransform: 'capitalize',
         }}>{a.title}</h2>
+        <div style={{
+          marginTop: 14, display: 'flex', alignItems: 'center', gap: 10,
+          color: 'var(--alice-blue)',
+        }}>
+          <span className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+            {a.read} {t('read', 'de lectura')}
+          </span>
+          <span aria-hidden style={{
+            display: 'inline-flex', alignItems: 'center',
+            color: 'var(--tangerine)',
+            transform: hover ? 'translateX(4px)' : 'translateX(0)',
+            transition: 'transform 0.2s ease',
+          }}><ArrowRight size={big ? 16 : 13}/></span>
+        </div>
       </div>
     </a>
-  );
+    );
+  };
   return (
     <section style={{ background: 'var(--white)', padding: '120px 0 0' }}>
       <div className="container">
@@ -90,7 +118,7 @@ const ArticlesFeatured = () => {
   );
 };
 
-/* Grid card: clean by default, hover reveals author + category detail */
+/* Grid card: image + title + light meta, animated arrow on hover */
 const ArticleCard = ({ p }) => {
   const t = useT();
   const [hover, setHover] = React.useState(false);
@@ -103,22 +131,47 @@ const ArticleCard = ({ p }) => {
         cursor: 'pointer', borderRadius: 20, overflow: 'hidden',
         background: 'var(--white)',
         border: '1px solid rgba(0,16,17,0.08)',
-        transform: hover ? 'translateY(-4px)' : 'none',
-        boxShadow: hover ? '0 22px 44px -22px rgba(38, 49, 103,0.35)' : 'none',
+        transform: hover ? 'translateY(-5px)' : 'none',
+        boxShadow: hover ? '0 24px 46px -22px rgba(38, 49, 103,0.4)' : 'none',
         transition: 'transform 0.2s ease, box-shadow 0.2s ease',
       }}>
       <div style={{ position: 'relative', aspectRatio: '16 / 10', overflow: 'hidden', background: '#263166' }}>
         <img src={FENCE_IMG[p.img]} alt=""
           style={{
             position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
-            transform: hover ? 'scale(1.04)' : 'scale(1)', transition: 'transform 0.5s ease',
+            transform: hover ? 'scale(1.05)' : 'scale(1)', transition: 'transform 0.5s ease',
           }}/>
+        {/* Category chip on the image */}
+        <span className="mono" style={{
+          position: 'absolute', top: 14, left: 14,
+          background: 'rgba(255,255,255,0.92)', color: 'var(--ink)',
+          padding: '5px 11px', fontSize: 10, fontWeight: 700,
+          letterSpacing: '0.14em', textTransform: 'uppercase',
+          backdropFilter: 'blur(4px)',
+        }}>{p.tag}</span>
       </div>
-      <div style={{ padding: '18px 20px 20px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+      <div style={{ padding: '18px 20px 20px', flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
         <h3 style={{
-          margin: 0, fontSize: 15.5, fontWeight: 700, lineHeight: 1.35,
+          margin: 0, fontSize: 16, fontWeight: 700, lineHeight: 1.35,
           color: 'var(--ink)', letterSpacing: '-0.005em', textTransform: 'capitalize',
         }}>{p.title}</h3>
+        <div style={{
+          marginTop: 'auto', paddingTop: 14, borderTop: '1px solid rgba(0,16,17,0.08)',
+          display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        }}>
+          <span className="mono" style={{
+            fontSize: 10.5, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)',
+          }}>{p.read} {t('read', 'de lectura')}</span>
+          <span style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            fontSize: 12, fontWeight: 600, color: 'var(--laser-blue)',
+          }}>
+            {t('Read', 'Leer')}
+            <span aria-hidden style={{ display: 'inline-flex', transform: hover ? 'translateX(4px)' : 'translateX(0)', transition: 'transform 0.2s ease' }}>
+              <ArrowRight size={12}/>
+            </span>
+          </span>
+        </div>
       </div>
     </article>
   );
