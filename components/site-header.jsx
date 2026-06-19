@@ -399,7 +399,7 @@ const SiteHeader = ({ active }) => {
                     color: 'var(--ink)', textAlign: 'left', cursor: 'pointer',
                   }}>
                     {t(label)}
-                    {def.items ? (
+                    {(def.items || def.kind === 'mega-fences' || def.kind === 'mega-gates') ? (
                       <span style={{
                         width: 28, height: 28,
                         display: 'flex', alignItems: 'center', justifyContent: 'center',
@@ -437,17 +437,40 @@ const SiteHeader = ({ active }) => {
                       ))}
                     </div>
                   )}
-                  {(def.kind === 'mega-fences' || def.kind === 'mega-gates') && isExpanded && (
-                    <a href={fallbackHref} style={{
-                      display: 'block', padding: '14px 20px 14px 36px',
-                      borderTop: '1px solid rgba(0,16,17,0.06)',
+                  {(def.kind === 'mega-fences' || def.kind === 'mega-gates') && (
+                    <div style={{
+                      maxHeight: isExpanded ? 640 : 0,
+                      overflow: 'hidden',
+                      transition: 'max-height 0.3s ease',
                       background: '#ffffff',
-                      fontSize: 14, color: 'var(--ink)', fontWeight: 500,
                     }}>
-                      {def.kind === 'mega-fences'
-                        ? t('View all fence systems →', 'Ver todos los sistemas de cerca →')
-                        : t('View all gate systems →',  'Ver todos los sistemas de portón →')}
-                    </a>
+                      {(def.kind === 'mega-fences' ? FENCE_TILES : GATE_TILES).map((tile, i) => (
+                        <a key={i} href={tile.href} style={{
+                          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
+                          padding: '14px 20px 14px 36px',
+                          borderTop: '1px solid rgba(0,16,17,0.06)',
+                          fontSize: 14, color: 'var(--ink)',
+                        }}>
+                          <span>
+                            <span style={{ fontWeight: 600, display: 'block' }}>{t(tile.name)}</span>
+                            <span style={{ fontSize: 12, color: 'var(--charcoal)' }}>{t(tile.tag)}</span>
+                          </span>
+                          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, color: 'var(--charcoal)' }}>
+                            <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+                          </svg>
+                        </a>
+                      ))}
+                      <a href={fallbackHref} style={{
+                        display: 'block', padding: '15px 20px 15px 36px',
+                        borderTop: '1px solid rgba(0,16,17,0.1)',
+                        fontSize: 13, color: 'var(--laser-blue)', fontWeight: 700,
+                        letterSpacing: '0.04em',
+                      }}>
+                        {def.kind === 'mega-fences'
+                          ? t('View full catalog →', 'Ver catálogo completo →')
+                          : t('Custom gate quote →',  'Cotizar portón a medida →')}
+                      </a>
+                    </div>
                   )}
                 </div>
               );
