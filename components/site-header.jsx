@@ -7,6 +7,14 @@ const SiteHeader = ({ active }) => {
   const [openMenu, setOpenMenu] = React.useState(null);
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [mobileExpanded, setMobileExpanded] = React.useState(null);
+  const [modeToast, setModeToast] = React.useState(null);
+  const firstModeRender = React.useRef(true);
+  React.useEffect(() => {
+    if (firstModeRender.current) { firstModeRender.current = false; return; }
+    setModeToast(curMode);
+    const id = setTimeout(() => setModeToast(null), 2600);
+    return () => clearTimeout(id);
+  }, [curMode]);
 
   // Lock body scroll when mobile menu is open
   React.useEffect(() => {
@@ -66,6 +74,21 @@ const SiteHeader = ({ active }) => {
       <style>{`
         @keyframes wfsFadeDown { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
       `}</style>
+      {modeToast && (
+        <div role="status" style={{
+          position: 'fixed', left: '50%', bottom: 28, transform: 'translateX(-50%)',
+          zIndex: 200, background: 'var(--ink)', color: 'var(--white)',
+          padding: '13px 24px', borderRadius: 999,
+          boxShadow: '0 14px 34px rgba(0,16,17,0.32)',
+          fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600,
+          display: 'flex', alignItems: 'center', gap: 12, whiteSpace: 'nowrap',
+          animation: 'wfsFadeDown 0.25s ease',
+        }}>
+          <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>
+          {t(modeToast === 'CONTRACTOR' ? 'Now viewing contractor content' : 'Now viewing homeowner content',
+             modeToast === 'CONTRACTOR' ? 'Viendo contenido de contratista' : 'Viendo contenido de propietario')}
+        </div>
+      )}
       {/* Utility bar */}
       <div className="wfs-utility-bar" style={{ background: 'var(--ink)', borderBottom: '1px solid rgba(255,255,255,0.08)', color: 'var(--alice-blue)' }}>
         <div className="container" style={{
