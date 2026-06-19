@@ -42,8 +42,8 @@ const SiteHeader = ({ active }) => {
   const FENCE_TILES = [
     { key: 'aluminum',  name: { EN: 'Aluminum',          ES: 'Aluminio' },          tag: { EN: 'Mech · Welded',          ES: 'Mecánico · Soldado' },      href: 'aluminum.html' },
     { key: 'chainlink', name: { EN: 'Chain Link',        ES: 'Malla ciclónica' },   tag: { EN: 'Galv · Vinyl-Coated',    ES: 'Galv · Recubierto vinilo' }, href: 'chain-link.html' },
-    { key: 'metal',     name: { EN: 'Metal / DuraFence', ES: 'Metal / DuraFence' }, tag: { EN: 'Aluminum Board Privacy', ES: 'Privacidad de tabla aluminio' }, href: 'metal.html' },
-    { key: 'vinyl',     name: { EN: 'Vinyl / PVC',       ES: 'Vinilo / PVC' },      tag: { EN: 'Veka-Extruded PVC',      ES: 'PVC extruido Veka' },       href: 'vinyl.html' },
+    { key: 'metal',     name: { EN: 'Metal / DuraFence', ES: 'Metal / DuraFence' }, tag: { EN: 'Metal Privacy',          ES: 'Privacidad de metal' }, href: 'metal.html' },
+    { key: 'vinyl',     name: { EN: 'Vinyl / PVC',       ES: 'Vinilo / PVC' },      tag: { EN: 'Catalyst-Extruded PVC',  ES: 'PVC extruido Catalyst' },       href: 'vinyl.html' },
     { key: 'ecfence',   name: { EN: 'ecFence',           ES: 'ecFence' },           tag: { EN: 'Galv Steel · HVHZ',      ES: 'Acero galv · HVHZ' },       href: 'ecfence.html' },
   ];
 
@@ -52,7 +52,7 @@ const SiteHeader = ({ active }) => {
     { key: 'gate-double',     name: { EN: 'Double Swing', ES: 'Batiente doble' },      tag: { EN: 'Driveway access',    ES: 'Acceso vehicular' },          href: 'gate-double.html' },
     { key: 'gate-sliding',     name: { EN: 'Sliding',      ES: 'Corredizo' },           tag: { EN: 'Track-mounted',      ES: 'Sobre riel' },                href: 'gate-sliding.html' },
     { key: 'gate-cantilever', name: { EN: 'Cantilever',   ES: 'Cantilever' },          tag: { EN: 'No-ground-track',    ES: 'Sin riel en piso' },          href: 'gate-cantilever.html' },
-    { key: 'gate-rolling',   name: { EN: 'Rolling',      ES: 'Rodante industrial' },  tag: { EN: 'Industrial V-track', ES: 'V-track industrial' },        href: 'gate-rolling.html' },
+    { key: 'gate-rolling',   name: { EN: 'Rolling',      ES: 'Rodante industrial' },  tag: { EN: 'Industrial rolling', ES: 'Rodante industrial' },        href: 'gate-rolling.html' },
   ];
 
   const Caret = () => (

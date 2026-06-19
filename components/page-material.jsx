@@ -4,10 +4,10 @@ const MATERIAL_DATA = {
   vinyl: {
     slug: 'vinyl',
     name: 'Vinyl / PVC',
-    tag: 'Veka-extruded · Lifetime warranty',
-    heroTitle: 'Veka-extruded vinyl.',
+    tag: 'Catalyst-extruded · Lifetime warranty',
+    heroTitle: 'Catalyst-extruded vinyl.',
     heroAccent: 'Built for the Florida sun.',
-    heroBody: 'Privacy, semi-private, picket and ranch rail in white, tan and khaki. Won\'t rot, rust, peel or fade, engineered for Florida UV with a transferable lifetime warranty.',
+    heroBody: 'Privacy, semi-private, picket, ranch rail and many more styles in white, sand and gray. Won\'t rot, rust, peel or fade, engineered for Florida UV with a transferable lifetime warranty.',
     heroImg: FENCE_IMG.vinyl,
     bestFor: 'Backyard privacy, pool enclosures, residential subdivisions',
     profiles: [
@@ -18,8 +18,8 @@ const MATERIAL_DATA = {
     ],
     specs: [
       ['Heights', '4 ft, 5 ft, 6 ft, 8 ft'],
-      ['Colors', 'White, Tan, Khaki'],
-      ['Material', 'Veka-extruded virgin vinyl'],
+      ['Colors', 'White, Sand, Gray'],
+      ['Material', 'Catalyst-extruded virgin vinyl'],
       ['Wind rating', 'Up to 130 mph (system + posts)'],
       ['Warranty', 'Transferable lifetime'],
       ['Lead time', '1-2 days stocked · 3-4 weeks custom'],
@@ -28,16 +28,16 @@ const MATERIAL_DATA = {
     useCases: [
       ['Backyard privacy', 'The default for SW Florida homeowners, full 6 ft privacy without maintenance.'],
       ['Pool enclosures', 'Code-compliant profiles meet the 4 ft minimum with pickets ≤ 1.75" spaced.'],
-      ['HOA boundaries', 'Uniform white/tan finish across subdivisions, stocked in volume.'],
+      ['HOA boundaries', 'Uniform white/sand/gray finish across subdivisions, stocked in volume.'],
     ],
     contractor: {
-      tag: 'Veka-extruded · Trade pickup',
-      heroBody: 'Veka-extruded vinyl in white, tan and khaki across privacy, semi-private, picket and ranch rail. All profiles stocked for same-day will-call. Trade accounts available after the second order.',
+      tag: 'Catalyst-extruded · Trade pickup',
+      heroBody: 'Catalyst-extruded vinyl in white, sand and gray across privacy, semi-private, picket, ranch rail and more. All profiles stocked for same-day will-call. Trade accounts available after the second order.',
       bestFor: 'HOA + subdivision rollouts, repeat residential privacy',
       useCases: [
         ['HOA rollouts',         'Uniform 6 ft privacy across 50+ lots, stocked in volume, packed by run.'],
         ['Repeat residential',   'Pull, pick, install. Same-day pickup on most stock widths.'],
-        ['Custom color runs',    'Khaki + tan run-outs from Veka for community-specific specs.'],
+        ['Custom color runs',    'Sand + gray run-outs from Catalyst for community-specific specs.'],
       ],
     },
   },
@@ -46,15 +46,15 @@ const MATERIAL_DATA = {
     name: 'Aluminum',
     tag: 'Powder-coat · Pool code',
     heroTitle: 'Powder-coated aluminum.',
-    heroAccent: 'Pool-code by default.',
-    heroBody: 'Welded and mechanically assembled aluminum in 3-rail, 4-rail and 5-rail configurations. Pool-code compliant, rackable on grade, available in residential, commercial and industrial grades.',
+    heroAccent: 'Pool-code compliant.',
+    heroBody: 'Welded and mechanically assembled aluminum in 2-rail and 3-rail standard configurations, with 4 and 5-rail available as custom. Pool-code compliant profiles available, rackable on grade, in residential and commercial grades.',
     heroImg: FENCE_IMG.aluminum,
     bestFor: 'Pool enclosures, ornamental perimeters, HOAs',
     profiles: [
-      { name: '3-Rail', tag: 'Classic', notes: 'Open picket, residential grade' },
-      { name: '4-Rail', tag: 'Pool code', notes: '≤ 1.75" picket spacing, code-compliant' },
-      { name: '5-Rail', tag: 'Privacy-leaning', notes: 'Tight picket pattern, more visual mass' },
-      { name: 'Commercial', tag: 'Heavy gauge', notes: '6063-T6 alloy, thicker pickets + rails' },
+      { name: '2-Rail', tag: 'Standard', notes: 'Stocked, open picket, residential grade' },
+      { name: '3-Rail', tag: 'Standard', notes: 'Stocked, most common residential configuration' },
+      { name: 'Pool-Code', tag: 'Code Compliant', notes: '4 ft, 2-rail, 3" picket spacing, magnetic latch' },
+      { name: '4 & 5-Rail', tag: 'Custom', notes: 'Made to order, not stocked' },
     ],
     specs: [
       ['Heights', '4 ft, 5 ft, 6 ft (custom to 8 ft)'],
@@ -66,13 +66,13 @@ const MATERIAL_DATA = {
       ['Starts at', 'Quote-based'],
     ],
     useCases: [
-      ['Pool enclosures', '4 ft profiles meet Florida pool code, picket spacing, latch height, self-closing gates.'],
+      ['Pool enclosures', '4 ft tall, 2-rail, 3" picket spacing and a magnetic latch, meets Florida pool code.'],
       ['Ornamental front yards', 'Decorative spear-top and finial caps for residential front perimeters.'],
       ['HVHZ perimeters', 'Welded commercial grade rated for 150 mph in HVHZ counties.'],
     ],
     contractor: {
       tag: 'Powder-coat · Pool-code + HVHZ',
-      heroBody: 'Powder-coated aluminum in 3, 4 and 5-rail. Pool-code compliant by default, rackable on grade. Residential, commercial and industrial grades stocked, sealed wind-load specs available for HVHZ submissions.',
+      heroBody: 'Powder-coated aluminum, 2 and 3-rail stocked, 4 and 5-rail custom. Pool-code compliant profiles available, rackable on grade. Residential and commercial grades, sealed wind-load specs available for HVHZ submissions.',
       bestFor: 'Pool enclosures, code-required perimeters, HVHZ residential',
       useCases: [
         ['Pool code at volume', 'FBC R 4501.17 profiles, paperwork-ready, no field surprises on AHJ check.'],
@@ -99,7 +99,7 @@ const MATERIAL_DATA = {
     specs: [
       ['Heights', '4 ft to 12 ft'],
       ['Mesh gauges', '6 ga, 9 ga, 11.5 ga, 12 ga'],
-      ['Finishes', 'Galvanized, PVC-coated (Black, Green, Brown)'],
+      ['Finishes', 'Galvanized, PVC-coated (Black, Green)'],
       ['Material', 'ASTM A392 mesh, schedule 40 posts'],
       ['Wind rating', 'Up to 150 mph (open mesh)'],
       ['Lead time', 'Same day stocked rolls + posts'],
@@ -124,22 +124,22 @@ const MATERIAL_DATA = {
   metal: {
     slug: 'metal',
     name: 'Metal / DuraFence',
-    tag: 'Aluminum board privacy',
-    heroTitle: 'DuraFence aluminum board.',
+    tag: 'Metal privacy · DuraFence',
+    heroTitle: 'Metal / DuraFence.',
     heroAccent: 'The look of board, the strength of metal.',
-    heroBody: 'Horizontal aluminum board privacy, solid 6-8 ft privacy with the strength of aluminum and the silhouette of solid board. Hurricane-rated, no warping, no painting, no replacement boards.',
+    heroBody: 'Solid metal privacy fence (DuraFence) in 6-8 ft, the strength of metal with the silhouette of solid board. Our standard board is vertical; horizontal layouts also available. Hurricane-rated, no warping, no painting, no replacement boards.',
     heroImg: FENCE_IMG.metal,
     bestFor: 'Modern privacy in HVHZ counties',
     profiles: [
-      { name: 'Standard board', tag: '6 ft', notes: 'Horizontal aluminum board, flush mount' },
+      { name: 'Standard Board', tag: '6 ft', notes: 'Vertical metal board, flush mount' },
       { name: 'Tall board', tag: '8 ft', notes: 'For commercial / luxury residential' },
       { name: 'Slatted privacy', tag: '6 ft', notes: 'Slight gap between boards for airflow' },
       { name: 'Modern gate', tag: 'Matching', notes: 'Welded matching ready-to-assemble gates' },
     ],
     specs: [
       ['Heights', '6 ft, 8 ft'],
-      ['Colors', 'Black, Bronze, White'],
-      ['Material', 'Extruded aluminum board + posts'],
+      ['Colors', 'Black, Bronze, White, Woodgrain'],
+      ['Material', 'Extruded metal board + posts'],
       ['Wind rating', '150 mph HVHZ-rated'],
       ['Warranty', '10-year finish'],
       ['Lead time', '1-2 weeks (color-matched)'],
@@ -147,12 +147,12 @@ const MATERIAL_DATA = {
     ],
     useCases: [
       ['Hurricane-zone privacy', 'HVHZ-rated to 150 mph, keeps full privacy through a Cat 4.'],
-      ['Modern residential', 'Horizontal board lines + matte powder-coat for contemporary designs.'],
+      ['Modern residential', 'Clean board lines + matte powder-coat for contemporary designs.'],
       ['Commercial screens', 'Dumpster enclosures, AC screens, utility-yard perimeters.'],
     ],
     contractor: {
-      tag: 'Aluminum board · HVHZ + custom color',
-      heroBody: 'Aluminum board privacy in 6 and 8 ft, HVHZ-rated to 150 mph. Commercial and residential builds, phased delivery against release schedules, custom powder-coat color match on volume orders.',
+      tag: 'Metal privacy · HVHZ + custom color',
+      heroBody: 'Metal privacy (DuraFence) in 6 and 8 ft, HVHZ-rated to 150 mph. Commercial and residential builds, phased delivery against release schedules, custom powder-coat color match on volume orders.',
       bestFor: 'HVHZ residential, commercial screens, modern privacy builds',
       useCases: [
         ['HVHZ residential',  '150 mph rated, full privacy through a Cat 4 hurricane.'],
@@ -177,7 +177,7 @@ const MATERIAL_DATA = {
       { name: 'Sloped runs', tag: 'Grade follow', notes: 'Stair-stepped or racked panels' },
     ],
     specs: [
-      ['Heights', '6 ft (custom 5-8 ft available)'],
+      ['Heights', '6 ft'],
       ['Post spacing', 'Every 12 ft'],
       ['Colors', 'Bronze, White'],
       ['Material', 'Self-mating galvanized steel'],
@@ -235,7 +235,7 @@ const MaterialProfiles = ({ data }) => (
         number="01" label={useT()("Profiles & styles", "Perfiles y estilos")}
         title={`${data.name}`}
         accent={useT()("four ways to spec it.", "cuatro formas de configurarlo.")}
-        sub={useT()("We stock all four configurations. Custom heights and colors available on request.", "Tenemos en stock las cuatro configuraciones. Alturas y colores a medida bajo pedido.")}
+        sub={useT()("Standard and custom configurations available. Custom heights and colors on request.", "Configuraciones estándar y a medida. Alturas y colores personalizados bajo pedido.")}
       />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14 }}>
         {data.profiles.map((p, i) => (

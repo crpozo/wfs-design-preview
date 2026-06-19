@@ -3,11 +3,42 @@
 const FEATURED = [
   { sku: 'CL-9G-72', name: '9-Gauge Galvanized Mesh', cat: 'Chain Link', height: '6 ft', img: 'chainlink', color: '#263166' },
   { sku: 'AL-WLD-S', name: 'Welded Aluminum Section', cat: 'Aluminum', height: '6 ft', img: 'aluminum', color: '#263166' },
-  { sku: 'PV-PRV-W', name: 'Veka Privacy Vinyl, White', cat: 'Vinyl', height: '6 ft', img: 'vinyl', color: '#2e59c1' },
-  { sku: 'MT-PRV-72', name: 'Aluminum Board Privacy', cat: 'Metal', height: '6 ft', img: 'metal', color: '#001011' },
+  { sku: 'PV-PRV-W', name: 'Catalyst Privacy Vinyl, White', cat: 'Vinyl', height: '6 ft', img: 'vinyl', color: '#2e59c1' },
+  { sku: 'MT-PRV-72', name: 'Metal Board Privacy', cat: 'Metal', height: '6 ft', img: 'metal', color: '#001011' },
   { sku: 'GT-DBL-12', name: '12 ft Welded Double Gate', cat: 'Gates', height: '12 ft', img: 'aluminum', color: '#263166' },
   { sku: 'CL-VC-BK', name: 'Vinyl-Coated Black Mesh', cat: 'Chain Link', height: '6 ft', img: 'chainlink', color: '#263166' },
 ];
+
+
+const InstallerMarquee = () => {
+  const t = useT();
+  const names = ['Pro Fence Installers','SWFL Fencing','Naples Fence Co.','Fort Myers Pros',
+    'Gateway Fencing','Gulf Coast Contractors','Coastline Fence','Estate Fence Pros',
+    'Cape Coral Fencing','Lee County Fence'];
+  const row = [...names, ...names];
+  return (
+    <section style={{ background: 'var(--white)', padding: '64px 0', borderTop: '1px solid rgba(0,16,17,0.06)', borderBottom: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
+      <div className="container">
+        <p className="mono" style={{
+          textAlign: 'center', margin: '0 0 36px',
+          fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
+          color: 'var(--charcoal)', fontWeight: 700,
+        }}>{t('A trusted supplier for top fence installation companies', 'Proveedor de confianza para las mejores empresas de instalación de cercas')}</p>
+      </div>
+      <div className="wfs-marquee" aria-hidden>
+        <div className="wfs-marquee__track">
+          {row.map((n, i) => (
+            <span key={i} className="display" style={{
+              fontSize: 'clamp(18px, 2vw, 26px)', color: 'var(--ink)',
+              opacity: 0.55, whiteSpace: 'nowrap', letterSpacing: '-0.01em',
+              padding: '0 clamp(28px, 4vw, 56px)', flexShrink: 0,
+            }}>{n}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 const FeaturedGrid = () => {
   return (
@@ -344,12 +375,12 @@ const ProjectGallery = () => {
     { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, with double drive gate', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/gate-sliding.jpg' },
     { name: 'Estero Community', loc: 'Estero, FL', size: '38 lots', material: 'Metal', type: 'Aluminum board privacy, 6 ft, bronze finish', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: FENCE_IMG.metal },
     { name: 'Fort Myers Estate', loc: 'Fort Myers, FL', size: '420 LF', material: 'Aluminum', type: 'Welded 3-rail aluminum, 5 ft, residential grade', contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/gate-cantilever.jpg' },
-    { name: 'Naples Pool Enclosure', loc: 'Naples, FL', size: '180 LF', material: 'Vinyl', type: 'Vinyl privacy by Veka, 6 ft, pool-code compliant', contractor: 'Naples Outdoor', year: '2025', imgUrl: FENCE_IMG.vinyl },
+    { name: 'Naples Pool Enclosure', loc: 'Naples, FL', size: '180 LF', material: 'Vinyl', type: 'Vinyl privacy, 6 ft, pool-code compliant', contractor: 'Naples Outdoor', year: '2025', imgUrl: FENCE_IMG.vinyl },
     { name: 'Bonita Springs Self-Storage', loc: 'Bonita Springs, FL', size: '0.9 mi', material: 'Chain Link', type: 'Galvanized 9-gauge, 8 ft + barbed extension', contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/gate-rolling.jpg' },
     { name: 'Punta Gorda Marina', loc: 'Punta Gorda, FL', size: '240 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, white finish', contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/ec-fence.jpg' },
     { name: 'Lehigh Acres Warehouse', loc: 'Lehigh Acres, FL', size: '0.6 mi', material: 'Chain Link', type: 'Galvanized 9-gauge, 8 ft, with cantilever gate', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/gate-cantilever.jpg' },
     { name: 'Marco Island Villa', loc: 'Marco Island, FL', size: '260 LF', material: 'Aluminum', type: 'Welded 3-rail aluminum, 5 ft, black estate finish', contractor: 'Estate Fence Pros', year: '2025', imgUrl: FENCE_IMG.metal },
-    { name: 'Sanibel Beachfront', loc: 'Sanibel, FL', size: '150 LF', material: 'Vinyl', type: 'Vinyl privacy by Veka, 6 ft, hurricane-rated posts', contractor: 'Naples Outdoor', year: '2024', imgUrl: FENCE_IMG.vinyl },
+    { name: 'Sanibel Beachfront', loc: 'Sanibel, FL', size: '150 LF', material: 'Vinyl', type: 'Vinyl privacy, 6 ft, hurricane-rated posts', contractor: 'Naples Outdoor', year: '2024', imgUrl: FENCE_IMG.vinyl },
     { name: 'Immokalee Ag Facility', loc: 'Immokalee, FL', size: '1.4 mi', material: 'Chain Link', type: 'Galvanized 11-gauge, 6 ft, agricultural perimeter', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/gate-sliding.jpg' },
     { name: 'Port Charlotte HOA', loc: 'Port Charlotte, FL', size: '52 lots', material: 'EC Fence', type: 'EC Fence panels, 6 ft, community standard', contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/ec-fence.jpg' },
     { name: 'Golden Gate Estates', loc: 'Golden Gate, FL', size: '300 LF', material: 'Metal', type: 'Aluminum board privacy, 6 ft, bronze finish', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: FENCE_IMG.metal },
@@ -1025,4 +1056,4 @@ const Footer = () => {
   );
 };
 
-Object.assign(window, { FeaturedGrid, ProjectGallery, Calculator, ServiceAreas, FinalCTA, Footer });
+Object.assign(window, { FeaturedGrid, InstallerMarquee, ProjectGallery, Calculator, ServiceAreas, FinalCTA, Footer });

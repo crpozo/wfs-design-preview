@@ -10,8 +10,8 @@ const WarrantyHero = () => {
   <PageHero
     crumbs={[[t('Home', 'Inicio'), 'Homepage.html'], [t('Warranty', 'Garantía'), null]]}
     eyebrow={t('Warranty · Coverage', 'Garantía · Cobertura')}
-    title={t('Lifetime warranty', 'Garantía de por vida')}
-    accent={t('on every system we make.', 'en cada sistema que fabricamos.')}
+    title={t('Warranty coverage', 'Cobertura de garantía')}
+    accent={t('that varies by system.', 'que varía según el sistema.')}
     subtitle={t(
       'Material-specific terms below, written in plain English. Manufacturer-backed, transferable to the next owner, and claimable from either yard.',
       'Términos específicos por material abajo, en lenguaje claro. Respaldada por el fabricante, transferible al siguiente dueño, y reclamable desde cualquier sucursal.'
@@ -115,10 +115,10 @@ const WarrantyMaterialTable = () => {
           ))}
         </div>
         {[
-          ['Vinyl / PVC',          { EN: 'Lifetime',  ES: 'De por vida' },     { EN: 'Lifetime UV',     ES: 'UV de por vida' },     { EN: 'Veka-extruded. No fading, peeling or rotting.',  ES: 'Extruido Veka. No se decolora, no se pela, no se pudre.' }],
+          ['Vinyl / PVC',          { EN: 'Lifetime',  ES: 'De por vida' },     { EN: 'Lifetime UV',     ES: 'UV de por vida' },     { EN: 'Catalyst-extruded. No fading, peeling or rotting.',  ES: 'Extruido Catalyst. No se decolora, no se pela, no se pudre.' }],
           ['Aluminum',             { EN: 'Lifetime',  ES: 'De por vida' },     { EN: '20-year finish',  ES: 'Acabado 20 años' },    { EN: 'Powder-coat over marine-grade extrusion.',        ES: 'Pintura en polvo sobre extrusión grado marino.' }],
           [{ EN: 'Chain Link · Galv', ES: 'Malla · Galv' }, { EN: 'Rust-thru', ES: 'Hasta oxidación' }, '—',                          { EN: 'ASTM A392 zinc-coat. Salt-air rated.',              ES: 'Galvanizado ASTM A392. Resistente al aire salino.' }],
-          [{ EN: 'Chain Link · PVC',  ES: 'Malla · PVC' },  { EN: 'Rust-thru', ES: 'Hasta oxidación' }, { EN: '15-year color', ES: 'Color 15 años' }, { EN: 'Black, brown, green PVC-coated.',               ES: 'Recubrimiento PVC negro, café o verde.' }],
+          [{ EN: 'Chain Link · PVC',  ES: 'Malla · PVC' },  { EN: 'Rust-thru', ES: 'Hasta oxidación' }, { EN: '15-year color', ES: 'Color 15 años' }, { EN: 'Black, green PVC-coated.',               ES: 'Recubrimiento PVC negro o verde.' }],
           ['Metal / DuraFence',    { EN: '20 years',  ES: '20 años' },          { EN: '10-year finish',  ES: 'Acabado 10 años' },    { EN: 'HVHZ-rated aluminum board.',                      ES: 'Tabla de aluminio con clasificación HVHZ.' }],
           ['EC Fence',             { EN: 'Lifetime',  ES: 'De por vida' },     { EN: '20-year finish',  ES: 'Acabado 20 años' },    { EN: 'Self-mating galv steel, Exp. C wind-load.',       ES: 'Acero galv. autoensamblable, carga eólica Exp. C.' }],
           [{ EN: 'Gates · welded', ES: 'Portones · soldados' }, { EN: '10 years', ES: '10 años' }, { EN: 'Per system', ES: 'Por sistema' }, { EN: 'WFS in-house weld + hardware coverage.', ES: 'Cobertura de soldadura interna WFS + hardware.' }],
@@ -233,9 +233,9 @@ const WarrantyProcess = () => {
     { n: '02', title: { EN: 'Submit',   ES: 'Envía' },
       body: { EN: 'Open a claim online or call the yard. Average response in 24 hours, often same-day.',
                ES: 'Abre un reclamo en línea o llama a la sucursal. Respuesta promedio en 24 horas, a menudo el mismo día.' } },
-    { n: '03', title: { EN: 'Inspect',  ES: 'Inspección' },
-      body: { EN: 'A WFS rep visits in-county (FM + PC) or coordinates with your certified installer.',
-               ES: 'Un representante WFS visita en el condado (FM + PC) o coordina con tu instalador certificado.' } },
+    { n: '03', title: { EN: 'Review',   ES: 'Revisión' },
+      body: { EN: 'We review your photos and order details to confirm the claim, no site visit required.',
+               ES: 'Revisamos tus fotos y los datos de la orden para confirmar el reclamo, sin visita al sitio.' } },
     { n: '04', title: { EN: 'Replace',  ES: 'Reemplazo' },
       body: { EN: 'Approved claims ship replacement material from stock, most within 1-2 business days.',
                ES: 'Los reclamos aprobados envían material de reemplazo desde stock, la mayoría en 1-2 días hábiles.' } },
@@ -274,7 +274,7 @@ const WarrantyProcess = () => {
               <span className="mono" style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 width: 36, height: 36,
-                background: i === 0 ? 'var(--tangerine)' : 'var(--ink)',
+                background: 'var(--ink)',
                 color: 'var(--white)',
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.05em',
                 marginBottom: 22,
@@ -399,7 +399,7 @@ const ClaimsProcess = () => {
               <span className="mono" style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 width: 36, height: 36,
-                background: i === 0 ? 'var(--tangerine)' : 'var(--ink)',
+                background: 'var(--ink)',
                 color: 'var(--white)',
                 fontSize: 11, fontWeight: 700, letterSpacing: '0.05em',
                 marginBottom: 22,
@@ -697,7 +697,7 @@ const SpecsLibrary = () => {
     { cat: 'Fences', title: 'Vinyl Privacy + Picket Profiles',     meta: 'PDF · 1.1 MB · 24 pages',  rev: 'Rev. 2026.02' },
     { cat: 'Fences', title: 'Aluminum 3 / 4 / 5 Rail Systems',     meta: 'PDF · 980 KB · 18 pages',  rev: 'Rev. 2026.01' },
     { cat: 'Fences', title: 'Chain Link, Gauges + Mesh Chart',    meta: 'PDF · 620 KB · 8 pages',   rev: 'Rev. 2025.11' },
-    { cat: 'Fences', title: 'DuraFence, Aluminum Board Privacy',  meta: 'PDF · 1.4 MB · 22 pages',  rev: 'Rev. 2025.12' },
+    { cat: 'Fences', title: 'DuraFence, Metal Board Privacy',  meta: 'PDF · 1.4 MB · 22 pages',  rev: 'Rev. 2025.12' },
     { cat: 'Fences', title: 'EC Fence, Exposure C Wind Load',     meta: 'PDF · 1.2 MB · 16 pages',  rev: 'Rev. 2026.01', isNew: true },
     // Gates
     { cat: 'Gates',  title: 'Single + Double Swing Gates',         meta: 'PDF · 740 KB · 12 pages',  rev: 'Rev. 2025.10' },

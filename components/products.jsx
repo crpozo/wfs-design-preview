@@ -10,8 +10,8 @@ const FENCE_CATEGORIES = [
   {
     id: 'aluminum', name: { EN: 'Aluminum', ES: 'Aluminio' }, tag: { EN: 'Residential & Commercial', ES: 'Residencial y comercial' },
     img: 'aluminum', href: 'aluminum.html',
-    desc: { EN: 'Powder-coated aluminum panels in 3, 4 and 5-rail configurations. Pool-code compliant, rackable on grade and available in residential, commercial and industrial grades.',
-            ES: 'Paneles de aluminio con pintura en polvo en configuraciones de 3, 4 y 5 rieles. Cumple código de piscinas, adaptable a pendientes y disponible en grados residencial, comercial e industrial.' },
+    desc: { EN: 'Powder-coated aluminum panels in 2 and 3-rail standard configurations (4 and 5-rail custom). Pool-code compliant, rackable on grade and available in residential and commercial grades.',
+            ES: 'Paneles de aluminio con pintura en polvo en configuraciones estándar de 2 y 3 rieles (4 y 5 rieles a medida). Cumple código de piscinas, adaptable a pendientes y disponible en grados residencial y comercial.' },
   },
   {
     id: 'chainlink', name: { EN: 'Chain Link', ES: 'Malla ciclónica' }, tag: { EN: 'Galvanized & Vinyl Coated', ES: 'Galvanizada y recubierta de vinilo' },
@@ -20,10 +20,10 @@ const FENCE_CATEGORIES = [
             ES: 'Malla galvanizada y recubierta de vinilo de calibre 6 a 12. La cerca de trabajo para seguridad, deporte, agricultura y perímetros comerciales en el suroeste de Florida.' },
   },
   {
-    id: 'metal', name: { EN: 'Metal / DuraFence', ES: 'Metal / DuraFence' }, tag: { EN: 'Aluminum Board Privacy', ES: 'Privacidad de tabla aluminio' },
+    id: 'metal', name: { EN: 'Metal / DuraFence', ES: 'Metal / DuraFence' }, tag: { EN: 'Metal Privacy', ES: 'Privacidad de metal' },
     img: 'metal', href: 'metal.html',
-    desc: { EN: 'Aluminum board privacy fencing, the strength of metal with the look of solid board. Hurricane-rated, no warping, no painting, no replacement boards.',
-            ES: 'Cerca de privacidad de tabla aluminio, la fuerza del metal con el aspecto de tabla sólida. Resistente a huracanes, no se deforma, no se pinta, no se reemplazan tablas.' },
+    desc: { EN: 'Metal privacy fencing (DuraFence), the strength of metal with the look of solid board. Standard board is vertical; horizontal also available. Hurricane-rated, no warping, no painting, no replacement boards.',
+            ES: 'Cerca de privacidad de metal (DuraFence), la fuerza del metal con el aspecto de tabla sólida. La tabla estándar es vertical; también hacemos horizontal. Resistente a huracanes, no se deforma, no se pinta, no se reemplazan tablas.' },
   },
   {
     id: 'ecfence', name: { EN: 'EC Fence', ES: 'EC Fence' }, tag: { EN: 'Self-Mating Galvanized Steel', ES: 'Acero galv. autoensamblable' },
@@ -690,9 +690,9 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
                 objectFit: 'cover',
               }}/>
               {/* Navy overlay, lighter on the expanded slat */}
-              <div aria-hidden style={{
+              <div aria-hidden className="wfs-slat__overlay" style={{
                 position: 'absolute', inset: 0,
-                background: exp ? 'rgba(38, 49, 102, 0.14)' : 'rgba(38, 49, 102, 0.66)',
+                background: exp ? 'linear-gradient(180deg, rgba(38, 49, 103, 0.04) 28%, rgba(38, 49, 103, 0.85) 100%)' : 'rgba(38, 49, 102, 0.66)',
                 transition: 'background 0.5s ease',
               }}/>
               {/* Number */}
@@ -721,7 +721,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
                 transition: 'opacity 0.3s ease',
               }}>{t(c.name)}</span>
               {/* Expanded content */}
-              <div style={{
+              <div className="wfs-slat__expanded" style={{
                 position: 'absolute', left: 'clamp(24px, 3vw, 44px)', right: 'clamp(20px, 2.5vw, 40px)', bottom: 'clamp(26px, 4.5vh, 44px)',
                 opacity: exp ? 1 : 0,
                 transform: exp ? 'translateY(0)' : 'translateY(12px)',
@@ -732,11 +732,12 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
                   margin: '0 0 12px', fontSize: 'clamp(26px, 2.9vw, 56px)',
                   fontWeight: 800, lineHeight: 0.98, letterSpacing: '-0.01em',
                   textTransform: 'capitalize', color: 'var(--white)',
+                  textShadow: '0 2px 20px rgba(0,16,17,0.6)',
                 }}>{t(c.name)}</h3>
                 <p style={{
                   margin: '0 0 18px', maxWidth: 520,
                   fontSize: 'clamp(13px, 1.05vw, 16px)', lineHeight: 1.5,
-                  color: 'var(--alice-blue)',
+                  color: 'var(--white)', textShadow: '0 1px 12px rgba(0,16,17,0.6)',
                 }}>{t(c.desc)}</p>
                 <span className="mono" style={{
                   display: 'inline-flex', alignItems: 'center', gap: 12,

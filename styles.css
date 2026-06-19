@@ -511,3 +511,18 @@ section { position: relative; }
 @media (max-width: 900px) {
   .wfs-articles-hero { grid-template-columns: 1fr !important; }
 }
+
+/* Installer logos marquee */
+.wfs-marquee { width: 100%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.wfs-marquee__track { display: flex; width: max-content; align-items: center; animation: wfsMarquee 38s linear infinite; }
+.wfs-marquee:hover .wfs-marquee__track { animation-play-state: paused; }
+@keyframes wfsMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Mobile: expanding slats stack and show all content (no hover on touch) */
+@media (max-width: 900px) {
+  .wfs-slats { flex-direction: column; }
+  .wfs-slat { flex: 1 1 auto !important; min-height: 260px; }
+  .wfs-slat__vlabel { display: none !important; }
+  .wfs-slat__expanded { opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
+  .wfs-slat__overlay { background: linear-gradient(180deg, rgba(38,49,103,0.10) 28%, rgba(38,49,103,0.85) 100%) !important; }
+}
