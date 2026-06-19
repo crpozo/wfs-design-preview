@@ -493,8 +493,8 @@ const AboutIntro = () => {
             maxWidth: 540,
           }}>
             {t(
-              "Western Fence Supply is Southwest Florida's best source for high-quality vinyl fence, aluminum fence, and chain-link fence materials. We sell to fence companies and homeowners in Lee County, Collier County, Charlotte County, and Hendry County.",
-              'Western Fence Supply es la mejor fuente del suroeste de Florida para materiales de cerca de vinilo, aluminio y malla ciclónica de alta calidad. Vendemos a empresas de cercas y propietarios en los condados de Lee, Collier, Charlotte y Hendry.'
+              "Western Fence Supply is Southwest Florida's best source for high-quality vinyl fence, aluminum fence, chain-link fence, and metal fence materials. We sell to fence companies and homeowners in Lee County, Collier County, Charlotte County, and Hendry County.",
+              'Western Fence Supply es la mejor fuente del suroeste de Florida para materiales de cerca de vinilo, aluminio, malla ciclónica y metal de alta calidad. Vendemos a empresas de cercas y propietarios en los condados de Lee, Collier, Charlotte y Hendry.'
             )}
           </p>
           <p style={{
