@@ -7,7 +7,7 @@ const ProductsHero = () => (
     title="Five fence systems."
     accent="One Fort Myers yard."
     subtitle="Factory-direct material, vinyl, aluminum, chain link, metal and EC Fence, plus gates, hardware and accessories. Same supplier-direct pricing for contractors, homeowners and DIY projects."
-    image="assets/hero-warehouse.webp"
+    image="assets/PVC.png"
   />
 );
 

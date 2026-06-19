@@ -22,7 +22,7 @@ const ProjectsHero = () => (
     title="Real projects."
     accent="Real perimeters."
     subtitle="Forty-plus completed jobs across Lee, Collier, Charlotte and Hendry. Filter by material below."
-    image="assets/hero-warehouse.webp"
+    image="assets/MET.png"
   />
 );
 

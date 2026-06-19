@@ -8,7 +8,7 @@ const EstimateHero = () => (
     background: '#263166',
   }}>
     {/* Industrial warehouse backdrop */}
-    <img src="assets/hero-warehouse.webp" alt="" aria-hidden style={{
+    <img src="assets/Showroom.png" alt="" aria-hidden style={{
       position: 'absolute', inset: 0, width: '100%', height: '100%',
       objectFit: 'cover', objectPosition: 'center 55%', zIndex: 0,
       filter: 'saturate(0.85) contrast(1.05)',

@@ -7,7 +7,7 @@ const SolutionsHero = () => (
     title="Built for the way"
     accent="you actually buy fence."
     subtitle="Contractors, homeowners, DIY builders and commercial GCs. Same supplier-direct pricing, same in-house fabrication shop, same two yards."
-    image="assets/hero-warehouse.webp"
+    image="assets/wfs-shop.webp"
   />
 );
 

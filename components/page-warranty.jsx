@@ -684,7 +684,7 @@ const SpecsHero = () => {
       'PDF spec sheets, profile drawings and wind-load data for every system we stock. Formatted for AHJ submission and HOA review. Stamped copies on request.',
       'Hojas técnicas PDF, dibujos de perfil y datos de carga eólica para cada sistema que manejamos. Formateadas para presentación AHJ y revisión HOA. Copias selladas a solicitud.'
     )}
-    image="assets/hero-warehouse.webp"
+    image="assets/ECFENCE.png"
   />
   );
 };
