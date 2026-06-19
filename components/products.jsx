@@ -644,7 +644,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
   const t = useT();
   const [active, setActive] = React.useState(0);
   return (
-    <section id={id} style={{
+    <section id={id} className="wfs-slat-section" style={{
       background: 'var(--indigo-blue)',
       height: 'clamp(540px, calc(100svh - 118px), 880px)',
       display: 'flex', flexDirection: 'column',

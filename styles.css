@@ -526,3 +526,8 @@ section { position: relative; }
   .wfs-slat__expanded { opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
   .wfs-slat__overlay { background: linear-gradient(180deg, rgba(38,49,103,0.10) 28%, rgba(38,49,103,0.85) 100%) !important; }
 }
+
+/* Mobile: slat section grows so every stacked slat is visible */
+@media (max-width: 900px) {
+  .wfs-slat-section { height: auto !important; overflow: visible !important; }
+}
