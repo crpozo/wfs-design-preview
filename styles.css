@@ -532,3 +532,14 @@ section { position: relative; }
   .wfs-slat-section { height: auto !important; overflow: visible !important; }
 }
 
+
+/* Header nav: hamburger earlier + keep desktop nav on one line */
+@media (max-width: 1200px) {
+  .wfs-desktop-nav { display: none !important; }
+  .wfs-mobile-trigger { display: inline-flex !important; }
+  .wfs-mobile-menu { display: flex !important; }
+}
+@media (max-width: 1360px) {
+  .wfs-hide-tablet { display: none !important; }
+  .wfs-desktop-nav { gap: 18px !important; }
+}

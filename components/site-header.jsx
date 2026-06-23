@@ -199,7 +199,7 @@ const SiteHeader = ({ active }) => {
           </a>
 
           {/* Nav */}
-          <nav className="wfs-desktop-nav" style={{ display: 'flex', gap: 26, alignItems: 'center' }}>
+          <nav className="wfs-desktop-nav" style={{ display: 'flex', gap: 26, alignItems: 'center', flexWrap: 'nowrap' }}>
             {NAV.map(({ id, label, def }) => (
               def.kind === 'link' ? (
                 <a key={id} href={def.href}
@@ -208,7 +208,7 @@ const SiteHeader = ({ active }) => {
                     display: 'inline-flex', alignItems: 'center',
                     fontSize: 15, fontWeight: 500,
                     color: active === id ? 'var(--laser-blue)' : 'var(--ink)',
-                    textDecoration: 'none', padding: '8px 0',
+                    textDecoration: 'none', padding: '8px 0', whiteSpace: 'nowrap',
                     borderBottom: active === id ? '2px solid var(--tangerine)' : '2px solid transparent',
                     transition: 'color 0.15s, border-color 0.15s',
                   }}>
@@ -221,7 +221,7 @@ const SiteHeader = ({ active }) => {
                     display: 'inline-flex', alignItems: 'center',
                     fontSize: 15, fontWeight: 500,
                     color: openMenu === id ? 'var(--laser-blue)' : 'var(--ink)',
-                    background: 'transparent', cursor: 'pointer', padding: '8px 0',
+                    background: 'transparent', cursor: 'pointer', padding: '8px 0', whiteSpace: 'nowrap',
                     borderBottom: (active === id || openMenu === id) ? '2px solid var(--tangerine)' : '2px solid transparent',
                     transition: 'color 0.15s, border-color 0.15s',
                   }}>
