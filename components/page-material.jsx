@@ -322,7 +322,7 @@ const MaterialSpecs = ({ data }) => (
 );
 
 const MaterialUseCases = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '120px 0' }}>
+  <section style={{ background: 'var(--white)', padding: '120px 0 0' }}>
     <div className="container">
       <PageSectionHeader
         number="03" label={useT()("Where it shines", "Donde brilla")}
