@@ -374,7 +374,11 @@ const ProjectGallery = ({ featuredMaterial }) => {
   const [selected, setSelected] = React.useState(0);
   const [page, setPage] = React.useState(0);
   const projects = [
-    { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, with double drive gate', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/gate-sliding.jpg' },
+    { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Vinyl', type: 'Vinyl privacy fence, 6 ft, white', contractor: 'Naples Outdoor', year: '2024', imgUrl: FENCE_IMG.vinyl },
+    { name: 'Fort Myers Estate', loc: 'Fort Myers, FL', size: '410 LF', material: 'Vinyl', type: 'Vinyl privacy fence, 6 ft, tan', contractor: 'Estate Fence Pros', year: '2024', imgUrl: FENCE_IMG.vinyl },
+    { name: 'Estero Community', loc: 'Estero, FL', size: '44 lots', material: 'Vinyl', type: 'Vinyl privacy fence, 6 ft, community standard', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: FENCE_IMG.vinyl },
+    { name: 'HOA Boundary', loc: 'Lehigh Acres, FL', size: '60 lots', material: 'Vinyl', type: 'Vinyl privacy fence, 6 ft, white', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: FENCE_IMG.vinyl },
+    { name: 'Cape Coral Perimeter', loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, with double drive gate', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/gate-sliding.jpg' },
     { name: 'Estero Community', loc: 'Estero, FL', size: '38 lots', material: 'Metal', type: 'Metal board privacy, 6 ft, bronze finish', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: FENCE_IMG.metal },
     { name: 'Fort Myers Estate', loc: 'Fort Myers, FL', size: '420 LF', material: 'Aluminum', type: 'Welded 3-rail aluminum, 5 ft, residential grade', contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/gate-cantilever.jpg' },
     { name: 'Naples Pool Enclosure', loc: 'Naples, FL', size: '180 LF', material: 'Vinyl', type: 'Vinyl privacy, 6 ft, pool-code compliant', contractor: 'Naples Outdoor', year: '2025', imgUrl: FENCE_IMG.vinyl },
