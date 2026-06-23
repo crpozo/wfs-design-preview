@@ -75,21 +75,35 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, actions, he
       {actions && actions.length > 0 && (
         <div style={{ marginTop: 30, display: 'flex', gap: 14, flexWrap: 'wrap' }}>
           {actions.map((a, i) => (
-            <a key={i} href={a.href} style={a.primary ? {
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              padding: '15px 28px', borderRadius: 999,
-              background: 'var(--tangerine)', color: 'var(--white)',
-              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
-              letterSpacing: '0.06em', textTransform: 'uppercase',
-              boxShadow: '0 10px 26px rgba(255, 113, 51,0.4)',
-            } : {
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              padding: '15px 28px', borderRadius: 999,
-              background: 'rgba(255,255,255,0.08)', color: 'var(--white)',
-              border: '1.5px solid rgba(255,255,255,0.55)', backdropFilter: 'blur(6px)',
-              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
-              letterSpacing: '0.06em', textTransform: 'uppercase',
-            }}>{a.label}</a>
+            a.primary ? (
+              <a key={i} href={a.href} style={{
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                padding: '15px 28px', borderRadius: 999,
+                background: 'var(--tangerine)', color: 'var(--white)',
+                fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+                letterSpacing: '0.06em', textTransform: 'uppercase',
+                boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)',
+                transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 113, 51,0.35)'; }}>
+                {a.label}
+              </a>
+            ) : (
+              <a key={i} href={a.href} style={{
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                padding: '15px 28px', borderRadius: 999,
+                background: 'rgba(255,255,255,0.08)', color: 'var(--white)',
+                border: '1.5px solid rgba(255,255,255,0.55)', backdropFilter: 'blur(6px)',
+                fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+                letterSpacing: '0.06em', textTransform: 'uppercase',
+                transition: 'background 0.18s, border-color 0.18s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.18)'; e.currentTarget.style.borderColor = 'var(--white)'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.55)'; }}>
+                {a.label}
+              </a>
+            )
           ))}
         </div>
       )}
