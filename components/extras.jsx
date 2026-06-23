@@ -518,7 +518,7 @@ const AboutIntro = () => {
             borderTop: '1px solid rgba(0,16,17,0.12)',
           }}>
             {[
-              ['10+', { EN: 'Years fabricating', ES: 'Años fabricando' }],
+              ['20+', { EN: 'Years fabricating', ES: 'Años fabricando' }],
               ['4',   { EN: 'Counties served',    ES: 'Condados atendidos' }],
               ['2',   { EN: 'Yards · FM + PC',    ES: 'Sucursales · FM + PC' }],
             ].map(([n, l], i) => (

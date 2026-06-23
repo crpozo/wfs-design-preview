@@ -175,7 +175,7 @@ const AboutShop = () => (
 
 const AboutStats = () => {
   const stats = [
-    ['10+',  'Years experience',  'Fencing install + fabrication'],
+    ['20+',  'Years experience',  'Fencing install + fabrication'],
     ['4',    'Fence materials',   'Vinyl · Aluminum · Chain link · Metal'],
     ['2',    'Yards',             'Fort Myers + Port Charlotte'],
     ['4',    'Counties served',   'Lee · Collier · Charlotte · Hendry'],
