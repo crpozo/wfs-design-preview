@@ -15,24 +15,42 @@ const InstallerMarquee = () => {
   const names = ['Pro Fence Installers','SWFL Fencing','Naples Fence Co.','Fort Myers Pros',
     'Gateway Fencing','Gulf Coast Contractors','Coastline Fence','Estate Fence Pros',
     'Cape Coral Fencing','Lee County Fence'];
+  const initials = (n) => n.split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
   const row = [...names, ...names];
   return (
-    <section style={{ background: 'var(--white)', padding: '64px 0', borderTop: '1px solid rgba(0,16,17,0.06)', borderBottom: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
+    <section style={{ background: 'var(--white)', padding: '72px 0', borderTop: '1px solid rgba(0,16,17,0.06)', borderBottom: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
       <div className="container">
         <p className="mono" style={{
-          textAlign: 'center', margin: '0 0 36px',
+          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16,
+          textAlign: 'center', margin: '0 0 40px',
           fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
           color: 'var(--charcoal)', fontWeight: 700,
-        }}>{t('A trusted supplier for top fence installation companies', 'Proveedor de confianza para las mejores empresas de instalación de cercas')}</p>
+        }}>
+          <span aria-hidden style={{ width: 28, height: 1, background: 'rgba(0,16,17,0.2)' }}/>
+          {t('A trusted supplier for top fence installation companies', 'Proveedor de confianza para las mejores empresas de instalación de cercas')}
+          <span aria-hidden style={{ width: 28, height: 1, background: 'rgba(0,16,17,0.2)' }}/>
+        </p>
       </div>
       <div className="wfs-marquee" aria-hidden>
         <div className="wfs-marquee__track">
           {row.map((n, i) => (
-            <span key={i} className="display" style={{
-              fontSize: 'clamp(18px, 2vw, 26px)', color: 'var(--ink)',
-              opacity: 0.55, whiteSpace: 'nowrap', letterSpacing: '-0.01em',
-              padding: '0 clamp(28px, 4vw, 56px)', flexShrink: 0,
-            }}>{n}</span>
+            <span key={i} style={{
+              display: 'inline-flex', alignItems: 'center', gap: 12,
+              padding: '0 clamp(28px, 3.5vw, 52px)', flexShrink: 0,
+              opacity: 0.7,
+            }}>
+              <span aria-hidden style={{
+                flexShrink: 0,
+                width: 38, height: 38, borderRadius: 8,
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                background: 'var(--ink)', color: 'var(--white)',
+                fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, letterSpacing: '0.02em',
+              }}>{initials(n)}</span>
+              <span className="display" style={{
+                fontSize: 'clamp(16px, 1.7vw, 22px)', color: 'var(--ink)',
+                whiteSpace: 'nowrap', letterSpacing: '-0.01em', lineHeight: 1,
+              }}>{n}</span>
+            </span>
           ))}
         </div>
       </div>
