@@ -217,6 +217,24 @@ const CTABand = ({ kicker, title, accent, body, primary, secondary, theme = 'cre
   );
 };
 
+const featureIcon = (label = '') => {
+  const l = String(label).toLowerCase();
+  const p = { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' };
+  if (l.includes('best') || l.includes('ideal')) return <svg {...p}><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.2"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg>;
+  if (l.includes('style') || l.includes('estilo')) return <svg {...p}><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>;
+  if (l.includes('material')) return <svg {...p}><path d="M12 3 21 8 12 13 3 8Z"/><path d="M3 12 12 17 21 12"/><path d="M3 16 12 21 21 16"/></svg>;
+  if (l.includes('lead') || l.includes('time') || l.includes('plazo') || l.includes('tiempo')) return <svg {...p}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>;
+  if (l.includes('start') || l.includes('desde')) return <svg {...p}><path d="M20.6 13.4 11 3.8a2 2 0 0 0-1.4-.6H4v5.6a2 2 0 0 0 .6 1.4l9.6 9.6a2 2 0 0 0 2.8 0l3.6-3.6a2 2 0 0 0 0-2.8Z"/><circle cx="7.7" cy="7.7" r="1.2"/></svg>;
+  if (l.includes('width') || l.includes('ancho')) return <svg {...p}><path d="M3 12h18M6 9l-3 3 3 3M18 9l3 3-3 3"/></svg>;
+  if (l.includes('height') || l.includes('altura')) return <svg {...p}><path d="M12 3v18M9 6l3-3 3 3M9 18l3 3 3-3"/></svg>;
+  if (l.includes('gauge') || l.includes('mesh') || l.includes('calibre')) return <svg {...p}><path d="M5 5l6 6-6 6M11 5l6 6-6 6"/></svg>;
+  if (l.includes('finish') || l.includes('color') || l.includes('acabado')) return <svg {...p}><circle cx="9" cy="9" r="5"/><circle cx="15" cy="15" r="5"/></svg>;
+  if (l.includes('wind') || l.includes('viento')) return <svg {...p}><path d="M3 8h12a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h9a2.5 2.5 0 1 1-2.5 2.5"/></svg>;
+  if (l.includes('warrant') || l.includes('garant')) return <svg {...p}><path d="M12 3 19 6v6q0 5-7 9-7-4-7-9V6Z"/><path d="M9 12l2 2 4-4"/></svg>;
+  if (l.includes('post') || l.includes('spacing') || l.includes('separac')) return <svg {...p}><path d="M5 4v16M12 4v16M19 4v16"/></svg>;
+  return <svg {...p}><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11.5 12h.5v4h1"/></svg>;
+};
+
 const FeatureRow = ({ items }) => (
   <div style={{
     display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`,
@@ -228,6 +246,7 @@ const FeatureRow = ({ items }) => (
         padding: '24px 22px',
         borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.12)',
       }}>
+        <div aria-hidden style={{ color: 'var(--tangerine)', marginBottom: 14 }}>{featureIcon(k)}</div>
         <div className="mono" style={{
           fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'var(--tangerine)', fontWeight: 700, marginBottom: 10,
