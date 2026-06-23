@@ -45,16 +45,15 @@ const MATERIAL_DATA = {
     slug: 'aluminum',
     name: 'Aluminum',
     tag: 'Powder-coat · Pool code',
-    heroTitle: 'Powder-coated aluminum.',
-    heroAccent: 'Pool-code compliant.',
-    heroBody: 'Welded and mechanically assembled aluminum in 2-rail and 3-rail standard configurations, with 4 and 5-rail available as custom. Pool-code compliant profiles available, rackable on grade, in residential and commercial grades.',
+    heroTitle: 'Powder-Coated Aluminum',
+    heroAccent: 'Fence Materials.',
+    heroBody: 'Pool-code compliant aluminum fence materials for residential, commercial, and community projects. Available in multiple heights and styles, with gates, posts, rails, and hardware quoted as part of your material package.',
     heroImg: FENCE_IMG.aluminum,
     bestFor: 'Pool enclosures, ornamental perimeters, HOAs',
     profiles: [
       { name: '2-Rail', tag: 'Standard', notes: 'Stocked, open picket, residential grade' },
       { name: '3-Rail', tag: 'Standard', notes: 'Stocked, most common residential configuration' },
       { name: 'Pool-Code', tag: 'Code Compliant', notes: '4 ft, 2-rail, 3" picket spacing, magnetic latch' },
-      { name: '4 & 5-Rail', tag: 'Custom', notes: 'Made to order, not stocked' },
     ],
     specs: [
       ['Heights', '4 ft, 5 ft, 6 ft (custom to 8 ft)'],
@@ -204,7 +203,9 @@ const MATERIAL_DATA = {
   },
 };
 
-const MaterialHero = ({ data }) => (
+const MaterialHero = ({ data }) => {
+  const t = useT();
+  return (
   <PageHero
     crumbs={[['Home', 'Homepage.html'], ['Products', 'products.html'], [data.name, null]]}
     eyebrow={data.tag}
@@ -212,8 +213,13 @@ const MaterialHero = ({ data }) => (
     accent={data.heroAccent}
     subtitle={data.heroBody}
     image={data.heroImg}
+    actions={[
+      { label: t('Request a Material Quote', 'Solicitar cotización de material'), href: 'estimate.html', primary: true },
+      { label: t(`View ${data.name} Styles`, `Ver estilos de ${data.name}`), href: '#styles' },
+    ]}
   />
-);
+  );
+};
 
 const MaterialQuickFacts = ({ data }) => (
   <section style={{ background: 'var(--white)', padding: '64px 0', borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
@@ -229,15 +235,15 @@ const MaterialQuickFacts = ({ data }) => (
 );
 
 const MaterialProfiles = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '120px 0' }}>
+  <section id="styles" style={{ background: 'var(--white)', padding: '120px 0' }}>
     <div className="container">
       <PageSectionHeader
         number="01" label={useT()("Profiles & styles", "Perfiles y estilos")}
         title={`${data.name}`}
-        accent={useT()("four ways to spec it.", "cuatro formas de configurarlo.")}
+        accent={useT()(`${data.profiles.length} ways to spec it.`, `${data.profiles.length} formas de configurarlo.`)}
         sub={useT()("Standard and custom configurations available. Custom heights and colors on request.", "Configuraciones estándar y a medida. Alturas y colores personalizados bajo pedido.")}
       />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14 }}>
+      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${data.profiles.length}, 1fr)`, gap: 14 }}>
         {data.profiles.map((p, i) => (
           <article key={p.name} style={{
             background: 'var(--white)', padding: 24,

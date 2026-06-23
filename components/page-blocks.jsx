@@ -17,7 +17,7 @@ const Breadcrumb = ({ items, light = true }) => (
   </nav>
 );
 
-const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, height = 'clamp(420px, 58vh, 560px)' }) => (
+const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, actions, height = 'clamp(420px, 58vh, 560px)' }) => (
   <section style={{
     position: 'relative', color: 'var(--white)', overflow: 'hidden',
     minHeight: height,
@@ -71,6 +71,27 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, height = 'c
           fontSize: 16, lineHeight: 1.55, maxWidth: 600, margin: 0,
           color: 'rgba(255,255,255,0.85)',
         }}>{subtitle}</p>
+      )}
+      {actions && actions.length > 0 && (
+        <div style={{ marginTop: 30, display: 'flex', gap: 14, flexWrap: 'wrap' }}>
+          {actions.map((a, i) => (
+            <a key={i} href={a.href} style={a.primary ? {
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              padding: '15px 28px', borderRadius: 999,
+              background: 'var(--tangerine)', color: 'var(--white)',
+              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+              letterSpacing: '0.06em', textTransform: 'uppercase',
+              boxShadow: '0 10px 26px rgba(255, 113, 51,0.4)',
+            } : {
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              padding: '15px 28px', borderRadius: 999,
+              background: 'rgba(255,255,255,0.08)', color: 'var(--white)',
+              border: '1.5px solid rgba(255,255,255,0.55)', backdropFilter: 'blur(6px)',
+              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+              letterSpacing: '0.06em', textTransform: 'uppercase',
+            }}>{a.label}</a>
+          ))}
+        </div>
       )}
     </div>
   </section>

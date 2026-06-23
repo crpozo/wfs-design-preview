@@ -582,3 +582,11 @@ const useTrData = (obj) => {
 };
 window.ES_TR = ES_TR;
 window.useTrData = useTrData;
+
+/* Additional ES entries (aluminum hero rewrite) */
+Object.assign(ES_TR, {
+  'Powder-Coated Aluminum': 'Aluminio con pintura en polvo',
+  'Fence Materials.': 'Materiales de cerca.',
+  'Pool-code compliant aluminum fence materials for residential, commercial, and community projects. Available in multiple heights and styles, with gates, posts, rails, and hardware quoted as part of your material package.':
+    'Materiales de cerca de aluminio que cumplen el código de piscinas, para proyectos residenciales, comerciales y comunitarios. Disponibles en múltiples alturas y estilos, con portones, postes, rieles y herrajes cotizados como parte de tu paquete de material.',
+});
