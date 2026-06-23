@@ -37,14 +37,14 @@ const InstallerMarquee = () => {
             <span key={i} style={{
               display: 'inline-flex', alignItems: 'center', gap: 12,
               padding: '0 clamp(28px, 3.5vw, 52px)', flexShrink: 0,
-              opacity: 0.7,
             }}>
               <span aria-hidden style={{
                 flexShrink: 0,
                 width: 38, height: 38, borderRadius: 8,
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                background: 'var(--ink)', color: 'var(--white)',
-                fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, letterSpacing: '0.02em',
+                background: 'var(--white)', color: 'var(--tangerine)',
+                border: '1px solid rgba(0,16,17,0.12)',
+                fontFamily: 'var(--mono)', fontSize: 12.5, fontWeight: 700, letterSpacing: '0.04em',
               }}>{initials(n)}</span>
               <span className="display" style={{
                 fontSize: 'clamp(16px, 1.7vw, 22px)', color: 'var(--ink)',
