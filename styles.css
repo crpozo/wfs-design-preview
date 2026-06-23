@@ -532,9 +532,3 @@ section { position: relative; }
   .wfs-slat-section { height: auto !important; overflow: visible !important; }
 }
 
-/* Announcement top bar */
-.wfs-topbar__inner { scrollbar-width: none; -ms-overflow-style: none; }
-.wfs-topbar__inner::-webkit-scrollbar { display: none; }
-@media (max-width: 720px) {
-  .wfs-topbar__inner { justify-content: flex-start !important; font-size: 11px !important; }
-}

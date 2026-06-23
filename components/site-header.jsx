@@ -89,34 +89,6 @@ const SiteHeader = ({ active }) => {
              modeToast === 'CONTRACTOR' ? 'Viendo contenido de contratista' : 'Viendo contenido de propietario')}
         </div>
       )}
-      {/* Announcement top bar */}
-      <div className="wfs-topbar" style={{ background: 'var(--tangerine)', color: 'var(--white)' }}>
-        <div className="container wfs-topbar__inner" style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          gap: 'clamp(16px, 2.4vw, 34px)', flexWrap: 'nowrap', overflowX: 'auto',
-          paddingTop: 7, paddingBottom: 7,
-          fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 600, whiteSpace: 'nowrap',
-        }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
-            Proudly Serving All of Florida
-          </span>
-          <span aria-hidden style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.4)', flexShrink: 0 }}/>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 7 }}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" aria-hidden><path d="M20.6 13.4 11 3.8a2 2 0 0 0-1.4-.6H4v5.6a2 2 0 0 0 .6 1.4l9.6 9.6a2 2 0 0 0 2.8 0l3.6-3.6a2 2 0 0 0 0-2.8Z"/><circle cx="7.7" cy="7.7" r="1.1" fill="currentColor" stroke="none"/></svg>
-            Contractor Pricing &amp; Volume Discounts
-          </span>
-          <span aria-hidden style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.4)', flexShrink: 0 }}/>
-          <a href="tel:2396895466" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, color: 'var(--white)' }}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.3a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1Z"/></svg>
-            Fort Myers: (239) 689-5466
-          </a>
-          <a href="tel:9413918613" style={{ display: 'inline-flex', alignItems: 'center', gap: 7, color: 'var(--white)' }}>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.3a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1Z"/></svg>
-            Port Charlotte: (941) 391-8613
-          </a>
-        </div>
-      </div>
       {/* Utility bar */}
       <div className="wfs-utility-bar" style={{ background: 'var(--ink)', borderBottom: '1px solid rgba(255,255,255,0.08)', color: 'var(--alice-blue)' }}>
         <div className="container" style={{

@@ -646,7 +646,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
   return (
     <section id={id} className="wfs-slat-section" style={{
       background: 'var(--indigo-blue)',
-      height: 'clamp(540px, calc(100svh - 150px), 880px)',
+      height: 'clamp(540px, calc(100svh - 118px), 880px)',
       display: 'flex', flexDirection: 'column',
       overflow: 'hidden',
     }}>
