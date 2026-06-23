@@ -368,9 +368,9 @@ const PageBtn = ({ active, disabled, onClick, label, arrow }) => (
   </button>
 );
 
-const ProjectGallery = () => {
+const ProjectGallery = ({ featuredMaterial }) => {
   const t = useT();
-  const [filter, setFilter] = React.useState('All');
+  const [filter, setFilter] = React.useState(featuredMaterial || 'All');
   const [selected, setSelected] = React.useState(0);
   const [page, setPage] = React.useState(0);
   const projects = [
@@ -991,7 +991,7 @@ const Footer = () => {
     { title: { EN: 'Solutions', ES: 'Soluciones' }, items: [
       { label: { EN: 'For Contractors',     ES: 'Para contratistas' },    href: 'contractors.html' },
       { label: { EN: 'For Homeowners',      ES: 'Para propietarios' },    href: 'homeowners.html' },
-      { label: { EN: 'For DIY',             ES: 'Para DIY' },             href: 'solutions.html' },
+      { label: { EN: 'For HOA',             ES: 'Para HOA' },             href: 'solutions.html' },
       { label: { EN: 'Commercial',          ES: 'Comercial' },            href: 'solutions.html' },
     ]},
     { title: { EN: 'Resources', ES: 'Recursos' }, items: [

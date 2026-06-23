@@ -44,38 +44,44 @@ const MATERIAL_DATA = {
   aluminum: {
     slug: 'aluminum',
     name: 'Aluminum',
-    tag: 'Powder-coat · Pool code',
+    tag: 'Powder-coat aluminum',
     heroTitle: 'Powder-Coated Aluminum',
     heroAccent: 'Fence Materials.',
     heroBody: 'Pool-code compliant aluminum fence materials for residential, commercial, and community projects. Available in multiple heights and styles, with gates, posts, rails, and hardware quoted as part of your material package.',
     heroImg: FENCE_IMG.aluminum,
-    bestFor: 'Pool enclosures, ornamental perimeters, HOAs',
+    bestFor: 'Pool enclosures, residential yards, HOA communities',
+    quickFacts: [
+      ['Best For', 'Pool enclosures, residential yards, HOA communities'],
+      ['Material', 'Powder-coated aluminum'],
+      ['Styles', '2-rail, 3-rail, spear-top, flat-top options'],
+      ['Lead Time', 'Stock and lead time vary by style, color, and quantity'],
+    ],
     profiles: [
-      { name: '2-Rail', tag: 'Standard', notes: 'Stocked, open picket, residential grade' },
-      { name: '3-Rail', tag: 'Standard', notes: 'Stocked, most common residential configuration' },
-      { name: 'Pool-Code', tag: 'Code Compliant', notes: '4 ft, 2-rail, 3" picket spacing, magnetic latch' },
+      { name: '2-Rail', tag: 'Standard', notes: 'Simple, open-profile aluminum fence option.' },
+      { name: '3-Rail', tag: 'Popular', notes: 'Popular residential and pool-code configuration.' },
+      { name: '3-Rail Spear Top', tag: 'Decorative', notes: 'Decorative picket-top style for residential projects.' },
+      { name: '4 & 5-Rail', tag: 'Custom', notes: 'Available for taller or custom aluminum configurations.' },
     ],
     specs: [
-      ['Heights', '4 ft, 5 ft, 6 ft (custom to 8 ft)'],
-      ['Colors', 'Black, Bronze, White (powder-coat)'],
-      ['Material', '6063-T6 alloy, fully welded or mechanical'],
-      ['Wind rating', 'Up to 150 mph HVHZ'],
-      ['Warranty', '20-year finish'],
-      ['Lead time', '1-2 days stocked · 2-3 weeks custom color'],
-      ['Starts at', 'Quote-based'],
+      ['Heights', "4', 5', 6', custom options available"],
+      ['Colors', 'Black, bronze, white, and selected powder-coated finishes'],
+      ['Material', 'Aluminum fence panels, posts, gates, and hardware'],
+      ['Wind rating', 'Varies by product style and installation conditions'],
+      ['Warranty', 'Ask our team for available manufacturer warranty details'],
+      ['Lead time', 'Stock and lead time vary by material, color, and quantity'],
     ],
     useCases: [
-      ['Pool enclosures', '4 ft tall, 2-rail, 3" picket spacing and a magnetic latch, meets Florida pool code.'],
-      ['Ornamental front yards', 'Decorative spear-top and finial caps for residential front perimeters.'],
-      ['HVHZ perimeters', 'Welded commercial grade rated for 150 mph in HVHZ counties.'],
+      ['Pool Enclosures', 'Pool-code aluminum fencing for residential and community pools.'],
+      ['Residential Front Yards', 'Clean, decorative aluminum fence for front yards and property lines.'],
+      ['HOA & Community Perimeters', 'Durable aluminum fence options for communities and shared spaces.'],
     ],
-    contractor: {
-      bestFor: 'Pool enclosures, code-required perimeters, HVHZ residential',
-      useCases: [
-        ['Pool code at volume', 'FBC R 4501.17 profiles, paperwork-ready, no field surprises on AHJ check.'],
-        ['HVHZ residential',   '150 mph welded commercial spec, sealed wind load on request.'],
-        ['HOA ornamental',     'Black powder-coat repeat sections, pickup-ready for repeat jobs.'],
-      ],
+    cta: {
+      kicker: 'Aluminum fence materials',
+      title: 'Ready to Quote Your',
+      accent: 'Aluminum Fence Materials?',
+      body: 'Send us your material needs, linear footage, height, color, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.',
+      primary: ['Request a Quote', 'estimate.html'],
+      secondary: ['Call (239) 689-5496', 'tel:2396895496'],
     },
   },
   chainlink: {
@@ -222,7 +228,7 @@ const MaterialHero = ({ data }) => {
 const MaterialQuickFacts = ({ data }) => (
   <section style={{ background: 'var(--white)', padding: '64px 0', borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
     <div className="container">
-      <FeatureRow items={[
+      <FeatureRow items={data.quickFacts || [
         [useT()('Best for', 'Ideal para'), data.bestFor],
         [useT()('Material', 'Material'), data.specs.find(s => s[0] === 'Material')?.[1] || '—'],
         [useT()('Starts at', 'Desde'), data.specs.find(s => s[0] === 'Starts at')?.[1] || '—'],
@@ -279,7 +285,7 @@ const MaterialSpecs = ({ data }) => (
             <span style={{ color: 'var(--tangerine)' }}>{useT()('no marketing.', 'sin marketing.')}</span>
           </h2>
           <p style={{ marginTop: 20, fontSize: 14, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 320 }}>
-            {useT()("Need a sealed manufacturer spec? Ask your rep, we'll send the PDF before quote.", '¿Necesitas una especificación sellada del fabricante? Pídela a tu representante, te enviamos el PDF antes de cotizar.')}
+            {useT()("Actual specs may vary by style, height, color and availability. Contact our team to confirm the right material package for your project.", 'Las especificaciones reales pueden variar según estilo, altura, color y disponibilidad. Contacta a nuestro equipo para confirmar el paquete de material adecuado para tu proyecto.')}
           </p>
           <a href="estimate.html" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
@@ -288,7 +294,7 @@ const MaterialSpecs = ({ data }) => (
             textTransform: 'uppercase', color: 'var(--white)',
             borderBottom: '1px solid rgba(255,255,255,0.45)',
           }}>
-            {useT()('Ask for the sealed spec PDF', 'Pide el PDF de especificación sellada')} →
+            {useT()('Talk to our team', 'Habla con nuestro equipo')} →
           </a>
         </div>
         <div style={{ position: 'relative' }}>
@@ -355,16 +361,19 @@ const MaterialOtherMaterials = ({ currentSlug }) => {
   );
 };
 
-const MaterialCTA = ({ data }) => (
+const MaterialCTA = ({ data }) => {
+  const c = data.cta;
+  return (
   <CTABand
-    kicker={useT()(`Quote your ${data.name.toLowerCase()} run`, `Cotiza tu corrida de ${data.name.toLowerCase()}`)}
-    title={useT()("Send us your", "Envíanos tus")}
-    accent={useT()("dimensions.", "medidas.")}
-    body={useT()("We'll come back with stocked components, lead time and a delivery or pickup plan from Fort Myers or Port Charlotte.", 'Te respondemos con componentes en stock, plazo de entrega y un plan de entrega o recogida desde Fort Myers o Port Charlotte.')}
-    primary={[useT()('Request a quote', 'Solicitar cotización'), 'estimate.html']}
-    secondary={['Call (239) 689-5496', 'tel:2396895496']}
+    kicker={c ? c.kicker : useT()(`Quote your ${data.name.toLowerCase()} run`, `Cotiza tu corrida de ${data.name.toLowerCase()}`)}
+    title={c ? c.title : useT()("Send us your", "Envíanos tus")}
+    accent={c ? c.accent : useT()("dimensions.", "medidas.")}
+    body={c ? c.body : useT()("We'll come back with stocked components, lead time and a delivery or pickup plan from Fort Myers or Port Charlotte.", 'Te respondemos con componentes en stock, plazo de entrega y un plan de entrega o recogida desde Fort Myers o Port Charlotte.')}
+    primary={c ? c.primary : [useT()('Request a quote', 'Solicitar cotización'), 'estimate.html']}
+    secondary={c ? c.secondary : ['Call (239) 689-5496', 'tel:2396895496']}
   />
-);
+  );
+};
 
 const MaterialPage = ({ slug }) => {
   const [mode] = useMode();
@@ -383,7 +392,7 @@ const MaterialPage = ({ slug }) => {
       <MaterialProfiles data={data}/>
       <MaterialSpecs data={data}/>
       <MaterialUseCases data={data}/>
-      <ProjectGallery />
+      <ProjectGallery featuredMaterial={{ vinyl: 'Vinyl', aluminum: 'Aluminum', chainlink: 'Chain Link', metal: 'Metal', ecfence: 'EC Fence' }[slug]}/>
       <MaterialOtherMaterials currentSlug={slug === 'chainlink' ? 'chain-link' : slug}/>
       <MaterialCTA data={data}/>
       <Footer />

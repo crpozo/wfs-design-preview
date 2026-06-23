@@ -263,7 +263,7 @@ const SiteHeader = ({ active }) => {
                 width: 6, height: 6, borderRadius: '50%', background: '#ff7133',
                 boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)',
               }}/>
-              {t('Live Agent', 'Agente en vivo')}
+              {t('Request a Quote', 'Solicitar cotización')}
               <span style={{
                 width: 26, height: 26, borderRadius: '50%',
                 background: 'var(--tangerine)', color: 'var(--ink)',
