@@ -516,6 +516,16 @@ section { position: relative; }
 .wfs-marquee { width: 100%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .wfs-marquee__track { display: flex; width: max-content; align-items: center; animation: wfsMarquee 38s linear infinite; }
 .wfs-marquee:hover .wfs-marquee__track { animation-play-state: paused; }
+
+/* Gate quick-facts floating card */
+@media (max-width: 860px) {
+  .wfs-gate-facts { grid-template-columns: 1fr 1fr !important; }
+  .wfs-gate-facts > div:nth-child(3) { border-left: none !important; }
+}
+@media (max-width: 520px) {
+  .wfs-gate-facts { grid-template-columns: 1fr !important; }
+  .wfs-gate-facts > div { border-left: none !important; }
+}
 @keyframes wfsMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* Mobile: expanding slats stack and show all content (no hover on touch) */

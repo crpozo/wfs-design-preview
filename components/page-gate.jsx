@@ -268,10 +268,42 @@ const GateHero = ({ data }) => {
   );
 };
 
+const gateFactIcon = (label = '') => {
+  const l = String(label).toLowerCase();
+  const p = { width: 26, height: 26, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' };
+  if (l.includes('best')) return <svg {...p}><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.2a3 3 0 0 1 0 5.6"/><path d="M21 20a5.5 5.5 0 0 0-4-5.3"/></svg>;
+  if (l.includes('material')) return <svg {...p}><path d="M12 3 21 8 12 13 3 8Z"/><path d="M3 12 12 17 21 12"/><path d="M3 16 12 21 21 16"/></svg>;
+  if (l.includes('hardware')) return <svg {...p}><path d="M14.7 6.3a3.8 3.8 0 0 0-5 5l-5 5 2 2 5-5a3.8 3.8 0 0 0 5-5l-2.4 2.4-2-.5-.5-2Z"/></svg>;
+  return <svg {...p}><rect x="3" y="4.5" width="18" height="16.5" rx="2"/><path d="M3 9.5h18M8 2.5v4M16 2.5v4"/></svg>;
+};
+
 const GateQuickFacts = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '64px 0', borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
+  <section style={{ background: 'var(--white)', padding: '0 0 48px' }}>
     <div className="container">
-      <FeatureRow items={data.quickFacts}/>
+      <div className="wfs-gate-facts" style={{
+        position: 'relative', zIndex: 5, marginTop: -76,
+        background: 'var(--white)', borderRadius: 16,
+        boxShadow: '0 34px 70px -34px rgba(0,16,17,0.4)',
+        border: '1px solid rgba(0,16,17,0.06)',
+        display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)',
+        overflow: 'hidden',
+      }}>
+        {data.quickFacts.map(([k, v], i) => (
+          <div key={i} style={{
+            padding: '30px 28px',
+            borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.08)',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+              <span aria-hidden style={{ color: 'var(--laser-blue)', display: 'inline-flex' }}>{gateFactIcon(k)}</span>
+              <span className="mono" style={{
+                fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase',
+                color: 'var(--ink)', fontWeight: 700,
+              }}>{k}</span>
+            </div>
+            <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{v}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 );
