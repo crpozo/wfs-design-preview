@@ -70,8 +70,6 @@ const MATERIAL_DATA = {
       ['HVHZ perimeters', 'Welded commercial grade rated for 150 mph in HVHZ counties.'],
     ],
     contractor: {
-      tag: 'Powder-coat · Pool-code + HVHZ',
-      heroBody: 'Powder-coated aluminum, 2 and 3-rail stocked, 4 and 5-rail custom. Pool-code compliant profiles available, rackable on grade. Residential and commercial grades, sealed wind-load specs available for HVHZ submissions.',
       bestFor: 'Pool enclosures, code-required perimeters, HVHZ residential',
       useCases: [
         ['Pool code at volume', 'FBC R 4501.17 profiles, paperwork-ready, no field surprises on AHJ check.'],
