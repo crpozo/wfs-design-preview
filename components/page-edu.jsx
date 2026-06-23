@@ -472,7 +472,7 @@ const PoolCodeProfiles = () => {
 };
 
 const PoolCodeChecklist = () => (
-  <section style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '120px 0' }}>
+  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', color: 'var(--parchment)', padding: '120px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
