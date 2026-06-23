@@ -92,7 +92,7 @@ const EstimateHero = () => (
         {[
           ['01', 'Send your run',         'Linear feet · height · gate count · ZIP. Survey or sketch optional.'],
           ['02', 'We quote in 24h',       'Stock, lead time, delivery or pickup window, all in one email.'],
-          ['03', 'Pickup or delivery',    'FM or PC yard · Mon-Sat 7am-4pm. Same-day staging if called ahead.'],
+          ['03', 'Pickup or delivery',    'FM or PC yard · Mon-Fri 7am-4pm, Sat 7am-12pm. Same-day staging if called ahead.'],
         ].map(([n, t, sub], i, arr) => (
           <div key={n} style={{
             paddingLeft: i === 0 ? 0 : 28,
@@ -144,7 +144,7 @@ const LiveAgentBand = () => (
           margin: 0, maxWidth: 320, justifySelf: 'end', textAlign: 'right',
           fontSize: 13.5, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
-          Two reps splitting calls Mon-Sat during business hours.
+          Our sales representatives split calls Monday through Friday during business hours.
         </p>
       </div>
 

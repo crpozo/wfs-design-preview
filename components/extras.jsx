@@ -396,7 +396,7 @@ const ShopTour = () => (
             Family-owned.<br/>Fabricated in-house.
           </h2>
           <p style={{ fontSize: 17, lineHeight: 1.55, color: 'var(--alice-blue)', maxWidth: 460, marginBottom: 24 }}>
-            Western Fence Supply is led by management with over a decade of fence installation
+            Western Fence Supply is led by management with two decades of fence installation
             and fabrication experience. We refuse to sell low-quality components, same standard
             we held when we were the contractors.
           </p>

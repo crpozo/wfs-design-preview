@@ -751,7 +751,7 @@ const HomeownerFAQ = () => {
                 borderTop: '1px solid rgba(38, 49, 102,0.1)',
                 fontSize: 10.5, letterSpacing: '0.18em',
                 textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 700,
-              }}>{t('Mon-Sat · 7am-4pm EST', 'Lun-Sáb · 7am-4pm EST')}</div>
+              }}>{t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm')}</div>
             </div>
           </div>
 

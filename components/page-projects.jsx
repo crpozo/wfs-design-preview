@@ -18,10 +18,10 @@ const FULL_PROJECTS = [
 const ProjectsHero = () => (
   <PageHero
     crumbs={[['Home', 'Homepage.html'], ['Projects', null]]}
-    eyebrow="Project archive · 2024-2025"
+    eyebrow="Project archive"
     title="Real projects."
     accent="Real perimeters."
-    subtitle="Forty-plus completed jobs across Lee, Collier, Charlotte and Hendry. Filter by material below."
+    subtitle="A selection of completed fence and gate projects across Southwest Florida and beyond. Filter by material below."
     image="assets/MET.png"
   />
 );

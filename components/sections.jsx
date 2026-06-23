@@ -421,8 +421,8 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
             margin: '14px 0 0', fontSize: 11, letterSpacing: '0.16em',
             textTransform: 'uppercase', color: 'var(--charcoal)',
           }}>
-            {t('Flagship perimeters across Lee, Collier & Charlotte, pick one to preview.',
-               'Perímetros insignia en Lee, Collier y Charlotte, elige uno para verlo.')}
+            {t('Flagship perimeters across Southwest Florida, pick one to preview.',
+               'Perímetros insignia en el suroeste de Florida, elige uno para verlo.')}
           </p>
         </div>
 
@@ -464,7 +464,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
             color: 'var(--ink)',
             borderBottom: '1px solid var(--ink)',
           }}>
-            {t('View all 40+ projects', 'Ver los 40+ proyectos')}
+            {t('View all projects', 'Ver todos los proyectos')}
             <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
               <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
             </svg>
@@ -795,7 +795,7 @@ const ServiceAreas = () => {
             {[
               { city: 'Fort Myers · HQ', addr: '2621 Fowler St, FL 33901', phone: '(239) 689-5496' },
               { city: 'Port Charlotte', addr: '1145 Enterprise Dr, FL 33953', phone: '(941) 391-6613' },
-              { city: 'Counties served', addr: 'Lee · Collier · Charlotte · Hendry · Hendry', phone: 'Mon-Sat · 7am-4pm' },
+              { city: 'Counties served', addr: 'Lee · Collier · Charlotte · Hendry & beyond', phone: 'Mon-Fri 7am-4pm · Sat 7am-12pm' },
             ].map((y, i) => (
               <div key={i} style={{
                 border: '1px solid rgba(0,16,17,0.18)',
@@ -895,7 +895,7 @@ const FinalCTA = () => {
               <div style={{ fontSize: 12, color: 'var(--charcoal)', marginBottom: 12 }}>{t('Fort Myers yard', 'Sucursal Fort Myers')}</div>
               <a href="tel:9413916613" className="display" style={{ fontSize: 28, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>(941) 391-6613</a>
               <div style={{ fontSize: 12, color: 'var(--charcoal)' }}>{t('Port Charlotte yard', 'Sucursal Port Charlotte')}</div>
-              <div style={{ fontSize: 13, color: 'var(--charcoal)', marginTop: 12 }}>{t('Mon-Sat · 7am-4pm EST', 'Lun-Sáb · 7am-4pm EST')}</div>
+              <div style={{ fontSize: 13, color: 'var(--charcoal)', marginTop: 12 }}>{t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm')}</div>
             </div>
             <div style={{ marginBottom: 32 }}>
               <div style={labelStyle}>{t('Email', 'Correo')}</div>

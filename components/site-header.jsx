@@ -29,7 +29,7 @@ const SiteHeader = ({ active }) => {
     { id: 'Full Catalog', label: { EN: 'Full Catalog', ES: 'Catálogo completo' }, def: { kind: 'link', href: 'products.html' } },
     { id: 'Get a Quote', label: { EN: 'Get a Quote', ES: 'Cotizar' }, def: { kind: 'list', items: [
       { label: { EN: 'Draw Your Fence',       ES: 'Dibuja tu cerca' },        href: 'estimate.html', sub: { EN: 'Sketch or send measurements, pricing in 24h',   ES: 'Dibuja o envía medidas, precios en 24h' } },
-      { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html', sub: { EN: 'Mon-Sat · Fort Myers + Port Charlotte',   ES: 'Lun-Sáb · Fort Myers + Port Charlotte' } },
+      { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte',   ES: 'Lun-Vie · Fort Myers + Port Charlotte' } },
       { label: { EN: 'Call (239) 689-5496',  ES: 'Llamar (239) 689-5496' }, href: 'tel:2396895496', sub: { EN: 'Real reps during business hours', ES: 'Agentes reales en horario' } },
     ]}},
     { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [

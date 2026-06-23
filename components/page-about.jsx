@@ -36,7 +36,7 @@ const AboutStory = () => (
           margin: 0, maxWidth: 420, justifySelf: 'end', textAlign: 'right',
           fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
-          A family-run Southwest Florida fence supplier, led by management with over a decade of fencing installation and fabrication experience. Two yards across Lee, Collier, Charlotte and Hendry.
+          A family-run Southwest Florida fence supplier, led by management with two decades of fencing installation and fabrication experience. Two yards across Lee, Collier, Charlotte and Hendry.
         </p>
       </div>
 
@@ -160,7 +160,7 @@ const AboutShop = () => (
     kicker="03, In-house fabrication"
     title="Welded, cut and"
     accent="packed in Fort Myers."
-    body="Most of our gates ship ready-to-assemble from our fabrication shop. Aluminum, chain link, EC Fence, cut and welded to spec in-house, so what arrives on your jobsite is ready to install the same day."
+    body="Most of our gates ship ready-to-assemble from our fabrication shop. Aluminum, chain link, metal, vinyl and EC Fence, cut and welded to spec in-house, so what arrives on your jobsite is ready to install the same day."
     bullets={[
       'Custom gate fabrication, up to 50 ft cantilever',
       'Hardware kits packed and labeled to the order',
@@ -243,7 +243,7 @@ const AboutCTA = () => (
     kicker="Visit the yard"
     title="Walk the shop,"
     accent="meet the team."
-    body="Both yards are open Mon-Sat 7am-4pm. Call ahead and we'll have your materials staged when you pull in."
+    body="Both yards are open Monday-Friday 7am-4pm and Saturday 7am-12pm. Call ahead and we'll have your materials staged when you pull in."
     primary={['Get a quote', 'estimate.html']}
     secondary={['Yard locations', 'solutions.html#yards']}
   />
