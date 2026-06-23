@@ -95,7 +95,7 @@ img { display: block; max-width: 100%; }
 .btn-light { background: var(--parchment); color: var(--ink); }
 .btn-light:hover { background: var(--white); }
 .btn-ghost { color: inherit; border: 1px solid currentColor; padding: 14px 20px; }
-.btn-ghost:hover { background: currentColor; color: var(--parchment); }
+.btn-ghost:hover { background: currentColor; color: var(--white); }
 .btn-ghost.on-dark:hover { color: var(--ink); }
 
 .arrow-icon {
