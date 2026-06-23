@@ -232,6 +232,7 @@ const featureIcon = (label = '') => {
   if (l.includes('wind') || l.includes('viento')) return <svg {...p}><path d="M3 8h12a3 3 0 1 0-3-3M3 12h16a3 3 0 1 1-3 3M3 16h9a2.5 2.5 0 1 1-2.5 2.5"/></svg>;
   if (l.includes('warrant') || l.includes('garant')) return <svg {...p}><path d="M12 3 19 6v6q0 5-7 9-7-4-7-9V6Z"/><path d="M9 12l2 2 4-4"/></svg>;
   if (l.includes('post') || l.includes('spacing') || l.includes('separac')) return <svg {...p}><path d="M5 4v16M12 4v16M19 4v16"/></svg>;
+  if (l.includes('hardware') || l.includes('herraj')) return <svg {...p}><path d="M14.7 6.3a3.8 3.8 0 0 0-5 5l-5 5 2 2 5-5a3.8 3.8 0 0 0 5-5l-2.4 2.4-2-.5-.5-2Z"/></svg>;
   return <svg {...p}><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11.5 12h.5v4h1"/></svg>;
 };
 
