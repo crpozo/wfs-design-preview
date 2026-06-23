@@ -502,12 +502,16 @@ const PoolCodeChecklist = () => (
               display: 'flex', alignItems: 'flex-start', gap: 14,
               fontSize: 14.5, lineHeight: 1.55,
             }}>
-              <span style={{
-                flexShrink: 0, marginTop: 5,
-                width: 16, height: 16,
-                border: '1.5px solid var(--tangerine)',
-                background: 'transparent',
-              }}/>
+              <span aria-hidden style={{
+                flexShrink: 0, marginTop: 3,
+                width: 22, height: 22, borderRadius: 4,
+                background: 'var(--tangerine)', color: 'var(--ink)',
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                  <path d="M3.5 8.5l3 3 6-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
               <span>{line}</span>
             </li>
           ))}
