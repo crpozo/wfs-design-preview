@@ -10,6 +10,12 @@ const MATERIAL_DATA = {
     heroBody: 'Privacy, semi-private, picket, ranch rail and many more styles in white, sand and gray. Won\'t rot, rust, peel or fade, engineered for Florida UV with a transferable lifetime warranty.',
     heroImg: FENCE_IMG.vinyl,
     bestFor: 'Backyard privacy, pool enclosures, residential subdivisions',
+    quickFacts: [
+      ['Best For', 'Backyard privacy, pool enclosures, residential subdivisions'],
+      ['Material', 'Catalyst-extruded virgin vinyl panels, posts, and caps'],
+      ['Options', 'Privacy, semi-privacy, picket, and ranch rail styles'],
+      ['Lead Time', 'Stocked profiles ready fast; custom runs vary by spec'],
+    ],
     profiles: [
       { name: 'Privacy', tag: 'Full board', notes: '6 ft tongue-and-groove board, no gaps' },
       { name: 'Semi-Privacy', tag: 'With lattice', notes: '6 ft solid + 18" decorative lattice topper' },
@@ -137,6 +143,12 @@ const MATERIAL_DATA = {
     heroBody: 'Solid metal privacy fence (DuraFence) in 6-8 ft, the strength of metal with the silhouette of solid board. Our standard board is vertical; horizontal layouts also available. Hurricane-rated, no warping, no painting, no replacement boards.',
     heroImg: FENCE_IMG.metal,
     bestFor: 'Modern privacy in HVHZ counties',
+    quickFacts: [
+      ['Best For', 'Modern privacy, HVHZ residential, and commercial screens'],
+      ['Material', 'Extruded metal privacy board, posts, and hardware'],
+      ['Options', 'Standard and tall board, slatted privacy, and matching gates'],
+      ['Lead Time', 'Stock and lead time vary by height, color, and quantity'],
+    ],
     profiles: [
       { name: 'Standard Board', tag: '6 ft', notes: 'Vertical metal board, flush mount' },
       { name: 'Tall board', tag: '8 ft', notes: 'For commercial / luxury residential' },
@@ -177,6 +189,12 @@ const MATERIAL_DATA = {
     heroBody: 'Our newest system, self-mating galvanized steel panels installed every 12 ft. 6 ft tall, available in bronze and white, engineered for Exposure C wind loads. Engineered for the Florida coast.',
     heroImg: 'assets/ec-fence.jpg',
     bestFor: 'Coastal HVHZ perimeters, commercial sites, modern residential',
+    quickFacts: [
+      ['Best For', 'Coastal HVHZ perimeters, commercial sites, modern residential'],
+      ['Material', 'Self-mating galvanized steel panels, posts, and hardware'],
+      ['Options', 'Bronze and white finishes, matching gates, sloped runs'],
+      ['Lead Time', 'Stock and lead time vary by finish and quantity'],
+    ],
     profiles: [
       { name: 'Bronze 6 ft', tag: 'Standard', notes: 'Bronze powder over hot-dip galv' },
       { name: 'White 6 ft', tag: 'Standard', notes: 'White finish, same panel system' },
