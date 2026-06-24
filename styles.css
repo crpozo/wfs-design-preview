@@ -516,6 +516,8 @@ section { position: relative; }
 .wfs-marquee { width: 100%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
 .wfs-marquee__track { display: flex; width: max-content; align-items: center; animation: wfsMarquee 38s linear infinite; }
 .wfs-marquee:hover .wfs-marquee__track { animation-play-state: paused; }
+.wfs-marquee__logo { transition: color 0.25s ease; }
+.wfs-marquee__logo:hover { color: rgba(38, 49, 102, 0.7) !important; }
 
 /* Gate quick-facts floating card */
 @media (max-width: 860px) {

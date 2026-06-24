@@ -15,42 +15,27 @@ const InstallerMarquee = () => {
   const names = ['Pro Fence Installers','SWFL Fencing','Naples Fence Co.','Fort Myers Pros',
     'Gateway Fencing','Gulf Coast Contractors','Coastline Fence','Estate Fence Pros',
     'Cape Coral Fencing','Lee County Fence'];
-  const initials = (n) => n.split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0]).join('').toUpperCase();
   const row = [...names, ...names];
   return (
-    <section style={{ background: 'var(--white)', padding: '72px 0', borderTop: '1px solid rgba(0,16,17,0.06)', borderBottom: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
+    <section style={{ background: 'var(--white)', padding: '64px 0', borderTop: '1px solid rgba(0,16,17,0.06)', borderBottom: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
       <div className="container">
         <p className="mono" style={{
-          display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 16,
-          textAlign: 'center', margin: '0 0 40px',
-          fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase',
-          color: 'var(--charcoal)', fontWeight: 700,
+          margin: '0 0 32px',
+          fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
+          color: 'rgba(0,16,17,0.4)', fontWeight: 600,
         }}>
-          <span aria-hidden style={{ width: 28, height: 1, background: 'rgba(0,16,17,0.2)' }}/>
           {t('A trusted supplier for top fence installation companies', 'Proveedor de confianza para las mejores empresas de instalación de cercas')}
-          <span aria-hidden style={{ width: 28, height: 1, background: 'rgba(0,16,17,0.2)' }}/>
         </p>
       </div>
       <div className="wfs-marquee" aria-hidden>
         <div className="wfs-marquee__track">
           {row.map((n, i) => (
-            <span key={i} style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12,
-              padding: '0 clamp(28px, 3.5vw, 52px)', flexShrink: 0,
-            }}>
-              <span aria-hidden style={{
-                flexShrink: 0,
-                width: 38, height: 38, borderRadius: 8,
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                background: 'var(--white)', color: 'var(--tangerine)',
-                border: '1px solid rgba(0,16,17,0.12)',
-                fontFamily: 'var(--mono)', fontSize: 12.5, fontWeight: 700, letterSpacing: '0.04em',
-              }}>{initials(n)}</span>
-              <span className="display" style={{
-                fontSize: 'clamp(16px, 1.7vw, 22px)', color: 'var(--ink)',
-                whiteSpace: 'nowrap', letterSpacing: '-0.01em', lineHeight: 1,
-              }}>{n}</span>
-            </span>
+            <span key={i} className="display wfs-marquee__logo" style={{
+              fontSize: 'clamp(20px, 2.2vw, 30px)', fontWeight: 700,
+              color: 'rgba(38, 49, 102, 0.32)',
+              whiteSpace: 'nowrap', letterSpacing: '-0.01em', lineHeight: 1,
+              padding: '0 clamp(30px, 4vw, 60px)', flexShrink: 0,
+            }}>{n}</span>
           ))}
         </div>
       </div>
