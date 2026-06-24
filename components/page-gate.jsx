@@ -281,7 +281,7 @@ const GateQuickFacts = ({ data }) => (
   <section style={{ background: 'var(--white)', padding: '0 0 48px' }}>
     <div className="container">
       <div className="wfs-gate-facts" style={{
-        position: 'relative', zIndex: 5, marginTop: -76,
+        position: 'relative', zIndex: 5, marginTop: -28,
         background: 'var(--white)', borderRadius: 16,
         boxShadow: '0 34px 70px -34px rgba(0,16,17,0.4)',
         border: '1px solid rgba(0,16,17,0.06)',
