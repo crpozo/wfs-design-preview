@@ -10,12 +10,22 @@ const FEATURED = [
 ];
 
 
+const INSTALLERS = [
+  { name: 'J2W Custom Fence', src: 'assets/installers/j2w-custom-fence.png' },
+  { name: 'True Fence', src: 'assets/installers/true-fence.png' },
+  { name: 'Good Hands Fencing', src: 'assets/installers/good-hands-fencing.png' },
+  { name: 'All American Fence & Gate', src: 'assets/installers/all-american-fence-and-gate.png' },
+  { name: 'SWFL Fence', src: 'assets/installers/swfl-fence.png' },
+  { name: 'Supreme Fence of SWFL', src: 'assets/installers/supreme-fence.png' },
+  { name: 'Southern Hoss Fences', src: 'assets/installers/southern-hoss-fences.png' },
+  { name: 'M.R. Fence', src: 'assets/installers/mr-fence.png' },
+  { name: 'Level Up Fencing', src: 'assets/installers/level-up-fencing.png' },
+];
+
 const InstallerMarquee = () => {
   const t = useT();
-  const names = ['Pro Fence Installers','SWFL Fencing','Naples Fence Co.','Fort Myers Pros',
-    'Gateway Fencing','Gulf Coast Contractors','Coastline Fence','Estate Fence Pros',
-    'Cape Coral Fencing','Lee County Fence'];
-  const row = [...names, ...names];
+  const base = [...INSTALLERS, ...INSTALLERS];
+  const row = [...base, ...base];
   return (
     <section style={{ background: 'var(--white)', padding: '64px 0', borderTop: '1px solid rgba(0,16,17,0.06)', borderBottom: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
       <div className="container">
@@ -29,13 +39,12 @@ const InstallerMarquee = () => {
       </div>
       <div className="wfs-marquee" aria-hidden>
         <div className="wfs-marquee__track">
-          {row.map((n, i) => (
-            <span key={i} className="display wfs-marquee__logo" style={{
-              fontSize: 'clamp(20px, 2.2vw, 30px)', fontWeight: 700,
-              color: 'rgba(38, 49, 102, 0.32)',
-              whiteSpace: 'nowrap', letterSpacing: '-0.01em', lineHeight: 1,
-              padding: '0 clamp(30px, 4vw, 60px)', flexShrink: 0,
-            }}>{n}</span>
+          {row.map((l, i) => (
+            <span key={i} className="wfs-logo-cell">
+              <img src={l.src} alt={l.name} className="wfs-logo-img"
+                onError={e => { e.currentTarget.style.display = 'none'; const fb = e.currentTarget.nextSibling; if (fb) fb.style.display = 'inline'; }} />
+              <span className="display wfs-logo-fallback">{l.name}</span>
+            </span>
           ))}
         </div>
       </div>
