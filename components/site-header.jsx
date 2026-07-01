@@ -93,7 +93,7 @@ const SiteHeader = ({ active }) => {
       <div className="wfs-utility-bar" style={{ background: 'var(--ink)', borderBottom: '1px solid rgba(255,255,255,0.08)', color: 'var(--alice-blue)' }}>
         <div className="container" style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          gap: 32, paddingTop: 10, paddingBottom: 10, fontFamily: 'var(--mono)', fontSize: 11,
+          gap: 32, paddingTop: 10, paddingBottom: 10, fontFamily: 'var(--mono)', fontSize: 12.5,
           letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700,
         }}>
           {/* Left: mode toggle + catalog link */}
@@ -109,7 +109,7 @@ const SiteHeader = ({ active }) => {
                   <button key={m.key} onClick={() => setCurMode(m.key)} style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
                     padding: 0, background: 'transparent',
-                    fontFamily: 'inherit', fontSize: 11, fontWeight: 700,
+                    fontFamily: 'inherit', fontSize: 12.5, fontWeight: 700,
                     letterSpacing: '0.18em', textTransform: 'uppercase',
                     color: isActive ? 'var(--white)' : 'rgba(219,233,238,0.55)',
                     cursor: 'pointer',
@@ -163,7 +163,7 @@ const SiteHeader = ({ active }) => {
                   <button key={l} onClick={() => setCurLang(l)} style={{
                     display: 'inline-flex', alignItems: 'center', gap: 6,
                     padding: 0, background: 'transparent',
-                    fontFamily: 'inherit', fontSize: 11, fontWeight: 700,
+                    fontFamily: 'inherit', fontSize: 12.5, fontWeight: 700,
                     letterSpacing: '0.18em', textTransform: 'uppercase',
                     color: isActive ? 'var(--white)' : 'rgba(219,233,238,0.55)',
                     cursor: 'pointer',
@@ -237,7 +237,7 @@ const SiteHeader = ({ active }) => {
             <a href="estimate.html" className="mono wfs-hide-tablet" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
               padding: '8px 0',
-              fontSize: 11, fontWeight: 700,
+              fontSize: 12.5, fontWeight: 700,
               letterSpacing: '0.22em', textTransform: 'uppercase',
               color: 'var(--ink)',
               borderBottom: '1px solid var(--ink)',
@@ -253,7 +253,7 @@ const SiteHeader = ({ active }) => {
               borderRadius: 999,
               background: 'var(--ink)', color: 'var(--white)',
               fontFamily: 'var(--mono)',
-              fontSize: 11, fontWeight: 700,
+              fontSize: 12.5, fontWeight: 700,
               letterSpacing: '0.22em', textTransform: 'uppercase',
               transition: 'background 0.2s ease, transform 0.2s ease',
             }}
@@ -349,7 +349,7 @@ const SiteHeader = ({ active }) => {
                     background: isActive ? 'var(--ink)' : 'var(--white)',
                     color: isActive ? 'var(--white)' : 'var(--ink)',
                     border: `1px solid ${isActive ? 'var(--ink)' : 'rgba(0,16,17,0.25)'}`,
-                    fontSize: 11, fontWeight: 700, letterSpacing: '0.12em',
+                    fontSize: 12.5, fontWeight: 700, letterSpacing: '0.12em',
                     textTransform: 'uppercase', lineHeight: 1.3,
                     cursor: 'pointer',
                   }}>
@@ -432,7 +432,7 @@ const SiteHeader = ({ active }) => {
                           fontSize: 14, color: 'var(--ink)',
                         }}>
                           <div style={{ fontWeight: 500 }}>{t(it.label)}</div>
-                          {it.sub && <div style={{ fontSize: 12, color: 'var(--charcoal)', marginTop: 2 }}>{t(it.sub)}</div>}
+                          {it.sub && <div style={{ fontSize: 13, color: 'var(--charcoal)', marginTop: 2 }}>{t(it.sub)}</div>}
                         </a>
                       ))}
                     </div>
@@ -453,7 +453,7 @@ const SiteHeader = ({ active }) => {
                         }}>
                           <span>
                             <span style={{ fontWeight: 600, display: 'block' }}>{t(tile.name)}</span>
-                            <span style={{ fontSize: 12, color: 'var(--charcoal)' }}>{t(tile.tag)}</span>
+                            <span style={{ fontSize: 13, color: 'var(--charcoal)' }}>{t(tile.tag)}</span>
                           </span>
                           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, color: 'var(--charcoal)' }}>
                             <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
@@ -498,7 +498,7 @@ const SiteHeader = ({ active }) => {
             </a>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <span className="mono" style={{
-                fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+                fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
                 textTransform: 'uppercase', color: 'var(--charcoal)',
               }}>{t('Language', 'Idioma')}</span>
               <div style={{ display: 'flex', gap: 12 }}>
@@ -515,7 +515,7 @@ const SiteHeader = ({ active }) => {
                       background: isActive ? 'var(--ink)' : 'var(--white)',
                       color: isActive ? 'var(--white)' : 'var(--ink)',
                       border: `1px solid ${isActive ? 'var(--ink)' : 'rgba(0,16,17,0.25)'}`,
-                      fontSize: 12, fontWeight: 700, letterSpacing: '0.14em',
+                      fontSize: 13, fontWeight: 700, letterSpacing: '0.14em',
                       textTransform: 'uppercase', cursor: 'pointer',
                     }}>
                       <span aria-hidden style={{ flexShrink: 0, fontSize: 15, lineHeight: 1 }}>{l.code === 'EN' ? '🇺🇸' : '🇲🇽'}</span>
@@ -585,7 +585,7 @@ const SiteHeader = ({ active }) => {
                           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,16,17,0) 35%, rgba(0,16,17,0.85) 100%)' }}/>
                           <div style={{
                             position: 'absolute', top: 12, left: 12,
-                            fontFamily: 'var(--sans)', fontSize: 10, fontWeight: 700, letterSpacing: '0.14em',
+                            fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700, letterSpacing: '0.14em',
                             color: 'var(--ink)', background: 'var(--tangerine)',
                             padding: '4px 8px', borderRadius: 3,
                           }}>
@@ -593,7 +593,7 @@ const SiteHeader = ({ active }) => {
                           </div>
                           <div style={{ position: 'absolute', bottom: 14, left: 14, right: 14, color: 'var(--white)' }}>
                             <div className="display" style={{ fontSize: 17, lineHeight: 1.1, marginBottom: 6 }}>{t(tile.name)}</div>
-                            <div className="eyebrow" style={{ fontSize: 10, color: 'var(--alice-blue)' }}>{t(tile.tag)}</div>
+                            <div className="eyebrow" style={{ fontSize: 12, color: 'var(--alice-blue)' }}>{t(tile.tag)}</div>
                           </div>
                         </a>
                       ))}
@@ -622,7 +622,7 @@ const SiteHeader = ({ active }) => {
                         onMouseEnter={e => { e.currentTarget.style.background = '#ffffff'; }}
                         onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
-                            <span className="eyebrow" style={{ color: 'var(--tangerine)', fontSize: 10 }}>
+                            <span className="eyebrow" style={{ color: 'var(--tangerine)', fontSize: 12 }}>
                               0{i + 1}
                             </span>
                             <span style={{ fontSize: 17, fontWeight: 500, color: 'var(--ink)' }}>{t(it.label)}</span>

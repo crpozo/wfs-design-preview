@@ -31,7 +31,7 @@ const InstallerMarquee = () => {
       <div className="container">
         <p className="mono" style={{
           margin: '0 0 32px',
-          fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
+          fontSize: 12.5, letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'rgba(0,16,17,0.4)', fontWeight: 600,
         }}>
           {t('A trusted supplier for top fence installation companies', 'Proveedor de confianza para las mejores empresas de instalación de cercas')}
@@ -94,7 +94,7 @@ const FeaturedGrid = () => {
                 }}/>
                 <div style={{
                   position: 'absolute', top: 14, left: 14,
-                  fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em',
+                  fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.14em',
                   color: 'var(--alice-blue)', background: 'rgba(0,16,17,0.55)',
                   padding: '5px 8px', borderRadius: 3,
                 }}>
@@ -102,7 +102,7 @@ const FeaturedGrid = () => {
                 </div>
                 <div style={{
                   position: 'absolute', top: 14, right: 14,
-                  fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.14em',
+                  fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.14em',
                   background: 'var(--tangerine)',
                   padding: '5px 8px', borderRadius: 3, color: 'var(--ink)', fontWeight: 600,
                 }}>
@@ -110,18 +110,18 @@ const FeaturedGrid = () => {
                 </div>
               </div>
               <div style={{ padding: 20 }}>
-                <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 8 }}>
+                <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 8 }}>
                   {p.cat} · {p.height}
                 </div>
                 <h3 style={{ fontSize: 18, fontWeight: 500, margin: '0 0 14px', color: 'var(--ink)' }}>
                   {p.name}
                 </h3>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span className="mono" style={{ fontSize: 11, color: 'var(--charcoal)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
+                  <span className="mono" style={{ fontSize: 12.5, color: 'var(--charcoal)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
                     Supplier-direct pricing
                   </span>
                   <button style={{
-                    fontSize: 12, fontFamily: 'var(--mono)', letterSpacing: '0.14em',
+                    fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.14em',
                     textTransform: 'uppercase', color: 'var(--ink)',
                     display: 'flex', alignItems: 'center', gap: 6,
                   }}>
@@ -171,14 +171,14 @@ const ProjectCard = ({ p, i, layout }) => {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div className="mono" style={{
-          fontSize: 10, letterSpacing: '0.18em',
+          fontSize: 12, letterSpacing: '0.18em',
           color: 'var(--ink)', background: 'var(--white)',
           padding: '5px 9px', fontWeight: 600,
         }}>
           {String(i + 1).padStart(2, '0')} / {p.year}
         </div>
         <div className="mono" style={{
-          fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
+          fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'var(--white)', background: 'rgba(0,16,17,0.55)',
           padding: '5px 9px', backdropFilter: 'blur(6px)',
         }}>
@@ -208,7 +208,7 @@ const ProjectCard = ({ p, i, layout }) => {
             color: 'var(--alice-blue)',
           }}>{p.type}</p>
           <p style={{
-            margin: '6px 0 0', fontSize: 11, fontFamily: 'var(--mono)',
+            margin: '6px 0 0', fontSize: 12.5, fontFamily: 'var(--mono)',
             letterSpacing: '0.06em', color: 'rgba(255,255,255,0.65)',
           }}>Installed by {p.contractor}</p>
         </div>
@@ -285,7 +285,7 @@ const FeaturedProject = ({ p, num, total }) => {
               borderLeft: i ? '1px solid rgba(255,255,255,0.18)' : 'none',
             }}>
               <div className="mono" style={{
-                fontSize: 9, letterSpacing: '0.18em', textTransform: 'uppercase',
+                fontSize: 11.5, letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.55)', marginBottom: 5,
               }}>{t(k)}</div>
               <div className="display" style={{ fontSize: 16, color: 'var(--white)', letterSpacing: '-0.01em' }}>{v}</div>
@@ -300,7 +300,7 @@ const FeaturedProject = ({ p, num, total }) => {
         }}>
           <span className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.18em',
+            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
             textTransform: 'uppercase', color: 'var(--white)',
           }}>
             {t('View project', 'Ver proyecto')}
@@ -346,7 +346,7 @@ const ProjectListRow = ({ p, active, onSelect }) => {
         }}>{p.name}</span>
       </span>
       <span className="mono" style={{
-        fontSize: 9, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700,
+        fontSize: 11.5, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700,
         color: active ? 'var(--ink)' : 'var(--charcoal)', flexShrink: 0,
       }}>{p.material}</span>
     </button>
@@ -362,7 +362,7 @@ const PageBtn = ({ active, disabled, onClick, label, arrow }) => (
     style={{
       width: 32, height: 32,
       display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-      fontSize: 11, fontWeight: 700, letterSpacing: '0.04em',
+      fontSize: 12.5, fontWeight: 700, letterSpacing: '0.04em',
       border: '1px solid',
       borderColor: active ? 'var(--ink)' : 'rgba(0,16,17,0.18)',
       background: active ? 'var(--ink)' : 'transparent',
@@ -430,7 +430,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
             <span style={{ color: 'var(--tangerine)' }}>{t('Real perimeters.', 'Perímetros reales.')}</span>
           </h2>
           <p className="mono" style={{
-            margin: '14px 0 0', fontSize: 11, letterSpacing: '0.16em',
+            margin: '14px 0 0', fontSize: 12.5, letterSpacing: '0.16em',
             textTransform: 'uppercase', color: 'var(--charcoal)',
           }}>
             {t('Flagship perimeters across Southwest Florida, pick one to preview.',
@@ -457,7 +457,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
               <button key={f} onClick={() => { setFilter(f); setSelected(0); setPage(0); }} className="mono"
                 style={{
                   padding: '6px 12px',
-                  fontSize: 10, letterSpacing: '0.18em',
+                  fontSize: 12, letterSpacing: '0.18em',
                   textTransform: 'uppercase', fontWeight: 700,
                   border: '1px solid var(--ink)',
                   background: active ? 'var(--ink)' : 'transparent',
@@ -471,7 +471,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
           <a href="projects.html" className="mono" style={{
             marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8,
             padding: '6px 0',
-            fontSize: 10, letterSpacing: '0.22em',
+            fontSize: 12, letterSpacing: '0.22em',
             textTransform: 'uppercase', fontWeight: 700,
             color: 'var(--ink)',
             borderBottom: '1px solid var(--ink)',
@@ -503,7 +503,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
               }}>
                 <span className="mono" style={{
-                  fontSize: 10, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)',
+                  fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)',
                 }}>
                   {start + 1}-{Math.min(start + PER_PAGE, visible.length)} {t('of', 'de')} {visible.length}
                 </span>
@@ -557,7 +557,7 @@ const Calculator = () => {
                 ['NO COMMITMENT', 'Save the estimate, share with your contractor.'],
               ].map(([k, v], i) => (
                 <div key={i} style={{ borderTop: '1px solid rgba(255,255,255,0.18)', paddingTop: 14 }}>
-                  <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', color: 'var(--tangerine)', marginBottom: 6 }}>{k}</div>
+                  <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', color: 'var(--tangerine)', marginBottom: 6 }}>{k}</div>
                   <div style={{ fontSize: 14, color: 'var(--alice-blue)', lineHeight: 1.4 }}>{v}</div>
                 </div>
               ))}
@@ -571,7 +571,7 @@ const Calculator = () => {
             borderRadius: 'var(--radius-lg)',
             padding: 36,
           }}>
-            <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 24, display: 'flex', justifyContent: 'space-between' }}>
+            <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 24, display: 'flex', justifyContent: 'space-between' }}>
               <span>Quick estimate</span>
               <span>WFS-CALC v2.4</span>
             </div>
@@ -579,7 +579,7 @@ const Calculator = () => {
             <div style={{ display: 'grid', gap: 24 }}>
               {/* Type */}
               <div>
-                <label style={{ fontSize: 12, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
+                <label style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
                   Fence type
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }}>
@@ -598,7 +598,7 @@ const Calculator = () => {
               {/* Length slider */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
-                  <label style={{ fontSize: 12, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>
+                  <label style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>
                     Linear feet
                   </label>
                   <span className="mono" style={{ fontSize: 13, fontWeight: 500 }}>{length} ft</span>
@@ -609,7 +609,7 @@ const Calculator = () => {
               {/* Height + gates row */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <div>
-                  <label style={{ fontSize: 12, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
+                  <label style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
                     Height (ft)
                   </label>
                   <div style={{ display: 'flex', gap: 4 }}>
@@ -625,7 +625,7 @@ const Calculator = () => {
                   </div>
                 </div>
                 <div>
-                  <label style={{ fontSize: 12, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
+                  <label style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
                     Gates
                   </label>
                   <div style={{ display: 'flex', gap: 4 }}>
@@ -653,7 +653,7 @@ const Calculator = () => {
                   <span className="mono">${gateCost.toLocaleString()}</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                  <span className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>Estimated total</span>
+                  <span className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>Estimated total</span>
                   <span className="display" style={{ fontSize: 44, color: 'var(--ink)' }}>
                     ${total.toLocaleString()}
                   </span>
@@ -761,7 +761,7 @@ const ServiceAreas = () => {
                   left: p.labelLeft ? `calc(${p.xPct}% - 16px)` : `calc(${p.xPct}% + 16px)`,
                   top: `${p.yPct}%`,
                   transform: p.labelLeft ? 'translate(-100%, -50%)' : 'translate(0, -50%)',
-                  fontSize: 10, fontWeight: 700, letterSpacing: '0.18em',
+                  fontSize: 12, fontWeight: 700, letterSpacing: '0.18em',
                   textTransform: 'uppercase',
                   color: 'var(--ink)', background: 'var(--white)',
                   padding: '5px 9px', whiteSpace: 'nowrap',
@@ -775,7 +775,7 @@ const ServiceAreas = () => {
             <div className="mono" style={{
               position: 'absolute', top: 18, left: 18,
               display: 'flex', alignItems: 'center', gap: 10,
-              fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
+              fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
               color: 'var(--alice-blue)', fontWeight: 700,
             }}>
               <span>State of Florida</span>
@@ -796,7 +796,7 @@ const ServiceAreas = () => {
                 border: '2px solid var(--ink)',
               }}/>
               <span className="mono" style={{
-                fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
+                fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--alice-blue)', fontWeight: 700,
               }}>WFS yard locations</span>
             </div>
@@ -816,7 +816,7 @@ const ServiceAreas = () => {
                 display: 'flex', alignItems: 'center', gap: 16,
               }}>
                 <div className="mono" style={{
-                  fontSize: 10, letterSpacing: '0.22em',
+                  fontSize: 12, letterSpacing: '0.22em',
                   color: 'var(--tangerine)', textTransform: 'uppercase',
                   fontWeight: 700, minWidth: 22,
                 }}>0{i+1}</div>
@@ -825,11 +825,11 @@ const ServiceAreas = () => {
                     fontSize: 17, lineHeight: 1.1, marginBottom: 4,
                   }}>{y.city}</div>
                   <div style={{
-                    fontSize: 12.5, color: 'var(--charcoal)', lineHeight: 1.4,
+                    fontSize: 13, color: 'var(--charcoal)', lineHeight: 1.4,
                   }}>{y.addr}</div>
                 </div>
                 <div className="mono" style={{
-                  fontSize: 11, color: 'var(--ink)',
+                  fontSize: 12.5, color: 'var(--ink)',
                   letterSpacing: '0.06em', textAlign: 'right', fontWeight: 600,
                   whiteSpace: 'nowrap',
                 }}>{y.phone}</div>
@@ -852,7 +852,7 @@ const FinalCTA = () => {
     outline: 'none', borderRadius: 0,
   };
   const labelStyle = {
-    fontFamily: 'var(--mono)', fontSize: 10, letterSpacing: '0.18em',
+    fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.18em',
     textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 600,
     marginBottom: 6, display: 'block',
   };
@@ -904,9 +904,9 @@ const FinalCTA = () => {
             <div style={{ marginBottom: 32 }}>
               <div style={labelStyle}>{t('Call us', 'Llámanos')}</div>
               <a href="tel:2396895496" className="display" style={{ fontSize: 28, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>(239) 689-5496</a>
-              <div style={{ fontSize: 12, color: 'var(--charcoal)', marginBottom: 12 }}>{t('Fort Myers yard', 'Sucursal Fort Myers')}</div>
+              <div style={{ fontSize: 13, color: 'var(--charcoal)', marginBottom: 12 }}>{t('Fort Myers yard', 'Sucursal Fort Myers')}</div>
               <a href="tel:9413916613" className="display" style={{ fontSize: 28, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>(941) 391-6613</a>
-              <div style={{ fontSize: 12, color: 'var(--charcoal)' }}>{t('Port Charlotte yard', 'Sucursal Port Charlotte')}</div>
+              <div style={{ fontSize: 13, color: 'var(--charcoal)' }}>{t('Port Charlotte yard', 'Sucursal Port Charlotte')}</div>
               <div style={{ fontSize: 13, color: 'var(--charcoal)', marginTop: 12 }}>{t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm')}</div>
             </div>
             <div style={{ marginBottom: 32 }}>
@@ -919,7 +919,7 @@ const FinalCTA = () => {
               <div style={{ fontSize: 14, color: 'var(--ink)', lineHeight: 1.5 }}>1145 Enterprise Dr<br/>Port Charlotte, FL 33953</div>
             </div>
             <div style={{ paddingTop: 24, borderTop: '1px solid rgba(0,16,17,0.15)' }}>
-              <div className="mono" style={{ fontSize: 11, letterSpacing: '0.16em', color: 'var(--ink)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.16em', color: 'var(--ink)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ width: 8, height: 8, background: '#ff7133', borderRadius: '50%' }}/>
                 {t('Get a detailed quote', 'Pide tu cotización')}
               </div>
@@ -933,7 +933,7 @@ const FinalCTA = () => {
           }}>
             {submitted ? (
               <div style={{ padding: '64px 0', textAlign: 'center' }}>
-                <div className="mono" style={{ fontSize: 11, letterSpacing: '0.18em', color: 'var(--tangerine)', marginBottom: 16, textTransform: 'uppercase', fontWeight: 700 }}>{t('Submitted', 'Enviado')}</div>
+                <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.18em', color: 'var(--tangerine)', marginBottom: 16, textTransform: 'uppercase', fontWeight: 700 }}>{t('Submitted', 'Enviado')}</div>
                 <h3 className="display" style={{ fontSize: 32, margin: '0 0 12px', lineHeight: 1.1 }}>{t("Thanks, we'll be in touch.", 'Gracias, pronto te contactamos.')}</h3>
                 <p style={{ fontSize: 14, color: 'var(--charcoal)', maxWidth: 360, margin: '0 auto' }}>{t('One of our reps will reach out within 24 hours with stock, pricing and lead time for your project.', 'Uno de nuestros representantes se comunicará en 24 horas con stock, precios y plazo de entrega para tu proyecto.')}</p>
               </div>
@@ -973,7 +973,7 @@ const FinalCTA = () => {
                   <textarea rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: 100 }} placeholder={t('Approx. linear feet, height, location/zip, timeline, anything else relevant…', 'Aprox. pies lineales, altura, ubicación/código postal, plazo, cualquier otro detalle relevante…')}/>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-                  <p className="mono" style={{ margin: 0, fontSize: 11, letterSpacing: '0.04em', color: 'var(--charcoal)', maxWidth: 280 }}>
+                  <p className="mono" style={{ margin: 0, fontSize: 12.5, letterSpacing: '0.04em', color: 'var(--charcoal)', maxWidth: 280 }}>
                     {t('By submitting, you agree to be contacted by Western Fence Supply.', 'Al enviar, aceptas ser contactado por Western Fence Supply.')}
                   </p>
                   <button type="submit" className="btn btn-dark" style={{ fontSize: 14, padding: '16px 24px' }}>
@@ -1036,7 +1036,7 @@ const Footer = () => {
           </div>
           {cols.map((col, ci) => (
             <div key={ci}>
-              <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--tangerine)', marginBottom: 16 }}>
+              <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--tangerine)', marginBottom: 16 }}>
                 {t(col.title)}
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 10 }}>
@@ -1050,7 +1050,7 @@ const Footer = () => {
           ))}
         </div>
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-          <div className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', color: 'var(--silver)' }}>
+          <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', color: 'var(--silver)' }}>
             © 2026 Western Fence Supply · Fort Myers, FL · Port Charlotte, FL
           </div>
           <div style={{ display: 'flex', gap: 24 }}>
@@ -1060,7 +1060,7 @@ const Footer = () => {
               { label: { EN: 'Accessibility', ES: 'Accesibilidad' } },
               { label: 'sales@westernfencesupply.com' },
             ].map((item, i) => (
-              <a key={i} href="#" style={{ fontSize: 12, fontFamily: 'var(--mono)', letterSpacing: '0.1em', color: 'var(--silver)' }}>
+              <a key={i} href="#" style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.1em', color: 'var(--silver)' }}>
                 {typeof item.label === 'string' ? item.label : t(item.label)}
               </a>
             ))}

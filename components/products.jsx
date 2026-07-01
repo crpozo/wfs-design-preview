@@ -73,7 +73,7 @@ const SectionHeader = ({ kicker, title, sub }) => (
   }}>
     {kicker && (
       <div className="mono" style={{
-        fontSize: 11, letterSpacing: '0.18em',
+        fontSize: 12.5, letterSpacing: '0.18em',
         color: 'var(--charcoal)', textTransform: 'uppercase',
         marginBottom: 14,
       }}>{kicker}</div>
@@ -169,7 +169,7 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
               {it.isNew && (
                 <span style={{
                   background: 'var(--tangerine)', color: 'var(--ink)',
-                  fontSize: 9, fontWeight: 700, letterSpacing: '0.18em',
+                  fontSize: 11.5, fontWeight: 700, letterSpacing: '0.18em',
                   padding: '4px 7px',
                 }}>NEW</span>
               )}
@@ -211,7 +211,7 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
       {/* Column 3: description + CTA */}
       <div style={{ paddingTop: 12 }}>
         <div className="mono" style={{
-          fontSize: 11, letterSpacing: '0.18em', color: 'var(--charcoal)',
+          fontSize: 12.5, letterSpacing: '0.18em', color: 'var(--charcoal)',
           textTransform: 'uppercase', marginBottom: 14,
         }}>{item.tag}</div>
         <h3 className="display" style={{
@@ -270,7 +270,7 @@ const FenceCard = ({ item, index, featured }) => {
         {/* Number badge */}
         <div className="mono" style={{
           position: 'absolute', top: 14, left: 14,
-          fontSize: 10, fontWeight: 600, letterSpacing: '0.18em',
+          fontSize: 12, fontWeight: 600, letterSpacing: '0.18em',
           color: 'var(--ink)',
           background: 'var(--white)',
           padding: '5px 9px',
@@ -278,7 +278,7 @@ const FenceCard = ({ item, index, featured }) => {
         {item.isNew && (
           <div className="mono" style={{
             position: 'absolute', top: 14, right: 14,
-            fontSize: 10, fontWeight: 700, letterSpacing: '0.18em',
+            fontSize: 12, fontWeight: 700, letterSpacing: '0.18em',
             color: 'var(--ink)',
             background: 'var(--tangerine)',
             padding: '5px 9px',
@@ -293,7 +293,7 @@ const FenceCard = ({ item, index, featured }) => {
         flex: 1,
       }}>
         <div className="mono" style={{
-          fontSize: 11, letterSpacing: '0.16em',
+          fontSize: 12.5, letterSpacing: '0.16em',
           color: 'var(--charcoal)', textTransform: 'uppercase',
         }}>{item.tag}</div>
 
@@ -317,7 +317,7 @@ const FenceCard = ({ item, index, featured }) => {
           borderTop: featured ? 'none' : '1px solid rgba(0,16,17,0.1)',
         }}>
           <span className="mono" style={{
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.16em',
+            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.16em',
             textTransform: 'uppercase',
             color: hover ? 'var(--laser-blue)' : 'var(--ink)',
             transition: 'color 0.2s ease',
@@ -378,7 +378,7 @@ const FenceStyleCard = ({ item, index }) => {
       {item.isNew && (
         <span className="mono" style={{
           position: 'absolute', top: 12, right: 12,
-          fontSize: 9, fontWeight: 700, letterSpacing: '0.22em',
+          fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em',
           color: 'var(--ink)', background: 'var(--tangerine)',
           padding: '5px 8px',
         }}>{t('NEW', 'NUEVO')}</span>
@@ -394,7 +394,7 @@ const FenceStyleCard = ({ item, index }) => {
           lineHeight: 1, letterSpacing: '-0.01em',
         }}>{nameStr}</h3>
         <div className="mono" style={{
-          fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
+          fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'rgba(255,255,255,0.85)',
         }}>{tagStr}</div>
       </div>
@@ -511,7 +511,7 @@ const SystemDetail = ({ item, active, rarity, align, ctaLabel }) => {
       }}>{t(item.desc)}</p>
       <a href={item.href || '#'} className="mono" style={{
         display: 'inline-flex', alignItems: 'center', gap: 12,
-        fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
+        fontSize: 13, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
         color: 'var(--ink)', background: 'var(--tangerine)', padding: 'clamp(11px, 1.6vh, 14px) 22px',
       }}>
         {t(ctaLabel)} {nameStr}
@@ -587,7 +587,7 @@ const SystemArena = ({ sectionId, items, rarity, label, chapter, align, variant,
             flexDirection: right ? 'row-reverse' : 'row',
           }}>
             <span className="mono" style={{
-              fontSize: 11, fontWeight: 700, letterSpacing: '0.18em',
+              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
               color: 'var(--ink)', background: r.c1, padding: '4px 8px',
             }}>{chapter}</span>
             <span className="display" style={{
@@ -598,7 +598,7 @@ const SystemArena = ({ sectionId, items, rarity, label, chapter, align, variant,
           </div>
           <a href={topLink.href} className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--white)', borderBottom: '1px solid rgba(255,255,255,0.6)', paddingBottom: 4,
           }}>
             {t(topLink.label)}
@@ -707,7 +707,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
                 <span className="mono" style={{
                   position: 'absolute', top: 22, right: 22,
                   background: 'var(--tangerine)', color: 'var(--white)',
-                  padding: '4px 8px', fontSize: 10, fontWeight: 700,
+                  padding: '4px 8px', fontSize: 12, fontWeight: 700,
                   letterSpacing: '0.22em', textTransform: 'uppercase', lineHeight: 1,
                 }}>{t('New', 'Nuevo')}</span>
               )}
@@ -836,7 +836,7 @@ const WhyWFS = () => {
           </div>
           <a href="estimate.html" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            padding: '13px 0', fontSize: 11, fontWeight: 700,
+            padding: '13px 0', fontSize: 12.5, fontWeight: 700,
             letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--ink)', borderBottom: '1px solid var(--ink)',
           }}>
@@ -870,7 +870,7 @@ const WhyWFS = () => {
                 letterSpacing: '-0.01em', color: 'var(--ink)',
               }}>{t(v.title)}</h3>
               <p className="mono" style={{
-                margin: 0, fontSize: 12.5, lineHeight: 1.55, color: 'var(--charcoal)',
+                margin: 0, fontSize: 13, lineHeight: 1.55, color: 'var(--charcoal)',
               }}>{t(v.desc)}</p>
             </div>
           ))}

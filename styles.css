@@ -66,7 +66,7 @@ img { display: block; max-width: 100%; }
 
 .eyebrow {
   font-family: var(--sans);
-  font-size: 11px;
+  font-size: 12.5px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 700;
@@ -147,7 +147,7 @@ section { position: relative; }
 }
 .img-placeholder .label {
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12.5px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   padding: 14px 16px;
@@ -186,7 +186,7 @@ section { position: relative; }
   align-items: center;
   gap: 6px;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12.5px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 6px 10px;

@@ -22,7 +22,7 @@ const IconStrip = () => {
             onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
               <img src={FENCE_ICON[it.key]} alt="" style={{ height: 56, width: 56 }} />
               <span className="display" style={{ fontSize: 18, color: 'var(--ink)' }}>{it.label}</span>
-              <span className="mono" style={{ fontSize: 11, color: 'var(--laser-blue)', letterSpacing: '0.14em', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span className="mono" style={{ fontSize: 12.5, color: 'var(--laser-blue)', letterSpacing: '0.14em', display: 'flex', alignItems: 'center', gap: 6 }}>
                 EXPLORE STYLES <ArrowRight size={11} />
               </span>
             </a>
@@ -63,7 +63,7 @@ const Gates = () => {
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,16,17,0) 50%, rgba(0,16,17,0.5) 100%)' }}/>
                 <div className="mono" style={{
-                  position: 'absolute', top: 14, left: 14, fontSize: 10, letterSpacing: '0.14em',
+                  position: 'absolute', top: 14, left: 14, fontSize: 12, letterSpacing: '0.14em',
                   background: 'rgba(0,16,17,0.6)', color: 'var(--alice-blue)',
                   padding: '5px 8px', borderRadius: 3,
                 }}>
@@ -127,7 +127,7 @@ const Testimonials = () => {
           </div>
           <a href="#" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            fontSize: 11, fontWeight: 700,
+            fontSize: 12.5, fontWeight: 700,
             letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--ink)',
             borderBottom: '1px solid var(--ink)',
@@ -158,7 +158,7 @@ const Testimonials = () => {
               </p>
               <div style={{ borderTop: '1px solid rgba(0,16,17,0.1)', paddingTop: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--ink)' }}>{r.name}</div>
-                <span className="mono" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'var(--charcoal)', textTransform: 'uppercase' }}>{t(r.tag)}</span>
+                <span className="mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'var(--charcoal)', textTransform: 'uppercase' }}>{t(r.tag)}</span>
               </div>
             </div>
           ))}
@@ -238,7 +238,7 @@ const FAQ = () => {
                 color: 'var(--white)',
                 textDecoration: 'none',
                 fontFamily: 'var(--sans)',
-                fontSize: 12, fontWeight: 700,
+                fontSize: 13, fontWeight: 700,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 transition: 'background 0.2s ease, transform 0.2s ease',
                 transform: ctaHover ? 'translateY(-1px)' : 'none',
@@ -275,7 +275,7 @@ const FAQ = () => {
                   }}>
                     <span style={{ display: 'flex', gap: 20, alignItems: 'baseline' }}>
                       <span className="mono" style={{
-                        fontSize: 11, fontWeight: 700,
+                        fontSize: 12.5, fontWeight: 700,
                         letterSpacing: '0.22em',
                         color: isOpen ? 'var(--tangerine)' : 'var(--charcoal)',
                         transition: 'color 0.25s ease',
@@ -361,7 +361,7 @@ const Articles = () => {
                 <img src={FENCE_IMG[p.img]} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                 <span className="mono" style={{
                   position: 'absolute', top: 16, left: 16,
-                  fontSize: 10, letterSpacing: '0.14em',
+                  fontSize: 12, letterSpacing: '0.14em',
                   background: 'var(--tangerine)', color: 'var(--ink)',
                   padding: '5px 10px', borderRadius: 3, fontWeight: 600,
                 }}>{p.tag.toUpperCase()}</span>
@@ -371,7 +371,7 @@ const Articles = () => {
                   {p.title}
                 </h3>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', color: 'var(--charcoal)' }}>{p.read.toUpperCase()} READ</span>
+                  <span className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', color: 'var(--charcoal)' }}>{p.read.toUpperCase()} READ</span>
                   <span style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--laser-blue)', fontWeight: 500 }}>
                     Read <ArrowRight size={12} />
                   </span>
@@ -420,7 +420,7 @@ const ShopTour = () => (
             style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           <span className="mono" style={{
             position: 'absolute', bottom: 18, left: 18,
-            fontSize: 10, letterSpacing: '0.14em',
+            fontSize: 12, letterSpacing: '0.14em',
             background: 'var(--ink)', color: 'var(--alice-blue)',
             padding: '5px 10px', borderRadius: 3,
           }}>FORT MYERS · FL</span>
@@ -525,7 +525,7 @@ const AboutIntro = () => {
               <div key={i}>
                 <div className="display" style={{ fontSize: 24, lineHeight: 1, color: 'var(--ink)' }}>{n}</div>
                 <div className="mono" style={{
-                  marginTop: 6, fontSize: 10, letterSpacing: '0.18em',
+                  marginTop: 6, fontSize: 12, letterSpacing: '0.18em',
                   textTransform: 'uppercase', color: 'var(--charcoal)',
                 }}>{t(l)}</div>
               </div>
@@ -544,7 +544,7 @@ const AboutIntro = () => {
                 color: 'var(--white)',
                 textDecoration: 'none',
                 fontFamily: 'var(--sans)',
-                fontSize: 12, fontWeight: 700,
+                fontSize: 13, fontWeight: 700,
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 transition: 'background 0.2s ease, transform 0.2s ease',
@@ -565,7 +565,7 @@ const AboutIntro = () => {
             <a href="about.html" className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '14px 0',
-              fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
               textTransform: 'uppercase', color: 'var(--ink)',
               borderBottom: '1px solid var(--ink)',
             }}>

@@ -72,7 +72,7 @@ const EstimateHero = () => (
           <a href="tel:2396895496" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             paddingBottom: 4,
-            fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+            fontSize: 13, fontWeight: 700, letterSpacing: '0.22em',
             textTransform: 'uppercase',
             color: 'var(--white)',
             borderBottom: '1px solid rgba(255,255,255,0.5)',
@@ -108,7 +108,7 @@ const EstimateHero = () => (
             </div>
             <p className="mono" style={{
               margin: 0,
-              fontSize: 11, letterSpacing: '0.06em', lineHeight: 1.55,
+              fontSize: 12.5, letterSpacing: '0.06em', lineHeight: 1.55,
               color: 'rgba(255,255,255,0.7)',
             }}>{sub}</p>
           </div>
@@ -166,7 +166,7 @@ const LiveAgentBand = () => (
           }}>
             <div className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
-              fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
               color: 'var(--tangerine)', textTransform: 'uppercase',
             }}>
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -192,7 +192,7 @@ const LiveAgentBand = () => (
             (239) 689-5496
           </div>
           <div className="mono" style={{
-            fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
+            fontSize: 12.5, letterSpacing: '0.18em', textTransform: 'uppercase',
             color: 'var(--alice-blue)', lineHeight: 1.5,
           }}>
             Real sales reps, no bots<br/>
@@ -216,7 +216,7 @@ const LiveAgentBand = () => (
           }}>
             <div className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
-              fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
               color: 'var(--tangerine)', textTransform: 'uppercase',
             }}>
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -244,7 +244,7 @@ const LiveAgentBand = () => (
             sales@westernfencesupply.com
           </div>
           <div className="mono" style={{
-            fontSize: 11, letterSpacing: '0.18em', textTransform: 'uppercase',
+            fontSize: 12.5, letterSpacing: '0.18em', textTransform: 'uppercase',
             color: 'var(--charcoal)', lineHeight: 1.5,
           }}>
             We follow up with a detailed quote<br/>

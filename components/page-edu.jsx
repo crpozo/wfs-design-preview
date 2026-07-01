@@ -53,7 +53,7 @@ const ArticlesFeatured = () => {
       <span className="mono" style={{
         position: 'absolute', top: big ? 24 : 18, left: big ? 24 : 18,
         background: 'var(--tangerine)', color: 'var(--white)',
-        padding: '5px 12px', fontSize: 10, fontWeight: 700,
+        padding: '5px 12px', fontSize: 12, fontWeight: 700,
         letterSpacing: '0.16em', textTransform: 'uppercase',
       }}>{a.tag}</span>
       <div style={{ position: 'relative', padding: big ? 'clamp(24px, 3vw, 44px)' : 22, width: '100%' }}>
@@ -67,7 +67,7 @@ const ArticlesFeatured = () => {
           marginTop: 14, display: 'flex', alignItems: 'center', gap: 10,
           color: 'var(--alice-blue)',
         }}>
-          <span className="mono" style={{ fontSize: 11, letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+          <span className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase' }}>
             {a.read} {t('read', 'de lectura')}
           </span>
           <span aria-hidden style={{
@@ -145,7 +145,7 @@ const ArticleCard = ({ p }) => {
         <span className="mono" style={{
           position: 'absolute', top: 14, left: 14,
           background: 'rgba(255,255,255,0.92)', color: 'var(--ink)',
-          padding: '5px 11px', fontSize: 10, fontWeight: 700,
+          padding: '5px 11px', fontSize: 12, fontWeight: 700,
           letterSpacing: '0.14em', textTransform: 'uppercase',
           backdropFilter: 'blur(4px)',
         }}>{p.tag}</span>
@@ -160,11 +160,11 @@ const ArticleCard = ({ p }) => {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
           <span className="mono" style={{
-            fontSize: 10.5, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)',
+            fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)',
           }}>{p.read} {t('read', 'de lectura')}</span>
           <span style={{
             display: 'inline-flex', alignItems: 'center', gap: 6,
-            fontSize: 12, fontWeight: 600, color: 'var(--laser-blue)',
+            fontSize: 13, fontWeight: 600, color: 'var(--laser-blue)',
           }}>
             {t('Read', 'Leer')}
             <span aria-hidden style={{ display: 'inline-flex', transform: hover ? 'translateX(4px)' : 'translateX(0)', transition: 'transform 0.2s ease' }}>
@@ -196,7 +196,7 @@ const ArticlesGrid = () => {
             letterSpacing: '-0.015em', color: 'var(--ink)',
           }}>{t('Featured Posts', 'Artículos destacados')}</h2>
           <span className="mono" style={{
-            fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
+            fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--charcoal)',
           }}>{visible.length} {t('articles', 'artículos')}</span>
         </div>
@@ -209,7 +209,7 @@ const ArticlesGrid = () => {
               <button key={tag} onClick={() => setFilter(tag)}
                 style={{
                   padding: '8px 16px', borderRadius: 999,
-                  fontSize: 12.5, fontWeight: 600, fontFamily: 'var(--sans)',
+                  fontSize: 13, fontWeight: 600, fontFamily: 'var(--sans)',
                   border: '1px solid ' + (active ? 'var(--ink)' : 'rgba(0,16,17,0.18)'),
                   background: active ? 'var(--ink)' : 'var(--white)',
                   color: active ? 'var(--white)' : 'var(--ink)',
@@ -326,20 +326,20 @@ const MaterialsCompDeepDive = () => {
               <div>
                 <div className="display" style={{ fontSize: 22, lineHeight: 1.05 }}>{p.name}</div>
                 <div className="mono" style={{
-                  marginTop: 8, fontSize: 10, letterSpacing: '0.18em',
+                  marginTop: 8, fontSize: 12, letterSpacing: '0.18em',
                   textTransform: 'uppercase', color: 'var(--tangerine)', fontWeight: 700,
                 }}>{p.tag}</div>
               </div>
               <div>
-                <div className="mono" style={{ fontSize: 10, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginBottom: 6 }}>Best for</div>
+                <div className="mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginBottom: 6 }}>Best for</div>
                 <div style={{ fontSize: 13.5, lineHeight: 1.5 }}>{p.bestFor}</div>
               </div>
               <div>
-                <div className="mono" style={{ fontSize: 10, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginBottom: 6 }}>Strength</div>
+                <div className="mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginBottom: 6 }}>Strength</div>
                 <div style={{ fontSize: 13.5, lineHeight: 1.5 }}>{p.strength}</div>
               </div>
               <div>
-                <div className="mono" style={{ fontSize: 10, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginBottom: 6 }}>Caveat</div>
+                <div className="mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginBottom: 6 }}>Caveat</div>
                 <div style={{ fontSize: 13.5, lineHeight: 1.5 }}>{p.caveat}</div>
               </div>
               <span style={{
@@ -408,7 +408,7 @@ const PoolCodeRequirements = () => {
               border: '1px solid rgba(0,16,17,0.12)',
             }}>
               <div className="mono" style={{
-                fontSize: 10, letterSpacing: '0.22em',
+                fontSize: 12, letterSpacing: '0.22em',
                 color: 'var(--tangerine)', fontWeight: 700,
                 textTransform: 'uppercase', marginBottom: 12,
               }}>{r.code}</div>
@@ -451,14 +451,14 @@ const PoolCodeProfiles = () => {
                 <span className="mono" style={{
                   position: 'absolute', top: 14, left: 14,
                   background: 'var(--tangerine)', color: 'var(--ink)',
-                  padding: '5px 10px', fontSize: 10, letterSpacing: '0.18em',
+                  padding: '5px 10px', fontSize: 12, letterSpacing: '0.18em',
                   fontWeight: 700, textTransform: 'uppercase',
                 }}>0{i+1} · Code</span>
               </div>
               <div style={{ padding: 24 }}>
                 <h3 className="display" style={{ margin: '0 0 8px', fontSize: 22, lineHeight: 1.1 }}>{p.name}</h3>
-                <div className="mono" style={{ fontSize: 10, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase' }}>{p.tag}</div>
-                <div style={{ marginTop: 18, display: 'flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 600, fontFamily: 'var(--mono)', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink)' }}>
+                <div className="mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase' }}>{p.tag}</div>
+                <div style={{ marginTop: 18, display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, fontWeight: 600, fontFamily: 'var(--mono)', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink)' }}>
                   Explore
                   <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/></svg>
                 </div>

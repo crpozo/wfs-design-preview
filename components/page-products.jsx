@@ -63,7 +63,7 @@ const ProductHardware = () => (
             border: '1px solid rgba(0,16,17,0.1)',
           }}>
             <div className="mono" style={{
-              fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
+              fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
               color: 'var(--tangerine)', fontWeight: 700, marginBottom: 10,
             }}>Hardware</div>
             <h3 className="display" style={{ margin: '0 0 10px', fontSize: 20, lineHeight: 1.1 }}>{t}</h3>

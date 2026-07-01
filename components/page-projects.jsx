@@ -48,7 +48,7 @@ const ProjectsBigGallery = () => {
             return (
               <button key={f} onClick={() => setFilter(f)} className="mono"
                 style={{
-                  padding: '6px 12px', fontSize: 10, letterSpacing: '0.18em',
+                  padding: '6px 12px', fontSize: 12, letterSpacing: '0.18em',
                   textTransform: 'uppercase', fontWeight: 700,
                   border: '1px solid var(--ink)',
                   background: active ? 'var(--ink)' : 'transparent',
@@ -59,7 +59,7 @@ const ProjectsBigGallery = () => {
           })}
           <span className="mono" style={{
             marginLeft: 'auto', alignSelf: 'center',
-            fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
+            fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--charcoal)',
           }}>{visible.length} project{visible.length === 1 ? '' : 's'}</span>
         </div>
@@ -88,7 +88,7 @@ const ProjectsCaseStudy = () => (
           <div className="mono" style={{
             position: 'absolute', top: 16, left: 16,
             background: 'var(--tangerine)', color: 'var(--ink)',
-            padding: '5px 10px', fontSize: 10, letterSpacing: '0.22em', fontWeight: 700,
+            padding: '5px 10px', fontSize: 12, letterSpacing: '0.22em', fontWeight: 700,
           }}>CASE STUDY · 01</div>
         </div>
         <div>

@@ -59,14 +59,14 @@ const AboutStory = () => (
               position: 'absolute', top: 18, left: 18,
               background: 'var(--tangerine)', color: 'var(--ink)',
               padding: '5px 10px',
-              fontSize: 10, letterSpacing: '0.22em', fontWeight: 700,
+              fontSize: 12, letterSpacing: '0.22em', fontWeight: 700,
             }}>HQ · FORT MYERS</div>
             <div style={{
               position: 'absolute', bottom: 18, left: 18, right: 18,
               color: 'var(--white)',
             }}>
               <div className="display" style={{ fontSize: 18, lineHeight: 1.1 }}>2621 Fowler St</div>
-              <div className="mono" style={{ marginTop: 6, fontSize: 10, letterSpacing: '0.18em', color: 'rgba(255,255,255,0.85)' }}>FORT MYERS, FL 33901</div>
+              <div className="mono" style={{ marginTop: 6, fontSize: 12, letterSpacing: '0.18em', color: 'rgba(255,255,255,0.85)' }}>FORT MYERS, FL 33901</div>
             </div>
           </div>
         </div>
@@ -107,7 +107,7 @@ const AboutStory = () => (
                 }}>{y}</div>
                 <div>
                   <div className="mono" style={{
-                    fontSize: 10.5, letterSpacing: '0.22em',
+                    fontSize: 12, letterSpacing: '0.22em',
                     textTransform: 'uppercase',
                     color: 'var(--tangerine)', fontWeight: 700,
                     marginBottom: 10,
@@ -227,7 +227,7 @@ const AboutStats = () => {
               }}>{label}</div>
               <div className="mono" style={{
                 marginTop: 6,
-                fontSize: 11, letterSpacing: '0.08em',
+                fontSize: 12.5, letterSpacing: '0.08em',
                 color: 'var(--charcoal)', lineHeight: 1.5,
               }}>{sub}</div>
             </div>

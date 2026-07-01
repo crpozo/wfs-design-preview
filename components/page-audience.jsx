@@ -33,7 +33,7 @@ const HomeownerHero = () => {
             padding: '7px 14px', marginBottom: 22,
             border: '1px solid var(--ink)',
             background: 'var(--white)',
-            fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+            fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
             textTransform: 'uppercase', color: 'var(--ink)',
           }}>
             <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
@@ -69,7 +69,7 @@ const HomeownerHero = () => {
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
               padding: '15px 30px',
               background: 'var(--ink)', color: 'var(--white)',
-              fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
+              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
               boxShadow: '6px 6px 0 var(--tangerine)',
               transition: 'transform 0.18s ease, box-shadow 0.18s ease',
@@ -83,7 +83,7 @@ const HomeownerHero = () => {
               padding: '15px 30px',
               background: 'var(--white)', color: 'var(--ink)',
               border: '1.5px solid var(--ink)',
-              fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
+              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
             }}>
               {t('View Gallery', 'Ver galería')}
@@ -92,7 +92,7 @@ const HomeownerHero = () => {
           {/* Trust micro-bullets */}
           <div className="mono" style={{
             display: 'flex', gap: 22, flexWrap: 'wrap',
-            fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em',
+            fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
             textTransform: 'uppercase', color: 'var(--charcoal)',
           }}>
             {[
@@ -145,7 +145,7 @@ const HomeownerHero = () => {
               position: 'absolute', top: 14, left: 14,
               padding: '6px 12px',
               background: 'var(--ink)', color: 'var(--white)',
-              fontSize: 9.5, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em',
               textTransform: 'uppercase',
             }}>{t('Recent install', 'Instalación reciente')}</span>
             {/* Bottom-right location chip */}
@@ -153,7 +153,7 @@ const HomeownerHero = () => {
               position: 'absolute', bottom: 14, right: 14,
               padding: '6px 12px',
               background: 'rgba(255,255,255,0.95)', color: 'var(--ink)',
-              fontSize: 9.5, fontWeight: 700, letterSpacing: '0.18em',
+              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.18em',
               textTransform: 'uppercase',
               display: 'inline-flex', alignItems: 'center', gap: 8,
             }}>
@@ -170,7 +170,7 @@ const HomeownerHero = () => {
             padding: '20px 22px',
           }}>
             <div className="mono" style={{
-              fontSize: 9.5, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em',
               color: 'var(--tangerine)', textTransform: 'uppercase',
               marginBottom: 14,
               display: 'flex', alignItems: 'center', gap: 10,
@@ -198,7 +198,7 @@ const HomeownerHero = () => {
                     color: 'var(--tangerine)',
                   }}>{b.icon}</span>
                   <span className="mono" style={{
-                    fontSize: 12.5, fontWeight: 500, color: 'var(--ink)',
+                    fontSize: 13, fontWeight: 500, color: 'var(--ink)',
                     lineHeight: 1.3,
                   }}>{t(b.line)}</span>
                 </li>
@@ -240,7 +240,7 @@ const HomeownerTrustStrip = () => {
               color: 'var(--ink)', letterSpacing: '-0.02em',
             }}>{n}</div>
             <div className="mono" style={{
-              marginTop: 10, fontSize: 11, letterSpacing: '0.18em',
+              marginTop: 10, fontSize: 12.5, letterSpacing: '0.18em',
               textTransform: 'uppercase', color: 'var(--charcoal)',
               fontWeight: 700,
             }}>{t(l)}</div>
@@ -280,7 +280,7 @@ const HomeownerSteps = () => {
         width: 30, height: 30, borderRadius: '50%',
         background: 'var(--ink)', color: 'var(--white)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: 12, fontWeight: 700, letterSpacing: '0',
+        fontSize: 13, fontWeight: 700, letterSpacing: '0',
         border: '3px solid var(--white)',
       }}>{n}</span>
     </div>
@@ -351,7 +351,7 @@ const HomeownerSteps = () => {
               }}>{t(s.title)}</h3>
               <p className="mono" style={{
                 margin: '0 auto', maxWidth: 280,
-                fontSize: 12.5, lineHeight: 1.6,
+                fontSize: 13, lineHeight: 1.6,
                 color: 'var(--charcoal)',
               }}>{t(s.body)}</p>
             </div>
@@ -378,7 +378,7 @@ const HomeownerStylePicker = () => {
         <div>
           <div className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12,
-            fontSize: 11, fontWeight: 700,
+            fontSize: 12.5, fontWeight: 700,
             letterSpacing: '0.22em',
             color: 'var(--tangerine)',
             textTransform: 'uppercase',
@@ -411,7 +411,7 @@ const HomeownerStylePicker = () => {
           </p>
           <a href="products.html" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            fontSize: 11, fontWeight: 700,
+            fontSize: 12.5, fontWeight: 700,
             letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--ink)',
             borderBottom: '1px solid var(--ink)',
@@ -484,7 +484,7 @@ const HomeownerInstallerSplit = () => {
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 padding: '6px 12px',
                 background: 'var(--ink)', color: 'var(--white)',
-                fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+                fontSize: 12, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
               }}>{t('Alliance', 'Alianza')}</span>
               <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/>
@@ -515,7 +515,7 @@ const HomeownerInstallerSplit = () => {
                   <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
                     <path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
-                  <span className="mono" style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--ink)' }}>{t(line)}</span>
+                  <span className="mono" style={{ fontSize: 13, lineHeight: 1.55, color: 'var(--ink)' }}>{t(line)}</span>
                 </li>
               ))}
             </ul>
@@ -523,7 +523,7 @@ const HomeownerInstallerSplit = () => {
               display: 'block', textAlign: 'center', marginTop: 'auto',
               padding: '16px 28px',
               background: 'var(--ink)', color: 'var(--white)',
-              fontFamily: 'var(--sans)', fontSize: 12.5, fontWeight: 700,
+              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
             }}>{t('Find an Installer', 'Encontrar instalador')}</a>
           </HoverCard>
@@ -538,7 +538,7 @@ const HomeownerInstallerSplit = () => {
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 padding: '6px 12px',
                 background: 'var(--tangerine)', color: 'var(--ink)',
-                fontSize: 10, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+                fontSize: 12, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
               }}>{t('What you get', 'Qué obtienes')}</span>
               <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <circle cx="12" cy="12" r="9" strokeDasharray="2 1.5"/>
@@ -571,7 +571,7 @@ const HomeownerInstallerSplit = () => {
               ].map((b, i) => (
                 <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                   <span style={{ flexShrink: 0, marginTop: 1, color: 'var(--tangerine)' }}>{b.icon}</span>
-                  <span className="mono" style={{ fontSize: 12.5, lineHeight: 1.55, color: 'var(--white)' }}>{t(b.line)}</span>
+                  <span className="mono" style={{ fontSize: 13, lineHeight: 1.55, color: 'var(--white)' }}>{t(b.line)}</span>
                 </li>
               ))}
             </ul>
@@ -579,7 +579,7 @@ const HomeownerInstallerSplit = () => {
               display: 'block', textAlign: 'center', marginTop: 'auto',
               padding: '16px 28px',
               background: 'var(--white)', color: 'var(--ink)',
-              fontFamily: 'var(--sans)', fontSize: 12.5, fontWeight: 700,
+              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
             }}>{t('Request Your Quote', 'Solicita tu cotización')}</a>
           </HoverCard>
@@ -658,7 +658,7 @@ const HomeownerTestimonial = () => {
                 fontSize: 14, color: 'var(--ink)', letterSpacing: '-0.005em',
               }}>Marisol R.</div>
               <div className="mono" style={{
-                marginTop: 4, fontSize: 10.5, fontWeight: 700,
+                marginTop: 4, fontSize: 12, fontWeight: 700,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--charcoal)',
               }}>{t('Cape Coral · 186 LF vinyl + 2 gates', 'Cape Coral · 186 PL vinilo + 2 portones')}</div>
@@ -730,7 +730,7 @@ const HomeownerFAQ = () => {
               maxWidth: 320,
             }}>
               <div className="mono" style={{
-                fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+                fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
                 color: 'var(--tangerine)', textTransform: 'uppercase',
                 marginBottom: 14,
                 display: 'flex', alignItems: 'center', gap: 8,
@@ -744,12 +744,12 @@ const HomeownerFAQ = () => {
               }}>(239) 689-5496</a>
               <a href="mailto:sales@westernfencesupply.com" className="mono" style={{
                 display: 'block', wordBreak: 'break-all',
-                fontSize: 12, color: 'var(--charcoal)',
+                fontSize: 13, color: 'var(--charcoal)',
               }}>sales@westernfencesupply.com</a>
               <div className="mono" style={{
                 marginTop: 14, paddingTop: 14,
                 borderTop: '1px solid rgba(38, 49, 102,0.1)',
-                fontSize: 10.5, letterSpacing: '0.18em',
+                fontSize: 12, letterSpacing: '0.18em',
                 textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 700,
               }}>{t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm')}</div>
             </div>
@@ -773,7 +773,7 @@ const HomeownerFAQ = () => {
                   }}>
                     <span style={{ display: 'flex', alignItems: 'baseline', gap: 18 }}>
                       <span className="mono" style={{
-                        fontSize: 10.5, fontWeight: 700, letterSpacing: '0.22em',
+                        fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
                         color: isOpen ? 'var(--tangerine)' : 'var(--charcoal)',
                       }}>{String(i + 1).padStart(2, '0')}</span>
                       <span className="mono" style={{
@@ -794,7 +794,7 @@ const HomeownerFAQ = () => {
                   }}>
                     <p className="mono" style={{
                       margin: 0, padding: '0 26px 22px 64px',
-                      fontSize: 12.5, lineHeight: 1.7, color: 'var(--charcoal)',
+                      fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
                     }}>{t(a)}</p>
                   </div>
                 </div>
@@ -920,7 +920,7 @@ const ContractorHero = () => {
             display: 'inline-flex', alignItems: 'center', gap: 10,
             padding: '7px 14px',
             border: '1px solid rgba(255,255,255,0.4)',
-            fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+            fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
             textTransform: 'uppercase', color: 'var(--white)',
             marginBottom: 24,
           }}>
@@ -957,7 +957,7 @@ const ContractorHero = () => {
               display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
               padding: '14px 28px',
               background: 'var(--tangerine)', color: 'var(--white)',
-              fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
+              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
               boxShadow: '6px 6px 0 rgba(255,255,255,0.18)',
               transition: 'transform 0.18s ease, box-shadow 0.18s ease',
@@ -971,14 +971,14 @@ const ContractorHero = () => {
               padding: '14px 28px',
               background: 'transparent', color: 'var(--white)',
               border: '1.5px solid rgba(255,255,255,0.5)',
-              fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
+              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
             }}>{t('Verify Stock', 'Verificar stock')}</a>
           </div>
           {/* Trust micro-bullets */}
           <div className="mono" style={{
             display: 'flex', gap: 22, flexWrap: 'wrap',
-            fontSize: 10.5, fontWeight: 700, letterSpacing: '0.16em',
+            fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
             textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)',
           }}>
             {[
@@ -1031,7 +1031,7 @@ const ContractorHero = () => {
               position: 'absolute', top: 14, left: 14,
               padding: '6px 12px',
               background: 'var(--tangerine)', color: 'var(--white)',
-              fontSize: 9.5, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em',
               textTransform: 'uppercase',
             }}>{t('Will-call ready', 'Listo para recoger')}</span>
             {/* Bottom-right location chip */}
@@ -1039,7 +1039,7 @@ const ContractorHero = () => {
               position: 'absolute', bottom: 14, right: 14,
               padding: '6px 12px',
               background: 'rgba(38, 49, 102,0.92)', color: 'var(--white)',
-              fontSize: 9.5, fontWeight: 700, letterSpacing: '0.18em',
+              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.18em',
               textTransform: 'uppercase',
               display: 'inline-flex', alignItems: 'center', gap: 8,
             }}>
@@ -1056,7 +1056,7 @@ const ContractorHero = () => {
             padding: '20px 22px',
           }}>
             <div className="mono" style={{
-              fontSize: 9.5, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em',
               color: 'var(--tangerine)', textTransform: 'uppercase',
               marginBottom: 14,
               display: 'flex', alignItems: 'center', gap: 10,
@@ -1084,7 +1084,7 @@ const ContractorHero = () => {
                     color: 'var(--tangerine)',
                   }}>{b.icon}</span>
                   <span className="mono" style={{
-                    fontSize: 12.5, fontWeight: 500, color: 'var(--ink)',
+                    fontSize: 13, fontWeight: 500, color: 'var(--ink)',
                     lineHeight: 1.3,
                   }}>{t(b.line)}</span>
                 </li>
@@ -1123,7 +1123,7 @@ const ContractorStatsStrip = () => {
               color: 'var(--ink)', letterSpacing: '-0.02em',
             }}>{typeof n === 'string' ? n : t(n)}</div>
             <div className="mono" style={{
-              marginTop: 10, fontSize: 11, letterSpacing: '0.18em',
+              marginTop: 10, fontSize: 12.5, letterSpacing: '0.18em',
               textTransform: 'uppercase', color: 'var(--charcoal)',
               fontWeight: 700,
             }}>{t(l)}</div>
@@ -1205,7 +1205,7 @@ const ContractorBenefits = () => {
                   position: 'absolute', top: 16, right: 16,
                   padding: '4px 10px',
                   background: 'var(--tangerine)', color: 'var(--white)',
-                  fontSize: 9, fontWeight: 700, letterSpacing: '0.2em',
+                  fontSize: 11.5, fontWeight: 700, letterSpacing: '0.2em',
                   textTransform: 'uppercase',
                 }}>{t('Top ask', 'Más solicitado')}</span>
               )}
@@ -1218,7 +1218,7 @@ const ContractorBenefits = () => {
                 textTransform: 'uppercase',
               }}>{t(b.title)}</h3>
               <p className="mono" style={{
-                margin: 0, fontSize: 12.5, lineHeight: 1.65,
+                margin: 0, fontSize: 13, lineHeight: 1.65,
                 color: b.highlighted ? 'rgba(255,255,255,0.72)' : 'var(--charcoal)',
               }}>{t(b.body)}</p>
             </article>
@@ -1296,7 +1296,7 @@ const ContractorHowItWorks = () => {
                   width: 36, height: 36,
                   background: 'var(--ink)',
                   color: 'var(--white)',
-                  fontSize: 11, fontWeight: 700, letterSpacing: '0.05em',
+                  fontSize: 12.5, fontWeight: 700, letterSpacing: '0.05em',
                 }}>{s.n}</span>
                 <span style={{ color: 'var(--ink)' }}>{s.svg}</span>
               </div>
@@ -1305,7 +1305,7 @@ const ContractorHowItWorks = () => {
                 letterSpacing: '-0.005em', color: 'var(--ink)',
               }}>{t(s.title)}</h3>
               <p className="mono" style={{
-                margin: 0, fontSize: 12.5, lineHeight: 1.6,
+                margin: 0, fontSize: 13, lineHeight: 1.6,
                 color: 'var(--charcoal)',
               }}>{t(s.body)}</p>
             </div>
@@ -1401,7 +1401,7 @@ const ContractorWholesaleKit = () => {
                 marginBottom: 22,
               }}>
                 <span className="mono" style={{
-                  fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+                  fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
                   color: 'var(--tangerine)', textTransform: 'uppercase',
                 }}>{String(i + 1).padStart(2, '0')}</span>
                 <span style={{ color: 'var(--ink)' }}>{it.svg}</span>
@@ -1411,7 +1411,7 @@ const ContractorWholesaleKit = () => {
                 letterSpacing: '-0.005em', color: 'var(--ink)',
               }}>{t(it.title)}</h3>
               <p className="mono" style={{
-                margin: 0, fontSize: 12.5, lineHeight: 1.65,
+                margin: 0, fontSize: 13, lineHeight: 1.65,
                 color: 'var(--charcoal)',
               }}>{t(it.body)}</p>
             </div>
@@ -1489,7 +1489,7 @@ const ContractorTestimonial = () => {
                 fontSize: 14, color: 'var(--white)', letterSpacing: '-0.005em',
               }}>Jorge T., Lead Fence LLC</div>
               <div className="mono" style={{
-                marginTop: 4, fontSize: 10.5, fontWeight: 700,
+                marginTop: 4, fontSize: 12, fontWeight: 700,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.6)',
               }}>{t("Fort Myers · Pro tier · since '23", "Fort Myers · Nivel Pro · desde '23")}</div>
@@ -1573,7 +1573,7 @@ const ContractorClosingCTA = () => {
         padding: '32px 32px 28px',
       }}>
         <div className="mono" style={{
-          fontSize: 10, fontWeight: 700, letterSpacing: '0.22em',
+          fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
           color: 'var(--tangerine)', textTransform: 'uppercase',
           marginBottom: 18,
           display: 'flex', alignItems: 'center', gap: 10,
@@ -1603,7 +1603,7 @@ const ContractorClosingCTA = () => {
                 </svg>
               </span>
               <span className="mono" style={{
-                fontSize: 12.5, fontWeight: 500,
+                fontSize: 13, fontWeight: 500,
                 color: 'var(--white)',
               }}>{t(line)}</span>
             </li>
@@ -1612,7 +1612,7 @@ const ContractorClosingCTA = () => {
         <div className="mono" style={{
           marginTop: 22, paddingTop: 16,
           borderTop: '1px solid rgba(255,255,255,0.18)',
-          fontSize: 10.5, fontWeight: 700, letterSpacing: '0.18em',
+          fontSize: 12, fontWeight: 700, letterSpacing: '0.18em',
           textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>

@@ -296,7 +296,7 @@ const GateQuickFacts = ({ data }) => (
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
               <span aria-hidden style={{ color: 'var(--laser-blue)', display: 'inline-flex' }}>{gateFactIcon(k)}</span>
               <span className="mono" style={{
-                fontSize: 11, letterSpacing: '0.16em', textTransform: 'uppercase',
+                fontSize: 12.5, letterSpacing: '0.16em', textTransform: 'uppercase',
                 color: 'var(--ink)', fontWeight: 700,
               }}>{k}</span>
             </div>
@@ -316,7 +316,7 @@ const GateCardGrid = ({ items }) => (
         border: '1px solid rgba(0,16,17,0.12)',
       }}>
         <div className="mono" style={{
-          fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase',
+          fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
           color: 'var(--tangerine)', fontWeight: 700, marginBottom: 14,
         }}>0{i+1} · {p.tag}</div>
         <h3 className="display" style={{ margin: '0 0 12px', fontSize: 22, lineHeight: 1.1 }}>{p.name}</h3>
@@ -349,7 +349,7 @@ const GateQuoteChecklist = () => {
           <div>
             <div className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 18,
-              fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
               textTransform: 'uppercase', color: 'var(--blue-ice)',
             }}>
               <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
@@ -365,7 +365,7 @@ const GateQuoteChecklist = () => {
             </p>
             <a href="estimate.html" className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 24, paddingBottom: 4,
-              fontSize: 11, fontWeight: 700, letterSpacing: '0.2em',
+              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
               textTransform: 'uppercase', color: 'var(--white)',
               borderBottom: '1px solid rgba(255,255,255,0.45)',
             }}>
@@ -421,7 +421,7 @@ const GateSpecs = ({ data }) => (
         <div>
           <div className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 18,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
+            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
             textTransform: 'uppercase', color: 'var(--blue-ice)',
           }}>
             <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
@@ -436,7 +436,7 @@ const GateSpecs = ({ data }) => (
           </p>
           <a href="estimate.html" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 24, paddingBottom: 4,
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.2em',
+            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
             textTransform: 'uppercase', color: 'var(--white)',
             borderBottom: '1px solid rgba(255,255,255,0.45)',
           }}>
@@ -453,7 +453,7 @@ const GateSpecs = ({ data }) => (
             }}>
               <div className="mono" style={{
                 padding: '14px 18px',
-                fontSize: 10.5, letterSpacing: '0.18em', textTransform: 'uppercase',
+                fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--charcoal)', fontWeight: 700, background: '#ffffff',
               }}>{k}</div>
               <div style={{ padding: '14px 18px', fontSize: 14, color: 'var(--ink)' }}>{v}</div>

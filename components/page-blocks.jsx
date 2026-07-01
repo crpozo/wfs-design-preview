@@ -2,7 +2,7 @@
 
 const Breadcrumb = ({ items, light = true }) => (
   <nav className="mono" style={{
-    fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
+    fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
     color: light ? 'rgba(255,255,255,0.6)' : 'var(--charcoal)',
     marginBottom: 24, display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center',
   }}>
@@ -44,7 +44,7 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, actions, he
         <div className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 14,
           marginBottom: 22,
-          fontSize: 'clamp(10px, 1vw, 12px)', fontWeight: 700,
+          fontSize: 'clamp(12px, 1.1vw, 13px)', fontWeight: 700,
           letterSpacing: '0.22em', textTransform: 'uppercase',
           color: 'rgba(255,255,255,0.85)',
         }}>
@@ -137,7 +137,7 @@ const PageSectionHeader = ({ number, label, title, accent, sub, link }) => (
       {link && (
         <a href={link[1]} className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10,
-          fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
+          fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
           textTransform: 'uppercase', color: 'var(--ink)',
           borderBottom: '1px solid var(--ink)', paddingBottom: 4,
         }}>
@@ -160,7 +160,7 @@ const StatStrip = ({ items, dark = false }) => (
       <div key={l}>
         <div className="display" style={{ fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, color: dark ? 'var(--white)' : 'var(--ink)' }}>{n}</div>
         <div className="mono" style={{
-          marginTop: 12, fontSize: 10, letterSpacing: '0.18em',
+          marginTop: 12, fontSize: 12, letterSpacing: '0.18em',
           textTransform: 'uppercase',
           color: dark ? 'var(--alice-blue)' : 'var(--charcoal)',
         }}>{l}</div>
@@ -249,7 +249,7 @@ const FeatureRow = ({ items }) => (
       }}>
         <div aria-hidden style={{ color: 'var(--tangerine)', marginBottom: 14 }}>{featureIcon(k)}</div>
         <div className="mono" style={{
-          fontSize: 10, letterSpacing: '0.18em', textTransform: 'uppercase',
+          fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'var(--tangerine)', fontWeight: 700, marginBottom: 10,
         }}>{k}</div>
         <div style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--ink)' }}>{v}</div>

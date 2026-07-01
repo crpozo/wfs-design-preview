@@ -44,7 +44,7 @@ const ResourceArticles = () => {
                 <span className="mono" style={{
                   position: 'absolute', top: 14, left: 14,
                   background: 'var(--tangerine)', color: 'var(--ink)',
-                  padding: '5px 10px', fontSize: 10, letterSpacing: '0.18em',
+                  padding: '5px 10px', fontSize: 12, letterSpacing: '0.18em',
                   fontWeight: 700, textTransform: 'uppercase',
                 }}>{p.tag}</span>
               </div>
@@ -54,10 +54,10 @@ const ResourceArticles = () => {
                 }}>{p.title}</h3>
                 <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span className="mono" style={{
-                    fontSize: 10, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase',
+                    fontSize: 12, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase',
                   }}>{p.read} read</span>
                   <span style={{
-                    fontSize: 12, color: 'var(--laser-blue)', fontWeight: 500,
+                    fontSize: 13, color: 'var(--laser-blue)', fontWeight: 500,
                     display: 'flex', alignItems: 'center', gap: 6,
                   }}>Read <ArrowRight size={12}/></span>
                 </div>
@@ -89,7 +89,7 @@ const MaterialsComparison = () => (
           {['', 'Vinyl / PVC', 'Aluminum', 'Chain Link', 'Metal / DuraFence'].map((h, i) => (
             <div key={i} className="mono" style={{
               padding: '16px 18px',
-              fontSize: 11, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
               textTransform: 'uppercase',
               borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.15)',
             }}>{h}</div>
@@ -136,7 +136,7 @@ const MaterialsComparison = () => (
             display: 'inline-flex', alignItems: 'center', gap: 8,
             padding: '8px 14px',
             border: '1px solid var(--ink)',
-            fontSize: 11, fontWeight: 700, letterSpacing: '0.18em',
+            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
             textTransform: 'uppercase', color: 'var(--ink)',
           }}>
             {t}
@@ -202,7 +202,7 @@ const DownloadsSection = () => (
             </span>
             <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontSize: 14.5, fontWeight: 500, color: 'var(--ink)' }}>{t}</div>
-              <div className="mono" style={{ fontSize: 10, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginTop: 4 }}>{meta}</div>
+              <div className="mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginTop: 4 }}>{meta}</div>
             </div>
           </a>
         ))}

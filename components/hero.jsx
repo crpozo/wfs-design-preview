@@ -90,7 +90,7 @@ const Hero = () => {
           <div className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 14,
             marginBottom: 24,
-            fontSize: 'clamp(10px, 1vw, 12px)', fontWeight: 700,
+            fontSize: 'clamp(12px, 1.1vw, 13px)', fontWeight: 700,
             letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'rgba(255,255,255,0.85)',
           }}>
