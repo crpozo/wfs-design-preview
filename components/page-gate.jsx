@@ -62,11 +62,11 @@ const GATE_DATA = {
       ['Service Openings', 'Single or double gates for maintenance access, equipment, and utility areas.'],
     ],
     projects: [
-      { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: 'Custom Opening', material: 'Single Swing Gate', type: 'Single swing walk gate, custom opening', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/SINGLE_SWING_GATE.png' },
+      { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: 'Custom Opening', material: 'Single Swing Gate', type: 'PVC privacy walk gate, white', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/projects/pvc-privacy-gate-white.jpg' },
       { name: 'Residential Walk Gate', loc: 'Fort Myers, FL', size: '4 ft', material: 'Aluminum Gate', type: 'Aluminum walk gate, self-closing hardware', contractor: 'Estate Fence Pros', year: '2024', imgUrl: 'assets/SINGLE_SWING_GATE.png' },
       { name: 'Pool Enclosure Gate', loc: 'Naples, FL', size: '4 ft', material: 'Aluminum Gate', type: 'Pool-code aluminum gate, magnetic latch', contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/SINGLE_SWING_GATE.png' },
-      { name: 'Double Swing Gate', loc: 'Cape Coral, FL', size: '12 ft', material: 'Vinyl / PVC Gate', type: 'Vinyl double drive gate, drop rod', contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/DOUBLE_GATE.png' },
-      { name: 'Chain Link Service Gate', loc: 'Lehigh Acres, FL', size: '6 ft', material: 'Chain Link Gate', type: 'Galvanized service gate, cane bolt', contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/ROLLING_GATE.png' },
+      { name: 'Double Swing Gate', loc: 'Cape Coral, FL', size: '12 ft', material: 'Vinyl / PVC Gate', type: 'Vinyl gate, sand, matching run', contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/pvc-gate-sand.jpg' },
+      { name: 'Chain Link Service Gate', loc: 'Lehigh Acres, FL', size: '6 ft', material: 'Chain Link Gate', type: 'Vinyl-coated black service gate', contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/projects/cl-gate-black.jpg' },
       { name: 'Metal Privacy Gate', loc: 'Estero, FL', size: '6 ft', material: 'Metal / DuraFence Gate', type: 'Metal privacy gate, matching panels', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/SLIDING_GATE.png' },
     ],
     cta: {
@@ -105,10 +105,10 @@ const GATE_DATA = {
       ['Estate Entries', 'Symmetrical double gates for a formal main entrance.'],
     ],
     projects: [
-      { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '12 ft Opening', material: 'Double Swing Gate', type: 'Vinyl double drive gate, drop rod + center latch', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/DOUBLE_GATE.png' },
+      { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '12 ft Opening', material: 'Double Swing Gate', type: 'Vinyl gate, sand, drop rod + center latch', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/projects/pvc-gate-sand.jpg' },
       { name: 'Driveway Gate', loc: 'Fort Myers, FL', size: '14 ft', material: 'Aluminum Gate', type: 'Aluminum double drive gate, residential grade', contractor: 'Estate Fence Pros', year: '2024', imgUrl: 'assets/DOUBLE_GATE.png' },
-      { name: 'Estate Entry', loc: 'Naples, FL', size: '16 ft', material: 'Vinyl / PVC Gate', type: 'Vinyl privacy double gate, matching panels', contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/DOUBLE_GATE.png' },
-      { name: 'Service Entrance', loc: 'Lehigh Acres, FL', size: '12 ft', material: 'Chain Link Gate', type: 'Galvanized double service gate, cane bolt', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/ROLLING_GATE.png' },
+      { name: 'Estate Entry', loc: 'Naples, FL', size: '16 ft', material: 'Vinyl / PVC Gate', type: 'Vinyl privacy gate, white, matching panels', contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/pvc-privacy-gate-white.jpg' },
+      { name: 'Service Entrance', loc: 'Lehigh Acres, FL', size: '12 ft', material: 'Chain Link Gate', type: 'Galvanized swing gate, cane bolt', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/cl-swing-gate-galv-4.jpg' },
       { name: 'Privacy Drive', loc: 'Estero, FL', size: '8 ft', material: 'Metal / DuraFence Gate', type: 'Metal privacy double gate, matching run', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/SLIDING_GATE.png' },
     ],
     cta: {
@@ -191,7 +191,7 @@ const GATE_DATA = {
     projects: [
       { name: 'Industrial Yard', loc: 'Fort Myers, FL', size: '30 ft Opening', material: 'Cantilever Gate', type: 'Galvanized cantilever gate, V-rollers', contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/CANTILEVER.png' },
       { name: 'Coastal Perimeter', loc: 'Sanibel, FL', size: '24 ft', material: 'Chain Link Gate', type: 'Vinyl-coated cantilever, salt-rated rollers', contractor: 'Harbor Iron Works', year: '2024', imgUrl: 'assets/CANTILEVER.png' },
-      { name: 'Storage Facility', loc: 'Bonita Springs, FL', size: '40 ft', material: 'Vinyl-Coated Gate', type: 'Cantilever gate, long single span', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/CANTILEVER.png' },
+      { name: 'Storage Facility', loc: 'Bonita Springs, FL', size: '40 ft', material: 'Vinyl / PVC Gate', type: 'PVC privacy cantilever gate, white', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/pvc-privacy-cantilever-gate-white.jpg' },
       { name: 'Commercial Entrance', loc: 'Estero, FL', size: '20 ft', material: 'Metal Gate', type: 'DuraFence cantilever gate, privacy face', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/ROLLING_GATE.png' },
       { name: 'Long-Span Custom', loc: 'Immokalee, FL', size: '50 ft', material: 'EC Fence Gate', type: 'Custom cantilever, telescoping span', contractor: 'Harbor Iron Works', year: '2024', imgUrl: 'assets/SLIDING_GATE.png' },
     ],
