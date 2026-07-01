@@ -95,7 +95,7 @@ const Hero = () => {
             color: 'rgba(255,255,255,0.85)',
           }}>
             <span aria-hidden style={{ width: 34, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
-            {t('Factory direct fence supply · Fort Myers, FL', 'Suministro de cercas directo de fábrica · Fort Myers, FL')}
+            {t('Factory direct fence supply · Fort Myers + Port Charlotte, FL', 'Suministro de cercas directo de fábrica · Fort Myers + Port Charlotte, FL')}
           </div>
           <h1 style={{
             margin: '0 0 22px',

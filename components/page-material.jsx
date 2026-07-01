@@ -163,7 +163,7 @@ const MATERIAL_DATA = {
     ],
     specs: [
       ['Heights', "6', 7', 8', and other options available by request"],
-      ['Colors', 'Black, bronze, white, and selected color options'],
+      ['Colors', 'Black, bronze, white, woodgrain, and selected color options'],
       ['Material', 'Metal panels, posts, rails, gates, and hardware'],
       ['Styles', 'Standard board, tall board, slatted privacy, and modern gate options'],
       ['Post Options', 'Line posts, end posts, blank posts, and gate posts available'],
