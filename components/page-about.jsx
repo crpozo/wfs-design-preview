@@ -36,7 +36,7 @@ const AboutStory = () => (
           margin: 0, maxWidth: 420, justifySelf: 'end', textAlign: 'right',
           fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
-          A family-run Southwest Florida fence supplier, led by management with two decades of fencing installation and fabrication experience. Two yards across Lee, Collier, Charlotte and Hendry.
+          A family-run Southwest Florida fence supplier, led by management with two decades of fencing installation and fabrication experience. Two yards in Fort Myers and Port Charlotte, serving customers throughout Florida.
         </p>
       </div>
 
@@ -82,7 +82,7 @@ const AboutStory = () => (
             ['01', 'Supply only',          'We are a supply company, not an installer. We sell the material your fence is built from and can recommend trusted local installers for the build.'],
             ['02', 'In-house fabrication', 'Gates and custom work are fabricated in-house at our Fort Myers yard.'],
             ['03', 'Four fence systems',   'Premium vinyl, aluminum, chain link and metal fencing, sold to fence companies and homeowners alike.'],
-            ['04', 'Two yards',            'Fort Myers and Port Charlotte, serving Lee, Collier, Charlotte and Hendry counties.'],
+            ['04', 'Two yards',            'Two convenient yard locations in Fort Myers and Port Charlotte, serving customers throughout Florida, including Lee, Collier, Charlotte, Hendry, and surrounding counties.'],
             ['05', 'Delivery or pickup',   'Job-site delivery on our own trucks, or same-day pickup on standard qualifying orders.'],
           ].map(([y, t, body], i, arr) => (
             <div key={y} style={{

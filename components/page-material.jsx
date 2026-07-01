@@ -25,7 +25,7 @@ const MATERIAL_DATA = {
     ],
     specs: [
       ['Heights', "4', 5', 6', and other options available by request"],
-      ['Colors', 'White, tan, and selected color options'],
+      ['Colors', 'White, tan, gray, and selected color options'],
       ['Material', 'Vinyl panels, posts, rails, gates, and hardware'],
       ['Styles', 'Privacy, semi-privacy, picket, and ranch rail'],
       ['Post Options', 'Line posts, end posts, corner posts, blank posts, and gate posts available'],
