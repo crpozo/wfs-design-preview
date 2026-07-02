@@ -119,9 +119,10 @@ const EstimateHero = () => (
 );
 
 const LiveAgentBand = () => (
-  <section style={{
+  <section id="quote" style={{
     background: 'var(--white)', padding: '120px 0',
     borderTop: '1px solid rgba(0,16,17,0.08)',
+    scrollMarginTop: 120,
   }}>
     <div className="container">
       {/* Editorial header */}

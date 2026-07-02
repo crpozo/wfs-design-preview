@@ -127,7 +127,7 @@ const SiteHeader = ({ active }) => {
           </div>
 
           {/* Center: featured CTA */}
-          <a href="estimate.html" style={{
+          <a href="estimate.html#quote" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             color: 'var(--white)',
             paddingBottom: 4,

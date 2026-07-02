@@ -158,7 +158,7 @@ const PoolCodeSection = () => (
     body="Florida Building Code requires a 4 ft minimum barrier around residential pools, with specific opening, latch and self-closing requirements. We stock multiple aluminum and vinyl profiles that meet the spec, and we'll annotate the cut sheet for your AHJ."
     bullets={[
       '4 ft minimum height with no horizontal handhold below 45"',
-      'Pickets spaced ≤ 1.75" apart for residential code',
+      'Pickets spaced ≤ 3" apart for pool code',
       'Self-closing, self-latching gates ≥ 54" from grade',
       'Stamped manufacturer specs available on request',
     ]}

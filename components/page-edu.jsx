@@ -385,7 +385,7 @@ const PoolCodeHero = () => (
 const PoolCodeRequirements = () => {
   const reqs = [
     { code: 'FBC R 4501.17.1.1', title: 'Minimum height',           body: '4 ft (48") minimum measured on the side facing away from the pool. No horizontal handhold below 45" on the outside face.' },
-    { code: 'FBC R 4501.17.1.2', title: 'Picket spacing',           body: 'Vertical pickets ≤ 1.75" apart (2.25" cluster allowed at decorative element). No openings between rails ≥ 4".' },
+    { code: 'FBC R 4501.17.1.2', title: 'Picket spacing',           body: 'Vertical pickets with a maximum spacing of 3" between each picket. No openings between rails ≥ 4".' },
     { code: 'FBC R 4501.17.1.4', title: 'Gates, self-closing',     body: 'Every gate opening into the pool barrier must be self-closing and self-latching, with the latch handle ≥ 54" from grade.' },
     { code: 'FBC R 4501.17.1.5', title: 'Gate swing direction',     body: 'Pedestrian access gates must swing OUTWARD, away from the pool area.' },
     { code: 'FBC R 4501.17.1.6', title: 'Latch release location',   body: 'If the latch release is < 54" from grade, it must be on the pool side, no openings > 0.5" within 18" of the release.' },
@@ -424,7 +424,7 @@ const PoolCodeRequirements = () => {
 
 const PoolCodeProfiles = () => {
   const profiles = [
-    { slug: 'aluminum', name: 'Aluminum 4-Rail', tag: 'Pool code · Pickets ≤ 1.75"', href: 'aluminum.html', img: 'aluminum' },
+    { slug: 'aluminum', name: 'Aluminum 4-Rail', tag: 'Pool code · Pickets ≤ 3"', href: 'aluminum.html', img: 'aluminum' },
     { slug: 'vinyl',    name: 'Vinyl Picket',     tag: 'Pool code · Self-closing gates', href: 'vinyl.html',  img: 'vinyl' },
     { slug: 'ecfence',  name: 'EC Fence',         tag: 'Pool code · HVHZ Exposure C',  href: 'ecfence.html',img: 'ecfence' },
   ];
@@ -490,7 +490,7 @@ const PoolCodeChecklist = () => (
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 14 }}>
           {[
             'Height measured from the OUTSIDE face of the barrier ≥ 48"',
-            'Picket spacing ≤ 1.75" with no horizontal climbing surface < 45"',
+            'Picket spacing ≤ 3" with no horizontal climbing surface < 45"',
             'All gates self-closing with self-latching mechanism',
             'Latch handle on outside ≥ 54" from grade (or on pool side)',
             'Gates swing outward, away from the pool',
