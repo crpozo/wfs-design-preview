@@ -40,7 +40,7 @@ const InstallerMarquee = () => {
           fontSize: 12.5, letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'rgba(0,16,17,0.4)', fontWeight: 600,
         }}>
-          {t('A trusted supplier for top fence installation companies', 'Proveedor de confianza para las mejores empresas de instalación de cercas')}
+          {t('The #1 Choice of Florida’s Top Fence Installers', 'La opción #1 de los mejores instaladores de cercas de Florida')}
         </p>
       </div>
       <div className="wfs-marquee" aria-hidden>
