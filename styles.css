@@ -514,7 +514,7 @@ section { position: relative; }
 
 /* Installer logos marquee */
 .wfs-marquee { width: 100%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
-.wfs-marquee__track { display: flex; width: max-content; align-items: center; animation: wfsMarquee 64s linear infinite; }
+.wfs-marquee__track { display: flex; width: max-content; align-items: center; animation: wfsMarquee 90s linear infinite; }
 .wfs-marquee:hover .wfs-marquee__track { animation-play-state: paused; }
 .wfs-logo-cell { display: inline-flex; align-items: center; padding: 0 clamp(26px, 4vw, 56px); flex-shrink: 0; }
 .wfs-logo-img { height: clamp(50px, 5.5vw, 70px); width: auto; max-width: 220px; object-fit: contain; }
