@@ -233,13 +233,13 @@ const SiteHeader = ({ active }) => {
           </nav>
 
           {/* CTAs */}
-          <div style={{ display: 'flex', gap: 18, alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
             <a href="estimate.html" className="mono wfs-hide-tablet" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 10,
+              display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '8px 0',
-              fontSize: 12.5, fontWeight: 700,
-              letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: 'var(--ink)',
+              fontSize: 11, fontWeight: 700,
+              letterSpacing: '0.12em', textTransform: 'uppercase',
+              color: 'var(--ink)', whiteSpace: 'nowrap',
               borderBottom: '1px solid var(--ink)',
             }}>
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
@@ -248,13 +248,14 @@ const SiteHeader = ({ active }) => {
               {t('Draw Your Fence', 'Dibuja tu cerca')}
             </a>
             <a href="estimate.html" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12,
-              padding: '8px 8px 8px 18px',
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              padding: '6px 6px 6px 14px',
               borderRadius: 999,
               background: 'var(--ink)', color: 'var(--white)',
               fontFamily: 'var(--mono)',
-              fontSize: 12.5, fontWeight: 700,
-              letterSpacing: '0.22em', textTransform: 'uppercase',
+              fontSize: 11, fontWeight: 700,
+              letterSpacing: '0.12em', textTransform: 'uppercase',
+              whiteSpace: 'nowrap',
               transition: 'background 0.2s ease, transform 0.2s ease',
             }}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--laser-blue)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
@@ -265,9 +266,10 @@ const SiteHeader = ({ active }) => {
               }}/>
               {t('Request a Material Quote', 'Solicitar cotización de material')}
               <span style={{
-                width: 26, height: 26, borderRadius: '50%',
+                width: 22, height: 22, borderRadius: '50%',
                 background: 'var(--tangerine)', color: 'var(--ink)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
+                flexShrink: 0,
               }}>
                 <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="square"/>
