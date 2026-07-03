@@ -233,12 +233,12 @@ const SiteHeader = ({ active }) => {
           </nav>
 
           {/* CTAs */}
-          <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
             <a href="estimate.html" className="mono wfs-hide-tablet" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              padding: '8px 0',
-              fontSize: 11, fontWeight: 700,
-              letterSpacing: '0.12em', textTransform: 'uppercase',
+              display: 'inline-flex', alignItems: 'center', gap: 6,
+              padding: '6px 0',
+              fontSize: 10.5, fontWeight: 700,
+              letterSpacing: '0.08em', textTransform: 'uppercase',
               color: 'var(--ink)', whiteSpace: 'nowrap',
               borderBottom: '1px solid var(--ink)',
             }}>
@@ -248,13 +248,13 @@ const SiteHeader = ({ active }) => {
               {t('Draw Your Fence', 'Dibuja tu cerca')}
             </a>
             <a href="estimate.html" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-              padding: '6px 6px 6px 14px',
+              display: 'inline-flex', alignItems: 'center', gap: 7,
+              padding: '5px 5px 5px 12px',
               borderRadius: 999,
               background: 'var(--ink)', color: 'var(--white)',
               fontFamily: 'var(--mono)',
-              fontSize: 11, fontWeight: 700,
-              letterSpacing: '0.12em', textTransform: 'uppercase',
+              fontSize: 10.5, fontWeight: 700,
+              letterSpacing: '0.08em', textTransform: 'uppercase',
               whiteSpace: 'nowrap',
               transition: 'background 0.2s ease, transform 0.2s ease',
             }}
@@ -266,7 +266,7 @@ const SiteHeader = ({ active }) => {
               }}/>
               {t('Request a Material Quote', 'Solicitar cotización de material')}
               <span style={{
-                width: 22, height: 22, borderRadius: '50%',
+                width: 20, height: 20, borderRadius: '50%',
                 background: 'var(--tangerine)', color: 'var(--ink)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 flexShrink: 0,
