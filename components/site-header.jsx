@@ -233,28 +233,28 @@ const SiteHeader = ({ active }) => {
           </nav>
 
           {/* CTAs */}
-          <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+          <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
             <a href="estimate.html" className="mono wfs-hide-tablet" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 6,
-              padding: '6px 0',
-              fontSize: 10.5, fontWeight: 700,
-              letterSpacing: '0.08em', textTransform: 'uppercase',
+              display: 'inline-flex', alignItems: 'center', gap: 7,
+              padding: '7px 0',
+              fontSize: 11.5, fontWeight: 700,
+              letterSpacing: '0.11em', textTransform: 'uppercase',
               color: 'var(--ink)', whiteSpace: 'nowrap',
               borderBottom: '1px solid var(--ink)',
             }}>
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                 <path d="M3 3 H13 V13 H3 Z M3 6 H13 M6 3 V13" stroke="currentColor" strokeWidth="1.4"/>
               </svg>
               {t('Draw Your Fence', 'Dibuja tu cerca')}
             </a>
             <a href="estimate.html" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 7,
-              padding: '5px 5px 5px 12px',
+              display: 'inline-flex', alignItems: 'center', gap: 8,
+              padding: '6px 6px 6px 15px',
               borderRadius: 999,
               background: 'var(--ink)', color: 'var(--white)',
               fontFamily: 'var(--mono)',
-              fontSize: 10.5, fontWeight: 700,
-              letterSpacing: '0.08em', textTransform: 'uppercase',
+              fontSize: 11.5, fontWeight: 700,
+              letterSpacing: '0.11em', textTransform: 'uppercase',
               whiteSpace: 'nowrap',
               transition: 'background 0.2s ease, transform 0.2s ease',
             }}
@@ -266,7 +266,7 @@ const SiteHeader = ({ active }) => {
               }}/>
               {t('Request a Material Quote', 'Solicitar cotización de material')}
               <span style={{
-                width: 20, height: 20, borderRadius: '50%',
+                width: 23, height: 23, borderRadius: '50%',
                 background: 'var(--tangerine)', color: 'var(--ink)',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 flexShrink: 0,
