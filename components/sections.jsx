@@ -20,6 +20,12 @@ const INSTALLERS = [
   { name: 'Southern Hoss Fences', src: 'assets/installers/southern-hoss-fences.png' },
   { name: 'M.R. Fence', src: 'assets/installers/mr-fence.png' },
   { name: 'Level Up Fencing', src: 'assets/installers/level-up-fencing.png' },
+  { name: 'Baker Fence & Gate', src: 'assets/installers/baker-fence-and-gate.png' },
+  { name: 'Grace Fence', src: 'assets/installers/grace-fence.png' },
+  { name: 'Fence Ace', src: 'assets/installers/fence-ace.png' },
+  { name: 'Zavala Fences', src: 'assets/installers/zavala-fences.png' },
+  { name: 'Fence Direct', src: 'assets/installers/fence-direct.png' },
+  { name: 'All American Fencing', src: 'assets/installers/all-american-fencing.png' },
 ];
 
 const InstallerMarquee = () => {
