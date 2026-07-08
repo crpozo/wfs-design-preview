@@ -591,3 +591,26 @@ section { position: relative; }
   .wfs-hide-tablet { display: none !important; }
   .wfs-desktop-nav { gap: 18px !important; }
 }
+
+/* Material profile cards: horizontal snap carousel on phones so the
+   4-5 stacked cards don't take a full screen each */
+@media (max-width: 640px) {
+  .wfs-profiles-grid {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 12px !important;
+    margin: 0 calc(-1 * var(--pad));
+    padding: 0 var(--pad);
+  }
+  .wfs-profiles-grid::-webkit-scrollbar { display: none; }
+  .wfs-profiles-grid > article {
+    flex: 0 0 72%;
+    scroll-snap-align: start;
+  }
+  .wfs-profiles-grid > article > div:first-child {
+    aspect-ratio: 16 / 9 !important;
+  }
+}

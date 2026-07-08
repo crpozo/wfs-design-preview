@@ -370,7 +370,7 @@ const MaterialProfiles = ({ data }) => (
         accent={useT()(`${data.profiles.length} ways to spec it.`, `${data.profiles.length} formas de configurarlo.`)}
         sub={useT()("Standard and custom configurations available. Custom heights and colors on request.", "Configuraciones estándar y a medida. Alturas y colores personalizados bajo pedido.")}
       />
-      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${data.profiles.length}, 1fr)`, gap: 14 }}>
+      <div className="wfs-profiles-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${data.profiles.length}, 1fr)`, gap: 14 }}>
         {data.profiles.map((p, i) => (
           <article key={p.name} style={{
             background: 'var(--white)',

@@ -644,6 +644,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
   const t = useT();
   const [active, setActive] = React.useState(0);
   return (
+    <>
     <section id={id} className="wfs-slat-section" style={{
       background: 'var(--indigo-blue)',
       height: 'clamp(540px, calc(100svh - 118px), 880px)',
@@ -751,6 +752,9 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
         })}
       </div>
     </section>
+    {/* Mobile replacement: the hover slats don't work on touch */}
+    <SystemCarousel id={id} chapter={chapter} label={label} items={items} topLink={topLink} ctaLabel={ctaLabel}/>
+    </>
   );
 };
 
@@ -860,43 +864,25 @@ const SystemCarousel = ({ id, chapter, label, items, topLink, ctaLabel }) => {
 };
 
 const FenceCategories = () => (
-  <>
-    <SlatArena
-      id="fences" chapter="01"
-      label={{ EN: 'Fences', ES: 'Cercas' }}
-      items={FENCE_CATEGORIES}
-      topLink={{ href: 'products.html', label: { EN: 'Full catalog', ES: 'Catálogo completo' } }}
-      ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
-    />
-    <SystemCarousel
-      id="fences" chapter="01"
-      label={{ EN: 'Fences', ES: 'Cercas' }}
-      items={FENCE_CATEGORIES}
-      topLink={{ href: 'products.html', label: { EN: 'Full catalog', ES: 'Catálogo completo' } }}
-      ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
-    />
-  </>
+  <SlatArena
+    id="fences" chapter="01"
+    label={{ EN: 'Fences', ES: 'Cercas' }}
+    items={FENCE_CATEGORIES}
+    topLink={{ href: 'products.html', label: { EN: 'Full catalog', ES: 'Catálogo completo' } }}
+    ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
+  />
 );
 
 /* Gates, same arena, mirrored to the right with an industrial palette so it
    reads as gates, not a second fences section. */
 const GateSystems = () => (
-  <>
-    <SlatArena
-      id="gates" chapter="02"
-      label={{ EN: 'Gates', ES: 'Portones' }}
-      items={GATE_SYSTEMS}
-      topLink={{ href: 'estimate.html', label: { EN: 'Custom quote', ES: 'Cotización a medida' } }}
-      ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
-    />
-    <SystemCarousel
-      id="gates" chapter="02"
-      label={{ EN: 'Gates', ES: 'Portones' }}
-      items={GATE_SYSTEMS}
-      topLink={{ href: 'estimate.html', label: { EN: 'Custom quote', ES: 'Cotización a medida' } }}
-      ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
-    />
-  </>
+  <SlatArena
+    id="gates" chapter="02"
+    label={{ EN: 'Gates', ES: 'Portones' }}
+    items={GATE_SYSTEMS}
+    topLink={{ href: 'estimate.html', label: { EN: 'Custom quote', ES: 'Cotización a medida' } }}
+    ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
+  />
 );
 
 /* Why WFS, a light value-props "breather" between the two dark arenas.
