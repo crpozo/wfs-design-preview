@@ -339,6 +339,7 @@ const FeaturedProject = ({ p, num, total }) => {
 };
 
 const ProjectListRow = ({ p, active, onSelect }) => {
+  const t = useT();
   return (
     <button
       onClick={onSelect}
