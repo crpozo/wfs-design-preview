@@ -1,12 +1,12 @@
 /* Featured products grid + Project gallery + Calculator + Service areas + Footer */
 
 const FEATURED = [
-  { sku: 'CL-9G-72', name: '9-Gauge Galvanized Mesh', cat: 'Chain Link', height: '6 ft', img: 'chainlink', color: '#263166' },
-  { sku: 'AL-WLD-S', name: 'Welded Aluminum Section', cat: 'Aluminum', height: '6 ft', img: 'aluminum', color: '#263166' },
-  { sku: 'PV-PRV-W', name: 'Catalyst Privacy Vinyl, White', cat: 'Vinyl', height: '6 ft', img: 'vinyl', color: '#2e59c1' },
-  { sku: 'MT-PRV-72', name: 'Metal Board Privacy', cat: 'Metal', height: '6 ft', img: 'metal', color: '#001011' },
-  { sku: 'GT-DBL-12', name: '12 ft Welded Double Gate', cat: 'Gates', height: '12 ft', img: 'aluminum', color: '#263166' },
-  { sku: 'CL-VC-BK', name: 'Vinyl-Coated Black Mesh', cat: 'Chain Link', height: '6 ft', img: 'chainlink', color: '#263166' },
+  { sku: 'CL-9G-72', name: { EN: '9-Gauge Galvanized Mesh', ES: 'Malla galvanizada 9-Gauge' }, cat: { EN: 'Chain Link', ES: 'Malla ciclónica' }, height: '6 ft', img: 'chainlink', color: '#263166' },
+  { sku: 'AL-WLD-S', name: { EN: 'Aluminum Fence Section', ES: 'Sección de cerca de aluminio' }, cat: { EN: 'Aluminum', ES: 'Aluminio' }, height: '6 ft', img: 'aluminum', color: '#263166' },
+  { sku: 'PV-PRV-W', name: { EN: 'Catalyst Privacy Vinyl, White', ES: 'Vinilo de privacidad Catalyst, blanco' }, cat: { EN: 'Vinyl', ES: 'Vinilo' }, height: '6 ft', img: 'vinyl', color: '#2e59c1' },
+  { sku: 'MT-PRV-72', name: { EN: 'Metal Board Privacy', ES: 'Privacidad de tablero de metal' }, cat: { EN: 'Metal', ES: 'Metal' }, height: '6 ft', img: 'metal', color: '#001011' },
+  { sku: 'GT-DBL-12', name: { EN: '12 ft Double Gate', ES: 'Portón doble de 12 ft' }, cat: { EN: 'Gates', ES: 'Portones' }, height: '12 ft', img: 'aluminum', color: '#263166' },
+  { sku: 'CL-VC-BK', name: { EN: 'Vinyl-Coated Black Mesh', ES: 'Malla negra revestida de vinilo' }, cat: { EN: 'Chain Link', ES: 'Malla ciclónica' }, height: '6 ft', img: 'chainlink', color: '#263166' },
 ];
 
 
@@ -60,7 +60,18 @@ const InstallerMarquee = () => {
 
 const MAT_IMG = { 'Chain Link': 'chainlink', 'Aluminum': 'aluminum', 'Vinyl': 'vinyl', 'Metal': 'metal', 'EC Fence': 'ecfence' };
 
+/* Material display labels; raw English stays the filter/data key. */
+const MAT_LABELS = {
+  'All': { EN: 'All', ES: 'Todos' },
+  'Chain Link': { EN: 'Chain Link', ES: 'Malla ciclónica' },
+  'Aluminum': { EN: 'Aluminum', ES: 'Aluminio' },
+  'Vinyl': { EN: 'Vinyl', ES: 'Vinilo' },
+  'Metal': { EN: 'Metal', ES: 'Metal' },
+  'EC Fence': { EN: 'EC Fence', ES: 'EC Fence' },
+};
+
 const FeaturedGrid = () => {
+  const t = useT();
   return (
     <section style={{ background: 'var(--linen)', padding: '120px 0' }}>
       <div className="container">
@@ -69,13 +80,13 @@ const FeaturedGrid = () => {
           gap: 32, marginBottom: 48, flexWrap: 'wrap',
         }}>
           <div>
-            <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>03, Bestsellers</span>
+            <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>{t('03, Bestsellers', '03, Más vendidos')}</span>
             <h2 className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 60px)', margin: '12px 0 0' }}>
-              In stock,<br/>ready to ship.
+              {t('In stock,', 'En existencia,')}<br/>{t('ready to ship.', 'listos para enviar.')}
             </h2>
           </div>
           <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 500, fontSize: 14 }}>
-            View full catalog <ArrowRight />
+            {t('View full catalog', 'Ver catálogo completo')} <ArrowRight />
           </a>
         </div>
 
@@ -92,7 +103,7 @@ const FeaturedGrid = () => {
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -20px rgba(0,16,17,0.25)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
               <div style={{ position: 'relative', height: 220, background: p.color, overflow: 'hidden' }}>
-                <img src={FENCE_IMG[p.img]} alt={p.name}
+                <img src={FENCE_IMG[p.img]} alt={t(p.name)}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{
                   position: 'absolute', inset: 0,
@@ -112,26 +123,26 @@ const FeaturedGrid = () => {
                   background: 'var(--tangerine)',
                   padding: '5px 8px', borderRadius: 3, color: 'var(--ink)', fontWeight: 600,
                 }}>
-                  IN STOCK
+                  {t('IN STOCK', 'EN EXISTENCIA')}
                 </div>
               </div>
               <div style={{ padding: 20 }}>
                 <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 8 }}>
-                  {p.cat} · {p.height}
+                  {t(p.cat)} · {p.height}
                 </div>
                 <h3 style={{ fontSize: 18, fontWeight: 500, margin: '0 0 14px', color: 'var(--ink)' }}>
-                  {p.name}
+                  {t(p.name)}
                 </h3>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span className="mono" style={{ fontSize: 12.5, color: 'var(--charcoal)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
-                    Supplier-direct pricing
+                    {t('Supplier-direct pricing', 'Precios directo de proveedor')}
                   </span>
                   <button style={{
                     fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.14em',
                     textTransform: 'uppercase', color: 'var(--ink)',
                     display: 'flex', alignItems: 'center', gap: 6,
                   }}>
-                    Request quote <ArrowRight size={12} />
+                    {t('Request quote', 'Solicitar cotización')} <ArrowRight size={12} />
                   </button>
                 </div>
               </div>
@@ -145,6 +156,7 @@ const FeaturedGrid = () => {
 
 /* Uniform card, used by the full archive grid on projects.html */
 const ProjectCard = ({ p, i, layout }) => {
+  const t = useT();
   const [hover, setHover] = React.useState(false);
   return (
     <a href="projects.html"
@@ -159,7 +171,7 @@ const ProjectCard = ({ p, i, layout }) => {
         textDecoration: 'none',
         display: 'block',
       }}>
-      <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={p.name}
+      <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
         style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%',
           objectFit: 'cover',
@@ -188,7 +200,7 @@ const ProjectCard = ({ p, i, layout }) => {
           color: 'var(--white)', background: 'rgba(0,16,17,0.55)',
           padding: '5px 9px', backdropFilter: 'blur(6px)',
         }}>
-          {p.material}
+          {t(MAT_LABELS[p.material] || p.material)}
         </div>
       </div>
 
@@ -199,7 +211,7 @@ const ProjectCard = ({ p, i, layout }) => {
           fontSize: 'clamp(18px, 1.5vw, 22px)',
           lineHeight: 1.05, letterSpacing: '-0.01em',
           color: 'var(--white)',
-        }}>{p.name}</h3>
+        }}>{t(p.name)}</h3>
 
         {/* Reveal on hover: scope + contractor */}
         <div style={{
@@ -212,11 +224,11 @@ const ProjectCard = ({ p, i, layout }) => {
           <p style={{
             margin: 0, fontSize: 13, lineHeight: 1.55,
             color: 'var(--alice-blue)',
-          }}>{p.type}</p>
+          }}>{t(p.type)}</p>
           <p style={{
             margin: '6px 0 0', fontSize: 12.5, fontFamily: 'var(--mono)',
             letterSpacing: '0.06em', color: 'rgba(255,255,255,0.65)',
-          }}>Installed by {p.contractor}</p>
+          }}>{t('Installed by', 'Instalado por')} {p.contractor}</p>
         </div>
       </div>
 
@@ -250,7 +262,7 @@ const FeaturedProject = ({ p, num, total }) => {
         background: '#263166', textDecoration: 'none',
         display: 'block', minHeight: 500,
       }}>
-      <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={p.name}
+      <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
         style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%',
           objectFit: 'cover',
@@ -269,11 +281,11 @@ const FeaturedProject = ({ p, num, total }) => {
         <h3 className="display" style={{
           margin: 0, fontSize: 'clamp(26px, 3vw, 38px)',
           lineHeight: 1.0, letterSpacing: '-0.02em', color: 'var(--white)',
-        }}>{p.name}</h3>
+        }}>{t(p.name)}</h3>
         <p style={{
           margin: '12px 0 0', maxWidth: 460,
           fontSize: 14, lineHeight: 1.55, color: 'var(--alice-blue)',
-        }}>{p.type}</p>
+        }}>{t(p.type)}</p>
 
         {/* Spec strip */}
         <div style={{
@@ -281,8 +293,8 @@ const FeaturedProject = ({ p, num, total }) => {
           borderTop: '1px solid rgba(255,255,255,0.18)',
         }}>
           {[
-            [{ EN: 'Scope', ES: 'Alcance' }, p.size],
-            [{ EN: 'System', ES: 'Sistema' }, p.material],
+            [{ EN: 'Scope', ES: 'Alcance' }, t(p.size)],
+            [{ EN: 'System', ES: 'Sistema' }, t(MAT_LABELS[p.material] || p.material)],
             [{ EN: 'Completed', ES: 'Completado' }, p.year],
           ].map(([k, v], i) => (
             <div key={i} style={{
@@ -342,28 +354,30 @@ const ProjectListRow = ({ p, active, onSelect }) => {
         transition: 'background 0.2s ease, border-color 0.2s ease',
       }}>
       <span style={{ display: 'block', width: 78, height: 56, overflow: 'hidden', background: '#263166' }}>
-        <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={p.name}
+        <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </span>
       <span style={{ display: 'block', minWidth: 0 }}>
         <span className="display" style={{
           display: 'block', fontSize: 15.5, lineHeight: 1.1, letterSpacing: '-0.01em',
           color: 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
-        }}>{p.name}</span>
+        }}>{t(p.name)}</span>
       </span>
       <span className="mono" style={{
         fontSize: 11.5, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700,
         color: active ? 'var(--ink)' : 'var(--charcoal)', flexShrink: 0,
-      }}>{p.material}</span>
+      }}>{t(MAT_LABELS[p.material] || p.material)}</span>
     </button>
   );
 };
 
-const PageBtn = ({ active, disabled, onClick, label, arrow }) => (
+const PageBtn = ({ active, disabled, onClick, label, arrow }) => {
+  const t = useT();
+  return (
   <button
     onClick={onClick}
     disabled={disabled}
-    aria-label={arrow === 'prev' ? 'Previous page' : arrow === 'next' ? 'Next page' : `Page ${label}`}
+    aria-label={arrow === 'prev' ? t('Previous page', 'Página anterior') : arrow === 'next' ? t('Next page', 'Página siguiente') : `${t('Page', 'Página')} ${label}`}
     className="mono"
     style={{
       width: 32, height: 32,
@@ -384,7 +398,8 @@ const PageBtn = ({ active, disabled, onClick, label, arrow }) => (
       </svg>
     ) : label}
   </button>
-);
+  );
+};
 
 const ProjectGallery = ({ featuredMaterial, items }) => {
   const t = useT();
@@ -393,19 +408,19 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
   const [page, setPage] = React.useState(0);
   const curated = Array.isArray(items) && items.length > 0;
   const projects = curated ? items : [
-    { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, with double drive gate', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/projects/cl-fence-black.jpg' },
-    { name: 'Estero Community', loc: 'Estero, FL', size: '38 lots', material: 'Metal', type: 'Metal board privacy, 6 ft, black finish', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/met-fence-horizontal-black.jpg' },
-    { name: 'Fort Myers Estate', loc: 'Fort Myers, FL', size: '420 LF', material: 'Aluminum', type: '2-rail aluminum, smooth bottom, white', contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/projects/alum-2-rail-smooth-bottom-white.jpg' },
-    { name: 'Naples Pool Enclosure', loc: 'Naples, FL', size: '180 LF', material: 'Vinyl', type: 'Vinyl privacy, 6 ft, pool-code compliant', contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/pvc-closed-top-white.jpg' },
-    { name: 'Bonita Springs Self-Storage', loc: 'Bonita Springs, FL', size: '0.9 mi', material: 'Chain Link', type: 'Galvanized mesh with galvanized swing gate', contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/projects/cl-swing-gate-galv-4.jpg' },
-    { name: 'Punta Gorda Marina', loc: 'Punta Gorda, FL', size: '240 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, white finish', contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/projects/ecfence-white.jpg' },
-    { name: 'Lehigh Acres Warehouse', loc: 'Lehigh Acres, FL', size: '0.6 mi', material: 'Chain Link', type: 'Vinyl-coated black, 8 ft, with service gate', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/cl-gate-black.jpg' },
-    { name: 'Marco Island Villa', loc: 'Marco Island, FL', size: '260 LF', material: 'Aluminum', type: 'Aluminum puppy picket, bronze estate finish', contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/projects/alum-puppy-picket-bronze.jpg' },
-    { name: 'Sanibel Beachfront', loc: 'Sanibel, FL', size: '150 LF', material: 'Vinyl', type: 'Vinyl privacy, two-tone white and gray', contractor: 'Naples Outdoor', year: '2024', imgUrl: 'assets/projects/pvc-privacy-two-tone-white-and-gray.png' },
-    { name: 'Immokalee Ag Facility', loc: 'Immokalee, FL', size: '1.4 mi', material: 'Chain Link', type: 'Vinyl-coated black, 6 ft, agricultural perimeter', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/cl-fence-black-2.jpg' },
-    { name: 'Port Charlotte HOA', loc: 'Port Charlotte, FL', size: '52 lots', material: 'EC Fence', type: 'EC Fence panels, 6 ft, bronze finish', contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/projects/ecfence-bronze.jpg' },
-    { name: 'Golden Gate Estates', loc: 'Golden Gate, FL', size: '300 LF', material: 'Metal', type: 'Metal fence, 3-rail, brown finish', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/projects/met-fence-3-rail-brown.jpg' },
-    { name: 'North Fort Myers Depot', loc: 'North Fort Myers, FL', size: '0.8 mi', material: 'Chain Link', type: 'Vinyl-coated black, 8 ft perimeter', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/cl-fence-black.jpg' },
+    { name: { EN: 'Cape Coral Residential', ES: 'Residencial Cape Coral' }, loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: { EN: 'Vinyl-coated black, 6 ft, with double drive gate', ES: 'Recubierto de vinilo negro, 6 ft, con portón doble vehicular' }, contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/projects/cl-fence-black.jpg' },
+    { name: { EN: 'Estero Community', ES: 'Comunidad Estero' }, loc: 'Estero, FL', size: { EN: '38 lots', ES: '38 lotes' }, material: 'Metal', type: { EN: 'Metal board privacy, 6 ft, black finish', ES: 'Privacidad de tablero metálico, 6 ft, acabado negro' }, contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/met-fence-horizontal-black.jpg' },
+    { name: { EN: 'Fort Myers Estate', ES: 'Residencia Fort Myers' }, loc: 'Fort Myers, FL', size: '420 LF', material: 'Aluminum', type: { EN: '2-rail aluminum, smooth bottom, white', ES: 'Aluminio de 2 rieles, base lisa, blanco' }, contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/projects/alum-2-rail-smooth-bottom-white.jpg' },
+    { name: { EN: 'Naples Pool Enclosure', ES: 'Cerramiento de piscina Naples' }, loc: 'Naples, FL', size: '180 LF', material: 'Vinyl', type: { EN: 'Vinyl privacy, 6 ft, pool-code compliant', ES: 'Privacidad de vinilo, 6 ft, cumple código de piscinas' }, contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/pvc-closed-top-white.jpg' },
+    { name: { EN: 'Bonita Springs Self-Storage', ES: 'Autoalmacenamiento Bonita Springs' }, loc: 'Bonita Springs, FL', size: '0.9 mi', material: 'Chain Link', type: { EN: 'Galvanized mesh with galvanized swing gate', ES: 'Malla galvanizada con portón abatible galvanizado' }, contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/projects/cl-swing-gate-galv-4.jpg' },
+    { name: { EN: 'Punta Gorda Marina', ES: 'Marina Punta Gorda' }, loc: 'Punta Gorda, FL', size: '240 LF', material: 'EC Fence', type: { EN: 'EC Fence panels, 6 ft, white finish', ES: 'Paneles EC Fence, 6 ft, acabado blanco' }, contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/projects/ecfence-white.jpg' },
+    { name: { EN: 'Lehigh Acres Warehouse', ES: 'Bodega Lehigh Acres' }, loc: 'Lehigh Acres, FL', size: '0.6 mi', material: 'Chain Link', type: { EN: 'Vinyl-coated black, 8 ft, with service gate', ES: 'Recubierto de vinilo negro, 8 ft, con portón de servicio' }, contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/cl-gate-black.jpg' },
+    { name: { EN: 'Marco Island Villa', ES: 'Villa Marco Island' }, loc: 'Marco Island, FL', size: '260 LF', material: 'Aluminum', type: { EN: 'Aluminum puppy picket, bronze estate finish', ES: 'Aluminio puppy picket, acabado bronce de alta gama' }, contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/projects/alum-puppy-picket-bronze.jpg' },
+    { name: { EN: 'Sanibel Beachfront', ES: 'Frente de playa Sanibel' }, loc: 'Sanibel, FL', size: '150 LF', material: 'Vinyl', type: { EN: 'Vinyl privacy, two-tone white and gray', ES: 'Privacidad de vinilo, bicolor blanco y gris' }, contractor: 'Naples Outdoor', year: '2024', imgUrl: 'assets/projects/pvc-privacy-two-tone-white-and-gray.png' },
+    { name: { EN: 'Immokalee Ag Facility', ES: 'Instalación agrícola Immokalee' }, loc: 'Immokalee, FL', size: '1.4 mi', material: 'Chain Link', type: { EN: 'Vinyl-coated black, 6 ft, agricultural perimeter', ES: 'Recubierto de vinilo negro, 6 ft, perímetro agrícola' }, contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/cl-fence-black-2.jpg' },
+    { name: { EN: 'Port Charlotte HOA', ES: 'HOA Port Charlotte' }, loc: 'Port Charlotte, FL', size: { EN: '52 lots', ES: '52 lotes' }, material: 'EC Fence', type: { EN: 'EC Fence panels, 6 ft, bronze finish', ES: 'Paneles EC Fence, 6 ft, acabado bronce' }, contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/projects/ecfence-bronze.jpg' },
+    { name: { EN: 'Golden Gate Estates', ES: 'Golden Gate Estates' }, loc: 'Golden Gate, FL', size: '300 LF', material: 'Metal', type: { EN: 'Metal fence, 3-rail, brown finish', ES: 'Cerca metálica, 3 rieles, acabado marrón' }, contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/projects/met-fence-3-rail-brown.jpg' },
+    { name: { EN: 'North Fort Myers Depot', ES: 'Depósito North Fort Myers' }, loc: 'North Fort Myers, FL', size: '0.8 mi', material: 'Chain Link', type: { EN: 'Vinyl-coated black, 8 ft perimeter', ES: 'Recubierto de vinilo negro, perímetro de 8 ft' }, contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/cl-fence-black.jpg' },
   ];
 
   const filters = ['All', 'Chain Link', 'Aluminum', 'Vinyl', 'Metal', 'EC Fence'];
@@ -451,14 +466,6 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
         }}>
           {!curated && filters.map(f => {
             const active = f === filter;
-            const labelMap = {
-              'All': { EN: 'All', ES: 'Todos' },
-              'Chain Link': { EN: 'Chain Link', ES: 'Malla ciclónica' },
-              'Aluminum': { EN: 'Aluminum', ES: 'Aluminio' },
-              'Vinyl': { EN: 'Vinyl', ES: 'Vinilo' },
-              'Metal': { EN: 'Metal', ES: 'Metal' },
-              'EC Fence': { EN: 'EC Fence', ES: 'EC Fence' },
-            };
             return (
               <button key={f} onClick={() => { setFilter(f); setSelected(0); setPage(0); }} className="mono"
                 style={{
@@ -470,7 +477,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
                   color: active ? 'var(--white)' : 'var(--ink)',
                   cursor: 'pointer',
                 }}>
-                {t(labelMap[f])}
+                {t(MAT_LABELS[f] || f)}
               </button>
             );
           })}
@@ -498,7 +505,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {pageItems.map((p, i) => (
-                <ProjectListRow key={p.name} p={p} active={(start + i) === sel}
+                <ProjectListRow key={p.name.EN || p.name} p={p} active={(start + i) === sel}
                   onSelect={() => setSelected(start + i)} />
               ))}
             </div>
@@ -530,6 +537,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
 };
 
 const Calculator = () => {
+  const t = useT();
   const [length, setLength] = React.useState(150);
   const [height, setHeight] = React.useState(6);
   const [type, setType] = React.useState('chain-link');
@@ -551,16 +559,16 @@ const Calculator = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 60, alignItems: 'start' }}>
           <div>
             <h2 className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 60px)', margin: '0 0 24px' }}>
-              5-minute<br/>fence calculator.
+              {t('5-minute', 'Calculadora de cercas')}<br/>{t('fence calculator.', 'en 5 minutos.')}
             </h2>
             <p style={{ fontSize: 17, lineHeight: 1.5, color: 'var(--alice-blue)', maxWidth: 420, marginBottom: 32 }}>
-              Get a real-time materials estimate. We follow up with a binding quote within 24 hours, including delivery and any local code adjustments.
+              {t('Get a real-time materials estimate. We follow up with a binding quote within 24 hours, including delivery and any local code adjustments.', 'Obtén un estimado de materiales en tiempo real. Damos seguimiento con una cotización en firme dentro de 24 horas, incluyendo entrega y cualquier ajuste por normativa local.')}
             </p>
             <div style={{ display: 'grid', gap: 16, maxWidth: 380 }}>
               {[
-                ['MATERIALS-ONLY', 'No labor markup. We sell what installers buy.'],
-                ['LIVE INVENTORY', 'Estimates pull from current stock at your nearest yard.'],
-                ['NO COMMITMENT', 'Save the estimate, share with your contractor.'],
+                [t('MATERIALS-ONLY', 'SOLO MATERIALES'), t('No labor markup. We sell what installers buy.', 'Sin recargo por mano de obra. Vendemos lo que compran los instaladores.')],
+                [t('LIVE INVENTORY', 'INVENTARIO EN VIVO'), t('Estimates pull from current stock at your nearest yard.', 'Los estimados usan el stock actual de tu sucursal más cercana.')],
+                [t('NO COMMITMENT', 'SIN COMPROMISO'), t('Save the estimate, share with your contractor.', 'Guarda el estimado y compártelo con tu contratista.')],
               ].map(([k, v], i) => (
                 <div key={i} style={{ borderTop: '1px solid rgba(255,255,255,0.18)', paddingTop: 14 }}>
                   <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', color: 'var(--tangerine)', marginBottom: 6 }}>{k}</div>
@@ -578,7 +586,7 @@ const Calculator = () => {
             padding: 36,
           }}>
             <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 24, display: 'flex', justifyContent: 'space-between' }}>
-              <span>Quick estimate</span>
+              <span>{t('Quick estimate', 'Estimado rápido')}</span>
               <span>WFS-CALC v2.4</span>
             </div>
 
@@ -586,17 +594,17 @@ const Calculator = () => {
               {/* Type */}
               <div>
                 <label style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
-                  Fence type
+                  {t('Fence type', 'Tipo de cerca')}
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }}>
-                  {[['chain-link', 'Chain Link'], ['aluminum', 'Aluminum'], ['vinyl', 'Vinyl'], ['metal', 'Metal']].map(([id, label]) => (
+                  {[['chain-link', 'Chain Link', 'Malla ciclónica'], ['aluminum', 'Aluminum', 'Aluminio'], ['vinyl', 'Vinyl', 'Vinilo'], ['metal', 'Metal', 'Metal']].map(([id, label, labelEs]) => (
                     <button key={id} onClick={() => setType(id)} style={{
                       padding: '14px 10px', fontSize: 13,
                       background: type === id ? 'var(--ink)' : 'var(--white)',
                       color: type === id ? 'var(--parchment)' : 'var(--ink)',
                       border: '1px solid rgba(0,16,17,0.12)',
                       borderRadius: 8, fontWeight: 500,
-                    }}>{label}</button>
+                    }}>{t(label, labelEs)}</button>
                   ))}
                 </div>
               </div>
@@ -605,7 +613,7 @@ const Calculator = () => {
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
                   <label style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>
-                    Linear feet
+                    {t('Linear feet', 'Pies lineales')}
                   </label>
                   <span className="mono" style={{ fontSize: 13, fontWeight: 500 }}>{length} ft</span>
                 </div>
@@ -616,7 +624,7 @@ const Calculator = () => {
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <div>
                   <label style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
-                    Height (ft)
+                    {t('Height (ft)', 'Altura (ft)')}
                   </label>
                   <div style={{ display: 'flex', gap: 4 }}>
                     {[4, 6, 8, 10].map(h => (
@@ -632,7 +640,7 @@ const Calculator = () => {
                 </div>
                 <div>
                   <label style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
-                    Gates
+                    {t('Gates', 'Portones')}
                   </label>
                   <div style={{ display: 'flex', gap: 4 }}>
                     {[0, 1, 2, 3].map(g => (
@@ -651,15 +659,15 @@ const Calculator = () => {
               {/* Result */}
               <div style={{ marginTop: 8, padding: '24px 0 0', borderTop: '1px solid rgba(0,16,17,0.12)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: 'var(--charcoal)', marginBottom: 8 }}>
-                  <span>Materials ({length} ft × {height}' {type})</span>
+                  <span>{t('Materials', 'Materiales')} ({length} ft × {height}' {type})</span>
                   <span className="mono">${matCost.toLocaleString()}</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: 'var(--charcoal)', marginBottom: 16 }}>
-                  <span>Gates ({gates})</span>
+                  <span>{t('Gates', 'Portones')} ({gates})</span>
                   <span className="mono">${gateCost.toLocaleString()}</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                  <span className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>Estimated total</span>
+                  <span className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>{t('Estimated total', 'Total estimado')}</span>
                   <span className="display" style={{ fontSize: 44, color: 'var(--ink)' }}>
                     ${total.toLocaleString()}
                   </span>
@@ -667,7 +675,7 @@ const Calculator = () => {
               </div>
 
               <button className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '18px 22px' }}>
-                Lock this estimate, get binding quote <ArrowRight />
+                {t('Lock this estimate, get binding quote', 'Fija este estimado y obtén tu cotización en firme')} <ArrowRight />
               </button>
             </div>
           </div>
@@ -735,7 +743,7 @@ const ServiceAreas = () => {
             aspectRatio: '192 / 152',
           }}>
             {/* Map, viewBox cropped to Florida (624 432 192 152) */}
-            <img src="assets/us-map.svg" alt="Florida map showing WFS service area"
+            <img src="assets/us-map.svg" alt={t('Florida map showing WFS service area', 'Mapa de Florida que muestra la zona de servicio de WFS')}
               style={{
                 position: 'absolute', inset: 0,
                 width: '100%', height: '100%', objectFit: 'cover',
@@ -745,7 +753,7 @@ const ServiceAreas = () => {
                 Computed by parsing FL path: FM west-coast inland (757, 534);
                 PC west-coast inland (755, 528). */}
             {[
-              { name: 'Fort Myers · HQ', xPct: 69.3, yPct: 67.1 },
+              { name: t('Fort Myers · HQ', 'Fort Myers · Sede'), xPct: 69.3, yPct: 67.1 },
               { name: 'Port Charlotte', xPct: 68.2, yPct: 63.2, labelLeft: true },
             ].map((p) => (
               <React.Fragment key={p.name}>
@@ -784,7 +792,7 @@ const ServiceAreas = () => {
               fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
               color: 'var(--alice-blue)', fontWeight: 700,
             }}>
-              <span>State of Florida</span>
+              <span>{t('State of Florida', 'Estado de Florida')}</span>
               <span style={{ width: 24, height: 1, background: 'var(--tangerine)' }}/>
             </div>
 
@@ -804,16 +812,16 @@ const ServiceAreas = () => {
               <span className="mono" style={{
                 fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--alice-blue)', fontWeight: 700,
-              }}>WFS yard locations</span>
+              }}>{t('WFS yard locations', 'Sucursales de WFS')}</span>
             </div>
           </div>
 
           {/* Yard cards stacked */}
           <div style={{ display: 'grid', gridTemplateRows: 'repeat(3, 1fr)', gap: 12 }}>
             {[
-              { city: 'Fort Myers · HQ', addr: '2621 Fowler St, FL 33901', phone: '(239) 689-5496' },
+              { city: t('Fort Myers · HQ', 'Fort Myers · Sede'), addr: '2621 Fowler St, FL 33901', phone: '(239) 689-5496' },
               { city: 'Port Charlotte', addr: '1145 Enterprise Dr, FL 33953', phone: '(941) 391-6613' },
-              { city: 'Counties served', addr: 'Lee · Collier · Charlotte · Hendry & beyond', phone: 'Mon-Fri 7am-4pm · Sat 7am-12pm' },
+              { city: t('Counties served', 'Condados atendidos'), addr: t('Lee · Collier · Charlotte · Hendry & beyond', 'Lee · Collier · Charlotte · Hendry y más'), phone: t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm') },
             ].map((y, i) => (
               <div key={i} style={{
                 border: '1px solid rgba(0,16,17,0.18)',
@@ -964,9 +972,9 @@ const FinalCTA = () => {
                   </div>
                   <div><label style={labelStyle}>{t('Project type', 'Tipo de proyecto')}</label>
                     <select style={inputStyle}>
-                      <option>Vinyl / PVC</option>
-                      <option>Aluminum</option>
-                      <option>Chain Link</option>
+                      <option>{t('Vinyl / PVC', 'Vinilo / PVC')}</option>
+                      <option>{t('Aluminum', 'Aluminio')}</option>
+                      <option>{t('Chain Link', 'Malla ciclónica')}</option>
                       <option>Metal / DuraFence</option>
                       <option>EC Fence</option>
                       <option>{t('Gate System', 'Sistema de portón')}</option>
