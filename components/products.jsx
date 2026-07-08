@@ -754,26 +754,149 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
   );
 };
 
+/* Mobile-only: horizontal snap carousel of full product cards with a
+   "01 / 05" progress indicator. Replaces the hover-driven slats on phones,
+   where the expanding-slat interaction doesn't work on touch. */
+const SystemCarousel = ({ id, chapter, label, items, topLink, ctaLabel }) => {
+  const t = useT();
+  const scrollerRef = React.useRef(null);
+  const [active, setActive] = React.useState(0);
+
+  const onScroll = React.useCallback(() => {
+    const el = scrollerRef.current;
+    if (!el || !el.firstChild) return;
+    const step = el.firstChild.offsetWidth + 16; // card width + gap
+    const idx = Math.round(el.scrollLeft / step);
+    setActive(Math.max(0, Math.min(items.length - 1, idx)));
+  }, [items.length]);
+
+  return (
+    <section id={`${id}-mobile`} className="wfs-msys" style={{ background: 'var(--indigo-blue)' }}>
+      {/* Masthead: chapter + label + rule, catalog link below */}
+      <div className="container" style={{ paddingTop: 'clamp(48px, 8vh, 72px)', paddingBottom: 24 }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <span className="mono" style={{
+            background: 'var(--laser-blue)', color: 'var(--white)',
+            padding: '4px 8px', fontSize: 13, fontWeight: 700, lineHeight: 1,
+          }}>{chapter}</span>
+          <h2 className="display" style={{
+            margin: 0, fontSize: 'clamp(30px, 9vw, 40px)', fontWeight: 800,
+            letterSpacing: '-0.01em', color: 'var(--white)', lineHeight: 1,
+          }}>{t(label)}</h2>
+          <span aria-hidden style={{ flex: 1, height: 2, background: 'rgba(151,186,255,0.5)' }}/>
+        </div>
+        <a href={topLink.href} className="mono" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 16,
+          fontSize: 13, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+          color: 'var(--tangerine)',
+        }}>
+          {t(topLink.label)}
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
+          </svg>
+        </a>
+      </div>
+
+      {/* Snap carousel of cards */}
+      <div ref={scrollerRef} onScroll={onScroll} className="wfs-msys__scroller">
+        {items.map((c, i) => (
+          <a key={c.id} href={c.href} className="wfs-msys__card">
+            <div className="wfs-msys__imgwrap">
+              <img src={FENCE_IMG[c.img]} alt={t(c.name)} className="wfs-msys__img"/>
+              <div aria-hidden className="wfs-msys__overlay"/>
+              <span className="mono" style={{
+                position: 'absolute', top: 16, left: 16,
+                background: 'var(--ink)', color: 'var(--white)',
+                padding: '5px 9px', fontSize: 13, fontWeight: 700, lineHeight: 1,
+              }}>0{i + 1}</span>
+              {c.isNew && (
+                <span className="mono" style={{
+                  position: 'absolute', top: 16, right: 16,
+                  background: 'var(--tangerine)', color: 'var(--white)',
+                  padding: '4px 8px', fontSize: 12, fontWeight: 700,
+                  letterSpacing: '0.18em', textTransform: 'uppercase', lineHeight: 1,
+                }}>{t('New', 'Nuevo')}</span>
+              )}
+            </div>
+            <div style={{ padding: '22px 2px 4px' }}>
+              <h3 className="display" style={{
+                margin: '0 0 12px', fontSize: 26, fontWeight: 800,
+                letterSpacing: '-0.01em', color: 'var(--white)', lineHeight: 1,
+                textTransform: 'capitalize',
+              }}>{t(c.name)}</h3>
+              <p style={{
+                margin: '0 0 18px', fontSize: 15, lineHeight: 1.5,
+                color: 'rgba(219,233,238,0.82)',
+              }}>{t(c.desc)}</p>
+              <span className="mono" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                fontSize: 13, fontWeight: 700, letterSpacing: '0.16em',
+                textTransform: 'uppercase', color: 'var(--tangerine)',
+              }}>{t(ctaLabel)} <span style={{ fontSize: '1.2em' }}>→</span></span>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {/* Progress: NN / NN counter + fill bar */}
+      <div className="container" style={{
+        display: 'flex', alignItems: 'center', gap: 16,
+        paddingTop: 22, paddingBottom: 'clamp(40px, 7vh, 64px)',
+      }}>
+        <span className="mono" style={{
+          fontSize: 14, fontWeight: 700, letterSpacing: '0.14em',
+          color: 'var(--white)', whiteSpace: 'nowrap',
+        }}>{String(active + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}</span>
+        <span style={{ flex: 1, height: 3, background: 'rgba(255,255,255,0.2)', position: 'relative' }}>
+          <span style={{
+            position: 'absolute', left: 0, top: 0, bottom: 0,
+            width: `${((active + 1) / items.length) * 100}%`,
+            background: 'var(--tangerine)', transition: 'width 0.3s ease',
+          }}/>
+        </span>
+      </div>
+    </section>
+  );
+};
+
 const FenceCategories = () => (
-  <SlatArena
-    id="fences" chapter="01"
-    label={{ EN: 'Fences', ES: 'Cercas' }}
-    items={FENCE_CATEGORIES}
-    topLink={{ href: 'products.html', label: { EN: 'Full catalog', ES: 'Catálogo completo' } }}
-    ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
-  />
+  <>
+    <SlatArena
+      id="fences" chapter="01"
+      label={{ EN: 'Fences', ES: 'Cercas' }}
+      items={FENCE_CATEGORIES}
+      topLink={{ href: 'products.html', label: { EN: 'Full catalog', ES: 'Catálogo completo' } }}
+      ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
+    />
+    <SystemCarousel
+      id="fences" chapter="01"
+      label={{ EN: 'Fences', ES: 'Cercas' }}
+      items={FENCE_CATEGORIES}
+      topLink={{ href: 'products.html', label: { EN: 'Full catalog', ES: 'Catálogo completo' } }}
+      ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
+    />
+  </>
 );
 
 /* Gates, same arena, mirrored to the right with an industrial palette so it
    reads as gates, not a second fences section. */
 const GateSystems = () => (
-  <SlatArena
-    id="gates" chapter="02"
-    label={{ EN: 'Gates', ES: 'Portones' }}
-    items={GATE_SYSTEMS}
-    topLink={{ href: 'estimate.html', label: { EN: 'Custom quote', ES: 'Cotización a medida' } }}
-    ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
-  />
+  <>
+    <SlatArena
+      id="gates" chapter="02"
+      label={{ EN: 'Gates', ES: 'Portones' }}
+      items={GATE_SYSTEMS}
+      topLink={{ href: 'estimate.html', label: { EN: 'Custom quote', ES: 'Cotización a medida' } }}
+      ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
+    />
+    <SystemCarousel
+      id="gates" chapter="02"
+      label={{ EN: 'Gates', ES: 'Portones' }}
+      items={GATE_SYSTEMS}
+      topLink={{ href: 'estimate.html', label: { EN: 'Custom quote', ES: 'Cotización a medida' } }}
+      ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
+    />
+  </>
 );
 
 /* Why WFS, a light value-props "breather" between the two dark arenas.
