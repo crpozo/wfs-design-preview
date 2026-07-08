@@ -481,79 +481,11 @@ const MaterialSpecs = ({ data }) => (
   </section>
 );
 
-/* One "where it fits" row. Hover: cream wash, the outlined number fills
-   tangerine and the arrow chip fills, matching the reference design. */
-const UseCaseRow = ({ title, body, badge, index }) => {
-  const [hover, setHover] = React.useState(false);
-  return (
-    <a href="estimate.html" className="wfs-usecase-row"
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
-      style={{
-        display: 'grid', gridTemplateColumns: '104px 1.15fr 1fr 48px',
-        gap: 28, alignItems: 'center',
-        padding: '32px 22px',
-        margin: '0 -22px',
-        borderBottom: '1px solid rgba(0,16,17,0.1)',
-        textDecoration: 'none', color: 'inherit',
-        background: hover ? 'rgba(255,113,51,0.07)' : 'transparent',
-        transition: 'background 0.2s ease',
-      }}>
-      <span className="display wfs-usecase-num" aria-hidden style={{
-        fontSize: 60, lineHeight: 1, fontWeight: 800,
-        color: hover ? 'var(--tangerine)' : 'transparent',
-        WebkitTextStroke: hover ? '0px transparent' : '1.5px rgba(38,49,102,0.32)',
-        transition: 'color 0.2s ease',
-      }}>0{index + 1}</span>
-      <div>
-        <h3 className="display" style={{
-          margin: '0 0 12px', fontSize: 'clamp(18px, 1.6vw, 24px)', lineHeight: 1.1,
-          textTransform: 'uppercase', letterSpacing: '0.01em',
-        }}>{title}</h3>
-        {badge && (
-          <span className="mono" style={{
-            display: 'inline-flex', alignItems: 'center',
-            padding: '6px 12px', borderRadius: 4,
-            border: '1px solid rgba(46,89,193,0.35)',
-            background: hover ? 'var(--white)' : 'transparent',
-            fontSize: 11.5, fontWeight: 700, letterSpacing: '0.14em',
-            textTransform: 'uppercase', color: 'var(--laser-blue)',
-            transition: 'background 0.2s ease',
-          }}>{badge}</span>
-        )}
-      </div>
-      <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>{body}</p>
-      <span aria-hidden style={{
-        width: 44, height: 44, borderRadius: '50%',
-        border: `1px solid ${hover ? 'var(--tangerine)' : 'rgba(0,16,17,0.18)'}`,
-        background: hover ? 'var(--tangerine)' : 'transparent',
-        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-        color: hover ? 'var(--white)' : 'var(--ink)', justifySelf: 'end',
-        transition: 'background 0.2s ease, border-color 0.2s ease, color 0.2s ease',
-      }}>
-        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
-          <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
-        </svg>
-      </span>
-    </a>
-  );
-};
-
 const MaterialUseCases = ({ data }) => {
   const t = useT();
   return (
   <section style={{ background: 'var(--white)', padding: '120px 0 0' }}>
     <div className="container">
-      {/* Eyebrow */}
-      <div className="mono" style={{
-        display: 'inline-flex', alignItems: 'center', gap: 12,
-        marginBottom: 22,
-        fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
-        textTransform: 'uppercase', color: 'var(--laser-blue)',
-      }}>
-        <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
-        {t('Where it fits', 'Donde encaja')}
-      </div>
       {/* Title + right blurb over a heavy rule */}
       <div style={{
         display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end',

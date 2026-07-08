@@ -57,9 +57,9 @@ const GATE_DATA = {
     ],
     specs: GATE_SPECS,
     applications: [
-      ['Pedestrian Access', 'Single gates for walkways, side yards, and everyday access points.'],
-      ['Pool Enclosures', 'Gate options for pool areas and code-related requirements.'],
-      ['Service Openings', 'Single or double gates for maintenance access, equipment, and utility areas.'],
+      ['Pedestrian Access', 'Single gates for walkways, side yards, and everyday access points.', 'Everyday walk-through'],
+      ['Pool Enclosures', 'Gate options for pool areas and code-related requirements.', 'Meets pool barrier code'],
+      ['Service Openings', 'Single or double gates for maintenance access, equipment, and utility areas.', 'Maintenance & utility'],
     ],
     projects: [
       { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: 'Custom Opening', material: 'Single Swing Gate', type: 'PVC privacy walk gate, white', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/projects/pvc-privacy-gate-white.jpg' },
@@ -100,9 +100,9 @@ const GATE_DATA = {
     ],
     specs: GATE_SPECS,
     applications: [
-      ['Driveway Access', 'Double gates that open wide for vehicles and equipment.'],
-      ['Service Openings', 'Wide access for maintenance, utility, and delivery areas.'],
-      ['Estate Entries', 'Symmetrical double gates for a formal main entrance.'],
+      ['Driveway Access', 'Double gates that open wide for vehicles and equipment.', 'Opens wide for vehicles'],
+      ['Service Openings', 'Wide access for maintenance, utility, and delivery areas.', 'Maintenance & utility'],
+      ['Estate Entries', 'Symmetrical double gates for a formal main entrance.', 'Formal main entrance'],
     ],
     projects: [
       { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '12 ft Opening', material: 'Double Swing Gate', type: 'Vinyl gate, sand, drop rod + center latch', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/projects/pvc-gate-sand.jpg' },
@@ -142,9 +142,9 @@ const GATE_DATA = {
     ],
     specs: GATE_SPECS,
     applications: [
-      ['Limited Swing Clearance', 'Slides parallel to the fence with no swing arc.'],
-      ['Sloped Driveways', 'Track options for grade changes and uneven ground.'],
-      ['Daily-Use Access', 'Smooth operation for openings used many times a day.'],
+      ['Limited Swing Clearance', 'Slides parallel to the fence with no swing arc.', 'No swing arc needed'],
+      ['Sloped Driveways', 'Track options for grade changes and uneven ground.', 'Handles grade changes'],
+      ['Daily-Use Access', 'Smooth operation for openings used many times a day.', 'Smooth daily operation'],
     ],
     projects: [
       { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '12 ft Opening', material: 'Sliding Gate', type: 'Track-mounted slide gate, manual operation', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/SLIDING_GATE.png' },
@@ -184,9 +184,9 @@ const GATE_DATA = {
     ],
     specs: GATE_SPECS,
     applications: [
-      ['Industrial Perimeters', 'Long openings for yards, storage, and commercial sites.'],
-      ['Coastal & Sandy Sites', 'No ground track to clear in sand or debris.'],
-      ['Wide Openings', 'Single openings sized for larger entrances.'],
+      ['Industrial Perimeters', 'Long openings for yards, storage, and commercial sites.', 'Built for long openings'],
+      ['Coastal & Sandy Sites', 'No ground track to clear in sand or debris.', 'No ground track'],
+      ['Wide Openings', 'Single openings sized for larger entrances.', 'Wide single spans'],
     ],
     projects: [
       { name: 'Industrial Yard', loc: 'Fort Myers, FL', size: '30 ft Opening', material: 'Cantilever Gate', type: 'Galvanized cantilever gate, V-rollers', contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/CANTILEVER.png' },
@@ -226,9 +226,9 @@ const GATE_DATA = {
     ],
     specs: GATE_SPECS,
     applications: [
-      ['Commercial Perimeters', 'Wide gates for yards, storage, and industrial sites.'],
-      ['High-Cycle Access', 'Built for hundreds of open-and-close cycles a day.'],
-      ['Heavy Vehicle Access', 'Wide spans for trucks and equipment.'],
+      ['Commercial Perimeters', 'Wide gates for yards, storage, and industrial sites.', 'Yards, storage, industrial'],
+      ['High-Cycle Access', 'Built for hundreds of open-and-close cycles a day.', 'Hundreds of cycles a day'],
+      ['Heavy Vehicle Access', 'Wide spans for trucks and equipment.', 'Trucks and equipment'],
     ],
     projects: [
       { name: 'Self-Storage Facility', loc: 'Bonita Springs, FL', size: '24 ft Opening', material: 'Rolling Gate', type: 'Galvanized rolling gate, ground rollers', contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/ROLLING_GATE.png' },
@@ -466,29 +466,43 @@ const GateSpecs = ({ data }) => (
   </section>
 );
 
-const GateApplications = ({ data }) => (
+const GateApplications = ({ data }) => {
+  const t = useT();
+  return (
   <section style={{ background: 'var(--white)', padding: '120px 0 0' }}>
     <div className="container">
-      <PageSectionHeader
-        number="03" label={useT()("Where gates go", "Dónde van los portones")}
-        title={useT()("Common Gate", "Aplicaciones")}
-        accent={useT()("Applications.", "comunes de portón.")}
-      />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-        {data.applications.map(([t, body], i) => (
-          <div key={t} style={{
-            background: 'var(--white)', color: 'var(--ink)',
-            padding: '32px 28px', border: '1px solid rgba(0,16,17,0.1)',
-          }}>
-            <div className="display" style={{ fontSize: 36, color: 'var(--tangerine)', lineHeight: 1, marginBottom: 18 }}>0{i+1}</div>
-            <h3 className="display" style={{ fontSize: 22, lineHeight: 1.1, margin: '0 0 12px' }}>{t}</h3>
-            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)' }}>{body}</p>
-          </div>
-        ))}
+      {/* Title over a heavy rule, same design as the material use cases */}
+      <div style={{
+        display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end',
+        paddingBottom: 28, borderBottom: '2px solid var(--ink)',
+      }}>
+        <h2 className="display" style={{
+          margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02,
+          letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
+        }}>
+          {t('Common Gate', 'Aplicaciones comunes')}<br/>
+          <span style={{ color: 'var(--tangerine)' }}>{t('Applications.', 'de portón.')}</span>
+        </h2>
+      </div>
+      {data.applications.map(([title, body, badge], i) => (
+        <UseCaseRow key={title} title={title} body={body} badge={badge} index={i}/>
+      ))}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 26 }}>
+        <a href="projects.html" className="mono" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 10,
+          fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
+          textTransform: 'uppercase', color: 'var(--tangerine)',
+        }}>
+          {t('See all gate projects', 'Ver todos los proyectos de portones')}
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
+          </svg>
+        </a>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const GateOtherGates = ({ currentSlug }) => {
   const cur = currentSlug === 'single' ? 'single-swing'

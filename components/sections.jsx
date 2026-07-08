@@ -260,7 +260,7 @@ const FeaturedProject = ({ p, num, total }) => {
       style={{
         position: 'relative', overflow: 'hidden',
         background: '#263166', textDecoration: 'none',
-        display: 'block', minHeight: 500,
+        display: 'block', minHeight: 'min(52vh, 500px)', maxHeight: 620,
       }}>
       <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
         style={{
@@ -345,8 +345,8 @@ const ProjectListRow = ({ p, active, onSelect }) => {
       onClick={onSelect}
       onMouseEnter={onSelect}
       style={{
-        display: 'grid', gridTemplateColumns: '78px 1fr auto', gap: 14, alignItems: 'center',
-        padding: 10, width: '100%', textAlign: 'left', cursor: 'pointer',
+        display: 'grid', gridTemplateColumns: '72px 1fr auto', gap: 14, alignItems: 'center',
+        padding: 8, width: '100%', textAlign: 'left', cursor: 'pointer',
         background: active ? '#ffffff' : 'transparent',
         border: '1px solid',
         borderColor: active ? 'rgba(38, 49, 102,0.22)' : 'rgba(0,16,17,0.10)',
@@ -354,7 +354,7 @@ const ProjectListRow = ({ p, active, onSelect }) => {
         borderLeftColor: active ? 'var(--tangerine)' : 'transparent',
         transition: 'background 0.2s ease, border-color 0.2s ease',
       }}>
-      <span style={{ display: 'block', width: 78, height: 56, overflow: 'hidden', background: '#263166' }}>
+      <span style={{ display: 'block', width: 72, height: 50, overflow: 'hidden', background: '#263166' }}>
         <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </span>
@@ -437,14 +437,14 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
   const goPage = (n) => { const c = Math.max(0, Math.min(n, pageCount - 1)); setPage(c); setSelected(c * PER_PAGE); };
 
   return (
-    <section id="projects" style={{ background: 'var(--white)', padding: '120px 0' }}>
+    <section id="projects" style={{ background: 'var(--white)', padding: 'clamp(48px, 7vh, 84px) 0' }}>
       <div className="container">
         {/* Editorial header */}
         <div style={{
-          paddingBottom: 24, marginBottom: 28,
+          paddingBottom: 8, marginBottom: 18,
         }}>
           <h2 className="display" style={{
-            margin: 0, fontSize: 'clamp(28px, 3vw, 40px)',
+            margin: 0, fontSize: 'clamp(26px, 2.6vw, 36px)',
             lineHeight: 1, letterSpacing: '-0.02em',
             fontWeight: 800,
           }}>
@@ -452,7 +452,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
             <span style={{ color: 'var(--tangerine)' }}>{t('Real perimeters.', 'Perímetros reales.')}</span>
           </h2>
           <p className="mono" style={{
-            margin: '14px 0 0', fontSize: 12.5, letterSpacing: '0.16em',
+            margin: '10px 0 0', fontSize: 12.5, letterSpacing: '0.16em',
             textTransform: 'uppercase', color: 'var(--charcoal)',
           }}>
             {t('Flagship perimeters across Southwest Florida, pick one to preview.',
@@ -462,8 +462,8 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
 
         {/* Filter chips */}
         <div style={{
-          display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 28,
-          paddingBottom: 16, borderBottom: '1px solid rgba(0,16,17,0.12)',
+          display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 18,
+          paddingBottom: 12, borderBottom: '1px solid rgba(0,16,17,0.12)',
         }}>
           {!curated && filters.map(f => {
             const active = f === filter;

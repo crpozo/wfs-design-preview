@@ -944,3 +944,20 @@ Object.assign(ES_TR, {
   'Clean commercial screening': 'Cerramiento comercial limpio',
   'Modern panel look': 'Aspecto de panel moderno',
 });
+
+/* Gate applications badges (where-it-fits row design) */
+Object.assign(ES_TR, {
+  'Everyday walk-through': 'Paso peatonal de todos los días',
+  'Maintenance & utility': 'Mantenimiento y servicios',
+  'Opens wide for vehicles': 'Abre amplio para vehículos',
+  'Formal main entrance': 'Entrada principal formal',
+  'No swing arc needed': 'Sin arco de apertura',
+  'Handles grade changes': 'Maneja cambios de nivel',
+  'Smooth daily operation': 'Operación diaria suave',
+  'Built for long openings': 'Hecho para aberturas largas',
+  'No ground track': 'Sin riel en el piso',
+  'Wide single spans': 'Tramos anchos de una sola pieza',
+  'Yards, storage, industrial': 'Patios, almacenes e industria',
+  'Hundreds of cycles a day': 'Cientos de ciclos al día',
+  'Trucks and equipment': 'Camiones y equipo',
+});
