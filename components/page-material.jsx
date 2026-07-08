@@ -274,6 +274,93 @@ const MaterialQuickFacts = ({ data }) => (
   </section>
 );
 
+/* Schematic drawn to match each profile. Decorative (aria-hidden): navy
+   rails/boards + light verticals on a lavender panel; tangerine is reserved
+   for the aluminum "custom" accent rail. Adapts by material so vinyl, chain
+   link, metal and EC Fence get a fitting illustration too. */
+const DIAG = { bg: '#e9edf9', navy: '#263166', light: '#aeb9de', accent: '#ff7133' };
+const ProfileDiagram = ({ slug, name = '', index = 0 }) => {
+  const { bg, navy, light, accent } = DIAG;
+  const W = 220, H = 132, L = 18, R = 202;
+  const nm = name.toLowerCase();
+  const els = [];
+
+  const pickets = (n, yTop, yBot, tips) => {
+    for (let i = 0; i < n; i++) {
+      const x = L + ((R - L) / (n - 1)) * i;
+      els.push(<line key={`pk${i}`} x1={x} y1={tips ? yTop : yTop} x2={x} y2={yBot} stroke={light} strokeWidth="3" strokeLinecap="round"/>);
+      if (tips) els.push(<path key={`sp${i}`} d={`M${x - 4} ${yTop} L${x} ${yTop - 9} L${x + 4} ${yTop} Z`} fill={light}/>);
+    }
+  };
+  const rails = (rows) => rows.forEach((r, i) =>
+    els.push(<line key={`rl${i}`} x1={L} y1={r.y} x2={R} y2={r.y} stroke={r.c || navy} strokeWidth="5" strokeLinecap="round" strokeDasharray={r.dash}/>)
+  );
+  const boards = (gap, c = navy, yTop = 28, yBot = 110) => {
+    const bw = 8, step = bw + gap;
+    let k = 0;
+    for (let x = L; x <= R - bw + 0.5; x += step) { els.push(<rect key={`bd${k++}`} x={x} y={yTop} width={bw} height={yBot - yTop} fill={c}/>); }
+  };
+
+  if (slug === 'aluminum') {
+    const spear = /spear/.test(nm);
+    const custom = /4|5|custom/.test(nm);
+    let rows;
+    if (custom) {
+      rows = [{ y: 30 }, { y: 52 }, { y: 68, c: accent, dash: '7 5' }, { y: 84 }, { y: 106 }];
+      pickets(11, 16, 118);
+    } else if (spear || /^3/.test(name.trim())) {
+      rows = [{ y: 40 }, { y: 68 }, { y: 96 }];
+      pickets(9, spear ? 22 : 18, 116, spear);
+    } else {
+      rows = [{ y: 48 }, { y: 92 }];
+      pickets(9, 18, 116);
+    }
+    rails(rows);
+  } else if (slug === 'vinyl') {
+    if (/semi/.test(nm)) { boards(9); }
+    else if (/picket/.test(nm)) {
+      const n = 7, bw = 9;
+      for (let i = 0; i < n; i++) { const x = L + ((R - L - bw) / (n - 1)) * i; els.push(<path key={`pc${i}`} d={`M${x} 40 L${x} 110 M${x} 40 L${x + bw / 2} 30 L${x + bw} 40 L${x + bw} 110`} stroke={navy} strokeWidth="3" fill="none" strokeLinejoin="round"/>); }
+      rails([{ y: 56 }, { y: 92 }]);
+    }
+    else if (/ranch/.test(nm)) { rails([{ y: 42 }, { y: 68 }, { y: 94 }]); els.push(<rect key="p1" x={L} y={24} width="6" height="92" fill={navy}/>); els.push(<rect key="p2" x={R - 6} y={24} width="6" height="92" fill={navy}/>); }
+    else { boards(2); } // Privacy, full board
+  } else if (slug === 'metal') {
+    if (/slat/.test(nm)) { boards(7); }
+    else if (/gate/.test(nm)) { boards(3, navy, 34, 110); els.push(<rect key="gf" x={L} y={30} width={R - L} height={84} fill="none" stroke={accent} strokeWidth="3"/>); }
+    else { boards(2, navy, /tall/.test(nm) ? 22 : 32, 112); } // Standard / Tall board
+  } else if (slug === 'chainlink') {
+    const c = /green/.test(nm) ? '#6f9e6b' : /galvani/.test(nm) ? '#9aa3c0' : navy;
+    const w = /heavy|industrial/.test(nm) ? 2.4 : 1.6, s = 18;
+    els.push(<clipPath key="cp" id={`ck${slug}${index}`}><rect x={L} y={26} width={R - L} height={84}/></clipPath>);
+    const lines = [];
+    for (let x = L - 84; x < R + 84; x += s) {
+      lines.push(<line key={`d1${x}`} x1={x} y1={20} x2={x + 90} y2={116} stroke={c} strokeWidth={w}/>);
+      lines.push(<line key={`d2${x}`} x1={x} y1={116} x2={x + 90} y2={20} stroke={c} strokeWidth={w}/>);
+    }
+    els.push(<g key="mesh" clipPath={`url(#ck${slug}${index})`}>{lines}</g>);
+    rails([{ y: 26 }, { y: 110 }]);
+  } else if (slug === 'ecfence') {
+    if (/post|hardware/.test(nm)) {
+      [L + 20, W / 2, R - 20].forEach((x, i) => { els.push(<rect key={`po${i}`} x={x - 4} y={24} width="8" height="92" fill={navy}/>); els.push(<rect key={`cp${i}`} x={x - 7} y={20} width="14" height="6" fill={navy}/>); });
+    } else if (/gate/.test(nm)) {
+      els.push(<rect key="ef" x={L + 6} y={28} width={R - L - 12} height={82} fill="none" stroke={navy} strokeWidth="3"/>);
+      [46, 62, 78, 94].forEach((y, i) => els.push(<line key={`es${i}`} x1={L + 12} y1={y} x2={R - 12} y2={y} stroke={navy} strokeWidth="4" strokeLinecap="round"/>));
+    } else {
+      [34, 50, 66, 82, 98].forEach((y, i) => els.push(<line key={`ep${i}`} x1={L} y1={y} x2={R} y2={y} stroke={navy} strokeWidth="7" strokeLinecap="round"/>));
+    }
+  } else {
+    pickets(9, 18, 116); rails([{ y: 40 }, { y: 96 }]);
+  }
+
+  return (
+    <svg viewBox={`0 0 ${W} ${H}`} width="100%" height="100%" preserveAspectRatio="xMidYMid meet" aria-hidden style={{ display: 'block' }}>
+      <rect x="0" y="0" width={W} height={H} fill={bg}/>
+      {els}
+    </svg>
+  );
+};
+
 const MaterialProfiles = ({ data }) => (
   <section id="styles" style={{ background: 'var(--white)', padding: '120px 0' }}>
     <div className="container">
@@ -286,15 +373,22 @@ const MaterialProfiles = ({ data }) => (
       <div style={{ display: 'grid', gridTemplateColumns: `repeat(${data.profiles.length}, 1fr)`, gap: 14 }}>
         {data.profiles.map((p, i) => (
           <article key={p.name} style={{
-            background: 'var(--white)', padding: 24,
+            background: 'var(--white)',
             border: '1px solid rgba(0,16,17,0.12)',
+            overflow: 'hidden',
+            display: 'flex', flexDirection: 'column',
           }}>
-            <div className="mono" style={{
-              fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
-              color: 'var(--tangerine)', fontWeight: 700, marginBottom: 14,
-            }}>0{i+1} · {p.tag}</div>
-            <h3 className="display" style={{ margin: '0 0 12px', fontSize: 22, lineHeight: 1.1 }}>{p.name}</h3>
-            <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
+            <div style={{ aspectRatio: '16 / 10', background: DIAG.bg, borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
+              <ProfileDiagram slug={data.slug} name={p.name} index={i}/>
+            </div>
+            <div style={{ padding: 24 }}>
+              <div className="mono" style={{
+                fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
+                color: 'var(--tangerine)', fontWeight: 700, marginBottom: 14,
+              }}>0{i+1} · {p.tag}</div>
+              <h3 className="display" style={{ margin: '0 0 12px', fontSize: 22, lineHeight: 1.1 }}>{p.name}</h3>
+              <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
+            </div>
           </article>
         ))}
       </div>
