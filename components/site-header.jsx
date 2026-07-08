@@ -98,31 +98,32 @@ const SiteHeader = ({ active }) => {
         }}>
           {/* Left: mode toggle + catalog link */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-            {/* Mode toggle, dot indicator */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 18 }}>
+            {/* Audience links, each goes to its landing page */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 16 }}>
               {[
-                { key: 'HOMEOWNER',  label: { EN: 'HOMEOWNER',  ES: 'PROPIETARIO' } },
-                { key: 'CONTRACTOR', label: { EN: 'CONTRACTOR', ES: 'CONTRATISTA' } },
-              ].map((m) => {
-                const isActive = curMode === m.key;
-                return (
-                  <button key={m.key} onClick={() => setCurMode(m.key)} style={{
+                { key: 'HOMEOWNER',  href: 'homeowners.html',  label: { EN: 'HOMEOWNER',  ES: 'PROPIETARIO' } },
+                { key: 'CONTRACTOR', href: 'contractors.html', label: { EN: 'CONTRACTOR', ES: 'CONTRATISTA' } },
+              ].map((m, i) => (
+                <React.Fragment key={m.key}>
+                  {i > 0 && (
+                    <span aria-hidden style={{ width: 1, height: 12, background: 'rgba(255,255,255,0.18)' }}/>
+                  )}
+                  <a href={m.href} onClick={() => setCurMode(m.key)} style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
-                    padding: 0, background: 'transparent',
                     fontFamily: 'inherit', fontSize: 12.5, fontWeight: 700,
                     letterSpacing: '0.18em', textTransform: 'uppercase',
-                    color: isActive ? 'var(--white)' : 'rgba(219,233,238,0.55)',
-                    cursor: 'pointer',
-                  }}>
-                    <span style={{
-                      width: 6, height: 6, borderRadius: '50%',
-                      background: isActive ? 'var(--tangerine)' : 'transparent',
-                      border: isActive ? 'none' : '1px solid rgba(219,233,238,0.4)',
-                    }}/>
+                    color: 'rgba(219,233,238,0.7)', textDecoration: 'none',
+                    transition: 'color 0.15s ease',
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.color = 'var(--white)'; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.color = 'rgba(219,233,238,0.7)'; }}>
                     {t(m.label)}
-                  </button>
-                );
-              })}
+                    <svg width="9" height="9" viewBox="0 0 16 16" fill="none">
+                      <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+                    </svg>
+                  </a>
+                </React.Fragment>
+              ))}
             </div>
           </div>
 
@@ -330,38 +331,36 @@ const SiteHeader = ({ active }) => {
             </button>
           </div>
 
-          {/* Mode select (mobile), pick a mode, page reloads in that mode */}
+          {/* Audience select (mobile), each goes to its landing page */}
           <div style={{
             padding: '20px',
             borderBottom: '1px solid rgba(0,16,17,0.08)',
             display: 'flex', gap: 12,
           }}>
             {[
-              { key: 'HOMEOWNER',  label: { EN: "I'm a homeowner",  ES: 'Soy propietario' } },
-              { key: 'CONTRACTOR', label: { EN: "I'm a contractor", ES: 'Soy contratista' } },
+              { key: 'HOMEOWNER',  href: 'homeowners.html',  label: { EN: "I'm a homeowner",  ES: 'Soy propietario' } },
+              { key: 'CONTRACTOR', href: 'contractors.html', label: { EN: "I'm a contractor", ES: 'Soy contratista' } },
             ].map((m) => {
-              const isActive = curMode === m.key;
               return (
-                <button key={m.key}
-                  onClick={() => { setCurMode(m.key); window.location.reload(); }}
+                <a key={m.key}
+                  href={m.href}
+                  onClick={() => setCurMode(m.key)}
                   className="mono" style={{
                     flex: 1,
                     display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8,
                     padding: '14px 12px',
-                    background: isActive ? 'var(--ink)' : 'var(--white)',
-                    color: isActive ? 'var(--white)' : 'var(--ink)',
-                    border: `1px solid ${isActive ? 'var(--ink)' : 'rgba(0,16,17,0.25)'}`,
+                    background: 'var(--white)',
+                    color: 'var(--ink)',
+                    border: '1px solid rgba(0,16,17,0.25)',
                     fontSize: 12.5, fontWeight: 700, letterSpacing: '0.12em',
                     textTransform: 'uppercase', lineHeight: 1.3,
-                    cursor: 'pointer',
+                    textDecoration: 'none',
                   }}>
-                  <span style={{
-                    flexShrink: 0,
-                    width: 6, height: 6, borderRadius: '50%',
-                    background: isActive ? 'var(--tangerine)' : 'rgba(0,16,17,0.3)',
-                  }}/>
                   {t(m.label)}
-                </button>
+                  <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+                  </svg>
+                </a>
               );
             })}
           </div>
