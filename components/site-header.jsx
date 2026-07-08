@@ -127,23 +127,6 @@ const SiteHeader = ({ active }) => {
             </div>
           </div>
 
-          {/* Center: featured CTA */}
-          <a href="estimate.html#quote" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10,
-            color: 'var(--white)',
-            paddingBottom: 4,
-            borderBottom: '1px solid var(--tangerine)',
-          }}>
-            <span style={{
-              width: 5, height: 5, borderRadius: '50%',
-              background: 'var(--tangerine)',
-            }}/>
-            {t('Get a quote, 24h turnaround', 'Cotiza, respuesta en 24h')}
-            <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
-            </svg>
-          </a>
-
           {/* Right: phone + lang toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
             <a href="tel:2396895496" style={{
