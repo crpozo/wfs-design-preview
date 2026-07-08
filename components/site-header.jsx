@@ -110,7 +110,7 @@ const SiteHeader = ({ active }) => {
                   )}
                   <a href={m.href} onClick={() => setCurMode(m.key)} style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
-                    fontFamily: 'inherit', fontSize: 12.5, fontWeight: 700,
+                    fontFamily: 'inherit', fontSize: 11, fontWeight: 700,
                     letterSpacing: '0.18em', textTransform: 'uppercase',
                     color: 'rgba(219,233,238,0.7)', textDecoration: 'none',
                     transition: 'color 0.15s ease',
