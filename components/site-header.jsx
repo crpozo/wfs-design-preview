@@ -49,7 +49,7 @@ const SiteHeader = ({ active }) => {
 
   const FENCE_TILES = [
     { key: 'aluminum',  name: { EN: 'Aluminum',          ES: 'Aluminio' },          tag: { EN: 'Residential & Commercial', ES: 'Residencial y comercial' },      href: 'aluminum.html' },
-    { key: 'chainlink', name: { EN: 'Chain Link',        ES: 'Malla ciclónica' },   tag: { EN: 'Galv · Vinyl-Coated',    ES: 'Galv · Recubierto vinilo' }, href: 'chain-link.html' },
+    { key: 'chainlink', name: { EN: 'Chain Link',        ES: 'Malla ciclónica' },   tag: { EN: 'Galv · Vinyl-Coated',    ES: 'Galv · Recubierto de vinilo' }, href: 'chain-link.html' },
     { key: 'metal',     name: { EN: 'Metal / DuraFence', ES: 'Metal / DuraFence' }, tag: { EN: 'Metal Privacy',          ES: 'Privacidad de metal' }, href: 'metal.html' },
     { key: 'vinyl',     name: { EN: 'Vinyl / PVC',       ES: 'Vinilo / PVC' },      tag: { EN: 'Catalyst-Extruded PVC',  ES: 'PVC extruido Catalyst' },       href: 'vinyl.html' },
     { key: 'ecfence',   name: { EN: 'ecFence',           ES: 'ecFence' },           tag: { EN: 'Galv Steel · HVHZ',      ES: 'Acero galv · HVHZ' },       href: 'ecfence.html' },

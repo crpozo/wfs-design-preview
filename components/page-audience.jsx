@@ -502,13 +502,13 @@ const HomeownerInstallerSplit = () => {
             }}>
               {t(
                 'WFS does not offer DIY installation. We connect homeowners with certified installation partners who know our products, hardware, and finish standards.',
-                'WFS no ofrece instalación DIY. Conectamos a propietarios con socios instaladores certificados que conocen nuestros productos, hardware y estándares de acabado.'
+                'WFS no ofrece instalación DIY. Conectamos a propietarios con socios instaladores certificados que conocen nuestros productos, herrajes y estándares de acabado.'
               )}
             </p>
             <ul style={{ listStyle: 'none', margin: '0 0 32px', padding: 0, display: 'grid', gap: 12 }}>
               {[
                 { EN: 'WFS-aligned independent installers',     ES: 'Instaladores independientes alineados con WFS' },
-                { EN: 'Product-aware installation practices',   ES: 'Prácticas de instalación conscientes del producto' },
+                { EN: 'Product-aware installation practices',   ES: 'Prácticas de instalación que dominan nuestros productos' },
                 { EN: 'Clean handoff from quote to installation', ES: 'Transición limpia de cotización a instalación' },
               ].map((line, i) => (
                 <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
@@ -549,7 +549,7 @@ const HomeownerInstallerSplit = () => {
               margin: '0 0 18px',
               fontSize: 'clamp(22px, 2.2vw, 30px)',
               lineHeight: 1.05, letterSpacing: '-0.01em',
-            }}>{t('Spec-aligned outcomes', 'Resultados alineados a especificaciones')}</h3>
+            }}>{t('Spec-aligned outcomes', 'Resultados alineados con las especificaciones')}</h3>
             <p className="mono" style={{
               margin: '0 0 26px',
               fontSize: 13, lineHeight: 1.7,
@@ -699,7 +699,7 @@ const HomeownerFAQ = () => {
     [{ EN: 'How do I connect with a certified installer?',
         ES: '¿Cómo me conecto con un instalador certificado?' },
      { EN: 'When you request a quote we route your project to the closest WFS-aligned installer in our certified alliance. They quote the labor side; the material side stays on your WFS line item.',
-       ES: 'Cuando solicitas cotización, enrutamos tu proyecto al instalador alineado con WFS más cercano dentro de nuestra alianza certificada. Ellos cotizan la mano de obra; el material queda en tu línea WFS.' }],
+       ES: 'Cuando solicitas cotización, derivamos tu proyecto al instalador alineado con WFS más cercano dentro de nuestra alianza certificada. Ellos cotizan la mano de obra; el material queda en tu línea WFS.' }],
   ];
   const [open, setOpen] = React.useState(1);
   return (
@@ -982,7 +982,7 @@ const ContractorHero = () => {
             textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)',
           }}>
             {[
-              { EN: 'No application fee',   ES: 'Sin costo de aplicación' },
+              { EN: 'No application fee',   ES: 'Sin costo de solicitud' },
               { EN: 'Volume tiers',          ES: 'Niveles por volumen' },
               { EN: 'Flexible payment terms',   ES: 'Términos de pago flexibles' },
             ].map((b, i) => (
@@ -1112,7 +1112,7 @@ const ContractorStatsStrip = () => {
           ['Tiered', { EN: 'Wholesale margin tiers',     ES: 'Niveles de margen mayorista' }],
           ['In-house', { EN: 'Gate fabrication',          ES: 'Fabricación de portones' }],
           [{ EN: 'Free', ES: 'Gratis' }, { EN: 'Job-site drops · in-county', ES: 'Entregas a obra · mismo condado' }],
-          ['Free',     { EN: 'Application fee',             ES: 'Costo de aplicación' }],
+          ['Free',     { EN: 'Application fee',             ES: 'Costo de solicitud' }],
         ].map(([n, l], i) => (
           <div key={i} className="wfs-stat-cell" style={{
             paddingLeft: i === 0 ? 0 : 24,
@@ -1153,11 +1153,11 @@ const ContractorBenefits = () => {
     {
       title: { EN: 'Job Site Delivery', ES: 'Entrega a obra' },
       body:  { EN: 'Unbranded or branded drops directly to your job site. Curbside, will-call, or LTL, your choice per PO.',
-                ES: 'Entregas con o sin tu marca, directo a tu obra. Banqueta, recoge en planta o LTL, tú decides en cada orden.' },
+                ES: 'Entregas con o sin tu marca, directo a tu obra. Entrega en acera, retiro en planta o LTL, tú decides en cada orden.' },
       svg: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21 Q4 14 4 9 A8 8 0 0 1 20 9 Q20 14 12 21 Z"/><circle cx="12" cy="9.5" r="2.6"/></svg>),
     },
     {
-      title: { EN: 'Lead Routing', ES: 'Enrutamiento de leads' },
+      title: { EN: 'Lead Routing', ES: 'Derivación de leads' },
       body:  { EN: 'We refer homeowner projects directly to certified installer partners in the alliance, with the WFS material line locked in.',
                 ES: 'Referimos proyectos de propietarios directamente a socios instaladores certificados de la alianza, con la línea de material WFS asegurada.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 19 Q9 14 15 19"/><path d="M14 18 Q17.5 15 21 18"/></svg>),
@@ -1235,7 +1235,7 @@ const ContractorHowItWorks = () => {
   const t = useT();
   const steps = [
     {
-      n: '01', title: { EN: 'Apply', ES: 'Aplica' },
+      n: '01', title: { EN: 'Apply', ES: 'Solicita' },
       body: { EN: 'Send your business info, trade refs, and an idea of monthly LF. No fee, no commitment.',
                ES: 'Envía la info de tu empresa, referencias comerciales y una idea de tu volumen mensual. Sin costo, sin compromiso.' },
       svg: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3 H15 L19 7 V21 H7 Z"/><path d="M15 3 V7 H19"/><line x1="9" y1="12" x2="17" y2="12"/><line x1="9" y1="15" x2="17" y2="15"/></svg>),
@@ -1534,7 +1534,7 @@ const ContractorClosingCTA = () => {
           margin: 0, fontSize: 'clamp(32px, 4.2vw, 60px)',
           lineHeight: 0.98, letterSpacing: '-0.02em', color: 'var(--white)',
         }}>
-          {t('Apply once.', 'Aplica una vez.')}<br/>
+          {t('Apply once.', 'Regístrate una vez.')}<br/>
           <span style={{ color: 'var(--tangerine)' }}>{t('Quote forever.', 'Cotiza siempre.')}</span>
         </h2>
         <p className="mono" style={{
@@ -1544,7 +1544,7 @@ const ContractorClosingCTA = () => {
         }}>
           {t(
             'Submit the partner application once. We approve, lock in your starter tier, and route every future RFQ through your dedicated rep. No annual fee, no minimums on individual orders.',
-            'Envía la aplicación de socio una sola vez. Aprobamos, fijamos tu nivel inicial y enrutamos cada RFQ futura a través de tu representante dedicado. Sin cuota anual, sin mínimos por orden.'
+            'Envía la solicitud de socio una sola vez. Aprobamos, fijamos tu nivel inicial y canalizamos cada RFQ futura a través de tu representante dedicado. Sin cuota anual, sin mínimos por orden.'
           )}
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
@@ -1554,7 +1554,7 @@ const ContractorClosingCTA = () => {
             background: 'var(--tangerine)', color: 'var(--white)',
             fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
             letterSpacing: '0.18em', textTransform: 'uppercase',
-          }}>{t('Start Application', 'Iniciar aplicación')}</a>
+          }}>{t('Start Application', 'Iniciar solicitud')}</a>
           <a href="tel:2396895496" style={{
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
             padding: '18px 32px',
@@ -1579,7 +1579,7 @@ const ContractorClosingCTA = () => {
           display: 'flex', alignItems: 'center', gap: 10,
         }}>
           <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-          {t('Application checklist', 'Checklist de aplicación')}
+          {t('Application checklist', 'Lista de verificación de la solicitud')}
         </div>
         <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: 14 }}>
           {[

@@ -37,7 +37,7 @@ const WarrantyHighlights = () => {
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 12 H20"/><path d="M14 6 L20 12 L14 18"/><path d="M10 18 L4 12 L10 6"/></svg>),
     },
     {
-      title: { EN: 'Honored at both yards', ES: 'Honrada en ambas sucursales' },
+      title: { EN: 'Honored at both yards', ES: 'Válida en ambas sucursales' },
       body:  { EN: 'Claim from Fort Myers or Port Charlotte. Same rep network, same SKUs in stock, same turnaround on warranty replacements.',
                 ES: 'Reclama desde Fort Myers o Port Charlotte. La misma red de representantes, mismos SKUs en stock, mismos plazos en reemplazos de garantía.' },
       svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21 Q4 14 4 9 A8 8 0 0 1 20 9 Q20 14 12 21 Z"/><circle cx="12" cy="9.5" r="2.6"/></svg>),
@@ -117,11 +117,11 @@ const WarrantyMaterialTable = () => {
         {[
           ['Vinyl / PVC',          { EN: 'Lifetime',  ES: 'De por vida' },     { EN: 'Lifetime UV',     ES: 'UV de por vida' },     { EN: 'Catalyst-extruded. No fading, peeling or rotting.',  ES: 'Extruido Catalyst. No se decolora, no se pela, no se pudre.' }],
           ['Aluminum',             { EN: 'Lifetime',  ES: 'De por vida' },     { EN: '20-year finish',  ES: 'Acabado 20 años' },    { EN: 'Powder-coat over marine-grade extrusion.',        ES: 'Pintura en polvo sobre extrusión grado marino.' }],
-          [{ EN: 'Chain Link · Galv', ES: 'Malla · Galv' }, { EN: 'Rust-thru', ES: 'Hasta oxidación' }, '—',                          { EN: 'ASTM A392 zinc-coat. Salt-air rated.',              ES: 'Galvanizado ASTM A392. Resistente al aire salino.' }],
-          [{ EN: 'Chain Link · PVC',  ES: 'Malla · PVC' },  { EN: 'Rust-thru', ES: 'Hasta oxidación' }, { EN: '15-year color', ES: 'Color 15 años' }, { EN: 'Black, green PVC-coated.',               ES: 'Recubrimiento PVC negro o verde.' }],
+          [{ EN: 'Chain Link · Galv', ES: 'Malla · Galv' }, { EN: 'Rust-thru', ES: 'Contra perforación por óxido' }, '—',                          { EN: 'ASTM A392 zinc-coat. Salt-air rated.',              ES: 'Galvanizado ASTM A392. Resistente al aire salino.' }],
+          [{ EN: 'Chain Link · PVC',  ES: 'Malla · PVC' },  { EN: 'Rust-thru', ES: 'Contra perforación por óxido' }, { EN: '15-year color', ES: 'Color 15 años' }, { EN: 'Black, green PVC-coated.',               ES: 'Recubrimiento PVC negro o verde.' }],
           ['Metal / DuraFence',    { EN: '20 years',  ES: '20 años' },          { EN: '10-year finish',  ES: 'Acabado 10 años' },    { EN: 'HVHZ-rated aluminum board.',                      ES: 'Tabla de aluminio con clasificación HVHZ.' }],
           ['EC Fence',             { EN: 'Lifetime',  ES: 'De por vida' },     { EN: '20-year finish',  ES: 'Acabado 20 años' },    { EN: 'Self-mating galv steel, Exp. C wind-load.',       ES: 'Acero galv. autoensamblable, carga eólica Exp. C.' }],
-          [{ EN: 'Gates · welded', ES: 'Portones · soldados' }, { EN: '10 years', ES: '10 años' }, { EN: 'Per system', ES: 'Por sistema' }, { EN: 'WFS in-house weld + hardware coverage.', ES: 'Cobertura de soldadura interna WFS + hardware.' }],
+          [{ EN: 'Gates · welded', ES: 'Portones · soldados' }, { EN: '10 years', ES: '10 años' }, { EN: 'Per system', ES: 'Por sistema' }, { EN: 'WFS in-house weld + hardware coverage.', ES: 'Cobertura de soldadura en planta WFS + herrajes.' }],
         ].map((row, ri) => (
           <div key={ri} style={{
             display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.2fr',
@@ -154,9 +154,9 @@ const WarrantyExclusions = () => {
     [{ EN: 'Impact damage',             ES: 'Daño por impacto' },
      { EN: 'Vehicles, fallen trees, lawn equipment, intentional impact.',
         ES: 'Vehículos, árboles caídos, equipo de jardín, impacto intencional.' }],
-    [{ EN: 'Acts of God beyond rated wind load', ES: 'Eventos de fuerza mayor sobre la carga eólica nominal' },
+    [{ EN: 'Acts of God beyond rated wind load', ES: 'Eventos de fuerza mayor por encima de la carga eólica nominal' },
      { EN: "Hurricane damage above the system's rated wind speed (HVHZ rating per system).",
-        ES: 'Daño por huracán arriba de la velocidad de viento nominal del sistema (clasificación HVHZ por sistema).' }],
+        ES: 'Daño por huracán por encima de la velocidad de viento nominal del sistema (clasificación HVHZ por sistema).' }],
     [{ EN: 'Improper installation',     ES: 'Instalación inadecuada' },
      { EN: 'Coverage assumes WFS spec install. Use a certified installer to keep terms intact.',
         ES: 'La cobertura asume instalación según specs WFS. Usa un instalador certificado para mantener los términos vigentes.' }],
@@ -165,7 +165,7 @@ const WarrantyExclusions = () => {
         ES: 'Rayones, golpes menores, marcas y abrasión superficial menor por uso normal.' }],
     [{ EN: 'Vandalism + theft',         ES: 'Vandalismo + robo' },
      { EN: 'Pickets cut, mesh sliced, hardware removed.',
-        ES: 'Estacas cortadas, malla rasgada, hardware removido.' }],
+        ES: 'Pickets cortados, malla rasgada, herrajes retirados.' }],
     [{ EN: 'Modified material',         ES: 'Material modificado' },
      { EN: 'Posts cut down on-site, panels repainted with non-spec finish, etc.',
         ES: 'Postes recortados en obra, paneles repintados con acabados no autorizados, etc.' }],
@@ -859,7 +859,7 @@ const SpecsStamped = () => {
           }}>
             {t(
               'We have a licensed FL Professional Engineer on retainer for stamped wind-load letters, structural calcs and HVHZ submission packages. Stamped requests are available on most products.',
-              'Tenemos un Ingeniero Profesional licenciado de FL en retainer para cartas selladas de carga eólica, cálculos estructurales y paquetes de presentación HVHZ. La mayoría de solicitudes selladas se cierran en 5-7 días hábiles.'
+              'Tenemos un Ingeniero Profesional licenciado de FL en retainer para cartas selladas de carga eólica, cálculos estructurales y paquetes de presentación HVHZ. Hay solicitudes selladas disponibles para la mayoría de los productos.'
             )}
           </p>
         </div>
