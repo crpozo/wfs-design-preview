@@ -1,6 +1,8 @@
 /* Estimate page, hero + live agent (form comes from FinalCTA in sections.jsx) */
 
-const EstimateHero = () => (
+const EstimateHero = () => {
+  const t = useT();
+  return (
   <section style={{
     position: 'relative', color: 'var(--white)', overflow: 'hidden',
     minHeight: 'clamp(520px, 78vh, 680px)',
@@ -45,14 +47,14 @@ const EstimateHero = () => (
           color: 'var(--white)',
           textShadow: '0 2px 28px rgba(0,0,0,0.28)',
         }}>
-          Draw your fence.{' '}
-          <span style={{ color: 'var(--blue-ice)' }}>Get a binding quote in 24 hours.</span>
+          {t('Draw your fence.', 'Dibuja tu cerca.')}{' '}
+          <span style={{ color: 'var(--blue-ice)' }}>{t('Get a binding quote in 24 hours.', 'Obtén una cotización en firme en 24 horas.')}</span>
         </h1>
         <p style={{
           fontSize: 16, lineHeight: 1.5, maxWidth: 460, margin: 0,
           color: 'rgba(255,255,255,0.85)',
         }}>
-          Sketch your layout or send linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery.
+          {t('Sketch your layout or send linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery.', 'Dibuja tu diseño o envía los pies lineales, la altura, la cantidad de portones y el código postal. Un asesor da seguimiento al pedido desde la cotización hasta el retiro o la entrega.')}
         </p>
         <div style={{ marginTop: 32, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
           <a href="#form" style={{
@@ -66,7 +68,7 @@ const EstimateHero = () => (
           }}
           onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(255, 113, 51,0.5)'; }}
           onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(255, 113, 51,0.4)'; }}>
-            Send the project
+            {t('Send the project', 'Enviar el proyecto')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
           <a href="tel:2396895496" className="mono" style={{
@@ -77,7 +79,7 @@ const EstimateHero = () => (
             color: 'var(--white)',
             borderBottom: '1px solid rgba(255,255,255,0.5)',
           }}>
-            Or call (239) 689-5496
+            {t('Or call (239) 689-5496', 'O llama al (239) 689-5496')}
           </a>
         </div>
       </div>
@@ -90,10 +92,10 @@ const EstimateHero = () => (
         display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24,
       }}>
         {[
-          ['01', 'Send your run',         'Linear feet · height · gate count · ZIP. Survey or sketch optional.'],
-          ['02', 'We quote in 24h',       'Stock, lead time, delivery or pickup window, all in one email.'],
-          ['03', 'Pickup or delivery',    'FM or PC yard · Mon-Fri 7am-4pm, Sat 7am-12pm. Same-day staging if called ahead.'],
-        ].map(([n, t, sub], i, arr) => (
+          ['01', t('Send your run', 'Envía tu tramo'),         t('Linear feet · height · gate count · ZIP. Survey or sketch optional.', 'Pies lineales · altura · cantidad de portones · código postal. Levantamiento o dibujo opcional.')],
+          ['02', t('We quote in 24h', 'Cotizamos en 24 h'),       t('Stock, lead time, delivery or pickup window, all in one email.', 'Existencias, tiempo de entrega, ventana de entrega o retiro, todo en un solo correo.')],
+          ['03', t('Pickup or delivery', 'Retiro o entrega'),    t('FM or PC yard · Mon-Fri 7am-4pm, Sat 7am-12pm. Same-day staging if called ahead.', 'Sucursal de FM o PC · lun-vie 7am-4pm, sáb 7am-12pm. Preparación el mismo día si avisas con anticipación.')],
+        ].map(([n, title, sub], i, arr) => (
           <div key={n} style={{
             paddingLeft: i === 0 ? 0 : 28,
             borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.18)',
@@ -104,7 +106,7 @@ const EstimateHero = () => (
               }}>{n}</span>
               <span style={{
                 fontSize: 15, fontWeight: 600, color: 'var(--white)', letterSpacing: '-0.005em',
-              }}>{t}</span>
+              }}>{title}</span>
             </div>
             <p className="mono" style={{
               margin: 0,
@@ -116,9 +118,12 @@ const EstimateHero = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
-const LiveAgentBand = () => (
+const LiveAgentBand = () => {
+  const t = useT();
+  return (
   <section id="quote" style={{
     background: 'var(--white)', padding: '120px 0',
     borderTop: '1px solid rgba(0,16,17,0.08)',
@@ -137,15 +142,15 @@ const LiveAgentBand = () => (
             lineHeight: 1, letterSpacing: '-0.02em',
             maxWidth: 620,
           }}>
-            Talk to a <span style={{ color: 'var(--tangerine)' }}>real sales rep</span>
-            <span style={{ color: 'var(--charcoal)', fontWeight: 700 }}>, no chatbot.</span>
+            {t('Talk to a', 'Habla con un')} <span style={{ color: 'var(--tangerine)' }}>{t('real sales rep', 'asesor de ventas real')}</span>
+            <span style={{ color: 'var(--charcoal)', fontWeight: 700 }}>{t(', no chatbot.', ', sin chatbot.')}</span>
           </h2>
         </div>
         <p style={{
           margin: 0, maxWidth: 320, justifySelf: 'end', textAlign: 'right',
           fontSize: 13.5, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
-          Our sales representatives split calls Monday through Friday during business hours.
+          {t('Our sales representatives split calls Monday through Friday during business hours.', 'Nuestros asesores de ventas atienden las llamadas de lunes a viernes en horario laboral.')}
         </p>
       </div>
 
@@ -173,7 +178,7 @@ const LiveAgentBand = () => (
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                 <path d="M3 3h3l1.5 4-2 1c1 2 2.5 3.5 4.5 4.5l1-2 4 1.5v3c0 0.5-0.5 1-1 1C8 16 0 8 0 4c0-0.5 0.5-1 1-1z" stroke="currentColor" strokeWidth="1.4" fill="none"/>
               </svg>
-              01, Call
+              {t('01, Call', '01, Llamar')}
             </div>
             <span style={{
               width: 38, height: 38, borderRadius: '50%',
@@ -196,8 +201,8 @@ const LiveAgentBand = () => (
             fontSize: 12.5, letterSpacing: '0.18em', textTransform: 'uppercase',
             color: 'var(--alice-blue)', lineHeight: 1.5,
           }}>
-            Real sales reps, no bots<br/>
-            Fort Myers + Port Charlotte yards
+            {t('Real sales reps, no bots', 'Asesores de ventas reales, sin bots')}<br/>
+            {t('Fort Myers + Port Charlotte yards', 'Sucursales de Fort Myers + Port Charlotte')}
           </div>
         </a>
 
@@ -224,7 +229,7 @@ const LiveAgentBand = () => (
                 <rect x="1.5" y="3" width="13" height="10" stroke="currentColor" strokeWidth="1.4"/>
                 <path d="M1.5 4 L8 9 L14.5 4" stroke="currentColor" strokeWidth="1.4"/>
               </svg>
-              02, Email
+              {t('02, Email', '02, Correo')}
             </div>
             <span style={{
               width: 38, height: 38, borderRadius: '50%',
@@ -248,13 +253,14 @@ const LiveAgentBand = () => (
             fontSize: 12.5, letterSpacing: '0.18em', textTransform: 'uppercase',
             color: 'var(--charcoal)', lineHeight: 1.5,
           }}>
-            We follow up with a detailed quote<br/>
-            Attach a sketch or survey if you have one
+            {t('We follow up with a detailed quote', 'Te damos seguimiento con una cotización detallada')}<br/>
+            {t('Attach a sketch or survey if you have one', 'Adjunta un dibujo o levantamiento si tienes uno')}
           </div>
         </a>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 Object.assign(window, { EstimateHero, LiveAgentBand });
