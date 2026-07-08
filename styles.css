@@ -614,3 +614,15 @@ section { position: relative; }
     aspect-ratio: 16 / 9 !important;
   }
 }
+
+/* Where-it-fits rows: stack description under title on phones */
+@media (max-width: 860px) {
+  .wfs-usecase-row {
+    grid-template-columns: 52px 1fr 44px !important;
+    row-gap: 12px !important;
+    padding: 26px 14px !important;
+    margin: 0 -14px !important;
+  }
+  .wfs-usecase-row > p { grid-column: 2 / 4; grid-row: 2; }
+  .wfs-usecase-num { font-size: 36px !important; }
+}

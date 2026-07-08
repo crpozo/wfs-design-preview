@@ -31,10 +31,11 @@ const MATERIAL_DATA = {
       ['Post Options', 'Line posts, end posts, corner posts, blank posts, and gate posts available'],
       ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
     ],
+    useCasesBlurb: 'Vinyl earns its keep where privacy, low upkeep, and clean looks meet.',
     useCases: [
-      ['Backyard Privacy', 'Low-maintenance vinyl fence materials for residential backyards and property lines.'],
-      ['Pool Enclosures', 'Clean vinyl fence options for pool areas and residential projects.'],
-      ['HOA & Residential Communities', 'Consistent vinyl fence styles for communities, subdivisions, and shared spaces.'],
+      ['Backyard Privacy', 'Low-maintenance vinyl fence materials for residential backyards and property lines.', 'Full privacy, zero painting'],
+      ['Pool Enclosures', 'Clean vinyl fence options for pool areas and residential projects.', 'Clean look for pool areas'],
+      ['HOA & Residential Communities', 'Consistent vinyl fence styles for communities, subdivisions, and shared spaces.', 'Consistent community styles'],
     ],
     cta: {
       kicker: 'Vinyl fence materials',
@@ -58,7 +59,7 @@ const MATERIAL_DATA = {
     tag: 'Powder-coat aluminum',
     heroTitle: 'Powder-Coated Aluminum',
     heroAccent: 'Fence Materials.',
-    heroBody: 'Pool-code compliant aluminum fence materials for residential, commercial, and community projects. Available in multiple heights and styles, with gates, posts, rails, and hardware quoted as part of your material package.',
+    heroBody: 'Aluminum fence materials for residential, commercial, and community projects, with pool-code compliant options available where required. Choose from multiple heights and styles, with gates, posts, rails, and hardware included as part of your complete material package.',
     heroImg: FENCE_IMG.aluminum,
     bestFor: 'Pool enclosures, residential yards, HOA communities',
     quickFacts: [
@@ -72,6 +73,10 @@ const MATERIAL_DATA = {
       { name: '3-Rail', tag: 'Popular', notes: 'Popular residential and pool-code configuration.' },
       { name: '3-Rail Spear Top', tag: 'Decorative', notes: 'Decorative picket-top style for residential projects.' },
       { name: '4 & 5-Rail', tag: 'Custom', notes: 'Available for taller or custom aluminum configurations.' },
+      { name: 'Smooth Bottom', tag: 'Clean line', notes: 'Flat bottom rail with no picket points below the rail.' },
+      { name: 'Rake Bottom', tag: 'Slopes', notes: 'Follows grade changes and sloped runs without gaps.' },
+      { name: 'Puppy Picket', tag: 'Pet-friendly', notes: 'Tighter picket spacing at the bottom to keep small pets in.' },
+      { name: 'Pool Code', tag: 'Compliant', notes: 'Meets Florida pool barrier requirements for spacing and height.' },
     ],
     specs: [
       ['Heights', "4', 5', 6', custom options available"],
@@ -81,10 +86,11 @@ const MATERIAL_DATA = {
       ['Warranty', 'Ask our team for available manufacturer warranty details'],
       ['Lead time', 'Stock and lead time vary by material, color, and quantity'],
     ],
+    useCasesBlurb: 'Aluminum earns its keep where code, curb appeal, and long runs meet.',
     useCases: [
-      ['Pool Enclosures', 'Pool-code aluminum fencing for residential and community pools.'],
-      ['Residential Front Yards', 'Clean, decorative aluminum fence for front yards and property lines.'],
-      ['HOA & Community Perimeters', 'Durable aluminum fence options for communities and shared spaces.'],
+      ['Pool Enclosures', 'Pool-code aluminum fencing for residential and community pools.', 'Meets pool barrier code'],
+      ['Residential Front Yards', 'Clean, decorative aluminum fence for front yards and property lines.', 'Curb appeal, low upkeep'],
+      ['HOA & Community Perimeters', 'Durable aluminum fence options for communities and shared spaces.', 'Built for shared spaces'],
     ],
     cta: {
       kicker: 'Aluminum fence materials',
@@ -125,10 +131,11 @@ const MATERIAL_DATA = {
       ['Framework', 'Line posts, terminal posts, top rail, and tension wire'],
       ['Lead time', 'Stock and lead time vary by gauge, finish, and quantity'],
     ],
+    useCasesBlurb: 'Chain link earns its keep where security, scale, and budget meet.',
     useCases: [
-      ['Security Perimeters', 'Durable chain link fencing for commercial and industrial security.'],
-      ['Sports & Recreation', 'Vinyl-coated mesh for ball fields, courts, and park enclosures.'],
-      ['Self-Storage & Industrial', 'Long perimeter runs for storage yards and industrial sites.'],
+      ['Security Perimeters', 'Durable chain link fencing for commercial and industrial security.', 'Proven perimeter security'],
+      ['Sports & Recreation', 'Vinyl-coated mesh for ball fields, courts, and park enclosures.', 'Courts, fields and parks'],
+      ['Self-Storage & Industrial', 'Long perimeter runs for storage yards and industrial sites.', 'Long runs, low cost'],
     ],
     cta: {
       kicker: 'Chain link fence materials',
@@ -169,10 +176,11 @@ const MATERIAL_DATA = {
       ['Post Options', 'Line posts, end posts, blank posts, and gate posts available'],
       ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
     ],
+    useCasesBlurb: 'Metal earns its keep where privacy, strength, and modern looks meet.',
     useCases: [
-      ['Modern Privacy', 'Metal privacy fence materials for clean residential and commercial designs.'],
-      ['Commercial Screens', 'Durable metal fence options for enclosures, screens, and utility areas.'],
-      ['Security Projects', 'Strong metal fence materials for projects that need privacy and durability.'],
+      ['Modern Privacy', 'Metal privacy fence materials for clean residential and commercial designs.', 'Solid-board look in metal'],
+      ['Commercial Screens', 'Durable metal fence options for enclosures, screens, and utility areas.', 'Screens and enclosures'],
+      ['Security Projects', 'Strong metal fence materials for projects that need privacy and durability.', 'Privacy plus durability'],
     ],
     cta: {
       kicker: 'Metal fence materials',
@@ -220,10 +228,11 @@ const MATERIAL_DATA = {
       ['Gates', 'Single and double gates available by request'],
       ['Lead Time', 'Stock and lead time vary by color, quantity, and gate requirements'],
     ],
+    useCasesBlurb: 'EC Fence earns its keep where coastal wind, privacy, and speed meet.',
     useCases: [
-      ['Coastal Privacy', 'Galvanized steel privacy panels for coastal and Florida properties.'],
-      ['Commercial Properties', 'Clean privacy fence option for commercial sites, enclosures, and shared spaces.'],
-      ['Modern Residential', 'Modern privacy fence material for homes, yards, and property lines.'],
+      ['Coastal Privacy', 'Galvanized steel privacy panels for coastal and Florida properties.', 'Built for salt air'],
+      ['Commercial Properties', 'Clean privacy fence option for commercial sites, enclosures, and shared spaces.', 'Clean commercial screening'],
+      ['Modern Residential', 'Modern privacy fence material for homes, yards, and property lines.', 'Modern panel look'],
     ],
     cta: {
       kicker: 'EC Fence materials',
@@ -303,9 +312,30 @@ const ProfileDiagram = ({ slug, name = '', index = 0 }) => {
 
   if (slug === 'aluminum') {
     const spear = /spear/.test(nm);
-    const custom = /4|5|custom/.test(nm);
+    const custom = /4 & 5|custom/.test(nm);
     let rows;
-    if (custom) {
+    if (/smooth/.test(nm)) {
+      rows = [{ y: 40 }, { y: 108 }];
+      pickets(9, 20, 108);
+    } else if (/rake/.test(nm)) {
+      els.push(<line key="rk1" x1={L} y1={58} x2={R} y2={34} stroke={navy} strokeWidth="5" strokeLinecap="round"/>);
+      els.push(<line key="rk2" x1={L} y1={116} x2={R} y2={92} stroke={navy} strokeWidth="5" strokeLinecap="round"/>);
+      for (let i = 0; i < 9; i++) {
+        const x = L + ((R - L) / 8) * i, dy = -24 * (x - L) / (R - L);
+        els.push(<line key={`rp${i}`} x1={x} y1={34 + dy + 24} x2={x} y2={122 + dy} stroke={light} strokeWidth="3" strokeLinecap="round"/>);
+      }
+      rows = [];
+    } else if (/puppy/.test(nm)) {
+      rows = [{ y: 38 }, { y: 74 }, { y: 106 }];
+      pickets(9, 18, 106);
+      for (let i = 0; i < 8; i++) {
+        const x = L + ((R - L) / 8) * i + (R - L) / 16;
+        els.push(<line key={`pp${i}`} x1={x} y1={74} x2={x} y2={106} stroke={light} strokeWidth="3" strokeLinecap="round"/>);
+      }
+    } else if (/pool/.test(nm)) {
+      rows = [{ y: 34 }, { y: 60 }, { y: 104 }];
+      pickets(11, 16, 112);
+    } else if (custom) {
       rows = [{ y: 30 }, { y: 52 }, { y: 68, c: accent, dash: '7 5' }, { y: 84 }, { y: 106 }];
       pickets(11, 16, 118);
     } else if (spear || /^3/.test(name.trim())) {
@@ -370,7 +400,7 @@ const MaterialProfiles = ({ data }) => (
         accent={useT()(`${data.profiles.length} ways to spec it.`, `${data.profiles.length} formas de configurarlo.`)}
         sub={useT()("Standard and custom configurations available. Custom heights and colors on request.", "Configuraciones estándar y a medida. Alturas y colores personalizados bajo pedido.")}
       />
-      <div className="wfs-profiles-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${data.profiles.length}, 1fr)`, gap: 14 }}>
+      <div className="wfs-profiles-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(data.profiles.length, 4)}, 1fr)`, gap: 14 }}>
         {data.profiles.map((p, i) => (
           <article key={p.name} style={{
             background: 'var(--white)',
@@ -451,31 +481,120 @@ const MaterialSpecs = ({ data }) => (
   </section>
 );
 
-const MaterialUseCases = ({ data }) => (
+/* One "where it fits" row. Hover: cream wash, the outlined number fills
+   tangerine and the arrow chip fills, matching the reference design. */
+const UseCaseRow = ({ title, body, badge, index }) => {
+  const [hover, setHover] = React.useState(false);
+  return (
+    <a href="estimate.html" className="wfs-usecase-row"
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        display: 'grid', gridTemplateColumns: '104px 1.15fr 1fr 48px',
+        gap: 28, alignItems: 'center',
+        padding: '32px 22px',
+        margin: '0 -22px',
+        borderBottom: '1px solid rgba(0,16,17,0.1)',
+        textDecoration: 'none', color: 'inherit',
+        background: hover ? 'rgba(255,113,51,0.07)' : 'transparent',
+        transition: 'background 0.2s ease',
+      }}>
+      <span className="display wfs-usecase-num" aria-hidden style={{
+        fontSize: 60, lineHeight: 1, fontWeight: 800,
+        color: hover ? 'var(--tangerine)' : 'transparent',
+        WebkitTextStroke: hover ? '0px transparent' : '1.5px rgba(38,49,102,0.32)',
+        transition: 'color 0.2s ease',
+      }}>0{index + 1}</span>
+      <div>
+        <h3 className="display" style={{
+          margin: '0 0 12px', fontSize: 'clamp(18px, 1.6vw, 24px)', lineHeight: 1.1,
+          textTransform: 'uppercase', letterSpacing: '0.01em',
+        }}>{title}</h3>
+        {badge && (
+          <span className="mono" style={{
+            display: 'inline-flex', alignItems: 'center',
+            padding: '6px 12px', borderRadius: 4,
+            border: '1px solid rgba(46,89,193,0.35)',
+            background: hover ? 'var(--white)' : 'transparent',
+            fontSize: 11.5, fontWeight: 700, letterSpacing: '0.14em',
+            textTransform: 'uppercase', color: 'var(--laser-blue)',
+            transition: 'background 0.2s ease',
+          }}>{badge}</span>
+        )}
+      </div>
+      <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>{body}</p>
+      <span aria-hidden style={{
+        width: 44, height: 44, borderRadius: '50%',
+        border: `1px solid ${hover ? 'var(--tangerine)' : 'rgba(0,16,17,0.18)'}`,
+        background: hover ? 'var(--tangerine)' : 'transparent',
+        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+        color: hover ? 'var(--white)' : 'var(--ink)', justifySelf: 'end',
+        transition: 'background 0.2s ease, border-color 0.2s ease, color 0.2s ease',
+      }}>
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+          <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+        </svg>
+      </span>
+    </a>
+  );
+};
+
+const MaterialUseCases = ({ data }) => {
+  const t = useT();
+  return (
   <section style={{ background: 'var(--white)', padding: '120px 0 0' }}>
     <div className="container">
-      <PageSectionHeader
-        number="03" label={useT()("Where it shines", "Donde brilla")}
-        title={useT()("Three jobs", "Tres trabajos")}
-        accent={useT()("this material wins.", "que este material gana.")}
-      />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-        {data.useCases.map(([t, body], i) => (
-          <div key={t} style={{
-            background: 'var(--white)',
-            color: 'var(--ink)',
-            padding: '32px 28px',
-            border: '1px solid rgba(0,16,17,0.1)',
-          }}>
-            <div className="display" style={{ fontSize: 36, color: 'var(--tangerine)', lineHeight: 1, marginBottom: 18 }}>0{i+1}</div>
-            <h3 className="display" style={{ fontSize: 22, lineHeight: 1.1, margin: '0 0 12px' }}>{t}</h3>
-            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)' }}>{body}</p>
-          </div>
-        ))}
+      {/* Eyebrow */}
+      <div className="mono" style={{
+        display: 'inline-flex', alignItems: 'center', gap: 12,
+        marginBottom: 22,
+        fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+        textTransform: 'uppercase', color: 'var(--laser-blue)',
+      }}>
+        <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
+        {t('Where it fits', 'Donde encaja')}
+      </div>
+      {/* Title + right blurb over a heavy rule */}
+      <div style={{
+        display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end',
+        paddingBottom: 28, borderBottom: '2px solid var(--ink)',
+      }}>
+        <h2 className="display" style={{
+          margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02,
+          letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
+        }}>
+          {t('Three jobs', 'Tres trabajos')}<br/>
+          <span style={{ color: 'var(--tangerine)' }}>{t('this material wins.', 'que este material gana.')}</span>
+        </h2>
+        {data.useCasesBlurb && (
+          <p style={{
+            margin: 0, maxWidth: 340, justifySelf: 'end', textAlign: 'right',
+            fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)',
+          }}>{data.useCasesBlurb}</p>
+        )}
+      </div>
+      {/* Rows: outlined number · title + badge · description · arrow.
+          Hover: cream wash, number fills tangerine, arrow chip fills. */}
+      {data.useCases.map(([title, body, badge], i) => (
+        <UseCaseRow key={title} title={title} body={body} badge={badge} index={i}/>
+      ))}
+      {/* Bottom-right link */}
+      <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 26 }}>
+        <a href="projects.html" className="mono" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 10,
+          fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
+          textTransform: 'uppercase', color: 'var(--tangerine)',
+        }}>
+          {t(`See all ${data.name} applications`, `Ver todas las aplicaciones de ${data.name}`)}
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
+          </svg>
+        </a>
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const MaterialOtherMaterials = ({ currentSlug }) => {
   const cur = currentSlug === 'chain-link' ? 'chainlink' : currentSlug;
