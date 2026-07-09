@@ -512,7 +512,7 @@ const MaterialUseCases = ({ data }) => {
       ))}
       {/* Bottom-right link */}
       <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 26 }}>
-        <a href="projects.html" className="mono" style={{
+        <a href="products.html" className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10,
           fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
           textTransform: 'uppercase', color: 'var(--tangerine)',

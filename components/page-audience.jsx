@@ -78,16 +78,6 @@ const HomeownerHero = () => {
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '6px 6px 0 var(--tangerine)'; }}>
               {t('Get Started', 'Comenzar')}
             </a>
-            <a href="projects.html" style={{
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              padding: '15px 30px',
-              background: 'var(--white)', color: 'var(--ink)',
-              border: '1.5px solid var(--ink)',
-              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
-              letterSpacing: '0.18em', textTransform: 'uppercase',
-            }}>
-              {t('View Gallery', 'Ver galería')}
-            </a>
           </div>
           {/* Trust micro-bullets */}
           <div className="mono" style={{

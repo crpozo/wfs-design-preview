@@ -35,12 +35,9 @@ const SiteHeader = ({ active }) => {
     { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [
       { label: { EN: 'About WFS',       ES: 'Sobre WFS' },         href: 'about.html',     sub: { EN: 'Family-owned · fabricated in-house',            ES: 'Familiar · fabricado en planta' } },
       { label: { EN: 'Yard Locations',  ES: 'Sucursales' },        href: 'solutions.html', sub: { EN: '2 yards across SW Florida',                     ES: '2 sucursales en el suroeste de FL' } },
-      { label: { EN: 'Projects',        ES: 'Proyectos' },         href: 'projects.html',  sub: { EN: 'Recent installs from Cape Coral to Naples',     ES: 'Instalaciones de Cape Coral a Naples' } },
-      { label: { EN: 'Warranty',        ES: 'Garantía' },          href: 'warranty.html',  sub: { EN: 'Lifetime coverage · submit a claim',            ES: 'Cobertura de por vida · envía un reclamo' } },
       { label: { EN: 'Contact',         ES: 'Contacto' },          href: 'estimate.html',  sub: { EN: 'Phone, email, hours by yard',                   ES: 'Teléfono, email, horarios por sucursal' } },
     ]}},
     { id: 'Fence Education Hub', label: { EN: 'Fence Education Hub', ES: 'Centro Educativo' }, def: { kind: 'list', items: [
-      { label: { EN: 'Articles & Guides',     ES: 'Artículos y guías' },           href: 'articles.html',              sub: { EN: 'Picking the right fence the first time',   ES: 'Elige la cerca correcta a la primera' } },
       { label: { EN: 'FAQ',                    ES: 'Preguntas frecuentes' },       href: 'faq.html',                   sub: { EN: 'The questions we get every week',          ES: 'Las preguntas que recibimos cada semana' } },
       { label: { EN: 'Materials Comparison',  ES: 'Comparativa de materiales' },   href: 'materials-comparison.html',  sub: { EN: 'Aluminum vs Vinyl vs Chain Link vs Metal', ES: 'Aluminio vs Vinilo vs Malla vs Metal' } },
       { label: { EN: 'Florida Pool Code',     ES: 'Código de piscinas FL' },       href: 'pool-code.html',             sub: { EN: 'Code-compliant enclosure profiles',         ES: 'Perfiles de cerramiento según código' } },

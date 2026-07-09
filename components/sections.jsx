@@ -159,7 +159,7 @@ const ProjectCard = ({ p, i, layout }) => {
   const t = useT();
   const [hover, setHover] = React.useState(false);
   return (
-    <a href="projects.html"
+    <a href="estimate.html"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
@@ -254,7 +254,7 @@ const FeaturedProject = ({ p, num, total }) => {
   const [hover, setHover] = React.useState(false);
   if (!p) return null;
   return (
-    <a href="projects.html"
+    <a href="estimate.html"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
@@ -482,19 +482,6 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
               </button>
             );
           })}
-          <a href="projects.html" className="mono" style={{
-            marginLeft: 'auto', display: 'inline-flex', alignItems: 'center', gap: 8,
-            padding: '6px 0',
-            fontSize: 12, letterSpacing: '0.22em',
-            textTransform: 'uppercase', fontWeight: 700,
-            color: 'var(--ink)',
-            borderBottom: '1px solid var(--ink)',
-          }}>
-            {t('View all projects', 'Ver todos los proyectos')}
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
-            </svg>
-          </a>
         </div>
 
         {/* Featured project (left) + selectable list (right) */}
@@ -1023,7 +1010,6 @@ const Footer = () => {
       { label: { EN: 'Commercial',          ES: 'Comercial' },            href: 'solutions.html' },
     ]},
     { title: { EN: 'Resources', ES: 'Recursos' }, items: [
-      { label: { EN: 'Articles & Guides',   ES: 'Artículos y guías' },        href: 'articles.html' },
       { label: { EN: 'FAQ',                  ES: 'Preguntas frecuentes' },     href: 'faq.html' },
       { label: { EN: 'Materials Comparison', ES: 'Comparativa de materiales' },href: 'materials-comparison.html' },
       { label: { EN: 'Florida Pool Code',    ES: 'Código de piscinas FL' },    href: 'pool-code.html' },
@@ -1031,7 +1017,6 @@ const Footer = () => {
     ]},
     { title: { EN: 'Company', ES: 'Empresa' }, items: [
       { label: { EN: 'About WFS',           ES: 'Sobre WFS' },               href: 'about.html' },
-      { label: { EN: 'Projects',            ES: 'Proyectos' },               href: 'projects.html' },
       { label: { EN: 'Contact',             ES: 'Contacto' },                href: 'estimate.html' },
       { label: 'sales@westernfencesupply.com', href: 'mailto:sales@westernfencesupply.com' },
     ]},
