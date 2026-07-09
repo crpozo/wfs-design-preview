@@ -131,7 +131,7 @@ const Testimonials = () => {
   const initials = (name) => name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
 
   return (
-    <section style={{ background: 'var(--white)', padding: 'clamp(64px, 9vh, 110px) 0', overflow: 'hidden' }}>
+    <section style={{ background: 'var(--white)', padding: 'clamp(36px, 5vh, 60px) 0', overflow: 'hidden' }}>
       <div className="container" style={{ textAlign: 'center' }}>
         {/* Eyebrow */}
         <div className="mono" style={{
@@ -144,7 +144,7 @@ const Testimonials = () => {
         </div>
         {/* Title */}
         <h2 className="display" style={{
-          margin: '14px 0 0', fontSize: 'clamp(28px, 3.4vw, 46px)', lineHeight: 1.02,
+          margin: '12px 0 0', fontSize: 'clamp(24px, 2.5vw, 36px)', lineHeight: 1.02,
           letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
         }}>
           {t('What contractors and', 'Lo que dicen contratistas')}{' '}
@@ -162,7 +162,7 @@ const Testimonials = () => {
       </div>
 
       {/* Fanned deck */}
-      <div style={{ position: 'relative', height: 'clamp(380px, 46vh, 470px)', marginTop: 34 }}>
+      <div style={{ position: 'relative', height: 'clamp(300px, 38vh, 380px)', marginTop: 22 }}>
         {reviews.map((r, i) => {
           let off = i - active;
           if (off > n / 2) off -= n;
@@ -174,7 +174,7 @@ const Testimonials = () => {
               onClick={() => !isCenter && go(i)}
               style={{
                 position: 'absolute', left: '50%', top: 0,
-                width: 'min(430px, 86vw)',
+                width: 'min(400px, 86vw)',
                 transform: `translateX(-50%) translateX(${off * 107}%) translateY(${abs * 16}px) rotate(${off * 4}deg)`,
                 transformOrigin: '50% 120%',
                 transition: 'transform 0.55s cubic-bezier(0.3, 0, 0.2, 1), opacity 0.4s ease',
@@ -190,8 +190,8 @@ const Testimonials = () => {
                 boxShadow: isCenter
                   ? '0 30px 60px -28px rgba(38,49,102,0.38)'
                   : '0 22px 44px -30px rgba(38,49,102,0.28)',
-                padding: '26px 28px',
-                minHeight: 250,
+                padding: '22px 24px',
+                minHeight: 225,
                 display: 'flex', flexDirection: 'column', gap: 16,
                 textAlign: 'left',
               }}>
@@ -227,7 +227,7 @@ const Testimonials = () => {
 
       {/* Controls: arrows + progress dashes */}
       <div style={{
-        marginTop: 30, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 22,
+        marginTop: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 22,
       }}>
         <button onClick={() => go(active - 1)} aria-label={t('Previous review', 'Reseña anterior')} style={{
           width: 46, height: 46, borderRadius: '50%',
@@ -261,7 +261,7 @@ const Testimonials = () => {
       </div>
 
       {/* Read all reviews */}
-      <div style={{ marginTop: 30, textAlign: 'center' }}>
+      <div style={{ marginTop: 18, textAlign: 'center' }}>
         <a href="#" className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10,
           fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
