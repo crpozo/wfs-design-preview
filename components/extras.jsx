@@ -138,22 +138,13 @@ const Testimonials = () => {
           margin: 0, fontSize: 'clamp(24px, 2.5vw, 36px)', lineHeight: 1.02,
           letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
         }}>
-          {t('What contractors and', 'Lo que dicen contratistas')}{' '}
-          <span style={{ color: 'var(--tangerine)' }}>{t('homeowners say.', 'y propietarios.')}</span>
+          {t('What our', 'Lo que dicen')}{' '}
+          <span style={{ color: 'var(--tangerine)' }}>{t('clients say.', 'nuestros clientes.')}</span>
         </h2>
-        {/* Rating line */}
-        <div style={{
-          marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 10,
-          fontSize: 14, color: 'var(--charcoal)',
-        }}>
-          <span style={{ color: 'var(--tangerine)', letterSpacing: 2 }}>★★★★★</span>
-          <strong style={{ color: 'var(--ink)' }}>4.9</strong>
-          {t('average · 180+ verified reviews', 'promedio · más de 180 reseñas verificadas')}
-        </div>
       </div>
 
       {/* Fanned deck */}
-      <div style={{ position: 'relative', height: 'clamp(390px, 48vh, 450px)', marginTop: 34 }}>
+      <div style={{ position: 'relative', height: 'clamp(330px, 42vh, 385px)', marginTop: 34 }}>
         {reviews.map((r, i) => {
           let off = i - active;
           if (off > n / 2) off -= n;
@@ -181,8 +172,8 @@ const Testimonials = () => {
                 boxShadow: isCenter
                   ? '0 30px 60px -28px rgba(38,49,102,0.38)'
                   : '0 22px 44px -30px rgba(38,49,102,0.28)',
-                padding: '26px 26px',
-                minHeight: 340,
+                padding: '24px 26px',
+                minHeight: 280,
                 display: 'flex', flexDirection: 'column', gap: 16,
                 textAlign: 'left',
               }}>
