@@ -162,7 +162,7 @@ const Testimonials = () => {
       </div>
 
       {/* Fanned deck */}
-      <div style={{ position: 'relative', height: 'clamp(300px, 38vh, 380px)', marginTop: 22 }}>
+      <div style={{ position: 'relative', height: 'clamp(390px, 48vh, 450px)', marginTop: 20 }}>
         {reviews.map((r, i) => {
           let off = i - active;
           if (off > n / 2) off -= n;
@@ -174,7 +174,7 @@ const Testimonials = () => {
               onClick={() => !isCenter && go(i)}
               style={{
                 position: 'absolute', left: '50%', top: 0,
-                width: 'min(400px, 86vw)',
+                width: 'min(345px, 84vw)',
                 transform: `translateX(-50%) translateX(${off * 107}%) translateY(${abs * 16}px) rotate(${off * 4}deg)`,
                 transformOrigin: '50% 120%',
                 transition: 'transform 0.55s cubic-bezier(0.3, 0, 0.2, 1), opacity 0.4s ease',
@@ -190,13 +190,13 @@ const Testimonials = () => {
                 boxShadow: isCenter
                   ? '0 30px 60px -28px rgba(38,49,102,0.38)'
                   : '0 22px 44px -30px rgba(38,49,102,0.28)',
-                padding: '22px 24px',
-                minHeight: 225,
+                padding: '26px 26px',
+                minHeight: 340,
                 display: 'flex', flexDirection: 'column', gap: 16,
                 textAlign: 'left',
               }}>
-                <div style={{ color: 'var(--tangerine)', fontSize: 15, letterSpacing: 3 }}>★★★★★</div>
-                <p style={{ margin: 0, flex: 1, fontSize: 14.5, lineHeight: 1.55, color: 'var(--ink)' }}>
+                <div style={{ color: 'var(--tangerine)', fontSize: 16, letterSpacing: 3 }}>★★★★★</div>
+                <p style={{ margin: 0, flex: 1, fontSize: 15, lineHeight: 1.6, color: 'var(--ink)' }}>
                   "{t(r.text)}"
                 </p>
                 <div style={{
