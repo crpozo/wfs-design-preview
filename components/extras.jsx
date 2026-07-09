@@ -251,19 +251,6 @@ const Testimonials = () => {
         </button>
       </div>
 
-      {/* Read all reviews */}
-      <div style={{ marginTop: 26, textAlign: 'center' }}>
-        <a href="#" className="mono" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 10,
-          fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
-          textTransform: 'uppercase', color: 'var(--tangerine)',
-        }}>
-          {t('Read all reviews', 'Ver todas las reseñas')}
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
-          </svg>
-        </a>
-      </div>
     </section>
   );
 };
