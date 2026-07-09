@@ -131,7 +131,7 @@ const Testimonials = () => {
   const initials = (name) => name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
 
   return (
-    <section style={{ background: 'var(--white)', padding: 'clamp(36px, 5vh, 60px) 0', overflow: 'hidden' }}>
+    <section style={{ background: 'var(--white)', padding: 'clamp(64px, 9vh, 104px) 0', overflow: 'hidden' }}>
       <div className="container" style={{ textAlign: 'center' }}>
         {/* Title */}
         <h2 className="display" style={{
@@ -144,7 +144,7 @@ const Testimonials = () => {
       </div>
 
       {/* Fanned deck */}
-      <div style={{ position: 'relative', height: 'clamp(330px, 42vh, 385px)', marginTop: 34 }}>
+      <div style={{ position: 'relative', height: 'clamp(330px, 42vh, 385px)', marginTop: 'clamp(40px, 6vh, 64px)' }}>
         {reviews.map((r, i) => {
           let off = i - active;
           if (off > n / 2) off -= n;
@@ -209,7 +209,7 @@ const Testimonials = () => {
 
       {/* Controls: arrows + progress dashes */}
       <div style={{
-        marginTop: 30, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 22,
+        marginTop: 'clamp(36px, 5.5vh, 56px)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 22,
       }}>
         <button onClick={() => go(active - 1)} aria-label={t('Previous review', 'Reseña anterior')} style={{
           width: 46, height: 46, borderRadius: '50%',
