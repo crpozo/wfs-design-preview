@@ -144,7 +144,7 @@ const Testimonials = () => {
       </div>
 
       {/* Fanned deck */}
-      <div style={{ position: 'relative', height: 'clamp(330px, 42vh, 385px)', marginTop: 'clamp(40px, 6vh, 64px)' }}>
+      <div style={{ position: 'relative', height: 'clamp(330px, 42vh, 385px)', marginTop: 'clamp(64px, 10vh, 110px)' }}>
         {reviews.map((r, i) => {
           let off = i - active;
           if (off > n / 2) off -= n;
