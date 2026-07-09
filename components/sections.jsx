@@ -1,12 +1,12 @@
 /* Featured products grid + Project gallery + Calculator + Service areas + Footer */
 
 const FEATURED = [
-  { sku: 'CL-9G-72', name: { EN: '9-Gauge Galvanized Mesh', ES: 'Malla galvanizada 9-Gauge' }, cat: { EN: 'Chain Link', ES: 'Malla ciclónica' }, height: '6 ft', img: 'chainlink', color: '#263166' },
-  { sku: 'AL-WLD-S', name: { EN: 'Aluminum Fence Section', ES: 'Sección de cerca de aluminio' }, cat: { EN: 'Aluminum', ES: 'Aluminio' }, height: '6 ft', img: 'aluminum', color: '#263166' },
-  { sku: 'PV-PRV-W', name: { EN: 'Catalyst Privacy Vinyl, White', ES: 'Vinilo de privacidad Catalyst, blanco' }, cat: { EN: 'Vinyl', ES: 'Vinilo' }, height: '6 ft', img: 'vinyl', color: '#2e59c1' },
-  { sku: 'MT-PRV-72', name: { EN: 'Metal Board Privacy', ES: 'Privacidad de tablero de metal' }, cat: { EN: 'Metal', ES: 'Metal' }, height: '6 ft', img: 'metal', color: '#001011' },
-  { sku: 'GT-DBL-12', name: { EN: '12 ft Double Gate', ES: 'Portón doble de 12 ft' }, cat: { EN: 'Gates', ES: 'Portones' }, height: '12 ft', img: 'aluminum', color: '#263166' },
-  { sku: 'CL-VC-BK', name: { EN: 'Vinyl-Coated Black Mesh', ES: 'Malla negra revestida de vinilo' }, cat: { EN: 'Chain Link', ES: 'Malla ciclónica' }, height: '6 ft', img: 'chainlink', color: '#263166' },
+  { sku: 'CL-9G-72', name: { EN: '9-Gauge Galvanized Mesh', ES: 'Malla galvanizada 9-Gauge' }, cat: { EN: 'Chain Link', ES: 'Malla ciclónica' }, height: '6 ft', imgUrl: 'assets/projects/cl-swing-gate-galv-4.jpg' },
+  { sku: 'AL-WLD-S', name: { EN: 'Aluminum Fence Section', ES: 'Sección de cerca de aluminio' }, cat: { EN: 'Aluminum', ES: 'Aluminio' }, height: '6 ft', imgUrl: 'assets/projects/alum-2-rail-smooth-bottom-white.jpg' },
+  { sku: 'PV-PRV-W', name: { EN: 'Catalyst Privacy Vinyl, White', ES: 'Vinilo de privacidad Catalyst, blanco' }, cat: { EN: 'Vinyl', ES: 'Vinilo' }, height: '6 ft', imgUrl: 'assets/projects/pvc-privacy-gate-white.jpg' },
+  { sku: 'MT-PRV-72', name: { EN: 'Metal Board Privacy', ES: 'Privacidad de tablero de metal' }, cat: { EN: 'Metal', ES: 'Metal' }, height: '6 ft', imgUrl: 'assets/projects/met-fence-horizontal-black.jpg' },
+  { sku: 'GT-DBL-12', name: { EN: '12 ft Double Gate', ES: 'Portón doble de 12 ft' }, cat: { EN: 'Gates', ES: 'Portones' }, height: '12 ft', imgUrl: 'assets/projects/pvc-gate-sand.jpg' },
+  { sku: 'CL-VC-BK', name: { EN: 'Vinyl-Coated Black Mesh', ES: 'Malla negra revestida de vinilo' }, cat: { EN: 'Chain Link', ES: 'Malla ciclónica' }, height: '6 ft', imgUrl: 'assets/projects/cl-fence-black.jpg' },
 ];
 
 
@@ -72,82 +72,127 @@ const MAT_LABELS = {
 
 const FeaturedGrid = () => {
   const t = useT();
+  const PER = 3;
+  const pages = Math.ceil(FEATURED.length / PER);
+  const [page, setPage] = React.useState(0);
+  const start = page * PER;
+  const visible = FEATURED.slice(start, start + PER);
+  const ArrowBtn = ({ dir, disabled, onClick }) => (
+    <button onClick={onClick} disabled={disabled} aria-label={dir === 'prev' ? t('Previous', 'Anterior') : t('Next', 'Siguiente')} style={{
+      width: 46, height: 46, borderRadius: '50%',
+      border: `1px solid ${disabled ? 'rgba(0,16,17,0.12)' : 'var(--ink)'}`,
+      background: 'var(--white)',
+      color: disabled ? 'rgba(0,16,17,0.25)' : 'var(--ink)',
+      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+      cursor: disabled ? 'default' : 'pointer',
+      transition: 'border-color 0.2s ease, color 0.2s ease',
+    }}>
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style={{ transform: dir === 'prev' ? 'rotate(180deg)' : 'none' }}>
+        <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+      </svg>
+    </button>
+  );
   return (
     <section style={{ background: 'var(--linen)', padding: '120px 0' }}>
       <div className="container">
+        {/* Header: eyebrow + one-line title, pager arrows top right */}
         <div style={{
           display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
-          gap: 32, marginBottom: 48, flexWrap: 'wrap',
+          gap: 32, marginBottom: 44, flexWrap: 'wrap',
         }}>
           <div>
-            <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>{t('03, Bestsellers', '03, Más vendidos')}</span>
-            <h2 className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 60px)', margin: '12px 0 0' }}>
-              {t('In stock,', 'En existencia,')}<br/>{t('ready to ship.', 'listos para enviar.')}
+            <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>03, Bestsellers</span>
+            <h2 className="display" style={{
+              fontSize: 'clamp(30px, 3.4vw, 46px)', margin: '12px 0 0',
+              textTransform: 'uppercase', fontWeight: 800, letterSpacing: '-0.01em',
+            }}>
+              {t('In stock,', 'En existencia,')}{' '}
+              <span style={{ color: 'var(--tangerine)' }}>{t('ready to ship.', 'listos para enviar.')}</span>
             </h2>
           </div>
-          <a href="assets/wfs-catalog.pdf" download="WFS-Fence-Catalog.pdf" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 500, fontSize: 14 }}>
-            {t('Download catalog (PDF)', 'Descargar catálogo (PDF)')} <ArrowDown />
-          </a>
+          <div style={{ display: 'flex', gap: 10 }}>
+            <ArrowBtn dir="prev" disabled={page === 0} onClick={() => setPage(p => Math.max(0, p - 1))}/>
+            <ArrowBtn dir="next" disabled={page === pages - 1} onClick={() => setPage(p => Math.min(pages - 1, p + 1))}/>
+          </div>
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-          {FEATURED.map((p, i) => (
-            <article key={p.sku} style={{
-              background: 'var(--white)',
-              borderRadius: 'var(--radius)',
-              overflow: 'hidden',
-              border: '1px solid rgba(0,16,17,0.06)',
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-              cursor: 'pointer',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -20px rgba(0,16,17,0.25)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-              <div style={{ position: 'relative', height: 220, background: p.color, overflow: 'hidden' }}>
-                <img src={FENCE_IMG[p.img]} alt={t(p.name)}
+        {/* Flat product cards */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 34 }}>
+          {visible.map((p) => (
+            <article key={p.sku}>
+              <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#263166', overflow: 'hidden' }}>
+                <img src={p.imgUrl || FENCE_IMG[p.img]} alt={t(p.name)}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div style={{
-                  position: 'absolute', inset: 0,
-                  background: 'linear-gradient(180deg, rgba(0,16,17,0) 50%, rgba(0,16,17,0.45) 100%)',
-                }}/>
-                <div style={{
-                  position: 'absolute', top: 14, left: 14,
-                  fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.14em',
-                  color: 'var(--alice-blue)', background: 'rgba(0,16,17,0.55)',
-                  padding: '5px 8px', borderRadius: 3,
-                }}>
-                  {p.sku}
-                </div>
-                <div style={{
-                  position: 'absolute', top: 14, right: 14,
-                  fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.14em',
-                  background: 'var(--tangerine)',
-                  padding: '5px 8px', borderRadius: 3, color: 'var(--ink)', fontWeight: 600,
-                }}>
-                  {t('IN STOCK', 'EN EXISTENCIA')}
-                </div>
               </div>
-              <div style={{ padding: 20 }}>
-                <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 8 }}>
-                  {t(p.cat)} · {p.height}
-                </div>
-                <h3 style={{ fontSize: 18, fontWeight: 500, margin: '0 0 14px', color: 'var(--ink)' }}>
-                  {t(p.name)}
-                </h3>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span className="mono" style={{ fontSize: 12.5, color: 'var(--charcoal)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
-                    {t('Supplier-direct pricing', 'Precios directo de proveedor')}
-                  </span>
-                  <a href="estimate.html" style={{
-                    fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.14em',
-                    textTransform: 'uppercase', color: 'var(--ink)',
-                    display: 'flex', alignItems: 'center', gap: 6,
-                  }}>
-                    {t('Request quote', 'Solicitar cotización')} <ArrowRight size={12} />
-                  </a>
-                </div>
+              {/* Meta row: category · height + stock pill */}
+              <div style={{
+                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                marginTop: 16, gap: 12,
+              }}>
+                <span className="mono" style={{
+                  fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase',
+                  color: 'var(--charcoal)',
+                }}>{t(p.cat)} · {p.height}</span>
+                <span className="mono" style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 7,
+                  fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase',
+                  fontWeight: 700, color: 'var(--ink)',
+                }}>
+                  <span aria-hidden style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
+                  {t('In stock', 'En existencia')}
+                </span>
+              </div>
+              <h3 className="display" style={{
+                margin: '10px 0 0', fontSize: 21, lineHeight: 1.1, fontWeight: 800,
+                textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--ink)',
+              }}>{t(p.name)}</h3>
+              {/* Divider + SKU / quote link */}
+              <div style={{
+                marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(0,16,17,0.12)',
+                display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12,
+              }}>
+                <span className="mono" style={{
+                  fontSize: 12, letterSpacing: '0.14em', color: 'var(--charcoal)',
+                }}>{p.sku}</span>
+                <a href="estimate.html" className="mono" style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 8,
+                  fontSize: 12.5, fontWeight: 700, letterSpacing: '0.16em',
+                  textTransform: 'uppercase', color: 'var(--tangerine)',
+                }}>
+                  {t('Request quote', 'Solicitar cotización')}
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+                  </svg>
+                </a>
               </div>
             </article>
           ))}
+        </div>
+
+        {/* Footer: progress + counter + catalog download */}
+        <div style={{
+          marginTop: 40, display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap',
+        }}>
+          <span style={{ flex: 1, minWidth: 160, height: 2, background: 'rgba(0,16,17,0.12)', position: 'relative' }}>
+            <span style={{
+              position: 'absolute', left: 0, top: 0, bottom: 0,
+              width: `${((page + 1) / pages) * 100}%`,
+              background: 'var(--tangerine)', transition: 'width 0.3s ease',
+            }}/>
+          </span>
+          <span className="mono" style={{
+            fontSize: 13, letterSpacing: '0.14em', color: 'var(--charcoal)', whiteSpace: 'nowrap',
+          }}>{start + 1}–{Math.min(start + PER, FEATURED.length)} / {FEATURED.length}</span>
+          <a href="assets/wfs-catalog.pdf" download="WFS-Fence-Catalog.pdf" className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 8,
+            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
+            textTransform: 'uppercase', color: 'var(--tangerine)', whiteSpace: 'nowrap',
+          }}>
+            {t('Download catalog (PDF)', 'Descargar catálogo (PDF)')}
+            <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+              <path d="M8 2 V13 M4 9 L8 13 L12 9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
