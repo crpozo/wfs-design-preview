@@ -159,20 +159,20 @@ const MATERIAL_DATA = {
     quickFacts: [
       ['Best For', 'Privacy fences, modern yards, commercial screens, security projects'],
       ['Material', 'Metal privacy panels, rails, and posts'],
-      ['Options', 'Standard board, tall board, slatted privacy, and custom gates'],
+      ['Options', 'P1, Original, and Modern styles, with matching gates'],
       ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
     ],
+    profilesSub: 'Available in P1, Original, and Modern styles. Custom fabrication is available for gates only.',
     profiles: [
-      { name: 'Standard Board', tag: 'Popular', notes: 'Clean metal privacy style for residential and commercial projects.' },
-      { name: 'Tall Board', tag: 'Extra coverage', notes: 'Taller metal privacy option for projects that need extra coverage.' },
-      { name: 'Slatted Privacy', tag: 'Airflow', notes: 'Modern metal fence style with partial visibility and airflow.' },
-      { name: 'Modern Gate', tag: 'Matching', notes: 'Matching single and double gates with hardware options.' },
+      { name: 'P1', tag: 'Panel', notes: 'DuraFence P1 privacy panel profile for residential and commercial runs.' },
+      { name: 'Original', tag: 'Classic', notes: 'The original DuraFence full-privacy board profile.' },
+      { name: 'Modern', tag: 'Contemporary', notes: 'Clean-lined DuraFence profile for contemporary projects.' },
     ],
     specs: [
-      ['Heights', "6', 7', 8', and other options available by request"],
+      ['Heights', "6' and 8'"],
       ['Colors', 'Black, bronze, white, woodgrain, and selected color options'],
       ['Material', 'Metal panels, posts, rails, gates, and hardware'],
-      ['Styles', 'Standard board, tall board, slatted privacy, and modern gate options'],
+      ['Styles', 'P1, Original, and Modern'],
       ['Post Options', 'Line posts, end posts, blank posts, and gate posts available'],
       ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
     ],
@@ -356,9 +356,12 @@ const ProfileDiagram = ({ slug, name = '', index = 0 }) => {
     else if (/ranch/.test(nm)) { rails([{ y: 42 }, { y: 68 }, { y: 94 }]); els.push(<rect key="p1" x={L} y={24} width="6" height="92" fill={navy}/>); els.push(<rect key="p2" x={R - 6} y={24} width="6" height="92" fill={navy}/>); }
     else { boards(2); } // Privacy, full board
   } else if (slug === 'metal') {
-    if (/slat/.test(nm)) { boards(7); }
+    if (/modern/.test(nm)) { boards(7); }
+    else if (/p1/.test(nm)) {
+      for (let x = L + 6; x < R - 4; x += 22) els.push(<rect key={`vp${x}`} x={x} y={26} width="14" height="88" fill={navy} rx="2"/>);
+    }
     else if (/gate/.test(nm)) { boards(3, navy, 34, 110); els.push(<rect key="gf" x={L} y={30} width={R - L} height={84} fill="none" stroke={accent} strokeWidth="3"/>); }
-    else { boards(2, navy, /tall/.test(nm) ? 22 : 32, 112); } // Standard / Tall board
+    else { boards(2, navy, 32, 112); } // Original board
   } else if (slug === 'chainlink') {
     const c = /green/.test(nm) ? '#6f9e6b' : /galvani/.test(nm) ? '#9aa3c0' : navy;
     const w = /heavy|industrial/.test(nm) ? 2.4 : 1.6, s = 18;
@@ -398,7 +401,7 @@ const MaterialProfiles = ({ data }) => (
         number="01" label={useT()("Profiles & styles", "Perfiles y estilos")}
         title={`${data.name}`}
         accent={useT()(`${data.profiles.length} ways to spec it.`, `${data.profiles.length} formas de configurarlo.`)}
-        sub={useT()("Standard and custom configurations available. Custom heights and colors on request.", "Configuraciones estándar y a medida. Alturas y colores personalizados bajo pedido.")}
+        sub={data.profilesSub || useT()("Standard and custom configurations available. Custom heights and colors on request.", "Configuraciones estándar y a medida. Alturas y colores personalizados bajo pedido.")}
       />
       <div className="wfs-profiles-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(data.profiles.length, 4)}, 1fr)`, gap: 14 }}>
         {data.profiles.map((p, i) => (

@@ -961,3 +961,16 @@ Object.assign(ES_TR, {
   'Hundreds of cycles a day': 'Cientos de ciclos al día',
   'Trucks and equipment': 'Camiones y equipo',
 });
+
+/* Metal styles corrected to P1 / Original / Modern; catalog download */
+Object.assign(ES_TR, {
+  'P1, Original, and Modern styles, with matching gates': 'Estilos P1, Original y Modern, con portones a juego',
+  "6' and 8'": "6' y 8'",
+  'P1, Original, and Modern': 'P1, Original y Modern',
+  'Available in P1, Original, and Modern styles. Custom fabrication is available for gates only.': 'Disponible en estilos P1, Original y Modern. La fabricación a medida está disponible solo para portones.',
+  'Panel': 'Panel',
+  'Contemporary': 'Contemporáneo',
+  'DuraFence P1 privacy panel profile for residential and commercial runs.': 'Perfil de panel de privacidad DuraFence P1 para tramos residenciales y comerciales.',
+  'The original DuraFence full-privacy board profile.': 'El perfil de tabla de privacidad total original de DuraFence.',
+  'Clean-lined DuraFence profile for contemporary projects.': 'Perfil DuraFence de líneas limpias para proyectos contemporáneos.',
+});

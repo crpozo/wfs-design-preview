@@ -85,8 +85,8 @@ const FeaturedGrid = () => {
               {t('In stock,', 'En existencia,')}<br/>{t('ready to ship.', 'listos para enviar.')}
             </h2>
           </div>
-          <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 500, fontSize: 14 }}>
-            {t('View full catalog', 'Ver catálogo completo')} <ArrowRight />
+          <a href="assets/wfs-catalog.pdf" download="WFS-Fence-Catalog.pdf" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 500, fontSize: 14 }}>
+            {t('Download catalog (PDF)', 'Descargar catálogo (PDF)')} <ArrowDown />
           </a>
         </div>
 
@@ -137,13 +137,13 @@ const FeaturedGrid = () => {
                   <span className="mono" style={{ fontSize: 12.5, color: 'var(--charcoal)', textTransform: 'uppercase', letterSpacing: '0.12em' }}>
                     {t('Supplier-direct pricing', 'Precios directo de proveedor')}
                   </span>
-                  <button style={{
+                  <a href="estimate.html" style={{
                     fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.14em',
                     textTransform: 'uppercase', color: 'var(--ink)',
                     display: 'flex', alignItems: 'center', gap: 6,
                   }}>
                     {t('Request quote', 'Solicitar cotización')} <ArrowRight size={12} />
-                  </button>
+                  </a>
                 </div>
               </div>
             </article>
