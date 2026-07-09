@@ -76,7 +76,6 @@ const FeaturedGrid = () => {
   const pages = Math.ceil(FEATURED.length / PER);
   const [page, setPage] = React.useState(0);
   const start = page * PER;
-  const visible = FEATURED.slice(start, start + PER);
   const ArrowBtn = ({ dir, disabled, onClick }) => (
     <button onClick={onClick} disabled={disabled} aria-label={dir === 'prev' ? t('Previous', 'Anterior') : t('Next', 'Siguiente')} style={{
       width: 46, height: 46, borderRadius: '50%',
@@ -116,9 +115,21 @@ const FeaturedGrid = () => {
           </div>
         </div>
 
-        {/* Flat product cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 34 }}>
-          {visible.map((p) => (
+        {/* Flat product cards, sliding track (one flex page per slide) */}
+        <div style={{ overflow: 'hidden' }}>
+          <div style={{
+            display: 'flex',
+            transform: `translateX(-${page * 100}%)`,
+            transition: 'transform 0.6s cubic-bezier(0.35, 0, 0.15, 1)',
+          }}>
+            {Array.from({ length: pages }).map((_, pg) => (
+              <div key={pg} aria-hidden={pg !== page} style={{
+                flex: '0 0 100%', minWidth: 0,
+                display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 34,
+                opacity: pg === page ? 1 : 0.35,
+                transition: 'opacity 0.5s ease',
+              }}>
+                {FEATURED.slice(pg * PER, pg * PER + PER).map((p) => (
             <article key={p.sku}>
               <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#263166', overflow: 'hidden' }}>
                 <img src={p.imgUrl || FENCE_IMG[p.img]} alt={t(p.name)}
@@ -166,7 +177,10 @@ const FeaturedGrid = () => {
                 </a>
               </div>
             </article>
-          ))}
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Footer: progress + counter + catalog download */}
