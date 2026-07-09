@@ -133,18 +133,9 @@ const Testimonials = () => {
   return (
     <section style={{ background: 'var(--white)', padding: 'clamp(36px, 5vh, 60px) 0', overflow: 'hidden' }}>
       <div className="container" style={{ textAlign: 'center' }}>
-        {/* Eyebrow */}
-        <div className="mono" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 12,
-          fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
-          textTransform: 'uppercase', color: 'var(--laser-blue)',
-        }}>
-          <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
-          {t('Reviews · Google & Angi', 'Reseñas · Google y Angi')}
-        </div>
         {/* Title */}
         <h2 className="display" style={{
-          margin: '12px 0 0', fontSize: 'clamp(24px, 2.5vw, 36px)', lineHeight: 1.02,
+          margin: 0, fontSize: 'clamp(24px, 2.5vw, 36px)', lineHeight: 1.02,
           letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
         }}>
           {t('What contractors and', 'Lo que dicen contratistas')}{' '}
@@ -152,7 +143,7 @@ const Testimonials = () => {
         </h2>
         {/* Rating line */}
         <div style={{
-          marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 10,
+          marginTop: 18, display: 'inline-flex', alignItems: 'center', gap: 10,
           fontSize: 14, color: 'var(--charcoal)',
         }}>
           <span style={{ color: 'var(--tangerine)', letterSpacing: 2 }}>★★★★★</span>
@@ -162,7 +153,7 @@ const Testimonials = () => {
       </div>
 
       {/* Fanned deck */}
-      <div style={{ position: 'relative', height: 'clamp(390px, 48vh, 450px)', marginTop: 20 }}>
+      <div style={{ position: 'relative', height: 'clamp(390px, 48vh, 450px)', marginTop: 34 }}>
         {reviews.map((r, i) => {
           let off = i - active;
           if (off > n / 2) off -= n;
@@ -227,7 +218,7 @@ const Testimonials = () => {
 
       {/* Controls: arrows + progress dashes */}
       <div style={{
-        marginTop: 16, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 22,
+        marginTop: 30, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 22,
       }}>
         <button onClick={() => go(active - 1)} aria-label={t('Previous review', 'Reseña anterior')} style={{
           width: 46, height: 46, borderRadius: '50%',
@@ -261,7 +252,7 @@ const Testimonials = () => {
       </div>
 
       {/* Read all reviews */}
-      <div style={{ marginTop: 18, textAlign: 'center' }}>
+      <div style={{ marginTop: 26, textAlign: 'center' }}>
         <a href="#" className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10,
           fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
