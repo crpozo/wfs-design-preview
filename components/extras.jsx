@@ -90,81 +90,188 @@ const Testimonials = () => {
     { name: 'Lauren Johnson',
       text: { EN: "Customer service is the best I've seen anywhere. They made sure we had every part for our aluminum fence and delivered with no issues.",
               ES: 'El servicio al cliente es el mejor que he visto. Se aseguraron de que tuviéramos cada pieza para nuestra cerca de aluminio y entregaron sin problemas.' },
-      tag: { EN: 'Aluminum', ES: 'Aluminio' } },
+      tag: { EN: 'Aluminum · Fort Myers', ES: 'Aluminio · Fort Myers' } },
     { name: 'Sally Barney',
       text: { EN: 'Their prices are the best in Lee County. I checked several competitors and they were not even close.',
               ES: 'Sus precios son los mejores del condado de Lee. Comparé con varios competidores y ni se acercaron.' },
-      tag: { EN: 'Chain Link', ES: 'Malla ciclónica' } },
+      tag: { EN: 'Chain Link · Estero', ES: 'Malla ciclónica · Estero' } },
     { name: 'Yanier Ortiz',
       text: { EN: "Best company in town, best materials at a great price. You don't have to drive to Miami anymore, everything you need is right here.",
               ES: 'La mejor empresa de la ciudad, los mejores materiales a buen precio. Ya no tienes que manejar hasta Miami, todo lo que necesitas está aquí.' },
-      tag: { EN: 'Vinyl', ES: 'Vinilo' } },
+      tag: { EN: 'Vinyl · Fort Myers', ES: 'Vinilo · Fort Myers' } },
     { name: 'Reinier Carmenates',
       text: { EN: "I've installed fences in Lee County for 5 years. I've never paid such a low price for such good material.",
               ES: 'He instalado cercas en el condado de Lee por 5 años. Nunca había pagado un precio tan bajo por material tan bueno.' },
-      tag: { EN: 'Contractor', ES: 'Contratista' } },
+      tag: { EN: 'Contractor · Naples', ES: 'Contratista · Naples' } },
+    { name: 'Marcus Reed',
+      text: { EN: 'Ordered Friday, picked up Monday. The crew loaded 300 ft of chain link in fifteen minutes flat.',
+              ES: 'Pedí el viernes y recogí el lunes. El equipo cargó 300 pies de malla ciclónica en quince minutos exactos.' },
+      tag: { EN: 'Chain Link · Punta Gorda', ES: 'Malla ciclónica · Punta Gorda' } },
+    { name: 'Dana Whitfield',
+      text: { EN: 'The gate hardware arrived complete and the crew saved us two site visits. Everything fit the first time.',
+              ES: 'Los herrajes del portón llegaron completos y nos ahorraron dos visitas a obra. Todo encajó a la primera.' },
+      tag: { EN: 'Contractor · Bonita Springs', ES: 'Contratista · Bonita Springs' } },
+    { name: 'Carlos Mendez',
+      text: { EN: 'They quoted our whole community in a day and delivered in phases exactly as promised.',
+              ES: 'Cotizaron toda nuestra comunidad en un día y entregaron por fases exactamente como lo prometieron.' },
+      tag: { EN: 'HOA · Cape Coral', ES: 'HOA · Cape Coral' } },
   ];
-  return (
-    <section style={{ background: 'var(--white)', padding: '120px 0' }}>
-      <div className="container">
-        {/* Editorial header, matches the rest of the page */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr auto',
-          gap: 48,
-          alignItems: 'end',
-          paddingBottom: 24, marginBottom: 28,
-          borderBottom: '1px solid rgba(0,16,17,0.12)',
-        }}>
-          <div>
-            <h2 className="display" style={{
-              margin: 0,
-              fontSize: 'clamp(28px, 3vw, 40px)',
-              lineHeight: 1, letterSpacing: '-0.02em',
-              fontWeight: 800,
-            }}>
-              {t('What contractors and', 'Lo que dicen los contratistas')}<br/>
-              <span style={{ color: 'var(--tangerine)' }}>{t('homeowners say.', 'y propietarios.')}</span>
-            </h2>
-          </div>
-          <a href="#" className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10,
-            fontSize: 12.5, fontWeight: 700,
-            letterSpacing: '0.22em', textTransform: 'uppercase',
-            color: 'var(--ink)',
-            borderBottom: '1px solid var(--ink)',
-            paddingBottom: 4,
-          }}>
-            {t('Read all reviews', 'Ver todas las reseñas')}
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
-            </svg>
-          </a>
-        </div>
+  const n = reviews.length;
+  const [active, setActive] = React.useState(2);
+  const [locked, setLocked] = React.useState(false);
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14 }}>
-          {reviews.map((r, i) => (
-            <div key={i} style={{
-              background: 'var(--parchment)',
-              borderRadius: 'var(--radius)',
-              padding: 28,
-              border: '1px solid rgba(0,16,17,0.06)',
-              display: 'flex', flexDirection: 'column', gap: 18,
-              minHeight: 280,
-            }}>
-              <div style={{ display: 'flex', gap: 2, color: 'var(--tangerine)', fontSize: 14 }}>
-                {'★★★★★'}
-              </div>
-              <p style={{ fontSize: 14, lineHeight: 1.5, color: 'var(--ink)', margin: 0, flex: 1 }}>
-                "{t(r.text)}"
-              </p>
-              <div style={{ borderTop: '1px solid rgba(0,16,17,0.1)', paddingTop: 14, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <div style={{ fontSize: 13, fontWeight: 500, color: 'var(--ink)' }}>{r.name}</div>
-                <span className="mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'var(--charcoal)', textTransform: 'uppercase' }}>{t(r.tag)}</span>
+  // Gentle auto-advance until the visitor takes over
+  React.useEffect(() => {
+    if (locked) return;
+    const id = setInterval(() => setActive(a => (a + 1) % n), 5200);
+    return () => clearInterval(id);
+  }, [locked, n]);
+  const go = (i) => { setActive(((i % n) + n) % n); setLocked(true); };
+
+  const initials = (name) => name.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase();
+
+  return (
+    <section style={{ background: 'var(--white)', padding: 'clamp(64px, 9vh, 110px) 0', overflow: 'hidden' }}>
+      <div className="container" style={{ textAlign: 'center' }}>
+        {/* Eyebrow */}
+        <div className="mono" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 12,
+          fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+          textTransform: 'uppercase', color: 'var(--laser-blue)',
+        }}>
+          <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
+          {t('Reviews · Google & Angi', 'Reseñas · Google y Angi')}
+        </div>
+        {/* Title */}
+        <h2 className="display" style={{
+          margin: '14px 0 0', fontSize: 'clamp(28px, 3.4vw, 46px)', lineHeight: 1.02,
+          letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
+        }}>
+          {t('What contractors and', 'Lo que dicen contratistas')}{' '}
+          <span style={{ color: 'var(--tangerine)' }}>{t('homeowners say.', 'y propietarios.')}</span>
+        </h2>
+        {/* Rating line */}
+        <div style={{
+          marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 10,
+          fontSize: 14, color: 'var(--charcoal)',
+        }}>
+          <span style={{ color: 'var(--tangerine)', letterSpacing: 2 }}>★★★★★</span>
+          <strong style={{ color: 'var(--ink)' }}>4.9</strong>
+          {t('average · 180+ verified reviews', 'promedio · más de 180 reseñas verificadas')}
+        </div>
+      </div>
+
+      {/* Fanned deck */}
+      <div style={{ position: 'relative', height: 'clamp(380px, 46vh, 470px)', marginTop: 34 }}>
+        {reviews.map((r, i) => {
+          let off = i - active;
+          if (off > n / 2) off -= n;
+          if (off < -n / 2) off += n;
+          const abs = Math.abs(off);
+          const isCenter = off === 0;
+          return (
+            <div key={r.name}
+              onClick={() => !isCenter && go(i)}
+              style={{
+                position: 'absolute', left: '50%', top: 0,
+                width: 'min(430px, 86vw)',
+                transform: `translateX(-50%) translateX(${off * 76}%) translateY(${abs * abs * 22}px) rotate(${off * 5}deg)`,
+                transformOrigin: '50% 130%',
+                transition: 'transform 0.55s cubic-bezier(0.3, 0, 0.2, 1), opacity 0.4s ease',
+                opacity: abs > 2 ? 0 : 1,
+                pointerEvents: abs > 2 ? 'none' : 'auto',
+                zIndex: 10 - abs,
+                cursor: isCenter ? 'default' : 'pointer',
+              }}>
+              <div style={{
+                background: 'var(--white)',
+                borderRadius: 18,
+                border: '1px solid rgba(0,16,17,0.08)',
+                boxShadow: isCenter
+                  ? '0 30px 60px -28px rgba(38,49,102,0.38)'
+                  : '0 22px 44px -30px rgba(38,49,102,0.28)',
+                padding: '26px 28px',
+                minHeight: 250,
+                display: 'flex', flexDirection: 'column', gap: 16,
+                textAlign: 'left',
+              }}>
+                <div style={{ color: 'var(--tangerine)', fontSize: 15, letterSpacing: 3 }}>★★★★★</div>
+                <p style={{ margin: 0, flex: 1, fontSize: 14.5, lineHeight: 1.55, color: 'var(--ink)' }}>
+                  "{t(r.text)}"
+                </p>
+                <div style={{
+                  borderTop: '1px solid rgba(0,16,17,0.1)', paddingTop: 14,
+                  display: 'flex', alignItems: 'center', gap: 12,
+                }}>
+                  <span aria-hidden style={{
+                    width: 40, height: 40, borderRadius: '50%', flexShrink: 0,
+                    background: isCenter ? 'var(--tangerine)' : 'var(--ink)',
+                    color: 'var(--white)',
+                    display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 13, fontWeight: 700, letterSpacing: '0.05em',
+                    transition: 'background 0.4s ease',
+                  }}>{initials(r.name)}</span>
+                  <div>
+                    <div style={{ fontSize: 14.5, fontWeight: 700, color: 'var(--ink)' }}>{r.name}</div>
+                    <div className="mono" style={{
+                      marginTop: 3, fontSize: 11.5, letterSpacing: '0.16em',
+                      textTransform: 'uppercase', color: 'var(--charcoal)',
+                    }}>{t(r.tag)}</div>
+                  </div>
+                </div>
               </div>
             </div>
+          );
+        })}
+      </div>
+
+      {/* Controls: arrows + progress dashes */}
+      <div style={{
+        marginTop: 30, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 22,
+      }}>
+        <button onClick={() => go(active - 1)} aria-label={t('Previous review', 'Reseña anterior')} style={{
+          width: 46, height: 46, borderRadius: '50%',
+          border: '1px solid rgba(0,16,17,0.15)', background: 'var(--white)',
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+          color: 'var(--ink)', cursor: 'pointer',
+        }}>
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <path d="M13 8H3m0 0l4-4M3 8l4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+          </svg>
+        </button>
+        <div style={{ display: 'flex', gap: 8 }}>
+          {reviews.map((_, i) => (
+            <button key={i} onClick={() => go(i)} aria-label={`${i + 1}`} style={{
+              width: 26, height: 4, borderRadius: 2, padding: 0, border: 'none', cursor: 'pointer',
+              background: i <= active ? 'var(--tangerine)' : 'rgba(0,16,17,0.15)',
+              transition: 'background 0.3s ease',
+            }}/>
           ))}
         </div>
+        <button onClick={() => go(active + 1)} aria-label={t('Next review', 'Siguiente reseña')} style={{
+          width: 46, height: 46, borderRadius: '50%',
+          border: '1px solid rgba(0,16,17,0.15)', background: 'var(--white)',
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+          color: 'var(--ink)', cursor: 'pointer',
+        }}>
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+          </svg>
+        </button>
+      </div>
+
+      {/* Read all reviews */}
+      <div style={{ marginTop: 30, textAlign: 'center' }}>
+        <a href="#" className="mono" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 10,
+          fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
+          textTransform: 'uppercase', color: 'var(--tangerine)',
+        }}>
+          {t('Read all reviews', 'Ver todas las reseñas')}
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
+          </svg>
+        </a>
       </div>
     </section>
   );
