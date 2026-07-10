@@ -1055,7 +1055,7 @@ const Footer = () => {
       { label: { EN: 'FAQ',                  ES: 'Preguntas frecuentes' },     href: 'faq.html' },
       { label: { EN: 'Materials Comparison', ES: 'Comparativa de materiales' },href: 'materials-comparison.html' },
       { label: { EN: 'Florida Pool Code',    ES: 'Código de piscinas FL' },    href: 'pool-code.html' },
-      { label: { EN: 'Yard Locations',       ES: 'Sucursales' },               href: 'solutions.html#yards' },
+      { label: { EN: 'Yard Locations',       ES: 'Sucursales' },               href: 'locations.html' },
     ]},
     { title: { EN: 'Company', ES: 'Empresa' }, items: [
       { label: { EN: 'About WFS',           ES: 'Sobre WFS' },               href: 'about.html' },

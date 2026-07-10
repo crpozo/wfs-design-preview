@@ -134,31 +134,61 @@ const AboutStory = () => {
 
 const AboutValues = () => {
   const t = useT();
+  const rules = [
+    [{ EN: 'No low-grade material', ES: 'Nada de material de baja calidad' }, { EN: "If we wouldn't put it on our own job, we don't stock it. We turn down lower price points every quarter to protect the catalog.", ES: 'Si no lo pondríamos en nuestra propia obra, no lo tenemos en existencia. Cada trimestre rechazamos precios más bajos para proteger el catálogo.' }],
+    [{ EN: 'Real lead-time honesty', ES: 'Honestidad real en los tiempos de entrega' }, { EN: 'Stocked items ship in 1-2 days. Custom takes 6-8 weeks. We tell you the truth on the first call, no soft dates.', ES: 'Los artículos en existencia se envían en 1 a 2 días. Los trabajos a medida tardan de 6 a 8 semanas. Te decimos la verdad en la primera llamada, sin fechas imprecisas.' }],
+    [{ EN: 'Pricing without games', ES: 'Precios sin juegos' }, { EN: 'Same supplier-direct floor for contractors, homeowners and DIY. No minimums, no contractor-only tiers.', ES: 'El mismo precio directo de proveedor para contratistas, propietarios y bricolaje. Sin mínimos, sin niveles exclusivos para contratistas.' }],
+  ];
   return (
   <section style={{ background: 'var(--white)', padding: '120px 0' }}>
     <div className="container">
-      <PageSectionHeader
-        number="02" label={t('How we work', 'Cómo trabajamos')}
-        title={t('Three rules', 'Tres reglas')}
-        accent={t("we don't break.", 'que no rompemos.')}
-        sub={t('Same standard we held when we were the contractors using this material every day.', 'El mismo estándar que manteníamos cuando éramos los contratistas que usaban este material todos los días.')}
-      />
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-        {[
-          ['01', { EN: 'No low-grade material', ES: 'Nada de material de baja calidad' }, { EN: 'If we wouldn\'t put it on our own job, we don\'t stock it. We turn down lower price points every quarter to protect the catalog.', ES: 'Si no lo pondríamos en nuestra propia obra, no lo tenemos en existencia. Cada trimestre rechazamos precios más bajos para proteger el catálogo.' }],
-          ['02', { EN: 'Real lead-time honesty', ES: 'Honestidad real en los tiempos de entrega' }, { EN: 'Stocked items ship in 1-2 days. Custom takes 6-8 weeks. We tell you the truth on the first call, no soft dates.', ES: 'Los artículos en existencia se envían en 1 a 2 días. Los trabajos a medida tardan de 6 a 8 semanas. Te decimos la verdad en la primera llamada, sin fechas imprecisas.' }],
-          ['03', { EN: 'Pricing without games', ES: 'Precios sin juegos' }, { EN: 'Same supplier-direct floor for contractors, homeowners and DIY. No minimums, no contractor-only tiers.', ES: 'El mismo precio directo de proveedor para contratistas, propietarios y bricolaje. Sin mínimos, sin niveles exclusivos para contratistas.' }],
-        ].map(([n, label, body]) => (
-          <div key={n} style={{
-            background: 'var(--white)', padding: '32px 28px',
-            border: '1px solid rgba(0,16,17,0.1)',
-          }}>
-            <div className="display" style={{ fontSize: 36, color: 'var(--tangerine)', lineHeight: 1, marginBottom: 18 }}>{n}</div>
-            <h3 className="display" style={{ fontSize: 22, lineHeight: 1.1, margin: '0 0 12px' }}>{t(label)}</h3>
-            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)' }}>{t(body)}</p>
-          </div>
-        ))}
+      {/* Eyebrow */}
+      <div className="mono" style={{
+        display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 22,
+        fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+        textTransform: 'uppercase', color: 'var(--laser-blue)',
+      }}>
+        <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
+        {t('How we operate', 'Cómo operamos')}
       </div>
+      {/* Title + right blurb over a heavy rule */}
+      <div style={{
+        display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end',
+        paddingBottom: 28, borderBottom: '2px solid var(--ink)',
+      }}>
+        <h2 className="display" style={{
+          margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02,
+          letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
+        }}>
+          {t('Three rules', 'Tres reglas')}<br/>
+          <span style={{ color: 'var(--tangerine)' }}>{t("we don't break.", 'que no rompemos.')}</span>
+        </h2>
+        <p style={{
+          margin: 0, maxWidth: 360, justifySelf: 'end', textAlign: 'right',
+          fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)',
+        }}>
+          {t('Same standard we held when we were the contractors using this material every day.', 'El mismo estándar que manteníamos cuando éramos los contratistas que usaban este material todos los días.')}
+        </p>
+      </div>
+      {/* Editorial rows: outlined number · title · description */}
+      {rules.map(([label, body], i) => (
+        <div key={i} className="wfs-usecase-row" style={{
+          display: 'grid', gridTemplateColumns: '104px 1fr 1.2fr',
+          gap: 28, alignItems: 'center',
+          padding: '34px 0',
+          borderBottom: '1px solid rgba(0,16,17,0.1)',
+        }}>
+          <span className="display wfs-usecase-num" aria-hidden style={{
+            fontSize: 60, lineHeight: 1, fontWeight: 800,
+            color: 'transparent', WebkitTextStroke: '1.5px rgba(38,49,102,0.32)',
+          }}>0{i + 1}</span>
+          <h3 className="display" style={{
+            margin: 0, fontSize: 'clamp(18px, 1.6vw, 24px)', lineHeight: 1.1,
+            textTransform: 'uppercase', letterSpacing: '0.01em',
+          }}>{t(label)}</h3>
+          <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>{t(body)}</p>
+        </div>
+      ))}
     </div>
   </section>
   );

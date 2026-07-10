@@ -33,7 +33,7 @@ const SiteHeader = ({ active }) => {
     ]}},
     { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [
       { label: { EN: 'About WFS',       ES: 'Sobre WFS' },         href: 'about.html',     sub: { EN: 'Family-owned · fabricated in-house',            ES: 'Familiar · fabricado en planta' } },
-      { label: { EN: 'Yard Locations',  ES: 'Sucursales' },        href: 'solutions.html', sub: { EN: '2 yards across SW Florida',                     ES: '2 sucursales en el suroeste de FL' } },
+      { label: { EN: 'Yard Locations',  ES: 'Sucursales' },        href: 'locations.html', sub: { EN: 'Pickup, hours & directions · FM + PC',          ES: 'Retiro, horarios y cómo llegar · FM + PC' } },
       { label: { EN: 'Contact',         ES: 'Contacto' },          href: 'estimate.html',  sub: { EN: 'Phone, email, hours by yard',                   ES: 'Teléfono, email, horarios por sucursal' } },
     ]}},
     { id: 'Fence Education Hub', label: { EN: 'Fence Education Hub', ES: 'Centro Educativo' }, def: { kind: 'list', items: [
