@@ -452,6 +452,7 @@ const PoolCodeRequirements = () => {
           ))}
         </div>
         <p style={{ marginTop: 16, fontSize: 12.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>
+          {t('Last reviewed: July 2026. ', 'Última revisión: julio de 2026. ')}
           {t('Section numbers reference the Florida Building Code, Residential. Editions and local amendments change — verify the current edition and exact requirements with your local building department (AHJ).',
              'Los números de sección hacen referencia al Código de Construcción de Florida, Residencial. Las ediciones y enmiendas locales cambian: verifica la edición vigente y los requisitos exactos con tu departamento de construcción local (AHJ).')}
         </p>

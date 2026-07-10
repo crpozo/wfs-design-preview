@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
+  <rect width="1280" height="720" fill="#263166"/>
+  <rect y="716" width="1280" height="4" fill="#ff7133"/>
+  <g fill="none" stroke="#ffffff" stroke-opacity="0.05" stroke-width="8">
+    <path d="M1000 80 L1160 240 M1080 40 L1240 200 M1160 0 L1280 120"/>
+  </g>
+  <circle cx="640" cy="330" r="64" fill="#ff7133"/>
+  <path d="M620 296 L688 330 L620 364 Z" fill="#ffffff"/>
+  <text x="640" y="452" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="44" letter-spacing="2" fill="#ffffff">WFS TRAINING COMPANION</text>
+  <text x="640" y="496" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="22" letter-spacing="3" fill="#97baff">LEARN THE PLATFORM BEFORE YOU BEGIN</text>
+</svg>

@@ -483,14 +483,14 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
               margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)',
               textTransform: 'uppercase', fontWeight: 800, letterSpacing: '-0.01em',
             }}>
-              {t('Real projects.', 'Proyectos reales.')}{' '}
-              <span style={{ color: 'var(--tangerine)' }}>{t('Real perimeters.', 'Perímetros reales.')}</span>
+              {t('Product', 'Ejemplos de')}{' '}
+              <span style={{ color: 'var(--tangerine)' }}>{t('examples.', 'producto.')}</span>
             </h2>
             <p className="mono" style={{
               margin: '12px 0 0', fontSize: 12.5, letterSpacing: '0.16em',
               textTransform: 'uppercase', color: 'var(--charcoal)',
             }}>
-              {t('Flagship perimeters across Southwest Florida.', 'Perímetros insignia en el suroeste de Florida.')}
+              {t('Representative product photos — not customer projects.', 'Fotos representativas de producto, no proyectos de clientes.')}
             </p>
           </div>
           <div style={{ display: 'flex', gap: 10 }}>
@@ -525,11 +525,11 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
                     <div className="mono" style={{
                       marginTop: 16, fontSize: 12, letterSpacing: '0.16em',
                       textTransform: 'uppercase', color: 'var(--charcoal)',
-                    }}>{t(MAT_LABELS[p.material] || p.material)} · {p.loc}</div>
+                    }}>{t(MAT_LABELS[p.material] || p.material)}</div>
                     <h3 className="display" style={{
-                      margin: '8px 0 0', fontSize: 21, lineHeight: 1.15, fontWeight: 700,
+                      margin: '8px 0 0', fontSize: 19, lineHeight: 1.25, fontWeight: 700,
                       color: 'var(--ink)',
-                    }}>{t(p.name)}</h3>
+                    }}>{t(p.type)}</h3>
                     <a href="estimate.html#contact" className="mono" style={{
                       marginTop: 14,
                       display: 'inline-flex', alignItems: 'center', gap: 8,
@@ -1059,7 +1059,7 @@ const Footer = () => {
     ]},
     { title: { EN: 'Company', ES: 'Empresa' }, items: [
       { label: { EN: 'About WFS',           ES: 'Sobre WFS' },               href: 'about.html' },
-      { label: { EN: 'Contact',             ES: 'Contacto' },                href: 'estimate.html#contact' },
+      { label: { EN: 'Contact',             ES: 'Contacto' },                href: 'contact.html' },
       { label: 'sales@westernfencesupply.com', href: 'mailto:sales@westernfencesupply.com' },
     ]},
   ];

@@ -133,6 +133,7 @@ const MaterialsComparison = () => {
       <p style={{ marginTop: 14, fontSize: 12.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>
         {useT()('Specs shown are general guidance. Wind ratings, warranties, availability and performance depend on the specific product, configuration and project — we confirm exact numbers on your quote.',
                 'Las especificaciones mostradas son una guía general. Las clasificaciones de viento, garantías, disponibilidad y desempeño dependen del producto, la configuración y el proyecto específicos; confirmamos los números exactos en tu cotización.')}
+        {' '}{useT()('Last reviewed: July 2026.', 'Última revisión: julio de 2026.')}
       </p>
       <div style={{ marginTop: 22, display: 'flex', gap: 14, flexWrap: 'wrap' }}>
         {[

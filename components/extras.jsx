@@ -258,9 +258,6 @@ const FAQ = () => {
     [{ EN: 'Do you install fences?', ES: '¿Instalan cercas?' },
      { EN: 'No, we are solely a supply company. We can recommend trusted local installers who use our materials.',
        ES: 'No, somos solamente una empresa de suministro. Podemos recomendar instaladores locales de confianza que usan nuestros materiales.' }],
-    [{ EN: 'Do you come out to measure?', ES: '¿Vienen a tomar medidas?' },
-     { EN: 'No. We ask you to provide a survey or hand-drawn layout with measurements per side, plus height, color and style.',
-       ES: 'No. Te pedimos un plano o boceto a mano con medidas por lado, además de altura, color y estilo.' }],
     [{ EN: 'What is the price per foot for fence material?', ES: '¿Cuál es el precio por pie del material?' },
      { EN: "Pricing fluctuates frequently. Send us your project and we'll come back with a detailed estimate.",
        ES: 'Los precios fluctúan con frecuencia. Envíanos tu proyecto y respondemos con un estimado detallado.' }],
@@ -273,9 +270,6 @@ const FAQ = () => {
     [{ EN: 'Can I pick up my order?', ES: '¿Puedo recoger mi pedido?' },
      { EN: 'Yes. Pickup is available from our Fort Myers or Port Charlotte yards depending on material stock. Please contact us first to confirm availability and pickup location before coming in.',
        ES: 'Sí. Puedes recoger en nuestras sucursales de Fort Myers o Port Charlotte según el stock del material. Contáctanos primero para confirmar disponibilidad y ubicación antes de venir.' }],
-    [{ EN: 'Do you deliver outside Florida?', ES: '¿Entregan fuera de Florida?' },
-     { EN: 'Not at this time, we currently deliver within Florida only.',
-       ES: 'Por ahora no, actualmente entregamos solamente dentro de Florida.' }],
   ];
   const [open, setOpen] = React.useState(0);
   const [ctaHover, setCtaHover] = React.useState(false);

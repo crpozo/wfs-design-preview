@@ -26,15 +26,16 @@ const SiteHeader = ({ active }) => {
   const NAV = [
     { id: 'Fences', label: { EN: 'Fences', ES: 'Cercas' }, def: { kind: 'mega-fences' } },
     { id: 'Gates',  label: { EN: 'Gates',  ES: 'Portones' }, def: { kind: 'mega-gates' } },
-    { id: 'Full Catalog', label: { EN: 'Full Catalog', ES: 'Catálogo completo' }, def: { kind: 'link', href: 'products.html' } },
+    { id: 'Full Catalog', label: { EN: 'Download Catalog', ES: 'Descargar catálogo' }, def: { kind: 'link', href: 'assets/wfs-catalog.pdf', external: true } },
     { id: 'Get a Quote', label: { EN: 'Get a Quote', ES: 'Cotizar' }, def: { kind: 'list', items: [
       { label: { EN: 'Draw Your Fence',       ES: 'Dibuja tu cerca' },        href: 'https://app.westernfencesupply.com/', sub: { EN: 'Sketch or send measurements, pricing in 24h',   ES: 'Dibuja o envía medidas, precios en 24h' } },
       { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html#quote', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte',   ES: 'Lun-Vie · Fort Myers + Port Charlotte' } },
+      { label: { EN: 'Email Sales',           ES: 'Escribir a ventas' },     href: 'mailto:sales@westernfencesupply.com', sub: { EN: 'sales@westernfencesupply.com', ES: 'sales@westernfencesupply.com' } },
     ]}},
     { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [
       { label: { EN: 'About WFS',       ES: 'Sobre WFS' },         href: 'about.html',     sub: { EN: 'Family-owned · fabricated in-house',            ES: 'Familiar · fabricado en planta' } },
       { label: { EN: 'Yard Locations',  ES: 'Sucursales' },        href: 'locations.html', sub: { EN: 'Pickup, hours & directions · FM + PC',          ES: 'Retiro, horarios y cómo llegar · FM + PC' } },
-      { label: { EN: 'Contact',         ES: 'Contacto' },          href: 'estimate.html#contact',  sub: { EN: 'Phone, email, hours by yard',                   ES: 'Teléfono, email, horarios por sucursal' } },
+      { label: { EN: 'Contact',         ES: 'Contacto' },          href: 'contact.html',  sub: { EN: 'Phone, email, hours by yard',                   ES: 'Teléfono, email, horarios por sucursal' } },
     ]}},
     { id: 'Fence Education Hub', label: { EN: 'Fence Education Hub', ES: 'Centro Educativo' }, def: { kind: 'list', items: [
       { label: { EN: 'FAQ',                    ES: 'Preguntas frecuentes' },       href: 'faq.html',                   sub: { EN: 'The questions we get every week',          ES: 'Las preguntas que recibimos cada semana' } },
@@ -183,6 +184,7 @@ const SiteHeader = ({ active }) => {
             {NAV.map(({ id, label, def }) => (
               def.kind === 'link' ? (
                 <a key={id} href={def.href}
+                  target={def.external ? '_blank' : undefined} rel={def.external ? 'noopener' : undefined}
                   onMouseEnter={() => setOpenMenu(null)}
                   style={{
                     display: 'inline-flex', alignItems: 'center',
@@ -350,7 +352,7 @@ const SiteHeader = ({ active }) => {
               if (def.kind === 'link') {
                 return (
                   <div key={id} style={{ borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
-                    <a href={def.href} style={{
+                    <a href={def.href} target={def.external ? '_blank' : undefined} rel={def.external ? 'noopener' : undefined} style={{
                       width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                       padding: '18px 20px',
                       fontFamily: 'var(--sans)', fontSize: 18, fontWeight: 500,
