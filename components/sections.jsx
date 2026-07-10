@@ -137,47 +137,25 @@ const FeaturedGrid = () => {
                 <img src={p.imgUrl || FENCE_IMG[p.img]} alt={t(p.name)}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
-              {/* Meta row: category · height + stock pill */}
-              <div style={{
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                marginTop: 16, gap: 12,
-              }}>
-                <span className="mono" style={{
-                  fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase',
-                  color: 'var(--charcoal)',
-                }}>{t(p.cat)} · {p.height}</span>
-                <span className="mono" style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 7,
-                  fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase',
-                  fontWeight: 700, color: 'var(--ink)',
-                }}>
-                  <span aria-hidden style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-                  {t('In stock', 'En existencia')}
-                </span>
-              </div>
+              <div className="mono" style={{
+                marginTop: 16, fontSize: 12, letterSpacing: '0.16em',
+                textTransform: 'uppercase', color: 'var(--charcoal)',
+              }}>{t(p.cat)} · {p.height}</div>
               <h3 className="display" style={{
-                margin: '10px 0 0', fontSize: 21, lineHeight: 1.1, fontWeight: 800,
-                textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--ink)',
+                margin: '8px 0 0', fontSize: 21, lineHeight: 1.15, fontWeight: 700,
+                color: 'var(--ink)',
               }}>{t(p.name)}</h3>
-              {/* Divider + SKU / quote link */}
-              <div style={{
-                marginTop: 16, paddingTop: 14, borderTop: '1px solid rgba(0,16,17,0.12)',
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12,
+              <a href="estimate.html" className="mono" style={{
+                marginTop: 14,
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                fontSize: 12.5, fontWeight: 700, letterSpacing: '0.16em',
+                textTransform: 'uppercase', color: 'var(--tangerine)',
               }}>
-                <span className="mono" style={{
-                  fontSize: 12, letterSpacing: '0.14em', color: 'var(--charcoal)',
-                }}>{p.sku}</span>
-                <a href="estimate.html" className="mono" style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 8,
-                  fontSize: 12.5, fontWeight: 700, letterSpacing: '0.16em',
-                  textTransform: 'uppercase', color: 'var(--tangerine)',
-                }}>
-                  {t('Request quote', 'Solicitar cotización')}
-                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                    <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
-                  </svg>
-                </a>
-              </div>
+                {t('Request quote', 'Solicitar cotización')}
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+                </svg>
+              </a>
             </article>
                 ))}
               </div>
