@@ -802,18 +802,13 @@ const HomeownerPage = () => (
 
 const ContractorHero = () => {
   const t = useT();
-  const checks = [
-    { EN: 'No application fee', ES: 'Sin cuota de solicitud' },
-    { EN: 'Volume tiers', ES: 'Niveles por volumen' },
-    { EN: 'Flexible payment terms', ES: 'Términos de pago flexibles' },
-  ];
   const gets = [
     [{ EN: 'Wholesale pricing', ES: 'Precios mayoristas' },
      { EN: 'Manufacturer-direct tiers that scale with your volume.', ES: 'Niveles directos de fábrica que escalan con tu volumen.' }],
     [{ EN: 'Priority fabrication', ES: 'Fabricación prioritaria' },
-     { EN: 'Your gates jump the line — built in our shop, not shipped in.', ES: 'Tus portones pasan al frente: se fabrican en nuestro taller, no llegan de fuera.' }],
+     { EN: 'Your gates jump the line, built in our shop, not shipped in.', ES: 'Tus portones pasan al frente, se fabrican en nuestro taller, no llegan de fuera.' }],
     [{ EN: 'Job-site delivery', ES: 'Entrega en obra' },
-     { EN: 'Delivery to your job site on our own trucks across Florida — confirmed with your quote.', ES: 'Entrega en tu obra con nuestros propios camiones en toda Florida, confirmada con tu cotización.' }],
+     { EN: 'Delivery to your job site on our own trucks across Florida, confirmed with your quote.', ES: 'Entrega en tu obra con nuestros propios camiones en toda Florida, confirmada con tu cotización.' }],
   ];
   return (
   <section style={{
@@ -918,19 +913,6 @@ const ContractorHero = () => {
           onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}>
             {t('Verify stock', 'Verificar existencias')}
           </a>
-        </div>
-        {/* Program checks */}
-        <div className="mono" style={{
-          display: 'flex', gap: 22, flexWrap: 'wrap',
-          fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
-          textTransform: 'uppercase', color: 'var(--white)',
-        }}>
-          {checks.map((c, i) => (
-            <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-              <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
-              {t(c)}
-            </span>
-          ))}
         </div>
       </div>
 
