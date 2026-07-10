@@ -57,7 +57,7 @@ const EstimateHero = () => {
           {t('Sketch your layout or send linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery.', 'Dibuja tu diseño o envía los pies lineales, la altura, la cantidad de portones y el código postal. Un asesor da seguimiento al pedido desde la cotización hasta el retiro o la entrega.')}
         </p>
         <div style={{ marginTop: 32, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
-          <a href="#contact" style={{
+          <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12,
             padding: '16px 26px', borderRadius: 999,
             background: 'var(--tangerine)', color: 'var(--white)',
@@ -68,10 +68,10 @@ const EstimateHero = () => {
           }}
           onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(255, 113, 51,0.5)'; }}
           onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(255, 113, 51,0.4)'; }}>
-            {t('Send the project', 'Enviar el proyecto')}
+            {t('Draw your fence', 'Dibuja tu cerca')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
-          <a href="tel:2396895496" className="mono" style={{
+          <a href="#contact" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             paddingBottom: 4,
             fontSize: 13, fontWeight: 700, letterSpacing: '0.22em',
@@ -79,7 +79,7 @@ const EstimateHero = () => {
             color: 'var(--white)',
             borderBottom: '1px solid rgba(255,255,255,0.5)',
           }}>
-            {t('Or call (239) 689-5496', 'O llama al (239) 689-5496')}
+            {t('Or send the project below ↓', 'O envía el proyecto abajo ↓')}
           </a>
         </div>
       </div>

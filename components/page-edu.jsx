@@ -407,9 +407,9 @@ const PoolCodeHero = () => {
   return (
   <PageHero
     eyebrow={t('Florida Pool Code', 'Código de piscinas de Florida')}
-    title={t('Code-compliant', 'Perfiles de cerramiento')}
-    accent={t('enclosure profiles.', 'que cumplen el código.')}
-    subtitle={t('What the Florida Building Code says about residential pool barriers, and which of our stocked profiles meet it.', 'Lo que el Código de Construcción de Florida dice sobre las barreras de piscinas residenciales, y cuáles de nuestros perfiles en inventario lo cumplen.')}
+    title={t('Florida pool barriers,', 'Barreras de piscina de Florida,')}
+    accent={t('explained.', 'explicadas.')}
+    subtitle={t('A plain-English overview of what the Florida Building Code covers for residential pool barriers, and the stocked systems commonly used to meet it. General guidance only — requirements and approval depend on your project and your local building authority.', 'Un resumen en lenguaje sencillo de lo que el Código de Construcción de Florida cubre para barreras de piscinas residenciales, y los sistemas en inventario que comúnmente se usan para cumplirlo. Solo orientación general: los requisitos y la aprobación dependen de tu proyecto y de tu autoridad local de construcción.')}
     image={FENCE_IMG.aluminum}
   />
   );
@@ -431,9 +431,9 @@ const PoolCodeRequirements = () => {
       <div className="container">
         <PageSectionHeader
           number="01" label={t('The actual rules', 'Las reglas reales')}
-          title={t('What FBC R 4501.17', 'Lo que el FBC R 4501.17')}
-          accent={t('actually says.', 'realmente dice.')}
-          sub={t('Excerpts paraphrased, pull the sealed spec from your AHJ for permit submissions.', 'Extractos parafraseados; obtén la especificación sellada de tu AHJ para las presentaciones de permisos.')}
+          title={t('What the pool code', 'Lo que el código de piscinas')}
+          accent={t('generally covers.', 'cubre en general.')}
+          sub={t('Paraphrased for orientation, not legal advice. Confirm the current FBC edition, exact text and any local amendments with your building department before designing or filing.', 'Parafraseado como orientación, no es asesoría legal. Confirma la edición vigente del FBC, el texto exacto y cualquier enmienda local con tu departamento de construcción antes de diseñar o presentar.')}
         />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
           {reqs.map((r, i) => (
@@ -451,6 +451,10 @@ const PoolCodeRequirements = () => {
             </article>
           ))}
         </div>
+        <p style={{ marginTop: 16, fontSize: 12.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>
+          {t('Section numbers reference the Florida Building Code, Residential. Editions and local amendments change — verify the current edition and exact requirements with your local building department (AHJ).',
+             'Los números de sección hacen referencia al Código de Construcción de Florida, Residencial. Las ediciones y enmiendas locales cambian: verifica la edición vigente y los requisitos exactos con tu departamento de construcción local (AHJ).')}
+        </p>
       </div>
     </section>
   );
@@ -459,8 +463,8 @@ const PoolCodeRequirements = () => {
 const PoolCodeProfiles = () => {
   const t = useT();
   const profiles = [
-    { slug: 'aluminum', name: t('Aluminum 4-Rail', 'Aluminio de 4 rieles'), tag: t('Pool code · Pickets ≤ 3"', 'Código de piscinas · Pickets ≤ 3"'), href: 'aluminum.html', img: 'aluminum' },
-    { slug: 'vinyl',    name: t('Vinyl Picket', 'Picket de vinilo'),     tag: t('Pool code · Self-closing gates', 'Código de piscinas · Portones de cierre automático'), href: 'vinyl.html',  img: 'vinyl' },
+    { slug: 'aluminum', name: t('Aluminum', 'Aluminio'), tag: t('Pool-code configurations available', 'Configuraciones para código de piscinas disponibles'), href: 'aluminum.html', img: 'aluminum' },
+    { slug: 'vinyl',    name: t('Vinyl', 'Vinilo'),     tag: t('Pool-code configurations available', 'Configuraciones para código de piscinas disponibles'), href: 'vinyl.html',  img: 'vinyl' },
     { slug: 'ecfence',  name: 'EC Fence',         tag: t('Galvanized steel privacy', 'Privacidad de acero galvanizado'),  href: 'ecfence.html',img: 'ecfence' },
   ];
 
@@ -470,8 +474,8 @@ const PoolCodeProfiles = () => {
         <PageSectionHeader
           number="02" label={t('Profiles we stock', 'Perfiles que tenemos en inventario')}
           title={t('Three systems', 'Tres sistemas')}
-          accent={t('that meet the code.', 'que cumplen el código.')}
-          sub={t('All three ship with self-closing gate hardware kits packed by opening.', 'Los tres se envían con kits de herrajes de cierre automático para portones, empacados por abertura.')}
+          accent={t('commonly used for pool barriers.', 'de uso común en barreras de piscina.')}
+          sub={t('Each can be configured toward pool-barrier requirements. Compliance depends on the exact style, height, spacing and gate hardware of your configuration — and final approval is always up to your local authority.', 'Cada uno puede configurarse hacia los requisitos de barrera de piscina. El cumplimiento depende del estilo, la altura, la separación y los herrajes exactos de tu configuración, y la aprobación final siempre corresponde a tu autoridad local.')}
           link={[t('Materials comparison', 'Comparativa de materiales'), 'materials-comparison.html']}
         />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
@@ -488,7 +492,7 @@ const PoolCodeProfiles = () => {
                   background: 'var(--tangerine)', color: 'var(--ink)',
                   padding: '5px 10px', fontSize: 12, letterSpacing: '0.18em',
                   fontWeight: 700, textTransform: 'uppercase',
-                }}>0{i+1} · {t('Code', 'Código')}</span>
+                }}>0{i+1} · {t('Pool', 'Piscina')}</span>
               </div>
               <div style={{ padding: 24 }}>
                 <h3 className="display" style={{ margin: '0 0 8px', fontSize: 22, lineHeight: 1.1 }}>{p.name}</h3>
@@ -521,7 +525,7 @@ const PoolCodeChecklist = () => {
             <span style={{ color: 'var(--tangerine)' }}>{t('file the permit.', 'presentar el permiso.')}</span>
           </h2>
           <p style={{ marginTop: 18, fontSize: 14.5, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 360 }}>
-            {t("Run this list against your drawing. If anything's a question, your rep can pull a sealed manufacturer spec before you submit.", 'Revisa esta lista con tu plano. Si algo genera dudas, tu representante puede obtener una especificación sellada del fabricante antes de que presentes.')}
+            {t('Use this list as orientation while you plan — the code text and your local building department govern. Your rep can send the manufacturer spec sheets for the products on your quote.', 'Usa esta lista como orientación mientras planeas: el texto del código y tu departamento de construcción local mandan. Tu asesor puede enviarte las fichas técnicas del fabricante de los productos de tu cotización.')}
           </p>
         </div>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 14 }}>
@@ -533,7 +537,7 @@ const PoolCodeChecklist = () => {
             t('Gates swing outward, away from the pool', 'Los portones abren hacia afuera, alejándose de la piscina'),
             t('No openings ≥ 4" between rails or between picket and rail', 'Sin aberturas ≥ 4" entre rieles o entre picket y riel'),
             t('Door from house to pool area has alarm OR self-closing latch', 'La puerta de la casa al área de la piscina tiene alarma O pestillo de cierre automático'),
-            t('Pull sealed manufacturer spec PDF for AHJ submittal', 'Obtener el PDF de especificación sellada del fabricante para la presentación ante el AHJ'),
+            t('Confirm the current FBC edition and requirements with your AHJ', 'Confirmar la edición vigente del FBC y los requisitos con tu AHJ'),
           ].map((line, i) => (
             <li key={i} style={{
               display: 'flex', alignItems: 'flex-start', gap: 14,
@@ -563,11 +567,11 @@ const PoolCodeCTA = () => {
   const t = useT();
   return (
   <CTABand
-    kicker={t('Annotated cut sheet', 'Ficha técnica anotada')}
-    title={t('Send us your', 'Envíanos tu')}
-    accent={t('permit drawing.', 'plano del permiso.')}
-    body={t("We'll annotate your cut sheet with the matching picket / latch / gate-swing specs from the manufacturer so your AHJ has everything in one document.", 'Anotaremos tu ficha técnica con las especificaciones correspondientes de picket / pestillo / apertura del portón del fabricante para que tu AHJ tenga todo en un solo documento.')}
-    primary={[t('Request a quote', 'Solicitar una cotización'), 'estimate.html']}
+    kicker={t('Planning a pool fence?', '¿Planeas una cerca de piscina?')}
+    title={t('Quote your', 'Cotiza tu')}
+    accent={t('pool enclosure.', 'cerramiento de piscina.')}
+    body={t("Send us your layout and project details and we'll quote the material, including the manufacturer spec sheets for the products on your order. Permitting and final approval stay with you and your local authority.", 'Envíanos tu distribución y los detalles del proyecto y cotizamos el material, incluyendo las fichas técnicas del fabricante de los productos de tu pedido. El trámite del permiso y la aprobación final quedan contigo y con tu autoridad local.')}
+    primary={[t('Request a quote', 'Solicitar una cotización'), 'estimate.html#contact']}
     secondary={[t('Call the yard', 'Llama al almacén'), 'tel:2396895496']}
   />
   );

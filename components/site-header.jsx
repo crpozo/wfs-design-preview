@@ -29,7 +29,7 @@ const SiteHeader = ({ active }) => {
     { id: 'Full Catalog', label: { EN: 'Full Catalog', ES: 'Catálogo completo' }, def: { kind: 'link', href: 'products.html' } },
     { id: 'Get a Quote', label: { EN: 'Get a Quote', ES: 'Cotizar' }, def: { kind: 'list', items: [
       { label: { EN: 'Draw Your Fence',       ES: 'Dibuja tu cerca' },        href: 'https://app.westernfencesupply.com/', sub: { EN: 'Sketch or send measurements, pricing in 24h',   ES: 'Dibuja o envía medidas, precios en 24h' } },
-      { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte',   ES: 'Lun-Vie · Fort Myers + Port Charlotte' } },
+      { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html#quote', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte',   ES: 'Lun-Vie · Fort Myers + Port Charlotte' } },
     ]}},
     { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [
       { label: { EN: 'About WFS',       ES: 'Sobre WFS' },         href: 'about.html',     sub: { EN: 'Family-owned · fabricated in-house',            ES: 'Familiar · fabricado en planta' } },
@@ -227,7 +227,7 @@ const SiteHeader = ({ active }) => {
               </svg>
               {t('Draw Your Fence', 'Dibuja tu cerca')}
             </a>
-            <a href="estimate.html" style={{
+            <a href="estimate.html#contact" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '6px 6px 6px 15px',
               borderRadius: 999,

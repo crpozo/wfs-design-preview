@@ -166,14 +166,14 @@ const PoolCodeSection = () => {
   return (
     <SplitBlock
       kicker={t('Florida Pool Code', 'Código de piscinas de Florida')}
-      title={t('Code-compliant', 'Perfiles de cerramiento')}
-      accent={t('enclosure profiles.', 'que cumplen el código.')}
-      body={t('Florida Building Code requires a 4 ft minimum barrier around residential pools, with specific opening, latch and self-closing requirements. We stock multiple aluminum and vinyl profiles that meet the spec, and we\'ll annotate the cut sheet for your AHJ.', 'El Código de Construcción de Florida exige una barrera mínima de 4 pies alrededor de las piscinas residenciales, con requisitos específicos de aberturas, pestillos y cierre automático. Tenemos en existencia múltiples perfiles de aluminio y vinilo que cumplen la especificación, y anotaremos la hoja de corte para su AHJ.')}
+      title={t('Florida pool barriers,', 'Barreras de piscina de Florida,')}
+      accent={t('explained.', 'explicadas.')}
+      body={t('The Florida Building Code sets requirements for residential pool barriers — height, openings, latches and self-closing gates. We stock aluminum and vinyl systems commonly configured to meet them, and your rep can include the manufacturer spec sheets with your quote. Requirements and final approval depend on your project and your local building authority.', 'El Código de Construcción de Florida establece requisitos para las barreras de piscinas residenciales: altura, aberturas, pestillos y portones de cierre automático. Tenemos sistemas de aluminio y vinilo que comúnmente se configuran para cumplirlos, y tu asesor puede incluir las fichas técnicas del fabricante con tu cotización. Los requisitos y la aprobación final dependen de tu proyecto y de tu autoridad local de construcción.')}
       bullets={[
         t('4 ft minimum height with no horizontal handhold below 45"', 'Altura mínima de 4 pies sin apoyo horizontal para manos por debajo de 45"'),
         t('Pickets spaced ≤ 3" apart for pool code', 'Barrotes separados ≤ 3" para cumplir el código de piscinas'),
         t('Self-closing, self-latching gates ≥ 54" from grade', 'Portones de cierre y pestillo automáticos a ≥ 54" del nivel del suelo'),
-        t('Stamped manufacturer specs available on request', 'Especificaciones selladas del fabricante disponibles a solicitud'),
+        t('Manufacturer spec sheets available with your quote', 'Fichas técnicas del fabricante disponibles con tu cotización'),
       ]}
       image={FENCE_IMG.aluminum}
       imageRight={false}
