@@ -562,7 +562,7 @@ const MaterialCTA = ({ data }) => {
 const MaterialPage = ({ slug }) => {
   const [mode] = useMode();
   const base = MATERIAL_DATA[slug];
-  if (!base) return <p style={{ padding: 80, textAlign: 'center' }}>Material not found.</p>;
+  if (!base) return <p style={{ padding: 80, textAlign: 'center' }}>{useT()('Material not found.', 'Material no encontrado.')}</p>;
   // Mode-aware copy: HOMEOWNER (default) uses the base data, CONTRACTOR
   // merges in the trade-focused overrides. useMode() subscribes to the
   // wfs:mode-change event so flipping the toggle re-renders the page.

@@ -580,7 +580,7 @@ const GateCTA = ({ data }) => {
 
 const GatePage = ({ slug }) => {
   const base = GATE_DATA[slug];
-  if (!base) return <p style={{ padding: 80, textAlign: 'center' }}>Gate type not found.</p>;
+  if (!base) return <p style={{ padding: 80, textAlign: 'center' }}>{useT()('Gate type not found.', 'Tipo de portón no encontrado.')}</p>;
   const data = useTrData(base);
   return (
     <>

@@ -1143,3 +1143,20 @@ Object.assign(ES_TR, {
     else if (++tries > 40) clearInterval(id);
   }, 150);
 })();
+
+/* Product-examples gallery captions (type strings now rendered via t) */
+Object.assign(ES_TR, {
+  'Vinyl privacy fence, 6 ft, white': 'Cerca de privacidad de vinilo, 6 ft, blanca',
+  'Vinyl semi-privacy, alternating pickets, sand': 'Vinilo semi-privacidad, pickets alternados, arena',
+  'Vinyl privacy with gate, white': 'Privacidad de vinilo con portón, blanco',
+  'Vinyl semi-privacy, community standard': 'Vinilo semi-privacidad, estándar comunitario',
+  'Vinyl privacy, two-tone white and gray': 'Privacidad de vinilo, bicolor blanco y gris',
+  'Horizontal metal board privacy, black': 'Privacidad de tablero metálico horizontal, negro',
+  'Metal fence, 3-rail, brown': 'Cerca metálica, 3 rieles, marrón',
+  'Metal fence, 3-rail, black': 'Cerca metálica, 3 rieles, negra',
+  'Metal fence, 2-rail, white': 'Cerca metálica, 2 rieles, blanca',
+  'Metal board privacy, 6 ft, community standard': 'Privacidad de tablero metálico, 6 ft, estándar comunitario',
+  'EC Fence panels, 6 ft, bronze': 'Paneles EC Fence, 6 ft, bronce',
+  'EC Fence panels, 6 ft, white': 'Paneles EC Fence, 6 ft, blanco',
+  'EC Fence panels, 6 ft, community standard': 'Paneles EC Fence, 6 ft, estándar comunitario',
+});
