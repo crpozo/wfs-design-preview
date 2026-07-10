@@ -26,7 +26,7 @@ const SiteHeader = ({ active }) => {
   const NAV = [
     { id: 'Fences', label: { EN: 'Fences', ES: 'Cercas' }, def: { kind: 'mega-fences' } },
     { id: 'Gates',  label: { EN: 'Gates',  ES: 'Portones' }, def: { kind: 'mega-gates' } },
-    { id: 'Full Catalog', label: { EN: 'Download Catalog', ES: 'Descargar catálogo' }, def: { kind: 'link', href: 'assets/wfs-catalog.pdf', external: true } },
+    { id: 'Full Catalog', label: { EN: 'Full Catalog', ES: 'Catálogo completo' }, def: { kind: 'link', href: 'products.html' } },
     { id: 'Get a Quote', label: { EN: 'Get a Quote', ES: 'Cotizar' }, def: { kind: 'list', items: [
       { label: { EN: 'Draw Your Fence',       ES: 'Dibuja tu cerca' },        href: 'https://app.westernfencesupply.com/', sub: { EN: 'Sketch or send measurements, pricing in 24h',   ES: 'Dibuja o envía medidas, precios en 24h' } },
       { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html#quote', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte',   ES: 'Lun-Vie · Fort Myers + Port Charlotte' } },
