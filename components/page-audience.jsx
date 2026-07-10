@@ -1017,95 +1017,75 @@ const ContractorStatsStrip = () => {
 
 const ContractorBenefits = () => {
   const t = useT();
-  const benefits = [
-    {
-      title: { EN: 'Factory Direct Pricing', ES: 'Precios directos de fábrica' },
-      body:  { EN: 'Maximize your margins with true wholesale pricing tiered to your volume, no out-of-state distributor markup.',
-                ES: 'Maximiza tus márgenes con precios mayoristas reales escalonados por volumen, sin recargo de distribuidor de otro estado.' },
-      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21 V11 L9 14 V11 L15 14 V11 L21 14 V21 Z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>),
-    },
-    {
-      title: { EN: 'Priority Fabrication', ES: 'Fabricación prioritaria' },
-      body:  { EN: 'Skip the line. Wholesale partners get priority manufacturing slots and turnaround on gates.',
-                ES: 'Sáltate la fila. Los socios mayoristas obtienen turnos prioritarios de fabricación y entrega en portones.' },
-      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>),
-    },
-    {
-      title: { EN: 'Job Site Delivery', ES: 'Entrega a obra' },
-      body:  { EN: 'Unbranded or branded drops directly to your job site. Curbside, will-call, or LTL, your choice per PO.',
-                ES: 'Entregas con o sin tu marca, directo a tu obra. Entrega en acera, retiro en planta o LTL, tú decides en cada orden.' },
-      svg: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21 Q4 14 4 9 A8 8 0 0 1 20 9 Q20 14 12 21 Z"/><circle cx="12" cy="9.5" r="2.6"/></svg>),
-    },
-    {
-      title: { EN: 'Lead Routing', ES: 'Derivación de leads' },
-      body:  { EN: 'We refer homeowner projects directly to certified installer partners in the alliance, with the WFS material line locked in.',
-                ES: 'Referimos proyectos de propietarios directamente a socios instaladores certificados de la alianza, con la línea de material WFS asegurada.' },
-      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 19 Q9 14 15 19"/><path d="M14 18 Q17.5 15 21 18"/></svg>),
-    },
-    {
-      title: { EN: 'Payment Terms', ES: 'Términos de pago' },
-      body:  { EN: 'Flexible payment terms available for qualified high-volume partners after a short trade-reference review.',
-                ES: 'Términos de pago flexibles disponibles para socios de alto volumen calificados, tras una breve revisión de referencias comerciales.' },
-      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="6" width="18" height="13" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><rect x="6" y="14" width="4" height="2" rx="0.4" fill="currentColor"/></svg>),
-    },
-    {
-      title: { EN: 'Dedicated Rep', ES: 'Representante dedicado' },
-      body:  { EN: 'One named contractor account rep. Order by phone, email, or in-yard, same person from RFQ through PO close-out.',
-                ES: 'Un representante asignado a tu cuenta. Ordena por teléfono, email o en la sucursal, la misma persona desde la RFQ hasta el cierre de la orden.' },
-      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20 Q5 14 12 14 Q19 14 19 20"/></svg>),
-    },
+  const perks = [
+    [{ EN: 'Factory direct pricing', ES: 'Precio directo de fábrica' },
+     { EN: 'True wholesale pricing tiered to your volume, no out-of-state distributor markup.', ES: 'Precio mayorista real por niveles según tu volumen, sin margen de distribuidores de fuera del estado.' }],
+    [{ EN: 'Priority fabrication', ES: 'Fabricación prioritaria' },
+     { EN: 'Skip the line. Partners get priority manufacturing slots and turnaround on gates.', ES: 'Sáltate la fila. Los socios tienen prioridad en los turnos de fabricación y en los tiempos de portones.' }],
+    [{ EN: 'Job site delivery', ES: 'Entrega en obra' },
+     { EN: 'Unbranded or branded drops to your site. Curbside, will-call, or LTL, your choice per PO.', ES: 'Entregas con o sin marca en tu obra. En banqueta, will-call o LTL, tú eliges por orden de compra.' }],
+    [{ EN: 'Lead routing', ES: 'Referencia de clientes' },
+     { EN: 'Homeowner projects referred directly to trusted installer partners, with the WFS material line locked in.', ES: 'Proyectos de propietarios referidos directamente a instaladores socios de confianza, con la línea de material WFS asegurada.' }],
+    [{ EN: 'Payment terms', ES: 'Términos de pago' },
+     { EN: 'Flexible terms for qualified high-volume partners after a short trade-reference review.', ES: 'Términos flexibles para socios calificados de alto volumen tras una breve revisión de referencias comerciales.' }],
+    [{ EN: 'Dedicated rep', ES: 'Asesor dedicado' },
+     { EN: 'One named account rep. Phone, email, or in-yard, from RFQ through PO close-out.', ES: 'Un asesor de cuenta con nombre y apellido. Por teléfono, correo o en la sucursal, del RFQ al cierre de la orden.' }],
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '120px 0' }}>
-      <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: 56 }}>
-          <h2 className="display" style={{
-            margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
-            lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
-          }}>{t('Why partner with WFS', 'Por qué asociarte con WFS')}</h2>
-        </div>
-        <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 18, maxWidth: 1200, margin: '0 auto',
-        }}>
-          {benefits.map((b, i) => (
-            <article key={i} style={{
-              position: 'relative',
-              border: '1.5px solid var(--ink)',
-              background: b.highlighted ? 'var(--ink)' : 'var(--white)',
-              color: b.highlighted ? 'var(--white)' : 'var(--ink)',
-              padding: '36px 32px',
-              minHeight: 280,
-              transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = b.highlighted ? '8px 8px 0 var(--tangerine)' : '8px 8px 0 var(--tangerine)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
-              {b.highlighted && (
-                <span className="mono" style={{
-                  position: 'absolute', top: 16, right: 16,
-                  padding: '4px 10px',
-                  background: 'var(--tangerine)', color: 'var(--white)',
-                  fontSize: 11.5, fontWeight: 700, letterSpacing: '0.2em',
-                  textTransform: 'uppercase',
-                }}>{t('Top ask', 'Más solicitado')}</span>
-              )}
-              <div style={{ marginBottom: 30, color: b.highlighted ? 'var(--tangerine)' : 'var(--ink)' }}>{b.svg}</div>
-              <h3 style={{
-                margin: '0 0 14px',
-                fontSize: 16, fontWeight: 700,
-                letterSpacing: '-0.005em',
-                color: b.highlighted ? 'var(--white)' : 'var(--ink)',
-                textTransform: 'uppercase',
-              }}>{t(b.title)}</h3>
-              <p className="mono" style={{
-                margin: 0, fontSize: 13, lineHeight: 1.65,
-                color: b.highlighted ? 'rgba(255,255,255,0.72)' : 'var(--charcoal)',
-              }}>{t(b.body)}</p>
-            </article>
-          ))}
-        </div>
+  <section style={{ background: 'var(--white)', padding: '120px 0' }}>
+    <div className="container">
+      {/* Eyebrow */}
+      <div className="mono" style={{
+        display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 22,
+        fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+        textTransform: 'uppercase', color: 'var(--laser-blue)',
+      }}>
+        <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
+        {t('Wholesale Partner Program', 'Programa de socios mayoristas')}
       </div>
-    </section>
+      {/* Title + right blurb */}
+      <div style={{
+        display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end',
+        marginBottom: 'clamp(36px, 6vh, 56px)',
+      }}>
+        <h2 className="display" style={{
+          margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02,
+          letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
+        }}>
+          {t('Why partner', 'Por qué asociarte')}<br/>
+          <span style={{ color: 'var(--tangerine)' }}>{t('with WFS.', 'con WFS.')}</span>
+        </h2>
+        <p style={{
+          margin: 0, maxWidth: 320, justifySelf: 'end', textAlign: 'right',
+          fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)',
+        }}>
+          {t('Six reasons contractors keep their POs local.', 'Seis razones por las que los contratistas mantienen sus órdenes locales.')}
+        </p>
+      </div>
+
+      {/* 2x3 grid with hairline dividers, outlined numbers */}
+      <div className="wfs-perks-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)' }}>
+        {perks.map(([title, body], i) => (
+          <div key={i} className="wfs-perk-cell" style={{
+            padding: 'clamp(28px, 4vh, 44px) clamp(22px, 2.5vw, 40px)',
+            borderLeft: i % 3 === 0 ? 'none' : '1px solid rgba(0,16,17,0.1)',
+            borderTop: i < 3 ? 'none' : '1px solid rgba(0,16,17,0.08)',
+          }}>
+            <span className="display" aria-hidden style={{
+              display: 'block', marginBottom: 22,
+              fontSize: 44, lineHeight: 1, fontWeight: 800,
+              color: 'transparent', WebkitTextStroke: '1.3px rgba(38,49,102,0.3)',
+            }}>0{i + 1}</span>
+            <h3 className="display" style={{
+              margin: '0 0 12px', fontSize: 19, lineHeight: 1.1, fontWeight: 800,
+              textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--ink)',
+            }}>{t(title)}</h3>
+            <p style={{ margin: 0, maxWidth: 340, fontSize: 14, lineHeight: 1.65, color: 'var(--charcoal)' }}>{t(body)}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
   );
 };
 

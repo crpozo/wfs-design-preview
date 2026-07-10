@@ -642,3 +642,9 @@ section { position: relative; }
   .wfs-tape-row + .wfs-tape-row { margin-top: 28px; }
   .wfs-tape-wrap span[aria-hidden] { display: none !important; }
 }
+
+/* Why-partner grid: drop the column dividers when it stacks */
+@media (max-width: 1024px) {
+  .wfs-perk-cell { border-left: none !important; border-top: 1px solid rgba(0,16,17,0.08) !important; }
+  .wfs-perks-grid .wfs-perk-cell:first-child { border-top: none !important; }
+}
