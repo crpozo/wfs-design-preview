@@ -28,7 +28,7 @@ const SiteHeader = ({ active }) => {
     { id: 'Gates',  label: { EN: 'Gates',  ES: 'Portones' }, def: { kind: 'mega-gates' } },
     { id: 'Full Catalog', label: { EN: 'Full Catalog', ES: 'Catálogo completo' }, def: { kind: 'link', href: 'products.html' } },
     { id: 'Get a Quote', label: { EN: 'Get a Quote', ES: 'Cotizar' }, def: { kind: 'list', items: [
-      { label: { EN: 'Draw Your Fence',       ES: 'Dibuja tu cerca' },        href: 'estimate.html', sub: { EN: 'Sketch or send measurements, pricing in 24h',   ES: 'Dibuja o envía medidas, precios en 24h' } },
+      { label: { EN: 'Draw Your Fence',       ES: 'Dibuja tu cerca' },        href: 'https://app.westernfencesupply.com/', sub: { EN: 'Sketch or send measurements, pricing in 24h',   ES: 'Dibuja o envía medidas, precios en 24h' } },
       { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte',   ES: 'Lun-Vie · Fort Myers + Port Charlotte' } },
     ]}},
     { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [
@@ -214,7 +214,7 @@ const SiteHeader = ({ active }) => {
 
           {/* CTAs */}
           <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-            <a href="estimate.html" className="mono wfs-hide-tablet" style={{
+            <a href="https://app.westernfencesupply.com/" className="mono wfs-hide-tablet" style={{
               display: 'inline-flex', alignItems: 'center', gap: 7,
               padding: '7px 0',
               fontSize: 11.5, fontWeight: 700,
