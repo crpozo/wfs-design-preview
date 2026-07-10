@@ -612,118 +612,135 @@ const HomeownerTestimonial = () => {
 const HomeownerFAQ = () => {
   const t = useT();
   const items = [
-    [{ EN: 'Do I need a permit for my fence?',
-        ES: '¿Necesito permiso para mi cerca?' },
-     { EN: 'Most Florida counties require a permit for fences over 4 ft, and pool barriers always require code-compliant permits. Your installer typically handles the filing, we provide the manufacturer specs and stamped wind-load data for AHJ submission.',
-       ES: 'La mayoría de condados de Florida exigen permiso para cercas de más de 4 pies, y los cerramientos de piscina siempre requieren permisos según código. Tu instalador suele encargarse del trámite, nosotros proveemos las specs del fabricante y datos sellados de carga eólica para la presentación AHJ.' }],
-    [{ EN: 'Does WFS handle HOA approvals?',
-        ES: '¿WFS gestiona aprobaciones del HOA?' },
-     { EN: "We don't submit on your behalf, but we provide every document your HOA needs: profile drawings, color samples, finish specs and a written quote in the format most boards expect. Your installer or a community manager submits.",
-       ES: 'No presentamos por ti, pero proveemos cada documento que tu HOA necesita: dibujos de perfil, muestras de color, specs de acabado y una cotización por escrito en el formato que la mayoría de juntas espera. Tu instalador o un community manager presenta.' }],
-    [{ EN: 'What is the lead time for orders?',
-        ES: '¿Cuál es el tiempo de entrega de los pedidos?' },
-     { EN: 'Stocked items ship in 1-2 days. Custom welded gates run 3-7 days. Color-matched or non-stock heights take 2-4 weeks. We confirm the exact lead time before you approve the quote.',
-       ES: 'Los artículos en stock se envían en 1-2 días. Los portones soldados a medida toman 3-7 días. Colores específicos o alturas fuera de stock toman 2-4 semanas. Confirmamos el plazo exacto antes de que apruebes la cotización.' }],
-    [{ EN: 'How do I connect with a certified installer?',
-        ES: '¿Cómo me conecto con un instalador certificado?' },
-     { EN: 'When you request a quote we route your project to the closest WFS-aligned installer in our certified alliance. They quote the labor side; the material side stays on your WFS line item.',
-       ES: 'Cuando solicitas cotización, derivamos tu proyecto al instalador alineado con WFS más cercano dentro de nuestra alianza certificada. Ellos cotizan la mano de obra; el material queda en tu línea WFS.' }],
+    [{ EN: 'Do I need a permit for my fence?', ES: '¿Necesito permiso para mi cerca?' },
+     { EN: 'Most Florida jurisdictions require a permit for new fences, and pool barriers have their own code requirements. The owner or installer pulls the permit; we back you up with manufacturer spec sheets for whatever you need to submit.',
+       ES: 'La mayoría de las jurisdicciones de Florida exigen permiso para cercas nuevas, y las barreras de piscina tienen sus propios requisitos de código. El propietario o el instalador tramita el permiso; nosotros te respaldamos con las fichas técnicas del fabricante para lo que debas presentar.' }],
+    [{ EN: 'Does WFS handle HOA approvals?', ES: '¿WFS gestiona aprobaciones de la HOA?' },
+     { EN: "We don't submit on your behalf, but we provide the product information your HOA needs: styles, colors, specs and a written quote. You or your installer submit it.",
+       ES: 'No presentamos por ti, pero te damos la información de producto que tu HOA necesita: estilos, colores, especificaciones y una cotización por escrito. Tú o tu instalador la presentan.' }],
+    [{ EN: 'What is the lead time for orders?', ES: '¿Cuál es el tiempo de entrega de los pedidos?' },
+     { EN: 'Stocked items are ready right away. Custom gates and non-stock items vary by product; we confirm the exact lead time before you approve the quote.',
+       ES: 'Lo que está en stock está listo de inmediato. Los portones a medida y los artículos fuera de stock varían según el producto; confirmamos el plazo exacto antes de que apruebes la cotización.' }],
+    [{ EN: 'How do I connect with an installer?', ES: '¿Cómo me conecto con un instalador?' },
+     { EN: 'Ask your rep. We can recommend trusted local installers who use our materials every week; they quote the labor and the material stays on your WFS quote.',
+       ES: 'Pregunta a tu asesor. Podemos recomendarte instaladores locales de confianza que usan nuestros materiales cada semana; ellos cotizan la mano de obra y el material queda en tu cotización WFS.' }],
   ];
-  const [open, setOpen] = React.useState(1);
+  const [open, setOpen] = React.useState(0);
+  const [ctaHover, setCtaHover] = React.useState(false);
   return (
-    <section style={{ background: '#ffffff', padding: '120px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '120px 0' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: 64, alignItems: 'start' }}>
-          {/* Left, title + contact sidebar */}
-          <div style={{ position: 'sticky', top: 100 }}>
+          {/* Left: editorial header + CTA, same design as the homepage FAQ */}
+          <div className="wfs-faq-sidebar" style={{ position: 'sticky', top: 100 }}>
             <h2 className="display" style={{
-              margin: '0 0 24px',
+              margin: 0,
               fontSize: 'clamp(28px, 3vw, 40px)',
-              lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
-            }}>{t('Common homeowner', 'Preguntas comunes de')}<br/>{t('questions', 'propietarios')}</h2>
-            <p className="mono" style={{
-              margin: '0 0 32px',
-              fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
-              maxWidth: 320,
+              lineHeight: 1, letterSpacing: '-0.02em',
+              fontWeight: 800,
             }}>
-              {t(
-                "The four we hear most often. If yours isn't here, call the yard or send a sketch.",
-                'Las cuatro que más recibimos. Si la tuya no está aquí, llama a la sucursal o envíanos un boceto.'
-              )}
+              {t('Common homeowner', 'Preguntas comunes de')}<br/>
+              <span style={{ color: 'var(--tangerine)' }}>{t('questions.', 'propietarios.')}</span>
+            </h2>
+            <p style={{
+              marginTop: 24,
+              fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)',
+              maxWidth: 340, marginBottom: 28,
+            }}>
+              {t("The four we hear most often. If yours isn't here, call the yard or email", 'Las cuatro que más escuchamos. Si la tuya no está aquí, llama a la sucursal o escribe a')}
+              {' '}<a href="mailto:sales@westernfencesupply.com" style={{
+                color: 'var(--ink)', borderBottom: '1px solid var(--tangerine)',
+              }}>sales@westernfencesupply.com</a>.
             </p>
-            <div style={{
-              border: '1.5px solid var(--ink)',
-              background: 'var(--white)',
-              padding: '24px 26px',
-              maxWidth: 320,
-            }}>
-              <div className="mono" style={{
-                fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
-                color: 'var(--tangerine)', textTransform: 'uppercase',
-                marginBottom: 14,
-                display: 'flex', alignItems: 'center', gap: 8,
+
+            <a href="estimate.html#contact"
+              onMouseEnter={() => setCtaHover(true)}
+              onMouseLeave={() => setCtaHover(false)}
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: 14,
+                padding: '14px 14px 14px 26px',
+                borderRadius: 999,
+                background: ctaHover ? 'var(--laser-blue)' : 'var(--ink)',
+                color: 'var(--white)',
+                textDecoration: 'none',
+                fontFamily: 'var(--sans)',
+                fontSize: 13, fontWeight: 700,
+                letterSpacing: '0.18em', textTransform: 'uppercase',
+                transition: 'background 0.2s ease, transform 0.2s ease',
+                transform: ctaHover ? 'translateY(-1px)' : 'none',
+                boxShadow: '0 18px 36px -18px rgba(38, 49, 102,0.5)',
               }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff7133', boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)' }}/>
-                {t('Still got questions?', '¿Aún tienes preguntas?')}
-              </div>
-              <a href="tel:2396895496" className="display" style={{
-                display: 'block', marginBottom: 8,
-                fontSize: 22, color: 'var(--ink)', lineHeight: 1.1,
-              }}>(239) 689-5496</a>
-              <a href="mailto:sales@westernfencesupply.com" className="mono" style={{
-                display: 'block', wordBreak: 'break-all',
-                fontSize: 13, color: 'var(--charcoal)',
-              }}>sales@westernfencesupply.com</a>
-              <div className="mono" style={{
-                marginTop: 14, paddingTop: 14,
-                borderTop: '1px solid rgba(38, 49, 102,0.1)',
-                fontSize: 12, letterSpacing: '0.18em',
-                textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 700,
-              }}>{t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm')}</div>
-            </div>
+              {t('Talk to a sales rep', 'Habla con un representante')}
+              <span style={{
+                width: 30, height: 30, borderRadius: '50%',
+                background: 'var(--tangerine)', color: 'var(--ink)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="square"/>
+                </svg>
+              </span>
+            </a>
           </div>
 
-          {/* Right, accordion */}
-          <div style={{ display: 'grid', gap: 14 }}>
+          {/* Right: accordion list */}
+          <div>
             {items.map(([q, a], i) => {
               const isOpen = open === i;
               return (
                 <div key={i} style={{
-                  border: '1.5px solid var(--ink)',
-                  background: isOpen ? '#ffffff' : 'var(--white)',
-                  transition: 'background 0.2s ease',
+                  borderBottom: '1px solid rgba(0,16,17,0.12)',
+                  borderLeft: `2px solid ${isOpen ? 'var(--tangerine)' : 'transparent'}`,
+                  paddingLeft: isOpen ? 20 : 0,
+                  background: 'transparent',
+                  transition: 'all 0.25s ease',
                 }}>
                   <button onClick={() => setOpen(isOpen ? -1 : i)} style={{
-                    width: '100%', display: 'flex',
-                    alignItems: 'center', justifyContent: 'space-between',
-                    padding: '22px 26px', textAlign: 'left', gap: 24,
-                    background: 'transparent', border: 'none', cursor: 'pointer',
+                    width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    padding: '22px 0', textAlign: 'left', gap: 24,
                   }}>
-                    <span style={{ display: 'flex', alignItems: 'baseline', gap: 18 }}>
+                    <span style={{ display: 'flex', gap: 20, alignItems: 'baseline' }}>
                       <span className="mono" style={{
-                        fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+                        fontSize: 12.5, fontWeight: 700,
+                        letterSpacing: '0.22em',
                         color: isOpen ? 'var(--tangerine)' : 'var(--charcoal)',
-                      }}>{String(i + 1).padStart(2, '0')}</span>
-                      <span className="mono" style={{
-                        fontSize: 13.5, fontWeight: 700, color: 'var(--ink)',
+                        transition: 'color 0.25s ease',
+                      }}>
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                      <span style={{
+                        fontSize: 17, fontWeight: 500,
+                        color: 'var(--ink)',
+                        letterSpacing: '-0.005em',
                       }}>{t(q)}</span>
                     </span>
                     <span style={{
+                      width: 28, height: 28,
+                      background: isOpen ? 'var(--tangerine)' : 'transparent',
+                      border: `1px solid ${isOpen ? 'var(--tangerine)' : 'rgba(0,16,17,0.2)'}`,
+                      color: 'var(--ink)',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
                       flexShrink: 0,
-                      fontSize: 22, fontWeight: 300,
-                      color: isOpen ? 'var(--tangerine)' : 'var(--ink)',
-                      transform: isOpen ? 'rotate(45deg)' : 'none',
-                      transition: 'transform 0.2s ease, color 0.2s ease',
-                    }}>+</span>
+                      transition: 'all 0.2s ease',
+                    }}>
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6h8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+                        {!isOpen && <path d="M6 2v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>}
+                      </svg>
+                    </span>
                   </button>
                   <div style={{
-                    maxHeight: isOpen ? 280 : 0, overflow: 'hidden',
+                    maxHeight: isOpen ? 200 : 0,
+                    overflow: 'hidden',
                     transition: 'max-height 0.3s ease',
                   }}>
-                    <p className="mono" style={{
-                      margin: 0, padding: '0 26px 22px 64px',
-                      fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
-                    }}>{t(a)}</p>
+                    <p style={{
+                      fontSize: 15, lineHeight: 1.6,
+                      color: 'var(--ink)', opacity: 0.78,
+                      margin: '0 0 22px', paddingLeft: 40, maxWidth: 640,
+                    }}>
+                      {t(a)}
+                    </p>
                   </div>
                 </div>
               );
@@ -805,7 +822,6 @@ const HomeownerPage = () => (
     <HomeownerSteps />
     <FenceCategories />
     <HomeownerInstallerSplit />
-    <HomeownerTestimonial />
     <HomeownerFAQ />
     <HomeownerClosingCTA />
     <Footer />
