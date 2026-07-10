@@ -177,16 +177,6 @@ const FeaturedGrid = () => {
           <span className="mono" style={{
             fontSize: 13, letterSpacing: '0.14em', color: 'var(--charcoal)', whiteSpace: 'nowrap',
           }}>{start + 1}–{Math.min(start + PER, FEATURED.length)} / {FEATURED.length}</span>
-          <a href="assets/wfs-catalog.pdf" download="WFS-Fence-Catalog.pdf" className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
-            textTransform: 'uppercase', color: 'var(--tangerine)', whiteSpace: 'nowrap',
-          }}>
-            {t('Download catalog (PDF)', 'Descargar catálogo (PDF)')}
-            <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-              <path d="M8 2 V13 M4 9 L8 13 L12 9" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
-            </svg>
-          </a>
         </div>
       </div>
     </section>
