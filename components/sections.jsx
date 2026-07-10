@@ -101,7 +101,7 @@ const FeaturedGrid = () => {
         }}>
           <div>
             <h2 className="display" style={{
-              fontSize: 'clamp(30px, 3.4vw, 46px)', margin: 0,
+              fontSize: 'clamp(26px, 2.8vw, 38px)', margin: 0,
               textTransform: 'uppercase', fontWeight: 800, letterSpacing: '-0.01em',
             }}>
               {t('In stock,', 'En existencia,')}{' '}
