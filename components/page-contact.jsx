@@ -27,23 +27,14 @@ const CONTACT_YARDS = [
 const ContactHero = () => {
   const t = useT();
   return (
-  <section style={{ background: 'var(--ink)', color: 'var(--white)', padding: 'clamp(56px, 9vh, 96px) 0' }}>
-    <div className="container">
-      <h1 className="display" style={{
-        margin: 0, fontSize: 'clamp(32px, 3.8vw, 54px)', lineHeight: 1.02,
-        letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
-      }}>
-        {t('Contact', 'Contacto')}
-      </h1>
-      <p style={{ margin: '16px 0 0', maxWidth: 560, fontSize: 15.5, lineHeight: 1.6, color: 'var(--alice-blue)' }}>
-        {t('Phones, emails, addresses and hours for both yards — right here. Looking for material pricing instead?',
-           'Teléfonos, correos, direcciones y horarios de ambas sucursales, aquí mismo. ¿Buscas precios de material?')}
-        {' '}<a href="estimate.html#contact" style={{ color: 'var(--white)', borderBottom: '1px solid var(--tangerine)' }}>
-          {t('Request a material quote', 'Solicita una cotización de material')}
-        </a>.
-      </p>
-    </div>
-  </section>
+  <PageHero
+    crumbs={[[t('Home', 'Inicio'), 'Homepage.html'], [t('Contact', 'Contacto'), null]]}
+    eyebrow={t('Contact · Western Fence Supply', 'Contacto · Western Fence Supply')}
+    title={t('Contact.', 'Contacto.')}
+    subtitle={t('Phones, emails, addresses and hours for both yards, right here. Looking for material pricing? Use the quote form so it reaches the right rep.',
+               'Teléfonos, correos, direcciones y horarios de ambas sucursales, aquí mismo. ¿Buscas precios de material? Usa el formulario de cotización para que llegue al asesor correcto.')}
+    image="assets/hero-warehouse.webp"
+  />
   );
 };
 
