@@ -32,15 +32,26 @@ const TrainingHeader = () => {
             fontSize: 12, fontWeight: 700, letterSpacing: '0.2em',
             textTransform: 'uppercase', color: 'var(--charcoal)',
           }}>{t('Training Companion', 'Training Companion')}</span>
-          <div className="mono" style={{ display: 'inline-flex', gap: 12, fontSize: 12, fontWeight: 700, letterSpacing: '0.14em' }}>
-            {['EN', 'ES'].map((l) => (
-              <button key={l} onClick={() => setCurLang(l)} style={{
-                padding: 0, background: 'transparent', cursor: 'pointer',
-                fontFamily: 'inherit', fontSize: 12, fontWeight: 700, letterSpacing: '0.14em',
-                color: curLang === l ? 'var(--ink)' : 'rgba(0,16,17,0.35)',
-                borderBottom: curLang === l ? '2px solid var(--tangerine)' : '2px solid transparent',
-              }}>{l}</button>
-            ))}
+          <div className="mono" style={{ display: 'inline-flex', alignItems: 'center', gap: 14 }}>
+            {['EN', 'ES'].map((l) => {
+              const isActive = curLang === l;
+              return (
+                <button key={l} onClick={() => setCurLang(l)} style={{
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  padding: 0, background: 'transparent', cursor: 'pointer',
+                  fontFamily: 'inherit', fontSize: 12, fontWeight: 700,
+                  letterSpacing: '0.18em', textTransform: 'uppercase',
+                  color: isActive ? 'var(--ink)' : 'rgba(0,16,17,0.35)',
+                }}>
+                  <span aria-hidden style={{
+                    fontSize: 14, lineHeight: 1,
+                    filter: isActive ? 'none' : 'grayscale(0.55)',
+                    opacity: isActive ? 1 : 0.75,
+                  }}>{l === 'EN' ? '🇺🇸' : '🇲🇽'}</span>
+                  {l}
+                </button>
+              );
+            })}
           </div>
         </div>
       </div>
