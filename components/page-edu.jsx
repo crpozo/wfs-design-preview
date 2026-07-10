@@ -579,3 +579,181 @@ Object.assign(window, {
   MaterialsCompHero, MaterialsCompDeepDive, MaterialsCompCTA,
   PoolCodeHero, PoolCodeRequirements, PoolCodeProfiles, PoolCodeChecklist, PoolCodeCTA,
 });
+
+
+/* ───── FAQ page: topic-organized, first-quote experience ─────
+   Different from the homepage FAQ strip: grouped by topic with a sticky
+   topic nav, and focused on the questions people actually ask the first
+   time they quote fence material. */
+
+const FAQ_TOPICS = [
+  {
+    id: 'quoting',
+    title: { EN: 'Quoting & Pricing', ES: 'Cotización y precios' },
+    items: [
+      [{ EN: 'What exactly do I need to send to get a quote?', ES: '¿Qué necesito enviar exactamente para cotizar?' },
+       { EN: "Linear feet per side, fence height, color, style, gate count and sizes, and the project ZIP. A survey or hand-drawn sketch speeds everything up, and photos of the site help. You don't need to count posts or rails — we do the material takeoff for you.", ES: 'Pies lineales por lado, altura de la cerca, color, estilo, cantidad y medidas de portones, y el código postal del proyecto. Un plano o boceto a mano acelera todo, y las fotos del sitio ayudan. No necesitas contar postes ni rieles: nosotros hacemos el despiece del material por ti.' }],
+      [{ EN: 'How fast do I actually get the quote?', ES: '¿Qué tan rápido recibo la cotización realmente?' },
+       { EN: 'Within 24 hours on business days — one email with stock, pricing, and lead time, from the rep who will follow your order to pickup or delivery.', ES: 'Dentro de 24 horas en días hábiles: un solo correo con existencias, precios y tiempos de entrega, del asesor que dará seguimiento a tu pedido hasta el retiro o la entrega.' }],
+      [{ EN: "Why aren't prices listed on the website?", ES: '¿Por qué no hay precios publicados en el sitio?' },
+       { EN: "Material pricing fluctuates frequently. We quote current numbers on every request so you're never working from a stale price.", ES: 'Los precios del material fluctúan con frecuencia. Cotizamos números actuales en cada solicitud para que nunca trabajes con un precio desactualizado.' }],
+      [{ EN: "I've never bought fence material before — will someone walk me through it?", ES: 'Nunca he comprado material de cerca, ¿alguien me guía en el proceso?' },
+       { EN: 'Yes. A real sales rep — no chatbot — takes your project from the first call, helps you pick material and style, and follows the order through pickup or delivery.', ES: 'Sí. Un asesor de ventas real —sin chatbot— toma tu proyecto desde la primera llamada, te ayuda a elegir material y estilo, y da seguimiento al pedido hasta el retiro o la entrega.' }],
+      [{ EN: 'How long is my quote good for?', ES: '¿Por cuánto tiempo es válida mi cotización?' },
+       { EN: 'Because pricing moves with the market, your rep confirms the validity window on the quote itself. If it expires, one call refreshes it with current numbers.', ES: 'Como los precios se mueven con el mercado, tu asesor confirma la vigencia en la propia cotización. Si vence, una llamada la actualiza con números actuales.' }],
+    ],
+  },
+  {
+    id: 'stock',
+    title: { EN: 'Materials & Stock', ES: 'Materiales y existencias' },
+    items: [
+      [{ EN: "What's actually in stock?", ES: '¿Qué hay realmente en existencia?' },
+       { EN: 'Stocked items are ready right away — buy it and take it the same day. Custom or non-stock orders run anywhere from 1-2 days to 6-8 weeks depending on the item; we tell you which is which on the quote.', ES: 'Lo que está en stock está listo de inmediato: lo compras y te lo llevas el mismo día. Los pedidos a medida o fuera de stock tardan de 1-2 días a 6-8 semanas según el artículo; te decimos cuál es cuál en la cotización.' }],
+      [{ EN: 'Can I buy individual parts instead of whole kits?', ES: '¿Puedo comprar piezas sueltas en vez de kits completos?' },
+       { EN: 'Yes. Chain link especially is sold piece by piece — wire, top rail, posts, bands, caps and screws — which makes repairs much easier for homeowners and contractors.', ES: 'Sí. La malla ciclónica en especial se vende pieza por pieza: malla, riel superior, postes, bandas, tapas y tornillos, lo que facilita mucho las reparaciones a propietarios y contratistas.' }],
+      [{ EN: 'Which material should I choose for my project?', ES: '¿Qué material debería elegir para mi proyecto?' },
+       { EN: "Depends on what the fence needs to do: privacy, pool code, security, wind exposure, budget. Check the materials comparison in the Education Hub, or tell your rep the job and they'll point you to the right system.", ES: 'Depende de lo que la cerca deba hacer: privacidad, código de piscinas, seguridad, viento, presupuesto. Revisa la comparativa de materiales del Centro Educativo, o cuéntale el proyecto a tu asesor y te orientará al sistema correcto.' }],
+      [{ EN: 'What colors can I get?', ES: '¿Qué colores puedo conseguir?' },
+       { EN: 'Vinyl comes in white, tan, and gray (limited). Aluminum in black, bronze, and white. Metal / DuraFence in white, dark bronze, woodgrain, and galvanized. Chain link in galvanized, black, and green.', ES: 'El vinilo viene en blanco, arena y gris (limitado). El aluminio en negro, bronce y blanco. El Metal / DuraFence en blanco, bronce oscuro, imitación madera y galvanizado. La malla ciclónica en galvanizado, negro y verde.' }],
+    ],
+  },
+  {
+    id: 'pickup',
+    title: { EN: 'Pickup & Delivery', ES: 'Retiro y entrega' },
+    items: [
+      [{ EN: 'Where do I pick up my order?', ES: '¿Dónde recojo mi pedido?' },
+       { EN: 'Fort Myers (2621 Fowler St) or Port Charlotte (1145 Enterprise Dr), depending on where your material is stocked. Contact us first and we confirm availability and which yard to go to.', ES: 'En Fort Myers (2621 Fowler St) o Port Charlotte (1145 Enterprise Dr), según dónde esté tu material. Contáctanos primero y te confirmamos disponibilidad y a qué sucursal ir.' }],
+      [{ EN: 'Can my order be ready when I arrive?', ES: '¿Puede estar listo mi pedido cuando llegue?' },
+       { EN: 'Yes — call ahead and standard qualifying orders are pulled and staged the same day, waiting at the bay. Hours: Mon-Fri 7am-4pm, Sat 7am-12pm.', ES: 'Sí: avisa con anticipación y los pedidos estándar que califiquen se preparan el mismo día y te esperan en la bahía. Horario: lun-vie 7am-4pm, sáb 7am-12pm.' }],
+      [{ EN: 'What vehicle do I need for pickup?', ES: '¿Qué vehículo necesito para el retiro?' },
+       { EN: 'Fence panels and rails are long — metal rails run up to 24 ft. Bring a truck or trailer rated for the length and we help you load. If it does not fit, delivery is the safer call.', ES: 'Los paneles y rieles son largos: los rieles de metal llegan a 24 pies. Trae una camioneta o remolque adecuado para el largo y te ayudamos a cargar. Si no cabe, la entrega es la opción segura.' }],
+      [{ EN: 'Do you deliver, and what does it cost?', ES: '¿Hacen entregas y cuánto cuestan?' },
+       { EN: "We deliver throughout Florida on our own trucks. Fees vary by location and order size — both get confirmed with your quote. We don't deliver outside Florida at this time.", ES: 'Entregamos en toda Florida con nuestros propios camiones. El costo varía según la ubicación y el tamaño del pedido: ambos se confirman con tu cotización. Por ahora no entregamos fuera de Florida.' }],
+    ],
+  },
+  {
+    id: 'gates',
+    title: { EN: 'Gates & Fabrication', ES: 'Portones y fabricación' },
+    items: [
+      [{ EN: 'Can you build a gate to my exact opening?', ES: '¿Pueden fabricar un portón a la medida exacta de mi abertura?' },
+       { EN: 'Yes — gates are fabricated in-house at the Fort Myers yard, from standard swing gates to sliding V-track. Metal gates can be ready in as little as 3-4 business days.', ES: 'Sí: los portones se fabrican en planta en la sucursal de Fort Myers, desde batientes estándar hasta corredizos de riel en V. Los de metal pueden estar en tan solo 3-4 días hábiles.' }],
+      [{ EN: 'How wide can a specialty gate be?', ES: '¿Qué tan ancho puede ser una puerta especial?' },
+       { EN: "All specialty gates — rolling and cantilever included — top out at 30' total width, counting the counterweight section on cantilevers.", ES: "Todas las puertas especiales —rodantes y cantilever incluidas— llegan máximo a 30' de ancho total, contando la sección de contrapeso en las cantilever." }],
+      [{ EN: 'Do you do automatic / powered gates?', ES: '¿Hacen portones automáticos / mecánicos?' },
+       { EN: 'We install the posts and framework that powered gates need — the mechanical operator itself comes from a gate-automation company.', ES: 'Instalamos los postes y la estructura que un portón mecánico necesita; el operador mecánico como tal viene de una empresa de automatización de portones.' }],
+      [{ EN: 'What hardware comes with my gate?', ES: '¿Qué herrajes vienen con mi portón?' },
+       { EN: "Matched to the gate type: hinges and latches for swing gates; track hardware for sliding; cantilever rollers and receivers for cantilever; rolling gate kit with LOCK N' LATCH for rolling. Rolling and cantilever gates use no hinges.", ES: "Según el tipo de portón: bisagras y cerrojos para batientes; herrajes de riel para corredizos; rodillos y receptores para cantilever; kit de portón rodante con LOCK N' LATCH para rodantes. Los rodantes y cantilever no llevan bisagras." }],
+    ],
+  },
+  {
+    id: 'install',
+    title: { EN: 'Installation, Permits & Warranty', ES: 'Instalación, permisos y garantía' },
+    items: [
+      [{ EN: 'Do you install fences?', ES: '¿Instalan cercas?' },
+       { EN: 'No — we are a supply company only. We can recommend trusted local installers who use our materials every week.', ES: 'No: somos solamente una empresa de suministro. Podemos recomendarte instaladores locales de confianza que usan nuestros materiales cada semana.' }],
+      [{ EN: 'Do you come out to measure my property?', ES: '¿Vienen a medir mi propiedad?' },
+       { EN: 'No. Send a survey or a hand-drawn layout with measurements per side, plus height, color, and style — that is everything we need to quote accurately.', ES: 'No. Envía un plano o un boceto a mano con medidas por lado, más altura, color y estilo: eso es todo lo que necesitamos para cotizar con precisión.' }],
+      [{ EN: 'Who handles the permit or HOA approval?', ES: '¿Quién gestiona el permiso o la aprobación de la HOA?' },
+       { EN: 'The owner or installer pulls the permit and handles HOA approval. We back you up with spec information and pool-code guidance (FBC R 4501.17) for whatever you need to submit.', ES: 'El propietario o el instalador tramita el permiso y la aprobación de la HOA. Nosotros te respaldamos con información de especificaciones y guía del código de piscinas (FBC R 4501.17) para lo que debas presentar.' }],
+      [{ EN: 'Does the material have a warranty?', ES: '¿El material tiene garantía?' },
+       { EN: 'Most materials we sell carry a limited lifetime warranty from the manufacturer. Ask your rep for the exact coverage on each product in your quote.', ES: 'La mayoría de los materiales que vendemos tienen garantía limitada de por vida del fabricante. Pregunta a tu asesor la cobertura exacta de cada producto de tu cotización.' }],
+    ],
+  },
+];
+
+const FaqTopicGroup = ({ topic, index }) => {
+  const t = useT();
+  const [open, setOpen] = React.useState(index === 0 ? 0 : -1);
+  return (
+    <div id={`faq-${topic.id}`} style={{ scrollMarginTop: 130 }}>
+      <div style={{
+        display: 'flex', alignItems: 'baseline', gap: 16,
+        paddingBottom: 14, marginBottom: 6,
+        borderBottom: '2px solid var(--ink)',
+      }}>
+        <span className="display" aria-hidden style={{
+          fontSize: 34, lineHeight: 1, fontWeight: 800,
+          color: 'transparent', WebkitTextStroke: '1.3px rgba(38,49,102,0.32)',
+        }}>0{index + 1}</span>
+        <h2 className="display" style={{ margin: 0, fontSize: 'clamp(20px, 1.8vw, 26px)', lineHeight: 1.05, textTransform: 'uppercase' }}>
+          {t(topic.title)}
+        </h2>
+      </div>
+      {topic.items.map(([q, a], i) => {
+        const isOpen = open === i;
+        return (
+          <div key={i} style={{ borderBottom: '1px solid rgba(0,16,17,0.1)' }}>
+            <button onClick={() => setOpen(isOpen ? -1 : i)} style={{
+              width: '100%', textAlign: 'left', padding: '20px 4px',
+              display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 18,
+              cursor: 'pointer',
+            }}>
+              <span style={{ fontSize: 16, fontWeight: 600, color: 'var(--ink)', lineHeight: 1.35 }}>{t(q)}</span>
+              <span aria-hidden style={{
+                flexShrink: 0, width: 30, height: 30, borderRadius: '50%',
+                border: `1px solid ${isOpen ? 'var(--tangerine)' : 'rgba(0,16,17,0.2)'}`,
+                background: isOpen ? 'var(--tangerine)' : 'transparent',
+                color: isOpen ? 'var(--white)' : 'var(--ink)',
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'background 0.2s ease, border-color 0.2s ease, color 0.2s ease',
+              }}>
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style={{ transform: isOpen ? 'rotate(45deg)' : 'none', transition: 'transform 0.25s ease' }}>
+                  <path d="M8 2 V14 M2 8 H14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
+                </svg>
+              </span>
+            </button>
+            <div style={{
+              maxHeight: isOpen ? 400 : 0, overflow: 'hidden',
+              transition: 'max-height 0.35s ease',
+            }}>
+              <p style={{ margin: 0, padding: '0 44px 22px 4px', fontSize: 14.5, lineHeight: 1.65, color: 'var(--charcoal)' }}>{t(a)}</p>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+const FaqTopics = () => {
+  const t = useT();
+  return (
+    <section style={{ background: 'var(--white)', padding: '120px 0' }}>
+      <div className="container">
+        <div style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 64, alignItems: 'start' }}>
+          {/* Sticky topic nav */}
+          <nav className="wfs-faq-sidebar" style={{ position: 'sticky', top: 120, display: 'grid', gap: 4 }}>
+            <div className="mono" style={{
+              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+              textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 12,
+            }}>{t('Browse by topic', 'Explora por tema')}</div>
+            {FAQ_TOPICS.map((tp, i) => (
+              <a key={tp.id} href={`#faq-${tp.id}`} className="mono" style={{
+                display: 'flex', alignItems: 'center', gap: 12,
+                padding: '10px 12px', fontSize: 12.5, fontWeight: 700,
+                letterSpacing: '0.1em', textTransform: 'uppercase',
+                color: 'var(--ink)', border: '1px solid rgba(0,16,17,0.12)',
+              }}>
+                <span style={{ color: 'var(--tangerine)' }}>0{i + 1}</span>
+                {t(tp.title)}
+              </a>
+            ))}
+            <p style={{ margin: '18px 0 0', fontSize: 13.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>
+              {t("These are the questions we hear most on first-time quotes. Can't find yours?", 'Estas son las preguntas que más escuchamos en primeras cotizaciones. ¿No encuentras la tuya?')}
+              {' '}<a href="estimate.html#contact" style={{ color: 'var(--ink)', borderBottom: '1px solid var(--tangerine)' }}>{t('Ask a rep', 'Pregunta a un asesor')}</a>.
+            </p>
+          </nav>
+
+          {/* Topic groups */}
+          <div style={{ display: 'grid', gap: 56 }}>
+            {FAQ_TOPICS.map((tp, i) => (
+              <FaqTopicGroup key={tp.id} topic={tp} index={i}/>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+Object.assign(window, { FaqTopics });
