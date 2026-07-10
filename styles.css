@@ -633,3 +633,12 @@ section { position: relative; }
   from { opacity: 0; transform: translateX(16px); }
   to   { opacity: 1; transform: none; }
 }
+
+/* Measure-once timeline: stack on small screens, hide the ruler */
+@media (max-width: 900px) {
+  .wfs-tape { display: none !important; }
+  .wfs-tape-row { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .wfs-tape-row > div { grid-column: auto !important; }
+  .wfs-tape-row + .wfs-tape-row { margin-top: 28px; }
+  .wfs-tape-wrap span[aria-hidden] { display: none !important; }
+}

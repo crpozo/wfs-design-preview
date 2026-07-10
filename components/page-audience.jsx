@@ -170,109 +170,142 @@ const HomeownerTrustStrip = () => {
 
 const HomeownerSteps = () => {
   const t = useT();
-  const StepIcon = ({ n, children }) => (
-    <div style={{
-      position: 'relative',
-      width: 96, height: 96,
-      margin: '0 auto 28px',
-    }}>
-      {/* Outer tangerine ring */}
-      <div style={{
-        position: 'absolute', inset: 0, borderRadius: '50%',
-        border: '1.5px dashed rgba(255,113,51,0.45)',
-      }}/>
-      {/* Inner solid circle */}
-      <div style={{
-        position: 'absolute', inset: 6, borderRadius: '50%',
-        background: '#ffffff',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        color: 'var(--ink)',
-      }}>{children}</div>
-      {/* Number badge */}
-      <span className="mono" style={{
-        position: 'absolute', bottom: -2, right: -2,
-        width: 30, height: 30, borderRadius: '50%',
-        background: 'var(--ink)', color: 'var(--white)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontSize: 13, fontWeight: 700, letterSpacing: '0',
-        border: '3px solid var(--white)',
-      }}>{n}</span>
+  const steps = [
+    { title: { EN: 'Draw your fence', ES: 'Dibuja tu cerca' },
+      body: { EN: 'Sketch your layout to visualize the project.', ES: 'Esboza la distribución para visualizar el proyecto.' },
+      icon: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19 L7 21 L9 16 L18 7 L21 10 Z"/><path d="M16 9 L19 12"/></svg>) },
+    { title: { EN: 'Get an estimate', ES: 'Obtén un estimado' },
+      body: { EN: 'A rough idea of the cost, online and instant.', ES: 'Una idea aproximada del costo, en línea y al instante.' },
+      icon: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="5" y="3" width="14" height="18" rx="1"/><rect x="7.5" y="5.5" width="9" height="4"/><circle cx="9" cy="13" r="0.6" fill="currentColor"/><circle cx="12" cy="13" r="0.6" fill="currentColor"/><circle cx="15" cy="13" r="0.6" fill="currentColor"/><circle cx="9" cy="16" r="0.6" fill="currentColor"/><circle cx="12" cy="16" r="0.6" fill="currentColor"/><circle cx="15" cy="16" r="0.6" fill="currentColor"/></svg>) },
+    { title: { EN: 'Talk to a rep', ES: 'Habla con un asesor' },
+      body: { EN: 'One rep follows your order, Mon–Fri at both yards.', ES: 'Un asesor sigue tu pedido, lun–vie en ambas sucursales.' },
+      icon: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12 a9 9 0 1 0 -3.5 7.1 L21 20 Z"/><circle cx="9" cy="12" r="0.8" fill="currentColor"/><circle cx="12.5" cy="12" r="0.8" fill="currentColor"/><circle cx="16" cy="12" r="0.8" fill="currentColor"/></svg>) },
+    { title: { EN: 'Get a quote', ES: 'Recibe tu cotización' },
+      body: { EN: 'A final, detailed quote in 24 hours.', ES: 'Una cotización final y detallada en 24 horas.' },
+      icon: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 3 H15 L19 7 V21 H7 Z"/><path d="M15 3 V7 H19"/><line x1="9" y1="12" x2="17" y2="12"/><line x1="9" y1="15" x2="17" y2="15"/><line x1="9" y1="18" x2="13" y2="18"/></svg>) },
+    { title: { EN: 'Fabrication', ES: 'Fabricación' },
+      body: { EN: 'Gates and custom work built in our Fort Myers shop.', ES: 'Portones y trabajos a medida hechos en nuestro taller de Fort Myers.' },
+      icon: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 21 V11 L9 14 V11 L15 14 V11 L21 14 V21 Z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>) },
+    { title: { EN: 'Trusted install', ES: 'Instalación confiable' },
+      body: { EN: 'We connect you with trusted local installers for the build.', ES: 'Te conectamos con instaladores locales de confianza para la obra.' },
+      icon: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg>) },
+  ];
+  const Step = ({ st, below }) => (
+    <div style={{ position: 'relative', paddingRight: 12 }}>
+      {below && <span aria-hidden style={{ display: 'block', width: 3, height: 26, background: 'var(--tangerine)', marginBottom: 14 }}/>}
+      <span style={{ display: 'inline-flex', color: 'var(--ink)', marginBottom: 12 }}>{st.icon}</span>
+      <h3 className="display" style={{
+        margin: '0 0 8px', fontSize: 17, fontWeight: 800,
+        letterSpacing: '0.01em', textTransform: 'uppercase', color: 'var(--ink)',
+      }}>{t(st.title)}</h3>
+      <p style={{ margin: 0, maxWidth: 250, fontSize: 13.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{t(st.body)}</p>
+      {!below && <span aria-hidden style={{ display: 'block', width: 3, height: 26, background: 'var(--tangerine)', marginTop: 14 }}/>}
     </div>
   );
-  const steps = [
-    { n: '1', title: { EN: 'Draw Your Fence',      ES: 'Dibuja tu cerca' },
-      body:  { EN: 'Sketch your layout to visualize the project.',
-                ES: 'Esboza la distribución para visualizar el proyecto.' },
-      svg: (<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 19 L7 21 L9 16 L18 7 L21 10 Z"/><path d="M16 9 L19 12"/></svg>) },
-    { n: '2', title: { EN: 'Get an Estimate',      ES: 'Obtén un estimado' },
-      body:  { EN: 'Use our tools to get a rough idea of the cost.',
-                ES: 'Usa nuestras herramientas para una idea aproximada del costo.' },
-      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="5" y="3" width="14" height="18" rx="1"/><rect x="7.5" y="5.5" width="9" height="4"/><circle cx="9" cy="13" r="0.6" fill="currentColor"/><circle cx="12" cy="13" r="0.6" fill="currentColor"/><circle cx="15" cy="13" r="0.6" fill="currentColor"/><circle cx="9" cy="16" r="0.6" fill="currentColor"/><circle cx="12" cy="16" r="0.6" fill="currentColor"/><circle cx="15" cy="16" r="0.6" fill="currentColor"/></svg>) },
-    { n: '3', title: { EN: 'Book a Visit',         ES: 'Agenda una visita' },
-      body:  { EN: 'Schedule a time for us to verify measurements.',
-                ES: 'Programa una hora para que verifiquemos las medidas.' },
-      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M4 9 H20"/><line x1="8" y1="3" x2="8" y2="6"/><line x1="16" y1="3" x2="16" y2="6"/></svg>) },
-    { n: '4', title: { EN: 'Get a Quote',          ES: 'Recibe la cotización' },
-      body:  { EN: 'Receive a final, detailed quote for your project.',
-                ES: 'Recibe una cotización final y detallada para tu proyecto.' },
-      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 3 H15 L19 7 V21 H7 Z"/><path d="M15 3 V7 H19"/><line x1="9" y1="12" x2="17" y2="12"/><line x1="9" y1="15" x2="17" y2="15"/><line x1="9" y1="18" x2="13" y2="18"/></svg>) },
-    { n: '5', title: { EN: 'Fabrication',          ES: 'Fabricación' },
-      body:  { EN: 'We manufacture your fence locally to your exact specifications.',
-                ES: 'Fabricamos tu cerca localmente con tus especificaciones exactas.' },
-      svg: (<svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 21 V11 L9 14 V11 L15 14 V11 L21 14 V21 Z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>) },
-    { n: '6', title: { EN: 'Certified Installation', ES: 'Instalación certificada' },
-      body:  { EN: 'Choose from our WFS-certified installer alliance for professional installation.',
-                ES: 'Elige entre nuestra red de instaladores certificados WFS para una instalación profesional.' },
-      svg: (<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg>) },
-  ];
   return (
-    <section style={{ background: '#ffffff', padding: '120px 0' }}>
-      <div className="container">
-        <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <h2 className="display" style={{
-            margin: 0,
-            fontSize: 'clamp(28px, 3.4vw, 44px)',
-            lineHeight: 1, letterSpacing: '-0.015em',
-            color: 'var(--ink)',
-          }}>{t('How it works for homeowners', 'Cómo funciona para propietarios')}</h2>
-        </div>
-        <div style={{
-          position: 'relative',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          rowGap: 80, columnGap: 56,
-          maxWidth: 1100, margin: '0 auto',
+  <section style={{ background: 'var(--white)', padding: '120px 0', overflow: 'hidden' }}>
+    <div className="container">
+      {/* Eyebrow */}
+      <div className="mono" style={{
+        display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 22,
+        fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+        textTransform: 'uppercase', color: 'var(--laser-blue)',
+      }}>
+        <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
+        {t('How it works · Homeowners', 'Cómo funciona · Propietarios')}
+      </div>
+      {/* Title + right blurb */}
+      <div style={{
+        display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end',
+        marginBottom: 'clamp(48px, 8vh, 96px)',
+      }}>
+        <h2 className="display" style={{
+          margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02,
+          letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
         }}>
-          {/* Subtle horizontal connector lines behind row 1 and row 2 */}
-          <div aria-hidden style={{
-            position: 'absolute', top: 48, left: '12%', right: '12%', height: 1,
-            borderTop: '1px dashed rgba(38, 49, 102,0.18)',
-            zIndex: 0, pointerEvents: 'none',
+          {t('Measure once,', 'Mide una vez,')}<br/>
+          <span style={{ color: 'var(--tangerine)' }}>{t('build once.', 'construye una vez.')}</span>
+        </h2>
+        <p style={{
+          margin: 0, maxWidth: 340, justifySelf: 'end', textAlign: 'right',
+          fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)',
+        }}>
+          {t('Six marks on the tape, from the first sketch to the last post.', 'Seis marcas en la cinta, del primer boceto al último poste.')}
+        </p>
+      </div>
+
+      {/* Measuring-tape timeline (desktop) */}
+      <div className="wfs-tape-wrap">
+        {/* Steps above the tape: 1 · 3 · 5 */}
+        <div className="wfs-tape-row" style={{
+          display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', alignItems: 'end',
+        }}>
+          <div style={{ gridColumn: '1 / span 2' }}><Step st={steps[0]}/></div>
+          <div style={{ gridColumn: '3 / span 2' }}><Step st={steps[2]}/></div>
+          <div style={{ gridColumn: '5 / span 2' }}><Step st={steps[4]}/></div>
+        </div>
+        {/* The tape */}
+        <div className="wfs-tape" aria-hidden style={{ position: 'relative', height: 88 }}>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 3, background: 'var(--ink)' }}/>
+          {/* start ring */}
+          <span style={{
+            position: 'absolute', left: -3, top: -8, width: 18, height: 18, borderRadius: '50%',
+            border: '3px solid var(--ink)', background: 'var(--white)',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+          }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--ink)' }}/>
+          </span>
+          {/* end cap */}
+          <span style={{ position: 'absolute', right: 0, top: -14, width: 9, height: 74, background: 'var(--tangerine)' }}/>
+          <span className="mono" style={{
+            position: 'absolute', right: 0, top: 82, fontSize: 12, fontWeight: 700,
+            letterSpacing: '0.2em', color: 'var(--tangerine)', textTransform: 'uppercase',
+          }}>{t('Done', 'Listo')}</span>
+          {/* tick marks */}
+          <div style={{
+            position: 'absolute', top: 3, left: 0, right: 0, height: 58,
+            backgroundImage: 'repeating-linear-gradient(90deg, rgba(38,49,102,0.16) 0, rgba(38,49,102,0.16) 1px, transparent 1px, transparent 3.333%)',
+            borderBottom: '1px solid rgba(38,49,102,0.12)',
           }}/>
-          <div aria-hidden style={{
-            position: 'absolute', top: 'calc(50% + 24px)', left: '12%', right: '12%', height: 1,
-            borderTop: '1px dashed rgba(38, 49, 102,0.18)',
-            zIndex: 0, pointerEvents: 'none',
-          }}/>
-          {steps.map(s => (
-            <div key={s.n} style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
-              <StepIcon n={s.n}>{s.svg}</StepIcon>
-              <h3 className="display" style={{
-                margin: '0 0 12px',
-                fontSize: 17, fontWeight: 700,
-                letterSpacing: '-0.005em', color: 'var(--ink)',
-                textTransform: 'uppercase',
-              }}>{t(s.title)}</h3>
-              <p className="mono" style={{
-                margin: '0 auto', maxWidth: 280,
-                fontSize: 13, lineHeight: 1.6,
-                color: 'var(--charcoal)',
-              }}>{t(s.body)}</p>
-            </div>
+          {/* footage labels */}
+          {[['0 FT', '0%'], ['60 FT', '33.33%'], ['120 FT', '66.66%']].map(([lb, left]) => (
+            <span key={lb} className="mono" style={{
+              position: 'absolute', left, top: 14, transform: lb === '0 FT' ? 'none' : 'translateX(6px)',
+              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.14em', color: 'var(--charcoal)',
+            }}>{lb}</span>
           ))}
+          <span className="mono" style={{
+            position: 'absolute', right: 16, top: 14,
+            fontSize: 11.5, fontWeight: 700, letterSpacing: '0.14em', color: 'var(--tangerine)',
+          }}>180 FT</span>
+        </div>
+        {/* Steps below the tape: 2 · 4 · 6 */}
+        <div className="wfs-tape-row" style={{
+          display: 'grid', gridTemplateColumns: 'repeat(6, 1fr)', alignItems: 'start',
+        }}>
+          <div style={{ gridColumn: '2 / span 2' }}><Step st={steps[1]} below/></div>
+          <div style={{ gridColumn: '4 / span 2' }}><Step st={steps[3]} below/></div>
+          <div style={{ gridColumn: '6 / span 2' }}><Step st={steps[5]} below/></div>
         </div>
       </div>
-    </section>
+
+      {/* Bottom-right CTA */}
+      <div style={{
+        marginTop: 'clamp(36px, 6vh, 64px)', paddingTop: 24,
+        borderTop: '1px solid rgba(0,16,17,0.1)',
+        display: 'flex', justifyContent: 'flex-end',
+      }}>
+        <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" className="mono" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 10,
+          fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
+          textTransform: 'uppercase', color: 'var(--tangerine)',
+        }}>
+          {t('Start drawing your fence', 'Empieza a dibujar tu cerca')}
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
   );
 };
 
@@ -1476,7 +1509,6 @@ const ContractorPage = () => (
   <>
     <SiteHeader />
     <ContractorHero />
-    <ContractorStatsStrip />
     <ContractorBenefits />
     <ContractorHowItWorks />
     <ContractorWholesaleKit />
