@@ -9,11 +9,6 @@ const HomeownerHero = () => {
     { EN: 'Free takeoff', ES: 'Despiece gratis' },
     { EN: 'Supplier-direct floor', ES: 'Precio directo de proveedor' },
   ];
-  const metrics = [
-    ['4.9★', { EN: '180+ reviews', ES: 'Más de 180 reseñas' }],
-    ['24H', { EN: 'Quote turnaround', ES: 'Cotización en 24 h' }],
-    ['2', { EN: 'Yards · FM + PC', ES: 'Sucursales · FM + PC' }],
-  ];
   return (
   <section style={{
     position: 'relative', color: 'var(--white)', overflow: 'hidden',
@@ -122,18 +117,6 @@ const HomeownerHero = () => {
             <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
               {t(c)}
-            </span>
-          ))}
-        </div>
-        <div className="mono" style={{
-          display: 'flex', gap: 26, flexWrap: 'wrap', alignItems: 'baseline',
-          fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.7)',
-        }}>
-          {metrics.map(([n, label], i) => (
-            <span key={i} style={{ display: 'inline-flex', alignItems: 'baseline', gap: 8 }}>
-              <strong style={{ fontSize: 15, color: 'var(--white)', letterSpacing: '0.04em' }}>{n}</strong>
-              {t(label)}
             </span>
           ))}
         </div>
