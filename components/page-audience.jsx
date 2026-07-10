@@ -205,15 +205,7 @@ const HomeownerSteps = () => {
   return (
   <section style={{ background: 'var(--white)', padding: '120px 0', overflow: 'hidden' }}>
     <div className="container">
-      {/* Eyebrow */}
-      <div className="mono" style={{
-        display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 22,
-        fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
-        textTransform: 'uppercase', color: 'var(--laser-blue)',
-      }}>
-        <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
-        {t('How it works · Homeowners', 'Cómo funciona · Propietarios')}
-      </div>
+
       {/* Title + right blurb */}
       <div style={{
         display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end',
