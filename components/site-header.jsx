@@ -246,7 +246,7 @@ const SiteHeader = ({ active }) => {
                 width: 6, height: 6, borderRadius: '50%', background: '#ff7133',
                 boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)',
               }}/>
-              {t('Request a Material Quote', 'Solicitar cotización de material')}
+              {t('Request Material Quote', 'Solicitar cotización de material')}
               <span style={{
                 width: 23, height: 23, borderRadius: '50%',
                 background: 'var(--tangerine)', color: 'var(--ink)',
