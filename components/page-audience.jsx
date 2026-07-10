@@ -847,17 +847,6 @@ const ContractorHero = () => {
       <span aria-hidden style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>
       {t('Will-call ready', 'Listo para retiro')}
     </span>
-    <div className="mono" style={{
-      position: 'absolute', right: 24, bottom: '32%', zIndex: 2,
-      textAlign: 'right',
-    }}>
-      <div style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--tangerine)' }}>
-        {t('Two yards', 'Dos sucursales')}
-      </div>
-      <div className="display" style={{ marginTop: 4, fontSize: 19, fontWeight: 800, letterSpacing: '0.02em', textTransform: 'uppercase', color: 'var(--white)' }}>
-        Fort Myers + Port Charlotte
-      </div>
-    </div>
 
     <div className="container" style={{
       position: 'relative', zIndex: 2, width: '100%',
