@@ -259,17 +259,6 @@ const HomeownerSteps = () => {
             backgroundImage: 'repeating-linear-gradient(90deg, rgba(38,49,102,0.16) 0, rgba(38,49,102,0.16) 1px, transparent 1px, transparent 3.333%)',
             borderBottom: '1px solid rgba(38,49,102,0.12)',
           }}/>
-          {/* footage labels */}
-          {[['0 FT', '0%'], ['60 FT', '33.33%'], ['120 FT', '66.66%']].map(([lb, left]) => (
-            <span key={lb} className="mono" style={{
-              position: 'absolute', left, top: 14, transform: lb === '0 FT' ? 'none' : 'translateX(6px)',
-              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.14em', color: 'var(--charcoal)',
-            }}>{lb}</span>
-          ))}
-          <span className="mono" style={{
-            position: 'absolute', right: 16, top: 14,
-            fontSize: 11.5, fontWeight: 700, letterSpacing: '0.14em', color: 'var(--tangerine)',
-          }}>180 FT</span>
         </div>
         {/* Steps below the tape: 2 · 4 · 6 */}
         <div className="wfs-tape-row" style={{
