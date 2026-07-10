@@ -1129,3 +1129,17 @@ Object.assign(ES_TR, {
   'Metal rolling gate, double frame': 'Portón rodante de metal, doble marco',
   'EC Fence rolling gate, double frame': 'Portón rodante EC Fence, doble marco',
 });
+
+/* Anchor fix: pages render via Babel after the browser's native hash scroll
+   has already run, so #section links from other pages land at the top.
+   Poll briefly until the target exists, then scroll to it. */
+(() => {
+  const hash = window.location.hash;
+  if (!hash || hash.length < 2) return;
+  let tries = 0;
+  const id = setInterval(() => {
+    const el = document.getElementById(hash.slice(1));
+    if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); clearInterval(id); }
+    else if (++tries > 40) clearInterval(id);
+  }, 150);
+})();

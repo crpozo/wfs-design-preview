@@ -1059,7 +1059,7 @@ const Footer = () => {
     ]},
     { title: { EN: 'Company', ES: 'Empresa' }, items: [
       { label: { EN: 'About WFS',           ES: 'Sobre WFS' },               href: 'about.html' },
-      { label: { EN: 'Contact',             ES: 'Contacto' },                href: 'estimate.html' },
+      { label: { EN: 'Contact',             ES: 'Contacto' },                href: 'estimate.html#contact' },
       { label: 'sales@westernfencesupply.com', href: 'mailto:sales@westernfencesupply.com' },
     ]},
   ];
