@@ -126,11 +126,14 @@ const FeaturedGrid = () => {
               <div key={pg} aria-hidden={pg !== page} style={{
                 flex: '0 0 100%', minWidth: 0,
                 display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 34,
-                opacity: pg === page ? 1 : 0.35,
-                transition: 'opacity 0.5s ease',
               }}>
-                {FEATURED.slice(pg * PER, pg * PER + PER).map((p) => (
-            <article key={p.sku}>
+                {FEATURED.slice(pg * PER, pg * PER + PER).map((p, idx) => (
+            <article key={p.sku} style={{
+              opacity: pg === page ? 1 : 0,
+              transform: pg === page ? 'none' : 'translateY(16px)',
+              transition: 'opacity 0.45s ease, transform 0.6s cubic-bezier(0.3, 0, 0.2, 1)',
+              transitionDelay: pg === page ? `${140 + idx * 90}ms` : '0ms',
+            }}>
               <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#263166', overflow: 'hidden' }}>
                 <img src={p.imgUrl || FENCE_IMG[p.img]} alt={t(p.name)}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
@@ -320,6 +323,7 @@ const FeaturedProject = ({ p, num, total }) => {
         position: 'relative', overflow: 'hidden',
         background: '#263166', textDecoration: 'none',
         display: 'block', minHeight: 'min(52vh, 500px)', maxHeight: 620,
+        animation: 'wfsSlideFade 0.5s cubic-bezier(0.3, 0, 0.2, 1)',
       }}>
       <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
         style={{
@@ -548,7 +552,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
           display: 'grid', gridTemplateColumns: '1.4fr 1fr',
           gap: 18, alignItems: 'stretch',
         }}>
-          <FeaturedProject p={feat} num={sel} total={visible.length} />
+          <FeaturedProject key={sel} p={feat} num={sel} total={visible.length} />
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               {pageItems.map((p, i) => (

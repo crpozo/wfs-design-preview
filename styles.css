@@ -626,3 +626,8 @@ section { position: relative; }
   .wfs-usecase-row > p { grid-column: 2 / 4; grid-row: 2; }
   .wfs-usecase-num { font-size: 36px !important; }
 }
+
+@keyframes wfsSlideFade {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: none; }
+}

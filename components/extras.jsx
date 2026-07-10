@@ -157,9 +157,9 @@ const Testimonials = () => {
               style={{
                 position: 'absolute', left: '50%', top: 0,
                 width: 'min(345px, 84vw)',
-                transform: `translateX(-50%) translateX(${off * 107}%) translateY(${abs * 16}px) rotate(${off * 4}deg)`,
+                transform: `translateX(-50%) translateX(${off * 107}%) translateY(${abs * 16}px) rotate(${off * 4}deg) scale(${isCenter ? 1 : 0.96})`,
                 transformOrigin: '50% 120%',
-                transition: 'transform 0.55s cubic-bezier(0.3, 0, 0.2, 1), opacity 0.4s ease',
+                transition: 'transform 0.7s cubic-bezier(0.3, 1.15, 0.35, 1), opacity 0.45s ease',
                 opacity: abs > 2 ? 0 : 1,
                 pointerEvents: abs > 2 ? 'none' : 'auto',
                 zIndex: 10 - abs,
