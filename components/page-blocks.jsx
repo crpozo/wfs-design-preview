@@ -76,7 +76,7 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, actions, he
         <div style={{ marginTop: 30, display: 'flex', gap: 14, flexWrap: 'wrap' }}>
           {actions.map((a, i) => (
             a.primary ? (
-              <a key={i} href={a.href} style={{
+              <a key={i} href={a.href} download={a.download} style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 padding: '15px 28px', borderRadius: 999,
                 background: 'var(--tangerine)', color: 'var(--white)',
@@ -90,7 +90,7 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, actions, he
                 {a.label}
               </a>
             ) : (
-              <a key={i} href={a.href} style={{
+              <a key={i} href={a.href} download={a.download} style={{
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 padding: '15px 28px', borderRadius: 999,
                 background: 'rgba(255,255,255,0.08)', color: 'var(--white)',

@@ -10,6 +10,19 @@ const ProductsHero = () => {
     accent={t('One Fort Myers yard.', 'Una sucursal en Fort Myers.')}
     subtitle={t('Factory-direct material, vinyl, aluminum, chain link, metal and EC Fence, plus gates, hardware and accessories. Same supplier-direct pricing for contractors, homeowners and DIY projects.', 'Material directo de fábrica, vinilo, aluminio, malla ciclónica, metal y EC Fence, más portones, herrajes y accesorios. El mismo precio directo de proveedor para contratistas, propietarios y proyectos de bricolaje.')}
     image="assets/PVC.png"
+    actions={[{
+      primary: true,
+      href: 'assets/wfs-catalog.pdf',
+      download: 'WFS-Fence-Catalog.pdf',
+      label: (
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+          {t('Download Catalog (PDF)', 'Descargar catálogo (PDF)')}
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M8 2 V13 M4 9 L8 13 L12 9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
+          </svg>
+        </span>
+      ),
+    }]}
   />
   );
 };
