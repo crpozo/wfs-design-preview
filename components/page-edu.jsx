@@ -296,37 +296,37 @@ const MaterialsCompDeepDive = () => {
   const profiles = [
     {
       slug: 'vinyl', name: t('Vinyl / PVC', 'Vinilo / PVC'), href: 'vinyl.html',
-      tag: t('Veka-extruded · Lifetime warranty', 'Extruido por Veka · Garantía de por vida'),
+      tag: t('Veka-extruded PVC', 'PVC extruido por Veka'),
       bestFor: t('Backyard privacy, residential subdivisions', 'Privacidad de patio, urbanizaciones residenciales'),
-      strength: t('No maintenance, no painting, no fading, the SW Florida default', 'Sin mantenimiento, sin pintura, sin decoloración, la opción predeterminada del suroeste de Florida'),
-      caveat: t('Less impact resistance than aluminum or metal in hurricane wind', 'Menor resistencia al impacto que el aluminio o el metal ante vientos huracanados'),
+      strength: t('Low-upkeep privacy — no painting, made for Florida sun', 'Privacidad de bajo mantenimiento: sin pintura, hecha para el sol de Florida'),
+      caveat: t('Wind performance varies by profile — ask for specs for your area', 'El desempeño ante viento varía según el perfil: pide especificaciones para tu zona'),
     },
     {
       slug: 'aluminum', name: t('Aluminum', 'Aluminio'), href: 'aluminum.html',
       tag: t('Powder-coat · 6063-T6', 'Recubrimiento en polvo · 6063-T6'),
-      bestFor: t('Pool enclosures, ornamental perimeters, HVHZ', 'Cerramientos de piscina, perímetros ornamentales, HVHZ'),
-      strength: t('Code-compliant out of the box, 150 mph wind rated, 20-yr finish', 'Cumple el código desde el inicio, resistencia al viento de 150 mph, acabado de 20 años'),
+      bestFor: t('Pool enclosures, ornamental perimeters', 'Cerramientos de piscina, perímetros ornamentales'),
+      strength: t('Pool-code compliant options, clean ornamental look', 'Opciones que cumplen código de piscinas, aspecto ornamental limpio'),
       caveat: t('Open picket, limited privacy by design', 'Picket abierto, privacidad limitada por diseño'),
     },
     {
       slug: 'chain-link', name: t('Chain Link', 'Malla ciclónica'), href: 'chain-link.html',
       tag: t('Galvanized + Vinyl-coated', 'Galvanizada + recubierta de vinilo'),
       bestFor: t('Security, sports fields, industrial perimeters', 'Seguridad, campos deportivos, perímetros industriales'),
-      strength: t('Lowest cost per LF, fastest install, ships same day', 'Menor costo por LF, instalación más rápida, envío el mismo día'),
+      strength: t('Budget-friendly, parts sold individually, strong stock availability', 'Económica, piezas vendidas por separado, buena disponibilidad en stock'),
       caveat: t('Industrial look, not for ornamental front yards', 'Aspecto industrial, no apto para jardines delanteros ornamentales'),
     },
     {
       slug: 'metal', name: 'Metal / DuraFence', href: 'metal.html',
       tag: t('Aluminum board privacy', 'Privacidad de tablas de aluminio'),
-      bestFor: t('Hurricane-zone privacy, modern residential', 'Privacidad en zona de huracanes, residencial moderno'),
-      strength: t('Full 6-8 ft privacy with HVHZ wind rating, sleek board look', 'Privacidad total de 6-8 ft con clasificación de viento HVHZ, elegante aspecto de tablas'),
-      caveat: t('Longer lead time (1-2 weeks for color-matched runs)', 'Mayor tiempo de entrega (1-2 semanas para tramos con color a juego)'),
+      bestFor: t('Modern privacy, residential and commercial', 'Privacidad moderna, residencial y comercial'),
+      strength: t("Full privacy board look in P1, Original, and Modern styles, 6' and 8'", "Aspecto de tablas de privacidad total en estilos P1, Original y Modern, 6' y 8'"),
+      caveat: t('Lead time varies by color and quantity', 'El tiempo de entrega varía según color y cantidad'),
     },
     {
       slug: 'ecfence', name: 'EC Fence', href: 'ecfence.html',
       tag: t('Self-mating galvanized steel', 'Acero galvanizado autoensamblable'),
-      bestFor: t('Coastal HVHZ, commercial perimeters, modern residential', 'HVHZ costero, perímetros comerciales, residencial moderno'),
-      strength: t('Engineered for Exposure C wind, 15-yr finish, salt-air tough', 'Diseñado para viento de Exposición C, acabado de 15 años, resistente al aire salino'),
+      bestFor: t('Coastal properties, commercial perimeters, modern residential', 'Propiedades costeras, perímetros comerciales, residencial moderno'),
+      strength: t('Galvanized steel privacy panels built for salt air', 'Paneles de privacidad de acero galvanizado hechos para el aire salino'),
       caveat: t('Quote-based pricing, call for run-specific cost', 'Precio basado en cotización, llama para el costo específico del tramo'),
     },
   ];
@@ -461,7 +461,7 @@ const PoolCodeProfiles = () => {
   const profiles = [
     { slug: 'aluminum', name: t('Aluminum 4-Rail', 'Aluminio de 4 rieles'), tag: t('Pool code · Pickets ≤ 3"', 'Código de piscinas · Pickets ≤ 3"'), href: 'aluminum.html', img: 'aluminum' },
     { slug: 'vinyl',    name: t('Vinyl Picket', 'Picket de vinilo'),     tag: t('Pool code · Self-closing gates', 'Código de piscinas · Portones de cierre automático'), href: 'vinyl.html',  img: 'vinyl' },
-    { slug: 'ecfence',  name: 'EC Fence',         tag: t('Pool code · HVHZ Exposure C', 'Código de piscinas · HVHZ Exposición C'),  href: 'ecfence.html',img: 'ecfence' },
+    { slug: 'ecfence',  name: 'EC Fence',         tag: t('Galvanized steel privacy', 'Privacidad de acero galvanizado'),  href: 'ecfence.html',img: 'ecfence' },
   ];
 
   return (

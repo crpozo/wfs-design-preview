@@ -102,12 +102,12 @@ const MaterialsComparison = () => {
           ))}
         </div>
         {[
-          [t('Best for', 'Ideal para'),       t('Privacy', 'Privacidad'), t('Pool + ornamental', 'Piscina + ornamental'), t('Security + perimeter', 'Seguridad + perímetro'), t('Hurricane-zone privacy', 'Privacidad en zona de huracanes')],
-          [t('Heights', 'Alturas'),        t('4-8 ft', '4-8 ft'), t('4-6 ft', '4-6 ft'), t('4-12 ft', '4-12 ft'), t('6-8 ft', '6-8 ft')],
-          [t('Maintenance', 'Mantenimiento'),    t('Wash with hose', 'Lavar con manguera'), t('None', 'Ninguno'), t('None (galv) / wash (PVC-coated)', 'Ninguno (galvanizado) / lavar (recubierto de PVC)'), t('None', 'Ninguno')],
-          [t('Wind rating', 'Clasificación de viento'),    t('Up to 130 mph', 'Hasta 130 mph'), t('Up to 150 mph (HVHZ)', 'Hasta 150 mph (HVHZ)'), t('Up to 150 mph', 'Hasta 150 mph'), t('150 mph HVHZ', '150 mph HVHZ')],
-          [t('Warranty', 'Garantía'),       t('Lifetime', 'De por vida'), t('20 yr finish', 'Acabado de 20 años'), t('Galvanized rust-thru', 'Galvanizado contra perforación por óxido'), t('10 yr finish', 'Acabado de 10 años')],
-          [t('Lead time', 'Tiempo de entrega'),      t('1-2 days stocked', '1-2 días en existencia'), t('1-2 days stocked', '1-2 días en existencia'), t('Same day', 'El mismo día'), t('1-2 weeks', '1-2 semanas')],
+          [t('Best for', 'Ideal para'),       t('Privacy', 'Privacidad'), t('Pool + ornamental', 'Piscina + ornamental'), t('Security + perimeter', 'Seguridad + perímetro'), t('Modern privacy + screens', 'Privacidad moderna + pantallas')],
+          [t('Heights', 'Alturas'),        t("4'-6' common", "4'-6' comunes"), t("4'-6' common", "4'-6' comunes"), t("4'-6' common, taller by request", "4'-6' comunes, más altas bajo pedido"), t("6' and 8'", "6' y 8'")],
+          [t('Maintenance', 'Mantenimiento'),    t('Occasional rinse', 'Enjuague ocasional'), t('Low; varies by finish and exposure', 'Bajo; varía según acabado y exposición'), t('Low; varies by coating', 'Bajo; varía según recubrimiento'), t('Low; varies by finish and exposure', 'Bajo; varía según acabado y exposición')],
+          [t('Wind & code', 'Viento y código'),    t('Depends on product and installation', 'Depende del producto y la instalación'), t('Pool-code compliant options', 'Opciones que cumplen código de piscinas'), t('Depends on product and installation', 'Depende del producto y la instalación'), t('Depends on product and installation', 'Depende del producto y la instalación')],
+          [t('Warranty', 'Garantía'),       t('Manufacturer warranty; varies by product', 'Garantía del fabricante; varía por producto'), t('Manufacturer warranty; varies by product', 'Garantía del fabricante; varía por producto'), t('Manufacturer warranty; varies by product', 'Garantía del fabricante; varía por producto'), t('Manufacturer warranty; varies by product', 'Garantía del fabricante; varía por producto')],
+          [t('Lead time', 'Tiempo de entrega'),      t('Stocked: ready now · custom varies', 'En stock: listo ya · a medida varía'), t('Stocked: ready now · custom varies', 'En stock: listo ya · a medida varía'), t('Stocked: ready now · custom varies', 'En stock: listo ya · a medida varía'), t('Stocked: ready now · custom varies', 'En stock: listo ya · a medida varía')],
           [t('Starts at', 'Desde'),      t('Quote-based', 'Según cotización'), t('Quote-based', 'Según cotización'), t('Quote-based', 'Según cotización'), t('Quote-based', 'Según cotización')],
         ].map((row, ri) => (
           <div key={ri} style={{
@@ -130,6 +130,10 @@ const MaterialsComparison = () => {
           </div>
         ))}
       </div>
+      <p style={{ marginTop: 14, fontSize: 12.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>
+        {useT()('Specs shown are general guidance. Wind ratings, warranties, availability and performance depend on the specific product, configuration and project — we confirm exact numbers on your quote.',
+                'Las especificaciones mostradas son una guía general. Las clasificaciones de viento, garantías, disponibilidad y desempeño dependen del producto, la configuración y el proyecto específicos; confirmamos los números exactos en tu cotización.')}
+      </p>
       <div style={{ marginTop: 22, display: 'flex', gap: 14, flexWrap: 'wrap' }}>
         {[
           [t('Vinyl / PVC', 'Vinilo / PVC'), 'vinyl.html'],
