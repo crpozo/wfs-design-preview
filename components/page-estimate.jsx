@@ -10,7 +10,7 @@ const EstimateHero = () => {
     background: '#263166',
   }}>
     {/* Industrial warehouse backdrop */}
-    <img src="assets/Showroom.png" alt="" aria-hidden style={{
+    <img src="assets/projects/pvc-privacy-gate-white.jpg" alt="" aria-hidden style={{
       position: 'absolute', inset: 0, width: '100%', height: '100%',
       objectFit: 'cover', objectPosition: 'center 55%', zIndex: 0,
       filter: 'saturate(0.85) contrast(1.05)',
@@ -57,7 +57,7 @@ const EstimateHero = () => {
           {t('Sketch your layout or send linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery.', 'Dibuja tu diseño o envía los pies lineales, la altura, la cantidad de portones y el código postal. Un asesor da seguimiento al pedido desde la cotización hasta el retiro o la entrega.')}
         </p>
         <div style={{ marginTop: 32, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
-          <a href="#form" style={{
+          <a href="#contact" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12,
             padding: '16px 26px', borderRadius: 999,
             background: 'var(--tangerine)', color: 'var(--white)',

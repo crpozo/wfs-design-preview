@@ -104,10 +104,19 @@ const ProjectsCaseStudy = () => {
     <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', color: 'var(--parchment)', padding: 'clamp(40px, 7vh, 72px) 0', display: 'flex', alignItems: 'center', minHeight: 0, maxHeight: 'none' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 56, alignItems: 'center' }}>
-          <div style={{ position: 'relative', aspectRatio: '4 / 5', overflow: 'hidden', width: 'min(100%, calc(min(60vh, 540px) * 0.8))', justifySelf: 'center' }}>
-            <img src="assets/gate-rolling.jpg"
-              alt={t('Fort Myers Industrial Park perimeter', 'Perímetro del Fort Myers Industrial Park')}
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 10, width: 'min(100%, 620px)', justifySelf: 'center', position: 'relative' }}>
+            <div style={{ position: 'relative', aspectRatio: '4 / 5', overflow: 'hidden' }}>
+              <img src="assets/projects/cl-swing-gate-galv-4.jpg"
+                alt={t('Fort Myers Industrial Park perimeter', 'Perímetro del Fort Myers Industrial Park')}
+                style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
+            </div>
+            <div style={{ display: 'grid', gridTemplateRows: '1fr 1fr', gap: 10 }}>
+              {['assets/projects/cl-fence-black-2.jpg', 'assets/projects/cl-gate-black.jpg'].map((src) => (
+                <div key={src} style={{ position: 'relative', overflow: 'hidden' }}>
+                  <img src={src} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
+                </div>
+              ))}
+            </div>
             <div className="mono" style={{
               position: 'absolute', top: 16, left: 16,
               background: 'var(--tangerine)', color: 'var(--ink)',

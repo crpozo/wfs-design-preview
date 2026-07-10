@@ -50,10 +50,10 @@ const GATE_DATA = {
       ['Lead Time', GATE_LEADTIME],
     ],
     gateTypes: [
-      { name: 'Standard Walk Gate', tag: 'Pedestrian', notes: 'Common single gate sizes for pedestrian access.' },
-      { name: 'Pool-Code Gate', tag: 'Pool safety', notes: 'Gate options for pool enclosures and safety requirements.' },
-      { name: 'Custom Opening Gate', tag: 'Made to size', notes: 'Built to match your exact opening size.' },
-      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in aluminum, vinyl, chain link, metal, and EC Fence styles.' },
+      { name: 'Standard Walk Gate', tag: 'Pedestrian', notes: 'Common single gate sizes for pedestrian access.', img: 'assets/projects/pvc-privacy-gate-white.jpg' },
+      { name: 'Pool-Code Gate', tag: 'Pool safety', notes: 'Gate options for pool enclosures and safety requirements.', img: 'assets/projects/alum-2-rail-smooth-bottom-pool-code-white.jpg' },
+      { name: 'Custom Opening Gate', tag: 'Made to size', notes: 'Built to match your exact opening size.', img: 'assets/projects/pvc-gate-sand.jpg' },
+      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in aluminum, vinyl, chain link, metal, and EC Fence styles.', img: 'assets/projects/cl-gate-black.jpg' },
     ],
     specs: GATE_SPECS,
     applications: [
@@ -74,7 +74,7 @@ const GATE_DATA = {
       title: 'Ready to Quote Your',
       accent: 'Gate?',
       body: 'Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.',
-      primary: ['Request a Gate Quote', 'estimate.html'],
+      primary: ['Request a Gate Quote', 'estimate.html#contact'],
       secondary: ['Call (239) 689-5496', 'tel:2396895496'],
     },
   },
@@ -93,10 +93,10 @@ const GATE_DATA = {
       ['Lead Time', GATE_LEADTIME],
     ],
     gateTypes: [
-      { name: 'Standard Driveway Gate', tag: 'Vehicle access', notes: 'Common double gate sizes for driveway and vehicle access.' },
-      { name: 'Privacy Drive Gate', tag: 'Solid panels', notes: 'Full privacy panels matched to vinyl or metal runs.' },
-      { name: 'Custom Opening Gate', tag: 'Made to size', notes: 'Built to match your exact driveway opening.' },
-      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in aluminum, vinyl, chain link, metal, and EC Fence styles.' },
+      { name: 'Standard Driveway Gate', tag: 'Vehicle access', notes: 'Common double gate sizes for driveway and vehicle access.', img: 'assets/DOUBLE_GATE.png' },
+      { name: 'Privacy Drive Gate', tag: 'Solid panels', notes: 'Full privacy panels matched to vinyl or metal runs.', img: 'assets/projects/pvc-privacy-cantilever-gate-white.jpg' },
+      { name: 'Custom Opening Gate', tag: 'Made to size', notes: 'Built to match your exact driveway opening.', img: 'assets/projects/pvc-gate-sand.jpg' },
+      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in aluminum, vinyl, chain link, metal, and EC Fence styles.', img: 'assets/projects/cl-swing-gate-galv-4.jpg' },
     ],
     specs: GATE_SPECS,
     applications: [
@@ -116,7 +116,7 @@ const GATE_DATA = {
       title: 'Ready to Quote Your',
       accent: 'Gate?',
       body: 'Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.',
-      primary: ['Request a Gate Quote', 'estimate.html'],
+      primary: ['Request a Gate Quote', 'estimate.html#contact'],
       secondary: ['Call (239) 689-5496', 'tel:2396895496'],
     },
   },
@@ -135,10 +135,10 @@ const GATE_DATA = {
       ['Lead Time', GATE_LEADTIME],
     ],
     gateTypes: [
-      { name: 'Track-Mounted Slide', tag: 'Space-saving', notes: 'Slides parallel to the fence on a ground track.' },
-      { name: 'Privacy Slide Gate', tag: 'Solid panels', notes: 'Full privacy panels for vinyl or metal runs.' },
-      { name: 'Custom Opening Gate', tag: 'Made to size', notes: 'Built to match your exact opening and layout.' },
-      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in chain link, vinyl, metal, and EC Fence styles.' },
+      { name: 'Track-Mounted Slide', tag: 'Space-saving', notes: 'Slides parallel to the fence on a ground track.', img: 'assets/SLIDING_GATE.png' },
+      { name: 'Privacy Slide Gate', tag: 'Solid panels', notes: 'Full privacy panels for vinyl or metal runs.', img: 'assets/projects/pvc-privacy-cantilever-gate-white.jpg' },
+      { name: 'Custom Opening Gate', tag: 'Made to size', notes: 'Built to match your exact opening and layout.', img: 'assets/projects/pvc-gate-sand.jpg' },
+      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in chain link, vinyl, metal, and EC Fence styles.', img: 'assets/projects/cl-gate-black.jpg' },
     ],
     specs: GATE_SPECS,
     applications: [
@@ -158,7 +158,7 @@ const GATE_DATA = {
       title: 'Ready to Quote Your',
       accent: 'Gate?',
       body: 'Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.',
-      primary: ['Request a Gate Quote', 'estimate.html'],
+      primary: ['Request a Gate Quote', 'estimate.html#contact'],
       secondary: ['Call (239) 689-5496', 'tel:2396895496'],
     },
   },
@@ -177,10 +177,10 @@ const GATE_DATA = {
       ['Lead Time', GATE_LEADTIME],
     ],
     gateTypes: [
-      { name: 'No-Ground-Track Frame', tag: 'Counter-balanced', notes: 'Counter-balanced frame floats clear of the driveway.' },
-      { name: 'Coastal / Debris Sites', tag: 'No track', notes: 'No ground track to jam with sand or debris.' },
-      { name: 'Long-Span Custom', tag: 'Wide openings', notes: 'Built for wider single openings and telescoping runs.' },
-      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in chain link, vinyl-coated, metal, and EC Fence styles.' },
+      { name: 'No-Ground-Track Frame', tag: 'Counter-balanced', notes: 'Counter-balanced frame floats clear of the driveway.', img: 'assets/CANTILEVER.png' },
+      { name: 'Coastal / Debris Sites', tag: 'No track', notes: 'No ground track to jam with sand or debris.', img: 'assets/projects/cl-swing-gate-galv-4.jpg' },
+      { name: 'Long-Span Custom', tag: 'Wide openings', notes: 'Built for wider single openings and telescoping runs.', img: 'assets/projects/pvc-privacy-cantilever-gate-white.jpg' },
+      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in chain link, vinyl-coated, metal, and EC Fence styles.', img: 'assets/projects/cl-fence-black.jpg' },
     ],
     specs: GATE_SPECS,
     applications: [
@@ -200,7 +200,7 @@ const GATE_DATA = {
       title: 'Ready to Quote Your',
       accent: 'Gate?',
       body: 'Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.',
-      primary: ['Request a Gate Quote', 'estimate.html'],
+      primary: ['Request a Gate Quote', 'estimate.html#contact'],
       secondary: ['Call (239) 689-5496', 'tel:2396895496'],
     },
   },
@@ -219,10 +219,10 @@ const GATE_DATA = {
       ['Lead Time', GATE_LEADTIME],
     ],
     gateTypes: [
-      { name: 'Ground-Roller Frame', tag: 'Industrial', notes: 'Heavy frame on ground rollers for daily commercial use.' },
-      { name: 'High-Cycle Heavy', tag: 'Continuous duty', notes: 'Built for sites that open and close many times a day.' },
-      { name: 'Automated-Ready', tag: 'Powered', notes: 'Set up for slide operators and access controls.' },
-      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in chain link, vinyl-coated, metal, and EC Fence styles.' },
+      { name: 'Ground-Roller Frame', tag: 'Industrial', notes: 'Heavy frame on ground rollers for daily commercial use.', img: 'assets/ROLLING_GATE.png' },
+      { name: 'High-Cycle Heavy', tag: 'Continuous duty', notes: 'Built for sites that open and close many times a day.', img: 'assets/projects/cl-gate-black.jpg' },
+      { name: 'Automated-Ready', tag: 'Powered', notes: 'Set up for slide operators and access controls.', img: 'assets/SLIDING_GATE.png' },
+      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in chain link, vinyl-coated, metal, and EC Fence styles.', img: 'assets/projects/cl-swing-gate-galv-4.jpg' },
     ],
     specs: GATE_SPECS,
     applications: [
@@ -242,7 +242,7 @@ const GATE_DATA = {
       title: 'Ready to Quote Your',
       accent: 'Gate?',
       body: 'Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.',
-      primary: ['Request a Gate Quote', 'estimate.html'],
+      primary: ['Request a Gate Quote', 'estimate.html#contact'],
       secondary: ['Call (239) 689-5496', 'tel:2396895496'],
     },
   },
@@ -309,19 +309,32 @@ const GateQuickFacts = ({ data }) => (
 );
 
 const GateCardGrid = ({ items }) => (
-  <div style={{ display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 14 }}>
-    {items.map((p, i) => (
-      <article key={p.name} style={{
-        background: 'var(--white)', padding: 24,
+  <div className="wfs-profiles-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(items.length, 4)}, 1fr)`, gap: 14 }}>
+    {items.map((p) => (
+      <a key={p.name} href="estimate.html#contact" style={{
+        display: 'flex', flexDirection: 'column',
+        background: 'var(--white)',
         border: '1px solid rgba(0,16,17,0.12)',
-      }}>
-        <div className="mono" style={{
-          fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
-          color: 'var(--tangerine)', fontWeight: 700, marginBottom: 14,
-        }}>0{i+1} · {p.tag}</div>
-        <h3 className="display" style={{ margin: '0 0 12px', fontSize: 22, lineHeight: 1.1 }}>{p.name}</h3>
-        <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
-      </article>
+        overflow: 'hidden', textDecoration: 'none', color: 'inherit',
+        transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+      }}
+      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -20px rgba(0,16,17,0.25)'; }}
+      onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
+        <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#263166', overflow: 'hidden' }}>
+          {p.img && (
+            <img src={p.img} alt={p.name}
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
+          )}
+        </div>
+        <div style={{ padding: '18px 20px 20px' }}>
+          <div className="mono" style={{
+            fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
+            color: 'var(--tangerine)', fontWeight: 700, marginBottom: 10,
+          }}>{p.tag}</div>
+          <h3 className="display" style={{ margin: '0 0 10px', fontSize: 21, lineHeight: 1.1 }}>{p.name}</h3>
+          <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
+        </div>
+      </a>
     ))}
   </div>
 );
@@ -363,7 +376,7 @@ const GateQuoteChecklist = () => {
               {t('To prepare an accurate gate quote, send us the opening size, material, height, color, gate type, and any hardware requirements. Photos or drawings are highly recommended.',
                  'Para preparar una cotización precisa, envíanos la medida de la abertura, material, altura, color, tipo de portón y los herrajes que necesites. Las fotos o dibujos son muy recomendables.')}
             </p>
-            <a href="estimate.html" className="mono" style={{
+            <a href="estimate.html#contact" className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 24, paddingBottom: 4,
               fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
               textTransform: 'uppercase', color: 'var(--white)',

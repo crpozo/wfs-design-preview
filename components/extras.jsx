@@ -179,7 +179,7 @@ const Testimonials = () => {
               }}>
                 <div style={{ color: 'var(--tangerine)', fontSize: 16, letterSpacing: 3 }}>★★★★★</div>
                 <p style={{ margin: 0, flex: 1, fontSize: 15, lineHeight: 1.6, color: 'var(--ink)' }}>
-                  "{t(r.text)}"
+                  “{t(r.text)}”
                 </p>
                 <div style={{
                   borderTop: '1px solid rgba(0,16,17,0.1)', paddingTop: 14,

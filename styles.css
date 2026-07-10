@@ -606,11 +606,13 @@ section { position: relative; }
     padding: 0 var(--pad);
   }
   .wfs-profiles-grid::-webkit-scrollbar { display: none; }
-  .wfs-profiles-grid > article {
+  .wfs-profiles-grid > article,
+  .wfs-profiles-grid > a {
     flex: 0 0 72%;
     scroll-snap-align: start;
   }
-  .wfs-profiles-grid > article > div:first-child {
+  .wfs-profiles-grid > article > div:first-child,
+  .wfs-profiles-grid > a > div:first-child {
     aspect-ratio: 16 / 9 !important;
   }
 }

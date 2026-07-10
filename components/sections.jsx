@@ -434,9 +434,6 @@ const PageBtn = ({ active, disabled, onClick, label, arrow }) => {
 
 const ProjectGallery = ({ featuredMaterial, items }) => {
   const t = useT();
-  const [filter, setFilter] = React.useState(featuredMaterial || 'All');
-  const [selected, setSelected] = React.useState(0);
-  const [page, setPage] = React.useState(0);
   const curated = Array.isArray(items) && items.length > 0;
   const projects = curated ? items : [
     { name: { EN: 'Cape Coral Residential', ES: 'Residencial Cape Coral' }, loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: { EN: 'Vinyl-coated black, 6 ft, with double drive gate', ES: 'Recubierto de vinilo negro, 6 ft, con portón doble vehicular' }, contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/projects/cl-fence-black.jpg' },
@@ -454,100 +451,115 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
     { name: { EN: 'North Fort Myers Depot', ES: 'Depósito North Fort Myers' }, loc: 'North Fort Myers, FL', size: '0.8 mi', material: 'Chain Link', type: { EN: 'Vinyl-coated black, 8 ft perimeter', ES: 'Recubierto de vinilo negro, perímetro de 8 ft' }, contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/cl-fence-black.jpg' },
   ];
 
-  const filters = ['All', 'Chain Link', 'Aluminum', 'Vinyl', 'Metal', 'EC Fence'];
-  const visible = filter === 'All' ? projects : projects.filter(p => p.material === filter);
-  const sel = Math.min(selected, Math.max(0, visible.length - 1));
-  const feat = visible[sel];
-
-  const PER_PAGE = 5;
-  const pageCount = Math.max(1, Math.ceil(visible.length / PER_PAGE));
-  const pg = Math.min(page, pageCount - 1);
-  const start = pg * PER_PAGE;
-  const pageItems = visible.slice(start, start + PER_PAGE);
-  const goPage = (n) => { const c = Math.max(0, Math.min(n, pageCount - 1)); setPage(c); setSelected(c * PER_PAGE); };
-
+  const PER = 3;
+  const pages = Math.ceil(projects.length / PER);
+  const [page, setPage] = React.useState(0);
+  const start = page * PER;
+  const ArrowBtn = ({ dir, disabled, onClick }) => (
+    <button onClick={onClick} disabled={disabled} aria-label={dir === 'prev' ? t('Previous', 'Anterior') : t('Next', 'Siguiente')} style={{
+      width: 46, height: 46, borderRadius: '50%',
+      border: `1px solid ${disabled ? 'rgba(0,16,17,0.12)' : 'var(--ink)'}`,
+      background: 'var(--white)',
+      color: disabled ? 'rgba(0,16,17,0.25)' : 'var(--ink)',
+      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+      cursor: disabled ? 'default' : 'pointer',
+      transition: 'border-color 0.2s ease, color 0.2s ease',
+    }}>
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style={{ transform: dir === 'prev' ? 'rotate(180deg)' : 'none' }}>
+        <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+      </svg>
+    </button>
+  );
   return (
-    <section id="projects" style={{ background: 'var(--white)', padding: 'clamp(48px, 7vh, 84px) 0' }}>
+    <section id="projects" style={{ background: 'var(--white)', padding: 'clamp(64px, 9vh, 110px) 0' }}>
       <div className="container">
-        {/* Editorial header */}
+        {/* Header: two-tone title + pager arrows, same design as bestsellers */}
         <div style={{
-          paddingBottom: 8, marginBottom: 18,
+          display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end',
+          gap: 32, marginBottom: 44, flexWrap: 'wrap',
         }}>
-          <h2 className="display" style={{
-            margin: 0, fontSize: 'clamp(26px, 2.6vw, 36px)',
-            lineHeight: 1, letterSpacing: '-0.02em',
-            fontWeight: 800,
-          }}>
-            {t('Real projects.', 'Proyectos reales.')}<br/>
-            <span style={{ color: 'var(--tangerine)' }}>{t('Real perimeters.', 'Perímetros reales.')}</span>
-          </h2>
-          <p className="mono" style={{
-            margin: '10px 0 0', fontSize: 12.5, letterSpacing: '0.16em',
-            textTransform: 'uppercase', color: 'var(--charcoal)',
-          }}>
-            {t('Flagship perimeters across Southwest Florida, pick one to preview.',
-               'Perímetros insignia en el suroeste de Florida, elige uno para verlo.')}
-          </p>
-        </div>
-
-        {/* Filter chips */}
-        <div style={{
-          display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 18,
-          paddingBottom: 12, borderBottom: '1px solid rgba(0,16,17,0.12)',
-        }}>
-          {!curated && filters.map(f => {
-            const active = f === filter;
-            return (
-              <button key={f} onClick={() => { setFilter(f); setSelected(0); setPage(0); }} className="mono"
-                style={{
-                  padding: '6px 12px',
-                  fontSize: 12, letterSpacing: '0.18em',
-                  textTransform: 'uppercase', fontWeight: 700,
-                  border: '1px solid var(--ink)',
-                  background: active ? 'var(--ink)' : 'transparent',
-                  color: active ? 'var(--white)' : 'var(--ink)',
-                  cursor: 'pointer',
-                }}>
-                {t(MAT_LABELS[f] || f)}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Featured project (left) + selectable list (right) */}
-        <div style={{
-          display: 'grid', gridTemplateColumns: '1.4fr 1fr',
-          gap: 18, alignItems: 'stretch',
-        }}>
-          <FeaturedProject key={sel} p={feat} num={sel} total={visible.length} />
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-              {pageItems.map((p, i) => (
-                <ProjectListRow key={p.name.EN || p.name} p={p} active={(start + i) === sel}
-                  onSelect={() => setSelected(start + i)} />
-              ))}
-            </div>
-
-            {pageCount > 1 && (
-              <div style={{
-                marginTop: 'auto', paddingTop: 18,
-                display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
-              }}>
-                <span className="mono" style={{
-                  fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)',
-                }}>
-                  {start + 1}-{Math.min(start + PER_PAGE, visible.length)} {t('of', 'de')} {visible.length}
-                </span>
-                <div style={{ display: 'flex', gap: 6 }}>
-                  <PageBtn disabled={pg === 0} onClick={() => goPage(pg - 1)} arrow="prev" />
-                  {Array.from({ length: pageCount }).map((_, n) => (
-                    <PageBtn key={n} active={n === pg} onClick={() => goPage(n)} label={n + 1} />
-                  ))}
-                  <PageBtn disabled={pg === pageCount - 1} onClick={() => goPage(pg + 1)} arrow="next" />
-                </div>
-              </div>
-            )}
+          <div>
+            <h2 className="display" style={{
+              margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)',
+              textTransform: 'uppercase', fontWeight: 800, letterSpacing: '-0.01em',
+            }}>
+              {t('Real projects.', 'Proyectos reales.')}{' '}
+              <span style={{ color: 'var(--tangerine)' }}>{t('Real perimeters.', 'Perímetros reales.')}</span>
+            </h2>
+            <p className="mono" style={{
+              margin: '12px 0 0', fontSize: 12.5, letterSpacing: '0.16em',
+              textTransform: 'uppercase', color: 'var(--charcoal)',
+            }}>
+              {t('Flagship perimeters across Southwest Florida.', 'Perímetros insignia en el suroeste de Florida.')}
+            </p>
           </div>
+          <div style={{ display: 'flex', gap: 10 }}>
+            <ArrowBtn dir="prev" disabled={page === 0} onClick={() => setPage(p => Math.max(0, p - 1))}/>
+            <ArrowBtn dir="next" disabled={page === pages - 1} onClick={() => setPage(p => Math.min(pages - 1, p + 1))}/>
+          </div>
+        </div>
+
+        {/* Sliding track of flat project cards */}
+        <div style={{ overflow: 'hidden' }}>
+          <div style={{
+            display: 'flex',
+            transform: `translateX(-${page * 100}%)`,
+            transition: 'transform 0.6s cubic-bezier(0.35, 0, 0.15, 1)',
+          }}>
+            {Array.from({ length: pages }).map((_, pg) => (
+              <div key={pg} aria-hidden={pg !== page} style={{
+                flex: '0 0 100%', minWidth: 0,
+                display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 34,
+              }}>
+                {projects.slice(pg * PER, pg * PER + PER).map((p, idx) => (
+                  <article key={p.name.EN || p.name} style={{
+                    opacity: pg === page ? 1 : 0,
+                    transform: pg === page ? 'none' : 'translateY(16px)',
+                    transition: 'opacity 0.45s ease, transform 0.6s cubic-bezier(0.3, 0, 0.2, 1)',
+                    transitionDelay: pg === page ? `${140 + idx * 90}ms` : '0ms',
+                  }}>
+                    <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#263166', overflow: 'hidden' }}>
+                      <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
+                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                    </div>
+                    <div className="mono" style={{
+                      marginTop: 16, fontSize: 12, letterSpacing: '0.16em',
+                      textTransform: 'uppercase', color: 'var(--charcoal)',
+                    }}>{t(MAT_LABELS[p.material] || p.material)} · {p.loc}</div>
+                    <h3 className="display" style={{
+                      margin: '8px 0 0', fontSize: 21, lineHeight: 1.15, fontWeight: 700,
+                      color: 'var(--ink)',
+                    }}>{t(p.name)}</h3>
+                    <a href="estimate.html#contact" className="mono" style={{
+                      marginTop: 14,
+                      display: 'inline-flex', alignItems: 'center', gap: 8,
+                      fontSize: 12.5, fontWeight: 700, letterSpacing: '0.16em',
+                      textTransform: 'uppercase', color: 'var(--tangerine)',
+                    }}>
+                      {t('Request quote', 'Solicitar cotización')}
+                      <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                        <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+                      </svg>
+                    </a>
+                  </article>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer: progress + counter */}
+        <div style={{ marginTop: 40, display: 'flex', alignItems: 'center', gap: 24 }}>
+          <span style={{ flex: 1, height: 2, background: 'rgba(0,16,17,0.12)', position: 'relative' }}>
+            <span style={{
+              position: 'absolute', left: 0, top: 0, bottom: 0,
+              width: `${((page + 1) / pages) * 100}%`,
+              background: 'var(--tangerine)', transition: 'width 0.3s ease',
+            }}/>
+          </span>
+          <span className="mono" style={{
+            fontSize: 13, letterSpacing: '0.14em', color: 'var(--charcoal)', whiteSpace: 'nowrap',
+          }}>{start + 1}–{Math.min(start + PER, projects.length)} / {projects.length}</span>
         </div>
       </div>
     </section>
@@ -889,7 +901,7 @@ const FinalCTA = () => {
     marginBottom: 6, display: 'block',
   };
   return (
-    <section id="contact" style={{ background: 'var(--white)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
+    <section id="contact" style={{ background: 'var(--white)', padding: '120px 0', position: 'relative', overflow: 'hidden', scrollMarginTop: 110 }}>
       {/* Decorative background pattern + accent shapes */}
       <div aria-hidden style={{
         position: 'absolute', inset: 0,
