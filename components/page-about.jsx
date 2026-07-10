@@ -173,7 +173,7 @@ const AboutShop = () => {
     accent={t('packed in Fort Myers.', 'empacado en Fort Myers.')}
     body={t('Most of our gates ship ready-to-assemble from our fabrication shop. Aluminum, chain link, metal, vinyl and EC Fence, cut and welded to spec in-house, so what arrives on your jobsite is ready to install the same day.', 'La mayoría de nuestros portones se envían listos para armar desde nuestro taller de fabricación. Aluminio, malla ciclónica, metal, vinilo y EC Fence, cortados y soldados a la medida en planta, para que lo que llega a tu obra esté listo para instalar el mismo día.')}
     bullets={[
-      t('Custom gate fabrication, up to 50 ft cantilever', 'Fabricación de portones a medida, hasta 50 ft de voladizo'),
+      t('Custom gate fabrication, up to 30 ft cantilever', 'Fabricación de portones a medida, hasta 30 ft en cantilever'),
       t('Hardware kits packed and labeled to the order', 'Kits de herrajes empacados y etiquetados según el pedido'),
       t('Powder-coat color-match on aluminum runs', 'Igualación de color con pintura en polvo en producciones de aluminio'),
       t('Same-day pickup on stocked panels and components', 'Retiro el mismo día de paneles y componentes en existencia'),

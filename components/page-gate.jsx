@@ -167,33 +167,49 @@ const GATE_DATA = {
     name: 'Cantilever',
     tag: 'Cantilever gate materials & hardware',
     heroTitle: 'Cantilever Gates Built',
-    heroAccent: 'for Long Openings.',
-    heroBody: 'Counter-balanced cantilever gates with no ground track, for sandy, coastal, or long commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.',
+    heroAccent: 'for Any Surface.',
+    heroBody: 'Cantilever gates are suspended in the air on internal rollers — the frame never touches the ground, which is their biggest strength. Designed to work over any surface, with openings up to 30 feet wide including the counterweight section. Send us your opening size and project details for an accurate quote.',
     heroImg: 'assets/CANTILEVER.png',
     quickFacts: [
-      ['Best For', 'Industrial yards, coastal sites, long openings, debris-prone areas'],
+      ['Best For', 'Driveways and openings over any surface, industrial yards, daily-use access'],
+      ['Max Width', "30' including the counterweight section"],
       ['Materials', GATE_MATERIALS],
-      ['Hardware', GATE_HARDWARE],
+      ['Hardware', 'Cantilever rollers, latches, and receiver posts — no hinges'],
+    ],
+    typesTitle: 'Cantilever',
+    typesAccent: 'Specifications.',
+    typesSub: 'Cantilever is the gate type — every cantilever gate is suspended in the air. These are the specifications that define your build.',
+    gateTypes: [
+      { name: 'Suspended Frame', tag: 'No ground contact', notes: 'The gate hangs from internal rollers and floats over the opening — nothing touches the ground.', img: 'assets/CANTILEVER.png' },
+      { name: 'Works Over Any Surface', tag: 'All driveways', notes: 'Concrete, gravel, pavers, grass or uneven ground — the surface below does not matter.', img: 'assets/projects/cl-swing-gate-galv-4.jpg' },
+      { name: "Max Width 30'", tag: 'With counterweight', notes: 'Openings up to 30 feet wide, counting the counterbalance section.', img: 'assets/projects/pvc-privacy-cantilever-gate-white.jpg' },
+      { name: 'Material Options', tag: 'All materials', notes: 'Available in chain link, vinyl-coated, metal, and EC Fence styles.', img: 'assets/projects/cl-fence-black.jpg' },
+    ],
+    hardware: [
+      { name: 'Cantilever Rollers', tag: 'Load-bearing', notes: 'Internal roller trucks carry the gate — the frame rides on them, suspended in the air.' },
+      { name: 'Latches & Receivers', tag: 'Closure', notes: 'Cantilever latch and receiver post catch the nose of the gate when closed.' },
+      { name: 'Counterbalance Section', tag: 'Structure', notes: 'The tail section counterweights the gate across the opening.' },
+      { name: 'Guide & Support Posts', tag: 'Framework', notes: 'Heavy posts carry the rollers — a cantilever gate uses no hinges.' },
+    ],
+    specs: [
+      ['Gate Type', 'Cantilever — suspended in the air on rollers, no ground track'],
+      ['Max Width', "30' including the counterweight section"],
+      ['Heights', 'Available heights vary by gate material and style'],
+      ['Materials', GATE_MATERIALS],
+      ['Hardware', 'Cantilever rollers, latch, and receiver / guide posts — no hinges'],
       ['Lead Time', GATE_LEADTIME],
     ],
-    gateTypes: [
-      { name: 'No-Ground-Track Frame', tag: 'Counter-balanced', notes: 'Counter-balanced frame floats clear of the driveway.', img: 'assets/CANTILEVER.png' },
-      { name: 'Coastal / Debris Sites', tag: 'No track', notes: 'No ground track to jam with sand or debris.', img: 'assets/projects/cl-swing-gate-galv-4.jpg' },
-      { name: 'Long-Span Custom', tag: 'Wide openings', notes: 'Built for wider single openings and telescoping runs.', img: 'assets/projects/pvc-privacy-cantilever-gate-white.jpg' },
-      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in chain link, vinyl-coated, metal, and EC Fence styles.', img: 'assets/projects/cl-fence-black.jpg' },
-    ],
-    specs: GATE_SPECS,
     applications: [
       ['Industrial Perimeters', 'Long openings for yards, storage, and commercial sites.', 'Built for long openings'],
-      ['Coastal & Sandy Sites', 'No ground track to clear in sand or debris.', 'No ground track'],
-      ['Wide Openings', 'Single openings sized for larger entrances.', 'Wide single spans'],
+      ['Any Surface', 'Designed for various surfaces — the suspended frame clears them all.', 'No ground contact'],
+      ['Wide Openings', "Single openings up to 30' including the counterweight.", "Up to 30' spans"],
     ],
     projects: [
       { name: 'Industrial Yard', loc: 'Fort Myers, FL', size: '30 ft Opening', material: 'Cantilever Gate', type: 'Galvanized cantilever gate, V-rollers', contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/CANTILEVER.png' },
       { name: 'Coastal Perimeter', loc: 'Sanibel, FL', size: '24 ft', material: 'Chain Link Gate', type: 'Vinyl-coated cantilever, salt-rated rollers', contractor: 'Harbor Iron Works', year: '2024', imgUrl: 'assets/CANTILEVER.png' },
-      { name: 'Storage Facility', loc: 'Bonita Springs, FL', size: '40 ft', material: 'Vinyl / PVC Gate', type: 'PVC privacy cantilever gate, white', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/pvc-privacy-cantilever-gate-white.jpg' },
+      { name: 'Storage Facility', loc: 'Bonita Springs, FL', size: '26 ft', material: 'Vinyl / PVC Gate', type: 'PVC privacy cantilever gate, white', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/pvc-privacy-cantilever-gate-white.jpg' },
       { name: 'Commercial Entrance', loc: 'Estero, FL', size: '20 ft', material: 'Metal Gate', type: 'DuraFence cantilever gate, privacy face', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/ROLLING_GATE.png' },
-      { name: 'Long-Span Custom', loc: 'Immokalee, FL', size: '50 ft', material: 'EC Fence Gate', type: 'Custom cantilever, telescoping span', contractor: 'Harbor Iron Works', year: '2024', imgUrl: 'assets/SLIDING_GATE.png' },
+      { name: 'Distribution Yard', loc: 'Immokalee, FL', size: '30 ft', material: 'EC Fence Gate', type: 'Custom cantilever, 30 ft with counterweight', contractor: 'Harbor Iron Works', year: '2024', imgUrl: 'assets/SLIDING_GATE.png' },
     ],
     cta: {
       kicker: 'Cantilever gate quote',
@@ -344,9 +360,9 @@ const GateTypes = ({ data }) => (
     <div className="container">
       <PageSectionHeader
         number="01" label={useT()("Choose your gate", "Elige tu portón")}
-        title={useT()("Choose Your", "Elige tu")}
-        accent={useT()("Gate Type.", "tipo de portón.")}
-        sub={useT()("Pick the configuration that fits your opening. Every option is available across our fence materials.", "Elige la configuración que se ajuste a tu abertura. Todas las opciones están disponibles en nuestros materiales.")}
+        title={data.typesTitle || useT()("Choose Your", "Elige tu")}
+        accent={data.typesAccent || useT()("Gate Type.", "tipo de portón.")}
+        sub={data.typesSub || useT()("Pick the configuration that fits your opening. Every option is available across our fence materials.", "Elige la configuración que se ajuste a tu abertura. Todas las opciones están disponibles en nuestros materiales.")}
       />
       <GateCardGrid items={data.gateTypes}/>
     </div>
@@ -413,7 +429,7 @@ const GateQuoteChecklist = () => {
   );
 };
 
-const GateHardware = () => (
+const GateHardware = ({ data }) => (
   <section style={{ background: 'var(--white)', padding: '120px 0' }}>
     <div className="container">
       <PageSectionHeader
@@ -422,7 +438,7 @@ const GateHardware = () => (
         accent={useT()("& Accessories.", "portones.")}
         sub={useT()("We supply the hardware that makes a gate work, matched to your gate type, material and posts.", "Suministramos los herrajes que hacen funcionar un portón, según el tipo, el material y los postes.")}
       />
-      <GateCardGrid items={GATE_HARDWARE_CARDS}/>
+      <GateCardGrid items={(data && data.hardware) || GATE_HARDWARE_CARDS}/>
     </div>
   </section>
 );
@@ -557,7 +573,7 @@ const GatePage = ({ slug }) => {
       <GateQuickFacts data={data}/>
       <GateTypes data={data}/>
       <GateQuoteChecklist />
-      <GateHardware />
+      <GateHardware data={data} />
       <GateSpecs data={data}/>
       <GateApplications data={data}/>
       <ProjectGallery items={base.projects}/>
