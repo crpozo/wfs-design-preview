@@ -100,9 +100,8 @@ const FeaturedGrid = () => {
           gap: 32, marginBottom: 44, flexWrap: 'wrap',
         }}>
           <div>
-            <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>03, Bestsellers</span>
             <h2 className="display" style={{
-              fontSize: 'clamp(30px, 3.4vw, 46px)', margin: '12px 0 0',
+              fontSize: 'clamp(30px, 3.4vw, 46px)', margin: 0,
               textTransform: 'uppercase', fontWeight: 800, letterSpacing: '-0.01em',
             }}>
               {t('In stock,', 'En existencia,')}{' '}

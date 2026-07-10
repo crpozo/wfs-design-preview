@@ -168,7 +168,7 @@ const AboutShop = () => {
   const t = useT();
   return (
   <SplitBlock
-    kicker={t('03, In-house fabrication', '03, Fabricación en planta')}
+    kicker={t('In-house fabrication', 'Fabricación en planta')}
     title={t('Welded, cut and', 'Soldado, cortado y')}
     accent={t('packed in Fort Myers.', 'empacado en Fort Myers.')}
     body={t('Most of our gates ship ready-to-assemble from our fabrication shop. Aluminum, chain link, metal, vinyl and EC Fence, cut and welded to spec in-house, so what arrives on your jobsite is ready to install the same day.', 'La mayoría de nuestros portones se envían listos para armar desde nuestro taller de fabricación. Aluminio, malla ciclónica, metal, vinilo y EC Fence, cortados y soldados a la medida en planta, para que lo que llega a tu obra esté listo para instalar el mismo día.')}

@@ -161,7 +161,7 @@ const PoolCodeSection = () => {
   const t = useT();
   return (
     <SplitBlock
-      kicker={t('03, Florida Pool Code', '03, Código de piscinas de Florida')}
+      kicker={t('Florida Pool Code', 'Código de piscinas de Florida')}
       title={t('Code-compliant', 'Perfiles de cerramiento')}
       accent={t('enclosure profiles.', 'que cumplen el código.')}
       body={t('Florida Building Code requires a 4 ft minimum barrier around residential pools, with specific opening, latch and self-closing requirements. We stock multiple aluminum and vinyl profiles that meet the spec, and we\'ll annotate the cut sheet for your AHJ.', 'El Código de Construcción de Florida exige una barrera mínima de 4 pies alrededor de las piscinas residenciales, con requisitos específicos de aberturas, pestillos y cierre automático. Tenemos en existencia múltiples perfiles de aluminio y vinilo que cumplen la especificación, y anotaremos la hoja de corte para su AHJ.')}
