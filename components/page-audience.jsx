@@ -17,7 +17,7 @@ const HomeownerHero = () => {
   return (
   <section style={{
     position: 'relative', color: 'var(--white)', overflow: 'hidden',
-    minHeight: 'calc(100svh - 80px)',
+    minHeight: 'calc(100svh - 118px)',
     display: 'flex', flexDirection: 'column',
     background: '#263166',
   }}>
@@ -39,7 +39,7 @@ const HomeownerHero = () => {
     <div className="container" style={{
       position: 'relative', zIndex: 2, width: '100%',
       flex: 1, display: 'flex', flexDirection: 'column',
-      paddingTop: 96, paddingBottom: 36,
+      paddingTop: 44, paddingBottom: 26,
     }}>
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: 680 }}>
         {/* Eyebrow */}
@@ -58,7 +58,7 @@ const HomeownerHero = () => {
           fontFamily: 'var(--display)',
           fontVariationSettings: "'wdth' 100",
           fontWeight: 800,
-          fontSize: 'clamp(38px, 4.6vw, 64px)',
+          fontSize: 'clamp(32px, 4vw, 54px)',
           lineHeight: 1.02,
           letterSpacing: '-0.02em',
           textTransform: 'uppercase',
@@ -70,7 +70,7 @@ const HomeownerHero = () => {
         </h1>
         <p style={{
           fontSize: 16, lineHeight: 1.55, maxWidth: 440,
-          margin: '0 0 34px', color: 'rgba(255,255,255,0.85)',
+          margin: '0 0 26px', color: 'rgba(255,255,255,0.85)',
         }}>
           {t('Premium manufacturing-direct fencing. We help you plan the project and connect you with trusted local installers for the build.',
              'Cercas premium directas de fábrica. Te ayudamos a planear el proyecto y te conectamos con instaladores locales de confianza para la obra.')}
@@ -108,7 +108,7 @@ const HomeownerHero = () => {
 
       {/* Bottom strip: checks left, proof metrics right */}
       <div style={{
-        marginTop: 48, paddingTop: 24,
+        marginTop: 28, paddingTop: 20,
         borderTop: '1px solid rgba(255,255,255,0.18)',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center',
         gap: 24, flexWrap: 'wrap',
@@ -805,7 +805,6 @@ const HomeownerPage = () => (
   <>
     <SiteHeader />
     <HomeownerHero />
-    <HomeownerTrustStrip />
     <HomeownerSteps />
     <FenceCategories />
     <HomeownerInstallerSplit />
@@ -820,208 +819,171 @@ const HomeownerPage = () => (
 
 const ContractorHero = () => {
   const t = useT();
+  const checks = [
+    { EN: 'No application fee', ES: 'Sin cuota de solicitud' },
+    { EN: 'Volume tiers', ES: 'Niveles por volumen' },
+    { EN: 'Flexible payment terms', ES: 'Términos de pago flexibles' },
+  ];
+  const gets = [
+    [{ EN: 'Wholesale pricing', ES: 'Precios mayoristas' },
+     { EN: 'Manufacturer-direct tiers that scale with your volume.', ES: 'Niveles directos de fábrica que escalan con tu volumen.' }],
+    [{ EN: 'Priority fabrication', ES: 'Fabricación prioritaria' },
+     { EN: 'Your gates jump the line — built in our shop, not shipped in.', ES: 'Tus portones pasan al frente: se fabrican en nuestro taller, no llegan de fuera.' }],
+    [{ EN: 'Job-site delivery', ES: 'Entrega en obra' },
+     { EN: 'Delivery to your job site on our own trucks across Florida — confirmed with your quote.', ES: 'Entrega en tu obra con nuestros propios camiones en toda Florida, confirmada con tu cotización.' }],
+  ];
   return (
   <section style={{
-    background: 'var(--ink)', color: 'var(--white)',
-    minHeight: 'calc(100svh - 80px)',
-    padding: '64px 0',
-    display: 'flex', alignItems: 'center',
-    position: 'relative', overflow: 'hidden',
+    position: 'relative', color: 'var(--white)', overflow: 'hidden',
+    minHeight: 'calc(100svh - 118px)',
+    display: 'flex', flexDirection: 'column',
+    background: '#263166',
   }}>
-    {/* Background dotted grid */}
-    <div aria-hidden style={{
-      position: 'absolute', inset: 0, opacity: 0.10,
-      backgroundImage: 'radial-gradient(rgba(255,255,255,0.6) 1px, transparent 1px)',
-      backgroundSize: '24px 24px',
-      pointerEvents: 'none',
+    {/* Full-bleed warehouse photo */}
+    <img src="assets/hero-warehouse.webp" alt="" aria-hidden style={{
+      position: 'absolute', inset: 0, width: '100%', height: '100%',
+      objectFit: 'cover', objectPosition: 'center 40%', zIndex: 0,
     }}/>
-    {/* Tangerine accent line */}
+    {/* Navy scrim, heavier on the copy side */}
     <div aria-hidden style={{
-      position: 'absolute', top: 0, left: 0, right: 0, height: 4,
-      background: 'var(--tangerine)',
+      position: 'absolute', inset: 0, zIndex: 1,
+      background: 'linear-gradient(100deg, rgba(38, 49, 102,0.95) 0%, rgba(38, 49, 102,0.82) 42%, rgba(38, 49, 102,0.5) 75%, rgba(38, 49, 102,0.34) 100%)',
     }}/>
-    <div className="container" style={{ position: 'relative', width: '100%' }}>
-      <div style={{
-        display: 'grid', gridTemplateColumns: '1.2fr 1fr',
-        gap: 56, alignItems: 'center',
-      }}>
-        {/* Left, copy block */}
-        <div>
-          <span className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10,
-            padding: '7px 14px',
-            border: '1px solid rgba(255,255,255,0.4)',
-            fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
-            textTransform: 'uppercase', color: 'var(--white)',
-            marginBottom: 24,
-          }}>
-            <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-            {t('Wholesale Partner Program · Florida', 'Programa de Socio Mayorista · Florida')}
-          </span>
-          <h1 style={{
-            margin: '0 0 22px',
-            fontFamily: 'var(--display)',
-            fontVariationSettings: "'wdth' 100",
-            fontWeight: 700,
-            fontSize: 'clamp(32px, 3.6vw, 52px)',
-            lineHeight: 1.05,
-            letterSpacing: '-0.02em',
-            textTransform: 'none',
-            color: 'var(--white)',
-          }}>
-            {t('Build with the', 'Construye con el')}{' '}
-            <span style={{ color: 'var(--tangerine)' }}>{t('manufacturer.', 'fabricante.')}</span>
-          </h1>
-          <p className="mono" style={{
-            margin: '0 0 26px',
-            maxWidth: 520,
-            fontSize: 14, lineHeight: 1.65,
-            color: 'rgba(255,255,255,0.72)',
-          }}>
-            {t(
-              "Partner with Southwest Florida's leading fence manufacturer. Wholesale pricing tiers, priority fabrication, and job-site delivery, without an out-of-state distributor in the middle.",
-              'Asóciate con el fabricante líder de cercas del suroeste de Florida. Niveles de precio mayorista, fabricación prioritaria y entrega a obra, sin distribuidor de otro estado en medio.'
-            )}
-          </p>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 26 }}>
-            <a href="estimate.html" style={{
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              padding: '14px 28px',
-              background: 'var(--tangerine)', color: 'var(--white)',
-              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
-              letterSpacing: '0.18em', textTransform: 'uppercase',
-              boxShadow: '6px 6px 0 rgba(255,255,255,0.18)',
-              transition: 'transform 0.18s ease, box-shadow 0.18s ease',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px, -2px)'; e.currentTarget.style.boxShadow = '8px 8px 0 rgba(255,255,255,0.22)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '6px 6px 0 rgba(255,255,255,0.18)'; }}>
-              {t('Get a Quick Quote', 'Cotización rápida')}
-            </a>
-            <a href="estimate.html" style={{
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              padding: '14px 28px',
-              background: 'transparent', color: 'var(--white)',
-              border: '1.5px solid rgba(255,255,255,0.5)',
-              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
-              letterSpacing: '0.18em', textTransform: 'uppercase',
-            }}>{t('Verify Stock', 'Verificar stock')}</a>
-          </div>
-          {/* Trust micro-bullets */}
-          <div className="mono" style={{
-            display: 'flex', gap: 22, flexWrap: 'wrap',
-            fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
-            textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)',
-          }}>
-            {[
-              { EN: 'No application fee',   ES: 'Sin costo de solicitud' },
-              { EN: 'Volume tiers',          ES: 'Niveles por volumen' },
-              { EN: 'Flexible payment terms',   ES: 'Términos de pago flexibles' },
-            ].map((b, i) => (
-              <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                {t(b)}
-              </span>
-            ))}
-          </div>
+    <div aria-hidden style={{
+      position: 'absolute', left: 0, right: 0, bottom: 0, height: '38%', zIndex: 1,
+      background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 0%, rgba(38, 49, 102,0.72) 70%, rgba(38, 49, 102,0.9) 100%)',
+    }}/>
+
+    {/* Floating chips over the photo */}
+    <span className="mono" style={{
+      position: 'absolute', top: 22, right: 24, zIndex: 2,
+      display: 'inline-flex', alignItems: 'center', gap: 8,
+      fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+      textTransform: 'uppercase', color: 'var(--white)',
+    }}>
+      <span aria-hidden style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>
+      {t('Will-call ready', 'Listo para retiro')}
+    </span>
+    <div className="mono" style={{
+      position: 'absolute', right: 24, bottom: '32%', zIndex: 2,
+      textAlign: 'right',
+    }}>
+      <div style={{ fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--tangerine)' }}>
+        {t('Two yards', 'Dos sucursales')}
+      </div>
+      <div className="display" style={{ marginTop: 4, fontSize: 19, fontWeight: 800, letterSpacing: '0.02em', textTransform: 'uppercase', color: 'var(--white)' }}>
+        Fort Myers + Port Charlotte
+      </div>
+    </div>
+
+    <div className="container" style={{
+      position: 'relative', zIndex: 2, width: '100%',
+      flex: 1, display: 'flex', flexDirection: 'column',
+      paddingTop: 44, paddingBottom: 26,
+    }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: 700 }}>
+        {/* Eyebrow */}
+        <div className="mono" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 14,
+          marginBottom: 22,
+          fontSize: 'clamp(12px, 1.1vw, 13px)', fontWeight: 700,
+          letterSpacing: '0.22em', textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.85)',
+        }}>
+          <span aria-hidden style={{ width: 34, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
+          {t('Wholesale Partner Program · Florida', 'Programa de socios mayoristas · Florida')}
         </div>
-
-        {/* Right, contractor visual: yard photo + "what you get" card */}
-        <div style={{ position: 'relative', aspectRatio: '5 / 6', maxHeight: 'calc(100svh - 160px)' }}>
-          {/* Outer white frame */}
-          <div style={{
-            position: 'absolute', inset: 0,
-            border: '1.5px solid rgba(255,255,255,0.25)',
-            background: 'rgba(255,255,255,0.03)',
-          }}/>
-          {/* Tangerine offset plate */}
-          <div aria-hidden style={{
-            position: 'absolute', inset: '12px -12px -12px 12px',
-            background: 'var(--tangerine)', zIndex: -1,
-          }}/>
-
-          {/* Photo: real warehouse / yard for pickup */}
-          <div style={{
-            position: 'absolute', top: 24, left: 24, right: 24,
-            height: '52%',
-            overflow: 'hidden',
-            border: '1px solid rgba(255,255,255,0.18)',
-            background: '#263166',
-          }}>
-            <img
-              src="assets/hero-warehouse.webp"
-              alt={t('WFS yard and warehouse', 'Sucursal y almacén WFS')}
-              style={{
-                width: '100%', height: '100%',
-                objectFit: 'cover', display: 'block',
-              }}
-            />
-            {/* Top-left chip */}
-            <span className="mono" style={{
-              position: 'absolute', top: 14, left: 14,
-              padding: '6px 12px',
-              background: 'var(--tangerine)', color: 'var(--white)',
-              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em',
-              textTransform: 'uppercase',
-            }}>{t('Will-call ready', 'Listo para recoger')}</span>
-            {/* Bottom-right location chip */}
-            <span className="mono" style={{
-              position: 'absolute', bottom: 14, right: 14,
-              padding: '6px 12px',
-              background: 'rgba(38, 49, 102,0.92)', color: 'var(--white)',
-              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-            }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#ff7133' }}/>
-              {t('2 yards · FM + PC', '2 sucursales · FM + PC')}
+        <h1 style={{
+          margin: '0 0 20px',
+          fontFamily: 'var(--display)',
+          fontVariationSettings: "'wdth' 100",
+          fontWeight: 800,
+          fontSize: 'clamp(32px, 4vw, 54px)',
+          lineHeight: 1.02,
+          letterSpacing: '-0.02em',
+          textTransform: 'uppercase',
+          color: 'var(--white)',
+          textShadow: '0 2px 28px rgba(0,0,0,0.28)',
+        }}>
+          {t('Build with the', 'Construye con el')}{' '}
+          <span style={{ color: 'var(--tangerine)' }}>{t('manufacturer.', 'fabricante.')}</span>
+        </h1>
+        <p style={{
+          fontSize: 15.5, lineHeight: 1.6, maxWidth: 500,
+          margin: '0 0 26px', color: 'rgba(255,255,255,0.85)',
+        }}>
+          {t("Partner with Southwest Florida's leading fence manufacturer. ", 'Asóciate con el fabricante de cercas líder del suroeste de Florida. ')}
+          <strong style={{ color: 'var(--white)' }}>
+            {t('Wholesale pricing tiers, priority fabrication, and job-site delivery', 'Niveles de precio mayorista, fabricación prioritaria y entrega en obra')}
+          </strong>
+          {t(' — without an out-of-state distributor in the middle.', ', sin un distribuidor de fuera del estado de por medio.')}
+        </p>
+        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginBottom: 22 }}>
+          <a href="estimate.html#contact" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 12,
+            padding: '15px 26px',
+            background: 'var(--tangerine)', color: 'var(--white)',
+            fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+            letterSpacing: '0.18em', textTransform: 'uppercase',
+            boxShadow: '0 10px 28px rgba(255, 113, 51,0.4)',
+            transition: 'transform 0.18s, box-shadow 0.18s',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(255, 113, 51,0.5)'; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(255, 113, 51,0.4)'; }}>
+            {t('Get a quick quote', 'Cotiza rápido')}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+          </a>
+          <a href="locations.html" className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+            padding: '14px 24px',
+            border: '1px solid rgba(255,255,255,0.6)', color: 'var(--white)',
+            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(4px)',
+            transition: 'background 0.2s ease',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}>
+            {t('Verify stock', 'Verificar existencias')}
+          </a>
+        </div>
+        {/* Program checks */}
+        <div className="mono" style={{
+          display: 'flex', gap: 22, flexWrap: 'wrap',
+          fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
+          textTransform: 'uppercase', color: 'var(--white)',
+        }}>
+          {checks.map((c, i) => (
+            <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              {t(c)}
             </span>
-          </div>
+          ))}
+        </div>
+      </div>
 
-          {/* Bottom card, what contractors get (mirrors homeowner pattern) */}
-          <div style={{
-            position: 'absolute', bottom: 24, left: 24, right: 24,
-            border: '1px solid rgba(255,255,255,0.18)',
-            background: 'var(--white)',
-            padding: '20px 22px',
-          }}>
-            <div className="mono" style={{
-              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em',
-              color: 'var(--tangerine)', textTransform: 'uppercase',
-              marginBottom: 14,
-              display: 'flex', alignItems: 'center', gap: 10,
+      {/* Bottom band: what contractors get */}
+      <div style={{ marginTop: 28 }}>
+        <div className="mono" style={{
+          fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+          textTransform: 'uppercase', color: 'var(--tangerine)', marginBottom: 14,
+        }}>{t('What contractors get', 'Lo que reciben los contratistas')}</div>
+        <div style={{
+          paddingTop: 18, borderTop: '1px solid rgba(255,255,255,0.18)',
+          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24,
+        }}>
+          {gets.map(([title, body], i) => (
+            <div key={i} style={{
+              paddingLeft: i === 0 ? 0 : 24,
+              borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.18)',
             }}>
-              <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-              {t('What contractors get', 'Qué obtienen los contratistas')}
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 8 }}>
+                <span className="mono" style={{ fontSize: 12, fontWeight: 700, color: 'var(--tangerine)', letterSpacing: '0.1em' }}>0{i + 1}</span>
+                <span className="display" style={{ fontSize: 18, fontWeight: 800, letterSpacing: '0.01em', textTransform: 'uppercase', color: 'var(--white)' }}>{t(title)}</span>
+              </div>
+              <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.75)' }}>{t(body)}</p>
             </div>
-            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: 11 }}>
-              {[
-                { line: { EN: 'Wholesale pricing, manufacturer-direct',  ES: 'Precios mayoristas, directo del fabricante' },
-                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><path d="M6 9 L12 4 L18 9 L18 19 H6 Z"/><path d="M9 19 V13 H15 V19"/></svg>) },
-                { line: { EN: 'Priority manufacturing on gates', ES: 'Fabricación prioritaria en portones' },
-                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15 14"/></svg>) },
-                { line: { EN: 'Free delivery to your job site',     ES: 'Entrega gratis a tu obra' },
-                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>) },
-              ].map((b, i) => (
-                <li key={i} style={{
-                  display: 'flex', alignItems: 'center', gap: 12,
-                }}>
-                  <span style={{
-                    flexShrink: 0,
-                    width: 28, height: 28,
-                    border: '1.5px solid var(--ink)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: 'var(--tangerine)',
-                  }}>{b.icon}</span>
-                  <span className="mono" style={{
-                    fontSize: 13, fontWeight: 500, color: 'var(--ink)',
-                    lineHeight: 1.3,
-                  }}>{t(b.line)}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          ))}
         </div>
       </div>
     </div>
