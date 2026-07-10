@@ -33,8 +33,7 @@ const ContactHero = () => {
         margin: 0, fontSize: 'clamp(32px, 3.8vw, 54px)', lineHeight: 1.02,
         letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
       }}>
-        {t('Contact', 'Contacta a')}{' '}
-        <span style={{ color: 'var(--tangerine)' }}>Western Fence Supply.</span>
+        {t('Contact', 'Contacto')}
       </h1>
       <p style={{ margin: '16px 0 0', maxWidth: 560, fontSize: 15.5, lineHeight: 1.6, color: 'var(--alice-blue)' }}>
         {t('Phones, emails, addresses and hours for both yards — right here. Looking for material pricing instead?',
