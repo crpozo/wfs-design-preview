@@ -1012,6 +1012,21 @@ const ContractorStatsStrip = () => {
   );
 };
 
+const PERK_ICONS = [
+  /* factory direct pricing */
+  (<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M20.6 13.4 11 3.8a2 2 0 0 0-1.4-.6H4v5.6a2 2 0 0 0 .6 1.4l9.6 9.6a2 2 0 0 0 2.8 0l3.6-3.6a2 2 0 0 0 0-2.8Z"/><circle cx="7.7" cy="7.7" r="1.2"/></svg>),
+  /* priority fabrication */
+  (<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21 V11 L9 14 V11 L15 14 V11 L21 14 V21 Z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>),
+  /* job site delivery */
+  (<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>),
+  /* lead routing */
+  (<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 19 Q9 14 15 19"/><path d="M14 18 Q17.5 15 21 18"/></svg>),
+  /* payment terms */
+  (<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="6" width="18" height="13" rx="1.5"/><line x1="3" y1="10" x2="21" y2="10"/><rect x="6" y="14" width="4" height="2" rx="0.4" fill="currentColor"/></svg>),
+  /* dedicated rep */
+  (<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20 Q5 14 12 14 Q19 14 19 20"/></svg>),
+];
+
 const ContractorBenefits = () => {
   const t = useT();
   const perks = [
@@ -1068,11 +1083,9 @@ const ContractorBenefits = () => {
             borderLeft: i % 3 === 0 ? 'none' : '1px solid rgba(0,16,17,0.1)',
             borderTop: i < 3 ? 'none' : '1px solid rgba(0,16,17,0.08)',
           }}>
-            <span className="display" aria-hidden style={{
-              display: 'block', marginBottom: 22,
-              fontSize: 44, lineHeight: 1, fontWeight: 800,
-              color: 'transparent', WebkitTextStroke: '1.3px rgba(38,49,102,0.3)',
-            }}>0{i + 1}</span>
+            <span aria-hidden style={{ display: 'block', marginBottom: 22, color: 'var(--ink)', height: 44 }}>
+              {PERK_ICONS[i]}
+            </span>
             <h3 className="display" style={{
               margin: '0 0 12px', fontSize: 19, lineHeight: 1.1, fontWeight: 800,
               textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--ink)',
