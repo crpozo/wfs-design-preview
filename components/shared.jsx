@@ -516,7 +516,7 @@ const ES_TR = {
 "50% of opening on receiving side (30 ft → 15 ft)": "50% de la abertura del lado receptor (30 pies → 15 pies)",
 "Up to 150 mph HVHZ on mesh or vinyl-coated specs": "Hasta 150 mph HVHZ en malla o recubierta de vinilo",
 "3-4 weeks fabricated in Fort Myers": "3-4 semanas, fabricado en Fort Myers",
-"No ground track": "Sin riel en piso",
+"No ground track": "Sin riel en el piso",
 "Nothing in the driveway path, no debris jam, no track to clear.": "Nada en el paso vehicular: sin atascos por escombros ni riel que limpiar.",
 "Sandy / coastal sites": "Sitios arenosos / costeros",
 "Salt-spray-rated rollers replace exposed ground track.": "Rodillos aptos para salinidad reemplazan el riel expuesto.",
