@@ -4,197 +4,138 @@
 
 const HomeownerHero = () => {
   const t = useT();
+  const checks = [
+    { EN: 'No minimums', ES: 'Sin mínimos' },
+    { EN: 'Free takeoff', ES: 'Despiece gratis' },
+    { EN: 'Supplier-direct floor', ES: 'Precio directo de proveedor' },
+  ];
+  const metrics = [
+    ['4.9★', { EN: '180+ reviews', ES: 'Más de 180 reseñas' }],
+    ['24H', { EN: 'Quote turnaround', ES: 'Cotización en 24 h' }],
+    ['2', { EN: 'Yards · FM + PC', ES: 'Sucursales · FM + PC' }],
+  ];
   return (
   <section style={{
-    background: 'var(--white)',
+    position: 'relative', color: 'var(--white)', overflow: 'hidden',
     minHeight: 'calc(100svh - 80px)',
-    padding: '64px 0',
-    display: 'flex', alignItems: 'center',
-    position: 'relative', overflow: 'hidden',
+    display: 'flex', flexDirection: 'column',
+    background: '#263166',
   }}>
-    {/* Faint dotted grid texture behind */}
-    <div aria-hidden style={{
-      position: 'absolute', inset: 0,
-      backgroundImage: 'radial-gradient(rgba(38, 49, 102,0.06) 1px, transparent 1px)',
-      backgroundSize: '24px 24px',
-      maskImage: 'radial-gradient(ellipse at center, #000 0%, transparent 70%)',
-      WebkitMaskImage: 'radial-gradient(ellipse at center, #000 0%, transparent 70%)',
-      pointerEvents: 'none',
+    {/* Full-bleed backyard photo */}
+    <img src="assets/projects/pvc-closed-top-white.jpg" alt="" aria-hidden style={{
+      position: 'absolute', inset: 0, width: '100%', height: '100%',
+      objectFit: 'cover', objectPosition: 'center 60%', zIndex: 0,
     }}/>
-    <div className="container" style={{ position: 'relative', maxWidth: 1280, width: '100%' }}>
-      <div style={{
-        display: 'grid', gridTemplateColumns: '1.2fr 1fr',
-        gap: 64, alignItems: 'center',
-      }}>
-        {/* Left, copy */}
-        <div>
-          <span className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10,
-            padding: '7px 14px', marginBottom: 22,
-            border: '1px solid var(--ink)',
-            background: 'var(--white)',
-            fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
-            textTransform: 'uppercase', color: 'var(--ink)',
-          }}>
-            <span style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-            {t('Homeowner · Built for residential', 'Propietario · Diseñado para residencial')}
-          </span>
-          <h1 style={{
-            margin: '0 0 22px',
-            fontFamily: 'var(--display)',
-            fontVariationSettings: "'wdth' 100",
-            fontWeight: 700,
-            fontSize: 'clamp(32px, 3.6vw, 52px)',
-            lineHeight: 1.05,
-            letterSpacing: '-0.02em',
-            textTransform: 'none',
-            color: 'var(--ink)',
-          }}>
-            {t('Fence solutions', 'Soluciones de cercas')}{' '}
-            <span style={{ color: 'var(--tangerine)' }}>{t('for your home.', 'para tu hogar.')}</span>
-          </h1>
-          <p className="mono" style={{
-            margin: '0 0 26px',
-            maxWidth: 520,
-            fontSize: 14, lineHeight: 1.65,
-            color: 'var(--charcoal)',
-          }}>
-            {t(
-              "Enhance your property's value, privacy, and security with premium manufacturing-direct fencing. We help you plan the project and connect you with certified installers for the build.",
-              'Aumenta el valor, privacidad y seguridad de tu propiedad con cercas premium directas de fábrica. Te ayudamos a planificar el proyecto y te conectamos con instaladores certificados para la obra.'
-            )}
-          </p>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 26 }}>
-            <a href="estimate.html" style={{
-              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-              padding: '15px 30px',
-              background: 'var(--ink)', color: 'var(--white)',
-              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
-              letterSpacing: '0.18em', textTransform: 'uppercase',
-              boxShadow: '6px 6px 0 var(--tangerine)',
-              transition: 'transform 0.18s ease, box-shadow 0.18s ease',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px, -2px)'; e.currentTarget.style.boxShadow = '8px 8px 0 var(--tangerine)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '6px 6px 0 var(--tangerine)'; }}>
-              {t('Get Started', 'Comenzar')}
-            </a>
-          </div>
-          {/* Trust micro-bullets */}
-          <div className="mono" style={{
-            display: 'flex', gap: 22, flexWrap: 'wrap',
-            fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
-            textTransform: 'uppercase', color: 'var(--charcoal)',
-          }}>
-            {[
-              { EN: 'No minimums', ES: 'Sin mínimos' },
-              { EN: 'Free takeoff', ES: 'Toma de medidas gratis' },
-              { EN: 'Supplier-direct floor', ES: 'Precio directo del proveedor' },
-            ].map((b, i) => (
-              <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-                {t(b)}
-              </span>
-            ))}
-          </div>
+    {/* Navy scrim, heavier on the copy side */}
+    <div aria-hidden style={{
+      position: 'absolute', inset: 0, zIndex: 1,
+      background: 'linear-gradient(100deg, rgba(38, 49, 102,0.92) 0%, rgba(38, 49, 102,0.72) 40%, rgba(38, 49, 102,0.45) 75%, rgba(38, 49, 102,0.3) 100%)',
+    }}/>
+    <div aria-hidden style={{
+      position: 'absolute', left: 0, right: 0, bottom: 0, height: '34%', zIndex: 1,
+      background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 0%, rgba(38, 49, 102,0.6) 70%, rgba(38, 49, 102,0.8) 100%)',
+    }}/>
+
+    <div className="container" style={{
+      position: 'relative', zIndex: 2, width: '100%',
+      flex: 1, display: 'flex', flexDirection: 'column',
+      paddingTop: 96, paddingBottom: 36,
+    }}>
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: 680 }}>
+        {/* Eyebrow */}
+        <div className="mono" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 14,
+          marginBottom: 24,
+          fontSize: 'clamp(12px, 1.1vw, 13px)', fontWeight: 700,
+          letterSpacing: '0.22em', textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.85)',
+        }}>
+          <span aria-hidden style={{ width: 34, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
+          {t('Homeowner · Built for residential', 'Propietario · Diseñado para residencial')}
         </div>
+        <h1 style={{
+          margin: '0 0 22px',
+          fontFamily: 'var(--display)',
+          fontVariationSettings: "'wdth' 100",
+          fontWeight: 800,
+          fontSize: 'clamp(38px, 4.6vw, 64px)',
+          lineHeight: 1.02,
+          letterSpacing: '-0.02em',
+          textTransform: 'uppercase',
+          color: 'var(--white)',
+          textShadow: '0 2px 28px rgba(0,0,0,0.28)',
+        }}>
+          {t('Fence solutions', 'Soluciones de cercas')}{' '}
+          <span style={{ color: 'var(--coral)' }}>{t('for your home.', 'para tu hogar.')}</span>
+        </h1>
+        <p style={{
+          fontSize: 16, lineHeight: 1.55, maxWidth: 440,
+          margin: '0 0 34px', color: 'rgba(255,255,255,0.85)',
+        }}>
+          {t('Premium manufacturing-direct fencing. We help you plan the project and connect you with trusted local installers for the build.',
+             'Cercas premium directas de fábrica. Te ayudamos a planear el proyecto y te conectamos con instaladores locales de confianza para la obra.')}
+        </p>
+        <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+          <a href="estimate.html#contact" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 12,
+            padding: '16px 28px',
+            background: 'var(--tangerine)', color: 'var(--white)',
+            fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+            letterSpacing: '0.18em', textTransform: 'uppercase',
+            boxShadow: '0 10px 28px rgba(255, 113, 51,0.4)',
+            transition: 'transform 0.18s, box-shadow 0.18s',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(255, 113, 51,0.5)'; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(255, 113, 51,0.4)'; }}>
+            {t('Get started', 'Comenzar')}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+          </a>
+          <a href="#fences" className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+            padding: '15px 26px',
+            border: '1px solid rgba(255,255,255,0.6)', color: 'var(--white)',
+            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
+            textTransform: 'uppercase',
+            background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(4px)',
+            transition: 'background 0.2s ease',
+          }}
+          onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; }}
+          onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}>
+            {t('See fence styles', 'Ver estilos de cerca')}
+          </a>
+        </div>
+      </div>
 
-        {/* Right, homeowner visual: illustrated home scene + benefits */}
-        <div style={{ position: 'relative', aspectRatio: '5 / 6', maxHeight: 'calc(100svh - 160px)' }}>
-          {/* Outer ink frame */}
-          <div style={{
-            position: 'absolute', inset: 0,
-            border: '1.5px solid var(--ink)',
-            background: '#ffffff',
-          }}/>
-          {/* Tangerine offset shadow plate */}
-          <div aria-hidden style={{
-            position: 'absolute', inset: '12px -12px -12px 12px',
-            background: 'var(--tangerine)', zIndex: -1,
-          }}/>
-
-          {/* Photo: real residential vinyl gate */}
-          <div style={{
-            position: 'absolute', top: 24, left: 24, right: 24,
-            height: '52%',
-            overflow: 'hidden',
-            border: '1px solid rgba(38, 49, 102,0.18)',
-            background: '#ffffff',
-          }}>
-            <img
-              src="assets/gate-double.jpg"
-              alt={t('Residential white vinyl double-swing gate', 'Portón residencial doble batiente de vinilo blanco')}
-              style={{
-                width: '100%', height: '100%',
-                objectFit: 'cover', display: 'block',
-              }}
-            />
-            {/* Top-left chip */}
-            <span className="mono" style={{
-              position: 'absolute', top: 14, left: 14,
-              padding: '6px 12px',
-              background: 'var(--ink)', color: 'var(--white)',
-              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em',
-              textTransform: 'uppercase',
-            }}>{t('Recent install', 'Instalación reciente')}</span>
-            {/* Bottom-right location chip */}
-            <span className="mono" style={{
-              position: 'absolute', bottom: 14, right: 14,
-              padding: '6px 12px',
-              background: 'rgba(255,255,255,0.95)', color: 'var(--ink)',
-              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.18em',
-              textTransform: 'uppercase',
-              display: 'inline-flex', alignItems: 'center', gap: 8,
-            }}>
-              <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-              {t('Cape Coral · Vinyl 6′', 'Cape Coral · Vinilo 6′')}
+      {/* Bottom strip: checks left, proof metrics right */}
+      <div style={{
+        marginTop: 48, paddingTop: 24,
+        borderTop: '1px solid rgba(255,255,255,0.18)',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        gap: 24, flexWrap: 'wrap',
+      }}>
+        <div className="mono" style={{
+          display: 'flex', gap: 24, flexWrap: 'wrap',
+          fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
+          textTransform: 'uppercase', color: 'var(--white)',
+        }}>
+          {checks.map((c, i) => (
+            <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+              {t(c)}
             </span>
-          </div>
-
-          {/* Bottom card, what you'll love */}
-          <div style={{
-            position: 'absolute', bottom: 24, left: 24, right: 24,
-            border: '1px solid rgba(38, 49, 102,0.18)',
-            background: 'var(--white)',
-            padding: '20px 22px',
-          }}>
-            <div className="mono" style={{
-              fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em',
-              color: 'var(--tangerine)', textTransform: 'uppercase',
-              marginBottom: 14,
-              display: 'flex', alignItems: 'center', gap: 10,
-            }}>
-              <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-              {t('Why homeowners pick WFS', 'Por qué los propietarios eligen WFS')}
-            </div>
-            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: 11 }}>
-              {[
-                { line: { EN: 'Privacy around the backyard', ES: 'Privacidad alrededor del patio' },
-                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/></svg>) },
-                { line: { EN: 'Curb appeal that lifts home value', ES: 'Atractivo exterior que sube el valor de tu hogar' },
-                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 21 V11 L12 5 L20 11 V21 Z"/><path d="M10 21 V15 H14 V21"/></svg>) },
-                { line: { EN: 'Pool-code & HOA compliant', ES: 'Cumple código de piscinas y HOA' },
-                  icon: (<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 14 Q6 12 9 14 Q12 16 15 14 Q18 12 21 14"/><path d="M3 19 Q6 17 9 19 Q12 21 15 19 Q18 17 21 19"/><circle cx="16" cy="6" r="2.4"/></svg>) },
-              ].map((b, i) => (
-                <li key={i} style={{
-                  display: 'flex', alignItems: 'center', gap: 12,
-                }}>
-                  <span style={{
-                    flexShrink: 0,
-                    width: 28, height: 28,
-                    border: '1.5px solid var(--ink)',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    color: 'var(--tangerine)',
-                  }}>{b.icon}</span>
-                  <span className="mono" style={{
-                    fontSize: 13, fontWeight: 500, color: 'var(--ink)',
-                    lineHeight: 1.3,
-                  }}>{t(b.line)}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          ))}
+        </div>
+        <div className="mono" style={{
+          display: 'flex', gap: 26, flexWrap: 'wrap', alignItems: 'baseline',
+          fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.7)',
+        }}>
+          {metrics.map(([n, label], i) => (
+            <span key={i} style={{ display: 'inline-flex', alignItems: 'baseline', gap: 8 }}>
+              <strong style={{ fontSize: 15, color: 'var(--white)', letterSpacing: '0.04em' }}>{n}</strong>
+              {t(label)}
+            </span>
+          ))}
         </div>
       </div>
     </div>

@@ -16,10 +16,10 @@ const GATE_SPECS = [
 ];
 
 const GATE_HARDWARE_CARDS = [
-  { name: 'Hinges', tag: 'All gate types', notes: 'Gate hinges available based on gate type, material, and post setup.' },
-  { name: 'Latches', tag: 'Access', notes: 'Latch options for walk gates, pool gates, and general access.' },
-  { name: 'Drop Rods / Cane Bolts', tag: 'Double gates', notes: 'For double gates and added stability when closed.' },
-  { name: 'Posts & Caps', tag: 'Framework', notes: 'Gate posts, blank posts, terminal posts, and post caps available.' },
+  { name: 'Hinges', tag: 'All gate types', notes: 'Gate hinges available based on gate type, material, and post setup.', img: 'assets/projects/pvc-privacy-gate-white.jpg' },
+  { name: 'Latches', tag: 'Access', notes: 'Latch options for walk gates, pool gates, and general access.', img: 'assets/projects/cl-gate-black.jpg' },
+  { name: 'Drop Rods / Cane Bolts', tag: 'Double gates', notes: 'For double gates and added stability when closed.', img: 'assets/projects/pvc-gate-sand.jpg' },
+  { name: 'Posts & Caps', tag: 'Framework', notes: 'Gate posts, blank posts, terminal posts, and post caps available.', img: 'assets/projects/pvc-privacy-two-tone-white-and-gray.png' },
 ];
 
 const GATE_CHECKLIST = [
@@ -186,10 +186,10 @@ const GATE_DATA = {
       { name: 'Material Options', tag: 'All materials', notes: 'Available in chain link, vinyl-coated, metal, and EC Fence styles.', img: 'assets/projects/cl-fence-black.jpg' },
     ],
     hardware: [
-      { name: 'Cantilever Rollers', tag: 'Load-bearing', notes: 'Internal roller trucks carry the gate — the frame rides on them, suspended in the air.' },
-      { name: 'Latches & Receivers', tag: 'Closure', notes: 'Cantilever latch and receiver post catch the nose of the gate when closed.' },
-      { name: 'Counterbalance Section', tag: 'Structure', notes: 'The tail section counterweights the gate across the opening.' },
-      { name: 'Guide & Support Posts', tag: 'Framework', notes: 'Heavy posts carry the rollers — a cantilever gate uses no hinges.' },
+      { name: 'Cantilever Rollers', tag: 'Load-bearing', notes: 'Internal roller trucks carry the gate — the frame rides on them, suspended in the air.', img: 'assets/CANTILEVER.png' },
+      { name: 'Latches & Receivers', tag: 'Closure', notes: 'Cantilever latch and receiver post catch the nose of the gate when closed.', img: 'assets/projects/cl-swing-gate-galv-4.jpg' },
+      { name: 'Counterbalance Section', tag: 'Structure', notes: 'The tail section counterweights the gate across the opening.', img: 'assets/projects/pvc-privacy-cantilever-gate-white.jpg' },
+      { name: 'Guide & Support Posts', tag: 'Framework', notes: 'Heavy posts carry the rollers — a cantilever gate uses no hinges.', img: 'assets/projects/cl-fence-black.jpg' },
     ],
     specs: [
       ['Gate Type', 'Cantilever — suspended in the air on rollers, no ground track'],
@@ -244,10 +244,10 @@ const GATE_DATA = {
       { name: 'Material & Frame', tag: 'Chain link first', notes: 'Chain link is the recommended build; other materials require a double frame.', img: 'assets/projects/cl-swing-gate-galv-4.jpg' },
     ],
     hardware: [
-      { name: 'Rolling Gate Kit', tag: 'Core kit', notes: 'Complete rolling gate kit with the big wheels that define this gate type.' },
-      { name: "Lock N' Latch", tag: 'Rolling gate latch · PS', notes: "LOCK N' LATCH rolling gate latch (PS) — the closure made for rolling gates." },
-      { name: 'Guide Rollers', tag: 'Post-mounted', notes: 'Rollers mount on the posts to keep the gate tracking straight as it rolls.' },
-      { name: 'Posts & Framework', tag: 'Structure', notes: 'Gate posts and framework — no hinges and no drop rods on a rolling gate.' },
+      { name: 'Rolling Gate Kit', tag: 'Core kit', notes: 'Complete rolling gate kit with the big wheels that define this gate type.', img: 'assets/ROLLING_GATE.png' },
+      { name: "Lock N' Latch", tag: 'Rolling gate latch · PS', notes: "LOCK N' LATCH rolling gate latch (PS) — the closure made for rolling gates.", img: 'assets/projects/cl-gate-black.jpg' },
+      { name: 'Guide Rollers', tag: 'Post-mounted', notes: 'Rollers mount on the posts to keep the gate tracking straight as it rolls.', img: 'assets/SLIDING_GATE.png' },
+      { name: 'Posts & Framework', tag: 'Structure', notes: 'Gate posts and framework — no hinges and no drop rods on a rolling gate.', img: 'assets/projects/cl-swing-gate-galv-4.jpg' },
     ],
     specs: [
       ['Gate Type', 'Rolling — big rubber wheels roll the gate across the opening'],

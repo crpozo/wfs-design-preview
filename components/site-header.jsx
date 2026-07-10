@@ -214,7 +214,7 @@ const SiteHeader = ({ active }) => {
 
           {/* CTAs */}
           <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-            <a href="https://app.westernfencesupply.com/" className="mono wfs-hide-tablet" style={{
+            <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" className="mono wfs-hide-tablet" style={{
               display: 'inline-flex', alignItems: 'center', gap: 7,
               padding: '7px 0',
               fontSize: 11.5, fontWeight: 700,
@@ -406,7 +406,7 @@ const SiteHeader = ({ active }) => {
                       background: '#ffffff',
                     }}>
                       {def.items.map((it, i) => (
-                        <a key={i} href={it.href} style={{
+                        <a key={i} href={it.href} target={it.href.startsWith('http') ? '_blank' : undefined} rel={it.href.startsWith('http') ? 'noopener' : undefined} style={{
                           display: 'block', padding: '14px 20px 14px 36px',
                           borderTop: '1px solid rgba(0,16,17,0.06)',
                           fontSize: 14, color: 'var(--ink)',
@@ -593,7 +593,7 @@ const SiteHeader = ({ active }) => {
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, borderTop: '1px solid rgba(0,16,17,0.08)' }}>
                       {def.items.map((it, i) => (
-                        <a key={i} href={it.href} style={{
+                        <a key={i} href={it.href} target={it.href.startsWith('http') ? '_blank' : undefined} rel={it.href.startsWith('http') ? 'noopener' : undefined} style={{
                           display: 'block', padding: '20px 22px',
                           borderBottom: '1px solid rgba(0,16,17,0.08)',
                           borderRight: i % 2 === 0 ? '1px solid rgba(0,16,17,0.08)' : 'none',
