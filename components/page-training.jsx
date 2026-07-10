@@ -51,171 +51,190 @@ const TrainingHeader = () => {
 const TrainingHero = () => {
   const t = useT();
   return (
-    <section style={{ background: 'var(--ink)', color: 'var(--white)', padding: 'clamp(56px, 9vh, 96px) 0 clamp(40px, 6vh, 64px)' }}>
-      <div className="container" style={{ textAlign: 'center' }}>
+    <section style={{ background: 'var(--ink)', color: 'var(--white)', padding: 'clamp(44px, 7vh, 72px) 0' }}>
+      <div className="container">
         <div className="mono" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 10,
-          padding: '7px 14px', marginBottom: 22,
-          border: '1px solid rgba(255,255,255,0.35)',
+          display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 18,
           fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
-          textTransform: 'uppercase', color: 'var(--white)',
+          textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)',
         }}>
-          <span aria-hidden style={{ width: 7, height: 7, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-          {t('Internal training', 'Capacitación interna')}
+          <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
+          {t('WFS · Internal training', 'WFS · Capacitación interna')}
         </div>
         <h1 className="display" style={{
-          margin: 0, fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1.02,
+          margin: 0, fontSize: 'clamp(30px, 3.6vw, 50px)', lineHeight: 1.02,
           fontWeight: 800, textTransform: 'uppercase', letterSpacing: '-0.01em',
         }}>
-          WFS <span style={{ color: 'var(--tangerine)' }}>Training Companion</span>
+          {t('Before you', 'Antes de')}{' '}
+          <span style={{ color: 'var(--tangerine)' }}>{t('begin.', 'empezar.')}</span>
         </h1>
-        <p className="display" style={{
-          margin: '14px 0 0', fontSize: 'clamp(17px, 1.8vw, 24px)', fontWeight: 700,
-          color: 'var(--blue-ice)', letterSpacing: '0',
-        }}>
-          {t('Learn the platform before you begin.', 'Conoce la plataforma antes de empezar.')}
-        </p>
-        <p style={{
-          margin: '18px auto 0', maxWidth: 560,
-          fontSize: 15, lineHeight: 1.6, color: 'rgba(255,255,255,0.8)',
-        }}>
-          {t('This short tutorial walks you through the modules, how to navigate the platform, and how your progress is tracked — everything you need to get started with confidence.',
-             'Este tutorial corto te muestra los módulos, cómo navegar la plataforma y cómo se registra tu progreso: todo lo que necesitas para empezar con confianza.')}
-        </p>
-      </div>
-    </section>
-  );
-};
-
-const TrainingVideo = () => {
-  const t = useT();
-  /* 'native' -> try the locally hosted MP4; 'drive' -> Google Drive embed;
-     the text fallback below the player always offers the login path. */
-  const [mode, setMode] = React.useState('native');
-  return (
-    <section style={{ background: 'var(--ink)', padding: '0 0 clamp(56px, 9vh, 96px)' }}>
-      <div className="container" style={{ maxWidth: 1000 }}>
         <div style={{
-          position: 'relative', aspectRatio: '16 / 9',
-          background: '#1a2350', border: '1px solid rgba(255,255,255,0.15)',
-          overflow: 'hidden',
+          marginTop: 16, display: 'flex', justifyContent: 'space-between',
+          alignItems: 'flex-end', gap: 24, flexWrap: 'wrap',
         }}>
-          {mode === 'native' ? (
-            <video
-              controls
-              playsInline
-              preload="metadata"
-              poster="assets/training/poster.svg"
-              onError={() => setMode('drive')}
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', background: '#1a2350' }}
-            >
-              <source src={TRAINING_MP4} type="video/mp4" onError={() => setMode('drive')} />
-            </video>
-          ) : (
-            <iframe
-              title="WFS Training Companion tutorial"
-              src={TRAINING_DRIVE_EMBED}
-              allow="fullscreen"
-              allowFullScreen
-              loading="lazy"
-              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }}
-            />
-          )}
+          <p style={{ margin: 0, maxWidth: 420, fontSize: 14.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.8)' }}>
+            {t('Two steps between you and your first module: watch the short platform tour, then log in.',
+               'Dos pasos entre tú y tu primer módulo: mira el recorrido corto de la plataforma y luego inicia sesión.')}
+          </p>
+          <a href={TRAINING_LOGIN_URL} target="_blank" rel="noopener" className="mono" style={{
+            fontSize: 12, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase',
+            color: 'var(--tangerine)', borderBottom: '1px solid rgba(255,113,51,0.5)', paddingBottom: 3,
+            whiteSpace: 'nowrap',
+          }}>
+            {t('Already trained? Skip to login →', '¿Ya te capacitaste? Ir al login →')}
+          </a>
         </div>
-        {/* Required error fallback, always available under the player */}
-        <p className="mono" style={{
-          margin: '14px 0 0', textAlign: 'center',
-          fontSize: 12.5, letterSpacing: '0.08em', lineHeight: 1.6,
-          color: 'rgba(255,255,255,0.6)',
-        }}>
-          {t('The tutorial could not be loaded? Please try again or', '¿No carga el tutorial? Inténtalo de nuevo o')}{' '}
-          <a href={TRAINING_LOGIN_URL} target="_blank" rel="noopener" style={{ color: 'var(--tangerine)' }}>
-            {t('continue to login', 'continúa al inicio de sesión')}
-          </a>.
-        </p>
       </div>
     </section>
   );
 };
 
-const TrainingLearn = () => {
+const TrainingSteps = () => {
   const t = useT();
-  const blocks = [
-    [{ EN: 'Navigate the Modules', ES: 'Navega los módulos' },
-     { EN: 'Find your assigned modules, move between lessons, and pick up exactly where you left off.', ES: 'Encuentra tus módulos asignados, muévete entre lecciones y retoma exactamente donde te quedaste.' },
-     (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="7" height="7" rx="1"/><rect x="14" y="4" width="7" height="7" rx="1"/><rect x="3" y="15" width="7" height="7" rx="1"/><rect x="14" y="15" width="7" height="7" rx="1"/></svg>)],
-    [{ EN: 'Complete Your Training', ES: 'Completa tu capacitación' },
-     { EN: 'Work through each lesson at your pace and mark them complete as you go.', ES: 'Avanza cada lección a tu ritmo y márcalas como completadas conforme avanzas.' },
-     (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M9 11 L12 14 L20 6"/><path d="M20 12 V19 a2 2 0 0 1 -2 2 H5 a2 2 0 0 1 -2 -2 V6 a2 2 0 0 1 2 -2 h9"/></svg>)],
-    [{ EN: 'Track Your Progress', ES: 'Sigue tu progreso' },
-     { EN: 'See what is done, what is pending, and how far you are from finishing your training.', ES: 'Ve qué está hecho, qué falta y cuánto te queda para terminar tu capacitación.' },
-     (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M4 20 V10"/><path d="M10 20 V4"/><path d="M16 20 V14"/><path d="M22 20 H2"/></svg>)],
-  ];
+  /* Step 1's player tries the locally hosted MP4 first and falls back to
+     the Google Drive embed automatically if it cannot load. */
+  const [mode, setMode] = React.useState('native');
+  const Circle = ({ n, filled }) => (
+    <span className="mono" aria-hidden style={{
+      position: 'relative', zIndex: 1, flexShrink: 0,
+      width: 38, height: 38, borderRadius: '50%',
+      background: filled ? 'var(--tangerine)' : 'var(--white)',
+      border: filled ? 'none' : '1.5px solid var(--ink)',
+      color: filled ? 'var(--white)' : 'var(--ink)',
+      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+      fontSize: 14, fontWeight: 700,
+    }}>{n}</span>
+  );
+  const kickerStyle = {
+    fontSize: 12, fontWeight: 700, letterSpacing: '0.2em',
+    textTransform: 'uppercase', color: 'var(--tangerine)', marginBottom: 8,
+  };
+  const titleStyle = {
+    margin: '0 0 10px', fontSize: 'clamp(19px, 1.8vw, 24px)', lineHeight: 1.1,
+    fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--ink)',
+  };
+  const bodyStyle = { margin: 0, maxWidth: 560, fontSize: 14.5, lineHeight: 1.65, color: 'var(--charcoal)' };
   return (
-    <section style={{ background: 'var(--white)', padding: 'clamp(64px, 9vh, 110px) 0' }}>
-      <div className="container">
-        <h2 className="display" style={{
-          margin: '0 0 40px', textAlign: 'center',
-          fontSize: 'clamp(26px, 2.8vw, 40px)', fontWeight: 800,
-          textTransform: 'uppercase', letterSpacing: '-0.01em',
-        }}>
-          {t("What you'll", 'Lo que vas a')}{' '}
-          <span style={{ color: 'var(--tangerine)' }}>{t('learn.', 'aprender.')}</span>
-        </h2>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
-          {blocks.map(([title, body, icon], i) => (
-            <div key={i} style={{
-              border: '1px solid rgba(0,16,17,0.12)', padding: '30px 28px',
-            }}>
-              <span style={{
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                width: 52, height: 52, marginBottom: 18,
-                border: '1.5px solid var(--ink)', color: 'var(--tangerine)',
-              }}>{icon}</span>
-              <h3 className="display" style={{ margin: '0 0 10px', fontSize: 20, lineHeight: 1.15 }}>{t(title)}</h3>
-              <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)' }}>{t(body)}</p>
+    <section style={{ background: 'var(--white)', padding: 'clamp(56px, 8vh, 90px) 0 clamp(64px, 9vh, 110px)' }}>
+      <div className="container" style={{ maxWidth: 900 }}>
+        <div style={{ position: 'relative' }}>
+          {/* Timeline spine */}
+          <div aria-hidden style={{ position: 'absolute', left: 19, top: 10, bottom: 10, width: 1, background: 'rgba(38,49,102,0.2)' }}/>
+
+          {/* Step 1: watch the tour (video inside) */}
+          <div style={{ display: 'grid', gridTemplateColumns: '64px 1fr', alignItems: 'start', paddingBottom: 'clamp(40px, 6vh, 64px)' }}>
+            <Circle n="1" filled/>
+            <div>
+              <div className="mono" style={kickerStyle}>{t('Required · 3:14', 'Obligatorio · 3:14')}</div>
+              <h2 className="display" style={titleStyle}>{t('Watch the platform tour', 'Mira el recorrido de la plataforma')}</h2>
+              <p style={bodyStyle}>
+                {t('The modules, how to navigate, and how your progress is tracked, everything you need to get started with confidence.',
+                   'Los módulos, cómo navegar y cómo se registra tu progreso, todo lo que necesitas para empezar con confianza.')}
+              </p>
+              {/* Player */}
+              <div style={{ marginTop: 24, maxWidth: 680 }}>
+                <div style={{
+                  position: 'relative', aspectRatio: '16 / 9',
+                  background: '#1a2350', border: '1px solid rgba(0,16,17,0.15)',
+                  overflow: 'hidden',
+                }}>
+                  {mode === 'native' ? (
+                    <video
+                      controls
+                      playsInline
+                      preload="metadata"
+                      poster="assets/training/poster.svg"
+                      onError={() => setMode('drive')}
+                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', background: '#1a2350' }}
+                    >
+                      <source src={TRAINING_MP4} type="video/mp4" onError={() => setMode('drive')} />
+                    </video>
+                  ) : (
+                    <iframe
+                      title="WFS Training Companion tutorial"
+                      src={TRAINING_DRIVE_EMBED}
+                      allow="fullscreen"
+                      allowFullScreen
+                      loading="lazy"
+                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 0 }}
+                    />
+                  )}
+                  {/* Duration chip */}
+                  <span className="mono" aria-hidden style={{
+                    position: 'absolute', top: 12, right: 12,
+                    background: 'var(--ink)', color: 'var(--white)',
+                    padding: '4px 9px', fontSize: 12, fontWeight: 700, letterSpacing: '0.1em',
+                    pointerEvents: 'none',
+                  }}>3:14</span>
+                </div>
+                {/* Caption + fallback row */}
+                <div style={{
+                  marginTop: 12, display: 'flex', justifyContent: 'space-between',
+                  alignItems: 'baseline', gap: 16, flexWrap: 'wrap',
+                }}>
+                  <span className="mono" style={{
+                    fontSize: 11.5, fontWeight: 700, letterSpacing: '0.16em',
+                    textTransform: 'uppercase', color: 'var(--charcoal)',
+                  }}>{t('Welcome to the Training Companion', 'Bienvenido al Training Companion')}</span>
+                  <span style={{ fontSize: 13, color: 'var(--charcoal)' }}>
+                    {t('Not loading?', '¿No carga?')}{' '}
+                    <a href={TRAINING_LOGIN_URL} target="_blank" rel="noopener" style={{ color: 'var(--tangerine)' }}>
+                      {t('Continue to login', 'Continúa al login')}
+                    </a>
+                  </span>
+                </div>
+              </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+          </div>
 
-const TrainingCTA = () => {
-  const t = useT();
-  return (
-    <section style={{ background: 'var(--ink)', color: 'var(--white)', padding: 'clamp(64px, 9vh, 110px) 0', textAlign: 'center' }}>
-      <div className="container">
-        <h2 className="display" style={{
-          margin: 0, fontSize: 'clamp(28px, 3vw, 44px)', fontWeight: 800,
-          textTransform: 'uppercase', letterSpacing: '-0.01em',
-        }}>
-          {t('Ready to', '¿Listo para')}{' '}
-          <span style={{ color: 'var(--tangerine)' }}>{t('begin?', 'empezar?')}</span>
-        </h2>
-        <a href={TRAINING_LOGIN_URL} target="_blank" rel="noopener"
-          onClick={() => { if (window.gtag) window.gtag('event', 'training_login_click'); }}
-          style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12,
-            marginTop: 28, padding: '17px 34px',
-            background: 'var(--tangerine)', color: 'var(--white)',
-            fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 700,
-            letterSpacing: '0.16em', textTransform: 'uppercase',
-            boxShadow: '0 12px 32px rgba(255, 113, 51,0.4)',
-            transition: 'transform 0.18s, box-shadow 0.18s',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = ''; }}>
-          {t('Login to Training Companion', 'Iniciar sesión en Training Companion')}
-          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
-        </a>
-        <p className="mono" style={{
-          margin: '22px 0 0', fontSize: 12, letterSpacing: '0.14em',
-          textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)',
-        }}>
-          {t('First time here? Watch the tutorial above before logging in.', '¿Primera vez aquí? Mira el tutorial de arriba antes de iniciar sesión.')}
-        </p>
+          {/* Step 2: what the tour covers */}
+          <div style={{ display: 'grid', gridTemplateColumns: '64px 1fr', alignItems: 'start', paddingBottom: 'clamp(40px, 6vh, 64px)' }}>
+            <Circle n="2"/>
+            <div>
+              <div className="mono" style={kickerStyle}>{t('In the tour', 'En el recorrido')}</div>
+              <h2 className="display" style={titleStyle}>{t('Know your way around', 'Ubícate en la plataforma')}</h2>
+              <p style={bodyStyle}>
+                {t("You'll see how to find your assigned modules, work through lessons at your pace, mark them complete, and check how far you are from finishing.",
+                   'Verás cómo encontrar tus módulos asignados, avanzar las lecciones a tu ritmo, marcarlas como completadas y revisar cuánto te falta para terminar.')}
+              </p>
+            </div>
+          </div>
+
+          {/* Step 3: log in */}
+          <div style={{ display: 'grid', gridTemplateColumns: '64px 1fr', alignItems: 'start' }}>
+            <Circle n="3"/>
+            <div>
+              <div className="mono" style={kickerStyle}>{t('Then', 'Después')}</div>
+              <h2 className="display" style={titleStyle}>{t('Log in and start module one', 'Inicia sesión y empieza el módulo uno')}</h2>
+              <p style={bodyStyle}>
+                {t('Your progress is saved automatically, leave any time and pick up exactly where you left off.',
+                   'Tu progreso se guarda automáticamente, sal cuando quieras y retoma exactamente donde te quedaste.')}
+              </p>
+              <div style={{ marginTop: 22, display: 'flex', alignItems: 'center', gap: 18, flexWrap: 'wrap' }}>
+                <a href={TRAINING_LOGIN_URL} target="_blank" rel="noopener"
+                  onClick={() => { if (window.gtag) window.gtag('event', 'training_login_click'); }}
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 12,
+                    padding: '15px 26px',
+                    background: 'var(--tangerine)', color: 'var(--white)',
+                    fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+                    letterSpacing: '0.16em', textTransform: 'uppercase',
+                    boxShadow: '0 10px 26px rgba(255, 113, 51,0.35)',
+                    transition: 'transform 0.18s',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = ''; }}>
+                  {t('Login to Training Companion', 'Iniciar sesión en Training Companion')}
+                  <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+                </a>
+                <span className="mono" style={{
+                  fontSize: 11.5, fontWeight: 700, letterSpacing: '0.16em',
+                  textTransform: 'uppercase', color: 'var(--charcoal)',
+                }}>{t('Uses your WFS staff credentials', 'Usa tus credenciales de personal WFS')}</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -239,4 +258,4 @@ const TrainingFooter = () => {
   );
 };
 
-Object.assign(window, { TrainingHeader, TrainingHero, TrainingVideo, TrainingLearn, TrainingCTA, TrainingFooter });
+Object.assign(window, { TrainingHeader, TrainingHero, TrainingSteps, TrainingFooter });
