@@ -2,18 +2,13 @@
    sales navigation. Explains the platform, shows the tutorial video and
    sends the user to the existing login.
 
-   VIDEO DELIVERY: per the launch report the Drive file is the initial
-   delivery source. The player below tries the locally hosted MP4 first
-   (assets/training/wfs-training-tutorial.mp4). If that file is absent it
-   falls back automatically to the Google Drive embed, and if the visitor
-   still cannot load it, a text fallback offers the login path. To switch
-   to fully native playback, drop the optimized H.264/AAC file at the
-   path above (git push allows it; the GitHub web uploader caps at 25MB).
+   VIDEO DELIVERY: the tutorial plays from the locally hosted MP4
+   (assets/training/wfs-training-tutorial.mp4, H.264/AAC, faststart).
+   If it fails to load, the player falls back automatically to the
+   Google Drive embed, and the text fallback under the player always
+   offers the login path. */
 
-   LOGIN URL: replace TRAINING_LOGIN_URL with the real Training Companion
-   login link (Carlos has it). */
-
-const TRAINING_LOGIN_URL = 'https://app.westernfencesupply.com/'; /* TODO: confirm real login URL */
+const TRAINING_LOGIN_URL = 'https://westernfencesupply.com/training/';
 const TRAINING_MP4 = 'assets/training/wfs-training-tutorial.mp4';
 const TRAINING_DRIVE_EMBED = 'https://drive.google.com/file/d/1JgoXBp87xjLGzI-_v1GMf9HHah75Vhie/preview';
 
