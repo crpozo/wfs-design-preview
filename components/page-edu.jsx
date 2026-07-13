@@ -409,7 +409,7 @@ const PoolCodeHero = () => {
     eyebrow={t('Florida Pool Code', 'Código de piscinas de Florida')}
     title={t('Florida pool barriers,', 'Barreras de piscina de Florida,')}
     accent={t('explained.', 'explicadas.')}
-    subtitle={t('A plain-English overview of what the Florida Building Code covers for residential pool barriers, and the stocked systems commonly used to meet it. General guidance only — requirements and approval depend on your project and your local building authority.', 'Un resumen en lenguaje sencillo de lo que el Código de Construcción de Florida cubre para barreras de piscinas residenciales, y los sistemas en inventario que comúnmente se usan para cumplirlo. Solo orientación general: los requisitos y la aprobación dependen de tu proyecto y de tu autoridad local de construcción.')}
+    subtitle={t('A general overview of common Florida residential pool barrier requirements. Western Fence Supply provides fencing materials only.', 'Un resumen general de los requisitos comunes de barreras de piscina residenciales en Florida. Western Fence Supply provee únicamente materiales de cercado.')}
     image={FENCE_IMG.aluminum}
   />
   );
@@ -418,12 +418,12 @@ const PoolCodeHero = () => {
 const PoolCodeRequirements = () => {
   const t = useT();
   const reqs = [
-    { code: 'FBC R 4501.17.1.1', title: t('Minimum height', 'Altura mínima'),           body: t('4 ft (48") minimum measured on the side facing away from the pool. No horizontal handhold below 45" on the outside face.', 'Mínimo de 4 ft (48") medido en el lado opuesto a la piscina. Sin agarre horizontal por debajo de 45" en la cara exterior.') },
-    { code: 'FBC R 4501.17.1.2', title: t('Picket spacing', 'Separación entre pickets'),           body: t('Vertical pickets with a maximum spacing of 3" between each picket. No openings between rails ≥ 4".', 'Pickets verticales con una separación máxima de 3" entre cada picket. Sin aberturas entre rieles ≥ 4".') },
-    { code: 'FBC R 4501.17.1.4', title: t('Gates, self-closing', 'Portones, cierre automático'),     body: t('Every gate opening into the pool barrier must be self-closing and self-latching, with the latch handle ≥ 54" from grade.', 'Todo portón que abra hacia la barrera de la piscina debe tener cierre automático y autocerrojo, con la manija del pestillo ≥ 54" sobre el nivel del suelo.') },
-    { code: 'FBC R 4501.17.1.5', title: t('Gate swing direction', 'Dirección de apertura del portón'),     body: t('Pedestrian access gates must swing OUTWARD, away from the pool area.', 'Los portones de acceso peatonal deben abrir HACIA AFUERA, alejándose del área de la piscina.') },
-    { code: 'FBC R 4501.17.1.6', title: t('Latch release location', 'Ubicación de la liberación del pestillo'),   body: t('If the latch release is < 54" from grade, it must be on the pool side, no openings > 0.5" within 18" of the release.', 'Si la liberación del pestillo está a < 54" sobre el nivel del suelo, debe estar del lado de la piscina, sin aberturas > 0.5" dentro de 18" de la liberación.') },
-    { code: 'FBC R 4501.17.1.9', title: t('Wall as barrier', 'Muro como barrera'),          body: t('If a wall of the dwelling serves as part of the barrier, doors leading to the pool need an audible alarm OR a self-closing/self-latching mechanism.', 'Si un muro de la vivienda sirve como parte de la barrera, las puertas que dan a la piscina necesitan una alarma audible O un mecanismo de cierre automático/autocerrojo.') },
+    { code: t('Requirement 01', 'Requisito 01'), title: t('Minimum height', 'Altura mínima'),           body: t('The barrier must be at least 48" high, measured on the side facing away from the pool. Additional requirements may apply depending on the project and installation.', 'La barrera debe tener al menos 48" de altura, medida en el lado opuesto a la piscina. Pueden aplicar requisitos adicionales según el proyecto y la instalación.') },
+    { code: t('Requirement 02', 'Requisito 02'), title: t('Openings & picket spacing', 'Aberturas y separación entre pickets'),           body: t('Openings generally must not allow a 4" sphere to pass through. Additional spacing restrictions may apply depending on the barrier design.', 'En general, las aberturas no deben permitir el paso de una esfera de 4". Pueden aplicar restricciones de separación adicionales según el diseño de la barrera.') },
+    { code: t('Requirement 03', 'Requisito 03'), title: t('Self-closing & self-latching gates', 'Portones con cierre y cerrojo automáticos'),     body: t('Pool access gates must be self-closing and self-latching. Gate hardware and latch placement must meet applicable requirements.', 'Los portones de acceso a la piscina deben tener cierre automático y cerrojo automático. Los herrajes del portón y la ubicación del pestillo deben cumplir los requisitos aplicables.') },
+    { code: t('Requirement 04', 'Requisito 04'), title: t('Gate swing direction', 'Dirección de apertura del portón'),     body: t('Pedestrian access gates must open outward, away from the pool.', 'Los portones de acceso peatonal deben abrir hacia afuera, alejándose de la piscina.') },
+    { code: t('Requirement 05', 'Requisito 05'), title: t('Latch release location', 'Ubicación de la liberación del pestillo'),   body: t('Latch placement depends on the gate configuration and must meet applicable requirements.', 'La ubicación del pestillo depende de la configuración del portón y debe cumplir los requisitos aplicables.') },
+    { code: t('Requirement 06', 'Requisito 06'), title: t('Dwelling wall as part of the barrier', 'Muro de la vivienda como parte de la barrera'),          body: t('Doors and windows providing direct access to the pool area may require approved safety features under applicable local requirements.', 'Las puertas y ventanas con acceso directo al área de la piscina pueden requerir dispositivos de seguridad aprobados según los requisitos locales aplicables.') },
   ];
 
   return (
@@ -433,7 +433,7 @@ const PoolCodeRequirements = () => {
           number="01" label={t('The actual rules', 'Las reglas reales')}
           title={t('What the pool code', 'Lo que el código de piscinas')}
           accent={t('generally covers.', 'cubre en general.')}
-          sub={t('Paraphrased for orientation, not legal advice. Confirm the current FBC edition, exact text and any local amendments with your building department before designing or filing.', 'Parafraseado como orientación, no es asesoría legal. Confirma la edición vigente del FBC, el texto exacto y cualquier enmienda local con tu departamento de construcción antes de diseñar o presentar.')}
+          sub={t('General information only. Requirements may vary by project and jurisdiction. Western Fence Supply does not verify code compliance, plans, permits, installation, inspections, or final approval.', 'Información general únicamente. Los requisitos pueden variar según el proyecto y la jurisdicción. Western Fence Supply no verifica cumplimiento de código, planos, permisos, instalación, inspecciones ni aprobación final.')}
         />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
           {reqs.map((r, i) => (
@@ -452,9 +452,8 @@ const PoolCodeRequirements = () => {
           ))}
         </div>
         <p style={{ marginTop: 16, fontSize: 12.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>
-          {t('Last reviewed: July 2026. ', 'Última revisión: julio de 2026. ')}
-          {t('Section numbers reference the Florida Building Code, Residential. Editions and local amendments change — verify the current edition and exact requirements with your local building department (AHJ).',
-             'Los números de sección hacen referencia al Código de Construcción de Florida, Residencial. Las ediciones y enmiendas locales cambian: verifica la edición vigente y los requisitos exactos con tu departamento de construcción local (AHJ).')}
+          {t('Based on general Florida residential pool barrier requirements. Code editions, local amendments, interpretations, and project requirements may change.',
+             'Basado en requisitos generales de barreras de piscina residenciales de Florida. Las ediciones del código, las enmiendas locales, las interpretaciones y los requisitos del proyecto pueden cambiar.')}
         </p>
       </div>
     </section>
@@ -464,9 +463,9 @@ const PoolCodeRequirements = () => {
 const PoolCodeProfiles = () => {
   const t = useT();
   const profiles = [
-    { slug: 'aluminum', name: t('Aluminum', 'Aluminio'), tag: t('Pool-code configurations available', 'Configuraciones para código de piscinas disponibles'), href: 'aluminum.html', img: 'aluminum' },
-    { slug: 'vinyl',    name: t('Vinyl', 'Vinilo'),     tag: t('Pool-code configurations available', 'Configuraciones para código de piscinas disponibles'), href: 'vinyl.html',  img: 'vinyl' },
-    { slug: 'ecfence',  name: 'EC Fence',         tag: t('Galvanized steel privacy', 'Privacidad de acero galvanizado'),  href: 'ecfence.html',img: 'ecfence' },
+    { slug: 'aluminum', name: t('Aluminum', 'Aluminio'), tag: t('Pool-barrier configurations available', 'Configuraciones para barrera de piscina disponibles'), href: 'aluminum.html', img: 'aluminum' },
+    { slug: 'vinyl',    name: t('Vinyl', 'Vinilo'),     tag: t('Pool-barrier configurations available', 'Configuraciones para barrera de piscina disponibles'), href: 'vinyl.html',  img: 'vinyl' },
+    { slug: 'ecfence',  name: 'EC Fence',         tag: t('Suitability depends on the selected configuration', 'La idoneidad depende de la configuración seleccionada'),  href: 'ecfence.html',img: 'ecfence' },
   ];
 
   return (
@@ -476,7 +475,7 @@ const PoolCodeProfiles = () => {
           number="02" label={t('Profiles we stock', 'Perfiles que tenemos en inventario')}
           title={t('Three systems', 'Tres sistemas')}
           accent={t('commonly used for pool barriers.', 'de uso común en barreras de piscina.')}
-          sub={t('Each can be configured toward pool-barrier requirements. Compliance depends on the exact style, height, spacing and gate hardware of your configuration — and final approval is always up to your local authority.', 'Cada uno puede configurarse hacia los requisitos de barrera de piscina. El cumplimiento depende del estilo, la altura, la separación y los herrajes exactos de tu configuración, y la aprobación final siempre corresponde a tu autoridad local.')}
+          sub={t('These materials are commonly used for pool barrier projects. Suitability depends on the specific product configuration, installation, and local requirements.', 'Estos materiales se usan comúnmente en proyectos de barreras de piscina. La idoneidad depende de la configuración específica del producto, la instalación y los requisitos locales.')}
           link={[t('Materials comparison', 'Comparativa de materiales'), 'materials-comparison.html']}
         />
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
@@ -526,19 +525,21 @@ const PoolCodeChecklist = () => {
             <span style={{ color: 'var(--tangerine)' }}>{t('file the permit.', 'presentar el permiso.')}</span>
           </h2>
           <p style={{ marginTop: 18, fontSize: 14.5, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 360 }}>
-            {t('Use this list as orientation while you plan — the code text and your local building department govern. Your rep can send the manufacturer spec sheets for the products on your quote.', 'Usa esta lista como orientación mientras planeas: el texto del código y tu departamento de construcción local mandan. Tu asesor puede enviarte las fichas técnicas del fabricante de los productos de tu cotización.')}
+            {t('Use this checklist as general planning guidance. Western Fence Supply provides materials only and does not review plans, determine code compliance, prepare permits, perform installation, or manage inspections.', 'Usa esta lista como guía general de planeación. Western Fence Supply provee únicamente materiales y no revisa planos, determina cumplimiento de código, prepara permisos, realiza instalación ni gestiona inspecciones.')}
           </p>
         </div>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 14 }}>
           {[
-            t('Height measured from the OUTSIDE face of the barrier ≥ 48"', 'Altura medida desde la cara EXTERIOR de la barrera ≥ 48"'),
-            t('Picket spacing ≤ 3" with no horizontal climbing surface < 45"', 'Separación entre pickets ≤ 3" sin superficie horizontal para trepar < 45"'),
-            t('All gates self-closing with self-latching mechanism', 'Todos los portones con cierre automático y mecanismo de autocerrojo'),
-            t('Latch handle on outside ≥ 54" from grade (or on pool side)', 'Manija del pestillo en el exterior ≥ 54" sobre el nivel del suelo (o del lado de la piscina)'),
-            t('Gates swing outward, away from the pool', 'Los portones abren hacia afuera, alejándose de la piscina'),
-            t('No openings ≥ 4" between rails or between picket and rail', 'Sin aberturas ≥ 4" entre rieles o entre picket y riel'),
-            t('Door from house to pool area has alarm OR self-closing latch', 'La puerta de la casa al área de la piscina tiene alarma O pestillo de cierre automático'),
-            t('Confirm the current FBC edition and requirements with your AHJ', 'Confirmar la edición vigente del FBC y los requisitos con tu AHJ'),
+            t('Barrier height is at least 48" on the outside', 'La altura de la barrera es de al menos 48" en el lado exterior'),
+            t('Bottom clearance meets applicable requirements', 'El espacio libre inferior cumple los requisitos aplicables'),
+            t('Openings and spacing suit the selected design', 'Las aberturas y la separación corresponden al diseño seleccionado'),
+            t('Horizontal members are positioned to limit climbability', 'Los elementos horizontales están posicionados para limitar la posibilidad de trepar'),
+            t('Gates open outward, away from the pool', 'Los portones abren hacia afuera, alejándose de la piscina'),
+            t('Gates are self-closing and self-latching', 'Los portones tienen cierre automático y cerrojo automático'),
+            t('Latch placement meets applicable requirements', 'La ubicación del pestillo cumple los requisitos aplicables'),
+            t('Nearby objects do not create climbing access', 'Los objetos cercanos no crean acceso para trepar'),
+            t('Direct access from the home uses an approved safety method', 'El acceso directo desde la casa usa un método de seguridad aprobado'),
+            t('Project requirements are confirmed before installation', 'Los requisitos del proyecto se confirman antes de la instalación'),
           ].map((line, i) => (
             <li key={i} style={{
               display: 'flex', alignItems: 'flex-start', gap: 14,
@@ -567,14 +568,24 @@ const PoolCodeChecklist = () => {
 const PoolCodeCTA = () => {
   const t = useT();
   return (
+  <>
   <CTABand
     kicker={t('Planning a pool fence?', '¿Planeas una cerca de piscina?')}
     title={t('Quote your', 'Cotiza tu')}
     accent={t('pool enclosure.', 'cerramiento de piscina.')}
-    body={t("Send us your layout and project details and we'll quote the material, including the manufacturer spec sheets for the products on your order. Permitting and final approval stay with you and your local authority.", 'Envíanos tu distribución y los detalles del proyecto y cotizamos el material, incluyendo las fichas técnicas del fabricante de los productos de tu pedido. El trámite del permiso y la aprobación final quedan contigo y con tu autoridad local.')}
+    body={t('Send us your layout, measurements, and project details, and we will prepare a material quote based on the information provided. Western Fence Supply supplies materials only. Installation, code compliance, permitting, inspections, and final approval are not included.', 'Envíanos tu distribución, medidas y detalles del proyecto, y prepararemos una cotización de materiales con base en la información proporcionada. Western Fence Supply provee únicamente materiales. La instalación, el cumplimiento de código, los permisos, las inspecciones y la aprobación final no están incluidos.')}
     primary={[t('Request a quote', 'Solicitar una cotización'), 'estimate.html#contact']}
     secondary={[t('Call the yard', 'Llama al almacén'), 'tel:2396895496']}
   />
+  <section style={{ background: '#ffffff', borderTop: '1px solid rgba(0,16,17,0.08)', padding: '26px 0' }}>
+    <div className="container">
+      <p style={{ margin: 0, fontSize: 13, lineHeight: 1.65, color: 'var(--charcoal)', maxWidth: 860 }}>
+        {t('Western Fence Supply is a material supplier only. WFS does not provide installation, engineering, code review, permit services, inspections, or compliance certification.',
+           'Western Fence Supply es únicamente un proveedor de materiales. WFS no ofrece instalación, ingeniería, revisión de código, servicios de permisos, inspecciones ni certificación de cumplimiento.')}
+      </p>
+    </div>
+  </section>
+  </>
   );
 };
 
