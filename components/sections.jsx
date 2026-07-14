@@ -58,6 +58,91 @@ const InstallerMarquee = () => {
   );
 };
 
+/* Product marquee, same auto-scroll pattern as the installer logos but with
+   product cards. Sits between WhyWFS and the Gates arena on the homepage. */
+const MARQUEE_PRODUCTS = [
+  { src: 'assets/products/chain-link-post.jpg',       name: { EN: 'Chain Link Post', ES: 'Poste de malla' },            spec: { EN: 'Galvanized steel', ES: 'Acero galvanizado' } },
+  { src: 'assets/products/gothic-post-cap.jpg',       name: { EN: 'Gothic Post Cap', ES: 'Tapa de poste gótica' },      spec: { EN: 'White · PVC', ES: 'Blanca · PVC' } },
+  { src: 'assets/products/chain-link-fabric.jpg',     name: { EN: 'Chain Link Fabric', ES: 'Malla ciclónica' },         spec: { EN: '9 Ga. · Galvanized', ES: '9 Ga. · Galvanizada' } },
+  { src: 'assets/products/self-closing-hinge.jpg',    name: { EN: 'Self-Closing Hinge', ES: 'Bisagra con resorte' },    spec: { EN: 'Black · Spring-loaded', ES: 'Negra · Autocierre' } },
+  { src: 'assets/products/pvc-double-gate.jpg',       name: { EN: 'PVC Double Gate', ES: 'Portón doble de PVC' },       spec: { EN: 'White · Privacy', ES: 'Blanco · Privacidad' } },
+  { src: 'assets/products/barbed-wire.jpg',           name: { EN: 'Barbed Wire', ES: 'Alambre de púas' },               spec: { EN: 'Galvanized', ES: 'Galvanizado' } },
+  { src: 'assets/products/aluminum-2-rail.jpg',       name: { EN: 'Aluminum 2-Rail', ES: 'Aluminio 2 rieles' },         spec: { EN: 'Black · Smooth bottom', ES: 'Negro · Base lisa' } },
+  { src: 'assets/products/gravity-latch.jpg',         name: { EN: 'Gravity Latch', ES: 'Pestillo de gravedad' },        spec: { EN: 'Black', ES: 'Negro' } },
+  { src: 'assets/products/metal-privacy-white.jpg',   name: { EN: 'Metal Privacy Panel', ES: 'Panel metálico privacidad' }, spec: { EN: 'White · Vertical', ES: 'Blanco · Vertical' } },
+  { src: 'assets/products/drop-rod.jpg',              name: { EN: 'Drop Rod', ES: 'Pasador vertical' },                 spec: { EN: 'Black · Powder-coated', ES: 'Negro · Pintura en polvo' } },
+  { src: 'assets/products/pvc-semi-privacy.jpg',      name: { EN: 'Semi-Privacy PVC', ES: 'PVC semiprivacidad' },       spec: { EN: 'Tan · Horizontal', ES: 'Arena · Horizontal' } },
+  { src: 'assets/products/gate-post-hinge.jpg',       name: { EN: 'Gate Post Hinge', ES: 'Bisagra de poste' },          spec: { EN: 'Black · Heavy duty', ES: 'Negra · Uso rudo' } },
+  { src: 'assets/products/aluminum-3-rail.jpg',       name: { EN: 'Aluminum 3-Rail', ES: 'Aluminio 3 rieles' },         spec: { EN: 'Black · Rake bottom', ES: 'Negro · Base inclinada' } },
+  { src: 'assets/products/pvc-u-channel.jpg',         name: { EN: 'PVC U-Channel', ES: 'Canal U de PVC' },              spec: { EN: 'White', ES: 'Blanco' } },
+  { src: 'assets/products/chain-link-gate.jpg',       name: { EN: 'Chain Link Gate', ES: 'Portón de malla' },           spec: { EN: 'Black · Single swing', ES: 'Negro · Una hoja' } },
+  { src: 'assets/products/post-mount-latch.jpg',      name: { EN: 'Post-Mount Latch', ES: 'Pestillo de poste' },        spec: { EN: 'Black · Self-locking', ES: 'Negro · Autobloqueante' } },
+  { src: 'assets/products/metal-horizontal-black.jpg', name: { EN: 'Horizontal Metal Panel', ES: 'Panel metálico horizontal' }, spec: { EN: 'Black · Louvered', ES: 'Negro · Persiana' } },
+  { src: 'assets/products/pvc-picket-panel.jpg',      name: { EN: 'PVC Picket Panel', ES: 'Panel de estacas PVC' },     spec: { EN: 'White · Spaced picket', ES: 'Blanco · Estaca espaciada' } },
+  { src: 'assets/products/metal-post.jpg',            name: { EN: 'Metal Post', ES: 'Poste metálico' },                 spec: { EN: 'Black · Square', ES: 'Negro · Cuadrado' } },
+  { src: 'assets/products/privacy-windscreen.jpg',    name: { EN: 'Privacy Windscreen', ES: 'Malla sombra' },           spec: { EN: 'Black · Grommeted', ES: 'Negra · Con ojales' } },
+  { src: 'assets/products/aluminum-puppy-picket.jpg', name: { EN: 'Puppy Picket Section', ES: 'Sección puppy picket' }, spec: { EN: 'Black · Aluminum', ES: 'Negra · Aluminio' } },
+  { src: 'assets/products/aluminum-section.jpg',      name: { EN: 'Aluminum Section', ES: 'Sección de aluminio' },      spec: { EN: 'Black · Flat top', ES: 'Negra · Remate plano' } },
+];
+
+const ProductMarquee = () => {
+  const t = useT();
+  const row = [...MARQUEE_PRODUCTS, ...MARQUEE_PRODUCTS];
+  return (
+    <section id="products-marquee" style={{ background: 'var(--white)', padding: '64px 0 72px', borderTop: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
+      <div className="container" style={{
+        display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
+        gap: 24, flexWrap: 'wrap', marginBottom: 36,
+      }}>
+        <p className="mono" style={{
+          margin: 0,
+          fontSize: 12.5, letterSpacing: '0.18em', textTransform: 'uppercase',
+          color: 'rgba(0,16,17,0.4)', fontWeight: 600,
+        }}>
+          {t('In the yard today — posts, panels, gates and hardware', 'En stock hoy — postes, paneles, portones y herrajes')}
+        </p>
+        <a href="products.html" className="mono" style={{
+          display: 'inline-flex', alignItems: 'center', gap: 8,
+          fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
+          color: 'var(--ink)', borderBottom: '1px solid var(--ink)', paddingBottom: 3,
+        }}>
+          {t('Full catalog', 'Catálogo completo')}
+          <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+          </svg>
+        </a>
+      </div>
+      <div className="wfs-marquee wfs-marquee--pause" aria-hidden>
+        <div className="wfs-marquee__track wfs-marquee__track--products">
+          {row.map((p, i) => (
+            <div key={i} style={{
+              flexShrink: 0, width: 'clamp(215px, 24vw, 270px)',
+              margin: '0 9px', padding: '18px 18px 20px',
+              background: 'var(--white)', border: '1px solid rgba(38,49,102,0.14)',
+            }}>
+              <div style={{
+                height: 'clamp(140px, 15vw, 175px)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <img src={p.src} alt={t(p.name)} loading="lazy"
+                  style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
+              </div>
+              <h3 className="display" style={{
+                margin: '14px 0 0', fontSize: 16, lineHeight: 1.2,
+                letterSpacing: '-0.01em', color: 'var(--ink)', textAlign: 'center',
+              }}>{t(p.name)}</h3>
+              <p className="mono" style={{
+                margin: '5px 0 0', fontSize: 12, lineHeight: 1.4,
+                color: 'rgba(0,16,17,0.55)', textAlign: 'center',
+              }}>{t(p.spec)}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const MAT_IMG = { 'Chain Link': 'chainlink', 'Aluminum': 'aluminum', 'Vinyl': 'vinyl', 'Metal': 'metal', 'EC Fence': 'ecfence' };
 
 /* Material display labels; raw English stays the filter/data key. */
@@ -1113,4 +1198,4 @@ const Footer = () => {
   );
 };
 
-Object.assign(window, { FeaturedGrid, InstallerMarquee, ProjectGallery, Calculator, ServiceAreas, FinalCTA, Footer });
+Object.assign(window, { FeaturedGrid, InstallerMarquee, ProductMarquee, ProjectGallery, Calculator, ServiceAreas, FinalCTA, Footer });

@@ -530,6 +530,10 @@ section { position: relative; }
 }
 @keyframes wfsMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
+/* Product cards marquee: slower track, pauses on hover */
+.wfs-marquee__track--products { animation-duration: 150s; }
+.wfs-marquee--pause:hover .wfs-marquee__track { animation-play-state: paused; }
+
 /* Mobile: expanding slats stack and show all content (no hover on touch) */
 @media (max-width: 900px) {
   .wfs-slats { flex-direction: column; }
