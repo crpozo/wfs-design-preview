@@ -146,7 +146,7 @@ const ProductMarquee = () => {
   );
   const row = [...MARQUEE_PRODUCTS, ...MARQUEE_PRODUCTS];
   return (
-    <section id="products-marquee" style={{ background: 'var(--white)', padding: '64px 0 72px', borderTop: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
+    <section id="products-marquee" style={{ background: 'var(--white)', padding: '64px 0 116px', borderTop: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
       <div className="container" style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
         gap: 24, flexWrap: 'wrap', marginBottom: 36,
