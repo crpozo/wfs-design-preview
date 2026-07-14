@@ -17,7 +17,7 @@ const Breadcrumb = ({ items, light = true }) => (
   </nav>
 );
 
-const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, actions, height = 'clamp(420px, 58vh, 560px)' }) => (
+const PageHero = ({ eyebrow, title, accent, accentBreak, subtitle, image, crumbs, actions, height = 'clamp(420px, 58vh, 560px)' }) => (
   <section style={{
     position: 'relative', color: 'var(--white)', overflow: 'hidden',
     minHeight: height,
@@ -64,7 +64,7 @@ const PageHero = ({ eyebrow, title, accent, subtitle, image, crumbs, actions, he
         textShadow: '0 2px 28px rgba(0,0,0,0.28)',
         maxWidth: 880,
       }}>
-        {title}{accent && <>{' '}<span style={{ color: 'var(--blue-ice)' }}>{accent}</span></>}
+        {title}{accent && <>{accentBreak ? <br/> : ' '}<span style={{ color: 'var(--blue-ice)' }}>{accent}</span></>}
       </h1>
       {subtitle && (
         <p style={{

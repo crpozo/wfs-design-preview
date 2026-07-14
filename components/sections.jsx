@@ -88,40 +88,63 @@ const MARQUEE_PRODUCTS = [
 const ProductMarquee = () => {
   const t = useT();
   const scrollerRef = React.useRef(null);
-  const [ends, setEnds] = React.useState({ prev: false, next: true });
-  const update = () => {
+  /* rAF motor: constant drift + eased jumps from the arrows, wrapping on the
+     duplicated track so it loops forever. Deliberately no pause on hover. */
+  const motorRef = React.useRef({ raf: 0, last: 0, pos: null, tween: null });
+  React.useEffect(() => {
     const el = scrollerRef.current; if (!el) return;
-    setEnds({ prev: el.scrollLeft > 4, next: el.scrollLeft < el.scrollWidth - el.clientWidth - 4 });
-  };
-  React.useEffect(update, []);
+    const m = motorRef.current;
+    const SPEED = 38; // px/s drift
+    const frame = now => {
+      const dt = m.last ? Math.min(0.1, (now - m.last) / 1000) : 0;
+      m.last = now;
+      const half = el.scrollWidth / 2;
+      let pos = m.pos == null ? el.scrollLeft : m.pos;
+      if (m.tween) {
+        const k = Math.min(1, Math.max(0, (now - m.tween.t0) / m.tween.dur));
+        pos = m.tween.from + (m.tween.to - m.tween.from) * (1 - Math.pow(1 - k, 3));
+        if (k >= 1) m.tween = null;
+      } else {
+        pos += SPEED * dt;
+      }
+      if (half > 0) {
+        while (pos >= half) { pos -= half; if (m.tween) { m.tween.from -= half; m.tween.to -= half; } }
+        while (pos < 0) { pos += half; if (m.tween) { m.tween.from += half; m.tween.to += half; } }
+      }
+      m.pos = pos;
+      el.scrollLeft = pos;
+      m.raf = requestAnimationFrame(frame);
+    };
+    m.raf = requestAnimationFrame(frame);
+    return () => cancelAnimationFrame(m.raf);
+  }, []);
   const nudge = dir => {
     const el = scrollerRef.current; if (!el) return;
+    const m = motorRef.current;
     const step = el.firstChild ? (el.firstChild.offsetWidth + 18) * 3 : 900;
-    el.scrollBy({ left: dir * step, behavior: 'smooth' });
+    const from = m.pos == null ? el.scrollLeft : m.pos;
+    const base = m.tween ? m.tween.to : from;
+    m.tween = { from, to: base + dir * step, t0: performance.now(), dur: 550 };
   };
-  const ArrowBtn = ({ dir }) => {
-    const disabled = dir === 'prev' ? !ends.prev : !ends.next;
-    return (
-      <button onClick={() => nudge(dir === 'prev' ? -1 : 1)} disabled={disabled}
-        aria-label={dir === 'prev' ? t('Previous products', 'Productos anteriores') : t('More products', 'Más productos')}
-        style={{
-          position: 'absolute', top: '50%', transform: 'translateY(-50%)',
-          [dir === 'prev' ? 'left' : 'right']: 'clamp(10px, 1.6vw, 28px)', zIndex: 2,
-          width: 46, height: 46, borderRadius: '50%',
-          border: `1px solid ${disabled ? 'rgba(0,16,17,0.12)' : 'var(--ink)'}`,
-          background: 'var(--white)',
-          color: disabled ? 'rgba(0,16,17,0.25)' : 'var(--ink)',
-          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-          cursor: disabled ? 'default' : 'pointer',
-          boxShadow: '0 10px 24px -14px rgba(0,16,17,0.4)',
-          transition: 'border-color 0.2s ease, color 0.2s ease',
-        }}>
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style={{ transform: dir === 'prev' ? 'rotate(180deg)' : 'none' }}>
-          <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
-        </svg>
-      </button>
-    );
-  };
+  const ArrowBtn = ({ dir }) => (
+    <button onClick={() => nudge(dir === 'prev' ? -1 : 1)}
+      aria-label={dir === 'prev' ? t('Previous products', 'Productos anteriores') : t('More products', 'Más productos')}
+      style={{
+        position: 'absolute', top: '50%', transform: 'translateY(-50%)',
+        [dir === 'prev' ? 'left' : 'right']: 'clamp(10px, 1.6vw, 28px)', zIndex: 2,
+        width: 46, height: 46, borderRadius: '50%',
+        border: '1px solid var(--ink)',
+        background: 'var(--white)', color: 'var(--ink)',
+        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+        cursor: 'pointer',
+        boxShadow: '0 10px 24px -14px rgba(0,16,17,0.4)',
+      }}>
+      <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style={{ transform: dir === 'prev' ? 'rotate(180deg)' : 'none' }}>
+        <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+      </svg>
+    </button>
+  );
+  const row = [...MARQUEE_PRODUCTS, ...MARQUEE_PRODUCTS];
   return (
     <section id="products-marquee" style={{ background: 'var(--white)', padding: '64px 0 72px', borderTop: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
       <div className="container" style={{
@@ -143,14 +166,14 @@ const ProductMarquee = () => {
           </svg>
         </a>
       </div>
-      {/* Static scroller, arrows page through it; edge padding lines the first
-          card up with the .container edge on wide screens */}
+      {/* Edge padding lines the first card up with the .container edge on
+          wide screens */}
       <div style={{ position: 'relative' }}>
-        <div ref={scrollerRef} onScroll={update} className="wfs-pcar" style={{
-          display: 'flex', gap: 18, overflowX: 'auto',
+        <div ref={scrollerRef} className="wfs-pcar" aria-hidden style={{
+          display: 'flex', gap: 18, overflowX: 'hidden',
           padding: '4px max(var(--pad), calc((100% - var(--max)) / 2 + var(--pad)))',
         }}>
-          {MARQUEE_PRODUCTS.map((p, i) => (
+          {row.map((p, i) => (
             <div key={i} style={{
               flexShrink: 0, width: 'clamp(215px, 24vw, 270px)',
               padding: '18px 18px 20px',

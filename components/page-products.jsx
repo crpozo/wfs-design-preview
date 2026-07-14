@@ -8,6 +8,7 @@ const ProductsHero = () => {
     eyebrow={t('Full catalog', 'Catálogo completo')}
     title={t('Five fence systems.', 'Cinco sistemas de cerca.')}
     accent={t('Two convenient locations.', 'Dos ubicaciones convenientes.')}
+    accentBreak
     subtitle={t('Factory-direct material, vinyl, aluminum, chain link, metal and EC Fence, plus gates, hardware and accessories. Same supplier-direct pricing for contractors, homeowners and DIY projects.', 'Material directo de fábrica, vinilo, aluminio, malla ciclónica, metal y EC Fence, más portones, herrajes y accesorios. El mismo precio directo de proveedor para contratistas, propietarios y proyectos de bricolaje.')}
     image="assets/PVC.png"
     actions={[{
