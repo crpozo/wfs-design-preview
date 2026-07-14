@@ -7,7 +7,7 @@ const ProductsHero = () => {
     crumbs={[[t('Home', 'Inicio'), 'Homepage.html'], [t('Products', 'Productos'), null]]}
     eyebrow={t('Full catalog', 'Catálogo completo')}
     title={t('Five fence systems.', 'Cinco sistemas de cerca.')}
-    accent={t('One Fort Myers yard.', 'Una sucursal en Fort Myers.')}
+    accent={t('Two convenient locations.', 'Dos ubicaciones convenientes.')}
     subtitle={t('Factory-direct material, vinyl, aluminum, chain link, metal and EC Fence, plus gates, hardware and accessories. Same supplier-direct pricing for contractors, homeowners and DIY projects.', 'Material directo de fábrica, vinilo, aluminio, malla ciclónica, metal y EC Fence, más portones, herrajes y accesorios. El mismo precio directo de proveedor para contratistas, propietarios y proyectos de bricolaje.')}
     image="assets/PVC.png"
     actions={[{
