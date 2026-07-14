@@ -87,20 +87,51 @@ const MARQUEE_PRODUCTS = [
 
 const ProductMarquee = () => {
   const t = useT();
-  const row = [...MARQUEE_PRODUCTS, ...MARQUEE_PRODUCTS];
+  const scrollerRef = React.useRef(null);
+  const [ends, setEnds] = React.useState({ prev: false, next: true });
+  const update = () => {
+    const el = scrollerRef.current; if (!el) return;
+    setEnds({ prev: el.scrollLeft > 4, next: el.scrollLeft < el.scrollWidth - el.clientWidth - 4 });
+  };
+  React.useEffect(update, []);
+  const nudge = dir => {
+    const el = scrollerRef.current; if (!el) return;
+    const step = el.firstChild ? (el.firstChild.offsetWidth + 18) * 3 : 900;
+    el.scrollBy({ left: dir * step, behavior: 'smooth' });
+  };
+  const ArrowBtn = ({ dir }) => {
+    const disabled = dir === 'prev' ? !ends.prev : !ends.next;
+    return (
+      <button onClick={() => nudge(dir === 'prev' ? -1 : 1)} disabled={disabled}
+        aria-label={dir === 'prev' ? t('Previous products', 'Productos anteriores') : t('More products', 'Más productos')}
+        style={{
+          position: 'absolute', top: '50%', transform: 'translateY(-50%)',
+          [dir === 'prev' ? 'left' : 'right']: 'clamp(10px, 1.6vw, 28px)', zIndex: 2,
+          width: 46, height: 46, borderRadius: '50%',
+          border: `1px solid ${disabled ? 'rgba(0,16,17,0.12)' : 'var(--ink)'}`,
+          background: 'var(--white)',
+          color: disabled ? 'rgba(0,16,17,0.25)' : 'var(--ink)',
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+          cursor: disabled ? 'default' : 'pointer',
+          boxShadow: '0 10px 24px -14px rgba(0,16,17,0.4)',
+          transition: 'border-color 0.2s ease, color 0.2s ease',
+        }}>
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style={{ transform: dir === 'prev' ? 'rotate(180deg)' : 'none' }}>
+          <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+        </svg>
+      </button>
+    );
+  };
   return (
     <section id="products-marquee" style={{ background: 'var(--white)', padding: '64px 0 72px', borderTop: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
       <div className="container" style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
         gap: 24, flexWrap: 'wrap', marginBottom: 36,
       }}>
-        <p className="mono" style={{
-          margin: 0,
-          fontSize: 12.5, letterSpacing: '0.18em', textTransform: 'uppercase',
-          color: 'rgba(0,16,17,0.4)', fontWeight: 600,
-        }}>
-          {t('In the yard today — posts, panels, gates and hardware', 'En stock hoy — postes, paneles, portones y herrajes')}
-        </p>
+        <span className="eyebrow" style={{ color: 'var(--ink)', display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+          <span style={{ width: 8, height: 8, background: 'var(--tangerine)' }}/>
+          {t('In the yard today', 'En stock hoy')}
+        </span>
         <a href="products.html" className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
           fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
@@ -112,12 +143,17 @@ const ProductMarquee = () => {
           </svg>
         </a>
       </div>
-      <div className="wfs-marquee wfs-marquee--pause" aria-hidden>
-        <div className="wfs-marquee__track wfs-marquee__track--products">
-          {row.map((p, i) => (
+      {/* Static scroller, arrows page through it; edge padding lines the first
+          card up with the .container edge on wide screens */}
+      <div style={{ position: 'relative' }}>
+        <div ref={scrollerRef} onScroll={update} className="wfs-pcar" style={{
+          display: 'flex', gap: 18, overflowX: 'auto',
+          padding: '4px max(var(--pad), calc((100% - var(--max)) / 2 + var(--pad)))',
+        }}>
+          {MARQUEE_PRODUCTS.map((p, i) => (
             <div key={i} style={{
               flexShrink: 0, width: 'clamp(215px, 24vw, 270px)',
-              margin: '0 9px', padding: '18px 18px 20px',
+              padding: '18px 18px 20px',
               background: 'var(--white)', border: '1px solid rgba(38,49,102,0.14)',
             }}>
               <div style={{
@@ -138,6 +174,8 @@ const ProductMarquee = () => {
             </div>
           ))}
         </div>
+        <ArrowBtn dir="prev"/>
+        <ArrowBtn dir="next"/>
       </div>
     </section>
   );
