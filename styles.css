@@ -597,6 +597,15 @@ section { position: relative; }
   .wfs-desktop-nav { gap: 18px !important; }
 }
 
+/* Header quote pill: collapse to just the arrow circle on phones so the long
+   label (especially Spanish "Solicitar cotización de material") never overflows
+   the bar or clips under the hamburger */
+@media (max-width: 600px) {
+  .wfs-quote-pill { padding: 5px !important; gap: 0 !important; }
+  .wfs-quote-pill__label,
+  .wfs-quote-pill__dot { display: none !important; }
+}
+
 /* Material profile cards: horizontal snap carousel on phones so the
    4-5 stacked cards don't take a full screen each */
 @media (max-width: 640px) {

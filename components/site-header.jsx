@@ -229,7 +229,7 @@ const SiteHeader = ({ active }) => {
               </svg>
               {t('Draw Your Fence', 'Dibuja tu cerca')}
             </a>
-            <a href="estimate.html#contact" style={{
+            <a href="estimate.html#contact" className="wfs-quote-pill" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '6px 6px 6px 15px',
               borderRadius: 999,
@@ -240,13 +240,14 @@ const SiteHeader = ({ active }) => {
               whiteSpace: 'nowrap',
               transition: 'background 0.2s ease, transform 0.2s ease',
             }}
+            aria-label={t('Request Material Quote', 'Solicitar cotización de material')}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--laser-blue)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'var(--ink)'; e.currentTarget.style.transform = 'none'; }}>
-              <span style={{
+              <span className="wfs-quote-pill__dot" style={{
                 width: 6, height: 6, borderRadius: '50%', background: '#ff7133',
                 boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)',
               }}/>
-              {t('Request Material Quote', 'Solicitar cotización de material')}
+              <span className="wfs-quote-pill__label">{t('Request Material Quote', 'Solicitar cotización de material')}</span>
               <span style={{
                 width: 23, height: 23, borderRadius: '50%',
                 background: 'var(--tangerine)', color: 'var(--ink)',
