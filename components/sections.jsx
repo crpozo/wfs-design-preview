@@ -929,8 +929,8 @@ const ServiceAreas = () => {
                 Computed by parsing FL path: FM west-coast inland (757, 534);
                 PC west-coast inland (755, 528). */}
             {[
-              { name: t('Fort Myers · HQ', 'Fort Myers · Sede'), xPct: 69.3, yPct: 67.1 },
-              { name: 'Port Charlotte', xPct: 68.2, yPct: 63.2, labelLeft: true },
+              { name: t('Fort Myers · HQ', 'Fort Myers · Sede'), xPct: 69.3, yPct: 67.1, cls: 'wfs-map-pin--fm' },
+              { name: 'Port Charlotte', xPct: 68.2, yPct: 63.2, labelLeft: true, cls: 'wfs-map-pin--pc' },
             ].map((p) => (
               <React.Fragment key={p.name}>
                 {/* Dot, sits exactly on the target SVG point */}
@@ -946,7 +946,7 @@ const ServiceAreas = () => {
                   zIndex: 2,
                 }}/>
                 {/* Label, offset 16px to the side of the dot */}
-                <span className="mono" style={{
+                <span className={`mono wfs-map-pin ${p.cls || ''}`} style={{
                   position: 'absolute',
                   left: p.labelLeft ? `calc(${p.xPct}% - 16px)` : `calc(${p.xPct}% + 16px)`,
                   top: `${p.yPct}%`,
@@ -999,7 +999,7 @@ const ServiceAreas = () => {
               { city: 'Port Charlotte', addr: '1145 Enterprise Dr, FL 33953', phone: '(941) 391-6613' },
               { city: t('Counties served', 'Condados atendidos'), addr: t('Lee · Collier · Charlotte · Hendry & beyond', 'Lee · Collier · Charlotte · Hendry y más'), phone: t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm') },
             ].map((y, i) => (
-              <div key={i} style={{
+              <div key={i} className="wfs-yard-card" style={{
                 border: '1px solid rgba(0,16,17,0.18)',
                 padding: '16px 18px',
                 background: 'var(--white)',
@@ -1010,7 +1010,7 @@ const ServiceAreas = () => {
                   color: 'var(--tangerine)', textTransform: 'uppercase',
                   fontWeight: 700, minWidth: 22,
                 }}>0{i+1}</div>
-                <div style={{ flex: 1, minWidth: 0 }}>
+                <div className="wfs-yard-body" style={{ flex: 1, minWidth: 0 }}>
                   <div className="display" style={{
                     fontSize: 17, lineHeight: 1.1, marginBottom: 4,
                   }}>{y.city}</div>
@@ -1018,7 +1018,7 @@ const ServiceAreas = () => {
                     fontSize: 13, color: 'var(--charcoal)', lineHeight: 1.4,
                   }}>{y.addr}</div>
                 </div>
-                <div className="mono" style={{
+                <div className="mono wfs-yard-meta" style={{
                   fontSize: 12.5, color: 'var(--ink)',
                   letterSpacing: '0.06em', textAlign: 'right', fontWeight: 600,
                   whiteSpace: 'nowrap',

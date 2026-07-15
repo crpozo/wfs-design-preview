@@ -555,7 +555,8 @@ section { position: relative; }
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  scroll-snap-type: x proximity;
+  scroll-padding-left: var(--pad);
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   padding: 0 var(--pad);
@@ -618,6 +619,37 @@ section { position: relative; }
   .wfs-profiles-grid > article > div:first-child,
   .wfs-profiles-grid > a > div:first-child {
     aspect-ratio: 16 / 9 !important;
+  }
+}
+
+/* Service-area yard cards: drop the phone / hours onto its own line on phones
+   so long strings ("Mon–Fri 7am–4pm · Sat 7am–12pm") never clip off-screen */
+@media (max-width: 640px) {
+  .wfs-yard-card { flex-wrap: wrap !important; }
+  .wfs-yard-meta {
+    flex-basis: 100% !important;
+    margin-left: 38px !important;
+    margin-top: 2px !important;
+    text-align: left !important;
+    white-space: normal !important;
+  }
+
+  /* Florida map pins: shrink labels and stack them above / below the dot so a
+     long label ("FORT MYERS · HQ") never runs off the narrower phone map */
+  .wfs-map-pin {
+    font-size: 10px !important;
+    letter-spacing: 0.1em !important;
+    padding: 3px 7px !important;
+  }
+  .wfs-map-pin--fm {
+    left: 69.3% !important;
+    top: calc(67.1% + 20px) !important;
+    transform: translate(-50%, 0) !important;
+  }
+  .wfs-map-pin--pc {
+    left: 68.2% !important;
+    top: calc(63.2% - 20px) !important;
+    transform: translate(-50%, -100%) !important;
   }
 }
 

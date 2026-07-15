@@ -774,6 +774,17 @@ const SystemCarousel = ({ id, chapter, label, items, topLink, ctaLabel }) => {
     setActive(Math.max(0, Math.min(items.length - 1, idx)));
   }, [items.length]);
 
+  // Always open on the first card. Guards against browser scroll restoration
+  // (bfcache) or snap landing on a later card after images/text reflow.
+  React.useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const reset = () => { el.scrollLeft = 0; setActive(0); };
+    reset();
+    window.addEventListener('pageshow', reset);
+    return () => window.removeEventListener('pageshow', reset);
+  }, []);
+
   return (
     <section id={`${id}-mobile`} className="wfs-msys" style={{ background: 'var(--indigo-blue)' }}>
       {/* Masthead: chapter + label + rule, catalog link below */}
