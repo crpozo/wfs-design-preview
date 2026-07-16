@@ -600,10 +600,16 @@ section { position: relative; }
 /* Header quote pill: collapse to just the arrow circle on phones so the long
    label (especially Spanish "Solicitar cotización de material") never overflows
    the bar or clips under the hamburger */
+/* Desktop: arrow icon in the pill circle; phone/contact icon hidden */
+.wfs-quote-pill__contact { display: none; }
+
 @media (max-width: 600px) {
   .wfs-quote-pill { padding: 5px !important; gap: 0 !important; }
   .wfs-quote-pill__label,
-  .wfs-quote-pill__dot { display: none !important; }
+  .wfs-quote-pill__dot,
+  .wfs-quote-pill__arrow { display: none !important; }
+  /* Collapsed to just the circle — show the contact (phone) icon instead of the arrow */
+  .wfs-quote-pill__contact { display: block !important; }
 }
 
 /* Material profile cards: horizontal snap carousel on phones so the

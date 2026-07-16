@@ -254,8 +254,12 @@ const SiteHeader = ({ active }) => {
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 flexShrink: 0,
               }}>
-                <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
+                {/* Arrow on desktop; phone/contact icon on mobile — swap via CSS (styles.css @600px) */}
+                <svg className="wfs-quote-pill__arrow" width="11" height="11" viewBox="0 0 16 16" fill="none">
                   <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="square"/>
+                </svg>
+                <svg className="wfs-quote-pill__contact" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
+                  <path d="M3 3h3l1.5 4-2 1c1 2 2.5 3.5 4.5 4.5l1-2 4 1.5v3c0 0.5-0.5 1-1 1C8 16 0 8 0 4c0-0.5 0.5-1 1-1z" transform="translate(0.5,0)"/>
                 </svg>
               </span>
             </a>
