@@ -124,7 +124,7 @@ const MATERIAL_DATA = {
       { name: 'Heavy-Gauge Industrial', tag: 'Commercial', notes: 'Heavier mesh and framework for high-security commercial perimeters.' },
     ],
     specs: [
-      ['Heights', "3', 4', 5', 6', and taller options available"],
+      ['Heights', "4', 5', 6', and taller options available"],
       ['Mesh', 'Galvanized and vinyl-coated mesh in multiple gauges'],
       ['Finishes', 'Galvanized, black, and green vinyl-coated'],
       ['Material', 'Mesh, posts, rails, fittings, gates, and hardware'],

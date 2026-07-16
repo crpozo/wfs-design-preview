@@ -692,7 +692,7 @@ Object.assign(ES_TR, {
   "Vinyl-coated mesh for parks, courts, and recreational sites.": "Malla recubierta de vinilo para parques, canchas y sitios recreativos.",
   "Heavy-Gauge Industrial": "Industrial de calibre pesado",
   "Heavier mesh and framework for high-security commercial perimeters.": "Malla y estructura más pesadas para perímetros comerciales de alta seguridad.",
-  "3', 4', 5', 6', and taller options available": "3', 4', 5', 6', y opciones más altas disponibles",
+  "4', 5', 6', and taller options available": "4', 5', 6', y opciones más altas disponibles",
   "Galvanized and vinyl-coated mesh in multiple gauges": "Malla galvanizada y recubierta de vinilo en múltiples calibres",
   "Galvanized, black, and green vinyl-coated": "Galvanizada, negra y verde recubierta de vinilo",
   "Mesh, posts, rails, fittings, gates, and hardware": "Malla, postes, rieles, accesorios, portones y herrajes",
