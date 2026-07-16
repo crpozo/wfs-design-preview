@@ -57,7 +57,7 @@ const Hero = () => {
       justifyContent: 'flex-end',
     }}>
       {/* Full-bleed photo backdrop, WFS showroom */}
-      <img src="assets/Showroom.png" alt="" aria-hidden="true"
+      <img src="assets/Showroom.png?v=204" alt="" aria-hidden="true"
         onError={e => { if (!e.currentTarget.dataset.fb) { e.currentTarget.dataset.fb = '1'; e.currentTarget.src = 'assets/wfs-shop.webp'; } }}
         style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%',
