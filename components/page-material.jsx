@@ -18,10 +18,10 @@ const MATERIAL_DATA = {
       ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
     ],
     profiles: [
-      { name: 'Privacy', tag: 'Classic', notes: 'Full privacy vinyl fence panels for backyards and property lines.' },
-      { name: 'Semi-Privacy', tag: 'Airflow', notes: 'Decorative vinyl fence option with partial visibility and airflow.' },
-      { name: 'Picket', tag: 'Decorative', notes: 'Classic vinyl picket fence for front yards and decorative projects.' },
-      { name: 'Ranch Rail', tag: 'Open rail', notes: 'Open vinyl rail system for large properties and boundaries.' },
+      { name: 'Privacy', tag: 'Classic', img: 'assets/profiles/vinyl-privacy.jpg', notes: 'Full privacy vinyl fence panels for backyards and property lines.' },
+      { name: 'Semi-Privacy', tag: 'Airflow', img: 'assets/profiles/vinyl-semi-privacy.jpg', notes: 'Decorative vinyl fence option with partial visibility and airflow.' },
+      { name: 'Picket', tag: 'Decorative', img: 'assets/profiles/vinyl-picket.jpg', notes: 'Classic vinyl picket fence for front yards and decorative projects.' },
+      { name: 'Ranch Rail', tag: 'Open rail', img: 'assets/profiles/vinyl-ranch-rail.jpg', notes: 'Open vinyl rail system for large properties and boundaries.' },
     ],
     specs: [
       ['Heights', "4', 5', 6', and other options available by request"],
@@ -69,14 +69,14 @@ const MATERIAL_DATA = {
       ['Lead Time', 'Stock and lead time vary by style, color, and quantity'],
     ],
     profiles: [
-      { name: '2-Rail', tag: 'Standard', notes: 'Simple, open-profile aluminum fence option.' },
-      { name: '3-Rail', tag: 'Popular', notes: 'Popular residential and pool-code configuration.' },
-      { name: '3-Rail Spear Top', tag: 'Decorative', notes: 'Decorative picket-top style for residential projects.' },
-      { name: '4-Rail', tag: 'Custom', notes: 'Available for taller or custom aluminum configurations.' },
-      { name: 'Smooth Bottom', tag: 'Clean line', notes: 'Flat bottom rail with no picket points below the rail.' },
-      { name: 'Rake Bottom', tag: 'Slopes', notes: 'Follows grade changes and sloped runs without gaps.' },
-      { name: 'Puppy Picket', tag: 'Pet-friendly', notes: 'Tighter picket spacing at the bottom to keep small pets in.' },
-      { name: 'Pool Code', tag: 'Compliant', notes: 'Meets Florida pool barrier requirements for spacing and height.' },
+      { name: '2-Rail', tag: 'Standard', img: 'assets/profiles/aluminum-2-rail-smooth.jpg', notes: 'Simple, open-profile aluminum fence option.' },
+      { name: '3-Rail', tag: 'Popular', img: 'assets/profiles/aluminum-3-rail-rake.jpg', notes: 'Popular residential and pool-code configuration.' },
+      { name: '3-Rail Spear Top', tag: 'Decorative', img: 'assets/profiles/aluminum-spear-top.jpg', notes: 'Decorative picket-top style for residential projects.' },
+      { name: '4-Rail', tag: 'Custom', img: 'assets/profiles/aluminum-custom.jpg', notes: 'Available for taller or custom aluminum configurations.' },
+      { name: 'Smooth Bottom', tag: 'Clean line', img: 'assets/profiles/aluminum-2-rail-smooth.jpg', notes: 'Flat bottom rail with no picket points below the rail.' },
+      { name: 'Rake Bottom', tag: 'Slopes', img: 'assets/profiles/aluminum-3-rail-rake.jpg', notes: 'Follows grade changes and sloped runs without gaps.' },
+      { name: 'Puppy Picket', tag: 'Pet-friendly', img: 'assets/profiles/aluminum-puppy-picket.jpg', notes: 'Tighter picket spacing at the bottom to keep small pets in.' },
+      { name: 'Pool Code', tag: 'Compliant', img: 'assets/profiles/aluminum-pool-code.jpg', notes: 'Meets Florida pool barrier requirements for spacing and height.' },
     ],
     specs: [
       ['Heights', "4', 5', 6', custom options available"],
@@ -118,10 +118,10 @@ const MATERIAL_DATA = {
       ['Lead Time', 'Stock and lead time vary by gauge, finish, and quantity'],
     ],
     profiles: [
-      { name: 'Galvanized', tag: 'Standard', notes: 'Classic zinc-coated mesh for security and perimeter fencing.' },
-      { name: 'Black Vinyl-Coated', tag: 'Popular', notes: 'Vinyl-coated mesh with a clean, low-profile residential look.' },
-      { name: 'Green Vinyl-Coated', tag: 'By request', notes: 'Vinyl-coated mesh for parks, courts, and recreational sites.' },
-      { name: 'Heavy-Gauge Industrial', tag: 'Commercial', notes: 'Heavier mesh and framework for high-security commercial perimeters.' },
+      { name: 'Galvanized', tag: 'Standard', img: 'assets/profiles/chainlink-galvanized.jpg', notes: 'Classic zinc-coated mesh for security and perimeter fencing.' },
+      { name: 'Black Vinyl-Coated', tag: 'Popular', img: 'assets/profiles/chainlink-black.jpg', notes: 'Vinyl-coated mesh with a clean, low-profile residential look.' },
+      { name: 'Green Vinyl-Coated', tag: 'By request', img: 'assets/profiles/chainlink-green.jpg', notes: 'Vinyl-coated mesh for parks, courts, and recreational sites.' },
+      { name: 'Heavy-Gauge Industrial', tag: 'Commercial', img: 'assets/profiles/chainlink-heavy-gauge.jpg', notes: 'Heavier mesh and framework for high-security commercial perimeters.' },
     ],
     specs: [
       ['Heights', "4', 5', 6', and taller options available"],
@@ -164,9 +164,9 @@ const MATERIAL_DATA = {
     ],
     profilesSub: 'Available in Modern, Original, and P1 styles. Custom fabrication is available for gates only.',
     profiles: [
-      { name: 'Modern', tag: 'Contemporary', notes: 'Clean-lined DuraFence profile for contemporary projects.' },
-      { name: 'Original', tag: 'Classic', notes: 'The original DuraFence full-privacy board profile.' },
-      { name: 'P1', tag: 'Panel', notes: 'DuraFence P1 privacy panel profile for residential and commercial runs.' },
+      { name: 'Modern', tag: 'Contemporary', img: 'assets/profiles/metal-modern.jpg', notes: 'Clean-lined DuraFence profile for contemporary projects.' },
+      { name: 'Original', tag: 'Classic', img: 'assets/profiles/metal-original.jpg', notes: 'The original DuraFence full-privacy board profile.' },
+      { name: 'P1', tag: 'Panel', img: 'assets/profiles/metal-p1.jpg', notes: 'DuraFence P1 privacy panel profile for residential and commercial runs.' },
     ],
     specs: [
       ['Heights', "6' and 8'"],
@@ -215,9 +215,9 @@ const MATERIAL_DATA = {
       ['Lead Time', 'Stock and lead time vary by color, quantity, and gate requirements'],
     ],
     profiles: [
-      { name: 'Bronze 6 Ft', tag: 'Standard', notes: 'Bronze galvanized steel privacy panels for modern projects.' },
-      { name: 'White 6 Ft', tag: 'Standard', notes: 'White galvanized steel privacy panels for clean residential and commercial designs.' },
-      { name: 'Matching Gate', tag: 'Single / double', notes: 'Single and double gates available with hardware options.' },
+      { name: 'Bronze 6 Ft', tag: 'Standard', img: 'assets/profiles/ecfence-bronze.jpg', notes: 'Bronze galvanized steel privacy panels for modern projects.' },
+      { name: 'White 6 Ft', tag: 'Standard', img: 'assets/profiles/ecfence-white.jpg', notes: 'White galvanized steel privacy panels for clean residential and commercial designs.' },
+      { name: 'Matching Gate', tag: 'Single / double', img: 'assets/profiles/ecfence-gate.jpg', notes: 'Single and double gates available with hardware options.' },
       { name: 'Posts & Hardware', tag: 'Full package', notes: 'Posts, covers, hardware, and accessories for full material packages.' },
     ],
     specs: [
@@ -429,8 +429,10 @@ const MaterialProfiles = ({ data }) => (
             overflow: 'hidden',
             display: 'flex', flexDirection: 'column',
           }}>
-            <div style={{ aspectRatio: '16 / 10', background: DIAG.bg, borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
-              <ProfileDiagram slug={data.slug} name={p.name} index={i}/>
+            <div style={{ aspectRatio: '16 / 10', background: p.img ? 'var(--white)' : DIAG.bg, borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
+              {p.img
+                ? <img src={p.img} alt={p.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}/>
+                : <ProfileDiagram slug={data.slug} name={p.name} index={i}/>}
             </div>
             <div style={{ padding: 24 }}>
               <div className="mono" style={{
