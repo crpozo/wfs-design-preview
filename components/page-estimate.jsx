@@ -85,7 +85,7 @@ const EstimateHero = () => {
       </div>
 
       {/* 3-step process strip at the bottom of the hero */}
-      <div style={{
+      <div className="wfs-est-steps" style={{
         marginTop: 56,
         paddingTop: 28,
         borderTop: '1px solid rgba(255,255,255,0.18)',

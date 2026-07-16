@@ -10,8 +10,8 @@ const FENCE_CATEGORIES = [
   {
     id: 'aluminum', name: { EN: 'Aluminum', ES: 'Aluminio' }, tag: { EN: 'Residential & Commercial', ES: 'Residencial y comercial' },
     img: 'aluminum', href: 'aluminum.html',
-    desc: { EN: 'Powder-coated aluminum panels in 2 and 3-rail standard configurations (4 and 5-rail custom). Pool-code compliant, rackable on grade and available in residential and commercial grades.',
-            ES: 'Paneles de aluminio con pintura en polvo en configuraciones estándar de 2 y 3 rieles (4 y 5 rieles a medida). Cumple código de piscinas, adaptable a pendientes y disponible en grados residencial y comercial.' },
+    desc: { EN: 'Powder-coated aluminum panels in 2 and 3-rail standard configurations (4-rail custom). Pool-code compliant, rackable on grade and available in residential and commercial grades.',
+            ES: 'Paneles de aluminio con pintura en polvo en configuraciones estándar de 2 y 3 rieles (4 rieles a medida). Cumple código de piscinas, adaptable a pendientes y disponible en grados residencial y comercial.' },
   },
   {
     id: 'chainlink', name: { EN: 'Chain Link', ES: 'Malla ciclónica' }, tag: { EN: 'Galvanized & Vinyl Coated', ES: 'Galvanizada y recubierta de vinilo' },
@@ -918,10 +918,10 @@ const WHY_WFS = [
     icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 3h9l5 5v13H5Z"/><path d="M14 3v5h5"/><path d="M8 13h7M8 17h5"/></svg>),
   },
   {
-    title: { EN: 'Certified installers', ES: 'Instaladores certificados' },
-    desc:  { EN: 'We connect you with vetted local crews to handle the build.',
-             ES: 'Te conectamos con cuadrillas locales verificadas para la instalación.' },
-    icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3 19 6v6q0 5-7 9-7-4-7-9V6Z"/><path d="M9 12l2 2 4-4"/></svg>),
+    title: { EN: 'In-house fabrication', ES: 'Fabricación propia' },
+    desc:  { EN: 'Gates and custom work built in our Fort Myers shop.',
+             ES: 'Portones y trabajos a medida hechos en nuestro taller de Fort Myers.' },
+    icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>),
   },
 ];
 

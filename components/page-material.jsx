@@ -18,9 +18,9 @@ const MATERIAL_DATA = {
       ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
     ],
     profiles: [
-      { name: 'Privacy', tag: 'Full board', notes: 'Full privacy vinyl fence panels for backyards and property lines.' },
+      { name: 'Privacy', tag: 'Classic', notes: 'Full privacy vinyl fence panels for backyards and property lines.' },
       { name: 'Semi-Privacy', tag: 'Airflow', notes: 'Decorative vinyl fence option with partial visibility and airflow.' },
-      { name: 'Picket', tag: 'Classic', notes: 'Classic vinyl picket fence for front yards and decorative projects.' },
+      { name: 'Picket', tag: 'Decorative', notes: 'Classic vinyl picket fence for front yards and decorative projects.' },
       { name: 'Ranch Rail', tag: 'Open rail', notes: 'Open vinyl rail system for large properties and boundaries.' },
     ],
     specs: [
@@ -72,7 +72,7 @@ const MATERIAL_DATA = {
       { name: '2-Rail', tag: 'Standard', notes: 'Simple, open-profile aluminum fence option.' },
       { name: '3-Rail', tag: 'Popular', notes: 'Popular residential and pool-code configuration.' },
       { name: '3-Rail Spear Top', tag: 'Decorative', notes: 'Decorative picket-top style for residential projects.' },
-      { name: '4 & 5-Rail', tag: 'Custom', notes: 'Available for taller or custom aluminum configurations.' },
+      { name: '4-Rail', tag: 'Custom', notes: 'Available for taller or custom aluminum configurations.' },
       { name: 'Smooth Bottom', tag: 'Clean line', notes: 'Flat bottom rail with no picket points below the rail.' },
       { name: 'Rake Bottom', tag: 'Slopes', notes: 'Follows grade changes and sloped runs without gaps.' },
       { name: 'Puppy Picket', tag: 'Pet-friendly', notes: 'Tighter picket spacing at the bottom to keep small pets in.' },
@@ -312,7 +312,7 @@ const ProfileDiagram = ({ slug, name = '', index = 0 }) => {
 
   if (slug === 'aluminum') {
     const spear = /spear/.test(nm);
-    const custom = /4 & 5|custom/.test(nm);
+    const custom = /4-rail|4 & 5|custom/.test(nm);
     let rows;
     if (/smooth/.test(nm)) {
       rows = [{ y: 40 }, { y: 108 }];
@@ -333,10 +333,10 @@ const ProfileDiagram = ({ slug, name = '', index = 0 }) => {
         els.push(<line key={`pp${i}`} x1={x} y1={74} x2={x} y2={106} stroke={light} strokeWidth="3" strokeLinecap="round"/>);
       }
     } else if (/pool/.test(nm)) {
-      rows = [{ y: 34 }, { y: 60 }, { y: 104 }];
+      rows = [{ y: 34 }, { y: 104 }];
       pickets(11, 16, 112);
     } else if (custom) {
-      rows = [{ y: 30 }, { y: 52 }, { y: 68, c: accent, dash: '7 5' }, { y: 84 }, { y: 106 }];
+      rows = [{ y: 32 }, { y: 56 }, { y: 80, c: accent, dash: '7 5' }, { y: 106 }];
       pickets(11, 16, 118);
     } else if (spear || /^3/.test(name.trim())) {
       rows = [{ y: 40 }, { y: 68 }, { y: 96 }];

@@ -67,8 +67,8 @@ const HomeownerHero = () => {
           fontSize: 16, lineHeight: 1.55, maxWidth: 440,
           margin: '0 0 26px', color: 'rgba(255,255,255,0.85)',
         }}>
-          {t('Premium manufacturing-direct fencing. We help you plan the project and connect you with trusted local installers for the build.',
-             'Cercas premium directas de fábrica. Te ayudamos a planear el proyecto y te conectamos con instaladores locales de confianza para la obra.')}
+          {t('Premium manufacturing-direct fencing. We help you plan the project and quote the material for the build.',
+             'Cercas premium directas de fábrica. Te ayudamos a planear el proyecto y a cotizar el material para la obra.')}
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
           <a href="estimate.html#contact" style={{
@@ -186,8 +186,8 @@ const HomeownerSteps = () => {
     { title: { EN: 'Fabrication', ES: 'Fabricación' },
       body: { EN: 'Gates and custom work built in our Fort Myers shop.', ES: 'Portones y trabajos a medida hechos en nuestro taller de Fort Myers.' },
       icon: (<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M3 21 V11 L9 14 V11 L15 14 V11 L21 14 V21 Z"/><line x1="3" y1="21" x2="21" y2="21"/></svg>) },
-    { title: { EN: 'Trusted install', ES: 'Instalación confiable' },
-      body: { EN: 'We connect you with trusted local installers for the build.', ES: 'Te conectamos con instaladores locales de confianza para la obra.' },
+    { title: { EN: 'The build', ES: 'La obra' },
+      body: { EN: 'Supply-only: your installer or contractor handles the build with our materials.', ES: 'Solo suministro: tu instalador o contratista se encarga de la obra con nuestros materiales.' },
       icon: (<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg>) },
   ];
   const Step = ({ st, below }) => (
@@ -368,7 +368,7 @@ const HomeownerStylePicker = () => {
   );
 };
 
-/* ───── Two cards: Certified Installer Alliance + What You Get ───── */
+/* ───── Supply-only split: What You Get card ───── */
 
 const HomeownerInstallerSplit = () => {
   const t = useT();
@@ -399,64 +399,10 @@ const HomeownerInstallerSplit = () => {
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
             lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
-          }}>{t('WFS supplies. Certified installers build.', 'WFS suministra. Instaladores certificados construyen.')}</h2>
+          }}>{t('WFS supplies. Your installer builds.', 'WFS suministra. Tu instalador construye.')}</h2>
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24, maxWidth: 1200, margin: '0 auto', alignItems: 'stretch' }}>
-          {/* Left, Certified Installer Alliance (white) */}
-          <HoverCard theme="light">
-            <div style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-              marginBottom: 28,
-            }}>
-              <span className="mono" style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                padding: '6px 12px',
-                background: 'var(--ink)', color: 'var(--white)',
-                fontSize: 12, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
-              }}>{t('Alliance', 'Alianza')}</span>
-              <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                <path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/>
-                <path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            <h3 className="display" style={{
-              margin: '0 0 18px',
-              fontSize: 'clamp(22px, 2.2vw, 30px)',
-              lineHeight: 1.05, letterSpacing: '-0.01em',
-            }}>{t('Certified Installer Alliance', 'Alianza de Instaladores Certificados')}</h3>
-            <p className="mono" style={{
-              margin: '0 0 26px',
-              fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
-            }}>
-              {t(
-                'WFS does not offer DIY installation. We connect homeowners with certified installation partners who know our products, hardware, and finish standards.',
-                'WFS no ofrece instalación DIY. Conectamos a propietarios con socios instaladores certificados que conocen nuestros productos, herrajes y estándares de acabado.'
-              )}
-            </p>
-            <ul style={{ listStyle: 'none', margin: '0 0 32px', padding: 0, display: 'grid', gap: 12 }}>
-              {[
-                { EN: 'WFS-aligned independent installers',     ES: 'Instaladores independientes alineados con WFS' },
-                { EN: 'Product-aware installation practices',   ES: 'Prácticas de instalación que dominan nuestros productos' },
-                { EN: 'Clean handoff from quote to installation', ES: 'Transición limpia de cotización a instalación' },
-              ].map((line, i) => (
-                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
-                    <path d="M3 8 L7 12 L13 4" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                  <span className="mono" style={{ fontSize: 13, lineHeight: 1.55, color: 'var(--ink)' }}>{t(line)}</span>
-                </li>
-              ))}
-            </ul>
-            <a href="estimate.html" style={{
-              display: 'block', textAlign: 'center', marginTop: 'auto',
-              padding: '16px 28px',
-              background: 'var(--ink)', color: 'var(--white)',
-              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
-              letterSpacing: '0.18em', textTransform: 'uppercase',
-            }}>{t('Find an Installer', 'Encontrar instalador')}</a>
-          </HoverCard>
-
-          {/* Right, What You Get (black) */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 24, maxWidth: 640, margin: '0 auto', alignItems: 'stretch' }}>
+          {/* What You Get (black) */}
           <HoverCard theme="dark">
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between',
@@ -494,7 +440,7 @@ const HomeownerInstallerSplit = () => {
                   icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><circle cx="9" cy="9" r="3"/><circle cx="17" cy="10" r="2.5"/><path d="M3 19 Q9 14 15 19"/><path d="M14 18 Q17.5 15 21 18"/></svg> },
                 { line: { EN: 'Installation practices that support warranty-friendly outcomes', ES: 'Prácticas de instalación que respaldan la cobertura de garantía' },
                   icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M12 3 L19 6 V12 Q19 17 12 21 Q5 17 5 12 V6 Z"/><path d="M9 12 L11 14 L15 10" strokeLinecap="round" strokeLinejoin="round"/></svg> },
-                { line: { EN: 'Certified partners for residential and gate projects', ES: 'Socios certificados para proyectos residenciales y de portones' },
+                { line: { EN: 'Spec sheets and drawings ready for your submittals', ES: 'Fichas técnicas y planos listos para tus trámites' },
                   icon: <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="4" y="6" width="16" height="14" rx="1"/><line x1="4" y1="10" x2="20" y2="10"/><path d="M8 14 L11 17 L17 12" strokeLinecap="round" strokeLinejoin="round"/></svg> },
               ].map((b, i) => (
                 <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
@@ -616,8 +562,8 @@ const HomeownerFAQ = () => {
      { EN: 'Most Florida jurisdictions require a permit for new fences, and pool barriers have their own code requirements. The owner or installer pulls the permit; we back you up with manufacturer spec sheets for whatever you need to submit.',
        ES: 'La mayoría de las jurisdicciones de Florida exigen permiso para cercas nuevas, y las barreras de piscina tienen sus propios requisitos de código. El propietario o el instalador tramita el permiso; nosotros te respaldamos con las fichas técnicas del fabricante para lo que debas presentar.' }],
     [{ EN: 'Does WFS handle HOA approvals?', ES: '¿WFS gestiona aprobaciones de la HOA?' },
-     { EN: "We don't submit on your behalf, but we provide the product information your HOA needs: styles, colors, specs and a written quote. You or your installer submit it.",
-       ES: 'No presentamos por ti, pero te damos la información de producto que tu HOA necesita: estilos, colores, especificaciones y una cotización por escrito. Tú o tu instalador la presentan.' }],
+     { EN: 'No. WFS does not file HOA applications or handle approvals with your county or municipality — we are a material supplier only. What we do provide is the product documentation: spec sheets, styles, colors and a written quote. You or your installer submit them and manage the approval process.',
+       ES: 'No. WFS no tramita aprobaciones de HOA ni gestiona permisos ante el condado o municipio: somos únicamente proveedores de material. Lo que sí te entregamos es la documentación del producto: hojas de especificaciones (spec sheets), estilos, colores y una cotización por escrito. Tú o tu instalador las presentan y llevan el trámite.' }],
     [{ EN: 'What is the lead time for orders?', ES: '¿Cuál es el tiempo de entrega de los pedidos?' },
      { EN: 'Stocked items are ready right away. Custom gates and non-stock items vary by product; we confirm the exact lead time before you approve the quote.',
        ES: 'Lo que está en stock está listo de inmediato. Los portones a medida y los artículos fuera de stock varían según el producto; confirmamos el plazo exacto antes de que apruebes la cotización.' }],

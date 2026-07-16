@@ -280,6 +280,18 @@ section { position: relative; }
     grid-template-columns: 1fr !important;
   }
 
+  /* Estimate hero steps: when stacked, drop the column separators
+     (left border + indent) so 01/02/03 align flush; divide with a
+     top border instead */
+  .wfs-est-steps > div {
+    padding-left: 0 !important;
+    border-left: none !important;
+  }
+  .wfs-est-steps > div + div {
+    border-top: 1px solid rgba(255,255,255,0.18);
+    padding-top: 20px;
+  }
+
   /* Tighter section padding */
   section { padding-top: 40px !important; padding-bottom: 40px !important; }
 

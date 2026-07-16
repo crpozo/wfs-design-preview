@@ -658,7 +658,7 @@ Object.assign(ES_TR, {
   "3-Rail Spear Top": "3 rieles con remate tipo lanza",
   "Decorative": "Decorativo",
   "Decorative picket-top style for residential projects.": "Estilo decorativo con remate tipo picket para proyectos residenciales.",
-  "4 & 5-Rail": "4 y 5 rieles",
+  "4-Rail": "4 rieles",
   "Custom": "A medida",
   "Available for taller or custom aluminum configurations.": "Disponible para configuraciones de aluminio más altas o a medida.",
   "4', 5', 6', custom options available": "4', 5', 6', opciones a medida disponibles",
