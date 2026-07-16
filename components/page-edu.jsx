@@ -630,7 +630,7 @@ const FAQ_TOPICS = [
       [{ EN: 'Which material should I choose for my project?', ES: '¿Qué material debería elegir para mi proyecto?' },
        { EN: "Depends on what the fence needs to do: privacy, pool code, security, wind exposure, budget. Check the materials comparison in the Education Hub, or tell your rep the job and they'll point you to the right system.", ES: 'Depende de lo que la cerca deba hacer: privacidad, código de piscinas, seguridad, viento, presupuesto. Revisa la comparativa de materiales del Centro Educativo, o cuéntale el proyecto a tu asesor y te orientará al sistema correcto.' }],
       [{ EN: 'What colors can I get?', ES: '¿Qué colores puedo conseguir?' },
-       { EN: 'Vinyl comes in white, tan, and gray (limited). Aluminum in black, bronze, and white. Metal / DuraFence in white, dark bronze, woodgrain, and galvanized. Chain link in galvanized, black, and green.', ES: 'El vinilo viene en blanco, arena y gris (limitado). El aluminio en negro, bronce y blanco. El Metal / DuraFence en blanco, bronce oscuro, imitación madera y galvanizado. La malla ciclónica en galvanizado, negro y verde.' }],
+       { EN: 'Vinyl comes in white, tan, and gray (limited). Aluminum in black, bronze, and white. Metal / DuraFence in white, black, bronze, and woodgrain. Chain link in galvanized, black, and green.', ES: 'El vinilo viene en blanco, arena y gris (limitado). El aluminio en negro, bronce y blanco. El Metal / DuraFence en blanco, negro, bronce e imitación madera. La malla ciclónica en galvanizado, negro y verde.' }],
     ],
   },
   {

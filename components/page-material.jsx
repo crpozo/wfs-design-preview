@@ -170,10 +170,10 @@ const MATERIAL_DATA = {
     ],
     specs: [
       ['Heights', "6' and 8'"],
-      ['Colors', 'Black, bronze, white, woodgrain, and selected color options'],
+      ['Colors', 'White, black, bronze, and woodgrain'],
       ['Material', 'Metal panels, posts, rails, gates, and hardware'],
       ['Styles', 'Modern, Original, and P1'],
-      ['Post Options', 'Line posts, end posts, blank posts, and gate posts available'],
+      ['Post Options', 'One 2-1/2" post type for all positions'],
       ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
     ],
     useCasesBlurb: 'Metal earns its keep where privacy, strength, and modern looks meet.',
