@@ -572,8 +572,8 @@ const AboutIntro = () => {
             maxWidth: 540,
           }}>
             {t(
-              "Western Fence Supply is Southwest Florida's best source for high-quality vinyl fence, aluminum fence, chain-link fence, and metal fence materials. We sell to fence companies and homeowners in Lee County, Collier County, Charlotte County, and Hendry County.",
-              'Western Fence Supply es la mejor fuente del suroeste de Florida para materiales de cerca de vinilo, aluminio, malla ciclónica y metal de alta calidad. Vendemos a empresas de cercas y propietarios en los condados de Lee, Collier, Charlotte y Hendry.'
+              "Western Fence Supply is Southwest Florida's best source for high-quality vinyl fence, aluminum fence, chain-link fence, and metal fence materials. We proudly serve fence contractors and homeowners throughout Florida, providing premium materials, competitive pricing, and reliable service for a wide range of projects.",
+              'Western Fence Supply es la mejor fuente del suroeste de Florida para materiales de cerca de vinilo, aluminio, malla ciclónica y metal de alta calidad. Atendemos con orgullo a contratistas de cercas y propietarios en toda Florida, ofreciendo materiales premium, precios competitivos y un servicio confiable para todo tipo de proyectos.'
             )}
           </p>
           <p style={{
@@ -591,14 +591,13 @@ const AboutIntro = () => {
           {/* Stat strip */}
           <div style={{
             marginTop: 36,
-            display: 'grid', gridTemplateColumns: 'repeat(3, auto)',
+            display: 'grid', gridTemplateColumns: 'repeat(2, auto)',
             gap: 32,
             paddingTop: 28,
             borderTop: '1px solid rgba(0,16,17,0.12)',
           }}>
             {[
               ['20+', { EN: 'Years fabricating', ES: 'Años fabricando' }],
-              ['4',   { EN: 'Counties served',    ES: 'Condados atendidos' }],
               ['2',   { EN: 'Yards · FM + PC',    ES: 'Sucursales · FM + PC' }],
             ].map(([n, l], i) => (
               <div key={i}>

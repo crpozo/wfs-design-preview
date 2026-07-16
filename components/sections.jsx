@@ -1,7 +1,7 @@
 /* Featured products grid + Project gallery + Calculator + Service areas + Footer */
 
 const FEATURED = [
-  { sku: 'CL-9G-72', name: { EN: '9-Gauge Galvanized Mesh', ES: 'Malla galvanizada 9-Gauge' }, cat: { EN: 'Chain Link', ES: 'Malla ciclónica' }, height: '6 ft', imgUrl: 'assets/projects/cl-swing-gate-galv-4.jpg' },
+  { sku: 'CL-115G-72', name: { EN: '11-1/2 Gauge Galvanized Mesh', ES: 'Malla galvanizada 11-1/2 Ga.' }, cat: { EN: 'Chain Link', ES: 'Malla ciclónica' }, height: '6 ft', imgUrl: 'assets/projects/cl-swing-gate-galv-4.jpg' },
   { sku: 'AL-WLD-S', name: { EN: 'Aluminum Fence Section', ES: 'Sección de cerca de aluminio' }, cat: { EN: 'Aluminum', ES: 'Aluminio' }, height: '6 ft', imgUrl: 'assets/projects/alum-2-rail-smooth-bottom-white.jpg' },
   { sku: 'PV-PRV-W', name: { EN: 'Catalyst Privacy Vinyl, White', ES: 'Vinilo de privacidad Catalyst, blanco' }, cat: { EN: 'Vinyl', ES: 'Vinilo' }, height: '6 ft', imgUrl: 'assets/projects/pvc-privacy-gate-white.jpg' },
   { sku: 'MT-PRV-72', name: { EN: 'Metal Board Privacy', ES: 'Privacidad de tablero de metal' }, cat: { EN: 'Metal', ES: 'Metal' }, height: '6 ft', imgUrl: 'assets/projects/met-fence-horizontal-black.jpg' },
@@ -63,7 +63,7 @@ const InstallerMarquee = () => {
 const MARQUEE_PRODUCTS = [
   { src: 'assets/products/chain-link-post.jpg',       name: { EN: 'Chain Link Post', ES: 'Poste de malla' },            spec: { EN: 'Galvanized steel', ES: 'Acero galvanizado' } },
   { src: 'assets/products/gothic-post-cap.jpg',       name: { EN: 'Gothic Post Cap', ES: 'Tapa de poste gótica' },      spec: { EN: 'White · PVC', ES: 'Blanca · PVC' } },
-  { src: 'assets/products/chain-link-fabric.jpg',     name: { EN: 'Chain Link Fabric', ES: 'Malla ciclónica' },         spec: { EN: '9 Ga. · Galvanized', ES: '9 Ga. · Galvanizada' } },
+  { src: 'assets/products/chain-link-fabric.jpg',     name: { EN: 'Chain Link Fabric', ES: 'Malla ciclónica' },         spec: { EN: '11-1/2 Ga. · Galvanized', ES: '11-1/2 Ga. · Galvanizada' } },
   { src: 'assets/products/self-closing-hinge.jpg',    name: { EN: 'Self-Closing Hinge', ES: 'Bisagra con resorte' },    spec: { EN: 'Black · Spring-loaded', ES: 'Negra · Autocierre' } },
   { src: 'assets/products/pvc-double-gate.jpg',       name: { EN: 'PVC Double Gate', ES: 'Portón doble de PVC' },       spec: { EN: 'White · Privacy', ES: 'Blanco · Privacidad' } },
   { src: 'assets/products/barbed-wire.jpg',           name: { EN: 'Barbed Wire', ES: 'Alambre de púas' },               spec: { EN: 'Galvanized', ES: 'Galvanizado' } },
@@ -997,7 +997,7 @@ const ServiceAreas = () => {
             {[
               { city: t('Fort Myers · HQ', 'Fort Myers · Sede'), addr: '2621 Fowler St, FL 33901', phone: '(239) 689-5496' },
               { city: 'Port Charlotte', addr: '1145 Enterprise Dr, FL 33953', phone: '(941) 391-6613' },
-              { city: t('Counties served', 'Condados atendidos'), addr: t('Lee · Collier · Charlotte · Hendry & beyond', 'Lee · Collier · Charlotte · Hendry y más'), phone: t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm') },
+              { city: t('Service area', 'Área de servicio'), addr: t('Serving customers throughout Florida', 'Atendemos clientes en toda Florida'), phone: t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm') },
             ].map((y, i) => (
               <div key={i} className="wfs-yard-card" style={{
                 border: '1px solid rgba(0,16,17,0.18)',

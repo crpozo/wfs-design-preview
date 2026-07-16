@@ -221,7 +221,7 @@ const AboutStats = () => {
     ['20+',  { EN: 'Years experience', ES: 'Años de experiencia' },  { EN: 'Fencing install + fabrication', ES: 'Instalación y fabricación de cercas' }],
     ['4',    { EN: 'Fence materials', ES: 'Materiales de cerca' },   { EN: 'Vinyl · Aluminum · Chain link · Metal', ES: 'Vinilo · Aluminio · Malla ciclónica · Metal' }],
     ['2',    { EN: 'Yards', ES: 'Sucursales' },             { EN: 'Fort Myers + Port Charlotte', ES: 'Fort Myers + Port Charlotte' }],
-    ['4',    { EN: 'Counties served', ES: 'Condados atendidos' },   { EN: 'Lee · Collier · Charlotte · Hendry', ES: 'Lee · Collier · Charlotte · Hendry' }],
+    ['FL',   { EN: 'Statewide service', ES: 'Servicio estatal' },   { EN: 'Serving customers throughout Florida', ES: 'Atendemos clientes en toda Florida' }],
     [{ EN: 'Lifetime', ES: 'De por vida' }, { EN: 'Warranty', ES: 'Garantía' },      { EN: 'On most materials we sell', ES: 'En la mayoría de los materiales que vendemos' }],
   ];
   return (

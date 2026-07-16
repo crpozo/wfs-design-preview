@@ -40,7 +40,7 @@ const SolutionsAudiences = () => {
         t('No order minimums, buy one panel or 400 ft', 'Sin pedidos mínimos, compre un panel o 400 ft'),
         t('Hand-drawn layout or survey OK, we figure the takeoff', 'Un plano dibujado a mano o un levantamiento sirven, nosotros calculamos el despiece'),
         t('Pickup at FM or PC; delivery available within Florida', 'Retiro en FM o PC; entrega disponible dentro de Florida'),
-        t('Trusted-installer list across 4 counties', 'Lista de instaladores de confianza en 4 condados'),
+        t('Trusted-installer list across Southwest Florida', 'Lista de instaladores de confianza en el suroeste de Florida'),
       ],
       cta: [t('Get a homeowner quote', 'Obtener una cotización para propietario'), 'estimate.html'],
       image: FENCE_IMG.aluminum,
