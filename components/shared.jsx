@@ -962,12 +962,12 @@ Object.assign(ES_TR, {
   'Trucks and equipment': 'Camiones y equipo',
 });
 
-/* Metal styles corrected to P1 / Original / Modern; catalog download */
+/* Metal styles, standard-first order: Modern / Original / P1; catalog download */
 Object.assign(ES_TR, {
-  'P1, Original, and Modern styles, with matching gates': 'Estilos P1, Original y Modern, con portones a juego',
+  'Modern, Original, and P1 styles, with matching gates': 'Estilos Modern, Original y P1, con portones a juego',
   "6' and 8'": "6' y 8'",
-  'P1, Original, and Modern': 'P1, Original y Modern',
-  'Available in P1, Original, and Modern styles. Custom fabrication is available for gates only.': 'Disponible en estilos P1, Original y Modern. La fabricación a medida está disponible solo para portones.',
+  'Modern, Original, and P1': 'Modern, Original y P1',
+  'Available in Modern, Original, and P1 styles. Custom fabrication is available for gates only.': 'Disponible en estilos Modern, Original y P1. La fabricación a medida está disponible solo para portones.',
   'Panel': 'Panel',
   'Contemporary': 'Contemporáneo',
   'DuraFence P1 privacy panel profile for residential and commercial runs.': 'Perfil de panel de privacidad DuraFence P1 para tramos residenciales y comerciales.',

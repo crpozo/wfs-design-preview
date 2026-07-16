@@ -319,7 +319,7 @@ const MaterialsCompDeepDive = () => {
       slug: 'metal', name: 'Metal / DuraFence', href: 'metal.html',
       tag: t('Aluminum board privacy', 'Privacidad de tablas de aluminio'),
       bestFor: t('Modern privacy, residential and commercial', 'Privacidad moderna, residencial y comercial'),
-      strength: t("Full privacy board look in P1, Original, and Modern styles, 6' and 8'", "Aspecto de tablas de privacidad total en estilos P1, Original y Modern, 6' y 8'"),
+      strength: t("Full privacy board look in Modern, Original, and P1 styles, 6' and 8'", "Aspecto de tablas de privacidad total en estilos Modern, Original y P1, 6' y 8'"),
       caveat: t('Lead time varies by color and quantity', 'El tiempo de entrega varía según color y cantidad'),
     },
     {

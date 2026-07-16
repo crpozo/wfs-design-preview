@@ -159,20 +159,20 @@ const MATERIAL_DATA = {
     quickFacts: [
       ['Best For', 'Privacy fences, modern yards, commercial screens, security projects'],
       ['Material', 'Metal privacy panels, rails, and posts'],
-      ['Options', 'P1, Original, and Modern styles, with matching gates'],
+      ['Options', 'Modern, Original, and P1 styles, with matching gates'],
       ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
     ],
-    profilesSub: 'Available in P1, Original, and Modern styles. Custom fabrication is available for gates only.',
+    profilesSub: 'Available in Modern, Original, and P1 styles. Custom fabrication is available for gates only.',
     profiles: [
-      { name: 'P1', tag: 'Panel', notes: 'DuraFence P1 privacy panel profile for residential and commercial runs.' },
-      { name: 'Original', tag: 'Classic', notes: 'The original DuraFence full-privacy board profile.' },
       { name: 'Modern', tag: 'Contemporary', notes: 'Clean-lined DuraFence profile for contemporary projects.' },
+      { name: 'Original', tag: 'Classic', notes: 'The original DuraFence full-privacy board profile.' },
+      { name: 'P1', tag: 'Panel', notes: 'DuraFence P1 privacy panel profile for residential and commercial runs.' },
     ],
     specs: [
       ['Heights', "6' and 8'"],
       ['Colors', 'Black, bronze, white, woodgrain, and selected color options'],
       ['Material', 'Metal panels, posts, rails, gates, and hardware'],
-      ['Styles', 'P1, Original, and Modern'],
+      ['Styles', 'Modern, Original, and P1'],
       ['Post Options', 'Line posts, end posts, blank posts, and gate posts available'],
       ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
     ],
@@ -356,12 +356,30 @@ const ProfileDiagram = ({ slug, name = '', index = 0 }) => {
     else if (/ranch/.test(nm)) { rails([{ y: 42 }, { y: 68 }, { y: 94 }]); els.push(<rect key="p1" x={L} y={24} width="6" height="92" fill={navy}/>); els.push(<rect key="p2" x={R - 6} y={24} width="6" height="92" fill={navy}/>); }
     else { boards(2); } // Privacy, full board
   } else if (slug === 'metal') {
-    if (/modern/.test(nm)) { boards(7); }
+    /* DuraFence is full privacy: draw a continuous wall of interlocked
+       boards (no daylight between them), not spaced bars. */
+    if (/modern/.test(nm)) {
+      // Modern: flat top, wide flat panels, hairline seams
+      els.push(<rect key="mw" x={L} y={30} width={R - L} height={82} fill={navy}/>);
+      for (let x = L + 23; x < R - 4; x += 23) els.push(<line key={`ms${x}`} x1={x} y1={33} x2={x} y2={109} stroke={light} strokeWidth="1.5"/>);
+    }
     else if (/p1/.test(nm)) {
-      for (let x = L + 6; x < R - 4; x += 22) els.push(<rect key={`vp${x}`} x={x} y={26} width="14" height="88" fill={navy} rx="2"/>);
+      // P1: panel profile, wide pans with deep double-groove channels
+      els.push(<rect key="pw" x={L} y={30} width={R - L} height={82} fill={navy}/>);
+      for (let x = L + 30; x < R - 8; x += 31) {
+        els.push(<line key={`pg1${x}`} x1={x} y1={30} x2={x} y2={112} stroke={light} strokeWidth="2"/>);
+        els.push(<line key={`pg2${x}`} x1={x + 5} y1={30} x2={x + 5} y2={112} stroke={light} strokeWidth="2"/>);
+      }
     }
     else if (/gate/.test(nm)) { boards(3, navy, 34, 110); els.push(<rect key="gf" x={L} y={30} width={R - L} height={84} fill="none" stroke={accent} strokeWidth="3"/>); }
-    else { boards(2, navy, 32, 112); } // Original board
+    else {
+      // Original: classic interlocked boards with the signature dome tops
+      const n = 10, g = 2, bw = (R - L - (n - 1) * g) / n, r = bw / 2;
+      for (let i = 0; i < n; i++) {
+        const x = L + i * (bw + g);
+        els.push(<path key={`ob${i}`} d={`M${x} 112 L${x} ${34 + r} A${r} ${r} 0 0 1 ${x + bw} ${34 + r} L${x + bw} 112 Z`} fill={navy}/>);
+      }
+    }
   } else if (slug === 'chainlink') {
     const c = /green/.test(nm) ? '#6f9e6b' : /galvani/.test(nm) ? '#9aa3c0' : navy;
     const w = /heavy|industrial/.test(nm) ? 2.4 : 1.6, s = 18;
