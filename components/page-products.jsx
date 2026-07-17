@@ -75,10 +75,10 @@ const ProductHardware = () => {
       />
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14 }}>
         {[
-          [t('Posts & rails', 'Postes y rieles'), t('Galv steel + aluminum line posts, terminal posts and rails sized for every system.', 'Postes de línea de acero galvanizado y aluminio, postes terminales y rieles dimensionados para cada sistema.')],
+          [t('Posts & rails', 'Postes y rieles'), t('Posts for every material, in a range of colors — end, corner and line posts (EP/CP/LP) for aluminum and PVC, chain-link posts by diameter and gauge, and a single profile for metal.', 'Postes para cada material, en varios colores: postes de extremo, esquina y línea (EP/CP/LP) para aluminio y PVC, postes de chain link según diámetro y calibre, y un solo perfil para metal.')],
           [t('Hinges & latches', 'Bisagras y pestillos'), t('Stainless hinges, drop rods, magnetic latches, padlockable kits.', 'Bisagras de acero inoxidable, varillas de anclaje, pestillos magnéticos, kits con candado.')],
-          [t('Mesh + caps', 'Malla y tapas'), t('6-12 gauge mesh by the roll, post caps, tension bands, brace bands.', 'Malla de calibre 6-12 por rollo, tapas de poste, bandas de tensión, bandas de refuerzo.')],
-          [t('Operators', 'Operadores'), t('LiftMaster gate openers, photo-eye safety, keypads and loop detectors.', 'Operadores de portón LiftMaster, fotoceldas de seguridad, teclados y detectores de lazo.')],
+          [t('Caps & fittings', 'Tapas y accesorios'), t('Post caps, tension bands and brace bands, plus the chain-link fittings that finish a run.', 'Tapas de poste, bandas de tensión y de refuerzo, más los accesorios de chain link que rematan el tramo.')],
+          [t('Gate automation', 'Automatización'), t("We don't build automated gates. The most we do is weld on a mounting plate so you can add your own operator — sourcing and setting up the automation is on you.", 'No fabricamos portones automáticos. Lo máximo que hacemos es soldar un plato de montaje para que instales tu propio operador; conseguir y configurar la automatización corre por tu cuenta.')],
         ].map(([title, body]) => (
           <article key={title} style={{
             background: 'var(--white)', padding: '24px 22px',

@@ -1139,8 +1139,8 @@ const ContractorWholesaleKit = () => {
   const items = [
     {
       title: { EN: 'Tiered Price List', ES: 'Lista de precios por niveles' },
-      body:  { EN: 'Bronze · Pro · Elite tier pricing for every active SKU, updated quarterly with FY rolls.',
-                ES: 'Precios Bronze · Pro · Elite para cada SKU activo, actualizados cada trimestre con cambio de año fiscal.' },
+      body:  { EN: 'Bronze, Pro and Elite pricing tiers on every product — your rate improves as your volume grows, and we refresh the list every quarter.',
+                ES: 'Niveles de precio Bronze, Pro y Elite en cada producto: tu tarifa mejora a medida que crece tu volumen, y actualizamos la lista cada trimestre.' },
       svg: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M7 3 H15 L19 7 V21 H7 Z"/><path d="M15 3 V7 H19"/><line x1="9" y1="12" x2="17" y2="12"/><line x1="9" y1="15" x2="17" y2="15"/><line x1="9" y1="18" x2="14" y2="18"/></svg>),
     },
     {
@@ -1154,12 +1154,6 @@ const ContractorWholesaleKit = () => {
       body:  { EN: 'White-label estimate templates and yard-sign artwork with your logo set against WFS material specs.',
                 ES: 'Plantillas de cotización white-label y arte para letreros de obra con tu logo sobre las specs de material WFS.' },
       svg: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="6" width="14" height="12" rx="1"/><path d="M17 10 L21 7 V17 L17 14 Z"/></svg>),
-    },
-    {
-      title: { EN: 'Job-Site Drops', ES: 'Entregas en obra' },
-      body:  { EN: 'Branded or unbranded delivery. Real-time slot booking through your dedicated rep.',
-                ES: 'Entrega con o sin marca. Reserva de turno en tiempo real a través de tu representante dedicado.' },
-      svg: (<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="9" width="13" height="9" rx="1"/><path d="M15 12 H19 L22 15 V18 H15 Z"/><circle cx="7" cy="20" r="1.6"/><circle cx="18" cy="20" r="1.6"/></svg>),
     },
     {
       title: { EN: 'Lead Pipeline', ES: 'Pipeline de leads' },
@@ -1192,8 +1186,8 @@ const ContractorWholesaleKit = () => {
             fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
           }}>
             {t(
-              'Six things every active partner walks away with, not someday, on day one.',
-              'Seis cosas que todo socio activo se lleva, no algún día, el primer día.'
+              'Five things every active partner walks away with, not someday, on day one.',
+              'Cinco cosas que todo socio activo se lleva, no algún día, el primer día.'
             )}
           </p>
         </div>
@@ -1205,7 +1199,7 @@ const ContractorWholesaleKit = () => {
           {items.map((it, i) => (
             <div key={i} style={{
               padding: '32px 30px 34px',
-              borderRight: (i % 3 !== 2) ? '1.5px solid var(--ink)' : 'none',
+              borderRight: (i % 3 !== 2 && i !== items.length - 1) ? '1.5px solid var(--ink)' : 'none',
               borderBottom: (i < 3) ? '1.5px solid var(--ink)' : 'none',
               background: 'var(--white)',
               transition: 'background 0.2s ease',
@@ -1364,13 +1358,13 @@ const ContractorClosingCTA = () => {
           )}
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-          <a href="estimate.html" style={{
+          <a href="https://form.jotform.com/westernfencesupply/account-setup-form" target="_blank" rel="noopener" style={{
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
             padding: '18px 32px',
             background: 'var(--tangerine)', color: 'var(--white)',
             fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
             letterSpacing: '0.18em', textTransform: 'uppercase',
-          }}>{t('Start Application', 'Iniciar solicitud')}</a>
+          }}>{t('Open an Account', 'Abrir una cuenta')}</a>
           <a href="tel:2396895496" style={{
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
             padding: '18px 32px',

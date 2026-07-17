@@ -218,7 +218,6 @@ const MATERIAL_DATA = {
       { name: 'Bronze 6 Ft', tag: 'Standard', img: 'assets/profiles/ecfence-bronze.jpg', notes: 'Bronze steel privacy panels for modern projects.' },
       { name: 'White 6 Ft', tag: 'Standard', img: 'assets/profiles/ecfence-white.jpg', notes: 'White steel privacy panels for clean residential and commercial designs.' },
       { name: 'Matching Gate', tag: 'Single / double', img: 'assets/profiles/ecfence-gate.jpg', notes: 'Single and double gates available with hardware options.' },
-      { name: 'Posts & Hardware', tag: 'Full package', notes: 'Posts, covers, hardware, and accessories for full material packages.' },
     ],
     specs: [
       ['Height', '6 ft'],

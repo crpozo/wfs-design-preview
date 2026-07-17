@@ -136,7 +136,7 @@ const AboutValues = () => {
   const t = useT();
   const rules = [
     [{ EN: 'No low-grade material', ES: 'Nada de material de baja calidad' }, { EN: "If we wouldn't put it on our own job, we don't stock it. We turn down lower price points every quarter to protect the catalog.", ES: 'Si no lo pondríamos en nuestra propia obra, no lo tenemos en existencia. Cada trimestre rechazamos precios más bajos para proteger el catálogo.' }],
-    [{ EN: 'Real lead-time honesty', ES: 'Honestidad real en los tiempos de entrega' }, { EN: 'Stocked items ship in 1-2 days. Custom takes 6-8 weeks. We tell you the truth on the first call, no soft dates.', ES: 'Los artículos en existencia se envían en 1 a 2 días. Los trabajos a medida tardan de 6 a 8 semanas. Te decimos la verdad en la primera llamada, sin fechas imprecisas.' }],
+    [{ EN: 'Real lead-time honesty', ES: 'Honestidad real en los tiempos de entrega' }, { EN: 'Stocked items ship in 1-3 days. Custom takes 6-8 weeks. We tell you the truth on the first call, no soft dates.', ES: 'Los artículos en existencia se envían en 1 a 3 días. Los trabajos a medida tardan de 6 a 8 semanas. Te decimos la verdad en la primera llamada, sin fechas imprecisas.' }],
     [{ EN: 'Pricing without games', ES: 'Precios sin juegos' }, { EN: 'Same supplier-direct floor for contractors, homeowners and DIY. No minimums, no contractor-only tiers.', ES: 'El mismo precio directo de proveedor para contratistas, propietarios y bricolaje. Sin mínimos, sin niveles exclusivos para contratistas.' }],
   ];
   return (
