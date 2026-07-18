@@ -595,6 +595,7 @@ section { position: relative; }
 @media (max-width: 640px) {
   .wfs-msys { display: block; }
   .wfs-slat-section { display: none !important; }
+  .wfs-systemtabs { display: none !important; }
 }
 
 

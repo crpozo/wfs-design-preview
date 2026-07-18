@@ -554,7 +554,7 @@ const MaterialOtherMaterials = ({ currentSlug }) => {
   const cur = currentSlug === 'chain-link' ? 'chainlink' : currentSlug;
   const items = FENCE_CATEGORIES.filter(c => c.id !== cur);
   return (
-    <SlatArena
+    <SystemTabs
       id="other-systems" chapter="04"
       label={{ EN: 'More Systems', ES: 'Más sistemas' }}
       items={items}

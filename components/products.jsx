@@ -874,6 +874,146 @@ const SystemCarousel = ({ id, chapter, label, items, topLink, ctaLabel }) => {
   );
 };
 
+/* Tabbed variant of the systems showcase: a horizontal tab bar (01–0N) over a
+   single hero panel for the active system. Used for the "More Systems" /
+   "More Gate Options" sections on fence + gate pages. Falls back to the shared
+   SystemCarousel on phones (same as SlatArena). */
+const SystemTabs = ({ id, chapter, label, items, topLink, ctaLabel }) => {
+  const t = useT();
+  const [active, setActive] = React.useState(0);
+  const cur = items[Math.min(active, items.length - 1)];
+  return (
+    <>
+    <section id={id} className="wfs-systemtabs" style={{
+      background: 'var(--indigo-blue)',
+      display: 'flex', flexDirection: 'column', overflow: 'hidden',
+    }}>
+      {/* Header — matches the slat arena header */}
+      <div className="container" style={{
+        width: '100%',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        gap: 24, flexWrap: 'wrap',
+        padding: 'clamp(18px, 3vh, 30px) var(--pad)',
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
+          <span className="mono" style={{
+            background: 'var(--laser-blue)', color: 'var(--white)',
+            padding: '3px 7px', fontSize: 13, fontWeight: 700, lineHeight: 1,
+          }}>{chapter}</span>
+          <h2 className="display" style={{
+            margin: 0, fontSize: 'clamp(28px, 2.6vw, 40px)', fontWeight: 800,
+            letterSpacing: '-0.01em', textTransform: 'capitalize', color: 'var(--white)',
+            lineHeight: 1,
+          }}>{t(label)}</h2>
+          <span aria-hidden style={{ width: 90, height: 2, background: 'var(--laser-blue)' }}/>
+        </div>
+        <a href={topLink.href} className="mono" style={{
+          fontSize: 'clamp(12px, 1vw, 15px)', fontWeight: 700,
+          letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--white)',
+        }}>{t(topLink.label)} →</a>
+      </div>
+
+      {/* Tab bar */}
+      <div className="wfs-systemtabs__bar" role="tablist" style={{
+        display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`,
+        borderTop: '1px solid rgba(255,255,255,0.14)',
+        borderBottom: '1px solid rgba(255,255,255,0.14)',
+      }}>
+        {items.map((it, i) => {
+          const on = i === active;
+          return (
+            <button key={it.id} role="tab" aria-selected={on}
+              onMouseEnter={() => setActive(i)} onFocus={() => setActive(i)} onClick={() => setActive(i)}
+              style={{
+                display: 'flex', alignItems: 'center', gap: 12,
+                padding: 'clamp(13px, 2vh, 19px) clamp(14px, 1.6vw, 26px)',
+                background: on ? 'rgba(255,255,255,0.05)' : 'transparent',
+                border: 'none',
+                borderRight: i < items.length - 1 ? '1px solid rgba(255,255,255,0.14)' : 'none',
+                borderBottom: on ? '2px solid var(--tangerine)' : '2px solid transparent',
+                cursor: 'pointer', textAlign: 'left', minWidth: 0,
+                transition: 'background 0.2s ease',
+              }}>
+              <span className="mono" style={{
+                fontSize: 13, fontWeight: 700, flexShrink: 0,
+                color: on ? 'var(--tangerine)' : 'rgba(219,233,238,0.5)',
+              }}>0{i + 1}</span>
+              <span className="mono" style={{
+                fontSize: 'clamp(10.5px, 0.9vw, 13px)', fontWeight: 700,
+                letterSpacing: '0.12em', textTransform: 'uppercase',
+                color: on ? 'var(--white)' : 'rgba(219,233,238,0.55)',
+                whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+              }}>{t(it.name)}</span>
+              {it.isNew && (
+                <span className="mono" style={{
+                  marginLeft: 'auto', flexShrink: 0,
+                  background: 'var(--tangerine)', color: 'var(--white)',
+                  padding: '3px 6px', fontSize: 10, fontWeight: 700, letterSpacing: '0.14em',
+                }}>{t('New', 'Nuevo')}</span>
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Active panel */}
+      <a key={cur.id} href={cur.href} className="wfs-systemtabs__panel" style={{
+        position: 'relative', display: 'flex', alignItems: 'flex-end',
+        minHeight: 'clamp(420px, 56vh, 600px)', overflow: 'hidden', textDecoration: 'none',
+      }}>
+        <img src={FENCE_IMG[cur.img]} alt={t(cur.name)} style={{
+          position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
+          animation: 'fadeUp 0.45s ease',
+        }}/>
+        {/* Left-weighted navy wash for text legibility + bottom fade */}
+        <div aria-hidden style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(90deg, rgba(38,49,103,0.94) 0%, rgba(38,49,103,0.80) 32%, rgba(38,49,103,0.32) 66%, rgba(38,49,103,0.10) 100%)',
+        }}/>
+        <div aria-hidden style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(180deg, rgba(38,49,103,0) 52%, rgba(38,49,103,0.5) 100%)',
+        }}/>
+        {/* Content */}
+        <div style={{
+          position: 'relative',
+          padding: 'clamp(28px, 5vh, 52px) var(--pad)',
+          maxWidth: 660,
+        }}>
+          <div className="mono" style={{ fontSize: 14, fontWeight: 700, color: 'var(--tangerine)', marginBottom: 14 }}>0{active + 1}</div>
+          <h3 className="display" style={{
+            margin: '0 0 16px', fontSize: 'clamp(34px, 4.4vw, 68px)',
+            fontWeight: 800, lineHeight: 0.96, letterSpacing: '-0.015em',
+            textTransform: 'capitalize', color: 'var(--white)',
+            textShadow: '0 2px 24px rgba(0,16,17,0.5)',
+          }}>{t(cur.name)}</h3>
+          <p style={{
+            margin: '0 0 22px', maxWidth: 540,
+            fontSize: 'clamp(14px, 1.1vw, 17px)', lineHeight: 1.5,
+            color: 'rgba(255,255,255,0.9)', textShadow: '0 1px 12px rgba(0,16,17,0.5)',
+          }}>{t(cur.desc)}</p>
+          <span className="mono" style={{
+            display: 'inline-flex', alignItems: 'center', gap: 12,
+            fontSize: 'clamp(12px, 1vw, 15px)', fontWeight: 700,
+            letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--tangerine)',
+          }}>{t(ctaLabel)} {t(cur.name)} <span style={{ fontSize: '1.25em' }}>→</span></span>
+        </div>
+        {/* Vertical label at the right edge */}
+        <span className="mono wfs-systemtabs__vlabel" style={{
+          position: 'absolute', right: 'clamp(16px, 2vw, 30px)', bottom: 'clamp(28px, 5vh, 52px)',
+          writingMode: 'vertical-rl', transform: 'rotate(180deg)',
+          fontSize: 'clamp(11px, 0.9vw, 13px)', fontWeight: 700,
+          letterSpacing: '0.22em', textTransform: 'uppercase',
+          color: 'rgba(255,255,255,0.85)', whiteSpace: 'nowrap',
+        }}>{t(cur.name)}</span>
+      </a>
+    </section>
+    {/* Mobile replacement (same carousel the slats use) */}
+    <SystemCarousel id={id} chapter={chapter} label={label} items={items} topLink={topLink} ctaLabel={ctaLabel}/>
+    </>
+  );
+};
+
 const FenceCategories = () => (
   <SlatArena
     id="fences" chapter="01"

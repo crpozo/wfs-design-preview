@@ -553,7 +553,7 @@ const GateOtherGates = ({ currentSlug }) => {
     : currentSlug === 'double' ? 'double-swing' : currentSlug;
   const items = GATE_SYSTEMS.filter(g => g.id !== cur);
   return (
-    <SlatArena
+    <SystemTabs
       id="other-gates" chapter="05"
       label={{ EN: 'More Gate Options', ES: 'Más opciones de portones' }}
       items={items}
