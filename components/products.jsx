@@ -965,14 +965,14 @@ const SystemTabs = ({ id, chapter, label, items, topLink, ctaLabel }) => {
           position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover',
           animation: 'fadeUp 0.45s ease',
         }}/>
-        {/* Left-weighted navy wash for text legibility + bottom fade */}
+        {/* Light left wash for text legibility, photo stays visible + subtle bottom fade */}
         <div aria-hidden style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(90deg, rgba(38,49,103,0.94) 0%, rgba(38,49,103,0.80) 32%, rgba(38,49,103,0.32) 66%, rgba(38,49,103,0.10) 100%)',
+          background: 'linear-gradient(90deg, rgba(38,49,103,0.68) 0%, rgba(38,49,103,0.36) 26%, rgba(38,49,103,0.08) 54%, rgba(38,49,103,0) 78%)',
         }}/>
         <div aria-hidden style={{
           position: 'absolute', inset: 0,
-          background: 'linear-gradient(180deg, rgba(38,49,103,0) 52%, rgba(38,49,103,0.5) 100%)',
+          background: 'linear-gradient(180deg, rgba(38,49,103,0) 62%, rgba(38,49,103,0.40) 100%)',
         }}/>
         {/* Content */}
         <div style={{
@@ -985,12 +985,12 @@ const SystemTabs = ({ id, chapter, label, items, topLink, ctaLabel }) => {
             margin: '0 0 16px', fontSize: 'clamp(34px, 4.4vw, 68px)',
             fontWeight: 800, lineHeight: 0.96, letterSpacing: '-0.015em',
             textTransform: 'capitalize', color: 'var(--white)',
-            textShadow: '0 2px 24px rgba(0,16,17,0.5)',
+            textShadow: '0 2px 16px rgba(0,16,17,0.7), 0 1px 3px rgba(0,16,17,0.6)',
           }}>{t(cur.name)}</h3>
           <p style={{
             margin: '0 0 22px', maxWidth: 540,
             fontSize: 'clamp(14px, 1.1vw, 17px)', lineHeight: 1.5,
-            color: 'rgba(255,255,255,0.9)', textShadow: '0 1px 12px rgba(0,16,17,0.5)',
+            color: 'rgba(255,255,255,0.92)', textShadow: '0 1px 10px rgba(0,16,17,0.7), 0 1px 2px rgba(0,16,17,0.55)',
           }}>{t(cur.desc)}</p>
           <span className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12,
@@ -1004,7 +1004,8 @@ const SystemTabs = ({ id, chapter, label, items, topLink, ctaLabel }) => {
           writingMode: 'vertical-rl', transform: 'rotate(180deg)',
           fontSize: 'clamp(11px, 0.9vw, 13px)', fontWeight: 700,
           letterSpacing: '0.22em', textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.85)', whiteSpace: 'nowrap',
+          color: 'rgba(255,255,255,0.9)', whiteSpace: 'nowrap',
+          textShadow: '0 1px 8px rgba(0,16,17,0.6)',
         }}>{t(cur.name)}</span>
       </a>
     </section>
