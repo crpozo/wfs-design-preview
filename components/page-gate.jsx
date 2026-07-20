@@ -50,9 +50,9 @@ const GATE_DATA = {
       ['Lead Time', GATE_LEADTIME],
     ],
     gateTypes: [
-      { name: 'Standard Walk Gate', tag: 'Pedestrian', notes: 'Common single gate sizes for pedestrian access.', img: 'assets/projects/cl-swing-gate-galv-4.jpg' },
-      { name: 'Custom Opening Gate', tag: 'Made to size', notes: 'Built to match your exact opening size.', img: 'assets/projects/pvc-gate-sand.jpg' },
-      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in aluminum, vinyl, chain link, metal, and EC Fence styles.', img: 'assets/projects/cl-gate-black.jpg' },
+      { name: 'Standard Walk Gate', tag: 'Pedestrian', notes: 'Common single gate sizes for pedestrian access.', img: 'assets/projects/gate-single-walk.png' },
+      { name: 'Custom Opening Gate', tag: 'Made to size', notes: 'Built to match your exact opening size.', img: 'assets/projects/gate-single-custom-pvc.png' },
+      { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in aluminum, vinyl, chain link, metal, and EC Fence styles.', img: 'assets/projects/gate-single-matching-ecfence.png' },
     ],
     specs: GATE_SPECS,
     applications: [
