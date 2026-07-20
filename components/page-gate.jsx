@@ -16,10 +16,10 @@ const GATE_SPECS = [
 ];
 
 const GATE_HARDWARE_CARDS = [
-  { name: 'Hinges', tag: 'All gate types', notes: 'Gate hinges available based on gate type, material, and post setup.', img: 'assets/projects/pvc-privacy-gate-white.jpg' },
-  { name: 'Latches', tag: 'Access', notes: 'Latch options for walk gates, pool gates, and general access.', img: 'assets/projects/cl-gate-black.jpg' },
-  { name: 'Drop Rods / Cane Bolts', tag: 'Double gates', notes: 'For double gates and added stability when closed.', img: 'assets/projects/pvc-gate-sand.jpg' },
-  { name: 'Posts & Caps', tag: 'Framework', notes: 'Gate posts, blank posts, terminal posts, and post caps available.', img: 'assets/projects/pvc-privacy-two-tone-white-and-gray.png' },
+  { name: 'Hinges', tag: 'All gate types', notes: 'Gate hinges available based on gate type, material, and post setup.', img: 'assets/products/self-closing-hinge.jpg' },
+  { name: 'Latches', tag: 'Access', notes: 'Latch options for walk gates, pool gates, and general access.', img: 'assets/products/gravity-latch.jpg' },
+  { name: 'Drop Rods / Cane Bolts', tag: 'Double gates', notes: 'For double gates and added stability when closed.', img: 'assets/products/drop-rod.jpg' },
+  { name: 'Posts & Caps', tag: 'Framework', notes: 'Gate posts, blank posts, terminal posts, and post caps available.', img: 'assets/products/gothic-post-cap.jpg' },
 ];
 
 const GATE_CHECKLIST = [
