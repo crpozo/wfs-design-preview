@@ -925,8 +925,8 @@ const ContractorStatsStrip = () => {
   const t = useT();
   return (
   <section style={{
-    background: 'var(--white)',
-    borderBottom: '1px solid rgba(38, 49, 102,0.1)',
+    background: 'var(--alice-blue)',
+    borderBottom: '1px solid rgba(38, 49, 102,0.12)',
     padding: '36px 0',
   }}>
     <div className="container">
@@ -939,7 +939,7 @@ const ContractorStatsStrip = () => {
         ].map(([n, l], i) => (
           <div key={i} className="wfs-stat-cell" style={{
             paddingLeft: i === 0 ? 0 : 24,
-            borderLeft: i === 0 ? 'none' : '1px solid rgba(38, 49, 102,0.1)',
+            borderLeft: i === 0 ? 'none' : '1px solid rgba(38, 49, 102,0.18)',
           }}>
             <div className="display" style={{
               fontSize: 'clamp(28px, 3.2vw, 42px)', lineHeight: 1,
@@ -990,13 +990,13 @@ const ContractorBenefits = () => {
      { EN: 'One named account rep. Phone, email, or in-yard, from RFQ through PO close-out.', ES: 'Un asesor de cuenta con nombre y apellido. Por teléfono, correo o en la sucursal, del RFQ al cierre de la orden.' }],
   ];
   return (
-  <section style={{ background: 'var(--white)', padding: '120px 0' }}>
+  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
     <div className="container">
       {/* Eyebrow */}
       <div className="mono" style={{
         display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 22,
         fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
-        textTransform: 'uppercase', color: 'var(--laser-blue)',
+        textTransform: 'uppercase', color: 'var(--blue-ice)',
       }}>
         <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
         {t('Wholesale Partner Program', 'Programa de socios mayoristas')}
@@ -1009,13 +1009,14 @@ const ContractorBenefits = () => {
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02,
           letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
+          color: 'var(--white)',
         }}>
           {t('Why partner', 'Por qué asociarte')}<br/>
           <span style={{ color: 'var(--tangerine)' }}>{t('with WFS.', 'con WFS.')}</span>
         </h2>
         <p style={{
           margin: 0, maxWidth: 320, justifySelf: 'end', textAlign: 'right',
-          fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)',
+          fontSize: 14.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)',
         }}>
           {t('Six reasons contractors keep their POs local.', 'Seis razones por las que los contratistas mantienen sus órdenes locales.')}
         </p>
@@ -1026,17 +1027,17 @@ const ContractorBenefits = () => {
         {perks.map(([title, body], i) => (
           <div key={i} className="wfs-perk-cell" style={{
             padding: 'clamp(28px, 4vh, 44px) clamp(22px, 2.5vw, 40px)',
-            borderLeft: i % 3 === 0 ? 'none' : '1px solid rgba(0,16,17,0.1)',
-            borderTop: i < 3 ? 'none' : '1px solid rgba(0,16,17,0.08)',
+            borderLeft: i % 3 === 0 ? 'none' : '1px solid rgba(255,255,255,0.14)',
+            borderTop: i < 3 ? 'none' : '1px solid rgba(255,255,255,0.10)',
           }}>
-            <span aria-hidden style={{ display: 'block', marginBottom: 22, color: 'var(--ink)', height: 44 }}>
+            <span aria-hidden style={{ display: 'block', marginBottom: 22, color: 'var(--tangerine)', height: 44 }}>
               {PERK_ICONS[i]}
             </span>
             <h3 className="display" style={{
               margin: '0 0 12px', fontSize: 19, lineHeight: 1.1, fontWeight: 800,
-              textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--ink)',
+              textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--white)',
             }}>{t(title)}</h3>
-            <p style={{ margin: 0, maxWidth: 340, fontSize: 14, lineHeight: 1.65, color: 'var(--charcoal)' }}>{t(body)}</p>
+            <p style={{ margin: 0, maxWidth: 340, fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.75)' }}>{t(body)}</p>
           </div>
         ))}
       </div>
@@ -1110,7 +1111,7 @@ const ContractorHowItWorks = () => {
                 <span className="mono" style={{
                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                   width: 36, height: 36,
-                  background: 'var(--ink)',
+                  background: 'var(--tangerine)',
                   color: 'var(--white)',
                   fontSize: 12.5, fontWeight: 700, letterSpacing: '0.05em',
                 }}>{s.n}</span>
@@ -1169,7 +1170,7 @@ const ContractorWholesaleKit = () => {
     },
   ];
   return (
-    <section style={{ background: 'var(--white)', padding: '120px 0' }}>
+    <section style={{ background: 'var(--alice-blue)', padding: '120px 0' }}>
       <div className="container">
         <div style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr',
