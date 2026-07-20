@@ -52,10 +52,11 @@ img { display: block; max-width: 100%; }
    headings, chips, tabs or mono eyebrow labels. */
 p[style*="font-size: 11"],
 p[style*="font-size: 12"],
-p[style*="font-size: 13"] { font-size: 15px !important; }
-p[style*="font-size: 14"] { font-size: 15.5px !important; }
+p[style*="font-size: 13"],
+p[style*="font-size: 14"],
+p[style*="font-size: 15"] { font-size: 16px !important; }
 p[style*="font-size: clamp(13px"],
-p[style*="font-size: clamp(14px"] { font-size: clamp(15px, 1.15vw, 17px) !important; }
+p[style*="font-size: clamp(14px"] { font-size: clamp(16px, 1.2vw, 17px) !important; }
 
 /* ─── Frameless images ───
    Cards that lead with a photo drop their hairline border, and image
