@@ -69,7 +69,7 @@ const LocationsYards = () => {
           <span style={{ color: 'var(--tangerine)' }}>{t('yard.', 'sucursal.')}</span>
         </h2>
         <div className="mono" style={{
-          fontSize: 13, letterSpacing: '0.14em', textTransform: 'uppercase',
+          fontSize: 14.5, letterSpacing: '0.14em', textTransform: 'uppercase',
           color: 'var(--charcoal)', textAlign: 'right',
         }}>
           {t('Mon–Fri 7am–4pm · Sat 7am–12pm', 'Lun–Vie 7am–4pm · Sáb 7am–12pm')}
@@ -93,30 +93,30 @@ const LocationsYards = () => {
               <span className="mono" style={{
                 position: 'absolute', top: 14, left: 14,
                 background: 'var(--tangerine)', color: 'var(--ink)',
-                padding: '5px 10px', fontSize: 12, letterSpacing: '0.18em', fontWeight: 700,
+                padding: '5px 10px', fontSize: 13.5, letterSpacing: '0.18em', fontWeight: 700,
               }}>{t(y.chip)}</span>
             </div>
 
             <div style={{ padding: '26px 28px 28px', display: 'flex', flexDirection: 'column', gap: 18, flex: 1 }}>
               <div>
-                <h3 className="display" style={{ margin: '0 0 6px', fontSize: 26, lineHeight: 1 }}>{y.name}</h3>
-                <p style={{ margin: 0, fontSize: 14.5, color: 'var(--charcoal)' }}>{y.address}</p>
+                <h3 className="display" style={{ margin: '0 0 6px', fontSize: 27.5, lineHeight: 1 }}>{y.name}</h3>
+                <p style={{ margin: 0, fontSize: 16, color: 'var(--charcoal)' }}>{y.address}</p>
               </div>
 
               {/* Contact rows */}
               <div style={{ display: 'grid', gap: 8 }}>
                 <a href={y.tel} className="mono" style={{
-                  fontSize: 14, fontWeight: 700, letterSpacing: '0.06em', color: 'var(--ink)',
+                  fontSize: 15.5, fontWeight: 700, letterSpacing: '0.06em', color: 'var(--ink)',
                 }}>{y.phone}</a>
                 <a href={`mailto:${y.email}`} style={{
-                  fontSize: 13.5, color: 'var(--laser-blue)', wordBreak: 'break-all',
+                  fontSize: 15, color: 'var(--laser-blue)', wordBreak: 'break-all',
                 }}>{y.email}</a>
               </div>
 
               {/* What this yard does */}
               <ul style={{ margin: 0, padding: 0, listStyle: 'none', display: 'grid', gap: 8 }}>
                 {y.notes.map((n, i) => (
-                  <li key={i} style={{ display: 'flex', gap: 10, fontSize: 13.5, lineHeight: 1.5, color: 'var(--charcoal)' }}>
+                  <li key={i} style={{ display: 'flex', gap: 10, fontSize: 15, lineHeight: 1.5, color: 'var(--charcoal)' }}>
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, marginTop: 3 }}>
                       <path d="M3 8.5 L6.5 12 L13 4.5" stroke="var(--tangerine)" strokeWidth="2" strokeLinecap="square"/>
                     </svg>
@@ -130,7 +130,7 @@ const LocationsYards = () => {
                 target="_blank" rel="noopener" className="mono" style={{
                 marginTop: 'auto',
                 display: 'inline-flex', alignItems: 'center', gap: 10,
-                fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
+                fontSize: 14, fontWeight: 700, letterSpacing: '0.18em',
                 textTransform: 'uppercase', color: 'var(--tangerine)',
               }}>
                 {t('Get directions', 'Cómo llegar')}
@@ -174,9 +174,9 @@ const LocationsPickup = () => {
             border: '1px solid rgba(255,255,255,0.16)',
             background: 'rgba(255,255,255,0.03)',
           }}>
-            <div className="display" style={{ fontSize: 30, color: 'var(--tangerine)', lineHeight: 1, marginBottom: 16 }}>0{i + 1}</div>
-            <h3 className="display" style={{ margin: '0 0 10px', fontSize: 20, lineHeight: 1.1, color: 'var(--white)' }}>{t(title)}</h3>
-            <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--alice-blue)' }}>{t(body)}</p>
+            <div className="display" style={{ fontSize: 31.5, color: 'var(--tangerine)', lineHeight: 1, marginBottom: 16 }}>0{i + 1}</div>
+            <h3 className="display" style={{ margin: '0 0 10px', fontSize: 21.5, lineHeight: 1.1, color: 'var(--white)' }}>{t(title)}</h3>
+            <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: 'var(--alice-blue)' }}>{t(body)}</p>
           </div>
         ))}
       </div>

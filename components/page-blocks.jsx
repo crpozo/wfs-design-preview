@@ -2,7 +2,7 @@
 
 const Breadcrumb = ({ items, light = true }) => (
   <nav className="mono" style={{
-    fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
+    fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase',
     color: light ? 'rgba(255,255,255,0.6)' : 'var(--charcoal)',
     marginBottom: 24, display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center',
   }}>
@@ -68,7 +68,7 @@ const PageHero = ({ eyebrow, title, accent, accentBreak, subtitle, image, crumbs
       </h1>
       {subtitle && (
         <p style={{
-          fontSize: 16, lineHeight: 1.55, maxWidth: 600, margin: 0,
+          fontSize: 17.5, lineHeight: 1.55, maxWidth: 600, margin: 0,
           color: 'rgba(255,255,255,0.85)',
         }}>{subtitle}</p>
       )}
@@ -80,7 +80,7 @@ const PageHero = ({ eyebrow, title, accent, accentBreak, subtitle, image, crumbs
                 display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                 padding: '15px 28px', borderRadius: 999,
                 background: 'var(--tangerine)', color: 'var(--white)',
-                fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+                fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
                 letterSpacing: '0.06em', textTransform: 'uppercase',
                 boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)',
                 transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s',
@@ -95,7 +95,7 @@ const PageHero = ({ eyebrow, title, accent, accentBreak, subtitle, image, crumbs
                 padding: '15px 28px', borderRadius: 999,
                 background: 'rgba(255,255,255,0.08)', color: 'var(--white)',
                 border: '1.5px solid rgba(255,255,255,0.55)', backdropFilter: 'blur(6px)',
-                fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+                fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
                 letterSpacing: '0.06em', textTransform: 'uppercase',
                 transition: 'background 0.18s, border-color 0.18s',
               }}
@@ -131,13 +131,13 @@ const PageSectionHeader = ({ number, label, title, accent, sub, link }) => (
       {sub && (
         <p style={{
           margin: 0, maxWidth: 380,
-          fontSize: 14, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
+          fontSize: 15.5, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
         }}>{sub}</p>
       )}
       {link && (
         <a href={link[1]} className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10,
-          fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+          fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
           textTransform: 'uppercase', color: 'var(--ink)',
           borderBottom: '1px solid var(--ink)', paddingBottom: 4,
         }}>
@@ -160,7 +160,7 @@ const StatStrip = ({ items, dark = false }) => (
       <div key={l}>
         <div className="display" style={{ fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, color: dark ? 'var(--white)' : 'var(--ink)' }}>{n}</div>
         <div className="mono" style={{
-          marginTop: 12, fontSize: 12, letterSpacing: '0.18em',
+          marginTop: 12, fontSize: 13.5, letterSpacing: '0.18em',
           textTransform: 'uppercase',
           color: dark ? 'var(--alice-blue)' : 'var(--charcoal)',
         }}>{l}</div>
@@ -192,7 +192,7 @@ const CTABand = ({ kicker, title, accent, body, primary, secondary, theme = 'cre
             </h2>
             {body && (
               <p style={{
-                marginTop: 18, fontSize: 15, lineHeight: 1.55,
+                marginTop: 18, fontSize: 16.5, lineHeight: 1.55,
                 color: sub, maxWidth: 540,
               }}>{body}</p>
             )}
@@ -249,10 +249,10 @@ const FeatureRow = ({ items }) => (
       }}>
         <div aria-hidden style={{ color: 'var(--tangerine)', marginBottom: 14 }}>{featureIcon(k)}</div>
         <div className="mono" style={{
-          fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
+          fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'var(--tangerine)', fontWeight: 700, marginBottom: 10,
         }}>{k}</div>
-        <div style={{ fontSize: 14, lineHeight: 1.55, color: 'var(--ink)' }}>{v}</div>
+        <div style={{ fontSize: 15.5, lineHeight: 1.55, color: 'var(--ink)' }}>{v}</div>
       </div>
     ))}
   </div>
@@ -278,7 +278,7 @@ const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageRight = 
             </h2>
             {body && (
               <p style={{
-                marginTop: 18, fontSize: 15, lineHeight: 1.6,
+                marginTop: 18, fontSize: 16.5, lineHeight: 1.6,
                 color: sub, maxWidth: 520,
               }}>{body}</p>
             )}
@@ -290,7 +290,7 @@ const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageRight = 
                 {bullets.map((b, i) => (
                   <li key={i} style={{
                     display: 'flex', alignItems: 'flex-start', gap: 12,
-                    fontSize: 14, lineHeight: 1.5, color: fg,
+                    fontSize: 15.5, lineHeight: 1.5, color: fg,
                   }}>
                     <span style={{
                       flexShrink: 0, marginTop: 6,
@@ -341,7 +341,7 @@ const UseCaseRow = ({ title, body, badge, index }) => {
         transition: 'background 0.2s ease',
       }}>
       <span className="display wfs-usecase-num" aria-hidden style={{
-        fontSize: 60, lineHeight: 1, fontWeight: 800,
+        fontSize: 61.5, lineHeight: 1, fontWeight: 800,
         color: hover ? 'var(--tangerine)' : 'transparent',
         WebkitTextStroke: hover ? '0px transparent' : '1.5px rgba(38,49,102,0.32)',
         transition: 'color 0.2s ease',
@@ -357,13 +357,13 @@ const UseCaseRow = ({ title, body, badge, index }) => {
             padding: '6px 12px', borderRadius: 4,
             border: '1px solid rgba(46,89,193,0.35)',
             background: hover ? 'var(--white)' : 'transparent',
-            fontSize: 11.5, fontWeight: 700, letterSpacing: '0.14em',
+            fontSize: 13, fontWeight: 700, letterSpacing: '0.14em',
             textTransform: 'uppercase', color: 'var(--laser-blue)',
             transition: 'background 0.2s ease',
           }}>{badge}</span>
         )}
       </div>
-      <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>{body}</p>
+      <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>{body}</p>
       <span aria-hidden style={{
         width: 44, height: 44, borderRadius: '50%',
         border: `1px solid ${hover ? 'var(--tangerine)' : 'rgba(0,16,17,0.18)'}`,

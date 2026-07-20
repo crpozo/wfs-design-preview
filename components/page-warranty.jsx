@@ -65,11 +65,11 @@ const WarrantyHighlights = () => {
             }}>
               <div style={{ marginBottom: 24, color: 'var(--tangerine)' }}>{c.svg}</div>
               <h3 className="display" style={{
-                margin: '0 0 12px', fontSize: 19,
+                margin: '0 0 12px', fontSize: 20.5,
                 letterSpacing: '-0.005em', color: 'var(--ink)',
               }}>{t(c.title)}</h3>
               <p className="mono" style={{
-                margin: 0, fontSize: 13, lineHeight: 1.65,
+                margin: 0, fontSize: 14.5, lineHeight: 1.65,
                 color: 'var(--charcoal)',
               }}>{t(c.body)}</p>
             </article>
@@ -108,7 +108,7 @@ const WarrantyMaterialTable = () => {
           ].map((h, i) => (
             <div key={i} className="mono" style={{
               padding: '16px 18px',
-              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
               textTransform: 'uppercase',
               borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.15)',
             }}>{t(h)}</div>
@@ -131,7 +131,7 @@ const WarrantyMaterialTable = () => {
             {row.map((cell, ci) => (
               <div key={ci} style={{
                 padding: '16px 18px',
-                fontSize: 13.5, lineHeight: 1.5,
+                fontSize: 15, lineHeight: 1.5,
                 color: ci === 0 ? 'var(--ink)' : 'var(--ink)',
                 fontWeight: ci === 0 ? 700 : 400,
                 fontFamily: ci === 0 ? 'var(--mono)' : 'var(--sans)',
@@ -207,11 +207,11 @@ const WarrantyExclusions = () => {
                 </span>
                 <div>
                   <h3 className="display" style={{
-                    margin: '0 0 6px', fontSize: 15,
+                    margin: '0 0 6px', fontSize: 16.5,
                     letterSpacing: '-0.005em', color: 'var(--ink)',
                   }}>{t(title)}</h3>
                   <p className="mono" style={{
-                    margin: 0, fontSize: 13, lineHeight: 1.6,
+                    margin: 0, fontSize: 14.5, lineHeight: 1.6,
                     color: 'var(--charcoal)',
                   }}>{t(body)}</p>
                 </div>
@@ -276,15 +276,15 @@ const WarrantyProcess = () => {
                 width: 36, height: 36,
                 background: 'var(--ink)',
                 color: 'var(--white)',
-                fontSize: 12.5, fontWeight: 700, letterSpacing: '0.05em',
+                fontSize: 14, fontWeight: 700, letterSpacing: '0.05em',
                 marginBottom: 22,
               }}>{s.n}</span>
               <h3 className="display" style={{
-                margin: '0 0 10px', fontSize: 18,
+                margin: '0 0 10px', fontSize: 19.5,
                 letterSpacing: '-0.005em', color: 'var(--ink)',
               }}>{t(s.title)}</h3>
               <p className="mono" style={{
-                margin: 0, fontSize: 13, lineHeight: 1.6,
+                margin: 0, fontSize: 14.5, lineHeight: 1.6,
                 color: 'var(--charcoal)',
               }}>{t(s.body)}</p>
             </div>
@@ -401,15 +401,15 @@ const ClaimsProcess = () => {
                 width: 36, height: 36,
                 background: 'var(--ink)',
                 color: 'var(--white)',
-                fontSize: 12.5, fontWeight: 700, letterSpacing: '0.05em',
+                fontSize: 14, fontWeight: 700, letterSpacing: '0.05em',
                 marginBottom: 22,
               }}>{s.n}</span>
               <h3 className="display" style={{
-                margin: '0 0 10px', fontSize: 18,
+                margin: '0 0 10px', fontSize: 19.5,
                 letterSpacing: '-0.005em', color: 'var(--ink)',
               }}>{t(s.title)}</h3>
               <p className="mono" style={{
-                margin: 0, fontSize: 13, lineHeight: 1.6,
+                margin: 0, fontSize: 14.5, lineHeight: 1.6,
                 color: 'var(--charcoal)',
               }}>{t(s.body)}</p>
             </div>
@@ -426,7 +426,7 @@ const ClaimsForm = () => {
     <div style={{ gridColumn: `span ${span}` }}>
       <label htmlFor={name} className="mono" style={{
         display: 'block', marginBottom: 8,
-        fontSize: 12, fontWeight: 700, letterSpacing: '0.18em',
+        fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em',
         textTransform: 'uppercase', color: 'var(--ink)',
       }}>
         {label} {required && <span style={{ color: 'var(--tangerine)' }}>*</span>}
@@ -437,7 +437,7 @@ const ClaimsForm = () => {
           style={{
             width: '100%', padding: '14px 16px',
             border: '1.5px solid var(--ink)', background: 'var(--white)',
-            fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--ink)',
+            fontFamily: 'var(--sans)', fontSize: 15.5, color: 'var(--ink)',
             outline: 'none',
           }}
         />
@@ -462,10 +462,10 @@ const ClaimsForm = () => {
               borderBottom: '1px dashed rgba(38, 49, 102,0.18)',
             }}>
               <h3 className="display" style={{
-                margin: 0, fontSize: 22, letterSpacing: '-0.01em', color: 'var(--ink)',
+                margin: 0, fontSize: 23.5, letterSpacing: '-0.01em', color: 'var(--ink)',
               }}>{t('Claim form', 'Formulario de reclamo')}</h3>
               <span className="mono" style={{
-                fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+                fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em',
                 color: 'var(--charcoal)', textTransform: 'uppercase',
               }}>{t('≈ 4 minutes', '≈ 4 minutos')}</span>
             </div>
@@ -486,7 +486,7 @@ const ClaimsForm = () => {
                   style={{
                     width: '100%', padding: '14px 16px',
                     border: '1.5px solid var(--ink)', background: 'var(--white)',
-                    fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--ink)',
+                    fontFamily: 'var(--sans)', fontSize: 15.5, color: 'var(--ink)',
                     outline: 'none',
                   }}>
                   <option value="" disabled>{t('Select the system on your claim…', 'Selecciona el sistema de tu reclamo…')}</option>
@@ -510,7 +510,7 @@ const ClaimsForm = () => {
                   style={{
                     width: '100%', padding: '14px 16px',
                     border: '1.5px solid var(--ink)', background: 'var(--white)',
-                    fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--ink)',
+                    fontFamily: 'var(--sans)', fontSize: 15.5, color: 'var(--ink)',
                     outline: 'none', resize: 'vertical', minHeight: 120,
                   }}/>
               </Field>
@@ -527,10 +527,10 @@ const ClaimsForm = () => {
                     <path d="M8 6 L9.5 4 H14.5 L16 6"/>
                   </svg>
                   <div className="mono" style={{
-                    fontSize: 13, fontWeight: 700, letterSpacing: '0.14em',
+                    fontSize: 14.5, fontWeight: 700, letterSpacing: '0.14em',
                     textTransform: 'uppercase', color: 'var(--ink)',
                   }}>{t('Drag photos here, or click to browse', 'Arrastra fotos aquí, o haz clic para buscar')}</div>
-                  <div className="mono" style={{ fontSize: 12, color: 'var(--charcoal)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>
+                  <div className="mono" style={{ fontSize: 13.5, color: 'var(--charcoal)', letterSpacing: '0.16em', textTransform: 'uppercase' }}>
                     JPG / PNG / HEIC · 20 MB {t('max', 'máx')}
                   </div>
                   <input type="file" id="photos" name="photos" accept="image/*" multiple style={{ display: 'none' }}/>
@@ -542,7 +542,7 @@ const ClaimsForm = () => {
                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
                   padding: '16px 36px',
                   background: 'var(--ink)', color: 'var(--white)',
-                  fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+                  fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
                   letterSpacing: '0.18em', textTransform: 'uppercase',
                   border: 'none', cursor: 'pointer',
                   boxShadow: '6px 6px 0 var(--tangerine)',
@@ -553,7 +553,7 @@ const ClaimsForm = () => {
                   {t('Submit claim', 'Enviar reclamo')}
                 </button>
                 <span className="mono" style={{
-                  fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
+                  fontSize: 13.5, fontWeight: 700, letterSpacing: '0.16em',
                   textTransform: 'uppercase', color: 'var(--charcoal)',
                 }}>
                   {t("You'll get a claim number by email", 'Recibirás un número de reclamo por email')}
@@ -569,7 +569,7 @@ const ClaimsForm = () => {
               padding: '28px 28px 26px',
             }}>
               <div className="mono" style={{
-                fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+                fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em',
                 color: 'var(--tangerine)', textTransform: 'uppercase',
                 marginBottom: 14,
                 display: 'flex', alignItems: 'center', gap: 10,
@@ -578,10 +578,10 @@ const ClaimsForm = () => {
                 {t('Live · 7am - 4pm EST', 'En vivo · 7am - 4pm EST')}
               </div>
               <h3 className="display" style={{
-                margin: '0 0 16px', fontSize: 22, lineHeight: 1.1, color: 'var(--white)',
+                margin: '0 0 16px', fontSize: 23.5, lineHeight: 1.1, color: 'var(--white)',
               }}>{t("Can't find your PO?", '¿No encuentras tu orden?')}</h3>
               <p className="mono" style={{
-                margin: '0 0 22px', fontSize: 13, lineHeight: 1.65,
+                margin: '0 0 22px', fontSize: 14.5, lineHeight: 1.65,
                 color: 'rgba(255,255,255,0.78)',
               }}>
                 {t(
@@ -591,12 +591,12 @@ const ClaimsForm = () => {
               </p>
               <a href="tel:2396895496" className="display" style={{
                 display: 'block', marginBottom: 6,
-                fontSize: 22, color: 'var(--white)', lineHeight: 1.1,
+                fontSize: 23.5, color: 'var(--white)', lineHeight: 1.1,
                 letterSpacing: '-0.005em',
               }}>(239) 689-5496</a>
               <a href="mailto:claims@westernfencesupply.com" className="mono" style={{
                 display: 'block', wordBreak: 'break-all',
-                fontSize: 13, color: 'rgba(255,255,255,0.7)',
+                fontSize: 14.5, color: 'rgba(255,255,255,0.7)',
               }}>claims@westernfencesupply.com</a>
             </div>
 
@@ -606,7 +606,7 @@ const ClaimsForm = () => {
               padding: '24px 26px',
             }}>
               <div className="mono" style={{
-                fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+                fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em',
                 color: 'var(--tangerine)', textTransform: 'uppercase',
                 marginBottom: 14,
               }}>{t('What to expect', 'Qué esperar')}</div>
@@ -621,9 +621,9 @@ const ClaimsForm = () => {
                     display: 'flex', justifyContent: 'space-between',
                     paddingBottom: 10, borderBottom: '1px dashed rgba(38, 49, 102,0.18)',
                   }}>
-                    <span className="mono" style={{ fontSize: 13, color: 'var(--charcoal)' }}>{t(k)}</span>
+                    <span className="mono" style={{ fontSize: 14.5, color: 'var(--charcoal)' }}>{t(k)}</span>
                     <span className="mono" style={{
-                      fontSize: 13, fontWeight: 700, color: 'var(--ink)',
+                      fontSize: 14.5, fontWeight: 700, color: 'var(--ink)',
                     }}>{t(v)}</span>
                   </li>
                 ))}
@@ -744,7 +744,7 @@ const SpecsLibrary = () => {
                 background: active ? 'var(--ink)' : 'var(--white)',
                 color: active ? 'var(--white)' : 'var(--ink)',
                 border: '1.5px solid var(--ink)',
-                fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
+                fontSize: 14, fontWeight: 700, letterSpacing: '0.18em',
                 textTransform: 'uppercase', cursor: 'pointer',
                 transition: 'all 0.18s ease',
               }}>{t(catLabels[c])}</button>
@@ -752,7 +752,7 @@ const SpecsLibrary = () => {
           })}
           <span className="mono" style={{
             marginLeft: 'auto', alignSelf: 'center',
-            fontSize: 12, fontWeight: 700, letterSpacing: '0.18em',
+            fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em',
             textTransform: 'uppercase', color: 'var(--charcoal)',
           }}>{visible.length} {t(visible.length === 1 ? 'document' : 'documents', visible.length === 1 ? 'documento' : 'documentos')}</span>
         </div>
@@ -777,7 +777,7 @@ const SpecsLibrary = () => {
                 background: 'var(--ink)', color: 'var(--white)',
                 display: 'flex', flexDirection: 'column',
                 alignItems: 'center', justifyContent: 'center',
-                fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700,
+                fontFamily: 'var(--sans)', fontSize: 13.5, fontWeight: 700,
                 letterSpacing: '0.12em',
               }}>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
@@ -789,25 +789,25 @@ const SpecsLibrary = () => {
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 6 }}>
                   <span className="mono" style={{
-                    fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em',
+                    fontSize: 13, fontWeight: 700, letterSpacing: '0.22em',
                     color: 'var(--tangerine)', textTransform: 'uppercase',
                   }}>{d.cat}</span>
                   {d.isNew && (
                     <span className="mono" style={{
                       padding: '2px 8px',
                       background: 'var(--tangerine)', color: 'var(--white)',
-                      fontSize: 8.5, fontWeight: 700, letterSpacing: '0.2em',
+                      fontSize: 10, fontWeight: 700, letterSpacing: '0.2em',
                       textTransform: 'uppercase',
                     }}>{t('New', 'Nuevo')}</span>
                   )}
                 </div>
                 <div style={{
-                  fontSize: 14.5, fontWeight: 600, color: 'var(--ink)',
+                  fontSize: 16, fontWeight: 600, color: 'var(--ink)',
                   lineHeight: 1.35, marginBottom: 6,
                 }}>{d.title}</div>
                 <div style={{
                   display: 'flex', gap: 12, flexWrap: 'wrap',
-                  fontFamily: 'var(--mono)', fontSize: 12,
+                  fontFamily: 'var(--mono)', fontSize: 13.5,
                   letterSpacing: '0.14em', textTransform: 'uppercase',
                   color: 'var(--charcoal)', fontWeight: 700,
                 }}>
@@ -854,7 +854,7 @@ const SpecsStamped = () => {
             {t('Need a stamped', '¿Necesitas una copia')}<br/>{t('copy for AHJ?', 'sellada para el AHJ?')}
           </h2>
           <p className="mono" style={{
-            margin: 0, fontSize: 14, lineHeight: 1.7,
+            margin: 0, fontSize: 15.5, lineHeight: 1.7,
             color: 'rgba(255,255,255,0.78)', maxWidth: 480,
           }}>
             {t(
@@ -868,7 +868,7 @@ const SpecsStamped = () => {
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
             padding: '16px 28px',
             background: 'var(--tangerine)', color: 'var(--white)',
-            fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+            fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
             letterSpacing: '0.18em', textTransform: 'uppercase',
           }}>{t('Request stamped doc', 'Solicitar doc sellado')}</a>
           <a href="tel:2396895496" style={{
@@ -876,7 +876,7 @@ const SpecsStamped = () => {
             padding: '16px 28px',
             background: 'transparent', color: 'var(--white)',
             border: '1.5px solid rgba(255,255,255,0.5)',
-            fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+            fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
             letterSpacing: '0.18em', textTransform: 'uppercase',
           }}>(239) 689-5496</a>
         </div>

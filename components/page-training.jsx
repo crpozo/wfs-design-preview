@@ -29,7 +29,7 @@ const TrainingHeader = () => {
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
           <span className="mono" style={{
-            fontSize: 12, fontWeight: 700, letterSpacing: '0.2em',
+            fontSize: 13.5, fontWeight: 700, letterSpacing: '0.2em',
             textTransform: 'uppercase', color: 'var(--charcoal)',
           }}>{t('Training Companion', 'Training Companion')}</span>
           <div className="mono" style={{ display: 'inline-flex', alignItems: 'center', gap: 14 }}>
@@ -39,12 +39,12 @@ const TrainingHeader = () => {
                 <button key={l} onClick={() => setCurLang(l)} style={{
                   display: 'inline-flex', alignItems: 'center', gap: 6,
                   padding: 0, background: 'transparent', cursor: 'pointer',
-                  fontFamily: 'inherit', fontSize: 12, fontWeight: 700,
+                  fontFamily: 'inherit', fontSize: 13.5, fontWeight: 700,
                   letterSpacing: '0.18em', textTransform: 'uppercase',
                   color: isActive ? 'var(--ink)' : 'rgba(0,16,17,0.35)',
                 }}>
                   <span aria-hidden style={{
-                    fontSize: 14, lineHeight: 1,
+                    fontSize: 15.5, lineHeight: 1,
                     filter: isActive ? 'none' : 'grayscale(0.55)',
                     opacity: isActive ? 1 : 0.75,
                   }}>{l === 'EN' ? '🇺🇸' : '🇲🇽'}</span>
@@ -66,7 +66,7 @@ const TrainingHero = () => {
       <div className="container">
         <div className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 18,
-          fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+          fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em',
           textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)',
         }}>
           <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
@@ -83,12 +83,12 @@ const TrainingHero = () => {
           marginTop: 16, display: 'flex', justifyContent: 'space-between',
           alignItems: 'flex-end', gap: 24, flexWrap: 'wrap',
         }}>
-          <p style={{ margin: 0, maxWidth: 420, fontSize: 14.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.8)' }}>
+          <p style={{ margin: 0, maxWidth: 420, fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,0.8)' }}>
             {t('Two steps between you and your first module: watch the short platform tour, then log in.',
                'Dos pasos entre tú y tu primer módulo: mira el recorrido corto de la plataforma y luego inicia sesión.')}
           </p>
           <a href={TRAINING_LOGIN_URL} target="_blank" rel="noopener" className="mono" style={{
-            fontSize: 12, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase',
+            fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase',
             color: 'var(--tangerine)', borderBottom: '1px solid rgba(255,113,51,0.5)', paddingBottom: 3,
             whiteSpace: 'nowrap',
           }}>
@@ -113,18 +113,18 @@ const TrainingSteps = () => {
       border: filled ? 'none' : '1.5px solid var(--ink)',
       color: filled ? 'var(--white)' : 'var(--ink)',
       display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-      fontSize: 14, fontWeight: 700,
+      fontSize: 15.5, fontWeight: 700,
     }}>{n}</span>
   );
   const kickerStyle = {
-    fontSize: 12, fontWeight: 700, letterSpacing: '0.2em',
+    fontSize: 13.5, fontWeight: 700, letterSpacing: '0.2em',
     textTransform: 'uppercase', color: 'var(--tangerine)', marginBottom: 8,
   };
   const titleStyle = {
     margin: '0 0 10px', fontSize: 'clamp(19px, 1.8vw, 24px)', lineHeight: 1.1,
     fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--ink)',
   };
-  const bodyStyle = { margin: 0, maxWidth: 560, fontSize: 14.5, lineHeight: 1.65, color: 'var(--charcoal)' };
+  const bodyStyle = { margin: 0, maxWidth: 560, fontSize: 16, lineHeight: 1.65, color: 'var(--charcoal)' };
   return (
     <section style={{ background: 'var(--white)', padding: 'clamp(56px, 8vh, 90px) 0 clamp(64px, 9vh, 110px)' }}>
       <div className="container" style={{ maxWidth: 900 }}>
@@ -174,7 +174,7 @@ const TrainingSteps = () => {
                   <span className="mono" aria-hidden style={{
                     position: 'absolute', top: 12, right: 12,
                     background: 'var(--ink)', color: 'var(--white)',
-                    padding: '4px 9px', fontSize: 12, fontWeight: 700, letterSpacing: '0.1em',
+                    padding: '4px 9px', fontSize: 13.5, fontWeight: 700, letterSpacing: '0.1em',
                     pointerEvents: 'none',
                   }}>3:14</span>
                 </div>
@@ -184,10 +184,10 @@ const TrainingSteps = () => {
                   alignItems: 'baseline', gap: 16, flexWrap: 'wrap',
                 }}>
                   <span className="mono" style={{
-                    fontSize: 11.5, fontWeight: 700, letterSpacing: '0.16em',
+                    fontSize: 13, fontWeight: 700, letterSpacing: '0.16em',
                     textTransform: 'uppercase', color: 'var(--charcoal)',
                   }}>{t('Welcome to the Training Companion', 'Bienvenido al Training Companion')}</span>
-                  <span style={{ fontSize: 13, color: 'var(--charcoal)' }}>
+                  <span style={{ fontSize: 14.5, color: 'var(--charcoal)' }}>
                     {t('Not loading?', '¿No carga?')}{' '}
                     <a href={TRAINING_LOGIN_URL} target="_blank" rel="noopener" style={{ color: 'var(--tangerine)' }}>
                       {t('Continue to login', 'Continúa al login')}
@@ -228,7 +228,7 @@ const TrainingSteps = () => {
                     display: 'inline-flex', alignItems: 'center', gap: 12,
                     padding: '15px 26px',
                     background: 'var(--tangerine)', color: 'var(--white)',
-                    fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+                    fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
                     letterSpacing: '0.16em', textTransform: 'uppercase',
                     boxShadow: '0 10px 26px rgba(255, 113, 51,0.35)',
                     transition: 'transform 0.18s',
@@ -239,7 +239,7 @@ const TrainingSteps = () => {
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
                 </a>
                 <span className="mono" style={{
-                  fontSize: 11.5, fontWeight: 700, letterSpacing: '0.16em',
+                  fontSize: 13, fontWeight: 700, letterSpacing: '0.16em',
                   textTransform: 'uppercase', color: 'var(--charcoal)',
                 }}>{t('Uses your WFS staff credentials', 'Usa tus credenciales de personal WFS')}</span>
               </div>
@@ -258,10 +258,10 @@ const TrainingFooter = () => {
       <div className="container" style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap',
       }}>
-        <span className="mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase' }}>
+        <span className="mono" style={{ fontSize: 13.5, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.55)', textTransform: 'uppercase' }}>
           © Western Fence Supply · {t('Internal training resource', 'Recurso interno de capacitación')}
         </span>
-        <a href="Homepage.html" className="mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase' }}>
+        <a href="Homepage.html" className="mono" style={{ fontSize: 13.5, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.7)', textTransform: 'uppercase' }}>
           westernfencesupply.com
         </a>
       </div>

@@ -39,7 +39,7 @@ const AboutStory = () => {
         </div>
         <p style={{
           margin: 0, maxWidth: 420, justifySelf: 'end', textAlign: 'right',
-          fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)',
+          fontSize: 15.5, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
           {t('A family-run Southwest Florida fence supplier, led by management with two decades of fencing installation and fabrication experience. Two yards in Fort Myers and Port Charlotte, serving customers throughout Florida.', 'Un proveedor de cercas familiar del suroeste de Florida, dirigido por un equipo con dos décadas de experiencia en instalación y fabricación de cercas. Dos sucursales en Fort Myers y Port Charlotte, al servicio de clientes en toda Florida.')}
         </p>
@@ -64,14 +64,14 @@ const AboutStory = () => {
               position: 'absolute', top: 18, left: 18,
               background: 'var(--tangerine)', color: 'var(--ink)',
               padding: '5px 10px',
-              fontSize: 12, letterSpacing: '0.22em', fontWeight: 700,
+              fontSize: 13.5, letterSpacing: '0.22em', fontWeight: 700,
             }}>{t('HQ · FORT MYERS', 'SEDE · FORT MYERS')}</div>
             <div style={{
               position: 'absolute', bottom: 18, left: 18, right: 18,
               color: 'var(--white)',
             }}>
-              <div className="display" style={{ fontSize: 18, lineHeight: 1.1 }}>2621 Fowler St</div>
-              <div className="mono" style={{ marginTop: 6, fontSize: 12, letterSpacing: '0.18em', color: 'rgba(255,255,255,0.85)' }}>FORT MYERS, FL 33901</div>
+              <div className="display" style={{ fontSize: 19.5, lineHeight: 1.1 }}>2621 Fowler St</div>
+              <div className="mono" style={{ marginTop: 6, fontSize: 13.5, letterSpacing: '0.18em', color: 'rgba(255,255,255,0.85)' }}>FORT MYERS, FL 33901</div>
             </div>
           </div>
         </div>
@@ -107,18 +107,18 @@ const AboutStory = () => {
                 gap: 28, alignItems: 'baseline',
               }}>
                 <div className="display" style={{
-                  fontSize: 30, lineHeight: 1,
+                  fontSize: 31.5, lineHeight: 1,
                   color: 'var(--ink)', letterSpacing: '-0.01em',
                 }}>{y}</div>
                 <div>
                   <div className="mono" style={{
-                    fontSize: 12, letterSpacing: '0.22em',
+                    fontSize: 13.5, letterSpacing: '0.22em',
                     textTransform: 'uppercase',
                     color: 'var(--tangerine)', fontWeight: 700,
                     marginBottom: 10,
                   }}>{t(label)}</div>
                   <p style={{
-                    margin: 0, fontSize: 15, lineHeight: 1.6,
+                    margin: 0, fontSize: 16.5, lineHeight: 1.6,
                     color: 'var(--ink)', maxWidth: 520,
                   }}>{t(body)}</p>
                 </div>
@@ -145,7 +145,7 @@ const AboutValues = () => {
       {/* Eyebrow */}
       <div className="mono" style={{
         display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 22,
-        fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+        fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
         textTransform: 'uppercase', color: 'var(--laser-blue)',
       }}>
         <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
@@ -165,7 +165,7 @@ const AboutValues = () => {
         </h2>
         <p style={{
           margin: 0, maxWidth: 360, justifySelf: 'end', textAlign: 'right',
-          fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)',
+          fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
           {t('Same standard we held when we were the contractors using this material every day.', 'El mismo estándar que manteníamos cuando éramos los contratistas que usaban este material todos los días.')}
         </p>
@@ -179,14 +179,14 @@ const AboutValues = () => {
           borderBottom: '1px solid rgba(0,16,17,0.1)',
         }}>
           <span className="display wfs-usecase-num" aria-hidden style={{
-            fontSize: 60, lineHeight: 1, fontWeight: 800,
+            fontSize: 61.5, lineHeight: 1, fontWeight: 800,
             color: 'transparent', WebkitTextStroke: '1.5px rgba(38,49,102,0.32)',
           }}>0{i + 1}</span>
           <h3 className="display" style={{
             margin: 0, fontSize: 'clamp(18px, 1.6vw, 24px)', lineHeight: 1.1,
             textTransform: 'uppercase', letterSpacing: '0.01em',
           }}>{t(label)}</h3>
-          <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>{t(body)}</p>
+          <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>{t(body)}</p>
         </div>
       ))}
     </div>
@@ -238,9 +238,9 @@ const AboutStats = () => {
             display: 'flex', alignItems: 'baseline', gap: 14,
           }}>
             <span className="display" style={{
-              fontSize: 22, lineHeight: 1, color: 'var(--ink)',
+              fontSize: 23.5, lineHeight: 1, color: 'var(--ink)',
             }}>{t('Family-owned and run.', 'De propiedad y gestión familiar.')}</span>
-            <span style={{ fontSize: 13.5, color: 'var(--charcoal)' }}>
+            <span style={{ fontSize: 15, color: 'var(--charcoal)' }}>
               {t('Two yards, zero plans to franchise.', 'Dos sucursales, cero planes de franquiciar.')}
             </span>
           </div>
@@ -265,12 +265,12 @@ const AboutStats = () => {
               }}>{t(n)}</div>
               <div style={{
                 marginTop: 22,
-                fontSize: 14, fontWeight: 600, color: 'var(--ink)',
+                fontSize: 15.5, fontWeight: 600, color: 'var(--ink)',
                 letterSpacing: '-0.005em',
               }}>{t(label)}</div>
               <div className="mono" style={{
                 marginTop: 6,
-                fontSize: 12.5, letterSpacing: '0.08em',
+                fontSize: 14, letterSpacing: '0.08em',
                 color: 'var(--charcoal)', lineHeight: 1.5,
               }}>{t(sub)}</div>
             </div>

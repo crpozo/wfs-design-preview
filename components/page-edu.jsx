@@ -70,7 +70,7 @@ const ArticlesFeatured = () => {
       <span className="mono" style={{
         position: 'absolute', top: big ? 24 : 18, left: big ? 24 : 18,
         background: 'var(--tangerine)', color: 'var(--white)',
-        padding: '5px 12px', fontSize: 12, fontWeight: 700,
+        padding: '5px 12px', fontSize: 13.5, fontWeight: 700,
         letterSpacing: '0.16em', textTransform: 'uppercase',
       }}>{t(a.tag, ARTICLE_TAG_ES[a.tag])}</span>
       <div style={{ position: 'relative', padding: big ? 'clamp(24px, 3vw, 44px)' : 22, width: '100%' }}>
@@ -84,7 +84,7 @@ const ArticlesFeatured = () => {
           marginTop: 14, display: 'flex', alignItems: 'center', gap: 10,
           color: 'var(--alice-blue)',
         }}>
-          <span className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase' }}>
+          <span className="mono" style={{ fontSize: 14, letterSpacing: '0.14em', textTransform: 'uppercase' }}>
             {a.read} {t('read', 'de lectura')}
           </span>
           <span aria-hidden style={{
@@ -114,7 +114,7 @@ const ArticlesFeatured = () => {
             <span style={{ color: 'var(--tangerine)' }}>{t('these guides.', 'estas guías.')}</span>
           </h2>
           <p style={{
-            margin: 0, maxWidth: 380, fontSize: 14, lineHeight: 1.55,
+            margin: 0, maxWidth: 380, fontSize: 15.5, lineHeight: 1.55,
             color: 'var(--charcoal)',
           }}>
             {t('The three reads that answer most first-time fence questions.',
@@ -162,14 +162,14 @@ const ArticleCard = ({ p }) => {
         <span className="mono" style={{
           position: 'absolute', top: 14, left: 14,
           background: 'rgba(255,255,255,0.92)', color: 'var(--ink)',
-          padding: '5px 11px', fontSize: 12, fontWeight: 700,
+          padding: '5px 11px', fontSize: 13.5, fontWeight: 700,
           letterSpacing: '0.14em', textTransform: 'uppercase',
           backdropFilter: 'blur(4px)',
         }}>{t(p.tag, ARTICLE_TAG_ES[p.tag])}</span>
       </div>
       <div style={{ padding: '18px 20px 20px', flex: 1, display: 'flex', flexDirection: 'column', gap: 16 }}>
         <h3 style={{
-          margin: 0, fontSize: 16, fontWeight: 700, lineHeight: 1.35,
+          margin: 0, fontSize: 17.5, fontWeight: 700, lineHeight: 1.35,
           color: 'var(--ink)', letterSpacing: '-0.005em', textTransform: 'capitalize',
         }}>{t(p.title)}</h3>
         <div style={{
@@ -177,11 +177,11 @@ const ArticleCard = ({ p }) => {
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>
           <span className="mono" style={{
-            fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)',
+            fontSize: 13.5, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)',
           }}>{p.read} {t('read', 'de lectura')}</span>
           <span style={{
             display: 'inline-flex', alignItems: 'center', gap: 6,
-            fontSize: 13, fontWeight: 600, color: 'var(--laser-blue)',
+            fontSize: 14.5, fontWeight: 600, color: 'var(--laser-blue)',
           }}>
             {t('Read', 'Leer')}
             <span aria-hidden style={{ display: 'inline-flex', transform: hover ? 'translateX(4px)' : 'translateX(0)', transition: 'transform 0.2s ease' }}>
@@ -213,7 +213,7 @@ const ArticlesGrid = () => {
             letterSpacing: '-0.015em', color: 'var(--ink)',
           }}>{t('Featured Posts', 'Artículos destacados')}</h2>
           <span className="mono" style={{
-            fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
+            fontSize: 13.5, letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--charcoal)',
           }}>{visible.length} {t('articles', 'artículos')}</span>
         </div>
@@ -226,7 +226,7 @@ const ArticlesGrid = () => {
               <button key={tag} onClick={() => setFilter(tag)}
                 style={{
                   padding: '8px 16px', borderRadius: 999,
-                  fontSize: 13, fontWeight: 600, fontFamily: 'var(--sans)',
+                  fontSize: 14.5, fontWeight: 600, fontFamily: 'var(--sans)',
                   border: '1px solid ' + (active ? 'var(--ink)' : 'rgba(0,16,17,0.18)'),
                   background: active ? 'var(--ink)' : 'var(--white)',
                   color: active ? 'var(--white)' : 'var(--ink)',
@@ -351,23 +351,23 @@ const MaterialsCompDeepDive = () => {
               color: 'var(--ink)',
             }}>
               <div>
-                <div className="display" style={{ fontSize: 22, lineHeight: 1.05 }}>{p.name}</div>
+                <div className="display" style={{ fontSize: 23.5, lineHeight: 1.05 }}>{p.name}</div>
                 <div className="mono" style={{
-                  marginTop: 8, fontSize: 12, letterSpacing: '0.18em',
+                  marginTop: 8, fontSize: 13.5, letterSpacing: '0.18em',
                   textTransform: 'uppercase', color: 'var(--tangerine)', fontWeight: 700,
                 }}>{p.tag}</div>
               </div>
               <div>
-                <div className="mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginBottom: 6 }}>{t('Best for', 'Ideal para')}</div>
-                <div style={{ fontSize: 13.5, lineHeight: 1.5 }}>{p.bestFor}</div>
+                <div className="mono" style={{ fontSize: 13.5, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginBottom: 6 }}>{t('Best for', 'Ideal para')}</div>
+                <div style={{ fontSize: 15, lineHeight: 1.5 }}>{p.bestFor}</div>
               </div>
               <div>
-                <div className="mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginBottom: 6 }}>{t('Strength', 'Punto fuerte')}</div>
-                <div style={{ fontSize: 13.5, lineHeight: 1.5 }}>{p.strength}</div>
+                <div className="mono" style={{ fontSize: 13.5, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginBottom: 6 }}>{t('Strength', 'Punto fuerte')}</div>
+                <div style={{ fontSize: 15, lineHeight: 1.5 }}>{p.strength}</div>
               </div>
               <div>
-                <div className="mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginBottom: 6 }}>{t('Caveat', 'Salvedad')}</div>
-                <div style={{ fontSize: 13.5, lineHeight: 1.5 }}>{p.caveat}</div>
+                <div className="mono" style={{ fontSize: 13.5, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginBottom: 6 }}>{t('Caveat', 'Salvedad')}</div>
+                <div style={{ fontSize: 15, lineHeight: 1.5 }}>{p.caveat}</div>
               </div>
               <span style={{
                 width: 38, height: 38, flexShrink: 0,
@@ -442,16 +442,16 @@ const PoolCodeRequirements = () => {
               border: '1px solid rgba(0,16,17,0.12)',
             }}>
               <div className="mono" style={{
-                fontSize: 12, letterSpacing: '0.22em',
+                fontSize: 13.5, letterSpacing: '0.22em',
                 color: 'var(--tangerine)', fontWeight: 700,
                 textTransform: 'uppercase', marginBottom: 12,
               }}>{r.code}</div>
-              <h3 className="display" style={{ fontSize: 22, lineHeight: 1.1, margin: '0 0 12px' }}>{r.title}</h3>
-              <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)' }}>{r.body}</p>
+              <h3 className="display" style={{ fontSize: 23.5, lineHeight: 1.1, margin: '0 0 12px' }}>{r.title}</h3>
+              <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>{r.body}</p>
             </article>
           ))}
         </div>
-        <p style={{ marginTop: 16, fontSize: 12.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>
+        <p style={{ marginTop: 16, fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)' }}>
           {t('Based on general Florida residential pool barrier requirements. Code editions, local amendments, interpretations, and project requirements may change.',
              'Basado en requisitos generales de barreras de piscina residenciales de Florida. Las ediciones del código, las enmiendas locales, las interpretaciones y los requisitos del proyecto pueden cambiar.')}
         </p>
@@ -490,14 +490,14 @@ const PoolCodeProfiles = () => {
                 <span className="mono" style={{
                   position: 'absolute', top: 14, left: 14,
                   background: 'var(--tangerine)', color: 'var(--ink)',
-                  padding: '5px 10px', fontSize: 12, letterSpacing: '0.18em',
+                  padding: '5px 10px', fontSize: 13.5, letterSpacing: '0.18em',
                   fontWeight: 700, textTransform: 'uppercase',
                 }}>0{i+1} · {t('Pool', 'Piscina')}</span>
               </div>
               <div style={{ padding: 24 }}>
-                <h3 className="display" style={{ margin: '0 0 8px', fontSize: 22, lineHeight: 1.1 }}>{p.name}</h3>
-                <div className="mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase' }}>{p.tag}</div>
-                <div style={{ marginTop: 18, display: 'flex', alignItems: 'center', gap: 8, fontSize: 13, fontWeight: 600, fontFamily: 'var(--mono)', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink)' }}>
+                <h3 className="display" style={{ margin: '0 0 8px', fontSize: 23.5, lineHeight: 1.1 }}>{p.name}</h3>
+                <div className="mono" style={{ fontSize: 13.5, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase' }}>{p.tag}</div>
+                <div style={{ marginTop: 18, display: 'flex', alignItems: 'center', gap: 8, fontSize: 14.5, fontWeight: 600, fontFamily: 'var(--mono)', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink)' }}>
                   {t('Explore', 'Explorar')}
                   <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/></svg>
                 </div>
@@ -524,7 +524,7 @@ const PoolCodeChecklist = () => {
             {t('Before you', 'Antes de')}<br/>
             <span style={{ color: 'var(--tangerine)' }}>{t('file the permit.', 'presentar el permiso.')}</span>
           </h2>
-          <p style={{ marginTop: 18, fontSize: 14.5, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 360 }}>
+          <p style={{ marginTop: 18, fontSize: 16, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 360 }}>
             {t('Use this checklist as general planning guidance. Western Fence Supply provides materials only and does not review plans, determine code compliance, prepare permits, perform installation, or manage inspections.', 'Usa esta lista como guía general de planeación. Western Fence Supply provee únicamente materiales y no revisa planos, determina cumplimiento de código, prepara permisos, realiza instalación ni gestiona inspecciones.')}
           </p>
         </div>
@@ -543,7 +543,7 @@ const PoolCodeChecklist = () => {
           ].map((line, i) => (
             <li key={i} style={{
               display: 'flex', alignItems: 'flex-start', gap: 14,
-              fontSize: 14.5, lineHeight: 1.55,
+              fontSize: 16, lineHeight: 1.55,
             }}>
               <span aria-hidden style={{
                 flexShrink: 0, marginTop: 3,
@@ -579,7 +579,7 @@ const PoolCodeCTA = () => {
   />
   <section style={{ background: '#ffffff', borderTop: '1px solid rgba(0,16,17,0.08)', padding: '26px 0' }}>
     <div className="container">
-      <p style={{ margin: 0, fontSize: 13, lineHeight: 1.65, color: 'var(--charcoal)', maxWidth: 860 }}>
+      <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.65, color: 'var(--charcoal)', maxWidth: 860 }}>
         {t('Western Fence Supply is a material supplier only. WFS does not provide installation, engineering, code review, permit services, inspections, or compliance certification.',
            'Western Fence Supply es únicamente un proveedor de materiales. WFS no ofrece instalación, ingeniería, revisión de código, servicios de permisos, inspecciones ni certificación de cumplimiento.')}
       </p>
@@ -686,7 +686,7 @@ const FaqTopicGroup = ({ topic, index }) => {
         borderBottom: '2px solid var(--ink)',
       }}>
         <span className="display" aria-hidden style={{
-          fontSize: 34, lineHeight: 1, fontWeight: 800,
+          fontSize: 35.5, lineHeight: 1, fontWeight: 800,
           color: 'transparent', WebkitTextStroke: '1.3px rgba(38,49,102,0.32)',
         }}>0{index + 1}</span>
         <h2 className="display" style={{ margin: 0, fontSize: 'clamp(20px, 1.8vw, 26px)', lineHeight: 1.05, textTransform: 'uppercase' }}>
@@ -702,7 +702,7 @@ const FaqTopicGroup = ({ topic, index }) => {
               display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 18,
               cursor: 'pointer',
             }}>
-              <span style={{ fontSize: 16, fontWeight: 600, color: 'var(--ink)', lineHeight: 1.35 }}>{t(q)}</span>
+              <span style={{ fontSize: 17.5, fontWeight: 600, color: 'var(--ink)', lineHeight: 1.35 }}>{t(q)}</span>
               <span aria-hidden style={{
                 flexShrink: 0, width: 30, height: 30, borderRadius: '50%',
                 border: `1px solid ${isOpen ? 'var(--tangerine)' : 'rgba(0,16,17,0.2)'}`,
@@ -720,7 +720,7 @@ const FaqTopicGroup = ({ topic, index }) => {
               maxHeight: isOpen ? 400 : 0, overflow: 'hidden',
               transition: 'max-height 0.35s ease',
             }}>
-              <p style={{ margin: 0, padding: '0 44px 22px 4px', fontSize: 14.5, lineHeight: 1.65, color: 'var(--charcoal)' }}>{t(a)}</p>
+              <p style={{ margin: 0, padding: '0 44px 22px 4px', fontSize: 16, lineHeight: 1.65, color: 'var(--charcoal)' }}>{t(a)}</p>
             </div>
           </div>
         );
@@ -738,13 +738,13 @@ const FaqTopics = () => {
           {/* Sticky topic nav */}
           <nav className="wfs-faq-sidebar" style={{ position: 'sticky', top: 120, display: 'grid', gap: 4 }}>
             <div className="mono" style={{
-              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
               textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 12,
             }}>{t('Browse by topic', 'Explora por tema')}</div>
             {FAQ_TOPICS.map((tp, i) => (
               <a key={tp.id} href={`#faq-${tp.id}`} className="mono" style={{
                 display: 'flex', alignItems: 'center', gap: 12,
-                padding: '10px 12px', fontSize: 12.5, fontWeight: 700,
+                padding: '10px 12px', fontSize: 14, fontWeight: 700,
                 letterSpacing: '0.1em', textTransform: 'uppercase',
                 color: 'var(--ink)', border: '1px solid rgba(0,16,17,0.12)',
               }}>
@@ -752,7 +752,7 @@ const FaqTopics = () => {
                 {t(tp.title)}
               </a>
             ))}
-            <p style={{ margin: '18px 0 0', fontSize: 13.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>
+            <p style={{ margin: '18px 0 0', fontSize: 15, lineHeight: 1.6, color: 'var(--charcoal)' }}>
               {t("These are the questions we hear most on first-time quotes. Can't find yours?", 'Estas son las preguntas que más escuchamos en primeras cotizaciones. ¿No encuentras la tuya?')}
               {' '}<a href="estimate.html#contact" style={{ color: 'var(--ink)', borderBottom: '1px solid var(--tangerine)' }}>{t('Ask a rep', 'Pregunta a un asesor')}</a>.
             </p>

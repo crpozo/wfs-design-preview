@@ -24,16 +24,16 @@ const Nav = () => {
         <nav style={{ display: 'flex', gap: 28, alignItems: 'center' }}>
           {[['Products', 'products.html'], ['Solutions', 'solutions.html'], ['Projects', 'projects.html'], ['Resources', 'resources.html'], ['About', 'about.html']].map(([l, href]) => (
             <a key={l} href={href} style={{
-              fontSize: 14, letterSpacing: '0.01em', fontWeight: 500, color: 'var(--ink)',
+              fontSize: 15.5, letterSpacing: '0.01em', fontWeight: 500, color: 'var(--ink)',
             }}>{l}</a>
           ))}
         </nav>
         <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-          <button className="btn btn-ghost" style={{ padding: '10px 16px', fontSize: 13 }}>
+          <button className="btn btn-ghost" style={{ padding: '10px 16px', fontSize: 14.5 }}>
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" strokeWidth="1.5"/><path d="M11 11 L14 14" stroke="currentColor" strokeWidth="1.5"/></svg>
             Search
           </button>
-          <button className="btn btn-dark" style={{ padding: '12px 18px', fontSize: 13 }}>
+          <button className="btn btn-dark" style={{ padding: '12px 18px', fontSize: 14.5 }}>
             Request Quote <ArrowRight />
           </button>
         </div>
@@ -114,7 +114,7 @@ const Hero = () => {
           </h1>
 
           <p style={{
-            fontSize: 16,
+            fontSize: 17.5,
             lineHeight: 1.55,
             maxWidth: 480,
             margin: '0 0 34px',
@@ -132,7 +132,7 @@ const Hero = () => {
                 display: 'inline-flex', alignItems: 'center', gap: 12,
                 padding: '16px 26px', borderRadius: 999,
                 background: 'var(--tangerine)', color: 'var(--white)',
-                fontFamily: 'var(--sans)', fontSize: 15, fontWeight: 600,
+                fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600,
                 letterSpacing: '0.01em',
                 boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)',
                 transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s',
@@ -154,7 +154,7 @@ const Hero = () => {
                 background: 'rgba(255,255,255,0.08)', color: 'var(--white)',
                 border: '1px solid rgba(255,255,255,0.55)',
                 backdropFilter: 'blur(6px)',
-                fontFamily: 'var(--sans)', fontSize: 15, fontWeight: 600,
+                fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600,
                 letterSpacing: '0.01em',
                 transition: 'background 0.18s, border-color 0.18s',
               }}

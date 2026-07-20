@@ -435,11 +435,11 @@ const MaterialProfiles = ({ data }) => (
             </div>
             <div style={{ padding: 24 }}>
               <div className="mono" style={{
-                fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
+                fontSize: 13.5, letterSpacing: '0.22em', textTransform: 'uppercase',
                 color: 'var(--tangerine)', fontWeight: 700, marginBottom: 14,
               }}>0{i+1} · {p.tag}</div>
-              <h3 className="display" style={{ margin: '0 0 12px', fontSize: 22, lineHeight: 1.1 }}>{p.name}</h3>
-              <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
+              <h3 className="display" style={{ margin: '0 0 12px', fontSize: 23.5, lineHeight: 1.1 }}>{p.name}</h3>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
             </div>
           </article>
         ))}
@@ -456,7 +456,7 @@ const MaterialSpecs = ({ data }) => (
           <div className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12,
             marginBottom: 18,
-            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+            fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
             textTransform: 'uppercase', color: 'var(--blue-ice)',
           }}>
             <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
@@ -466,13 +466,13 @@ const MaterialSpecs = ({ data }) => (
             {useT()('Real numbers,', 'Números reales,')}<br/>
             <span style={{ color: 'var(--tangerine)' }}>{useT()('no marketing.', 'sin marketing.')}</span>
           </h2>
-          <p style={{ marginTop: 20, fontSize: 14, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 320 }}>
+          <p style={{ marginTop: 20, fontSize: 15.5, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 320 }}>
             {useT()("Actual specs may vary by style, height, color and availability. Contact our team to confirm the right material package for your project.", 'Las especificaciones reales pueden variar según estilo, altura, color y disponibilidad. Contacta a nuestro equipo para confirmar el paquete de material adecuado para tu proyecto.')}
           </p>
           <a href="estimate.html" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             marginTop: 24, paddingBottom: 4,
-            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
+            fontSize: 14, fontWeight: 700, letterSpacing: '0.2em',
             textTransform: 'uppercase', color: 'var(--white)',
             borderBottom: '1px solid rgba(255,255,255,0.45)',
           }}>
@@ -489,11 +489,11 @@ const MaterialSpecs = ({ data }) => (
             }}>
               <div className="mono" style={{
                 padding: '14px 18px',
-                fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
+                fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--charcoal)', fontWeight: 700,
                 background: '#ffffff',
               }}>{k}</div>
-              <div style={{ padding: '14px 18px', fontSize: 14, color: 'var(--ink)' }}>{v}</div>
+              <div style={{ padding: '14px 18px', fontSize: 15.5, color: 'var(--ink)' }}>{v}</div>
             </div>
           ))}
           </div>
@@ -523,7 +523,7 @@ const MaterialUseCases = ({ data }) => {
         {data.useCasesBlurb && (
           <p style={{
             margin: 0, maxWidth: 340, justifySelf: 'end', textAlign: 'right',
-            fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)',
+            fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)',
           }}>{data.useCasesBlurb}</p>
         )}
       </div>
@@ -536,7 +536,7 @@ const MaterialUseCases = ({ data }) => {
       <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 26 }}>
         <a href="products.html" className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10,
-          fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
+          fontSize: 14, fontWeight: 700, letterSpacing: '0.2em',
           textTransform: 'uppercase', color: 'var(--tangerine)',
         }}>
           {t(`See all ${data.name} applications`, `Ver todas las aplicaciones de ${data.name}`)}

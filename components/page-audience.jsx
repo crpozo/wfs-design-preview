@@ -64,7 +64,7 @@ const HomeownerHero = () => {
           <span style={{ color: 'var(--coral)' }}>{t('for your home.', 'para tu hogar.')}</span>
         </h1>
         <p style={{
-          fontSize: 16, lineHeight: 1.55, maxWidth: 440,
+          fontSize: 17.5, lineHeight: 1.55, maxWidth: 440,
           margin: '0 0 26px', color: 'rgba(255,255,255,0.85)',
         }}>
           {t('Premium manufacturing-direct fencing. We help you plan the project and quote the material for the build.',
@@ -75,7 +75,7 @@ const HomeownerHero = () => {
             display: 'inline-flex', alignItems: 'center', gap: 12,
             padding: '16px 28px',
             background: 'var(--tangerine)', color: 'var(--white)',
-            fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+            fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
             letterSpacing: '0.18em', textTransform: 'uppercase',
             boxShadow: '0 10px 28px rgba(255, 113, 51,0.4)',
             transition: 'transform 0.18s, box-shadow 0.18s',
@@ -89,7 +89,7 @@ const HomeownerHero = () => {
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
             padding: '15px 26px',
             border: '1px solid rgba(255,255,255,0.6)', color: 'var(--white)',
-            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
+            fontSize: 14, fontWeight: 700, letterSpacing: '0.18em',
             textTransform: 'uppercase',
             background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(4px)',
             transition: 'background 0.2s ease',
@@ -110,7 +110,7 @@ const HomeownerHero = () => {
       }}>
         <div className="mono" style={{
           display: 'flex', gap: 24, flexWrap: 'wrap',
-          fontSize: 12, fontWeight: 700, letterSpacing: '0.16em',
+          fontSize: 13.5, fontWeight: 700, letterSpacing: '0.16em',
           textTransform: 'uppercase', color: 'var(--white)',
         }}>
           {checks.map((c, i) => (
@@ -154,7 +154,7 @@ const HomeownerTrustStrip = () => {
               color: 'var(--ink)', letterSpacing: '-0.02em',
             }}>{n}</div>
             <div className="mono" style={{
-              marginTop: 10, fontSize: 12.5, letterSpacing: '0.18em',
+              marginTop: 10, fontSize: 14, letterSpacing: '0.18em',
               textTransform: 'uppercase', color: 'var(--charcoal)',
               fontWeight: 700,
             }}>{t(l)}</div>
@@ -195,10 +195,10 @@ const HomeownerSteps = () => {
       {below && <span aria-hidden style={{ display: 'block', width: 3, height: 26, background: 'var(--tangerine)', marginBottom: 14 }}/>}
       <span style={{ display: 'inline-flex', color: 'var(--ink)', marginBottom: 12 }}>{st.icon}</span>
       <h3 className="display" style={{
-        margin: '0 0 8px', fontSize: 17, fontWeight: 800,
+        margin: '0 0 8px', fontSize: 18.5, fontWeight: 800,
         letterSpacing: '0.01em', textTransform: 'uppercase', color: 'var(--ink)',
       }}>{t(st.title)}</h3>
-      <p style={{ margin: 0, maxWidth: 250, fontSize: 13.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{t(st.body)}</p>
+      <p style={{ margin: 0, maxWidth: 250, fontSize: 15, lineHeight: 1.55, color: 'var(--charcoal)' }}>{t(st.body)}</p>
       {!below && <span aria-hidden style={{ display: 'block', width: 3, height: 26, background: 'var(--tangerine)', marginTop: 14 }}/>}
     </div>
   );
@@ -220,7 +220,7 @@ const HomeownerSteps = () => {
         </h2>
         <p style={{
           margin: 0, maxWidth: 340, justifySelf: 'end', textAlign: 'right',
-          fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)',
+          fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
           {t('Six marks on the tape, from the first sketch to the last post.', 'Seis marcas en la cinta, del primer boceto al último poste.')}
         </p>
@@ -250,7 +250,7 @@ const HomeownerSteps = () => {
           {/* end cap */}
           <span style={{ position: 'absolute', right: 0, top: -14, width: 9, height: 74, background: 'var(--tangerine)' }}/>
           <span className="mono" style={{
-            position: 'absolute', right: 0, top: 82, fontSize: 12, fontWeight: 700,
+            position: 'absolute', right: 0, top: 82, fontSize: 13.5, fontWeight: 700,
             letterSpacing: '0.2em', color: 'var(--tangerine)', textTransform: 'uppercase',
           }}>{t('Done', 'Listo')}</span>
           {/* tick marks */}
@@ -278,7 +278,7 @@ const HomeownerSteps = () => {
       }}>
         <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10,
-          fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
+          fontSize: 14, fontWeight: 700, letterSpacing: '0.2em',
           textTransform: 'uppercase', color: 'var(--tangerine)',
         }}>
           {t('Start drawing your fence', 'Empieza a dibujar tu cerca')}
@@ -306,7 +306,7 @@ const HomeownerStylePicker = () => {
         <div>
           <div className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12,
-            fontSize: 12.5, fontWeight: 700,
+            fontSize: 14, fontWeight: 700,
             letterSpacing: '0.22em',
             color: 'var(--tangerine)',
             textTransform: 'uppercase',
@@ -328,7 +328,7 @@ const HomeownerStylePicker = () => {
         }}>
           <p style={{
             margin: 0, maxWidth: 380,
-            fontSize: 14, lineHeight: 1.55,
+            fontSize: 15.5, lineHeight: 1.55,
             color: 'var(--charcoal)',
             textAlign: 'right',
           }}>
@@ -339,7 +339,7 @@ const HomeownerStylePicker = () => {
           </p>
           <a href="products.html" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            fontSize: 12.5, fontWeight: 700,
+            fontSize: 14, fontWeight: 700,
             letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--ink)',
             borderBottom: '1px solid var(--ink)',
@@ -412,7 +412,7 @@ const HomeownerInstallerSplit = () => {
                 display: 'inline-flex', alignItems: 'center', gap: 8,
                 padding: '6px 12px',
                 background: 'var(--tangerine)', color: 'var(--ink)',
-                fontSize: 12, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+                fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
               }}>{t('What you get', 'Qué obtienes')}</span>
               <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                 <circle cx="12" cy="12" r="9" strokeDasharray="2 1.5"/>
@@ -426,7 +426,7 @@ const HomeownerInstallerSplit = () => {
             }}>{t('Spec-aligned outcomes', 'Resultados alineados con las especificaciones')}</h3>
             <p className="mono" style={{
               margin: '0 0 26px',
-              fontSize: 13, lineHeight: 1.7,
+              fontSize: 14.5, lineHeight: 1.7,
               color: 'rgba(255,255,255,0.7)',
             }}>
               {t(
@@ -445,7 +445,7 @@ const HomeownerInstallerSplit = () => {
               ].map((b, i) => (
                 <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
                   <span style={{ flexShrink: 0, marginTop: 1, color: 'var(--tangerine)' }}>{b.icon}</span>
-                  <span className="mono" style={{ fontSize: 13, lineHeight: 1.55, color: 'var(--white)' }}>{t(b.line)}</span>
+                  <span className="mono" style={{ fontSize: 14.5, lineHeight: 1.55, color: 'var(--white)' }}>{t(b.line)}</span>
                 </li>
               ))}
             </ul>
@@ -453,7 +453,7 @@ const HomeownerInstallerSplit = () => {
               display: 'block', textAlign: 'center', marginTop: 'auto',
               padding: '16px 28px',
               background: 'var(--white)', color: 'var(--ink)',
-              fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+              fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
             }}>{t('Request Your Quote', 'Solicita tu cotización')}</a>
           </HoverCard>
@@ -482,7 +482,7 @@ const HomeownerTestimonial = () => {
             lineHeight: 1.05, letterSpacing: '-0.015em', color: 'var(--ink)',
           }}>{t('From sketch to', 'Del boceto')}<br/>{t('finished fence.', 'a la cerca terminada.')}</h2>
           <p className="mono" style={{
-            margin: 0, fontSize: 13, lineHeight: 1.7,
+            margin: 0, fontSize: 14.5, lineHeight: 1.7,
             color: 'var(--charcoal)', maxWidth: 320,
           }}>
             {t(
@@ -504,11 +504,11 @@ const HomeownerTestimonial = () => {
           <span className="display" style={{
             position: 'absolute', top: -18, left: 28,
             background: 'var(--white)', padding: '0 10px',
-            fontSize: 64, lineHeight: 1, color: 'var(--tangerine)',
+            fontSize: 65.5, lineHeight: 1, color: 'var(--tangerine)',
           }}>“</span>
           <p className="mono" style={{
             margin: '0 0 28px',
-            fontSize: 17, lineHeight: 1.55, color: 'var(--ink)',
+            fontSize: 18.5, lineHeight: 1.55, color: 'var(--ink)',
             fontWeight: 500,
           }}>
             {t(
@@ -524,15 +524,15 @@ const HomeownerTestimonial = () => {
               width: 48, height: 48, borderRadius: '50%',
               background: 'var(--ink)', color: 'var(--white)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'var(--display)', fontWeight: 700, fontSize: 16,
+              fontFamily: 'var(--display)', fontWeight: 700, fontSize: 17.5,
               letterSpacing: '0.02em',
             }}>MR</div>
             <div>
               <div className="display" style={{
-                fontSize: 14, color: 'var(--ink)', letterSpacing: '-0.005em',
+                fontSize: 15.5, color: 'var(--ink)', letterSpacing: '-0.005em',
               }}>Marisol R.</div>
               <div className="mono" style={{
-                marginTop: 4, fontSize: 12, fontWeight: 700,
+                marginTop: 4, fontSize: 13.5, fontWeight: 700,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--charcoal)',
               }}>{t('Cape Coral · 186 LF vinyl + 2 gates', 'Cape Coral · 186 PL vinilo + 2 portones')}</div>
@@ -590,7 +590,7 @@ const HomeownerFAQ = () => {
             </h2>
             <p style={{
               marginTop: 24,
-              fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)',
+              fontSize: 15.5, lineHeight: 1.6, color: 'var(--charcoal)',
               maxWidth: 340, marginBottom: 28,
             }}>
               {t("The four we hear most often. If yours isn't here, call the yard or email", 'Las cuatro que más escuchamos. Si la tuya no está aquí, llama a la sucursal o escribe a')}
@@ -610,7 +610,7 @@ const HomeownerFAQ = () => {
                 color: 'var(--white)',
                 textDecoration: 'none',
                 fontFamily: 'var(--sans)',
-                fontSize: 13, fontWeight: 700,
+                fontSize: 14.5, fontWeight: 700,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 transition: 'background 0.2s ease, transform 0.2s ease',
                 transform: ctaHover ? 'translateY(-1px)' : 'none',
@@ -647,7 +647,7 @@ const HomeownerFAQ = () => {
                   }}>
                     <span style={{ display: 'flex', gap: 20, alignItems: 'baseline' }}>
                       <span className="mono" style={{
-                        fontSize: 12.5, fontWeight: 700,
+                        fontSize: 14, fontWeight: 700,
                         letterSpacing: '0.22em',
                         color: isOpen ? 'var(--tangerine)' : 'var(--charcoal)',
                         transition: 'color 0.25s ease',
@@ -655,7 +655,7 @@ const HomeownerFAQ = () => {
                         {String(i + 1).padStart(2, '0')}
                       </span>
                       <span style={{
-                        fontSize: 17, fontWeight: 500,
+                        fontSize: 18.5, fontWeight: 500,
                         color: 'var(--ink)',
                         letterSpacing: '-0.005em',
                       }}>{t(q)}</span>
@@ -681,7 +681,7 @@ const HomeownerFAQ = () => {
                     transition: 'max-height 0.3s ease',
                   }}>
                     <p style={{
-                      fontSize: 15, lineHeight: 1.6,
+                      fontSize: 16.5, lineHeight: 1.6,
                       color: 'var(--ink)', opacity: 0.78,
                       margin: '0 0 22px', paddingLeft: 40, maxWidth: 640,
                     }}>
@@ -730,7 +730,7 @@ const HomeownerClosingCTA = () => {
         </h2>
         <p className="mono" style={{
           margin: '22px 0 0', maxWidth: 520,
-          fontSize: 13, lineHeight: 1.7,
+          fontSize: 14.5, lineHeight: 1.7,
           color: 'rgba(255,255,255,0.7)',
         }}>
           {t(
@@ -744,7 +744,7 @@ const HomeownerClosingCTA = () => {
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
           padding: '18px 28px',
           background: 'var(--tangerine)', color: 'var(--white)',
-          fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+          fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
           letterSpacing: '0.18em', textTransform: 'uppercase',
         }}>{t('Get a Quote', 'Cotizar')}</a>
         <a href="tel:2396895496" style={{
@@ -752,7 +752,7 @@ const HomeownerClosingCTA = () => {
           padding: '18px 28px',
           background: 'transparent', color: 'var(--white)',
           border: '1.5px solid rgba(255,255,255,0.5)',
-          fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+          fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
           letterSpacing: '0.18em', textTransform: 'uppercase',
         }}>{t('Call (239) 689-5496', 'Llamar (239) 689-5496')}</a>
       </div>
@@ -812,7 +812,7 @@ const ContractorHero = () => {
     <span className="mono" style={{
       position: 'absolute', top: 22, right: 24, zIndex: 2,
       display: 'inline-flex', alignItems: 'center', gap: 8,
-      fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+      fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em',
       textTransform: 'uppercase', color: 'var(--white)',
     }}>
       <span aria-hidden style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>
@@ -852,7 +852,7 @@ const ContractorHero = () => {
           <span style={{ color: 'var(--tangerine)' }}>{t('manufacturer.', 'fabricante.')}</span>
         </h1>
         <p style={{
-          fontSize: 15.5, lineHeight: 1.6, maxWidth: 500,
+          fontSize: 17, lineHeight: 1.6, maxWidth: 500,
           margin: '0 0 26px', color: 'rgba(255,255,255,0.85)',
         }}>
           {t("Partner with Southwest Florida's leading fence manufacturer. ", 'Asóciate con el fabricante de cercas líder del suroeste de Florida. ')}
@@ -866,7 +866,7 @@ const ContractorHero = () => {
             display: 'inline-flex', alignItems: 'center', gap: 12,
             padding: '15px 26px',
             background: 'var(--tangerine)', color: 'var(--white)',
-            fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+            fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
             letterSpacing: '0.18em', textTransform: 'uppercase',
             boxShadow: '0 10px 28px rgba(255, 113, 51,0.4)',
             transition: 'transform 0.18s, box-shadow 0.18s',
@@ -880,7 +880,7 @@ const ContractorHero = () => {
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
             padding: '14px 24px',
             border: '1px solid rgba(255,255,255,0.6)', color: 'var(--white)',
-            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
+            fontSize: 14, fontWeight: 700, letterSpacing: '0.18em',
             textTransform: 'uppercase',
             background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(4px)',
             transition: 'background 0.2s ease',
@@ -895,7 +895,7 @@ const ContractorHero = () => {
       {/* Bottom band: what contractors get */}
       <div style={{ marginTop: 28 }}>
         <div className="mono" style={{
-          fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+          fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em',
           textTransform: 'uppercase', color: 'var(--tangerine)', marginBottom: 14,
         }}>{t('What contractors get', 'Lo que reciben los contratistas')}</div>
         <div style={{
@@ -908,10 +908,10 @@ const ContractorHero = () => {
               borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.18)',
             }}>
               <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, marginBottom: 8 }}>
-                <span className="mono" style={{ fontSize: 12, fontWeight: 700, color: 'var(--tangerine)', letterSpacing: '0.1em' }}>0{i + 1}</span>
-                <span className="display" style={{ fontSize: 18, fontWeight: 800, letterSpacing: '0.01em', textTransform: 'uppercase', color: 'var(--white)' }}>{t(title)}</span>
+                <span className="mono" style={{ fontSize: 13.5, fontWeight: 700, color: 'var(--tangerine)', letterSpacing: '0.1em' }}>0{i + 1}</span>
+                <span className="display" style={{ fontSize: 19.5, fontWeight: 800, letterSpacing: '0.01em', textTransform: 'uppercase', color: 'var(--white)' }}>{t(title)}</span>
               </div>
-              <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'rgba(255,255,255,0.75)' }}>{t(body)}</p>
+              <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: 'rgba(255,255,255,0.75)' }}>{t(body)}</p>
             </div>
           ))}
         </div>
@@ -946,7 +946,7 @@ const ContractorStatsStrip = () => {
               color: 'var(--ink)', letterSpacing: '-0.02em',
             }}>{typeof n === 'string' ? n : t(n)}</div>
             <div className="mono" style={{
-              marginTop: 10, fontSize: 12.5, letterSpacing: '0.18em',
+              marginTop: 10, fontSize: 14, letterSpacing: '0.18em',
               textTransform: 'uppercase', color: 'var(--charcoal)',
               fontWeight: 700,
             }}>{t(l)}</div>
@@ -995,7 +995,7 @@ const ContractorBenefits = () => {
       {/* Eyebrow */}
       <div className="mono" style={{
         display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 22,
-        fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+        fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
         textTransform: 'uppercase', color: 'var(--blue-ice)',
       }}>
         <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
@@ -1016,7 +1016,7 @@ const ContractorBenefits = () => {
         </h2>
         <p style={{
           margin: 0, maxWidth: 320, justifySelf: 'end', textAlign: 'right',
-          fontSize: 14.5, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)',
+          fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)',
         }}>
           {t('Six reasons contractors keep their POs local.', 'Seis razones por las que los contratistas mantienen sus órdenes locales.')}
         </p>
@@ -1034,10 +1034,10 @@ const ContractorBenefits = () => {
               {PERK_ICONS[i]}
             </span>
             <h3 className="display" style={{
-              margin: '0 0 12px', fontSize: 19, lineHeight: 1.1, fontWeight: 800,
+              margin: '0 0 12px', fontSize: 20.5, lineHeight: 1.1, fontWeight: 800,
               textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--white)',
             }}>{t(title)}</h3>
-            <p style={{ margin: 0, maxWidth: 340, fontSize: 14, lineHeight: 1.65, color: 'rgba(255,255,255,0.75)' }}>{t(body)}</p>
+            <p style={{ margin: 0, maxWidth: 340, fontSize: 15.5, lineHeight: 1.65, color: 'rgba(255,255,255,0.75)' }}>{t(body)}</p>
           </div>
         ))}
       </div>
@@ -1113,16 +1113,16 @@ const ContractorHowItWorks = () => {
                   width: 36, height: 36,
                   background: 'var(--tangerine)',
                   color: 'var(--white)',
-                  fontSize: 12.5, fontWeight: 700, letterSpacing: '0.05em',
+                  fontSize: 14, fontWeight: 700, letterSpacing: '0.05em',
                 }}>{s.n}</span>
                 <span style={{ color: 'var(--ink)' }}>{s.svg}</span>
               </div>
               <h3 className="display" style={{
-                margin: '0 0 10px', fontSize: 18,
+                margin: '0 0 10px', fontSize: 19.5,
                 letterSpacing: '-0.005em', color: 'var(--ink)',
               }}>{t(s.title)}</h3>
               <p className="mono" style={{
-                margin: 0, fontSize: 13, lineHeight: 1.6,
+                margin: 0, fontSize: 14.5, lineHeight: 1.6,
                 color: 'var(--charcoal)',
               }}>{t(s.body)}</p>
             </div>
@@ -1183,7 +1183,7 @@ const ContractorWholesaleKit = () => {
           }}>{t('The wholesale kit', 'El kit mayorista')}</h2>
           <p style={{
             margin: 0, maxWidth: 400, justifySelf: 'end', textAlign: 'right',
-            fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)',
+            fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)',
           }}>
             {t(
               'Five things every active partner walks away with, not someday, on day one.',
@@ -1200,7 +1200,7 @@ const ContractorWholesaleKit = () => {
             borderBottom: '1px solid rgba(0,16,17,0.1)',
           }}>
             <span className="display wfs-usecase-num" aria-hidden style={{
-              fontSize: 60, lineHeight: 1, fontWeight: 800,
+              fontSize: 61.5, lineHeight: 1, fontWeight: 800,
               color: 'transparent', WebkitTextStroke: '1.5px rgba(38,49,102,0.32)',
             }}>0{i + 1}</span>
             <h3 className="display" style={{
@@ -1211,7 +1211,7 @@ const ContractorWholesaleKit = () => {
               <span aria-hidden style={{ display: 'inline-flex', color: 'var(--tangerine)', flexShrink: 0 }}>{it.svg}</span>
               {t(it.title)}
             </h3>
-            <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>{t(it.body)}</p>
+            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>{t(it.body)}</p>
           </div>
         ))}
       </div>
@@ -1238,7 +1238,7 @@ const ContractorTestimonial = () => {
             lineHeight: 1.05, letterSpacing: '-0.015em', color: 'var(--ink)',
           }}>{t('What contractors', 'Lo que los contratistas')}<br/>{t('tell us.', 'nos cuentan.')}</h2>
           <p className="mono" style={{
-            margin: 0, fontSize: 13, lineHeight: 1.7,
+            margin: 0, fontSize: 14.5, lineHeight: 1.7,
             color: 'var(--charcoal)', maxWidth: 320,
           }}>
             {t(
@@ -1258,11 +1258,11 @@ const ContractorTestimonial = () => {
           <span className="display" style={{
             position: 'absolute', top: -22, left: 28,
             background: 'var(--ink)', padding: '0 10px',
-            fontSize: 64, lineHeight: 1, color: 'var(--tangerine)',
+            fontSize: 65.5, lineHeight: 1, color: 'var(--tangerine)',
           }}>“</span>
           <p className="mono" style={{
             margin: '0 0 28px',
-            fontSize: 17, lineHeight: 1.55, color: 'var(--white)',
+            fontSize: 18.5, lineHeight: 1.55, color: 'var(--white)',
             fontWeight: 500,
           }}>
             {t(
@@ -1278,15 +1278,15 @@ const ContractorTestimonial = () => {
               width: 48, height: 48, borderRadius: '50%',
               background: 'var(--tangerine)', color: 'var(--white)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontFamily: 'var(--display)', fontWeight: 700, fontSize: 16,
+              fontFamily: 'var(--display)', fontWeight: 700, fontSize: 17.5,
               letterSpacing: '0.02em',
             }}>JT</div>
             <div>
               <div className="display" style={{
-                fontSize: 14, color: 'var(--white)', letterSpacing: '-0.005em',
+                fontSize: 15.5, color: 'var(--white)', letterSpacing: '-0.005em',
               }}>Jorge T., Lead Fence LLC</div>
               <div className="mono" style={{
-                marginTop: 4, fontSize: 12, fontWeight: 700,
+                marginTop: 4, fontSize: 13.5, fontWeight: 700,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.6)',
               }}>{t("Fort Myers · Pro tier · since '23", "Fort Myers · Nivel Pro · desde '23")}</div>
@@ -1336,7 +1336,7 @@ const ContractorClosingCTA = () => {
         </h2>
         <p className="mono" style={{
           margin: '24px 0 32px', maxWidth: 520,
-          fontSize: 13, lineHeight: 1.7,
+          fontSize: 14.5, lineHeight: 1.7,
           color: 'rgba(255,255,255,0.7)',
         }}>
           {t(
@@ -1349,7 +1349,7 @@ const ContractorClosingCTA = () => {
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
             padding: '18px 32px',
             background: 'var(--tangerine)', color: 'var(--white)',
-            fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+            fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
             letterSpacing: '0.18em', textTransform: 'uppercase',
           }}>{t('Open an Account', 'Abrir una cuenta')}</a>
           <a href="tel:2396895496" style={{
@@ -1357,7 +1357,7 @@ const ContractorClosingCTA = () => {
             padding: '18px 32px',
             background: 'transparent', color: 'var(--white)',
             border: '1.5px solid rgba(255,255,255,0.5)',
-            fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 700,
+            fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
             letterSpacing: '0.18em', textTransform: 'uppercase',
           }}>(239) 689-5496</a>
         </div>
@@ -1370,7 +1370,7 @@ const ContractorClosingCTA = () => {
         padding: '32px 32px 28px',
       }}>
         <div className="mono" style={{
-          fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+          fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em',
           color: 'var(--tangerine)', textTransform: 'uppercase',
           marginBottom: 18,
           display: 'flex', alignItems: 'center', gap: 10,
@@ -1400,7 +1400,7 @@ const ContractorClosingCTA = () => {
                 </svg>
               </span>
               <span className="mono" style={{
-                fontSize: 13, fontWeight: 500,
+                fontSize: 14.5, fontWeight: 500,
                 color: 'var(--white)',
               }}>{t(line)}</span>
             </li>
@@ -1409,7 +1409,7 @@ const ContractorClosingCTA = () => {
         <div className="mono" style={{
           marginTop: 22, paddingTop: 16,
           borderTop: '1px solid rgba(255,255,255,0.18)',
-          fontSize: 12, fontWeight: 700, letterSpacing: '0.18em',
+          fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em',
           textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)',
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
         }}>

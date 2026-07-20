@@ -37,7 +37,7 @@ const InstallerMarquee = () => {
       <div className="container">
         <p className="mono" style={{
           margin: '0 0 32px',
-          fontSize: 12.5, letterSpacing: '0.18em', textTransform: 'uppercase',
+          fontSize: 14, letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'rgba(0,16,17,0.4)', fontWeight: 600,
         }}>
           {t('The #1 Choice of Florida’s Top Fence Installers', 'La opción #1 de los mejores instaladores de cercas de Florida')}
@@ -157,7 +157,7 @@ const ProductMarquee = () => {
         </span>
         <a href="products.html" className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 8,
-          fontSize: 12, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
+          fontSize: 13.5, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
           color: 'var(--ink)', borderBottom: '1px solid var(--ink)', paddingBottom: 3,
         }}>
           {t('Full catalog', 'Catálogo completo')}
@@ -177,7 +177,7 @@ const ProductMarquee = () => {
             <div key={i} style={{
               flexShrink: 0, width: 'clamp(215px, 24vw, 270px)',
               padding: '18px 18px 20px',
-              background: 'var(--white)', border: '1px solid rgba(38,49,102,0.14)',
+              background: 'var(--white)',
             }}>
               <div style={{
                 height: 'clamp(140px, 15vw, 175px)',
@@ -187,11 +187,11 @@ const ProductMarquee = () => {
                   style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
               </div>
               <h3 className="display" style={{
-                margin: '14px 0 0', fontSize: 16, lineHeight: 1.2,
+                margin: '14px 0 0', fontSize: 17.5, lineHeight: 1.2,
                 letterSpacing: '-0.01em', color: 'var(--ink)', textAlign: 'center',
               }}>{t(p.name)}</h3>
               <p className="mono" style={{
-                margin: '5px 0 0', fontSize: 12, lineHeight: 1.4,
+                margin: '5px 0 0', fontSize: 13.5, lineHeight: 1.4,
                 color: 'rgba(0,16,17,0.55)', textAlign: 'center',
               }}>{t(p.spec)}</p>
             </div>
@@ -284,17 +284,17 @@ const FeaturedGrid = () => {
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div className="mono" style={{
-                marginTop: 16, fontSize: 12, letterSpacing: '0.16em',
+                marginTop: 16, fontSize: 13.5, letterSpacing: '0.16em',
                 textTransform: 'uppercase', color: 'var(--charcoal)',
               }}>{t(p.cat)} · {p.height}</div>
               <h3 className="display" style={{
-                margin: '8px 0 0', fontSize: 21, lineHeight: 1.15, fontWeight: 700,
+                margin: '8px 0 0', fontSize: 22.5, lineHeight: 1.15, fontWeight: 700,
                 color: 'var(--ink)',
               }}>{t(p.name)}</h3>
               <a href="estimate.html" className="mono" style={{
                 marginTop: 14,
                 display: 'inline-flex', alignItems: 'center', gap: 8,
-                fontSize: 12.5, fontWeight: 700, letterSpacing: '0.16em',
+                fontSize: 14, fontWeight: 700, letterSpacing: '0.16em',
                 textTransform: 'uppercase', color: 'var(--tangerine)',
               }}>
                 {t('Request quote', 'Solicitar cotización')}
@@ -321,7 +321,7 @@ const FeaturedGrid = () => {
             }}/>
           </span>
           <span className="mono" style={{
-            fontSize: 13, letterSpacing: '0.14em', color: 'var(--charcoal)', whiteSpace: 'nowrap',
+            fontSize: 14.5, letterSpacing: '0.14em', color: 'var(--charcoal)', whiteSpace: 'nowrap',
           }}>{start + 1}–{Math.min(start + PER, FEATURED.length)} / {FEATURED.length}</span>
         </div>
       </div>
@@ -364,14 +364,14 @@ const ProjectCard = ({ p, i, layout }) => {
         display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       }}>
         <div className="mono" style={{
-          fontSize: 12, letterSpacing: '0.18em',
+          fontSize: 13.5, letterSpacing: '0.18em',
           color: 'var(--ink)', background: 'var(--white)',
           padding: '5px 9px', fontWeight: 600,
         }}>
           {String(i + 1).padStart(2, '0')} / {p.year}
         </div>
         <div className="mono" style={{
-          fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
+          fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'var(--white)', background: 'rgba(0,16,17,0.55)',
           padding: '5px 9px', backdropFilter: 'blur(6px)',
         }}>
@@ -397,11 +397,11 @@ const ProjectCard = ({ p, i, layout }) => {
           marginTop: hover ? 14 : 0,
         }}>
           <p style={{
-            margin: 0, fontSize: 13, lineHeight: 1.55,
+            margin: 0, fontSize: 14.5, lineHeight: 1.55,
             color: 'var(--alice-blue)',
           }}>{t(p.type)}</p>
           <p style={{
-            margin: '6px 0 0', fontSize: 12.5, fontFamily: 'var(--mono)',
+            margin: '6px 0 0', fontSize: 14, fontFamily: 'var(--mono)',
             letterSpacing: '0.06em', color: 'rgba(255,255,255,0.65)',
           }}>{t('Installed by', 'Instalado por')} {p.contractor}</p>
         </div>
@@ -460,7 +460,7 @@ const FeaturedProject = ({ p, num, total }) => {
         }}>{t(p.name)}</h3>
         <p style={{
           margin: '12px 0 0', maxWidth: 460,
-          fontSize: 14, lineHeight: 1.55, color: 'var(--alice-blue)',
+          fontSize: 15.5, lineHeight: 1.55, color: 'var(--alice-blue)',
         }}>{t(p.type)}</p>
 
         {/* Spec strip */}
@@ -479,10 +479,10 @@ const FeaturedProject = ({ p, num, total }) => {
               borderLeft: i ? '1px solid rgba(255,255,255,0.18)' : 'none',
             }}>
               <div className="mono" style={{
-                fontSize: 11.5, letterSpacing: '0.18em', textTransform: 'uppercase',
+                fontSize: 13, letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'rgba(255,255,255,0.55)', marginBottom: 5,
               }}>{t(k)}</div>
-              <div className="display" style={{ fontSize: 16, color: 'var(--white)', letterSpacing: '-0.01em' }}>{v}</div>
+              <div className="display" style={{ fontSize: 17.5, color: 'var(--white)', letterSpacing: '-0.01em' }}>{v}</div>
             </div>
           ))}
         </div>
@@ -494,7 +494,7 @@ const FeaturedProject = ({ p, num, total }) => {
         }}>
           <span className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12,
-            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
+            fontSize: 14, fontWeight: 700, letterSpacing: '0.18em',
             textTransform: 'uppercase', color: 'var(--white)',
           }}>
             {t('View project', 'Ver proyecto')}
@@ -536,12 +536,12 @@ const ProjectListRow = ({ p, active, onSelect }) => {
       </span>
       <span style={{ display: 'block', minWidth: 0 }}>
         <span className="display" style={{
-          display: 'block', fontSize: 15.5, lineHeight: 1.1, letterSpacing: '-0.01em',
+          display: 'block', fontSize: 17, lineHeight: 1.1, letterSpacing: '-0.01em',
           color: 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
         }}>{t(p.name)}</span>
       </span>
       <span className="mono" style={{
-        fontSize: 11.5, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700,
+        fontSize: 13, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700,
         color: active ? 'var(--ink)' : 'var(--charcoal)', flexShrink: 0,
       }}>{t(MAT_LABELS[p.material] || p.material)}</span>
     </button>
@@ -559,7 +559,7 @@ const PageBtn = ({ active, disabled, onClick, label, arrow }) => {
     style={{
       width: 32, height: 32,
       display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-      fontSize: 12.5, fontWeight: 700, letterSpacing: '0.04em',
+      fontSize: 14, fontWeight: 700, letterSpacing: '0.04em',
       border: '1px solid',
       borderColor: active ? 'var(--ink)' : 'rgba(0,16,17,0.18)',
       background: active ? 'var(--ink)' : 'transparent',
@@ -597,7 +597,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
     { name: { EN: 'North Fort Myers Depot', ES: 'Depósito North Fort Myers' }, loc: 'North Fort Myers, FL', size: '0.8 mi', material: 'Chain Link', type: { EN: 'Vinyl-coated black, 8 ft perimeter', ES: 'Recubierto de vinilo negro, perímetro de 8 ft' }, contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/cl-fence-black.jpg' },
   ];
 
-  const PER = 3;
+  const PER = 5;
   const pages = Math.ceil(projects.length / PER);
   const [page, setPage] = React.useState(0);
   const start = page * PER;
@@ -633,7 +633,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
               <span style={{ color: 'var(--tangerine)' }}>{t('examples.', 'producto.')}</span>
             </h2>
             <p className="mono" style={{
-              margin: '12px 0 0', fontSize: 12.5, letterSpacing: '0.16em',
+              margin: '12px 0 0', fontSize: 14, letterSpacing: '0.16em',
               textTransform: 'uppercase', color: 'var(--charcoal)',
             }}>
               {t('Representative product photos — not customer projects.', 'Fotos representativas de producto, no proyectos de clientes.')}
@@ -655,7 +655,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
             {Array.from({ length: pages }).map((_, pg) => (
               <div key={pg} aria-hidden={pg !== page} style={{
                 flex: '0 0 100%', minWidth: 0,
-                display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 34,
+                display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 20,
               }}>
                 {projects.slice(pg * PER, pg * PER + PER).map((p, idx) => (
                   <article key={p.name.EN || p.name} style={{
@@ -669,17 +669,17 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
                         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <div className="mono" style={{
-                      marginTop: 16, fontSize: 12, letterSpacing: '0.16em',
+                      marginTop: 16, fontSize: 13.5, letterSpacing: '0.16em',
                       textTransform: 'uppercase', color: 'var(--charcoal)',
                     }}>{t(MAT_LABELS[p.material] || p.material)}</div>
                     <h3 className="display" style={{
-                      margin: '8px 0 0', fontSize: 19, lineHeight: 1.25, fontWeight: 700,
+                      margin: '8px 0 0', fontSize: 20.5, lineHeight: 1.25, fontWeight: 700,
                       color: 'var(--ink)',
                     }}>{t(p.type)}</h3>
                     <a href="estimate.html#contact" className="mono" style={{
                       marginTop: 14,
                       display: 'inline-flex', alignItems: 'center', gap: 8,
-                      fontSize: 12.5, fontWeight: 700, letterSpacing: '0.16em',
+                      fontSize: 14, fontWeight: 700, letterSpacing: '0.16em',
                       textTransform: 'uppercase', color: 'var(--tangerine)',
                     }}>
                       {t('Request quote', 'Solicitar cotización')}
@@ -704,7 +704,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
             }}/>
           </span>
           <span className="mono" style={{
-            fontSize: 13, letterSpacing: '0.14em', color: 'var(--charcoal)', whiteSpace: 'nowrap',
+            fontSize: 14.5, letterSpacing: '0.14em', color: 'var(--charcoal)', whiteSpace: 'nowrap',
           }}>{start + 1}–{Math.min(start + PER, projects.length)} / {projects.length}</span>
         </div>
       </div>
@@ -737,7 +737,7 @@ const Calculator = () => {
             <h2 className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 60px)', margin: '0 0 24px' }}>
               {t('5-minute', 'Calculadora de cercas')}<br/>{t('fence calculator.', 'en 5 minutos.')}
             </h2>
-            <p style={{ fontSize: 17, lineHeight: 1.5, color: 'var(--alice-blue)', maxWidth: 420, marginBottom: 32 }}>
+            <p style={{ fontSize: 18.5, lineHeight: 1.5, color: 'var(--alice-blue)', maxWidth: 420, marginBottom: 32 }}>
               {t('Get a real-time materials estimate. We follow up with a binding quote within 24 hours, including delivery and any local code adjustments.', 'Obtén un estimado de materiales en tiempo real. Damos seguimiento con una cotización en firme dentro de 24 horas, incluyendo entrega y cualquier ajuste por normativa local.')}
             </p>
             <div style={{ display: 'grid', gap: 16, maxWidth: 380 }}>
@@ -747,8 +747,8 @@ const Calculator = () => {
                 [t('NO COMMITMENT', 'SIN COMPROMISO'), t('Save the estimate, share with your contractor.', 'Guarda el estimado y compártelo con tu contratista.')],
               ].map(([k, v], i) => (
                 <div key={i} style={{ borderTop: '1px solid rgba(255,255,255,0.18)', paddingTop: 14 }}>
-                  <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', color: 'var(--tangerine)', marginBottom: 6 }}>{k}</div>
-                  <div style={{ fontSize: 14, color: 'var(--alice-blue)', lineHeight: 1.4 }}>{v}</div>
+                  <div className="mono" style={{ fontSize: 14, letterSpacing: '0.14em', color: 'var(--tangerine)', marginBottom: 6 }}>{k}</div>
+                  <div style={{ fontSize: 15.5, color: 'var(--alice-blue)', lineHeight: 1.4 }}>{v}</div>
                 </div>
               ))}
             </div>
@@ -761,7 +761,7 @@ const Calculator = () => {
             borderRadius: 'var(--radius-lg)',
             padding: 36,
           }}>
-            <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 24, display: 'flex', justifyContent: 'space-between' }}>
+            <div className="mono" style={{ fontSize: 14, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 24, display: 'flex', justifyContent: 'space-between' }}>
               <span>{t('Quick estimate', 'Estimado rápido')}</span>
               <span>WFS-CALC v2.4</span>
             </div>
@@ -769,13 +769,13 @@ const Calculator = () => {
             <div style={{ display: 'grid', gap: 24 }}>
               {/* Type */}
               <div>
-                <label style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
+                <label style={{ fontSize: 14.5, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
                   {t('Fence type', 'Tipo de cerca')}
                 </label>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }}>
                   {[['chain-link', 'Chain Link', 'Malla ciclónica'], ['aluminum', 'Aluminum', 'Aluminio'], ['vinyl', 'Vinyl', 'Vinilo'], ['metal', 'Metal', 'Metal']].map(([id, label, labelEs]) => (
                     <button key={id} onClick={() => setType(id)} style={{
-                      padding: '14px 10px', fontSize: 13,
+                      padding: '14px 10px', fontSize: 14.5,
                       background: type === id ? 'var(--ink)' : 'var(--white)',
                       color: type === id ? 'var(--parchment)' : 'var(--ink)',
                       border: '1px solid rgba(0,16,17,0.12)',
@@ -788,10 +788,10 @@ const Calculator = () => {
               {/* Length slider */}
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 10 }}>
-                  <label style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>
+                  <label style={{ fontSize: 14.5, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>
                     {t('Linear feet', 'Pies lineales')}
                   </label>
-                  <span className="mono" style={{ fontSize: 13, fontWeight: 500 }}>{length} ft</span>
+                  <span className="mono" style={{ fontSize: 14.5, fontWeight: 500 }}>{length} ft</span>
                 </div>
                 <input type="range" min="20" max="2000" step="10" value={length} onChange={e => setLength(+e.target.value)} style={{ width: '100%', accentColor: 'var(--tangerine)' }}/>
               </div>
@@ -799,13 +799,13 @@ const Calculator = () => {
               {/* Height + gates row */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
                 <div>
-                  <label style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
+                  <label style={{ fontSize: 14.5, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
                     {t('Height (ft)', 'Altura (ft)')}
                   </label>
                   <div style={{ display: 'flex', gap: 4 }}>
                     {[4, 6, 8, 10].map(h => (
                       <button key={h} onClick={() => setHeight(h)} style={{
-                        flex: 1, padding: '12px 0', fontSize: 13,
+                        flex: 1, padding: '12px 0', fontSize: 14.5,
                         background: height === h ? 'var(--ink)' : 'var(--white)',
                         color: height === h ? 'var(--parchment)' : 'var(--ink)',
                         border: '1px solid rgba(0,16,17,0.12)',
@@ -815,13 +815,13 @@ const Calculator = () => {
                   </div>
                 </div>
                 <div>
-                  <label style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
+                  <label style={{ fontSize: 14.5, fontFamily: 'var(--mono)', letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 10, display: 'block' }}>
                     {t('Gates', 'Portones')}
                   </label>
                   <div style={{ display: 'flex', gap: 4 }}>
                     {[0, 1, 2, 3].map(g => (
                       <button key={g} onClick={() => setGates(g)} style={{
-                        flex: 1, padding: '12px 0', fontSize: 13,
+                        flex: 1, padding: '12px 0', fontSize: 14.5,
                         background: gates === g ? 'var(--ink)' : 'var(--white)',
                         color: gates === g ? 'var(--parchment)' : 'var(--ink)',
                         border: '1px solid rgba(0,16,17,0.12)',
@@ -834,17 +834,17 @@ const Calculator = () => {
 
               {/* Result */}
               <div style={{ marginTop: 8, padding: '24px 0 0', borderTop: '1px solid rgba(0,16,17,0.12)' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: 'var(--charcoal)', marginBottom: 8 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14.5, color: 'var(--charcoal)', marginBottom: 8 }}>
                   <span>{t('Materials', 'Materiales')} ({length} ft × {height}' {type})</span>
                   <span className="mono">${matCost.toLocaleString()}</span>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 13, color: 'var(--charcoal)', marginBottom: 16 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14.5, color: 'var(--charcoal)', marginBottom: 16 }}>
                   <span>{t('Gates', 'Portones')} ({gates})</span>
                   <span className="mono">${gateCost.toLocaleString()}</span>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-                  <span className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>{t('Estimated total', 'Total estimado')}</span>
-                  <span className="display" style={{ fontSize: 44, color: 'var(--ink)' }}>
+                  <span className="mono" style={{ fontSize: 14, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>{t('Estimated total', 'Total estimado')}</span>
+                  <span className="display" style={{ fontSize: 45.5, color: 'var(--ink)' }}>
                     ${total.toLocaleString()}
                   </span>
                 </div>
@@ -897,7 +897,7 @@ const ServiceAreas = () => {
           </div>
           <p style={{
             margin: 0, maxWidth: 360, justifySelf: 'end',
-            fontSize: 14, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
+            fontSize: 15.5, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
           }}>
             {t(
               'Two yards in Fort Myers and Port Charlotte, same-day pickup, with delivery available across the state of Florida.',
@@ -951,7 +951,7 @@ const ServiceAreas = () => {
                   left: p.labelLeft ? `calc(${p.xPct}% - 16px)` : `calc(${p.xPct}% + 16px)`,
                   top: `${p.yPct}%`,
                   transform: p.labelLeft ? 'translate(-100%, -50%)' : 'translate(0, -50%)',
-                  fontSize: 12, fontWeight: 700, letterSpacing: '0.18em',
+                  fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em',
                   textTransform: 'uppercase',
                   color: 'var(--ink)', background: 'var(--white)',
                   padding: '5px 9px', whiteSpace: 'nowrap',
@@ -965,7 +965,7 @@ const ServiceAreas = () => {
             <div className="mono" style={{
               position: 'absolute', top: 18, left: 18,
               display: 'flex', alignItems: 'center', gap: 10,
-              fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
+              fontSize: 13.5, letterSpacing: '0.22em', textTransform: 'uppercase',
               color: 'var(--alice-blue)', fontWeight: 700,
             }}>
               <span>{t('State of Florida', 'Estado de Florida')}</span>
@@ -986,7 +986,7 @@ const ServiceAreas = () => {
                 border: '2px solid var(--ink)',
               }}/>
               <span className="mono" style={{
-                fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
+                fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--alice-blue)', fontWeight: 700,
               }}>{t('WFS yard locations', 'Sucursales de WFS')}</span>
             </div>
@@ -1006,20 +1006,20 @@ const ServiceAreas = () => {
                 display: 'flex', alignItems: 'center', gap: 16,
               }}>
                 <div className="mono" style={{
-                  fontSize: 12, letterSpacing: '0.22em',
+                  fontSize: 13.5, letterSpacing: '0.22em',
                   color: 'var(--tangerine)', textTransform: 'uppercase',
                   fontWeight: 700, minWidth: 22,
                 }}>0{i+1}</div>
                 <div className="wfs-yard-body" style={{ flex: 1, minWidth: 0 }}>
                   <div className="display" style={{
-                    fontSize: 17, lineHeight: 1.1, marginBottom: 4,
+                    fontSize: 18.5, lineHeight: 1.1, marginBottom: 4,
                   }}>{y.city}</div>
                   <div style={{
-                    fontSize: 13, color: 'var(--charcoal)', lineHeight: 1.4,
+                    fontSize: 14.5, color: 'var(--charcoal)', lineHeight: 1.4,
                   }}>{y.addr}</div>
                 </div>
                 <div className="mono wfs-yard-meta" style={{
-                  fontSize: 12.5, color: 'var(--ink)',
+                  fontSize: 14, color: 'var(--ink)',
                   letterSpacing: '0.06em', textAlign: 'right', fontWeight: 600,
                   whiteSpace: 'nowrap',
                 }}>{y.phone}</div>
@@ -1038,11 +1038,11 @@ const FinalCTA = () => {
   const inputStyle = {
     width: '100%', padding: '14px 16px',
     border: '1px solid rgba(0,16,17,0.25)', background: 'var(--white)',
-    fontFamily: 'var(--sans)', fontSize: 14, color: 'var(--ink)',
+    fontFamily: 'var(--sans)', fontSize: 15.5, color: 'var(--ink)',
     outline: 'none', borderRadius: 0,
   };
   const labelStyle = {
-    fontFamily: 'var(--mono)', fontSize: 12, letterSpacing: '0.18em',
+    fontFamily: 'var(--mono)', fontSize: 13.5, letterSpacing: '0.18em',
     textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 600,
     marginBottom: 6, display: 'block',
   };
@@ -1079,7 +1079,7 @@ const FinalCTA = () => {
           </div>
           <p style={{
             margin: 0, maxWidth: 360, justifySelf: 'end',
-            fontSize: 14, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
+            fontSize: 15.5, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
           }}>
             {t(
               "Tell us about your project, we'll come back within 24 hours with stock, pricing and lead time.",
@@ -1093,23 +1093,23 @@ const FinalCTA = () => {
           <div style={{ paddingTop: 8 }}>
             <div style={{ marginBottom: 32 }}>
               <div style={labelStyle}>{t('Call us', 'Llámanos')}</div>
-              <a href="tel:2396895496" className="display" style={{ fontSize: 28, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>(239) 689-5496</a>
-              <div style={{ fontSize: 13, color: 'var(--charcoal)', marginBottom: 12 }}>{t('Fort Myers yard', 'Sucursal Fort Myers')}</div>
-              <a href="tel:9413916613" className="display" style={{ fontSize: 28, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>(941) 391-6613</a>
-              <div style={{ fontSize: 13, color: 'var(--charcoal)' }}>{t('Port Charlotte yard', 'Sucursal Port Charlotte')}</div>
-              <div style={{ fontSize: 13, color: 'var(--charcoal)', marginTop: 12 }}>{t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm')}</div>
+              <a href="tel:2396895496" className="display" style={{ fontSize: 29.5, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>(239) 689-5496</a>
+              <div style={{ fontSize: 14.5, color: 'var(--charcoal)', marginBottom: 12 }}>{t('Fort Myers yard', 'Sucursal Fort Myers')}</div>
+              <a href="tel:9413916613" className="display" style={{ fontSize: 29.5, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>(941) 391-6613</a>
+              <div style={{ fontSize: 14.5, color: 'var(--charcoal)' }}>{t('Port Charlotte yard', 'Sucursal Port Charlotte')}</div>
+              <div style={{ fontSize: 14.5, color: 'var(--charcoal)', marginTop: 12 }}>{t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm')}</div>
             </div>
             <div style={{ marginBottom: 32 }}>
               <div style={labelStyle}>{t('Email', 'Correo')}</div>
-              <a href="mailto:sales@westernfencesupply.com" style={{ fontSize: 16, color: 'var(--ink)' }}>sales@westernfencesupply.com</a>
+              <a href="mailto:sales@westernfencesupply.com" style={{ fontSize: 17.5, color: 'var(--ink)' }}>sales@westernfencesupply.com</a>
             </div>
             <div style={{ marginBottom: 32 }}>
               <div style={labelStyle}>{t('Visit', 'Visítanos')}</div>
-              <div style={{ fontSize: 14, color: 'var(--ink)', lineHeight: 1.5, marginBottom: 14 }}>2621 Fowler St<br/>Fort Myers, FL 33901</div>
-              <div style={{ fontSize: 14, color: 'var(--ink)', lineHeight: 1.5 }}>1145 Enterprise Dr<br/>Port Charlotte, FL 33953</div>
+              <div style={{ fontSize: 15.5, color: 'var(--ink)', lineHeight: 1.5, marginBottom: 14 }}>2621 Fowler St<br/>Fort Myers, FL 33901</div>
+              <div style={{ fontSize: 15.5, color: 'var(--ink)', lineHeight: 1.5 }}>1145 Enterprise Dr<br/>Port Charlotte, FL 33953</div>
             </div>
             <div style={{ paddingTop: 24, borderTop: '1px solid rgba(0,16,17,0.15)' }}>
-              <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.16em', color: 'var(--ink)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 10 }}>
+              <div className="mono" style={{ fontSize: 14, letterSpacing: '0.16em', color: 'var(--ink)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ width: 8, height: 8, background: '#ff7133', borderRadius: '50%' }}/>
                 {t('Get a detailed quote', 'Pide tu cotización')}
               </div>
@@ -1123,9 +1123,9 @@ const FinalCTA = () => {
           }}>
             {submitted ? (
               <div style={{ padding: '64px 0', textAlign: 'center' }}>
-                <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.18em', color: 'var(--tangerine)', marginBottom: 16, textTransform: 'uppercase', fontWeight: 700 }}>{t('Submitted', 'Enviado')}</div>
-                <h3 className="display" style={{ fontSize: 32, margin: '0 0 12px', lineHeight: 1.1 }}>{t("Thanks, we'll be in touch.", 'Gracias, pronto te contactamos.')}</h3>
-                <p style={{ fontSize: 14, color: 'var(--charcoal)', maxWidth: 360, margin: '0 auto' }}>{t('One of our reps will reach out within 24 hours with stock, pricing and lead time for your project.', 'Uno de nuestros representantes se comunicará en 24 horas con stock, precios y plazo de entrega para tu proyecto.')}</p>
+                <div className="mono" style={{ fontSize: 14, letterSpacing: '0.18em', color: 'var(--tangerine)', marginBottom: 16, textTransform: 'uppercase', fontWeight: 700 }}>{t('Submitted', 'Enviado')}</div>
+                <h3 className="display" style={{ fontSize: 33.5, margin: '0 0 12px', lineHeight: 1.1 }}>{t("Thanks, we'll be in touch.", 'Gracias, pronto te contactamos.')}</h3>
+                <p style={{ fontSize: 15.5, color: 'var(--charcoal)', maxWidth: 360, margin: '0 auto' }}>{t('One of our reps will reach out within 24 hours with stock, pricing and lead time for your project.', 'Uno de nuestros representantes se comunicará en 24 horas con stock, precios y plazo de entrega para tu proyecto.')}</p>
               </div>
             ) : (
               <>
@@ -1175,10 +1175,10 @@ const FinalCTA = () => {
                   <textarea rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: 100 }} placeholder={t('Approx. linear feet, height, location/zip, timeline, anything else relevant…', 'Aprox. pies lineales, altura, ubicación/código postal, plazo, cualquier otro detalle relevante…')}/>
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-                  <p className="mono" style={{ margin: 0, fontSize: 12.5, letterSpacing: '0.04em', color: 'var(--charcoal)', maxWidth: 280 }}>
+                  <p className="mono" style={{ margin: 0, fontSize: 14, letterSpacing: '0.04em', color: 'var(--charcoal)', maxWidth: 280 }}>
                     {t('By submitting, you agree to be contacted by Western Fence Supply.', 'Al enviar, aceptas ser contactado por Western Fence Supply.')}
                   </p>
-                  <button type="submit" className="btn btn-dark" style={{ fontSize: 14, padding: '16px 24px' }}>
+                  <button type="submit" className="btn btn-dark" style={{ fontSize: 15.5, padding: '16px 24px' }}>
                     {t('Request quote', 'Solicitar cotización')}
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/></svg>
                   </button>
@@ -1227,7 +1227,7 @@ const Footer = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 60 }}>
           <div>
             <Logo light />
-            <p style={{ fontSize: 14, color: 'var(--alice-blue)', lineHeight: 1.5, marginTop: 20, maxWidth: 320 }}>
+            <p style={{ fontSize: 15.5, color: 'var(--alice-blue)', lineHeight: 1.5, marginTop: 20, maxWidth: 320 }}>
               {t(
                 "Fencing material supplier for contractors, homeowners and DIY projects. Family-owned, factory-direct, we supply, we don't install.",
                 'Proveedor de material de cercado para contratistas, propietarios y proyectos DIY. Empresa familiar, directo de fábrica, suministramos, no instalamos.'
@@ -1236,12 +1236,12 @@ const Footer = () => {
           </div>
           {cols.map((col, ci) => (
             <div key={ci}>
-              <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--tangerine)', marginBottom: 16 }}>
+              <div className="mono" style={{ fontSize: 14, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--tangerine)', marginBottom: 16 }}>
                 {t(col.title)}
               </div>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 10 }}>
                 {col.items.map((it, i) => (
-                  <li key={i}><a href={it.href} style={{ fontSize: 14, color: 'var(--alice-blue)' }}>
+                  <li key={i}><a href={it.href} style={{ fontSize: 15.5, color: 'var(--alice-blue)' }}>
                     {typeof it.label === 'string' ? it.label : t(it.label)}
                   </a></li>
                 ))}
@@ -1250,7 +1250,7 @@ const Footer = () => {
           ))}
         </div>
         <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
-          <div className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', color: 'var(--silver)' }}>
+          <div className="mono" style={{ fontSize: 14, letterSpacing: '0.14em', color: 'var(--silver)' }}>
             © 2026 Western Fence Supply · Fort Myers, FL · Port Charlotte, FL
           </div>
           <div style={{ display: 'flex', gap: 24 }}>
@@ -1260,7 +1260,7 @@ const Footer = () => {
               { label: { EN: 'Accessibility', ES: 'Accesibilidad' } },
               { label: 'sales@westernfencesupply.com' },
             ].map((item, i) => (
-              <a key={i} href="#" style={{ fontSize: 13, fontFamily: 'var(--mono)', letterSpacing: '0.1em', color: 'var(--silver)' }}>
+              <a key={i} href="#" style={{ fontSize: 14.5, fontFamily: 'var(--mono)', letterSpacing: '0.1em', color: 'var(--silver)' }}>
                 {typeof item.label === 'string' ? item.label : t(item.label)}
               </a>
             ))}

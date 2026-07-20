@@ -49,7 +49,7 @@ const ProductsIntro = () => {
             <span style={{ color: 'var(--tangerine)' }}>{t("and nothing we wouldn't put on our own job.", 'y nada que no pondríamos en nuestro propio trabajo.')}</span>
           </h2>
         </div>
-        <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.7, color: 'var(--charcoal)', maxWidth: 420 }}>
+        <p style={{ margin: 0, fontSize: 16, lineHeight: 1.7, color: 'var(--charcoal)', maxWidth: 420 }}>
           {t("We curate every SKU we carry. If a manufacturer can't meet our spec, it doesn't make it onto the floor. Browse by material below, or jump straight to gates and hardware.", 'Seleccionamos cada SKU que manejamos. Si un fabricante no cumple con nuestra especificación, no llega al piso de venta. Explora por material abajo, o ve directo a portones y herrajes.')}
         </p>
       </div>
@@ -85,11 +85,11 @@ const ProductHardware = () => {
             border: '1px solid rgba(0,16,17,0.1)',
           }}>
             <div className="mono" style={{
-              fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
+              fontSize: 13.5, letterSpacing: '0.22em', textTransform: 'uppercase',
               color: 'var(--tangerine)', fontWeight: 700, marginBottom: 10,
             }}>{t('Hardware', 'Herrajes')}</div>
-            <h3 className="display" style={{ margin: '0 0 10px', fontSize: 20, lineHeight: 1.1 }}>{title}</h3>
-            <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{body}</p>
+            <h3 className="display" style={{ margin: '0 0 10px', fontSize: 21.5, lineHeight: 1.1 }}>{title}</h3>
+            <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: 'var(--charcoal)' }}>{body}</p>
           </article>
         ))}
       </div>

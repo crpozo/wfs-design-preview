@@ -22,8 +22,8 @@ const IconStrip = () => {
             onMouseEnter={e => e.currentTarget.style.background = 'var(--parchment)'}
             onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
               <img src={FENCE_ICON[it.key]} alt="" style={{ height: 56, width: 56 }} />
-              <span className="display" style={{ fontSize: 18, color: 'var(--ink)' }}>{t(it.label)}</span>
-              <span className="mono" style={{ fontSize: 12.5, color: 'var(--laser-blue)', letterSpacing: '0.14em', display: 'flex', alignItems: 'center', gap: 6 }}>
+              <span className="display" style={{ fontSize: 19.5, color: 'var(--ink)' }}>{t(it.label)}</span>
+              <span className="mono" style={{ fontSize: 14, color: 'var(--laser-blue)', letterSpacing: '0.14em', display: 'flex', alignItems: 'center', gap: 6 }}>
                 {t('EXPLORE STYLES', 'EXPLORAR ESTILOS')} <ArrowRight size={11} />
               </span>
             </a>
@@ -65,7 +65,7 @@ const Gates = () => {
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,16,17,0) 50%, rgba(0,16,17,0.5) 100%)' }}/>
                 <div className="mono" style={{
-                  position: 'absolute', top: 14, left: 14, fontSize: 12, letterSpacing: '0.14em',
+                  position: 'absolute', top: 14, left: 14, fontSize: 13.5, letterSpacing: '0.14em',
                   background: 'rgba(0,16,17,0.6)', color: 'var(--alice-blue)',
                   padding: '5px 8px', borderRadius: 3,
                 }}>
@@ -73,8 +73,8 @@ const Gates = () => {
                 </div>
               </div>
               <div style={{ padding: 22 }}>
-                <h3 className="display" style={{ fontSize: 22, margin: '0 0 10px' }}>{t(g.name)}</h3>
-                <p style={{ fontSize: 13, lineHeight: 1.5, color: 'var(--charcoal)', margin: 0 }}>{t(g.desc)}</p>
+                <h3 className="display" style={{ fontSize: 23.5, margin: '0 0 10px' }}>{t(g.name)}</h3>
+                <p style={{ fontSize: 14.5, lineHeight: 1.5, color: 'var(--charcoal)', margin: 0 }}>{t(g.desc)}</p>
               </div>
             </article>
           ))}
@@ -177,8 +177,8 @@ const Testimonials = () => {
                 display: 'flex', flexDirection: 'column', gap: 16,
                 textAlign: 'left',
               }}>
-                <div style={{ color: 'var(--tangerine)', fontSize: 16, letterSpacing: 3 }}>★★★★★</div>
-                <p style={{ margin: 0, flex: 1, fontSize: 15, lineHeight: 1.6, color: 'var(--ink)' }}>
+                <div style={{ color: 'var(--tangerine)', fontSize: 17.5, letterSpacing: 3 }}>★★★★★</div>
+                <p style={{ margin: 0, flex: 1, fontSize: 16.5, lineHeight: 1.6, color: 'var(--ink)' }}>
                   “{t(r.text)}”
                 </p>
                 <div style={{
@@ -190,13 +190,13 @@ const Testimonials = () => {
                     background: isCenter ? 'var(--tangerine)' : 'var(--ink)',
                     color: 'var(--white)',
                     display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                    fontSize: 13, fontWeight: 700, letterSpacing: '0.05em',
+                    fontSize: 14.5, fontWeight: 700, letterSpacing: '0.05em',
                     transition: 'background 0.4s ease',
                   }}>{initials(r.name)}</span>
                   <div>
-                    <div style={{ fontSize: 14.5, fontWeight: 700, color: 'var(--ink)' }}>{r.name}</div>
+                    <div style={{ fontSize: 16, fontWeight: 700, color: 'var(--ink)' }}>{r.name}</div>
                     <div className="mono" style={{
-                      marginTop: 3, fontSize: 11.5, letterSpacing: '0.16em',
+                      marginTop: 3, fontSize: 13, letterSpacing: '0.16em',
                       textTransform: 'uppercase', color: 'var(--charcoal)',
                     }}>{t(r.tag)}</div>
                   </div>
@@ -290,7 +290,7 @@ const FAQ = () => {
             </h2>
             <p style={{
               marginTop: 24,
-              fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)',
+              fontSize: 15.5, lineHeight: 1.6, color: 'var(--charcoal)',
               maxWidth: 340, marginBottom: 28,
             }}>
               {t("Can't find what you're looking for? Call the yard or email", '¿No encuentras lo que buscas? Llama a la sucursal o escribe a')}
@@ -310,7 +310,7 @@ const FAQ = () => {
                 color: 'var(--white)',
                 textDecoration: 'none',
                 fontFamily: 'var(--sans)',
-                fontSize: 13, fontWeight: 700,
+                fontSize: 14.5, fontWeight: 700,
                 letterSpacing: '0.18em', textTransform: 'uppercase',
                 transition: 'background 0.2s ease, transform 0.2s ease',
                 transform: ctaHover ? 'translateY(-1px)' : 'none',
@@ -347,7 +347,7 @@ const FAQ = () => {
                   }}>
                     <span style={{ display: 'flex', gap: 20, alignItems: 'baseline' }}>
                       <span className="mono" style={{
-                        fontSize: 12.5, fontWeight: 700,
+                        fontSize: 14, fontWeight: 700,
                         letterSpacing: '0.22em',
                         color: isOpen ? 'var(--tangerine)' : 'var(--charcoal)',
                         transition: 'color 0.25s ease',
@@ -355,7 +355,7 @@ const FAQ = () => {
                         {String(i + 1).padStart(2, '0')}
                       </span>
                       <span style={{
-                        fontSize: 17, fontWeight: 500,
+                        fontSize: 18.5, fontWeight: 500,
                         color: 'var(--ink)',
                         letterSpacing: '-0.005em',
                       }}>{t(q)}</span>
@@ -381,7 +381,7 @@ const FAQ = () => {
                     transition: 'max-height 0.3s ease',
                   }}>
                     <p style={{
-                      fontSize: 15, lineHeight: 1.6,
+                      fontSize: 16.5, lineHeight: 1.6,
                       color: 'var(--ink)', opacity: 0.78,
                       margin: '0 0 22px', paddingLeft: 40, maxWidth: 640,
                     }}>
@@ -414,7 +414,7 @@ const Articles = () => {
               {t('Fence guides', 'Guías de cercas')}<br/>{t('& how-tos.', 'y tutoriales.')}
             </h2>
           </div>
-          <a href="#" className="mono" style={{ fontSize: 13, letterSpacing: '0.14em', color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 8 }}>
+          <a href="#" className="mono" style={{ fontSize: 14.5, letterSpacing: '0.14em', color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 8 }}>
             {t('ALL ARTICLES', 'TODOS LOS ARTÍCULOS')} <ArrowRight size={13} />
           </a>
         </div>
@@ -434,18 +434,18 @@ const Articles = () => {
                 <img src={FENCE_IMG[p.img]} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                 <span className="mono" style={{
                   position: 'absolute', top: 16, left: 16,
-                  fontSize: 12, letterSpacing: '0.14em',
+                  fontSize: 13.5, letterSpacing: '0.14em',
                   background: 'var(--tangerine)', color: 'var(--ink)',
                   padding: '5px 10px', borderRadius: 3, fontWeight: 600,
                 }}>{t(p.tag).toUpperCase()}</span>
               </div>
               <div style={{ padding: 28 }}>
-                <h3 style={{ fontSize: 22, fontWeight: 500, margin: '0 0 16px', color: 'var(--ink)', lineHeight: 1.25 }}>
+                <h3 style={{ fontSize: 23.5, fontWeight: 500, margin: '0 0 16px', color: 'var(--ink)', lineHeight: 1.25 }}>
                   {t(p.title)}
                 </h3>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span className="mono" style={{ fontSize: 12.5, letterSpacing: '0.14em', color: 'var(--charcoal)' }}>{p.read.toUpperCase()} {t('READ', 'DE LECTURA')}</span>
-                  <span style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 13, color: 'var(--laser-blue)', fontWeight: 500 }}>
+                  <span className="mono" style={{ fontSize: 14, letterSpacing: '0.14em', color: 'var(--charcoal)' }}>{p.read.toUpperCase()} {t('READ', 'DE LECTURA')}</span>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 14.5, color: 'var(--laser-blue)', fontWeight: 500 }}>
                     {t('Read', 'Leer')} <ArrowRight size={12} />
                   </span>
                 </div>
@@ -470,13 +470,13 @@ const ShopTour = () => {
           <h2 className="display" style={{ fontSize: 'clamp(36px, 5vw, 60px)', margin: '12px 0 24px' }}>
             {t('Family-owned.', 'De propiedad familiar.')}<br/>{t('Fabricated in-house.', 'Fabricado en planta.')}
           </h2>
-          <p style={{ fontSize: 17, lineHeight: 1.55, color: 'var(--alice-blue)', maxWidth: 460, marginBottom: 24 }}>
+          <p style={{ fontSize: 18.5, lineHeight: 1.55, color: 'var(--alice-blue)', maxWidth: 460, marginBottom: 24 }}>
             {t(
               'Western Fence Supply is led by management with two decades of fence installation and fabrication experience. We refuse to sell low-quality components, same standard we held when we were the contractors.',
               'Western Fence Supply está dirigida por un equipo con dos décadas de experiencia en instalación y fabricación de cercas. Nos negamos a vender componentes de baja calidad, el mismo estándar que manteníamos cuando éramos los contratistas.'
             )}
           </p>
-          <p style={{ fontSize: 15, lineHeight: 1.55, color: 'var(--silver)', maxWidth: 460, marginBottom: 32 }}>
+          <p style={{ fontSize: 16.5, lineHeight: 1.55, color: 'var(--silver)', maxWidth: 460, marginBottom: 32 }}>
             {t(
               'From our Fort Myers fabrication shop, we transform raw fencing components into the highest-quality fence panels available on the market today.',
               'Desde nuestra planta de fabricación en Fort Myers, transformamos componentes de cerca en bruto en los paneles de cerca de la más alta calidad disponibles hoy en el mercado.'
@@ -498,7 +498,7 @@ const ShopTour = () => {
             style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           <span className="mono" style={{
             position: 'absolute', bottom: 18, left: 18,
-            fontSize: 12, letterSpacing: '0.14em',
+            fontSize: 13.5, letterSpacing: '0.14em',
             background: 'var(--ink)', color: 'var(--alice-blue)',
             padding: '5px 10px', borderRadius: 3,
           }}>FORT MYERS · FL</span>
@@ -567,7 +567,7 @@ const AboutIntro = () => {
 
           <p style={{
             marginTop: 24,
-            fontSize: 14.5, lineHeight: 1.55,
+            fontSize: 16, lineHeight: 1.55,
             color: 'var(--charcoal)',
             maxWidth: 540,
           }}>
@@ -578,7 +578,7 @@ const AboutIntro = () => {
           </p>
           <p style={{
             marginTop: 14,
-            fontSize: 14.5, lineHeight: 1.55,
+            fontSize: 16, lineHeight: 1.55,
             color: 'var(--charcoal)',
             maxWidth: 540,
           }}>
@@ -601,9 +601,9 @@ const AboutIntro = () => {
               ['2',   { EN: 'Yards · FM + PC',    ES: 'Sucursales · FM + PC' }],
             ].map(([n, l], i) => (
               <div key={i}>
-                <div className="display" style={{ fontSize: 24, lineHeight: 1, color: 'var(--ink)' }}>{n}</div>
+                <div className="display" style={{ fontSize: 25.5, lineHeight: 1, color: 'var(--ink)' }}>{n}</div>
                 <div className="mono" style={{
-                  marginTop: 6, fontSize: 12, letterSpacing: '0.18em',
+                  marginTop: 6, fontSize: 13.5, letterSpacing: '0.18em',
                   textTransform: 'uppercase', color: 'var(--charcoal)',
                 }}>{t(l)}</div>
               </div>
@@ -622,7 +622,7 @@ const AboutIntro = () => {
                 color: 'var(--white)',
                 textDecoration: 'none',
                 fontFamily: 'var(--sans)',
-                fontSize: 13, fontWeight: 700,
+                fontSize: 14.5, fontWeight: 700,
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 transition: 'background 0.2s ease, transform 0.2s ease',
@@ -643,7 +643,7 @@ const AboutIntro = () => {
             <a href="about.html" className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               padding: '14px 0',
-              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
               textTransform: 'uppercase', color: 'var(--ink)',
               borderBottom: '1px solid var(--ink)',
             }}>

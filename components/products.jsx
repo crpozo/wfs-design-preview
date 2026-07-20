@@ -73,7 +73,7 @@ const SectionHeader = ({ kicker, title, sub }) => (
   }}>
     {kicker && (
       <div className="mono" style={{
-        fontSize: 12.5, letterSpacing: '0.18em',
+        fontSize: 14, letterSpacing: '0.18em',
         color: 'var(--charcoal)', textTransform: 'uppercase',
         marginBottom: 14,
       }}>{kicker}</div>
@@ -86,7 +86,7 @@ const SectionHeader = ({ kicker, title, sub }) => (
       }}>{title}</h2>
       {sub && (
         <p style={{
-          fontSize: 15, color: 'var(--charcoal)',
+          fontSize: 16.5, color: 'var(--charcoal)',
           margin: 0, maxWidth: 380, lineHeight: 1.55,
         }}>{sub}</p>
       )}
@@ -153,7 +153,7 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
                 textAlign: 'left',
                 fontFamily: 'var(--sans)',
                 fontWeight: isActive ? 700 : 500,
-                fontSize: 17,
+                fontSize: 18.5,
                 letterSpacing: '-0.005em',
                 transition: 'background 0.18s ease',
                 position: 'relative',
@@ -169,7 +169,7 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
               {it.isNew && (
                 <span style={{
                   background: 'var(--tangerine)', color: 'var(--ink)',
-                  fontSize: 11.5, fontWeight: 700, letterSpacing: '0.18em',
+                  fontSize: 13, fontWeight: 700, letterSpacing: '0.18em',
                   padding: '4px 7px',
                 }}>NEW</span>
               )}
@@ -211,7 +211,7 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
       {/* Column 3: description + CTA */}
       <div style={{ paddingTop: 12 }}>
         <div className="mono" style={{
-          fontSize: 12.5, letterSpacing: '0.18em', color: 'var(--charcoal)',
+          fontSize: 14, letterSpacing: '0.18em', color: 'var(--charcoal)',
           textTransform: 'uppercase', marginBottom: 14,
         }}>{item.tag}</div>
         <h3 className="display" style={{
@@ -219,11 +219,11 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
           margin: '0 0 18px', lineHeight: 1.1, letterSpacing: '-0.01em',
         }}>{item.name}</h3>
         <p key={item.id + '-desc'} style={{
-          fontSize: 15, lineHeight: 1.65, color: 'var(--charcoal)',
+          fontSize: 16.5, lineHeight: 1.65, color: 'var(--charcoal)',
           margin: '0 0 28px',
           animation: 'fadeUp 0.4s ease',
         }}>{item.desc}</p>
-        <a href={item.href || '#'} className="btn btn-dark" style={{ fontSize: 13 }}>
+        <a href={item.href || '#'} className="btn btn-dark" style={{ fontSize: 14.5 }}>
           {ctaLabel}
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
             <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
@@ -270,7 +270,7 @@ const FenceCard = ({ item, index, featured }) => {
         {/* Number badge */}
         <div className="mono" style={{
           position: 'absolute', top: 14, left: 14,
-          fontSize: 12, fontWeight: 600, letterSpacing: '0.18em',
+          fontSize: 13.5, fontWeight: 600, letterSpacing: '0.18em',
           color: 'var(--ink)',
           background: 'var(--white)',
           padding: '5px 9px',
@@ -278,7 +278,7 @@ const FenceCard = ({ item, index, featured }) => {
         {item.isNew && (
           <div className="mono" style={{
             position: 'absolute', top: 14, right: 14,
-            fontSize: 12, fontWeight: 700, letterSpacing: '0.18em',
+            fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em',
             color: 'var(--ink)',
             background: 'var(--tangerine)',
             padding: '5px 9px',
@@ -293,7 +293,7 @@ const FenceCard = ({ item, index, featured }) => {
         flex: 1,
       }}>
         <div className="mono" style={{
-          fontSize: 12.5, letterSpacing: '0.16em',
+          fontSize: 14, letterSpacing: '0.16em',
           color: 'var(--charcoal)', textTransform: 'uppercase',
         }}>{item.tag}</div>
 
@@ -305,7 +305,7 @@ const FenceCard = ({ item, index, featured }) => {
 
         {featured && (
           <p style={{
-            fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)',
+            fontSize: 15.5, lineHeight: 1.6, color: 'var(--charcoal)',
             margin: '6px 0 0', maxWidth: 480,
           }}>{item.desc}</p>
         )}
@@ -317,7 +317,7 @@ const FenceCard = ({ item, index, featured }) => {
           borderTop: featured ? 'none' : '1px solid rgba(0,16,17,0.1)',
         }}>
           <span className="mono" style={{
-            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.16em',
+            fontSize: 14, fontWeight: 700, letterSpacing: '0.16em',
             textTransform: 'uppercase',
             color: hover ? 'var(--laser-blue)' : 'var(--ink)',
             transition: 'color 0.2s ease',
@@ -378,7 +378,7 @@ const FenceStyleCard = ({ item, index }) => {
       {item.isNew && (
         <span className="mono" style={{
           position: 'absolute', top: 12, right: 12,
-          fontSize: 11.5, fontWeight: 700, letterSpacing: '0.22em',
+          fontSize: 13, fontWeight: 700, letterSpacing: '0.22em',
           color: 'var(--ink)', background: 'var(--tangerine)',
           padding: '5px 8px',
         }}>{t('NEW', 'NUEVO')}</span>
@@ -394,7 +394,7 @@ const FenceStyleCard = ({ item, index }) => {
           lineHeight: 1, letterSpacing: '-0.01em',
         }}>{nameStr}</h3>
         <div className="mono" style={{
-          fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
+          fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase',
           color: 'rgba(255,255,255,0.85)',
         }}>{tagStr}</div>
       </div>
@@ -462,7 +462,7 @@ const SystemCard = ({ item, index, active, onSelect, rarity, variant }) => {
         {item.isNew && (
           <span className="mono" style={{
             position: 'absolute', top: 10, [right ? 'left' : 'right']: 10,
-            fontSize: 8, fontWeight: 700, letterSpacing: '0.2em',
+            fontSize: 9.5, fontWeight: 700, letterSpacing: '0.2em',
             color: 'var(--ink)', background: r.c1, padding: '4px 6px',
           }}>{t('NEW', 'NUEVO')}</span>
         )}
@@ -511,7 +511,7 @@ const SystemDetail = ({ item, active, rarity, align, ctaLabel }) => {
       }}>{t(item.desc)}</p>
       <a href={item.href || '#'} className="mono" style={{
         display: 'inline-flex', alignItems: 'center', gap: 12,
-        fontSize: 13, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
+        fontSize: 14.5, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase',
         color: 'var(--ink)', background: 'var(--tangerine)', padding: 'clamp(11px, 1.6vh, 14px) 22px',
       }}>
         {t(ctaLabel)} {nameStr}
@@ -587,7 +587,7 @@ const SystemArena = ({ sectionId, items, rarity, label, chapter, align, variant,
             flexDirection: right ? 'row-reverse' : 'row',
           }}>
             <span className="mono" style={{
-              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
+              fontSize: 14, fontWeight: 700, letterSpacing: '0.18em',
               color: 'var(--ink)', background: r.c1, padding: '4px 8px',
             }}>{chapter}</span>
             <span className="display" style={{
@@ -598,7 +598,7 @@ const SystemArena = ({ sectionId, items, rarity, label, chapter, align, variant,
           </div>
           <a href={topLink.href} className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+            fontSize: 14, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--white)', borderBottom: '1px solid rgba(255,255,255,0.6)', paddingBottom: 4,
           }}>
             {t(topLink.label)}
@@ -661,7 +661,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
           <span className="mono" style={{
             background: 'var(--laser-blue)', color: 'var(--white)',
-            padding: '3px 7px', fontSize: 13, fontWeight: 700, lineHeight: 1,
+            padding: '3px 7px', fontSize: 14.5, fontWeight: 700, lineHeight: 1,
           }}>{chapter}</span>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 2.6vw, 40px)', fontWeight: 800,
@@ -699,7 +699,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
               {/* Number */}
               <span className="mono" style={{
                 position: 'absolute', top: 24, left: 24,
-                fontSize: 15, fontWeight: 700, lineHeight: 1,
+                fontSize: 16.5, fontWeight: 700, lineHeight: 1,
                 color: exp ? 'var(--tangerine)' : 'var(--blue-ice)',
                 transition: 'color 0.35s ease',
               }}>0{i + 1}</span>
@@ -708,7 +708,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
                 <span className="mono" style={{
                   position: 'absolute', top: 22, right: 22,
                   background: 'var(--tangerine)', color: 'var(--white)',
-                  padding: '4px 8px', fontSize: 12, fontWeight: 700,
+                  padding: '4px 8px', fontSize: 13.5, fontWeight: 700,
                   letterSpacing: '0.22em', textTransform: 'uppercase', lineHeight: 1,
                 }}>{t('New', 'Nuevo')}</span>
               )}
@@ -792,7 +792,7 @@ const SystemCarousel = ({ id, chapter, label, items, topLink, ctaLabel }) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
           <span className="mono" style={{
             background: 'var(--laser-blue)', color: 'var(--white)',
-            padding: '4px 8px', fontSize: 13, fontWeight: 700, lineHeight: 1,
+            padding: '4px 8px', fontSize: 14.5, fontWeight: 700, lineHeight: 1,
           }}>{chapter}</span>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(30px, 9vw, 40px)', fontWeight: 800,
@@ -802,7 +802,7 @@ const SystemCarousel = ({ id, chapter, label, items, topLink, ctaLabel }) => {
         </div>
         <a href={topLink.href} className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 16,
-          fontSize: 13, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
+          fontSize: 14.5, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase',
           color: 'var(--tangerine)',
         }}>
           {t(topLink.label)}
@@ -822,30 +822,30 @@ const SystemCarousel = ({ id, chapter, label, items, topLink, ctaLabel }) => {
               <span className="mono" style={{
                 position: 'absolute', top: 16, left: 16,
                 background: 'var(--ink)', color: 'var(--white)',
-                padding: '5px 9px', fontSize: 13, fontWeight: 700, lineHeight: 1,
+                padding: '5px 9px', fontSize: 14.5, fontWeight: 700, lineHeight: 1,
               }}>0{i + 1}</span>
               {c.isNew && (
                 <span className="mono" style={{
                   position: 'absolute', top: 16, right: 16,
                   background: 'var(--tangerine)', color: 'var(--white)',
-                  padding: '4px 8px', fontSize: 12, fontWeight: 700,
+                  padding: '4px 8px', fontSize: 13.5, fontWeight: 700,
                   letterSpacing: '0.18em', textTransform: 'uppercase', lineHeight: 1,
                 }}>{t('New', 'Nuevo')}</span>
               )}
             </div>
             <div style={{ padding: '22px 2px 4px' }}>
               <h3 className="display" style={{
-                margin: '0 0 12px', fontSize: 26, fontWeight: 800,
+                margin: '0 0 12px', fontSize: 27.5, fontWeight: 800,
                 letterSpacing: '-0.01em', color: 'var(--white)', lineHeight: 1,
                 textTransform: 'capitalize',
               }}>{t(c.name)}</h3>
               <p style={{
-                margin: '0 0 18px', fontSize: 15, lineHeight: 1.5,
+                margin: '0 0 18px', fontSize: 16.5, lineHeight: 1.5,
                 color: 'rgba(219,233,238,0.82)',
               }}>{t(c.desc)}</p>
               <span className="mono" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 10,
-                fontSize: 13, fontWeight: 700, letterSpacing: '0.16em',
+                fontSize: 14.5, fontWeight: 700, letterSpacing: '0.16em',
                 textTransform: 'uppercase', color: 'var(--tangerine)',
               }}>{t(ctaLabel)} <span style={{ fontSize: '1.2em' }}>→</span></span>
             </div>
@@ -859,7 +859,7 @@ const SystemCarousel = ({ id, chapter, label, items, topLink, ctaLabel }) => {
         paddingTop: 22, paddingBottom: 'clamp(40px, 7vh, 64px)',
       }}>
         <span className="mono" style={{
-          fontSize: 14, fontWeight: 700, letterSpacing: '0.14em',
+          fontSize: 15.5, fontWeight: 700, letterSpacing: '0.14em',
           color: 'var(--white)', whiteSpace: 'nowrap',
         }}>{String(active + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}</span>
         <span style={{ flex: 1, height: 3, background: 'rgba(255,255,255,0.2)', position: 'relative' }}>
@@ -898,7 +898,7 @@ const SystemTabs = ({ id, chapter, label, items, topLink, ctaLabel }) => {
         <div style={{ display: 'flex', alignItems: 'center', gap: 18 }}>
           <span className="mono" style={{
             background: 'var(--laser-blue)', color: 'var(--white)',
-            padding: '3px 7px', fontSize: 13, fontWeight: 700, lineHeight: 1,
+            padding: '3px 7px', fontSize: 14.5, fontWeight: 700, lineHeight: 1,
           }}>{chapter}</span>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 2.6vw, 40px)', fontWeight: 800,
@@ -935,7 +935,7 @@ const SystemTabs = ({ id, chapter, label, items, topLink, ctaLabel }) => {
                 transition: 'background 0.2s ease',
               }}>
               <span className="mono" style={{
-                fontSize: 13, fontWeight: 700, flexShrink: 0,
+                fontSize: 14.5, fontWeight: 700, flexShrink: 0,
                 color: on ? 'var(--tangerine)' : 'rgba(219,233,238,0.5)',
               }}>0{i + 1}</span>
               <span className="mono" style={{
@@ -948,7 +948,7 @@ const SystemTabs = ({ id, chapter, label, items, topLink, ctaLabel }) => {
                 <span className="mono" style={{
                   marginLeft: 'auto', flexShrink: 0,
                   background: 'var(--tangerine)', color: 'var(--white)',
-                  padding: '3px 6px', fontSize: 10, fontWeight: 700, letterSpacing: '0.14em',
+                  padding: '3px 6px', fontSize: 11.5, fontWeight: 700, letterSpacing: '0.14em',
                 }}>{t('New', 'Nuevo')}</span>
               )}
             </button>
@@ -980,7 +980,7 @@ const SystemTabs = ({ id, chapter, label, items, topLink, ctaLabel }) => {
           padding: 'clamp(28px, 5vh, 52px) var(--pad)',
           maxWidth: 660,
         }}>
-          <div className="mono" style={{ fontSize: 14, fontWeight: 700, color: 'var(--tangerine)', marginBottom: 14 }}>0{active + 1}</div>
+          <div className="mono" style={{ fontSize: 15.5, fontWeight: 700, color: 'var(--tangerine)', marginBottom: 14 }}>0{active + 1}</div>
           <h3 className="display" style={{
             margin: '0 0 16px', fontSize: 'clamp(34px, 4.4vw, 68px)',
             fontWeight: 800, lineHeight: 0.96, letterSpacing: '-0.015em',
@@ -1088,7 +1088,7 @@ const WhyWFS = () => {
               {t('Built by fencers.', 'Hecho por cerqueros.')}<br/>
               <span style={{ color: 'var(--tangerine)' }}>{t('Priced like a supplier.', 'Preciado como proveedor.')}</span>
             </h2>
-            <p style={{ margin: '18px 0 0', fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>
+            <p style={{ margin: '18px 0 0', fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>
               {t(
                 'We were the contractors before we were the supplier, so the yard runs on installer logic, not catalog markup.',
                 'Fuimos los contratistas antes de ser el proveedor, por eso la sucursal funciona con lógica de instalador, no con margen de catálogo.'
@@ -1097,7 +1097,7 @@ const WhyWFS = () => {
           </div>
           <a href="estimate.html" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
-            padding: '13px 0', fontSize: 12.5, fontWeight: 700,
+            padding: '13px 0', fontSize: 14, fontWeight: 700,
             letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--ink)', borderBottom: '1px solid var(--ink)',
           }}>
@@ -1127,11 +1127,11 @@ const WhyWFS = () => {
                 color: 'var(--tangerine)',
               }}>{v.icon}</span>
               <h3 className="display" style={{
-                margin: '0 0 8px', fontSize: 18, lineHeight: 1.15,
+                margin: '0 0 8px', fontSize: 19.5, lineHeight: 1.15,
                 letterSpacing: '-0.01em', color: 'var(--ink)',
               }}>{t(v.title)}</h3>
               <p className="mono" style={{
-                margin: 0, fontSize: 13, lineHeight: 1.55, color: 'var(--charcoal)',
+                margin: 0, fontSize: 14.5, lineHeight: 1.55, color: 'var(--charcoal)',
               }}>{t(v.desc)}</p>
             </div>
           ))}

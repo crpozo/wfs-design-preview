@@ -48,20 +48,20 @@ const ResourceArticles = () => {
                 <span className="mono" style={{
                   position: 'absolute', top: 14, left: 14,
                   background: 'var(--tangerine)', color: 'var(--ink)',
-                  padding: '5px 10px', fontSize: 12, letterSpacing: '0.18em',
+                  padding: '5px 10px', fontSize: 13.5, letterSpacing: '0.18em',
                   fontWeight: 700, textTransform: 'uppercase',
                 }}>{t(p.tag)}</span>
               </div>
               <div style={{ padding: 24, flex: 1, display: 'flex', flexDirection: 'column' }}>
                 <h3 className="display" style={{
-                  margin: '0 0 14px', fontSize: 20, lineHeight: 1.15,
+                  margin: '0 0 14px', fontSize: 21.5, lineHeight: 1.15,
                 }}>{t(p.title)}</h3>
                 <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span className="mono" style={{
-                    fontSize: 12, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase',
+                    fontSize: 13.5, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase',
                   }}>{t(p.read)} {t('read', 'de lectura')}</span>
                   <span style={{
-                    fontSize: 13, color: 'var(--laser-blue)', fontWeight: 500,
+                    fontSize: 14.5, color: 'var(--laser-blue)', fontWeight: 500,
                     display: 'flex', alignItems: 'center', gap: 6,
                   }}>{t('Read', 'Leer')} <ArrowRight size={12}/></span>
                 </div>
@@ -95,7 +95,7 @@ const MaterialsComparison = () => {
           {['', t('Vinyl / PVC', 'Vinilo / PVC'), t('Aluminum', 'Aluminio'), t('Chain Link', 'Malla ciclónica'), t('Metal / DuraFence', 'Metal / DuraFence')].map((h, i) => (
             <div key={i} className="mono" style={{
               padding: '16px 18px',
-              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
               textTransform: 'uppercase',
               borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.15)',
             }}>{h}</div>
@@ -118,7 +118,7 @@ const MaterialsComparison = () => {
             {row.map((cell, ci) => (
               <div key={ci} style={{
                 padding: '16px 18px',
-                fontSize: 13.5, lineHeight: 1.5,
+                fontSize: 15, lineHeight: 1.5,
                 color: ci === 0 ? 'var(--charcoal)' : 'var(--ink)',
                 fontWeight: ci === 0 ? 700 : 400,
                 fontFamily: ci === 0 ? 'var(--mono)' : 'var(--sans)',
@@ -130,7 +130,7 @@ const MaterialsComparison = () => {
           </div>
         ))}
       </div>
-      <p style={{ marginTop: 14, fontSize: 12.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>
+      <p style={{ marginTop: 14, fontSize: 14, lineHeight: 1.6, color: 'var(--charcoal)' }}>
         {useT()('Specs shown are general guidance. Wind ratings, warranties, availability and performance depend on the specific product, configuration and project — we confirm exact numbers on your quote.',
                 'Las especificaciones mostradas son una guía general. Las clasificaciones de viento, garantías, disponibilidad y desempeño dependen del producto, la configuración y el proyecto específicos; confirmamos los números exactos en tu cotización.')}
         {' '}{useT()('Last reviewed: July 2026.', 'Última revisión: julio de 2026.')}
@@ -147,7 +147,7 @@ const MaterialsComparison = () => {
             display: 'inline-flex', alignItems: 'center', gap: 8,
             padding: '8px 14px',
             border: '1px solid var(--ink)',
-            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.18em',
+            fontSize: 14, fontWeight: 700, letterSpacing: '0.18em',
             textTransform: 'uppercase', color: 'var(--ink)',
           }}>
             {t}
@@ -218,8 +218,8 @@ const DownloadsSection = () => {
               </svg>
             </span>
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 14.5, fontWeight: 500, color: 'var(--ink)' }}>{t}</div>
-              <div className="mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginTop: 4 }}>{meta}</div>
+              <div style={{ fontSize: 16, fontWeight: 500, color: 'var(--ink)' }}>{t}</div>
+              <div className="mono" style={{ fontSize: 13.5, letterSpacing: '0.18em', color: 'var(--charcoal)', textTransform: 'uppercase', marginTop: 4 }}>{meta}</div>
             </div>
           </a>
         ))}

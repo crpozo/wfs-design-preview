@@ -63,7 +63,7 @@ const ProjectsBigGallery = () => {
             return (
               <button key={f} onClick={() => setFilter(f)} className="mono"
                 style={{
-                  padding: '6px 12px', fontSize: 12, letterSpacing: '0.18em',
+                  padding: '6px 12px', fontSize: 13.5, letterSpacing: '0.18em',
                   textTransform: 'uppercase', fontWeight: 700,
                   border: '1px solid var(--ink)',
                   background: active ? 'var(--ink)' : 'transparent',
@@ -74,7 +74,7 @@ const ProjectsBigGallery = () => {
           })}
           <span className="mono" style={{
             marginLeft: 'auto', alignSelf: 'center',
-            fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase',
+            fontSize: 13.5, letterSpacing: '0.22em', textTransform: 'uppercase',
             color: 'var(--charcoal)',
           }}>{visible.length} {visible.length === 1 ? t('project', 'proyecto') : t('projects', 'proyectos')}</span>
         </div>
@@ -120,7 +120,7 @@ const ProjectsCaseStudy = () => {
             <div className="mono" style={{
               position: 'absolute', top: 16, left: 16,
               background: 'var(--tangerine)', color: 'var(--ink)',
-              padding: '5px 10px', fontSize: 12, letterSpacing: '0.22em', fontWeight: 700,
+              padding: '5px 10px', fontSize: 13.5, letterSpacing: '0.22em', fontWeight: 700,
             }}>{t('CASE STUDY', 'CASO DE ESTUDIO')} · 01</div>
           </div>
           <div>
@@ -131,7 +131,7 @@ const ProjectsCaseStudy = () => {
               <span style={{ color: 'var(--tangerine)' }}>{t('Six cantilever gates.', 'Seis portones cantilever.')}</span><br/>
               {t('Eleven weeks.', 'Once semanas.')}
             </h2>
-            <p style={{ marginTop: 18, fontSize: 15.5, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 520 }}>
+            <p style={{ marginTop: 18, fontSize: 17, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 520 }}>
               {t('Fort Myers Industrial Park, 11.5 ga galvanized chain link, 8 ft tall, with six WFS-fabricated cantilever gates ranging from 24 ft to 42 ft openings. Phased deliveries against a tight release schedule.', 'Fort Myers Industrial Park, malla ciclónica galvanizada calibre 11.5, 8 ft de alto, con seis portones cantilever fabricados por WFS con aberturas de entre 24 ft y 42 ft. Entregas por fases contra un cronograma de liberación ajustado.')}
             </p>
             <div style={{ marginTop: 24 }}>

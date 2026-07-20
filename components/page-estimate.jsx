@@ -51,7 +51,7 @@ const EstimateHero = () => {
           <span style={{ color: 'var(--blue-ice)' }}>{t('Get a binding quote in 24 hours.', 'Obtén una cotización en firme en 24 horas.')}</span>
         </h1>
         <p style={{
-          fontSize: 16, lineHeight: 1.5, maxWidth: 460, margin: 0,
+          fontSize: 17.5, lineHeight: 1.5, maxWidth: 460, margin: 0,
           color: 'rgba(255,255,255,0.85)',
         }}>
           {t('Sketch your layout or send linear feet, height, gate count and ZIP. One rep follows the order from quote to pickup or delivery.', 'Dibuja tu diseño o envía los pies lineales, la altura, la cantidad de portones y el código postal. Un asesor da seguimiento al pedido desde la cotización hasta el retiro o la entrega.')}
@@ -61,7 +61,7 @@ const EstimateHero = () => {
             display: 'inline-flex', alignItems: 'center', gap: 12,
             padding: '16px 26px', borderRadius: 999,
             background: 'var(--tangerine)', color: 'var(--white)',
-            fontFamily: 'var(--sans)', fontSize: 14, fontWeight: 600,
+            fontFamily: 'var(--sans)', fontSize: 15.5, fontWeight: 600,
             letterSpacing: '0.06em', textTransform: 'uppercase',
             boxShadow: '0 10px 28px rgba(255, 113, 51,0.4)',
             transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s',
@@ -74,7 +74,7 @@ const EstimateHero = () => {
           <a href="#contact" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10,
             paddingBottom: 4,
-            fontSize: 13, fontWeight: 700, letterSpacing: '0.22em',
+            fontSize: 14.5, fontWeight: 700, letterSpacing: '0.22em',
             textTransform: 'uppercase',
             color: 'var(--white)',
             borderBottom: '1px solid rgba(255,255,255,0.5)',
@@ -102,15 +102,15 @@ const EstimateHero = () => {
           }}>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 14, marginBottom: 12 }}>
               <span className="display" style={{
-                fontSize: 30, lineHeight: 1, color: 'var(--tangerine)', letterSpacing: '-0.01em',
+                fontSize: 31.5, lineHeight: 1, color: 'var(--tangerine)', letterSpacing: '-0.01em',
               }}>{n}</span>
               <span style={{
-                fontSize: 15, fontWeight: 600, color: 'var(--white)', letterSpacing: '-0.005em',
+                fontSize: 16.5, fontWeight: 600, color: 'var(--white)', letterSpacing: '-0.005em',
               }}>{title}</span>
             </div>
             <p className="mono" style={{
               margin: 0,
-              fontSize: 12.5, letterSpacing: '0.06em', lineHeight: 1.55,
+              fontSize: 14, letterSpacing: '0.06em', lineHeight: 1.55,
               color: 'rgba(255,255,255,0.7)',
             }}>{sub}</p>
           </div>
@@ -148,7 +148,7 @@ const LiveAgentBand = () => {
         </div>
         <p style={{
           margin: 0, maxWidth: 320, justifySelf: 'end', textAlign: 'right',
-          fontSize: 13.5, lineHeight: 1.6, color: 'var(--charcoal)',
+          fontSize: 15, lineHeight: 1.6, color: 'var(--charcoal)',
         }}>
           {t('Our sales representatives split calls Monday through Friday during business hours.', 'Nuestros asesores de ventas atienden las llamadas de lunes a viernes en horario laboral.')}
         </p>
@@ -172,7 +172,7 @@ const LiveAgentBand = () => {
           }}>
             <div className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
-              fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em',
               color: 'var(--tangerine)', textTransform: 'uppercase',
             }}>
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -198,7 +198,7 @@ const LiveAgentBand = () => {
             (239) 689-5496
           </div>
           <div className="mono" style={{
-            fontSize: 12.5, letterSpacing: '0.18em', textTransform: 'uppercase',
+            fontSize: 14, letterSpacing: '0.18em', textTransform: 'uppercase',
             color: 'var(--alice-blue)', lineHeight: 1.5,
           }}>
             {t('Real sales reps, no bots', 'Asesores de ventas reales, sin bots')}<br/>
@@ -222,7 +222,7 @@ const LiveAgentBand = () => {
           }}>
             <div className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10,
-              fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em',
               color: 'var(--tangerine)', textTransform: 'uppercase',
             }}>
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
@@ -250,7 +250,7 @@ const LiveAgentBand = () => {
             sales@westernfencesupply.com
           </div>
           <div className="mono" style={{
-            fontSize: 12.5, letterSpacing: '0.18em', textTransform: 'uppercase',
+            fontSize: 14, letterSpacing: '0.18em', textTransform: 'uppercase',
             color: 'var(--charcoal)', lineHeight: 1.5,
           }}>
             {t('We follow up with a detailed quote', 'Te damos seguimiento con una cotización detallada')}<br/>

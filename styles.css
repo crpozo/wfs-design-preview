@@ -54,9 +54,9 @@ p[style*="font-size: 11"],
 p[style*="font-size: 12"],
 p[style*="font-size: 13"],
 p[style*="font-size: 14"],
-p[style*="font-size: 15"] { font-size: 16px !important; }
+p[style*="font-size: 15"] { font-size: 17.5px !important; }
 p[style*="font-size: clamp(13px"],
-p[style*="font-size: clamp(14px"] { font-size: clamp(16px, 1.2vw, 17px) !important; }
+p[style*="font-size: clamp(14px"] { font-size: clamp(17.5px, 1.25vw, 19px) !important; }
 
 /* ─── Frameless images ───
    Cards that lead with a photo drop their hairline border, and image
@@ -93,7 +93,7 @@ div[style*="border-bottom: 1px solid"]:has(> img) { border-bottom: none !importa
 
 .eyebrow {
   font-family: var(--sans);
-  font-size: 12.5px;
+  font-size: 14px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
   font-weight: 700;
@@ -109,7 +109,7 @@ div[style*="border-bottom: 1px solid"]:has(> img) { border-bottom: none !importa
   padding: 16px 22px;
   border-radius: 2px;
   font-weight: 500;
-  font-size: 15px;
+  font-size: 16.5px;
   letter-spacing: 0.01em;
   transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease;
   white-space: nowrap;
@@ -174,7 +174,7 @@ section { position: relative; }
 }
 .img-placeholder .label {
   font-family: var(--mono);
-  font-size: 12.5px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.12em;
   padding: 14px 16px;
@@ -213,7 +213,7 @@ section { position: relative; }
   align-items: center;
   gap: 6px;
   font-family: var(--mono);
-  font-size: 12.5px;
+  font-size: 14px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   padding: 6px 10px;
@@ -692,7 +692,7 @@ section { position: relative; }
   /* Florida map pins: shrink labels and stack them above / below the dot so a
      long label ("FORT MYERS · HQ") never runs off the narrower phone map */
   .wfs-map-pin {
-    font-size: 10px !important;
+    font-size: 11.5px !important;
     letter-spacing: 0.1em !important;
     padding: 3px 7px !important;
   }
@@ -717,7 +717,7 @@ section { position: relative; }
     margin: 0 -14px !important;
   }
   .wfs-usecase-row > p { grid-column: 2 / 4; grid-row: 2; }
-  .wfs-usecase-num { font-size: 36px !important; }
+  .wfs-usecase-num { font-size: 37.5px !important; }
 }
 
 @keyframes wfsSlideFade {

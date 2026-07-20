@@ -61,12 +61,12 @@ const GATE_DATA = {
       ['Service Openings', 'Single or double gates for maintenance access, equipment, and utility areas.', 'Maintenance & utility'],
     ],
     projects: [
-      { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: 'Custom Opening', material: 'Single Swing Gate', type: 'PVC privacy walk gate, white', contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/projects/pvc-privacy-gate-white.jpg' },
-      { name: 'Residential Walk Gate', loc: 'Fort Myers, FL', size: '4 ft', material: 'Aluminum Gate', type: 'Aluminum walk gate, self-closing hardware', contractor: 'Estate Fence Pros', year: '2024', imgUrl: 'assets/SINGLE_SWING_GATE.png' },
-      { name: 'Pool Enclosure Gate', loc: 'Naples, FL', size: '4 ft', material: 'Aluminum Gate', type: 'Pool-code aluminum gate, magnetic latch', contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/SINGLE_SWING_GATE.png' },
-      { name: 'Double Swing Gate', loc: 'Cape Coral, FL', size: '12 ft', material: 'Vinyl / PVC Gate', type: 'Vinyl gate, sand, matching run', contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/pvc-gate-sand.jpg' },
-      { name: 'Chain Link Service Gate', loc: 'Lehigh Acres, FL', size: '6 ft', material: 'Chain Link Gate', type: 'Vinyl-coated black service gate', contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/projects/cl-gate-black.jpg' },
-      { name: 'Metal Privacy Gate', loc: 'Estero, FL', size: '6 ft', material: 'Metal / DuraFence Gate', type: 'Metal privacy gate, matching panels', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/SLIDING_GATE.png' },
+      { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: 'Custom Opening', material: { EN: 'PVC Gate', ES: 'Portón PVC' }, type: { EN: 'White PVC Double Gate', ES: 'Portón doble PVC blanco' }, contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/projects/pvc-privacy-gate-white.jpg' },
+      { name: 'Residential Walk Gate', loc: 'Fort Myers, FL', size: '4 ft', material: { EN: 'Chain Link Gate', ES: 'Portón malla ciclónica' }, type: { EN: 'Black Chain Link Single Gate', ES: 'Portón sencillo de malla ciclónica negro' }, contractor: 'Estate Fence Pros', year: '2024', imgUrl: 'assets/SINGLE_SWING_GATE.png' },
+      { name: 'Pool Enclosure Gate', loc: 'Naples, FL', size: '4 ft', material: { EN: 'Aluminum Custom Gate', ES: 'Portón de aluminio a medida' }, type: { EN: 'Black Aluminum 4 Rail Custom Gate', ES: 'Portón de aluminio negro de 4 rieles a medida' }, contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/ALUM.png' },
+      { name: 'Double Swing Gate', loc: 'Cape Coral, FL', size: '12 ft', material: { EN: 'PVC Gate', ES: 'Portón PVC' }, type: { EN: 'White PVC Double Gate', ES: 'Portón doble PVC blanco' }, contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/gate-single-custom-pvc.png' },
+      { name: 'Chain Link Service Gate', loc: 'Lehigh Acres, FL', size: '6 ft', material: { EN: 'Chain Link Gate', ES: 'Portón malla ciclónica' }, type: { EN: 'Black Chain Link Single Gate', ES: 'Portón sencillo de malla ciclónica negro' }, contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/projects/cl-gate-black.jpg' },
+      { name: 'Metal Privacy Gate', loc: 'Estero, FL', size: '6 ft', material: { EN: 'Chain Link Gate', ES: 'Portón malla ciclónica' }, type: { EN: 'Galvanized Chain Link Sliding Gate', ES: 'Portón corredizo de malla ciclónica galvanizada' }, contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/SLIDING_GATE.png' },
     ],
     cta: {
       kicker: 'Single swing gate quote',
@@ -327,11 +327,11 @@ const GateQuickFacts = ({ data }) => (
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
               <span aria-hidden style={{ color: 'var(--laser-blue)', display: 'inline-flex' }}>{gateFactIcon(k)}</span>
               <span className="mono" style={{
-                fontSize: 12.5, letterSpacing: '0.16em', textTransform: 'uppercase',
+                fontSize: 14, letterSpacing: '0.16em', textTransform: 'uppercase',
                 color: 'var(--ink)', fontWeight: 700,
               }}>{k}</span>
             </div>
-            <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{v}</p>
+            <p style={{ margin: 0, fontSize: 16, lineHeight: 1.55, color: 'var(--charcoal)' }}>{v}</p>
           </div>
         ))}
       </div>
@@ -359,11 +359,11 @@ const GateCardGrid = ({ items }) => (
         </div>
         <div style={{ padding: '18px 20px 20px' }}>
           <div className="mono" style={{
-            fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
+            fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase',
             color: 'var(--tangerine)', fontWeight: 700, marginBottom: 10,
           }}>{p.tag}</div>
-          <h3 className="display" style={{ margin: '0 0 10px', fontSize: 21, lineHeight: 1.1 }}>{p.name}</h3>
-          <p style={{ margin: 0, fontSize: 13.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
+          <h3 className="display" style={{ margin: '0 0 10px', fontSize: 22.5, lineHeight: 1.1 }}>{p.name}</h3>
+          <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
         </div>
       </a>
     ))}
@@ -393,7 +393,7 @@ const GateQuoteChecklist = () => {
           <div>
             <div className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 18,
-              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+              fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
               textTransform: 'uppercase', color: 'var(--blue-ice)',
             }}>
               <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
@@ -403,13 +403,13 @@ const GateQuoteChecklist = () => {
               {t('What We Need to', 'Lo que necesitamos para')}<br/>
               <span style={{ color: 'var(--tangerine)' }}>{t('Quote Your Gate.', 'cotizar tu portón.')}</span>
             </h2>
-            <p style={{ marginTop: 20, fontSize: 14.5, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 360 }}>
+            <p style={{ marginTop: 20, fontSize: 16, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 360 }}>
               {t('To prepare an accurate gate quote, send us the opening size, material, height, color, gate type, and any hardware requirements. Photos or drawings are highly recommended.',
                  'Para preparar una cotización precisa, envíanos la medida de la abertura, material, altura, color, tipo de portón y los herrajes que necesites. Las fotos o dibujos son muy recomendables.')}
             </p>
             <a href="estimate.html#contact" className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 24, paddingBottom: 4,
-              fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
+              fontSize: 14, fontWeight: 700, letterSpacing: '0.2em',
               textTransform: 'uppercase', color: 'var(--white)',
               borderBottom: '1px solid rgba(255,255,255,0.45)',
             }}>
@@ -434,7 +434,7 @@ const GateQuoteChecklist = () => {
                     <path d="M3.5 8.5l3 3 6-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </span>
-                <span style={{ fontSize: 13.5, lineHeight: 1.4, color: 'var(--white)' }}>{item}</span>
+                <span style={{ fontSize: 15, lineHeight: 1.4, color: 'var(--white)' }}>{item}</span>
               </div>
             ))}
           </div>
@@ -465,7 +465,7 @@ const GateSpecs = ({ data }) => (
         <div>
           <div className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 18,
-            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.22em',
+            fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
             textTransform: 'uppercase', color: 'var(--blue-ice)',
           }}>
             <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
@@ -475,12 +475,12 @@ const GateSpecs = ({ data }) => (
             {useT()('Real numbers,', 'Números reales,')}<br/>
             <span style={{ color: 'var(--tangerine)' }}>{useT()('no guesswork.', 'sin conjeturas.')}</span>
           </h2>
-          <p style={{ marginTop: 20, fontSize: 14, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 320 }}>
+          <p style={{ marginTop: 20, fontSize: 15.5, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 320 }}>
             {useT()('Gate dimensions, hardware, and compatibility depend on the material, opening size, post type, and swing direction. Contact our team to confirm the right gate package for your project.', 'Las dimensiones, herrajes y compatibilidad del portón dependen del material, la medida de la abertura, el tipo de poste y la dirección de apertura. Contacta a nuestro equipo para confirmar el paquete adecuado para tu proyecto.')}
           </p>
           <a href="estimate.html" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 24, paddingBottom: 4,
-            fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
+            fontSize: 14, fontWeight: 700, letterSpacing: '0.2em',
             textTransform: 'uppercase', color: 'var(--white)',
             borderBottom: '1px solid rgba(255,255,255,0.45)',
           }}>
@@ -497,10 +497,10 @@ const GateSpecs = ({ data }) => (
             }}>
               <div className="mono" style={{
                 padding: '14px 18px',
-                fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase',
+                fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase',
                 color: 'var(--charcoal)', fontWeight: 700, background: '#ffffff',
               }}>{k}</div>
-              <div style={{ padding: '14px 18px', fontSize: 14, color: 'var(--ink)' }}>{v}</div>
+              <div style={{ padding: '14px 18px', fontSize: 15.5, color: 'var(--ink)' }}>{v}</div>
             </div>
           ))}
           </div>
@@ -534,7 +534,7 @@ const GateApplications = ({ data }) => {
       <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 26 }}>
         <a href="products.html#gates" className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10,
-          fontSize: 12.5, fontWeight: 700, letterSpacing: '0.2em',
+          fontSize: 14, fontWeight: 700, letterSpacing: '0.2em',
           textTransform: 'uppercase', color: 'var(--tangerine)',
         }}>
           {t('See all gate projects', 'Ver todos los proyectos de portones')}

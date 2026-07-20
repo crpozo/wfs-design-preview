@@ -77,7 +77,7 @@ const SiteHeader = ({ active }) => {
           zIndex: 200, background: 'var(--ink)', color: 'var(--white)',
           padding: '13px 24px', borderRadius: 999,
           boxShadow: '0 14px 34px rgba(0,16,17,0.32)',
-          fontFamily: 'var(--sans)', fontSize: 13, fontWeight: 600,
+          fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 600,
           display: 'flex', alignItems: 'center', gap: 12, whiteSpace: 'nowrap',
           animation: 'wfsFadeDown 0.25s ease',
         }}>
@@ -90,7 +90,7 @@ const SiteHeader = ({ active }) => {
       <div className="wfs-utility-bar" style={{ background: 'var(--ink)', borderBottom: '1px solid rgba(255,255,255,0.08)', color: 'var(--alice-blue)' }}>
         <div className="container" style={{
           display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          gap: 32, paddingTop: 10, paddingBottom: 10, fontFamily: 'var(--mono)', fontSize: 12.5,
+          gap: 32, paddingTop: 10, paddingBottom: 10, fontFamily: 'var(--mono)', fontSize: 14,
           letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 700,
         }}>
           {/* Left: mode toggle + catalog link */}
@@ -107,7 +107,7 @@ const SiteHeader = ({ active }) => {
                   )}
                   <a href={m.href} onClick={() => setCurMode(m.key)} style={{
                     display: 'inline-flex', alignItems: 'center', gap: 8,
-                    fontFamily: 'inherit', fontSize: 11, fontWeight: 700,
+                    fontFamily: 'inherit', fontSize: 12.5, fontWeight: 700,
                     letterSpacing: '0.18em', textTransform: 'uppercase',
                     color: 'rgba(219,233,238,0.7)', textDecoration: 'none',
                     transition: 'color 0.15s ease',
@@ -144,13 +144,13 @@ const SiteHeader = ({ active }) => {
                   <button key={l} onClick={() => setCurLang(l)} style={{
                     display: 'inline-flex', alignItems: 'center', gap: 6,
                     padding: 0, background: 'transparent',
-                    fontFamily: 'inherit', fontSize: 12.5, fontWeight: 700,
+                    fontFamily: 'inherit', fontSize: 14, fontWeight: 700,
                     letterSpacing: '0.18em', textTransform: 'uppercase',
                     color: isActive ? 'var(--white)' : 'rgba(219,233,238,0.55)',
                     cursor: 'pointer',
                   }}>
                     <span aria-hidden style={{
-                      fontSize: 14, lineHeight: 1,
+                      fontSize: 15.5, lineHeight: 1,
                       filter: isActive ? 'none' : 'grayscale(0.55)',
                       opacity: isActive ? 1 : 0.75,
                     }}>{l === 'EN' ? '🇺🇸' : '🇲🇽'}</span>
@@ -188,7 +188,7 @@ const SiteHeader = ({ active }) => {
                   onMouseEnter={() => setOpenMenu(null)}
                   style={{
                     display: 'inline-flex', alignItems: 'center',
-                    fontSize: 15, fontWeight: 500,
+                    fontSize: 16.5, fontWeight: 500,
                     color: active === id ? 'var(--laser-blue)' : 'var(--ink)',
                     textDecoration: 'none', padding: '8px 0', whiteSpace: 'nowrap',
                     borderBottom: active === id ? '2px solid var(--tangerine)' : '2px solid transparent',
@@ -201,7 +201,7 @@ const SiteHeader = ({ active }) => {
                   onMouseEnter={() => setOpenMenu(id)}>
                   <button style={{
                     display: 'inline-flex', alignItems: 'center',
-                    fontSize: 15, fontWeight: 500,
+                    fontSize: 16.5, fontWeight: 500,
                     color: openMenu === id ? 'var(--laser-blue)' : 'var(--ink)',
                     background: 'transparent', cursor: 'pointer', padding: '8px 0', whiteSpace: 'nowrap',
                     borderBottom: (active === id || openMenu === id) ? '2px solid var(--tangerine)' : '2px solid transparent',
@@ -219,7 +219,7 @@ const SiteHeader = ({ active }) => {
             <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" className="mono wfs-hide-tablet" style={{
               display: 'inline-flex', alignItems: 'center', gap: 7,
               padding: '7px 0',
-              fontSize: 11.5, fontWeight: 700,
+              fontSize: 13, fontWeight: 700,
               letterSpacing: '0.11em', textTransform: 'uppercase',
               color: 'var(--ink)', whiteSpace: 'nowrap',
               borderBottom: '1px solid var(--ink)',
@@ -235,7 +235,7 @@ const SiteHeader = ({ active }) => {
               borderRadius: 999,
               background: 'var(--ink)', color: 'var(--white)',
               fontFamily: 'var(--mono)',
-              fontSize: 11.5, fontWeight: 700,
+              fontSize: 13, fontWeight: 700,
               letterSpacing: '0.11em', textTransform: 'uppercase',
               whiteSpace: 'nowrap',
               transition: 'background 0.2s ease, transform 0.2s ease',
@@ -338,7 +338,7 @@ const SiteHeader = ({ active }) => {
                     background: 'var(--white)',
                     color: 'var(--ink)',
                     border: '1px solid rgba(0,16,17,0.25)',
-                    fontSize: 12.5, fontWeight: 700, letterSpacing: '0.12em',
+                    fontSize: 14, fontWeight: 700, letterSpacing: '0.12em',
                     textTransform: 'uppercase', lineHeight: 1.3,
                     textDecoration: 'none',
                   }}>
@@ -360,7 +360,7 @@ const SiteHeader = ({ active }) => {
                     <a href={def.href} target={def.external ? '_blank' : undefined} rel={def.external ? 'noopener' : undefined} style={{
                       width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                       padding: '18px 20px',
-                      fontFamily: 'var(--sans)', fontSize: 18, fontWeight: 500,
+                      fontFamily: 'var(--sans)', fontSize: 19.5, fontWeight: 500,
                       color: 'var(--ink)', textDecoration: 'none',
                     }}>
                       {t(label)}
@@ -382,7 +382,7 @@ const SiteHeader = ({ active }) => {
                   <button onClick={() => setMobileExpanded(isExpanded ? null : id)} style={{
                     width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                     padding: '18px 20px', background: 'transparent',
-                    fontFamily: 'var(--sans)', fontSize: 18, fontWeight: 500,
+                    fontFamily: 'var(--sans)', fontSize: 19.5, fontWeight: 500,
                     color: 'var(--ink)', textAlign: 'left', cursor: 'pointer',
                   }}>
                     {t(label)}
@@ -416,10 +416,10 @@ const SiteHeader = ({ active }) => {
                         <a key={i} href={it.href} target={it.href.startsWith('http') ? '_blank' : undefined} rel={it.href.startsWith('http') ? 'noopener' : undefined} style={{
                           display: 'block', padding: '14px 20px 14px 36px',
                           borderTop: '1px solid rgba(0,16,17,0.06)',
-                          fontSize: 14, color: 'var(--ink)',
+                          fontSize: 15.5, color: 'var(--ink)',
                         }}>
                           <div style={{ fontWeight: 500 }}>{t(it.label)}</div>
-                          {it.sub && <div style={{ fontSize: 13, color: 'var(--charcoal)', marginTop: 2 }}>{t(it.sub)}</div>}
+                          {it.sub && <div style={{ fontSize: 14.5, color: 'var(--charcoal)', marginTop: 2 }}>{t(it.sub)}</div>}
                         </a>
                       ))}
                     </div>
@@ -436,11 +436,11 @@ const SiteHeader = ({ active }) => {
                           display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12,
                           padding: '14px 20px 14px 36px',
                           borderTop: '1px solid rgba(0,16,17,0.06)',
-                          fontSize: 14, color: 'var(--ink)',
+                          fontSize: 15.5, color: 'var(--ink)',
                         }}>
                           <span>
                             <span style={{ fontWeight: 600, display: 'block' }}>{t(tile.name)}</span>
-                            <span style={{ fontSize: 13, color: 'var(--charcoal)' }}>{t(tile.tag)}</span>
+                            <span style={{ fontSize: 14.5, color: 'var(--charcoal)' }}>{t(tile.tag)}</span>
                           </span>
                           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, color: 'var(--charcoal)' }}>
                             <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
@@ -450,7 +450,7 @@ const SiteHeader = ({ active }) => {
                       <a href={fallbackHref} style={{
                         display: 'block', padding: '15px 20px 15px 36px',
                         borderTop: '1px solid rgba(0,16,17,0.1)',
-                        fontSize: 13, color: 'var(--laser-blue)', fontWeight: 700,
+                        fontSize: 14.5, color: 'var(--laser-blue)', fontWeight: 700,
                         letterSpacing: '0.04em',
                       }}>
                         {def.kind === 'mega-fences'
@@ -474,7 +474,7 @@ const SiteHeader = ({ active }) => {
               display: 'inline-flex', alignItems: 'center', gap: 14,
               padding: '14px 16px',
               background: 'var(--ink)', color: 'var(--white)',
-              fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700,
+              fontFamily: 'var(--mono)', fontSize: 14.5, fontWeight: 700,
               letterSpacing: '0.18em', textTransform: 'uppercase',
             }}>
               <span style={{
@@ -485,7 +485,7 @@ const SiteHeader = ({ active }) => {
             </a>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <span className="mono" style={{
-                fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
+                fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em',
                 textTransform: 'uppercase', color: 'var(--charcoal)',
               }}>{t('Language', 'Idioma')}</span>
               <div style={{ display: 'flex', gap: 12 }}>
@@ -502,10 +502,10 @@ const SiteHeader = ({ active }) => {
                       background: isActive ? 'var(--ink)' : 'var(--white)',
                       color: isActive ? 'var(--white)' : 'var(--ink)',
                       border: `1px solid ${isActive ? 'var(--ink)' : 'rgba(0,16,17,0.25)'}`,
-                      fontSize: 13, fontWeight: 700, letterSpacing: '0.14em',
+                      fontSize: 14.5, fontWeight: 700, letterSpacing: '0.14em',
                       textTransform: 'uppercase', cursor: 'pointer',
                     }}>
-                      <span aria-hidden style={{ flexShrink: 0, fontSize: 15, lineHeight: 1 }}>{l.code === 'EN' ? '🇺🇸' : '🇲🇽'}</span>
+                      <span aria-hidden style={{ flexShrink: 0, fontSize: 16.5, lineHeight: 1 }}>{l.code === 'EN' ? '🇺🇸' : '🇲🇽'}</span>
                       {l.code}
                       <span style={{ fontWeight: 500, letterSpacing: '0.03em', textTransform: 'none', opacity: 0.75 }}>
                         · {l.label}
@@ -539,12 +539,12 @@ const SiteHeader = ({ active }) => {
                       <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>
                         0{navIdx + 1}, {def.kind === 'mega-fences' ? t('By material', 'Por material') : t('By gate type', 'Por tipo de portón')}
                       </span>
-                      <h3 className="display" style={{ fontSize: 36, lineHeight: 0.98, margin: '14px 0 16px', maxWidth: 240 }}>
+                      <h3 className="display" style={{ fontSize: 37.5, lineHeight: 0.98, margin: '14px 0 16px', maxWidth: 240 }}>
                         {def.kind === 'mega-fences'
                           ? t('Four systems,\none yard.', 'Cuatro sistemas,\nuna sucursal.')
                           : t('Welded\nin-house.',         'Soldados\nen planta.')}
                       </h3>
-                      <p style={{ fontSize: 14, lineHeight: 1.5, color: 'var(--charcoal)', maxWidth: 240, margin: '0 0 20px' }}>
+                      <p style={{ fontSize: 15.5, lineHeight: 1.5, color: 'var(--charcoal)', maxWidth: 240, margin: '0 0 20px' }}>
                         {def.kind === 'mega-fences'
                           ? t('Supplier-direct pricing for contractors, homeowners and DIY projects across SW Florida.',
                               'Precios directos de fábrica para contratistas, propietarios y proyectos DIY en el suroeste de Florida.')
@@ -552,7 +552,7 @@ const SiteHeader = ({ active }) => {
                               'A la medida de tu proyecto. Cotizado en 24h, entrega o recoge en planta.')}
                       </p>
                       <a href={def.kind === 'mega-fences' ? 'products.html' : 'estimate.html'}
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 500, fontSize: 14, color: 'var(--ink)' }}>
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 500, fontSize: 15.5, color: 'var(--ink)' }}>
                         {def.kind === 'mega-fences' ? t('Full catalog', 'Catálogo completo') : t('Custom quote', 'Cotización a medida')} <ArrowRight size={12}/>
                       </a>
                     </div>
@@ -572,15 +572,15 @@ const SiteHeader = ({ active }) => {
                           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,16,17,0) 35%, rgba(0,16,17,0.85) 100%)' }}/>
                           <div style={{
                             position: 'absolute', top: 12, left: 12,
-                            fontFamily: 'var(--sans)', fontSize: 12, fontWeight: 700, letterSpacing: '0.14em',
+                            fontFamily: 'var(--sans)', fontSize: 13.5, fontWeight: 700, letterSpacing: '0.14em',
                             color: 'var(--ink)', background: 'var(--tangerine)',
                             padding: '4px 8px', borderRadius: 3,
                           }}>
                             0{i + 1}
                           </div>
                           <div style={{ position: 'absolute', bottom: 14, left: 14, right: 14, color: 'var(--white)' }}>
-                            <div className="display" style={{ fontSize: 17, lineHeight: 1.1, marginBottom: 6 }}>{t(tile.name)}</div>
-                            <div className="eyebrow" style={{ fontSize: 12, color: 'var(--alice-blue)' }}>{t(tile.tag)}</div>
+                            <div className="display" style={{ fontSize: 18.5, lineHeight: 1.1, marginBottom: 6 }}>{t(tile.name)}</div>
+                            <div className="eyebrow" style={{ fontSize: 13.5, color: 'var(--alice-blue)' }}>{t(tile.tag)}</div>
                           </div>
                         </a>
                       ))}
@@ -592,7 +592,7 @@ const SiteHeader = ({ active }) => {
                       <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>
                         0{navIdx + 1}, {t(navItem.label)}
                       </span>
-                      <h3 className="display" style={{ fontSize: 36, margin: '14px 0 0', lineHeight: 0.98, maxWidth: 240 }}>
+                      <h3 className="display" style={{ fontSize: 37.5, margin: '14px 0 0', lineHeight: 0.98, maxWidth: 240 }}>
                         {openMenu === 'Get a Quote' && t('Three ways\nto start.','Tres maneras\nde empezar.')}
                         {openMenu === 'Company' && t('About\nthe yard.',         'Sobre\nla empresa.')}
                         {openMenu === 'Fence Education Hub' && t('Pick the\nright fence.', 'Elige la\ncerca correcta.')}
@@ -609,12 +609,12 @@ const SiteHeader = ({ active }) => {
                         onMouseEnter={e => { e.currentTarget.style.background = '#ffffff'; }}
                         onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
-                            <span className="eyebrow" style={{ color: 'var(--tangerine)', fontSize: 12 }}>
+                            <span className="eyebrow" style={{ color: 'var(--tangerine)', fontSize: 13.5 }}>
                               0{i + 1}
                             </span>
-                            <span style={{ fontSize: 17, fontWeight: 500, color: 'var(--ink)' }}>{t(it.label)}</span>
+                            <span style={{ fontSize: 18.5, fontWeight: 500, color: 'var(--ink)' }}>{t(it.label)}</span>
                           </div>
-                          <div style={{ fontSize: 13, color: 'var(--charcoal)', paddingLeft: 28, lineHeight: 1.45 }}>{t(it.sub)}</div>
+                          <div style={{ fontSize: 14.5, color: 'var(--charcoal)', paddingLeft: 28, lineHeight: 1.45 }}>{t(it.sub)}</div>
                         </a>
                       ))}
                     </div>
