@@ -1170,21 +1170,20 @@ const ContractorWholesaleKit = () => {
     },
   ];
   return (
-    <section style={{ background: 'var(--alice-blue)', padding: '120px 0' }}>
+    <section style={{ background: 'var(--white)', padding: '120px 0' }}>
       <div className="container">
+        {/* Title + right blurb over a heavy rule */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1fr',
-          gap: 48, alignItems: 'end', marginBottom: 48,
+          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end',
+          paddingBottom: 28, borderBottom: '2px solid var(--ink)',
         }}>
-          <div>
-            <h2 className="display" style={{
-              margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
-              lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
-            }}>{t('The wholesale kit', 'El kit mayorista')}</h2>
-          </div>
-          <p className="mono" style={{
-            margin: 0, maxWidth: 460, justifySelf: 'end', textAlign: 'right',
-            fontSize: 13, lineHeight: 1.7, color: 'var(--charcoal)',
+          <h2 className="display" style={{
+            margin: 0, fontSize: 'clamp(28px, 3.4vw, 44px)',
+            lineHeight: 1, letterSpacing: '-0.015em', color: 'var(--ink)',
+          }}>{t('The wholesale kit', 'El kit mayorista')}</h2>
+          <p style={{
+            margin: 0, maxWidth: 400, justifySelf: 'end', textAlign: 'right',
+            fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)',
           }}>
             {t(
               'Five things every active partner walks away with, not someday, on day one.',
@@ -1192,42 +1191,29 @@ const ContractorWholesaleKit = () => {
             )}
           </p>
         </div>
-        <div style={{
-          display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: 0,
-          border: '1.5px solid var(--ink)',
-        }}>
-          {items.map((it, i) => (
-            <div key={i} style={{
-              padding: '32px 30px 34px',
-              borderRight: (i % 3 !== 2 && i !== items.length - 1) ? '1.5px solid var(--ink)' : 'none',
-              borderBottom: (i < 3) ? '1.5px solid var(--ink)' : 'none',
-              background: 'var(--white)',
-              transition: 'background 0.2s ease',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#ffffff'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = 'var(--white)'; }}>
-              <div style={{
-                display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                marginBottom: 22,
-              }}>
-                <span className="mono" style={{
-                  fontSize: 12, fontWeight: 700, letterSpacing: '0.22em',
-                  color: 'var(--tangerine)', textTransform: 'uppercase',
-                }}>{String(i + 1).padStart(2, '0')}</span>
-                <span style={{ color: 'var(--ink)' }}>{it.svg}</span>
-              </div>
-              <h3 className="display" style={{
-                margin: '0 0 12px', fontSize: 17,
-                letterSpacing: '-0.005em', color: 'var(--ink)',
-              }}>{t(it.title)}</h3>
-              <p className="mono" style={{
-                margin: 0, fontSize: 13, lineHeight: 1.65,
-                color: 'var(--charcoal)',
-              }}>{t(it.body)}</p>
-            </div>
-          ))}
-        </div>
+        {/* Editorial rows: outlined number · icon + title · description */}
+        {items.map((it, i) => (
+          <div key={i} className="wfs-usecase-row" style={{
+            display: 'grid', gridTemplateColumns: '104px 1fr 1.2fr',
+            gap: 28, alignItems: 'center',
+            padding: '34px 0',
+            borderBottom: '1px solid rgba(0,16,17,0.1)',
+          }}>
+            <span className="display wfs-usecase-num" aria-hidden style={{
+              fontSize: 60, lineHeight: 1, fontWeight: 800,
+              color: 'transparent', WebkitTextStroke: '1.5px rgba(38,49,102,0.32)',
+            }}>0{i + 1}</span>
+            <h3 className="display" style={{
+              margin: 0, fontSize: 'clamp(18px, 1.6vw, 24px)', lineHeight: 1.1,
+              textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--ink)',
+              display: 'flex', alignItems: 'center', gap: 14,
+            }}>
+              <span aria-hidden style={{ display: 'inline-flex', color: 'var(--tangerine)', flexShrink: 0 }}>{it.svg}</span>
+              {t(it.title)}
+            </h3>
+            <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>{t(it.body)}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
