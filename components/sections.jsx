@@ -1158,6 +1158,18 @@ const FinalCTA = () => {
                     </select>
                   </div>
                 </div>
+                <div style={{ marginBottom: 18 }}>
+                  <label style={labelStyle}>{t('How did you hear about us?', '¿Cómo te enteraste de nosotros?')}</label>
+                  <select style={inputStyle}>
+                    <option>{t('Select an option', 'Selecciona una opción')}</option>
+                    <option>{t('Google / web search', 'Búsqueda en Google / web')}</option>
+                    <option>{t('Referral / word of mouth', 'Referencia / recomendación')}</option>
+                    <option>{t('Social media', 'Redes sociales')}</option>
+                    <option>{t('Drove by / signage', 'Pasé por ahí / letrero')}</option>
+                    <option>{t('Repeat customer', 'Cliente recurrente')}</option>
+                    <option>{t('Other', 'Otro')}</option>
+                  </select>
+                </div>
                 <div style={{ marginBottom: 24 }}>
                   <label style={labelStyle}>{t('Project details', 'Detalles del proyecto')}</label>
                   <textarea rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: 100 }} placeholder={t('Approx. linear feet, height, location/zip, timeline, anything else relevant…', 'Aprox. pies lineales, altura, ubicación/código postal, plazo, cualquier otro detalle relevante…')}/>
