@@ -46,6 +46,32 @@ a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 img { display: block; max-width: 100%; }
 
+/* ─── Global readability floor for body copy ───
+   Components set paragraph sizes inline (11-14px), which reads too small.
+   These overrides lift every small paragraph site-wide without touching
+   headings, chips, tabs or mono eyebrow labels. */
+p[style*="font-size: 11"],
+p[style*="font-size: 12"],
+p[style*="font-size: 13"] { font-size: 15px !important; }
+p[style*="font-size: 14"] { font-size: 15.5px !important; }
+p[style*="font-size: clamp(13px"],
+p[style*="font-size: clamp(14px"] { font-size: clamp(15px, 1.15vw, 17px) !important; }
+
+/* ─── Frameless images ───
+   Cards that lead with a photo drop their hairline border, and image
+   areas drop the divider under the image. Bordered boxes without photos
+   (spec tables, checklists, CTA boxes) keep their borders. */
+article[style*="border: 1px solid"]:has(img),
+a[style*="border: 1px solid"]:has(img),
+article[style*="border: 1.5px solid"]:has(img),
+a[style*="border: 1.5px solid"]:has(img) { border: none !important; }
+div[style*="border-bottom: 1px solid"]:has(> img) { border-bottom: none !important; }
+/* Style/profile cards (SVG illustrations + photos) share this grid */
+.wfs-profiles-grid > article,
+.wfs-profiles-grid > a { border: none !important; }
+.wfs-profiles-grid > article > div:first-child,
+.wfs-profiles-grid > a > div:first-child { border-bottom: none !important; }
+
 /* Display type — Mirano Extended substitute: Archivo at wdth 125 */
 .display {
   font-family: var(--display);
