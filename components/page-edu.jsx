@@ -342,14 +342,18 @@ const MaterialsCompDeepDive = () => {
         />
         <div style={{ display: 'grid', gap: 16 }}>
           {profiles.map((p, i) => (
-            <a key={p.slug} href={p.href} style={{
-              display: 'grid', gridTemplateColumns: '160px 1fr 1.4fr 1.4fr auto',
-              gap: 28, alignItems: 'center',
-              padding: '24px 28px',
+            <a key={p.slug} className="wfs-matrow" href={p.href} style={{
+              display: 'grid', gridTemplateColumns: '96px 150px 1fr 1.4fr 1.4fr auto',
+              gap: 24, alignItems: 'center',
+              padding: '20px 26px',
               background: i % 2 === 0 ? 'var(--white)' : '#ffffff',
               border: '1px solid rgba(0,16,17,0.12)',
               color: 'var(--ink)',
             }}>
+              <div className="wfs-matrow__thumb" style={{ width: 96, height: 78, overflow: 'hidden', background: '#eef2f7' }}>
+                <img src={FENCE_IMG[p.slug === 'chain-link' ? 'chainlink' : p.slug]} alt={p.name} loading="lazy"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              </div>
               <div>
                 <div className="display" style={{ fontSize: 23.5, lineHeight: 1.05 }}>{p.name}</div>
                 <div className="mono" style={{

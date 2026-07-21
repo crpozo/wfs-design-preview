@@ -720,6 +720,13 @@ section { position: relative; }
   .wfs-usecase-num { font-size: 37.5px !important; }
 }
 
+/* Materials-comparison rows: stack into a card on smaller screens so the
+   5 columns + material thumbnail don't get crushed */
+@media (max-width: 900px) {
+  .wfs-matrow { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .wfs-matrow__thumb { width: 100% !important; height: 150px !important; }
+}
+
 @keyframes wfsSlideFade {
   from { opacity: 0; transform: translateX(16px); }
   to   { opacity: 1; transform: none; }
