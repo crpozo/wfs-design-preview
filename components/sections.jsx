@@ -594,7 +594,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
     { name: { EN: 'Immokalee Ag Facility', ES: 'Instalación agrícola Immokalee' }, loc: 'Immokalee, FL', size: '1.4 mi', material: 'Chain Link', type: { EN: 'Chainlink fence, black', ES: 'Cerca de malla ciclónica, negra' }, contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/cl-fence-black-2.jpg' },
     { name: { EN: 'Port Charlotte HOA', ES: 'HOA Port Charlotte' }, loc: 'Port Charlotte, FL', size: { EN: '52 lots', ES: '52 lotes' }, material: 'EC Fence', type: { EN: 'EC Fence panels, 6 ft, bronze finish', ES: 'Paneles EC Fence, 6 ft, acabado bronce' }, contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/projects/ecfence-bronze.jpg' },
     { name: { EN: 'Golden Gate Estates', ES: 'Golden Gate Estates' }, loc: 'Golden Gate, FL', size: '300 LF', material: 'Metal', type: { EN: 'Metal fence, 3-rail, brown finish', ES: 'Cerca metálica, 3 rieles, acabado marrón' }, contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/projects/met-fence-3-rail-brown.jpg' },
-    { name: { EN: 'North Fort Myers Depot', ES: 'Depósito North Fort Myers' }, loc: 'North Fort Myers, FL', size: '0.8 mi', material: 'Chain Link', type: { EN: 'Chainlink fence, black', ES: 'Cerca de malla ciclónica, negra' }, contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/cl-fence-black.jpg' },
+    { name: { EN: 'North Fort Myers Depot', ES: 'Depósito North Fort Myers' }, loc: 'North Fort Myers, FL', size: '0.8 mi', material: 'Chain Link', type: { EN: 'Chainlink privacy slats, black', ES: 'Malla ciclónica con tiras de privacidad, negra' }, contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/cl-privacy-slats-black.jpg' },
   ];
 
   const PER = 5;
