@@ -860,6 +860,31 @@ const Calculator = () => {
   );
 };
 
+/* Small box-truck marker for the Florida map — echoes the WFS delivery-truck
+   logo (cargo box + cab-over cab + chunky wheels + motion lines). Navy on the
+   tangerine land reads cleanly; base faces left, flip to face right. */
+const MapTruck = ({ flip }) => (
+  <svg viewBox="0 0 72 40" width="100%" height="100%"
+    style={{ display: 'block', overflow: 'visible', transform: flip ? 'scaleX(-1)' : 'none' }}>
+    {/* motion lines (speed) */}
+    <g stroke="var(--white)" strokeWidth="2.4" strokeLinecap="round" opacity="0.85">
+      <line x1="0.5" y1="17" x2="7" y2="17" />
+      <line x1="1.5" y1="24" x2="9" y2="24" />
+    </g>
+    {/* cargo box */}
+    <rect x="10" y="6.5" width="32" height="21" rx="2.5" fill="var(--ink)" />
+    {/* cab */}
+    <path d="M42 12 h9.6 c1.2 0 2.3 .5 3.1 1.5 l4.6 5.6 c.9 1.1 1.4 2.5 1.4 3.9 v4.5 H42 Z" fill="var(--ink)" />
+    {/* windshield */}
+    <path d="M51.9 14.6 h-6.1 v5.3 h10.4 z" fill="var(--white)" />
+    {/* chassis rail */}
+    <rect x="10" y="27.4" width="49" height="2.6" rx="1.3" fill="var(--ink)" />
+    {/* wheels + hubs */}
+    <g fill="var(--ink)"><circle cx="22" cy="31.4" r="5.6" /><circle cx="51" cy="31.4" r="5.6" /></g>
+    <g fill="var(--white)"><circle cx="22" cy="31.4" r="2" /><circle cx="51" cy="31.4" r="2" /></g>
+  </svg>
+);
+
 const ServiceAreas = () => {
   const t = useT();
   const cities = [
@@ -955,9 +980,31 @@ const ServiceAreas = () => {
                   color: 'var(--ink)', background: 'var(--white)',
                   padding: '5px 9px', whiteSpace: 'nowrap',
                   border: '1px solid var(--ink)',
+                  boxShadow: '0 6px 16px rgba(0,0,0,0.30)',
                   pointerEvents: 'none',
+                  zIndex: 3,
                 }}>{p.name}</span>
               </React.Fragment>
+            ))}
+
+            {/* Delivery fleet — trucks fan out from the SW yards across the
+                state. Coords are % of the viewBox; all sit on the FL landmass
+                (point-in-polygon checked), north → central → southeast. */}
+            {[
+              { key: 'north',   xPct: 70,   yPct: 41,   flip: true  },
+              { key: 'central', xPct: 78,   yPct: 57,   flip: false },
+              { key: 'se',      xPct: 85,   yPct: 66.5, flip: false },
+            ].map((tk) => (
+              <span key={tk.key} aria-hidden style={{
+                position: 'absolute',
+                left: `${tk.xPct}%`, top: `${tk.yPct}%`,
+                transform: 'translate(-50%, -50%)',
+                width: 38, height: 21,
+                filter: 'drop-shadow(0 2px 3px rgba(0,0,0,0.38))',
+                pointerEvents: 'none', zIndex: 1,
+              }}>
+                <MapTruck flip={tk.flip} />
+              </span>
             ))}
 
             {/* Eyebrow label, top-left */}
@@ -978,6 +1025,7 @@ const ServiceAreas = () => {
               border: '1px solid rgba(255,113,51,0.4)',
               padding: '10px 14px',
               display: 'flex', alignItems: 'center', gap: 10,
+              boxShadow: '0 8px 20px rgba(0,0,0,0.32)',
             }}>
               <span style={{
                 width: 8, height: 8, borderRadius: '50%',
@@ -1002,6 +1050,7 @@ const ServiceAreas = () => {
                 border: '1px solid rgba(0,16,17,0.18)',
                 padding: '16px 18px',
                 background: 'var(--white)',
+                boxShadow: '0 6px 18px rgba(38,49,102,0.12)',
                 display: 'flex', alignItems: 'center', gap: 16,
               }}>
                 <div className="mono" style={{
