@@ -761,10 +761,96 @@ const HomeownerClosingCTA = () => {
   );
 };
 
+/* ───── Homeowner path fork: repair vs. new project ───── */
+const HomeownerPaths = () => {
+  const t = useT();
+  const [hover, setHover] = React.useState(-1);
+  const paths = [
+    {
+      pill: t('No minimums', 'Sin mínimos'),
+      title: t('I want to repair my fence', 'Quiero reparar mi cerca'),
+      body: t('Buy exactly what you need, piece by piece — from a single picket to a full rail, post, cap or bracket. No minimums, supplier-direct pricing. Fix what broke without paying for a whole new fence.', 'Compra exactamente lo que necesitas, pieza por pieza: desde un solo picket hasta un riel completo, poste, tapa o soporte. Sin mínimos y con precio directo de proveedor. Arregla lo que se dañó sin pagar por una cerca nueva completa.'),
+      cta: t('Shop repair parts', 'Comprar repuestos'),
+      href: 'products.html',
+      icon: (<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a3.8 3.8 0 0 0-5 5l-5 5 2 2 5-5a3.8 3.8 0 0 0 5-5l-2.4 2.4-2-.5-.5-2Z"/></svg>),
+    },
+    {
+      pill: t('Wholesale pricing', 'Precio mayorista'),
+      title: t('New project · new fence installation', 'Proyecto nuevo · instalación de cerca'),
+      body: t("We give you everything you need to build it yourself — complete DIY fence kits cut to your layout, with the hardware and step-by-step guidance to install it. And because we don't install fences, you get true wholesale, supplier-direct pricing.", 'Te damos todo lo que necesitas para armarla tú mismo: kits DIY completos, cortados a tu medida, con los herrajes y la guía paso a paso para instalarla. Y como no instalamos cercas, obtienes precio mayorista real, directo de proveedor.'),
+      cta: t('Start my project', 'Empezar mi proyecto'),
+      href: 'estimate.html#contact',
+      accent: true,
+      icon: (<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11 L12 4 L21 11"/><path d="M5 10 V20 H19 V10"/></svg>),
+    },
+  ];
+  return (
+    <section style={{ background: '#f5f5f7', padding: 'clamp(80px, 10vh, 112px) 0' }}>
+      <div className="container">
+        <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto clamp(40px, 6vh, 60px)' }}>
+          <div className="mono" style={{ fontSize: 13.5, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--tangerine)', fontWeight: 700, marginBottom: 14 }}>
+            {t('Two ways to start', 'Dos maneras de empezar')}
+          </div>
+          <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 42px)', lineHeight: 1.05, letterSpacing: '-0.02em', fontWeight: 800, textTransform: 'uppercase' }}>
+            {t('What brings you in', '¿Qué te trae')}{' '}
+            <span style={{ color: 'var(--tangerine)' }}>{t('today?', 'hoy?')}</span>
+          </h2>
+          <p style={{ margin: '16px auto 0', fontSize: 16.5, lineHeight: 1.6, color: 'var(--charcoal)', maxWidth: 520 }}>
+            {t("Pick your path — a quick repair or a full new fence. Either way you buy direct, and since we don't install, there's no installer markup.", 'Elige tu camino: una reparación rápida o una cerca nueva completa. En ambos casos compras directo y, como no instalamos, no hay margen de instalador.')}
+          </p>
+        </div>
+        <div className="wfs-paths-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+          {paths.map((p, i) => (
+            <div key={i}
+              onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(-1)}
+              style={{
+                background: 'var(--white)', borderRadius: 20,
+                border: p.accent ? '1px solid rgba(255,113,51,0.45)' : '1px solid rgba(0,16,17,0.1)',
+                boxShadow: hover === i ? '0 30px 60px -28px rgba(38,49,102,0.35)' : '0 18px 44px -30px rgba(38,49,102,0.24)',
+                transform: hover === i ? 'translateY(-4px)' : 'none',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
+                padding: 'clamp(28px, 3vw, 40px)',
+                display: 'flex', flexDirection: 'column',
+              }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 }}>
+                <span style={{
+                  width: 54, height: 54, borderRadius: 14, flexShrink: 0,
+                  background: p.accent ? 'var(--tangerine)' : 'var(--ink)', color: 'var(--white)',
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                }}>{p.icon}</span>
+                <span className="mono" style={{
+                  padding: '7px 14px', borderRadius: 999,
+                  fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase',
+                  background: p.accent ? 'var(--tangerine)' : 'rgba(0,16,17,0.06)',
+                  color: p.accent ? 'var(--white)' : 'var(--charcoal)',
+                }}>{p.pill}</span>
+              </div>
+              <h3 className="display" style={{ margin: '0 0 14px', fontSize: 'clamp(22px, 2vw, 27px)', lineHeight: 1.12, letterSpacing: '-0.01em', color: 'var(--ink)' }}>{p.title}</h3>
+              <p style={{ margin: '0 0 28px', fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>{p.body}</p>
+              <a href={p.href} style={{
+                marginTop: 'auto', alignSelf: 'flex-start',
+                display: 'inline-flex', alignItems: 'center', gap: 10,
+                padding: '14px 24px', borderRadius: 999,
+                background: p.accent ? 'var(--tangerine)' : 'var(--ink)', color: 'var(--white)',
+                fontSize: 15.5, fontWeight: 600, fontFamily: 'var(--sans)',
+                boxShadow: p.accent ? '0 10px 26px rgba(255,113,51,0.35)' : 'none',
+              }}>
+                {p.cta}
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const HomeownerPage = () => (
   <>
     <SiteHeader />
     <HomeownerHero />
+    <HomeownerPaths />
     <HomeownerSteps />
     <FenceCategories />
     <HomeownerInstallerSplit />
