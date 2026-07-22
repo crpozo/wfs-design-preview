@@ -91,61 +91,68 @@ const MaterialsComparison = () => {
         boxShadow: '0 34px 70px -36px rgba(0,16,17,0.28)',
         background: 'var(--white)',
       }}>
-        {/* Header: navy band with a clean, uniform white product tile per material */}
+        {/* Header: edge-to-edge photo per material, label on a dark scrim.
+            The photo fills its whole cell (cover) — no floating cutouts. */}
         <div style={{
           display: 'grid', gridTemplateColumns: '1.2fr repeat(4, 1fr)',
           background: 'var(--ink)', color: 'var(--white)',
         }}>
           {[
             { label: '', img: null, href: null },
-            { label: t('Vinyl / PVC', 'Vinilo / PVC'), img: 'assets/compare/cut/vinyl.png?v=255', href: 'vinyl.html' },
-            { label: t('Aluminum', 'Aluminio'), img: 'assets/compare/cut/aluminum.png?v=255', href: 'aluminum.html' },
-            { label: t('Chain Link', 'Malla ciclónica'), img: 'assets/compare/cut/chainlink.png?v=255', href: 'chain-link.html' },
-            { label: t('Metal / DuraFence', 'Metal / DuraFence'), img: 'assets/compare/cut/metal.png?v=255', href: 'metal.html' },
+            { label: t('Vinyl / PVC', 'Vinilo / PVC'), img: FENCE_IMG.vinyl, href: 'vinyl.html' },
+            { label: t('Aluminum', 'Aluminio'), img: FENCE_IMG.aluminum, href: 'aluminum.html' },
+            { label: t('Chain Link', 'Malla ciclónica'), img: FENCE_IMG.chainlink, href: 'chain-link.html' },
+            { label: t('Metal / DuraFence', 'Metal / DuraFence'), img: FENCE_IMG.metal, href: 'metal.html' },
           ].map((h, i) => (
-            <div key={i} style={{
-              display: 'flex', flexDirection: 'column',
-              borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)',
-            }}>
-              {h.img ? (
-                /* Cut-out PNGs (transparent background) so the products sit
-                   straight on the navy — no white tile behind them. */
-                <div style={{ padding: '24px 20px 0' }}>
-                  <div style={{
-                    aspectRatio: '16 / 11',
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  }}>
-                    <img src={h.img} alt={h.label} loading="lazy"
-                      style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}/>
-                  </div>
-                </div>
-              ) : (
-                <div className="mono" style={{
-                  padding: '22px 22px 0',
-                  fontSize: 12.5, letterSpacing: '0.22em', textTransform: 'uppercase',
-                  color: 'rgba(219,233,238,0.5)',
-                }}>{t('At a glance', 'De un vistazo')}</div>
-              )}
-              {h.href ? (
-                <a href={h.href} className="mono" style={{
-                  marginTop: 'auto', padding: '16px 13px 20px',
-                  display: 'block',
-                  fontSize: 13.5, fontWeight: 700, letterSpacing: '0.14em',
-                  textTransform: 'uppercase', color: 'var(--white)',
-                  transition: 'color 0.18s',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.color = 'var(--coral)'; }}
-                onMouseLeave={e => { e.currentTarget.style.color = 'var(--white)'; }}
-                >
-                  {h.label}
-                  <svg width="11" height="11" viewBox="0 0 16 16" fill="none" style={{ marginLeft: 8, verticalAlign: 'middle', opacity: 0.65 }}>
-                    <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+            h.img ? (
+              <a key={i} href={h.href} style={{
+                position: 'relative', display: 'block', overflow: 'hidden',
+                minHeight: 'clamp(170px, 15vw, 210px)',
+                textDecoration: 'none', color: 'var(--white)',
+                borderLeft: '1px solid rgba(255,255,255,0.1)',
+              }}
+              onMouseEnter={e => { const im = e.currentTarget.querySelector('img'); if (im) im.style.transform = 'scale(1.05)'; }}
+              onMouseLeave={e => { const im = e.currentTarget.querySelector('img'); if (im) im.style.transform = 'scale(1)'; }}>
+                <img src={h.img} alt={h.label} loading="lazy" style={{
+                  position: 'absolute', inset: 0, width: '100%', height: '100%',
+                  objectFit: 'cover', display: 'block',
+                  transition: 'transform 0.4s ease',
+                }}/>
+                {/* Scrim so the label stays legible over any photo */}
+                <span aria-hidden style={{
+                  position: 'absolute', inset: 0,
+                  background: 'linear-gradient(180deg, rgba(38,49,103,0.10) 35%, rgba(38,49,103,0.92) 100%)',
+                }}/>
+                <span className="mono" style={{
+                  position: 'absolute', left: 16, right: 14, bottom: 14,
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8,
+                  fontSize: 13.5, fontWeight: 700, letterSpacing: '0.1em',
+                  textTransform: 'uppercase', lineHeight: 1.25,
+                }}>
+                  <span style={{ minWidth: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{h.label}</span>
+                  <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0, color: 'var(--tangerine)' }}>
+                    <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.9" strokeLinecap="square"/>
                   </svg>
-                </a>
-              ) : (
-                <div style={{ marginTop: 'auto', padding: '16px 20px 20px' }}/>
-              )}
-            </div>
+                </span>
+              </a>
+            ) : (
+              <div key={i} style={{
+                display: 'flex', flexDirection: 'column', justifyContent: 'center',
+                padding: 'clamp(22px, 2vw, 30px)',
+                minHeight: 'clamp(170px, 15vw, 210px)',
+              }}>
+                <div className="mono" style={{
+                  fontSize: 12.5, letterSpacing: '0.22em', textTransform: 'uppercase',
+                  color: 'rgba(219,233,238,0.55)', marginBottom: 12,
+                }}>{t('At a glance', 'De un vistazo')}</div>
+                <div className="display" style={{ fontSize: 'clamp(22px, 2vw, 28px)', lineHeight: 1.05, color: 'var(--white)' }}>
+                  {t('Pick your material', 'Elige tu material')}
+                </div>
+                <div style={{ marginTop: 10, fontSize: 14.5, lineHeight: 1.45, color: 'rgba(219,233,238,0.65)' }}>
+                  {t('Tap any column to explore.', 'Toca una columna para explorar.')}
+                </div>
+              </div>
+            )
           ))}
         </div>
         {[
