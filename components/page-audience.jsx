@@ -660,7 +660,7 @@ const HomeownerFAQ = () => {
                         letterSpacing: '-0.005em',
                       }}>{t(q)}</span>
                     </span>
-                    <span style={{
+                    <span className="wfs-faq-toggle" style={{
                       width: 28, height: 28,
                       background: isOpen ? 'var(--tangerine)' : 'transparent',
                       border: `1px solid ${isOpen ? 'var(--tangerine)' : 'rgba(0,16,17,0.2)'}`,

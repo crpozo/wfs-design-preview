@@ -747,3 +747,66 @@ section { position: relative; }
   .wfs-perk-cell { border-left: none !important; border-top: 1px solid rgba(255,255,255,0.12) !important; }
   .wfs-perks-grid .wfs-perk-cell:first-child { border-top: none !important; }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Apple-style mobile polish (≤ 640px)
+   Softer light-gray canvas + rounded, floating cards with deeper
+   shadows so the phone view reads modern instead of flat/boxy.
+   Scoped to phones — the desktop layout is already tuned.
+   Selectors match the browser-serialized inline style form
+   (rgba() with spaces after commas; var(--x) preserved verbatim).
+   ───────────────────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  /* 1 · Warm light-gray canvas (Apple #f5f5f7) instead of flat white.
+     White/parchment/linen sections become the canvas so the white
+     cards inside them float; dark (ink) sections are untouched. */
+  body { background: #f5f5f7; }
+  section[style*="background: var(--white)"],
+  section[style*="background: var(--parchment)"],
+  section[style*="background: var(--linen)"] {
+    background: #f5f5f7 !important;
+  }
+
+  /* 2 · Flat bordered boxes → rounded white floating cards */
+  [style*="border: 1px solid rgba(38, 49, 102, 0.14)"],
+  [style*="border: 1px solid rgba(0, 16, 17, 0.1)"],
+  [style*="border: 1px solid rgba(0, 16, 17, 0.12)"],
+  [style*="border: 1px solid rgba(0, 16, 17, 0.15)"],
+  [style*="border: 1px solid rgba(0, 16, 17, 0.18)"] {
+    border-radius: 18px !important;
+    border-color: rgba(38, 49, 102, 0.08) !important;
+    box-shadow: 0 14px 34px -18px rgba(38, 49, 102, 0.32) !important;
+    background: var(--white) !important;
+  }
+
+  /* 3 · Form fields: round the corners, no drop shadow */
+  [style*="border: 1px solid rgba(0, 16, 17, 0.25)"] { border-radius: 12px !important; }
+
+  /* 4 · Small chips: icon frames + FAQ toggle + hamburger → rounded.
+     .wfs-faq-toggle rounds both open (tangerine) and closed states. */
+  [style*="border: 1.5px solid var(--ink)"] { border-radius: 12px !important; }
+  [style*="border: 1px solid rgba(0, 16, 17, 0.2)"] { border-radius: 9px !important; }
+  .wfs-faq-toggle { border-radius: 9px !important; }
+  .wfs-mobile-trigger { border-radius: 12px !important; }
+
+  /* 5 · Media / image cards: round + clip; soften the map's hard border.
+     Covers both inline aspect-ratio cards and the class-based mobile
+     system carousel (.wfs-msys) + project/product image cards. */
+  .wfs-map,
+  .wfs-msys__imgwrap,
+  .wfs-msys__card,
+  .wfs-projects-grid > *,
+  [style*="aspect-ratio: 3 / 4"],
+  [style*="aspect-ratio: 4 / 5"],
+  [style*="aspect-ratio: 5 / 4"],
+  [style*="aspect-ratio: 4 / 3"],
+  [style*="aspect-ratio: 3 / 2"],
+  [style*="aspect-ratio: 16 / 9"] {
+    border-radius: 18px !important;
+    overflow: hidden !important;
+  }
+  .wfs-map {
+    border-color: transparent !important;
+    box-shadow: 0 16px 36px -18px rgba(38, 49, 102, 0.45) !important;
+  }
+}
