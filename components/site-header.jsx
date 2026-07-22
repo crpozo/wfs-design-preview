@@ -26,7 +26,6 @@ const SiteHeader = ({ active }) => {
   const NAV = [
     { id: 'Fences', label: { EN: 'Fences', ES: 'Cercas' }, def: { kind: 'mega-fences' } },
     { id: 'Gates',  label: { EN: 'Gates',  ES: 'Portones' }, def: { kind: 'mega-gates' } },
-    { id: 'Full Catalog', label: { EN: 'Full Catalog', ES: 'Catálogo completo' }, def: { kind: 'link', href: 'products.html' } },
     { id: 'Get a Quote', label: { EN: 'Get a Quote', ES: 'Cotizar' }, def: { kind: 'list', items: [
       { label: { EN: 'Draw Your Fence',       ES: 'Dibuja tu cerca' },        href: 'https://app.westernfencesupply.com/', sub: { EN: 'Sketch or send measurements, pricing in 24h',   ES: 'Dibuja o envía medidas, precios en 24h' } },
       { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' },  href: 'estimate.html#quote', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte',   ES: 'Lun-Vie · Fort Myers + Port Charlotte' } },
@@ -573,8 +572,8 @@ const SiteHeader = ({ active }) => {
                               'A la medida de tu proyecto. Cotizado en 24h, entrega o recoge en planta.')}
                       </p>
                       <a href={def.kind === 'mega-fences' ? 'products.html' : 'estimate.html'}
-                        style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontWeight: 500, fontSize: 15.5, color: 'var(--ink)' }}>
-                        {def.kind === 'mega-fences' ? t('Full catalog', 'Catálogo completo') : t('Custom quote', 'Cotización a medida')} <ArrowRight size={12}/>
+                        style={{ display: 'inline-flex', alignItems: 'center', gap: 9, fontWeight: 700, fontSize: 18, color: 'var(--ink)' }}>
+                        {def.kind === 'mega-fences' ? t('Full catalog', 'Catálogo completo') : t('Custom quote', 'Cotización a medida')} <ArrowRight size={14}/>
                       </a>
                     </div>
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 12 }}>

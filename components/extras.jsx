@@ -550,9 +550,10 @@ const AboutIntro = () => {
         <div style={{ position: 'relative', minHeight: 'clamp(340px, 48vh, 580px)' }}>
           <div style={{
             position: 'absolute', inset: 0,
-            background: '#ffffff',
+            background: 'var(--ink)',
             borderRadius: 24,
             overflow: 'hidden',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
           }}>
             <video
               ref={videoRef}
@@ -564,7 +565,9 @@ const AboutIntro = () => {
               playsInline
               preload="auto"
               aria-label="Western Fence Supply, fencing material supplier in Southwest Florida"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              /* contain, not cover: the clip has captions near the edges, so
+                 cropping cut them off. The ink card fills the column instead. */
+              style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
             />
           </div>
         </div>
