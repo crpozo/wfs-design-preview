@@ -548,6 +548,7 @@ const AboutIntro = () => {
             <video
               ref={videoRef}
               src="assets/second-video.mp4?v=234"
+              poster="assets/second-video-poster.jpg?v=245"
               autoPlay
               muted
               loop

@@ -73,12 +73,12 @@ const Hero = () => {
       flexDirection: 'column',
       justifyContent: 'flex-end',
     }}>
-      {/* Full-bleed video backdrop, WFS yard walkthrough. Poster gives an
-          instant first paint (and a fallback if the video can't play). */}
+      {/* Full-bleed video backdrop, WFS yard walkthrough. The poster is the
+          video's own first frame, so playback starts with no visible swap. */}
       <video
         ref={videoRef}
         src="assets/second-video.mp4?v=234"
-        poster="assets/Showroom.png?v=234"
+        poster="assets/second-video-poster.jpg?v=245"
         autoPlay muted loop playsInline preload="auto"
         aria-hidden="true"
         style={{
