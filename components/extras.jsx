@@ -542,10 +542,12 @@ const AboutIntro = () => {
         display: 'grid',
         gridTemplateColumns: '1fr 1fr',
         gap: 56,
-        alignItems: 'center',
+        alignItems: 'stretch',
       }}>
-        {/* Video, clean rounded corners */}
-        <div style={{ position: 'relative', aspectRatio: '16 / 9' }}>
+        {/* Video, clean rounded corners. Stretches to the copy column's height
+            so the left side doesn't sit in a pool of white space; the
+            min-height keeps it sensible once the columns stack on mobile. */}
+        <div style={{ position: 'relative', minHeight: 'clamp(340px, 48vh, 580px)' }}>
           <div style={{
             position: 'absolute', inset: 0,
             background: '#ffffff',
