@@ -92,13 +92,30 @@ const MaterialsComparison = () => {
           display: 'grid', gridTemplateColumns: '1.2fr repeat(4, 1fr)',
           background: 'var(--ink)', color: 'var(--white)',
         }}>
-          {['', t('Vinyl / PVC', 'Vinilo / PVC'), t('Aluminum', 'Aluminio'), t('Chain Link', 'Malla ciclónica'), t('Metal / DuraFence', 'Metal / DuraFence')].map((h, i) => (
+          {[
+            { label: '', img: null },
+            { label: t('Vinyl / PVC', 'Vinilo / PVC'), img: 'assets/compare/vinyl.png?v=234' },
+            { label: t('Aluminum', 'Aluminio'), img: 'assets/compare/aluminum.png?v=234' },
+            { label: t('Chain Link', 'Malla ciclónica'), img: 'assets/compare/chainlink.webp?v=234' },
+            { label: t('Metal / DuraFence', 'Metal / DuraFence'), img: 'assets/compare/metal.png?v=234' },
+          ].map((h, i) => (
             <div key={i} className="mono" style={{
-              padding: '16px 18px',
-              fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
-              textTransform: 'uppercase',
+              display: 'flex', flexDirection: 'column',
               borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.15)',
-            }}>{h}</div>
+            }}>
+              {h.img && (
+                <div style={{ aspectRatio: '16 / 10', overflow: 'hidden', background: '#1a2340' }}>
+                  <img src={h.img} alt={h.label} loading="lazy"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}/>
+                </div>
+              )}
+              <div style={{
+                marginTop: 'auto',
+                padding: '16px 18px',
+                fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+              }}>{h.label}</div>
+            </div>
           ))}
         </div>
         {[

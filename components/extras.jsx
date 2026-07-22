@@ -513,6 +513,22 @@ const ShopTour = () => {
 const AboutIntro = () => {
   const t = useT();
   const [ctaHover, setCtaHover] = React.useState(false);
+  const videoRef = React.useRef(null);
+
+  // Keep the looping video playing even if `canplay` fired before React
+  // attached (cached video) — play() on mount, resume on any stray pause.
+  React.useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const tryPlay = () => { const p = v.play(); if (p) p.catch(() => {}); };
+    tryPlay();
+    v.addEventListener('loadeddata', tryPlay);
+    v.addEventListener('pause', tryPlay);
+    return () => {
+      v.removeEventListener('loadeddata', tryPlay);
+      v.removeEventListener('pause', tryPlay);
+    };
+  }, []);
   return (
     <section style={{ background: 'var(--white)', padding: '120px 0' }}>
       <div className="container" style={{
@@ -540,7 +556,8 @@ const AboutIntro = () => {
             overflow: 'hidden',
           }}>
             <video
-              src="assets/wfs_video1_final.mp4"
+              ref={videoRef}
+              src="assets/second-video.mp4?v=234"
               autoPlay
               muted
               loop

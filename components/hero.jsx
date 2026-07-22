@@ -45,6 +45,23 @@ const Nav = () => {
 const Hero = () => {
   const t = useT();
   const [mode, setMode] = useMode();
+  const videoRef = React.useRef(null);
+
+  // Ensure the background video autoplays even when it's served from cache
+  // (in that case `canplay` can fire before React attaches a handler, so we
+  // also call play() directly on mount and keep the loop alive on any pause).
+  React.useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const tryPlay = () => { const p = v.play(); if (p) p.catch(() => {}); };
+    tryPlay();
+    v.addEventListener('loadeddata', tryPlay);
+    v.addEventListener('pause', tryPlay);
+    return () => {
+      v.removeEventListener('loadeddata', tryPlay);
+      v.removeEventListener('pause', tryPlay);
+    };
+  }, []);
 
   return (
     <section className="wfs-hero" style={{
@@ -56,14 +73,19 @@ const Hero = () => {
       flexDirection: 'column',
       justifyContent: 'flex-end',
     }}>
-      {/* Full-bleed photo backdrop, WFS showroom */}
-      <img src="assets/Showroom.png?v=204" alt="" aria-hidden="true"
-        onError={e => { if (!e.currentTarget.dataset.fb) { e.currentTarget.dataset.fb = '1'; e.currentTarget.src = 'assets/wfs-shop.webp'; } }}
+      {/* Full-bleed video backdrop, WFS yard walkthrough. Poster gives an
+          instant first paint (and a fallback if the video can't play). */}
+      <video
+        ref={videoRef}
+        src="assets/wfs_video1_final.mp4?v=234"
+        poster="assets/Showroom.png?v=234"
+        autoPlay muted loop playsInline preload="auto"
+        aria-hidden="true"
         style={{
-        position: 'absolute', inset: 0, width: '100%', height: '100%',
-        objectFit: 'cover', objectPosition: 'left 92%', zIndex: 0,
-        transform: 'scale(1.22)', transformOrigin: 'left 90%',
-      }}/>
+          position: 'absolute', inset: 0, width: '100%', height: '100%',
+          objectFit: 'cover', objectPosition: 'center', zIndex: 0,
+        }}
+      />
       {/* Dark scrim, strong on left, lighter on right */}
       <div style={{
         position: 'absolute', inset: 0, zIndex: 1,
