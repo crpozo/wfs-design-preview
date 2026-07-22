@@ -1087,16 +1087,17 @@ const ServiceAreas = () => {
 const FinalCTA = () => {
   const t = useT();
   const [submitted, setSubmitted] = React.useState(false);
+  const [fileName, setFileName] = React.useState('');
   const inputStyle = {
-    width: '100%', padding: '14px 16px',
-    border: '1px solid rgba(0,16,17,0.25)', background: 'var(--white)',
-    fontFamily: 'var(--sans)', fontSize: 15.5, color: 'var(--ink)',
-    outline: 'none', borderRadius: 0,
+    width: '100%', padding: '15px 16px',
+    border: '1px solid rgba(0,16,17,0.16)', background: 'var(--white)',
+    fontFamily: 'var(--sans)', fontSize: 16.5, color: 'var(--ink)',
+    outline: 'none', borderRadius: 12,
   };
   const labelStyle = {
-    fontFamily: 'var(--mono)', fontSize: 13.5, letterSpacing: '0.18em',
+    fontFamily: 'var(--mono)', fontSize: 14, letterSpacing: '0.1em',
     textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 600,
-    marginBottom: 6, display: 'block',
+    marginBottom: 8, display: 'block',
   };
   return (
     <section id="contact" style={{ background: 'var(--white)', padding: '120px 0', position: 'relative', overflow: 'hidden', scrollMarginTop: 110 }}>
@@ -1170,8 +1171,9 @@ const FinalCTA = () => {
 
           {/* Right: form */}
           <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} style={{
-            background: 'var(--white)', padding: 36,
-            border: '1.5px solid var(--ink)', boxShadow: '8px 8px 0 var(--ink)',
+            background: 'var(--white)', padding: 'clamp(28px, 3vw, 40px)',
+            border: '1px solid rgba(0,16,17,0.08)', borderRadius: 22,
+            boxShadow: '0 34px 70px -34px rgba(38,49,102,0.4)',
           }}>
             {submitted ? (
               <div style={{ padding: '64px 0', textAlign: 'center' }}>
@@ -1222,17 +1224,57 @@ const FinalCTA = () => {
                     <option>{t('Other', 'Otro')}</option>
                   </select>
                 </div>
-                <div style={{ marginBottom: 24 }}>
+                <div style={{ marginBottom: 18 }}>
                   <label style={labelStyle}>{t('Project details', 'Detalles del proyecto')}</label>
                   <textarea rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: 100 }} placeholder={t('Approx. linear feet, height, location/zip, timeline, anything else relevant…', 'Aprox. pies lineales, altura, ubicación/código postal, plazo, cualquier otro detalle relevante…')}/>
                 </div>
+
+                {/* Drawing / layout upload — lets people send the sketch with the request */}
+                <div style={{ marginBottom: 24 }}>
+                  <label style={labelStyle}>{t('Drawing or layout (optional)', 'Plano o diseño (opcional)')}</label>
+                  <label htmlFor="wfs-upload" style={{
+                    display: 'flex', alignItems: 'center', gap: 14,
+                    padding: '16px 18px', borderRadius: 12,
+                    border: '1.5px dashed ' + (fileName ? 'var(--tangerine)' : 'rgba(0,16,17,0.2)'),
+                    background: fileName ? 'rgba(255,113,51,0.06)' : '#fbfbfc',
+                    cursor: 'pointer', transition: 'border-color 0.15s, background 0.15s',
+                  }}>
+                    <span aria-hidden style={{
+                      width: 42, height: 42, borderRadius: 11, flexShrink: 0,
+                      background: fileName ? 'var(--tangerine)' : 'var(--ink)', color: 'var(--white)',
+                      display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 16v2.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V16"/>
+                      </svg>
+                    </span>
+                    <span style={{ minWidth: 0 }}>
+                      <span style={{ display: 'block', fontSize: 16, fontWeight: 600, color: 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                        {fileName || t('Upload your drawing or layout', 'Sube tu plano o diseño')}
+                      </span>
+                      <span style={{ display: 'block', fontSize: 14.5, color: 'var(--charcoal)', marginTop: 2 }}>
+                        {fileName ? t('Tap to choose a different file', 'Toca para elegir otro archivo') : t('PDF, JPG or PNG · up to 10 MB', 'PDF, JPG o PNG · hasta 10 MB')}
+                      </span>
+                    </span>
+                  </label>
+                  <input id="wfs-upload" type="file" accept=".pdf,.jpg,.jpeg,.png,.heic,.webp"
+                    onChange={(e) => setFileName(e.target.files && e.target.files[0] ? e.target.files[0].name : '')}
+                    style={{ display: 'none' }}/>
+                </div>
+
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
                   <p className="mono" style={{ margin: 0, fontSize: 14, letterSpacing: '0.04em', color: 'var(--charcoal)', maxWidth: 280 }}>
                     {t('By submitting, you agree to be contacted by Western Fence Supply.', 'Al enviar, aceptas ser contactado por Western Fence Supply.')}
                   </p>
-                  <button type="submit" className="btn btn-dark" style={{ fontSize: 15.5, padding: '16px 24px' }}>
+                  <button type="submit" style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 10,
+                    padding: '16px 28px', borderRadius: 999,
+                    background: 'var(--ink)', color: 'var(--white)',
+                    fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600,
+                    boxShadow: '0 12px 28px -12px rgba(38,49,102,0.6)',
+                  }}>
                     {t('Request quote', 'Solicitar cotización')}
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/></svg>
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
                   </button>
                 </div>
               </>

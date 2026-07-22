@@ -195,7 +195,6 @@ const MATERIAL_DATA = {
       { name: 'Commercial Facility', loc: 'Fort Myers, FL', size: '480 LF', material: 'Metal', type: 'Metal fence, 3-rail, brown', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/met-fence-3-rail-brown.jpg' },
       { name: 'Modern Residential Privacy', loc: 'Naples, FL', size: '260 LF', material: 'Metal', type: 'Metal fence, 3-rail, black', contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/projects/met-fence-3-rail-black.jpg' },
       { name: 'Utility Screen Enclosure', loc: 'Cape Coral, FL', size: '140 LF', material: 'Metal', type: 'Metal fence, 2-rail, white', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/met-fence-2-rail-white.jpg' },
-      { name: 'HOA Privacy Project', loc: 'Estero, FL', size: '38 lots', material: 'Metal', type: 'Metal board privacy, 6 ft, community standard', contractor: 'Gulf Perimeter LLC', year: '2025' },
     ],
   },
   ecfence: {
@@ -245,8 +244,6 @@ const MATERIAL_DATA = {
       { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, bronze', contractor: 'Harbor Iron Works', year: '2024', imgUrl: 'assets/projects/ecfence-bronze.jpg' },
       { name: 'Coastal Privacy Project', loc: 'Sanibel, FL', size: '240 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, white', contractor: 'Harbor Iron Works', year: '2024', imgUrl: 'assets/projects/ecfence-white.jpg' },
       { name: 'Commercial Property Screen', loc: 'Fort Myers, FL', size: '460 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, bronze', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/ec-fence.jpg' },
-      { name: 'Modern Residential Privacy', loc: 'Naples, FL', size: '210 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, white', contractor: 'Estate Fence Pros', year: '2025' },
-      { name: 'HOA Privacy Project', loc: 'Port Charlotte, FL', size: '52 lots', material: 'EC Fence', type: 'EC Fence panels, 6 ft, community standard', contractor: 'Harbor Iron Works', year: '2025' },
     ],
   },
 };

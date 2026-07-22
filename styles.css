@@ -810,3 +810,25 @@ section { position: relative; }
     box-shadow: 0 16px 36px -18px rgba(38, 49, 102, 0.45) !important;
   }
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Legibility pass for the small uppercase "mono" labels.
+   Eyebrows/labels ran 10–14px with very wide tracking (0.18–0.22em),
+   which is hard to scan — especially for the older audience this site
+   serves. Lift anything under 15px to a readable floor and relax the
+   tracking: on small caps, wide letter-spacing hurts more than size.
+   ───────────────────────────────────────────────────────────── */
+.mono[style*="font-size: 10"],
+.mono[style*="font-size: 11"],
+.mono[style*="font-size: 12"],
+.mono[style*="font-size: 13"],
+.mono[style*="font-size: 14"] {
+  font-size: 15.5px !important;
+  letter-spacing: 0.11em !important;
+}
+
+/* Quote-form fields: visible focus ring (inline styles can't express :focus) */
+input:focus, select:focus, textarea:focus {
+  border-color: var(--tangerine) !important;
+  box-shadow: 0 0 0 3px rgba(255, 113, 51, 0.18) !important;
+}
