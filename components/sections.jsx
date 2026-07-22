@@ -989,11 +989,15 @@ const ServiceAreas = () => {
 
             {/* Delivery fleet — trucks fan out from the SW yards across the
                 state. Coords are % of the viewBox; all sit on the FL landmass
-                (point-in-polygon checked), north → central → southeast. */}
+                (point-in-polygon checked, ≥7.5 units of edge clearance so the
+                truck body never overhangs water): panhandle → north → central
+                → southeast. */}
             {[
-              { key: 'north',   xPct: 70,   yPct: 41,   flip: true  },
-              { key: 'central', xPct: 78,   yPct: 57,   flip: false },
-              { key: 'se',      xPct: 85,   yPct: 66.5, flip: false },
+              { key: 'panhandle', xPct: 30,   yPct: 18,   flip: false },
+              { key: 'north-fl',  xPct: 64,   yPct: 26,   flip: true  },
+              { key: 'north',     xPct: 70,   yPct: 41,   flip: true  },
+              { key: 'central',   xPct: 78,   yPct: 57,   flip: false },
+              { key: 'se',        xPct: 85,   yPct: 66.5, flip: false },
             ].map((tk) => (
               <span key={tk.key} aria-hidden style={{
                 position: 'absolute',
