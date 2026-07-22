@@ -77,7 +77,7 @@ const Hero = () => {
           instant first paint (and a fallback if the video can't play). */}
       <video
         ref={videoRef}
-        src="assets/wfs_video1_final.mp4?v=234"
+        src="assets/second-video.mp4?v=234"
         poster="assets/Showroom.png?v=234"
         autoPlay muted loop playsInline preload="auto"
         aria-hidden="true"
