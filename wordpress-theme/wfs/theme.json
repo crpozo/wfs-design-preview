@@ -1,0 +1,116 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "layout": { "contentSize": "820px", "wideSize": "1360px" },
+    "color": {
+      "custom": true,
+      "customGradient": true,
+      "defaultPalette": false,
+      "palette": [
+        { "slug": "ink",       "color": "#263167", "name": "Navy (marca)" },
+        { "slug": "tangerine", "color": "#ff7133", "name": "Naranja (marca)" },
+        { "slug": "charcoal",  "color": "#565656", "name": "Gris texto" },
+        { "slug": "canvas",    "color": "#f5f5f7", "name": "Fondo claro" },
+        { "slug": "white",     "color": "#ffffff", "name": "Blanco" },
+        { "slug": "line",      "color": "#e7e9f0", "name": "Línea" }
+      ]
+    },
+    "typography": {
+      "customFontSize": true,
+      "lineHeight": true,
+      "dropCap": false,
+      "fontFamilies": [
+        {
+          "slug": "display",
+          "name": "Archivo (títulos)",
+          "fontFamily": "Archivo, 'Helvetica Neue', Arial, sans-serif"
+        },
+        {
+          "slug": "body",
+          "name": "Inter (texto)",
+          "fontFamily": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "small",   "size": "15px",                                   "name": "Pequeño" },
+        { "slug": "medium",  "size": "17px",                                   "name": "Normal" },
+        { "slug": "large",   "size": "clamp(22px, 2vw, 27px)",                 "name": "Grande" },
+        { "slug": "x-large", "size": "clamp(30px, 3.4vw, 46px)",               "name": "Título" },
+        { "slug": "huge",    "size": "clamp(38px, 5vw, 62px)",                 "name": "Titular" }
+      ]
+    },
+    "spacing": {
+      "units": [ "px", "%", "rem", "vh", "vw" ],
+      "spacingSizes": [
+        { "slug": "20", "size": "16px",  "name": "1 · XS" },
+        { "slug": "30", "size": "28px",  "name": "2 · S" },
+        { "slug": "40", "size": "48px",  "name": "3 · M" },
+        { "slug": "50", "size": "80px",  "name": "4 · L" },
+        { "slug": "60", "size": "110px", "name": "5 · XL" }
+      ]
+    },
+    "border":  { "color": true, "radius": true, "style": true, "width": true },
+    "shadow":  {
+      "defaultPresets": false,
+      "presets": [
+        { "slug": "card", "name": "Tarjeta", "shadow": "0 18px 40px -22px rgba(38,49,102,0.34)" },
+        { "slug": "lift", "name": "Elevada", "shadow": "0 30px 60px -28px rgba(38,49,102,0.38)" }
+      ]
+    }
+  },
+  "styles": {
+    "color": { "background": "var(--wp--preset--color--white)", "text": "var(--wp--preset--color--ink)" },
+    "typography": {
+      "fontFamily": "var(--wp--preset--font-family--body)",
+      "fontSize": "var(--wp--preset--font-size--medium)",
+      "lineHeight": "1.6"
+    },
+    "spacing": { "blockGap": "24px" },
+    "elements": {
+      "heading": {
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--display)",
+          "fontWeight": "700",
+          "lineHeight": "1.06",
+          "letterSpacing": "-0.01em"
+        },
+        "color": { "text": "var(--wp--preset--color--ink)" }
+      },
+      "link": {
+        "color": { "text": "var(--wp--preset--color--ink)" },
+        ":hover": { "color": { "text": "var(--wp--preset--color--tangerine)" } }
+      },
+      "button": {
+        "border": { "radius": "999px" },
+        "color": { "background": "var(--wp--preset--color--ink)", "text": "var(--wp--preset--color--white)" },
+        "spacing": { "padding": { "top": "16px", "right": "28px", "bottom": "16px", "left": "28px" } },
+        "typography": {
+          "fontFamily": "var(--wp--preset--font-family--body)",
+          "fontSize": "14.5px",
+          "fontWeight": "700",
+          "letterSpacing": "0.18em",
+          "textTransform": "uppercase"
+        },
+        ":hover": {
+          "color": { "background": "var(--wp--preset--color--tangerine)", "text": "var(--wp--preset--color--white)" }
+        }
+      }
+    },
+    "blocks": {
+      "core/image": { "border": { "radius": "18px" } },
+      "core/paragraph": { "color": { "text": "var(--wp--preset--color--charcoal)" } },
+      "core/site-title": {
+        "typography": { "fontFamily": "var(--wp--preset--font-family--display)", "fontWeight": "800", "fontSize": "20px" }
+      }
+    }
+  },
+  "templateParts": [
+    { "name": "header", "title": "Cabecera", "area": "header" },
+    { "name": "footer", "title": "Pie de página", "area": "footer" }
+  ],
+  "customTemplates": [
+    { "name": "page-wide", "title": "Página ancha (sin título)", "postTypes": [ "page" ] }
+  ]
+}
