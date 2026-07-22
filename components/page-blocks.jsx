@@ -240,12 +240,15 @@ const FeatureRow = ({ items }) => (
   <div style={{
     display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`,
     gap: 0,
-    border: '1px solid rgba(0,16,17,0.12)',
+    background: 'var(--white)', borderRadius: 16,
+    boxShadow: '0 34px 70px -34px rgba(0,16,17,0.4)',
+    border: '1px solid rgba(0,16,17,0.06)',
+    overflow: 'hidden',
   }}>
     {items.map(([k, v], i) => (
       <div key={i} style={{
-        padding: '24px 22px',
-        borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.12)',
+        padding: '28px 26px',
+        borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.08)',
       }}>
         <div aria-hidden style={{ color: 'var(--tangerine)', marginBottom: 14 }}>{featureIcon(k)}</div>
         <div className="mono" style={{

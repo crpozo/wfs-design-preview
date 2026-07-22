@@ -270,7 +270,7 @@ const MaterialHero = ({ data }) => {
 };
 
 const MaterialQuickFacts = ({ data }) => (
-  <section style={{ background: 'var(--white)', padding: '64px 0', borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
+  <section style={{ background: 'var(--white)', padding: '64px 0' }}>
     <div className="container">
       <FeatureRow items={data.quickFacts || [
         [useT()('Best for', 'Ideal para'), data.bestFor],
