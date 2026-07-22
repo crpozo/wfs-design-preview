@@ -98,22 +98,22 @@ const MaterialsComparison = () => {
         }}>
           {[
             { label: '', img: null, href: null },
-            { label: t('Vinyl / PVC', 'Vinilo / PVC'), img: 'assets/compare/vinyl.png?v=239', href: 'vinyl.html' },
-            { label: t('Aluminum', 'Aluminio'), img: 'assets/compare/aluminum.png?v=239', href: 'aluminum.html' },
-            { label: t('Chain Link', 'Malla ciclónica'), img: 'assets/compare/chainlink.webp?v=239', href: 'chain-link.html' },
-            { label: t('Metal / DuraFence', 'Metal / DuraFence'), img: 'assets/compare/metal.png?v=239', href: 'metal.html' },
+            { label: t('Vinyl / PVC', 'Vinilo / PVC'), img: 'assets/compare/cut/vinyl.png?v=255', href: 'vinyl.html' },
+            { label: t('Aluminum', 'Aluminio'), img: 'assets/compare/cut/aluminum.png?v=255', href: 'aluminum.html' },
+            { label: t('Chain Link', 'Malla ciclónica'), img: 'assets/compare/cut/chainlink.png?v=255', href: 'chain-link.html' },
+            { label: t('Metal / DuraFence', 'Metal / DuraFence'), img: 'assets/compare/cut/metal.png?v=255', href: 'metal.html' },
           ].map((h, i) => (
             <div key={i} style={{
               display: 'flex', flexDirection: 'column',
               borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)',
             }}>
               {h.img ? (
-                <div style={{ padding: '20px 20px 0' }}>
+                /* Cut-out PNGs (transparent background) so the products sit
+                   straight on the navy — no white tile behind them. */
+                <div style={{ padding: '24px 20px 0' }}>
                   <div style={{
-                    aspectRatio: '16 / 11', borderRadius: 12, overflow: 'hidden',
-                    background: '#fff', boxShadow: 'inset 0 0 0 1px rgba(0,16,17,0.06)',
+                    aspectRatio: '16 / 11',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    padding: 10,
                   }}>
                     <img src={h.img} alt={h.label} loading="lazy"
                       style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}/>
@@ -128,7 +128,7 @@ const MaterialsComparison = () => {
               )}
               {h.href ? (
                 <a href={h.href} className="mono" style={{
-                  marginTop: 'auto', padding: '16px 20px 20px',
+                  marginTop: 'auto', padding: '16px 13px 20px',
                   display: 'block',
                   fontSize: 13.5, fontWeight: 700, letterSpacing: '0.14em',
                   textTransform: 'uppercase', color: 'var(--white)',
@@ -226,7 +226,7 @@ const DownloadsSection = () => {
           [t('EC Fence, Exposure C Wind', 'EC Fence, viento de exposición C'), 'PDF · 1.2 MB'],
           [t('Aluminum 3/4/5 Rail Profiles', 'Perfiles de aluminio de 3/4/5 rieles'), 'PDF · 980 KB'],
           [t('DuraFence Aluminum Board', 'Tablero de aluminio DuraFence'), 'PDF · 1.4 MB'],
-          [t('Veka Vinyl, Privacy + Picket', 'Vinilo Veka, privacidad + barrotes'), 'PDF · 1.1 MB'],
+          [t('Catalyst Vinyl, Privacy + Picket', 'Vinilo Catalyst, privacidad + barrotes'), 'PDF · 1.1 MB'],
           [t('Chain Link Gauges & Mesh', 'Calibres y malla de malla ciclónica'), 'PDF · 620 KB'],
           [t('Florida Pool Code Profiles', 'Perfiles del código de piscinas de Florida'), 'PDF · 1.6 MB'],
         ].map(([t, meta], i) => (

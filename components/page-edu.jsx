@@ -296,7 +296,7 @@ const MaterialsCompDeepDive = () => {
   const profiles = [
     {
       slug: 'vinyl', name: t('Vinyl / PVC', 'Vinilo / PVC'), href: 'vinyl.html',
-      tag: t('Veka-extruded PVC', 'PVC extruido por Veka'),
+      tag: t('Catalyst-extruded PVC', 'PVC extruido por Catalyst'),
       bestFor: t('Backyard privacy, residential subdivisions', 'Privacidad de patio, urbanizaciones residenciales'),
       strength: t('Low-upkeep privacy — no painting, made for Florida sun', 'Privacidad de bajo mantenimiento: sin pintura, hecha para el sol de Florida'),
       caveat: t('Wind performance varies by profile — ask for specs for your area', 'El desempeño ante viento varía según el perfil: pide especificaciones para tu zona'),
