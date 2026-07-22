@@ -124,8 +124,29 @@ const SiteHeader = ({ active }) => {
             </div>
           </div>
 
-          {/* Right: phone + lang toggle */}
+          {/* Right: live agent + phone + lang toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
+            {/* Live agent — goes to the "real sales rep, no chatbot" band */}
+            <a href="estimate.html#quote" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 9,
+              padding: '6px 15px', borderRadius: 999,
+              background: 'rgba(255,255,255,0.1)',
+              border: '1px solid rgba(255,255,255,0.3)',
+              color: 'var(--white)', textDecoration: 'none',
+              fontFamily: 'inherit', fontSize: 13, fontWeight: 700,
+              letterSpacing: '0.12em', textTransform: 'uppercase',
+              whiteSpace: 'nowrap',
+              transition: 'background 0.15s ease, border-color 0.15s ease',
+            }}
+            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.borderColor = 'var(--white)'; }}
+            onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; }}>
+              <span aria-hidden style={{
+                width: 7, height: 7, borderRadius: '50%', flexShrink: 0,
+                background: '#3ddc84', boxShadow: '0 0 0 3px rgba(61,220,132,0.25)',
+              }}/>
+              {t({ EN: 'Talk to a live agent', ES: 'Habla con un asesor' })}
+            </a>
+            <span style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.15)' }}/>
             <a href="tel:2396895496" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8,
               color: 'var(--alice-blue)', textDecoration: 'none',
