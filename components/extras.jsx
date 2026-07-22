@@ -540,36 +540,33 @@ const AboutIntro = () => {
     <section style={{ background: 'var(--white)', padding: '120px 0' }}>
       <div className="container" style={{
         display: 'grid',
-        gridTemplateColumns: '1fr 1fr',
+        gridTemplateColumns: '1.08fr 1fr',
         gap: 56,
-        alignItems: 'stretch',
+        alignItems: 'center',
       }}>
-        {/* Video, clean rounded corners. Stretches to the copy column's height
-            so the left side doesn't sit in a pool of white space; the
-            min-height keeps it sensible once the columns stack on mobile. */}
-        <div style={{ position: 'relative', minHeight: 'clamp(340px, 48vh, 580px)' }}>
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: 'var(--ink)',
-            borderRadius: 24,
-            overflow: 'hidden',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
-            <video
-              ref={videoRef}
-              src="assets/first-video.mp4?v=247"
-              poster="assets/first-video-poster.jpg?v=247"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              aria-label="Western Fence Supply, fencing material supplier in Southwest Florida"
-              /* contain, not cover: the clip has captions near the edges, so
-                 cropping cut them off. The ink card fills the column instead. */
-              style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}
-            />
-          </div>
+        {/* The clip is 16:9 and has captions near its edges, so the frame
+            matches its own ratio exactly — nothing is cropped and there are
+            no letterbox bars. It reads as a media card (rounded + shadow)
+            rather than a block that has to fill the column. */}
+        <div style={{
+          position: 'relative', aspectRatio: '16 / 9', overflow: 'hidden',
+          boxShadow: '0 26px 54px -26px rgba(38, 49, 102, 0.45)',
+        }}>
+          <video
+            ref={videoRef}
+            src="assets/first-video.mp4?v=247"
+            poster="assets/first-video-poster.jpg?v=247"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-label="Western Fence Supply, fencing material supplier in Southwest Florida"
+            style={{
+              position: 'absolute', inset: 0,
+              width: '100%', height: '100%', objectFit: 'cover', display: 'block',
+            }}
+          />
         </div>
 
         {/* Copy */}
