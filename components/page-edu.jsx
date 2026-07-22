@@ -422,12 +422,12 @@ const PoolCodeHero = () => {
 const PoolCodeRequirements = () => {
   const t = useT();
   const reqs = [
-    { code: t('Requirement 01', 'Requisito 01'), title: t('Minimum height', 'Altura mínima'),           body: t('The barrier must be at least 48" high, measured on the side facing away from the pool. Additional requirements may apply depending on the project and installation.', 'La barrera debe tener al menos 48" de altura, medida en el lado opuesto a la piscina. Pueden aplicar requisitos adicionales según el proyecto y la instalación.') },
-    { code: t('Requirement 02', 'Requisito 02'), title: t('Openings & picket spacing', 'Aberturas y separación entre pickets'),           body: t('Openings generally must not allow a 4" sphere to pass through. Additional spacing restrictions may apply depending on the barrier design.', 'En general, las aberturas no deben permitir el paso de una esfera de 4". Pueden aplicar restricciones de separación adicionales según el diseño de la barrera.') },
-    { code: t('Requirement 03', 'Requisito 03'), title: t('Self-closing & self-latching gates', 'Portones con cierre y cerrojo automáticos'),     body: t('Pool access gates must be self-closing and self-latching. Gate hardware and latch placement must meet applicable requirements.', 'Los portones de acceso a la piscina deben tener cierre automático y cerrojo automático. Los herrajes del portón y la ubicación del pestillo deben cumplir los requisitos aplicables.') },
-    { code: t('Requirement 04', 'Requisito 04'), title: t('Gate swing direction', 'Dirección de apertura del portón'),     body: t('Pedestrian access gates must open outward, away from the pool.', 'Los portones de acceso peatonal deben abrir hacia afuera, alejándose de la piscina.') },
-    { code: t('Requirement 05', 'Requisito 05'), title: t('Latch release location', 'Ubicación de la liberación del pestillo'),   body: t('Latch placement depends on the gate configuration and must meet applicable requirements.', 'La ubicación del pestillo depende de la configuración del portón y debe cumplir los requisitos aplicables.') },
-    { code: t('Requirement 06', 'Requisito 06'), title: t('Dwelling wall as part of the barrier', 'Muro de la vivienda como parte de la barrera'),          body: t('Doors and windows providing direct access to the pool area may require approved safety features under applicable local requirements.', 'Las puertas y ventanas con acceso directo al área de la piscina pueden requerir dispositivos de seguridad aprobados según los requisitos locales aplicables.') },
+    { code: t('Requirement 01', 'Requisito 01'), title: t('Minimum height', 'Altura mínima'), img: 'assets/poolcode/01-min-height.png?v=238',           body: t('The barrier must be at least 48" high, measured on the side facing away from the pool. Additional requirements may apply depending on the project and installation.', 'La barrera debe tener al menos 48" de altura, medida en el lado opuesto a la piscina. Pueden aplicar requisitos adicionales según el proyecto y la instalación.') },
+    { code: t('Requirement 02', 'Requisito 02'), title: t('Openings & picket spacing', 'Aberturas y separación entre pickets'), img: 'assets/poolcode/02-openings.png?v=238',           body: t('Openings generally must not allow a 4" sphere to pass through. Additional spacing restrictions may apply depending on the barrier design.', 'En general, las aberturas no deben permitir el paso de una esfera de 4". Pueden aplicar restricciones de separación adicionales según el diseño de la barrera.') },
+    { code: t('Requirement 03', 'Requisito 03'), title: t('Self-closing & self-latching gates', 'Portones con cierre y cerrojo automáticos'), img: 'assets/poolcode/03-self-closing.png?v=238',     body: t('Pool access gates must be self-closing and self-latching. Gate hardware and latch placement must meet applicable requirements.', 'Los portones de acceso a la piscina deben tener cierre automático y cerrojo automático. Los herrajes del portón y la ubicación del pestillo deben cumplir los requisitos aplicables.') },
+    { code: t('Requirement 04', 'Requisito 04'), title: t('Gate swing direction', 'Dirección de apertura del portón'), img: 'assets/poolcode/04-swing.png?v=238',     body: t('Pedestrian access gates must open outward, away from the pool.', 'Los portones de acceso peatonal deben abrir hacia afuera, alejándose de la piscina.') },
+    { code: t('Requirement 05', 'Requisito 05'), title: t('Latch release location', 'Ubicación de la liberación del pestillo'), img: 'assets/poolcode/05-latch.png?v=238',   body: t('Latch placement depends on the gate configuration and must meet applicable requirements.', 'La ubicación del pestillo depende de la configuración del portón y debe cumplir los requisitos aplicables.') },
+    { code: t('Requirement 06', 'Requisito 06'), title: t('Dwelling wall as part of the barrier', 'Muro de la vivienda como parte de la barrera'), img: 'assets/poolcode/06-dwelling.png?v=238',          body: t('Doors and windows providing direct access to the pool area may require approved safety features under applicable local requirements.', 'Las puertas y ventanas con acceso directo al área de la piscina pueden requerir dispositivos de seguridad aprobados según los requisitos locales aplicables.') },
   ];
 
   return (
@@ -439,19 +439,29 @@ const PoolCodeRequirements = () => {
           accent={t('generally covers.', 'cubre en general.')}
           sub={t('General information only. Requirements may vary by project and jurisdiction. Western Fence Supply does not verify code compliance, plans, permits, installation, inspections, or final approval.', 'Información general únicamente. Los requisitos pueden variar según el proyecto y la jurisdicción. Western Fence Supply no verifica cumplimiento de código, planos, permisos, instalación, inspecciones ni aprobación final.')}
         />
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
           {reqs.map((r, i) => (
             <article key={i} style={{
-              background: 'var(--white)', padding: 28,
-              border: '1px solid rgba(0,16,17,0.12)',
+              background: 'var(--white)', padding: 30,
+              border: '1px solid rgba(0,16,17,0.1)', borderRadius: 16,
+              display: 'flex', flexDirection: 'column',
             }}>
               <div className="mono" style={{
-                fontSize: 13.5, letterSpacing: '0.22em',
+                fontSize: 13, letterSpacing: '0.22em',
                 color: 'var(--tangerine)', fontWeight: 700,
-                textTransform: 'uppercase', marginBottom: 12,
+                textTransform: 'uppercase', marginBottom: 10,
               }}>{r.code}</div>
-              <h3 className="display" style={{ fontSize: 23.5, lineHeight: 1.1, margin: '0 0 12px' }}>{r.title}</h3>
-              <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: 'var(--charcoal)' }}>{r.body}</p>
+              <h3 className="display" style={{ fontSize: 23, lineHeight: 1.12, margin: '0 0 20px', color: 'var(--ink)' }}>{r.title}</h3>
+              {/* Diagram (annotations baked in), contained on white */}
+              <div style={{
+                aspectRatio: '3 / 2', width: '100%', marginBottom: 20,
+                background: 'var(--white)',
+                display: 'flex', alignItems: 'center', justifyContent: 'center',
+              }}>
+                <img src={r.img} alt={r.title} loading="lazy"
+                  style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}/>
+              </div>
+              <p style={{ margin: '0', fontSize: 15, lineHeight: 1.6, color: 'var(--charcoal)' }}>{r.body}</p>
             </article>
           ))}
         </div>
