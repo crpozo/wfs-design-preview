@@ -96,6 +96,14 @@ const Hero = () => {
         position: 'absolute', left: 0, right: 0, bottom: 0, height: '50%', zIndex: 1,
         background: 'linear-gradient(180deg, rgba(38, 49, 103,0) 0%, rgba(38, 49, 103,0.35) 60%, rgba(38, 49, 103,0.7) 100%)',
       }}/>
+      {/* Soft dissolve into the next section so the hero doesn't end on a
+          hard edge. Sits below the content layer (z-index 1 vs 2) so the
+          headline and buttons stay crisp. Colour is set in CSS so it can
+          match the section below at each breakpoint. */}
+      <div aria-hidden className="wfs-hero-fade" style={{
+        position: 'absolute', left: 0, right: 0, bottom: 0,
+        height: 'clamp(80px, 11vh, 150px)', zIndex: 1, pointerEvents: 'none',
+      }}/>
 
       {/* Main content */}
       <div style={{
