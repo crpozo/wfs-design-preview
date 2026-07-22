@@ -1160,3 +1160,67 @@ Object.assign(ES_TR, {
   'EC Fence panels, 6 ft, white': 'Paneles EC Fence, 6 ft, blanco',
   'EC Fence panels, 6 ft, community standard': 'Paneles EC Fence, 6 ft, estándar comunitario',
 });
+
+/* ─────────────────────────────────────────────────────────────
+   Hash-anchor scrolling for client-rendered pages.
+
+   These pages render via React + Babel-standalone, so when the browser
+   handles the URL fragment the #target does not exist yet — the native
+   jump is a no-op and links like estimate.html#contact land at the top.
+   Any late browser retry then races image-driven layout shift, which is
+   what reads as flickering/jumping.
+
+   Take it over: wait for the target to mount, scroll to it once, then keep
+   it pinned for a short window while late images above it settle. Any real
+   user input cancels immediately so we never fight a scroll.
+   ───────────────────────────────────────────────────────────── */
+(function honorHashAnchor() {
+  var hash = window.location.hash;
+  if (!hash || hash.length < 2) return;
+
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+
+  var id = decodeURIComponent(hash.slice(1));
+  var cancelled = false, attempts = 0, findTimer = null, pinTimer = null;
+
+  function stop() {
+    cancelled = true;
+    if (findTimer) { clearInterval(findTimer); findTimer = null; }
+    if (pinTimer) { clearInterval(pinTimer); pinTimer = null; }
+  }
+  ['wheel', 'touchstart', 'keydown', 'pointerdown'].forEach(function (ev) {
+    window.addEventListener(ev, stop, { passive: true, once: true });
+  });
+
+  function pin() {
+    var el = document.getElementById(id);
+    if (!el) return false;
+    var offset = parseFloat(window.getComputedStyle(el).scrollMarginTop) || 0;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo(0, Math.max(0, Math.round(top)));
+    return true;
+  }
+
+  function settle() {
+    if (cancelled) return true;
+    if (!pin()) return false;
+    if (findTimer) { clearInterval(findTimer); findTimer = null; }
+    // Re-pin briefly so late images above the target don't shove it away.
+    pinTimer = setInterval(function () {
+      if (cancelled) { clearInterval(pinTimer); pinTimer = null; return; }
+      pin();
+    }, 120);
+    setTimeout(stop, 2500);
+    return true;
+  }
+
+  // Poll on a timer, not rAF: rAF is paused while the tab/pane is hidden, so
+  // a link opened in a background tab would never scroll.
+  if (!settle()) {
+    findTimer = setInterval(function () {
+      if (cancelled) { clearInterval(findTimer); findTimer = null; return; }
+      if (settle()) return;
+      if (++attempts > 100) { clearInterval(findTimer); findTimer = null; }
+    }, 50);
+  }
+})();
