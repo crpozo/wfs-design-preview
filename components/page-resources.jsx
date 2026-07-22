@@ -186,28 +186,6 @@ const MaterialsComparison = () => {
                 'Las especificaciones mostradas son una guía general. Las clasificaciones de viento, garantías, disponibilidad y desempeño dependen del producto, la configuración y el proyecto específicos; confirmamos los números exactos en tu cotización.')}
         {' '}{useT()('Last reviewed: July 2026.', 'Última revisión: julio de 2026.')}
       </p>
-      <div style={{ marginTop: 22, display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-        {[
-          [t('Vinyl / PVC', 'Vinilo / PVC'), 'vinyl.html'],
-          [t('Aluminum', 'Aluminio'), 'aluminum.html'],
-          [t('Chain Link', 'Malla ciclónica'), 'chain-link.html'],
-          [t('Metal / DuraFence', 'Metal / DuraFence'), 'metal.html'],
-          [t('EC Fence', 'EC Fence'), 'ecfence.html'],
-        ].map(([t, h]) => (
-          <a key={t} href={h} className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 8,
-            padding: '8px 14px',
-            border: '1px solid var(--ink)',
-            fontSize: 14, fontWeight: 700, letterSpacing: '0.18em',
-            textTransform: 'uppercase', color: 'var(--ink)',
-          }}>
-            {t}
-            <svg width="11" height="11" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
-            </svg>
-          </a>
-        ))}
-      </div>
     </div>
   </section>
   );
