@@ -86,35 +86,65 @@ const MaterialsComparison = () => {
         sub={t('Pick the one that matches your job. Click through to the material page for full specs.', 'Elija el que se ajuste a su proyecto. Haga clic para ver la página del material con las especificaciones completas.')}
       />
       <div style={{
-        border: '1px solid var(--ink)', overflow: 'hidden',
+        borderRadius: 18, overflow: 'hidden',
+        border: '1px solid rgba(0,16,17,0.08)',
+        boxShadow: '0 34px 70px -36px rgba(0,16,17,0.28)',
+        background: 'var(--white)',
       }}>
+        {/* Header: navy band with a clean, uniform white product tile per material */}
         <div style={{
           display: 'grid', gridTemplateColumns: '1.2fr repeat(4, 1fr)',
           background: 'var(--ink)', color: 'var(--white)',
         }}>
           {[
-            { label: '', img: null },
-            { label: t('Vinyl / PVC', 'Vinilo / PVC'), img: 'assets/compare/vinyl.png?v=234' },
-            { label: t('Aluminum', 'Aluminio'), img: 'assets/compare/aluminum.png?v=234' },
-            { label: t('Chain Link', 'Malla ciclónica'), img: 'assets/compare/chainlink.webp?v=234' },
-            { label: t('Metal / DuraFence', 'Metal / DuraFence'), img: 'assets/compare/metal.png?v=234' },
+            { label: '', img: null, href: null },
+            { label: t('Vinyl / PVC', 'Vinilo / PVC'), img: 'assets/compare/vinyl.png?v=239', href: 'vinyl.html' },
+            { label: t('Aluminum', 'Aluminio'), img: 'assets/compare/aluminum.png?v=239', href: 'aluminum.html' },
+            { label: t('Chain Link', 'Malla ciclónica'), img: 'assets/compare/chainlink.webp?v=239', href: 'chain-link.html' },
+            { label: t('Metal / DuraFence', 'Metal / DuraFence'), img: 'assets/compare/metal.png?v=239', href: 'metal.html' },
           ].map((h, i) => (
-            <div key={i} className="mono" style={{
+            <div key={i} style={{
               display: 'flex', flexDirection: 'column',
-              borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.15)',
+              borderLeft: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)',
             }}>
-              {h.img && (
-                <div style={{ aspectRatio: '16 / 10', overflow: 'hidden', background: '#1a2340' }}>
-                  <img src={h.img} alt={h.label} loading="lazy"
-                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}/>
+              {h.img ? (
+                <div style={{ padding: '20px 20px 0' }}>
+                  <div style={{
+                    aspectRatio: '16 / 11', borderRadius: 12, overflow: 'hidden',
+                    background: '#fff', boxShadow: 'inset 0 0 0 1px rgba(0,16,17,0.06)',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    padding: 10,
+                  }}>
+                    <img src={h.img} alt={h.label} loading="lazy"
+                      style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', display: 'block' }}/>
+                  </div>
                 </div>
+              ) : (
+                <div className="mono" style={{
+                  padding: '22px 22px 0',
+                  fontSize: 12.5, letterSpacing: '0.22em', textTransform: 'uppercase',
+                  color: 'rgba(219,233,238,0.5)',
+                }}>{t('At a glance', 'De un vistazo')}</div>
               )}
-              <div style={{
-                marginTop: 'auto',
-                padding: '16px 18px',
-                fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
-                textTransform: 'uppercase',
-              }}>{h.label}</div>
+              {h.href ? (
+                <a href={h.href} className="mono" style={{
+                  marginTop: 'auto', padding: '16px 20px 20px',
+                  display: 'block',
+                  fontSize: 13.5, fontWeight: 700, letterSpacing: '0.14em',
+                  textTransform: 'uppercase', color: 'var(--white)',
+                  transition: 'color 0.18s',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.color = 'var(--coral)'; }}
+                onMouseLeave={e => { e.currentTarget.style.color = 'var(--white)'; }}
+                >
+                  {h.label}
+                  <svg width="11" height="11" viewBox="0 0 16 16" fill="none" style={{ marginLeft: 8, verticalAlign: 'middle', opacity: 0.65 }}>
+                    <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
+                  </svg>
+                </a>
+              ) : (
+                <div style={{ marginTop: 'auto', padding: '16px 20px 20px' }}/>
+              )}
             </div>
           ))}
         </div>
@@ -127,21 +157,25 @@ const MaterialsComparison = () => {
           [t('Lead time', 'Tiempo de entrega'),      t('Stocked: ready now · custom varies', 'En stock: listo ya · a medida varía'), t('Stocked: ready now · custom varies', 'En stock: listo ya · a medida varía'), t('Stocked: ready now · custom varies', 'En stock: listo ya · a medida varía'), t('Stocked: ready now · custom varies', 'En stock: listo ya · a medida varía')],
           [t('Starts at', 'Desde'),      t('Quote-based', 'Según cotización'), t('Quote-based', 'Según cotización'), t('Quote-based', 'Según cotización'), t('Quote-based', 'Según cotización')],
         ].map((row, ri) => (
-          <div key={ri} style={{
-            display: 'grid', gridTemplateColumns: '1.2fr repeat(4, 1fr)',
-            background: ri % 2 === 0 ? 'var(--white)' : '#ffffff',
-            borderTop: '1px solid rgba(0,16,17,0.08)',
-          }}>
+          <div key={ri}
+            onMouseEnter={e => { e.currentTarget.style.background = '#fff6f1'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = ri % 2 ? '#f7f8fa' : 'var(--white)'; }}
+            style={{
+              display: 'grid', gridTemplateColumns: '1.2fr repeat(4, 1fr)',
+              background: ri % 2 ? '#f7f8fa' : 'var(--white)',
+              borderTop: '1px solid rgba(0,16,17,0.06)',
+              transition: 'background 0.15s ease',
+            }}>
             {row.map((cell, ci) => (
               <div key={ci} style={{
-                padding: '16px 18px',
+                padding: '18px 20px',
                 fontSize: 15, lineHeight: 1.5,
                 color: ci === 0 ? 'var(--charcoal)' : 'var(--ink)',
                 fontWeight: ci === 0 ? 700 : 400,
                 fontFamily: ci === 0 ? 'var(--mono)' : 'var(--sans)',
-                letterSpacing: ci === 0 ? '0.06em' : 'normal',
+                letterSpacing: ci === 0 ? '0.08em' : 'normal',
                 textTransform: ci === 0 ? 'uppercase' : 'none',
-                borderLeft: ci === 0 ? 'none' : '1px solid rgba(0,16,17,0.08)',
+                borderLeft: ci === 0 ? 'none' : '1px solid rgba(0,16,17,0.06)',
               }}>{cell}</div>
             ))}
           </div>
