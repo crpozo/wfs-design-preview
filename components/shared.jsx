@@ -116,8 +116,53 @@ const DiamondGrid = ({ color = '#ff7133', opacity = 0.4 }) => (
   </svg>
 );
 
+/* ───── Pill CTA ─────
+   The "Start your fence project" button: pill, uppercase label, white
+   circle with an out-arrow, lifts and turns tangerine on hover.
+   variant="light" flips it for dark sections (white pill, ink text). */
+const PillCTA = ({ href, children, variant = 'ink', target, rel }) => {
+  const [hover, setHover] = React.useState(false);
+  const light = variant === 'light';
+  const baseBg = light ? 'var(--white)' : 'var(--ink)';
+  const baseFg = light ? 'var(--ink)' : 'var(--white)';
+  const dotBg = light ? 'var(--ink)' : 'var(--white)';
+  const dotFg = light ? 'var(--white)' : 'var(--ink)';
+  return (
+    <a href={href} target={target} rel={rel}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        display: 'inline-flex', alignItems: 'center', gap: 16,
+        padding: '14px 14px 14px 26px', borderRadius: 999,
+        background: hover ? 'var(--tangerine)' : baseBg,
+        color: hover ? 'var(--white)' : baseFg,
+        textDecoration: 'none', whiteSpace: 'nowrap',
+        fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
+        letterSpacing: '0.18em', textTransform: 'uppercase',
+        transition: 'background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s',
+        transform: hover ? 'translateY(-2px)' : 'none',
+        boxShadow: hover
+          ? '0 22px 44px -18px rgba(255, 113, 51, 0.55)'
+          : '0 18px 36px -18px rgba(38, 49, 102, 0.5)',
+      }}>
+      {children}
+      <span style={{
+        width: 30, height: 30, borderRadius: '50%', flexShrink: 0,
+        background: hover ? 'var(--white)' : dotBg,
+        color: hover ? 'var(--tangerine)' : dotFg,
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        transition: 'background 0.2s, color 0.2s',
+      }}>
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+          <path d="M5 11L11 5M11 5H6M11 5V10" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </span>
+    </a>
+  );
+};
+
 Object.assign(window, {
-  Logo, ArrowRight, ArrowDown, ImgSlot,
+  Logo, ArrowRight, ArrowDown, ImgSlot, PillCTA,
   ChainLinkSVG, AluminumSVG, VinylSVG, MetalSVG, DiamondGrid,
   FENCE_IMG, FENCE_ICON,
 });

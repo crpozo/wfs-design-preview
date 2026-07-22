@@ -1,6 +1,6 @@
 /* ───── Western Fences Supply — Homepage ───── */
 /* Brand fonts: Mirano Extended (proprietary) → Archivo @ wdth 125 ; Space Grotesk for UI/body */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 :root {
   /* Primary */
@@ -25,6 +25,12 @@
   --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --sans: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
   --mono: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  /* Body copy: Inter — an open-source face drawn on the same principles as
+     SF Pro (tall x-height, open apertures, neutral UI feel). SF Pro itself
+     can't be self-hosted; Inter gives the same look on every device, not
+     just Apple ones. System stack kept as the fallback. */
+  --body: 'Inter', -apple-system, BlinkMacSystemFont, system-ui,
+          'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 
   --radius: 14px;
   --radius-lg: 22px;
@@ -756,58 +762,59 @@ section { position: relative; }
    Selectors match the browser-serialized inline style form
    (rgba() with spaces after commas; var(--x) preserved verbatim).
    ───────────────────────────────────────────────────────────── */
+/* Site-wide card styling (all breakpoints) — every boxed panel gets the
+   same rounded corners + soft shadow as the testimonial cards, so nothing
+   reads as a flat hairline rectangle. Selectors match the browser-
+   serialized inline style form (rgba() with spaces; var(--x) verbatim). */
+
+/* Flat bordered boxes → rounded floating cards */
+[style*="border: 1px solid rgba(38, 49, 102, 0.14)"],
+[style*="border: 1px solid rgba(0, 16, 17, 0.1)"],
+[style*="border: 1px solid rgba(0, 16, 17, 0.12)"],
+[style*="border: 1px solid rgba(0, 16, 17, 0.15)"],
+[style*="border: 1px solid rgba(0, 16, 17, 0.18)"] {
+  border-radius: 18px !important;
+  border-color: rgba(38, 49, 102, 0.08) !important;
+  box-shadow: 0 18px 40px -22px rgba(38, 49, 102, 0.34) !important;
+  background: var(--white) !important;
+}
+
+/* Form fields: round the corners, no drop shadow */
+[style*="border: 1px solid rgba(0, 16, 17, 0.25)"] { border-radius: 12px !important; }
+
+/* Small chips: icon frames, FAQ toggle, hamburger */
+[style*="border: 1.5px solid var(--ink)"] { border-radius: 12px !important; }
+[style*="border: 1px solid rgba(0, 16, 17, 0.2)"] { border-radius: 9px !important; }
+.wfs-faq-toggle { border-radius: 9px !important; }
+.wfs-mobile-trigger { border-radius: 12px !important; }
+
+/* Media / image cards: round + clip; soften the map's hard border */
+.wfs-map,
+.wfs-msys__imgwrap,
+.wfs-msys__card,
+.wfs-projects-grid > *,
+[style*="aspect-ratio: 3 / 4"],
+[style*="aspect-ratio: 4 / 5"],
+[style*="aspect-ratio: 5 / 4"],
+[style*="aspect-ratio: 4 / 3"],
+[style*="aspect-ratio: 3 / 2"],
+[style*="aspect-ratio: 16 / 9"] {
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+.wfs-map {
+  border-color: transparent !important;
+  box-shadow: 0 18px 40px -20px rgba(38, 49, 102, 0.45) !important;
+}
+
 @media (max-width: 640px) {
-  /* 1 · Warm light-gray canvas (Apple #f5f5f7) instead of flat white.
-     White/parchment/linen sections become the canvas so the white
-     cards inside them float; dark (ink) sections are untouched. */
+  /* Warm light-gray canvas (Apple #f5f5f7) instead of flat white, so the
+     white cards float. Phones only; dark (ink) sections are untouched. */
   body { background: #f5f5f7; }
   section[style*="background: var(--white)"],
   section[style*="background: var(--parchment)"],
   section[style*="background: var(--linen)"] {
     background: #f5f5f7 !important;
-  }
-
-  /* 2 · Flat bordered boxes → rounded white floating cards */
-  [style*="border: 1px solid rgba(38, 49, 102, 0.14)"],
-  [style*="border: 1px solid rgba(0, 16, 17, 0.1)"],
-  [style*="border: 1px solid rgba(0, 16, 17, 0.12)"],
-  [style*="border: 1px solid rgba(0, 16, 17, 0.15)"],
-  [style*="border: 1px solid rgba(0, 16, 17, 0.18)"] {
-    border-radius: 18px !important;
-    border-color: rgba(38, 49, 102, 0.08) !important;
-    box-shadow: 0 14px 34px -18px rgba(38, 49, 102, 0.32) !important;
-    background: var(--white) !important;
-  }
-
-  /* 3 · Form fields: round the corners, no drop shadow */
-  [style*="border: 1px solid rgba(0, 16, 17, 0.25)"] { border-radius: 12px !important; }
-
-  /* 4 · Small chips: icon frames + FAQ toggle + hamburger → rounded.
-     .wfs-faq-toggle rounds both open (tangerine) and closed states. */
-  [style*="border: 1.5px solid var(--ink)"] { border-radius: 12px !important; }
-  [style*="border: 1px solid rgba(0, 16, 17, 0.2)"] { border-radius: 9px !important; }
-  .wfs-faq-toggle { border-radius: 9px !important; }
-  .wfs-mobile-trigger { border-radius: 12px !important; }
-
-  /* 5 · Media / image cards: round + clip; soften the map's hard border.
-     Covers both inline aspect-ratio cards and the class-based mobile
-     system carousel (.wfs-msys) + project/product image cards. */
-  .wfs-map,
-  .wfs-msys__imgwrap,
-  .wfs-msys__card,
-  .wfs-projects-grid > *,
-  [style*="aspect-ratio: 3 / 4"],
-  [style*="aspect-ratio: 4 / 5"],
-  [style*="aspect-ratio: 5 / 4"],
-  [style*="aspect-ratio: 4 / 3"],
-  [style*="aspect-ratio: 3 / 2"],
-  [style*="aspect-ratio: 16 / 9"] {
-    border-radius: 18px !important;
-    overflow: hidden !important;
-  }
-  .wfs-map {
-    border-color: transparent !important;
-    box-shadow: 0 16px 36px -18px rgba(38, 49, 102, 0.45) !important;
   }
 }
 
@@ -838,14 +845,20 @@ input:focus, select:focus, textarea:focus {
 .wfs-hero-fade {
   background: linear-gradient(180deg,
     rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.55) 55%,
+    rgba(255,255,255,0.10) 50%,
+    rgba(255,255,255,0.40) 80%,
     #ffffff 100%);
 }
 @media (max-width: 640px) {
   .wfs-hero-fade {
     background: linear-gradient(180deg,
       rgba(245,245,247,0) 0%,
-      rgba(245,245,247,0.55) 55%,
+      rgba(245,245,247,0.10) 50%,
+      rgba(245,245,247,0.40) 80%,
       #f5f5f7 100%);
   }
 }
+
+/* Body copy in the system face (SF Pro on Apple devices). Headings keep
+   Archivo (.display) and the small labels keep their mono face. */
+p { font-family: var(--body); }

@@ -102,7 +102,7 @@ const Hero = () => {
           match the section below at each breakpoint. */}
       <div aria-hidden className="wfs-hero-fade" style={{
         position: 'absolute', left: 0, right: 0, bottom: 0,
-        height: 'clamp(80px, 11vh, 150px)', zIndex: 1, pointerEvents: 'none',
+        height: 'clamp(55px, 7vh, 95px)', zIndex: 1, pointerEvents: 'none',
       }}/>
 
       {/* Main content */}

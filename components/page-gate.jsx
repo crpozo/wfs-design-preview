@@ -64,7 +64,7 @@ const GATE_DATA = {
       { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: 'Custom Opening', material: { EN: 'PVC Gate', ES: 'Portón PVC' }, type: { EN: 'White PVC Double Gate', ES: 'Portón doble PVC blanco' }, contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/projects/pvc-privacy-gate-white.jpg' },
       { name: 'Residential Walk Gate', loc: 'Fort Myers, FL', size: '4 ft', material: { EN: 'Chain Link Gate', ES: 'Portón malla ciclónica' }, type: { EN: 'Black Chain Link Single Gate', ES: 'Portón sencillo de malla ciclónica negro' }, contractor: 'Estate Fence Pros', year: '2024', imgUrl: 'assets/SINGLE_SWING_GATE.png' },
       { name: 'Pool Enclosure Gate', loc: 'Naples, FL', size: '4 ft', material: { EN: 'Aluminum Custom Gate', ES: 'Portón de aluminio a medida' }, type: { EN: 'Alum 4 Rail Smooth Bottom Custom Gate, Black', ES: 'Portón a medida de aluminio 4 rieles fondo liso, negro' }, contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/alum-4-rail-smooth-bottom-custom-gate-black.jpg' },
-      { name: 'Double Swing Gate', loc: 'Cape Coral, FL', size: '12 ft', material: { EN: 'PVC Gate', ES: 'Portón PVC' }, type: { EN: 'White PVC Double Gate', ES: 'Portón doble PVC blanco' }, contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/gate-single-custom-pvc.png' },
+      { name: 'Double Swing Gate', loc: 'Cape Coral, FL', size: '12 ft', material: { EN: 'PVC Gate', ES: 'Portón PVC' }, type: { EN: 'White PVC Double Gate', ES: 'Portón doble PVC blanco' }, contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/pvc-double-gate-white.jpg' },
       { name: 'Chain Link Service Gate', loc: 'Lehigh Acres, FL', size: '6 ft', material: { EN: 'Chain Link Gate', ES: 'Portón malla ciclónica' }, type: { EN: 'Black Chain Link Single Gate', ES: 'Portón sencillo de malla ciclónica negro' }, contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/projects/cl-gate-black.jpg' },
       { name: 'Metal Privacy Gate', loc: 'Estero, FL', size: '6 ft', material: { EN: 'Chain Link Gate', ES: 'Portón malla ciclónica' }, type: { EN: 'Galvanized Chain Link Sliding Gate', ES: 'Portón corredizo de malla ciclónica galvanizada' }, contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/SLIDING_GATE.png' },
     ],
@@ -478,14 +478,11 @@ const GateSpecs = ({ data }) => (
           <p style={{ marginTop: 20, fontSize: 15.5, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 320 }}>
             {useT()('Gate dimensions, hardware, and compatibility depend on the material, opening size, post type, and swing direction. Contact our team to confirm the right gate package for your project.', 'Las dimensiones, herrajes y compatibilidad del portón dependen del material, la medida de la abertura, el tipo de poste y la dirección de apertura. Contacta a nuestro equipo para confirmar el paquete adecuado para tu proyecto.')}
           </p>
-          <a href="estimate.html" className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10, marginTop: 24, paddingBottom: 4,
-            fontSize: 14, fontWeight: 700, letterSpacing: '0.2em',
-            textTransform: 'uppercase', color: 'var(--white)',
-            borderBottom: '1px solid rgba(255,255,255,0.45)',
-          }}>
-            {useT()('Talk to our team', 'Habla con nuestro equipo')} →
-          </a>
+          <div style={{ marginTop: 26 }}>
+            <PillCTA href="estimate.html" variant="light">
+              {useT()('Talk to our team', 'Habla con nuestro equipo')}
+            </PillCTA>
+          </div>
         </div>
         <div style={{ position: 'relative' }}>
           <div aria-hidden style={{ position: 'absolute', inset: '14px -14px -14px 14px', background: 'var(--laser-blue)' }}/>

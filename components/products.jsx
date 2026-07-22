@@ -1095,17 +1095,7 @@ const WhyWFS = () => {
               )}
             </p>
           </div>
-          <a href="estimate.html" className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10,
-            padding: '13px 0', fontSize: 14, fontWeight: 700,
-            letterSpacing: '0.22em', textTransform: 'uppercase',
-            color: 'var(--ink)', borderBottom: '1px solid var(--ink)',
-          }}>
-            {t('Get started', 'Comenzar')}
-            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
-            </svg>
-          </a>
+          <PillCTA href="estimate.html">{t('Get started', 'Comenzar')}</PillCTA>
         </div>
 
         {/* Value-prop cards */}

@@ -466,15 +466,11 @@ const MaterialSpecs = ({ data }) => (
           <p style={{ marginTop: 20, fontSize: 15.5, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 320 }}>
             {useT()("Actual specs may vary by style, height, color and availability. Contact our team to confirm the right material package for your project.", 'Las especificaciones reales pueden variar según estilo, altura, color y disponibilidad. Contacta a nuestro equipo para confirmar el paquete de material adecuado para tu proyecto.')}
           </p>
-          <a href="estimate.html" className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 10,
-            marginTop: 24, paddingBottom: 4,
-            fontSize: 14, fontWeight: 700, letterSpacing: '0.2em',
-            textTransform: 'uppercase', color: 'var(--white)',
-            borderBottom: '1px solid rgba(255,255,255,0.45)',
-          }}>
-            {useT()('Talk to our team', 'Habla con nuestro equipo')} →
-          </a>
+          <div style={{ marginTop: 26 }}>
+            <PillCTA href="estimate.html" variant="light">
+              {useT()('Talk to our team', 'Habla con nuestro equipo')}
+            </PillCTA>
+          </div>
         </div>
         <div style={{ position: 'relative' }}>
           <div aria-hidden style={{ position: 'absolute', inset: '14px -14px -14px 14px', background: 'var(--laser-blue)' }}/>
