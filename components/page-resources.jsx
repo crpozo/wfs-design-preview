@@ -165,7 +165,7 @@ const MaterialsComparison = () => {
           [t('Starts at', 'Desde'),      t('Quote-based', 'Según cotización'), t('Quote-based', 'Según cotización'), t('Quote-based', 'Según cotización'), t('Quote-based', 'Según cotización')],
         ].map((row, ri) => (
           <div key={ri}
-            onMouseEnter={e => { e.currentTarget.style.background = '#fff6f1'; }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#eef1f7'; }}
             onMouseLeave={e => { e.currentTarget.style.background = ri % 2 ? '#f7f8fa' : 'var(--white)'; }}
             style={{
               display: 'grid', gridTemplateColumns: '1.2fr repeat(4, 1fr)',
