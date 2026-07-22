@@ -962,7 +962,8 @@ const ContractorHero = () => {
             {t('Get a quick quote', 'Cotiza rápido')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
-          <a href="locations.html" className="mono" style={{
+          <a href="https://form.jotform.com/westernfencesupply/account-setup-form"
+            target="_blank" rel="noopener" className="mono" style={{
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
             padding: '14px 24px',
             border: '1px solid rgba(255,255,255,0.6)', color: 'var(--white)',
@@ -973,7 +974,7 @@ const ContractorHero = () => {
           }}
           onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; }}
           onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}>
-            {t('Verify stock', 'Verificar existencias')}
+            {t('Become a WFS partner', 'Hazte socio de WFS')}
           </a>
         </div>
       </div>
