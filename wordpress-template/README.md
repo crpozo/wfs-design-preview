@@ -18,16 +18,20 @@ como plantillas de **Elementor (gratis, sin Pro)**, 100% editables desde el edit
 | `templates/16-estimate.json` | Cotización: datos de contacto + formulario |
 | `templates/17-about.json` | Sobre nosotros |
 | `templates/18-locations.json` | Sucursales (Fort Myers + Port Charlotte, con mapas) |
-| `wfs-custom.css` | Tipografías + sistema de diseño (**obligatorio**) |
+| `wfs-child-theme.zip` | **Tema hijo instalable** con el sistema de diseño ya incluido |
+| `wfs-child-theme/` | Código fuente del tema (por si quieres editarlo) |
+| `wfs-custom.css` | El mismo CSS suelto (solo si prefieres pegarlo a mano) |
 | `build.py` | Generador de los JSON (para regenerar tras cambios) |
 
 ## Instalación (WordPress + Elementor gratis)
 
-1. **Tema**: instala y activa **Hello Elementor** (Apariencia → Temas → Añadir nuevo).
-2. **Plugin**: instala **Elementor** (gratis).
-3. **CSS de marca (obligatorio)**: copia todo `wfs-custom.css` en
-   **Apariencia → Personalizar → CSS adicional**. Carga *Archivo* e *Inter* y aplica
-   colores, tarjetas redondeadas con sombra y los botones pill.
+1. **Tema padre**: instala **Hello Elementor** (Apariencia → Temas → Añadir nuevo).
+   *No hace falta activarlo*, solo que esté instalado.
+2. **Plugin**: instala y activa **Elementor** (gratis).
+3. **Tema de marca**: Apariencia → Temas → Añadir nuevo → **Subir tema** →
+   `wfs-child-theme.zip` → **Activar**. Esto ya trae las tipografías (*Archivo* + *Inter*),
+   los colores, las tarjetas redondeadas con sombra, los botones pill y los estilos del
+   formulario. **No hay que pegar CSS a mano.**
 4. **Importar plantillas**: en **Plantillas → Plantillas guardadas → Importar plantillas**,
    sube los 11 archivos `.json` de `templates/`.
 5. **Crear las páginas** (Páginas → Añadir nueva) con estos slugs:

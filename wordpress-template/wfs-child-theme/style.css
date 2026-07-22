@@ -1,0 +1,133 @@
+/*
+Theme Name:   Western Fence Supply
+Theme URI:    https://crpozo.github.io/wfs-design-preview/
+Description:  Child theme de Hello Elementor con el sistema de diseño de Western Fence Supply (tipografías Archivo + Inter, colores de marca, tarjetas redondeadas con sombra, botones pill y estilos de formulario). El contenido se edita con las plantillas de Elementor incluidas en el kit.
+Author:       Western Fence Supply
+Template:     hello-elementor
+Version:      1.0.0
+Text Domain:  wfs-child
+*/
+
+/* ── Tipografías (Google Fonts) ─────────────────────────────── */
+
+/* ── Tokens de marca ────────────────────────────────────────── */
+:root {
+  --wfs-ink:       #263167;  /* navy */
+  --wfs-tangerine: #ff7133;
+  --wfs-charcoal:  #565656;
+  --wfs-canvas:    #f5f5f7;  /* gris Apple */
+  --wfs-line:      rgba(38,49,102,0.08);
+  --wfs-display:   'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --wfs-body:      'Inter', -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* ── Base ───────────────────────────────────────────────────── */
+body, .elementor-widget-text-editor, .elementor-widget-text-editor p {
+  font-family: var(--wfs-body);
+  color: var(--wfs-ink);
+}
+.elementor-widget-heading .elementor-heading-title {
+  font-family: var(--wfs-display);
+  font-variation-settings: 'wdth' 125;
+  letter-spacing: -0.01em;
+}
+
+/* Los "eyebrow" (etiquetas pequeñas en mayúsculas) usan Inter, no Archivo.
+   Legibilidad: nada por debajo de 15.5px, y tracking moderado. */
+.elementor-widget-heading .elementor-heading-title[style*="text-transform"],
+.wfs-eyebrow {
+  font-family: var(--wfs-body) !important;
+  font-size: 15.5px !important;
+  letter-spacing: 0.11em !important;
+}
+
+/* ── Tarjetas: esquinas redondeadas + sombra suave ──────────── */
+.wfs-card,
+.elementor-element.wfs-card > .elementor-widget-container {
+  background: #fff;
+  border: 1px solid var(--wfs-line);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px -22px rgba(38,49,102,0.34);
+}
+
+/* Imágenes dentro de tarjetas / secciones */
+.elementor-widget-image img { border-radius: 18px; }
+
+/* ── Botón pill (CTA principal) ─────────────────────────────── */
+.elementor-button {
+  border-radius: 999px !important;
+  font-family: var(--wfs-body) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  padding: 16px 28px !important;
+  box-shadow: 0 18px 36px -18px rgba(38,49,102,0.5);
+  transition: background .2s, color .2s, transform .2s, box-shadow .2s;
+}
+.elementor-button:hover {
+  background-color: var(--wfs-tangerine) !important;
+  color: #fff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 22px 44px -18px rgba(255,113,51,0.55);
+}
+
+/* ── Formulario de cotización (Contact Form 7) ──────────────── */
+.wpcf7 input[type=text], .wpcf7 input[type=email], .wpcf7 input[type=tel],
+.wpcf7 select, .wpcf7 textarea {
+  width: 100%;
+  padding: 15px 16px;
+  font-family: var(--wfs-body);
+  font-size: 16.5px;
+  color: var(--wfs-ink);
+  background: #fff;
+  border: 1px solid rgba(0,16,17,0.16);
+  border-radius: 12px;
+  outline: none;
+}
+.wpcf7 input:focus, .wpcf7 select:focus, .wpcf7 textarea:focus {
+  border-color: var(--wfs-tangerine);
+  box-shadow: 0 0 0 3px rgba(255,113,51,0.18);
+}
+.wpcf7 label {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--wfs-body);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--wfs-charcoal);
+}
+/* Campo de archivo (plano / layout del proyecto) */
+.wpcf7 input[type=file] {
+  width: 100%;
+  padding: 16px 18px;
+  border: 1.5px dashed rgba(0,16,17,0.2);
+  border-radius: 12px;
+  background: #fbfbfc;
+  cursor: pointer;
+}
+.wpcf7 input[type=submit] {
+  border: 0;
+  border-radius: 999px;
+  padding: 16px 28px;
+  background: var(--wfs-ink);
+  color: #fff;
+  font-family: var(--wfs-body);
+  font-size: 16.5px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 12px 28px -12px rgba(38,49,102,0.6);
+}
+.wpcf7 input[type=submit]:hover { background: var(--wfs-tangerine); }
+
+/* ── Tabla comparativa (widget HTML) ────────────────────────── */
+.wfs-compare table { width: 100%; border-collapse: collapse; }
+@media (max-width: 900px) {
+  .wfs-compare table { display: block; overflow-x: auto; }
+}
+
+/* ── Móvil: lienzo gris para que las tarjetas floten ────────── */
+@media (max-width: 640px) {
+  body { background: var(--wfs-canvas); }
+}
