@@ -2,10 +2,7 @@
 
 const Breadcrumb = ({ items, light = true }) => (
   <nav className="mono" style={{
-    fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase',
-    color: light ? 'rgba(255,255,255,0.6)' : 'var(--charcoal)',
-    marginBottom: 24, display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center',
-  }}>
+    fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase', color: light ? 'rgba(255,255,255,0.6)' : 'var(--charcoal)', marginBottom: 24, display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center', }}>
     {items.map(([label, href], i) => (
       <React.Fragment key={i}>
         {i > 0 && <span aria-hidden>›</span>}
@@ -19,86 +16,44 @@ const Breadcrumb = ({ items, light = true }) => (
 
 const PageHero = ({ eyebrow, title, accent, accentBreak, subtitle, image, crumbs, actions, height = 'clamp(420px, 58vh, 560px)' }) => (
   <section style={{
-    position: 'relative', color: 'var(--white)', overflow: 'hidden',
-    minHeight: height,
-    display: 'flex', flexDirection: 'column', justifyContent: 'center',
-    background: '#263166',
-  }}>
+    position: 'relative', color: 'var(--white)', overflow: 'hidden', minHeight: height, display: 'flex', flexDirection: 'column', justifyContent: 'center', background: '#263166', }}>
     {image && (
       <img src={image} alt="" aria-hidden="true" style={{
-        position: 'absolute', inset: 0, width: '100%', height: '100%',
-        objectFit: 'cover', objectPosition: 'center 45%', zIndex: 0,
-      }}/>
+        position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', zIndex: 0, }}/>
     )}
     {/* Scrim, strong left to light right, same recipe as the home banner */}
     <div aria-hidden style={{
-      position: 'absolute', inset: 0, zIndex: 1,
-      background: 'linear-gradient(95deg, rgba(38, 49, 103,0.86) 0%, rgba(38, 49, 103,0.68) 38%, rgba(38, 49, 103,0.42) 68%, rgba(38, 49, 103,0.26) 100%)',
-    }}/>
+      position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(95deg, rgba(38, 49, 103,0.86) 0%, rgba(38, 49, 103,0.68) 38%, rgba(38, 49, 103,0.42) 68%, rgba(38, 49, 103,0.26) 100%)', }}/>
     <div className="container" style={{
-      position: 'relative', zIndex: 2,
-      width: '100%',
-      paddingTop: 72, paddingBottom: 56,
-    }}>
+      position: 'relative', zIndex: 2, width: '100%', paddingTop: 72, paddingBottom: 56, }}>
       {eyebrow && (
         <div className="mono" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 14,
-          marginBottom: 22,
-          fontSize: 'clamp(12px, 1.1vw, 13px)', fontWeight: 700,
-          letterSpacing: '0.22em', textTransform: 'uppercase',
-          color: 'rgba(255,255,255,0.85)',
-        }}>
+          display: 'inline-flex', alignItems: 'center', gap: 14, marginBottom: 22, fontSize: 'clamp(12px, 1.1vw, 13px)', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', }}>
           <span aria-hidden style={{ width: 34, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
           {eyebrow}
         </div>
       )}
       <h1 style={{
-        margin: '0 0 18px',
-        fontFamily: 'var(--display)',
-        fontVariationSettings: "'wdth' 100",
-        fontWeight: 800,
-        fontSize: 'clamp(30px, 3.6vw, 50px)',
-        lineHeight: 1.02, letterSpacing: '-0.015em',
-        textTransform: 'uppercase',
-        color: 'var(--white)',
-        textShadow: '0 2px 28px rgba(0,0,0,0.28)',
-        maxWidth: 880,
-      }}>
+        margin: '0 0 18px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 100", fontWeight: 800, fontSize: 'clamp(30px, 3.6vw, 50px)', lineHeight: 1.02, letterSpacing: '-0.015em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', maxWidth: 880, }}>
         {title}{accent && <>{accentBreak ? <br/> : ' '}<span style={{ color: 'var(--blue-ice)' }}>{accent}</span></>}
       </h1>
       {subtitle && (
         <p style={{
-          fontSize: 17.5, lineHeight: 1.55, maxWidth: 600, margin: 0,
-          color: 'rgba(255,255,255,0.85)',
-        }}>{subtitle}</p>
+          fontSize: 17.5, lineHeight: 1.55, maxWidth: 600, margin: 0, color: 'rgba(255,255,255,0.85)', }}>{subtitle}</p>
       )}
       {actions && actions.length > 0 && (
         <div style={{ marginTop: 30, display: 'flex', gap: 14, flexWrap: 'wrap' }}>
           {actions.map((a, i) => (
             a.primary ? (
               <a key={i} href={a.href} download={a.download} style={{
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                padding: '15px 28px', borderRadius: 999,
-                background: 'var(--tangerine)', color: 'var(--white)',
-                fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
-                letterSpacing: '0.06em', textTransform: 'uppercase',
-                boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)',
-                transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s',
-              }}
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '15px 28px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 113, 51,0.35)'; }}>
                 {a.label}
               </a>
             ) : (
               <a key={i} href={a.href} download={a.download} style={{
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                padding: '15px 28px', borderRadius: 999,
-                background: 'rgba(255,255,255,0.08)', color: 'var(--white)',
-                border: '1.5px solid rgba(255,255,255,0.55)', backdropFilter: 'blur(6px)',
-                fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
-                letterSpacing: '0.06em', textTransform: 'uppercase',
-                transition: 'background 0.18s, border-color 0.18s',
-              }}
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '15px 28px', borderRadius: 999, background: 'rgba(255,255,255,0.08)', color: 'var(--white)', border: '1.5px solid rgba(255,255,255,0.55)', backdropFilter: 'blur(6px)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', transition: 'background 0.18s, border-color 0.18s', }}
               onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.18)'; e.currentTarget.style.borderColor = 'var(--white)'; }}
               onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.55)'; }}>
                 {a.label}
@@ -113,34 +68,22 @@ const PageHero = ({ eyebrow, title, accent, accentBreak, subtitle, image, crumbs
 
 const PageSectionHeader = ({ number, label, title, accent, sub, link }) => (
   <div style={{
-    display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end',
-    paddingBottom: 24, marginBottom: 28,
-    borderBottom: '1px solid rgba(0,16,17,0.12)',
-  }}>
+    display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end', paddingBottom: 24, marginBottom: 28, borderBottom: '1px solid rgba(0,16,17,0.12)', }}>
     <div>
       <h2 className="display" style={{
-        margin: 0, fontSize: 'clamp(28px, 3vw, 40px)',
-        lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800,
-      }}>
+        margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, }}>
         {title}{accent && <><br/><span style={{ color: 'var(--tangerine)' }}>{accent}</span></>}
       </h2>
     </div>
     <div style={{
-      display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 18,
-    }}>
+      display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 18, }}>
       {sub && (
         <p style={{
-          margin: 0, maxWidth: 380,
-          fontSize: 15.5, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right',
-        }}>{sub}</p>
+          margin: 0, maxWidth: 380, fontSize: 15.5, lineHeight: 1.55, color: 'var(--charcoal)', textAlign: 'right', }}>{sub}</p>
       )}
       {link && (
         <a href={link[1]} className="mono" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 10,
-          fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
-          textTransform: 'uppercase', color: 'var(--ink)',
-          borderBottom: '1px solid var(--ink)', paddingBottom: 4,
-        }}>
+          display: 'inline-flex', alignItems: 'center', gap: 10, fontSize: 14, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--ink)', borderBottom: '1px solid var(--ink)', paddingBottom: 4, }}>
           {link[0]}
           <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
             <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
@@ -153,17 +96,12 @@ const PageSectionHeader = ({ number, label, title, accent, sub, link }) => (
 
 const StatStrip = ({ items, dark = false }) => (
   <div style={{
-    display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 28,
-    paddingTop: 30, borderTop: `1px solid ${dark ? 'rgba(255,255,255,0.18)' : 'rgba(0,16,17,0.12)'}`,
-  }}>
+    display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 28, paddingTop: 30, borderTop: `1px solid ${dark ? 'rgba(255,255,255,0.18)' : 'rgba(0,16,17,0.12)'}`, }}>
     {items.map(([n, l]) => (
       <div key={l}>
         <div className="display" style={{ fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, color: dark ? 'var(--white)' : 'var(--ink)' }}>{n}</div>
         <div className="mono" style={{
-          marginTop: 12, fontSize: 13.5, letterSpacing: '0.18em',
-          textTransform: 'uppercase',
-          color: dark ? 'var(--alice-blue)' : 'var(--charcoal)',
-        }}>{l}</div>
+          marginTop: 12, fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase', color: dark ? 'var(--alice-blue)' : 'var(--charcoal)', }}>{l}</div>
       </div>
     ))}
   </div>
@@ -175,31 +113,22 @@ const CTABand = ({ kicker, title, accent, body, primary, secondary, theme = 'cre
   const sub = theme === 'ink' ? 'var(--alice-blue)' : 'var(--charcoal)';
   return (
     <section style={{
-      background: bg, color: fg, padding: '120px 0',
-      borderTop: theme === 'ink' ? 'none' : '1px solid rgba(0,16,17,0.08)',
-    }}>
+      background: bg, color: fg, padding: '120px 0', borderTop: theme === 'ink' ? 'none' : '1px solid rgba(0,16,17,0.08)', }}>
       <div className="container">
         <div style={{
-          display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 48,
-          alignItems: 'center',
-        }}>
+          display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 48, alignItems: 'center', }}>
           <div>
             <h2 className="display" style={{
-              fontSize: 'clamp(30px, 3.5vw, 48px)', lineHeight: 1,
-              letterSpacing: '-0.02em', margin: 0,
-            }}>
+              fontSize: 'clamp(30px, 3.5vw, 48px)', lineHeight: 1, letterSpacing: '-0.02em', margin: 0, }}>
               {title}{accent && <> <span style={{ color: 'var(--tangerine)' }}>{accent}</span></>}
             </h2>
             {body && (
               <p style={{
-                marginTop: 18, fontSize: 16.5, lineHeight: 1.55,
-                color: sub, maxWidth: 540,
-              }}>{body}</p>
+                marginTop: 18, fontSize: 16.5, lineHeight: 1.55, color: sub, maxWidth: 540, }}>{body}</p>
             )}
           </div>
           <div style={{
-            display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'flex-end',
-          }}>
+            display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'flex-end', }}>
             {primary && (
               <a href={primary[1]} className="btn btn-primary">{primary[0]} <ArrowRight /></a>
             )}
@@ -238,23 +167,13 @@ const featureIcon = (label = '') => {
 
 const FeatureRow = ({ items }) => (
   <div style={{
-    display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`,
-    gap: 0,
-    background: 'var(--white)', borderRadius: 16,
-    boxShadow: '0 34px 70px -34px rgba(0,16,17,0.4)',
-    border: '1px solid rgba(0,16,17,0.06)',
-    overflow: 'hidden',
-  }}>
+    display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 0, background: 'var(--white)', borderRadius: 16, boxShadow: '0 34px 70px -34px rgba(0,16,17,0.4)', border: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden', }}>
     {items.map(([k, v], i) => (
       <div key={i} style={{
-        padding: '28px 26px',
-        borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.08)',
-      }}>
+        padding: '28px 26px', borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.08)', }}>
         <div aria-hidden style={{ color: 'var(--tangerine)', marginBottom: 14 }}>{featureIcon(k)}</div>
         <div className="mono" style={{
-          fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase',
-          color: 'var(--tangerine)', fontWeight: 700, marginBottom: 10,
-        }}>{k}</div>
+          fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--tangerine)', fontWeight: 700, marginBottom: 10, }}>{k}</div>
         <div style={{ fontSize: 15.5, lineHeight: 1.55, color: 'var(--ink)' }}>{v}</div>
       </div>
     ))}
@@ -269,36 +188,24 @@ const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageRight = 
     <section className={dark ? 'wfs-brand-texture' : undefined} style={{ backgroundColor: bg, color: fg, padding: '120px 0' }}>
       <div className="container">
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56,
-          alignItems: 'center',
-        }}>
+          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'center', }}>
           <div style={{ order: imageRight ? 1 : 2 }}>
             <h2 className="display" style={{
-              margin: 0, fontSize: 'clamp(28px, 3vw, 42px)',
-              lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800,
-            }}>
+              margin: 0, fontSize: 'clamp(28px, 3vw, 42px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, }}>
               {title}{accent && <><br/><span style={{ color: 'var(--tangerine)' }}>{accent}</span></>}
             </h2>
             {body && (
               <p style={{
-                marginTop: 18, fontSize: 16.5, lineHeight: 1.6,
-                color: sub, maxWidth: 520,
-              }}>{body}</p>
+                marginTop: 18, fontSize: 16.5, lineHeight: 1.6, color: sub, maxWidth: 520, }}>{body}</p>
             )}
             {bullets && (
               <ul style={{
-                margin: '22px 0 0', padding: 0, listStyle: 'none',
-                display: 'grid', gap: 12, maxWidth: 520,
-              }}>
+                margin: '22px 0 0', padding: 0, listStyle: 'none', display: 'grid', gap: 12, maxWidth: 520, }}>
                 {bullets.map((b, i) => (
                   <li key={i} style={{
-                    display: 'flex', alignItems: 'flex-start', gap: 12,
-                    fontSize: 15.5, lineHeight: 1.5, color: fg,
-                  }}>
+                    display: 'flex', alignItems: 'flex-start', gap: 12, fontSize: 15.5, lineHeight: 1.5, color: fg, }}>
                     <span style={{
-                      flexShrink: 0, marginTop: 6,
-                      width: 6, height: 6, background: 'var(--tangerine)',
-                    }}/>
+                      flexShrink: 0, marginTop: 6, width: 6, height: 6, background: 'var(--tangerine)', }}/>
                     {b}
                   </li>
                 ))}
@@ -306,10 +213,7 @@ const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageRight = 
             )}
           </div>
           <div style={{
-            order: imageRight ? 2 : 1,
-            position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden',
-            background: '#263166',
-          }}>
+            order: imageRight ? 2 : 1, position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', background: '#263166', }}>
             {image && (
               <img src={image} alt=""
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
@@ -334,47 +238,20 @@ const UseCaseRow = ({ title, body, badge, index }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
-        display: 'grid', gridTemplateColumns: '104px 1.15fr 1fr 48px',
-        gap: 28, alignItems: 'center',
-        padding: '32px 22px',
-        margin: '0 -22px',
-        borderBottom: '1px solid rgba(0,16,17,0.1)',
-        textDecoration: 'none', color: 'inherit',
-        background: hover ? 'rgba(255,113,51,0.07)' : 'transparent',
-        transition: 'background 0.2s ease',
-      }}>
+        display: 'grid', gridTemplateColumns: '104px 1.15fr 1fr 48px', gap: 28, alignItems: 'center', padding: '32px 22px', margin: '0 -22px', borderBottom: '1px solid rgba(0,16,17,0.1)', textDecoration: 'none', color: 'inherit', background: hover ? 'rgba(255,113,51,0.07)' : 'transparent', transition: 'background 0.2s ease', }}>
       <span className="display wfs-usecase-num" aria-hidden style={{
-        fontSize: 61.5, lineHeight: 1, fontWeight: 800,
-        color: hover ? 'var(--tangerine)' : 'transparent',
-        WebkitTextStroke: hover ? '0px transparent' : '1.5px rgba(38,49,102,0.32)',
-        transition: 'color 0.2s ease',
-      }}>0{index + 1}</span>
+        fontSize: 61.5, lineHeight: 1, fontWeight: 800, color: hover ? 'var(--tangerine)' : 'transparent', WebkitTextStroke: hover ? '0px transparent' : '1.5px rgba(38,49,102,0.32)', transition: 'color 0.2s ease', }}>0{index + 1}</span>
       <div>
         <h3 className="display" style={{
-          margin: '0 0 12px', fontSize: 'clamp(18px, 1.6vw, 24px)', lineHeight: 1.1,
-          textTransform: 'uppercase', letterSpacing: '0.01em',
-        }}>{title}</h3>
+          margin: '0 0 12px', fontSize: 'clamp(18px, 1.6vw, 24px)', lineHeight: 1.1, textTransform: 'uppercase', letterSpacing: '0.01em', }}>{title}</h3>
         {badge && (
           <span className="mono" style={{
-            display: 'inline-flex', alignItems: 'center',
-            padding: '6px 12px', borderRadius: 4,
-            border: '1px solid rgba(46,89,193,0.35)',
-            background: hover ? 'var(--white)' : 'transparent',
-            fontSize: 13, fontWeight: 700, letterSpacing: '0.14em',
-            textTransform: 'uppercase', color: 'var(--laser-blue)',
-            transition: 'background 0.2s ease',
-          }}>{badge}</span>
+            display: 'inline-flex', alignItems: 'center', padding: '6px 12px', borderRadius: 4, border: '1px solid rgba(46,89,193,0.35)', background: hover ? 'var(--white)' : 'transparent', fontSize: 13, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--laser-blue)', transition: 'background 0.2s ease', }}>{badge}</span>
         )}
       </div>
       <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>{body}</p>
       <span aria-hidden style={{
-        width: 44, height: 44, borderRadius: '50%',
-        border: `1px solid ${hover ? 'var(--tangerine)' : 'rgba(0,16,17,0.18)'}`,
-        background: hover ? 'var(--tangerine)' : 'transparent',
-        display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-        color: hover ? 'var(--white)' : 'var(--ink)', justifySelf: 'end',
-        transition: 'background 0.2s ease, border-color 0.2s ease, color 0.2s ease',
-      }}>
+        width: 44, height: 44, borderRadius: '50%', border: `1px solid ${hover ? 'var(--tangerine)' : 'rgba(0,16,17,0.18)'}`, background: hover ? 'var(--tangerine)' : 'transparent', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: hover ? 'var(--white)' : 'var(--ink)', justifySelf: 'end', transition: 'background 0.2s ease, border-color 0.2s ease, color 0.2s ease', }}>
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
           <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
         </svg>

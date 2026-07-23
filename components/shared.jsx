@@ -6,35 +6,19 @@ const Logo = ({ light = false }) => (
       src="assets/wfs-logo.svg"
       alt="Western Fence Supply"
       style={{
-        height: 36,
-        width: 'auto',
-        filter: light ? 'brightness(0) invert(1)' : 'none',
-      }}
+        height: 36, width: 'auto', filter: light ? 'brightness(0) invert(1)' : 'none', }}
     />
   </a>
 );
 
 const FENCE_IMG = {
   // Real product photos uploaded to assets/
-  aluminum:  'assets/ALUM.png',
-  chainlink: 'assets/CHAINLINK.png?v=204',
-  metal:     'assets/MET.png',
-  vinyl:     'assets/PVC.png',
-  ecfence:   'assets/ECFENCE.png',
-  shop:      'assets/wfs-shop.webp',
-  // Gate systems
-  'gate-single':     'assets/SINGLE_SWING_GATE.png',
-  'gate-double':     'assets/DOUBLE_GATE.png',
-  'gate-sliding':    'assets/SLIDING_GATE.png?v=204',
-  'gate-cantilever': 'assets/CANTILEVER.png?v=204',
-  'gate-rolling':    'assets/ROLLING_GATE.png?v=204',
+  aluminum:  'assets/ALUM.png', chainlink: 'assets/CHAINLINK.png?v=204', metal:     'assets/MET.png', vinyl:     'assets/PVC.png', ecfence:   'assets/ECFENCE.png', shop:      'assets/wfs-shop.webp', // Gate systems
+  'gate-single':     'assets/SINGLE_SWING_GATE.png', 'gate-double':     'assets/DOUBLE_GATE.png', 'gate-sliding':    'assets/SLIDING_GATE.png?v=204', 'gate-cantilever': 'assets/CANTILEVER.png?v=204', 'gate-rolling':    'assets/ROLLING_GATE.png?v=204',
 };
 
 const FENCE_ICON = {
-  aluminum: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/global/aluminum-fence-icon.svg',
-  chainlink: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/global/chainlink-fence-icon.svg',
-  metal: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/global/metal-fence-icon.svg',
-  vinyl: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/global/vinyl-fence-icon.svg',
+  aluminum: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/global/aluminum-fence-icon.svg', chainlink: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/global/chainlink-fence-icon.svg', metal: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/global/metal-fence-icon.svg', vinyl: 'https://westernfencesupply.com/wp-content/themes/westernfencesupply/img/global/vinyl-fence-icon.svg',
 };
 
 const ArrowRight = ({ size = 14 }) => (
@@ -132,27 +116,12 @@ const PillCTA = ({ href, children, variant = 'ink', target, rel }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
-        display: 'inline-flex', alignItems: 'center', gap: 16,
-        padding: '14px 14px 14px 26px', borderRadius: 999,
-        background: hover ? 'var(--tangerine)' : baseBg,
-        color: hover ? 'var(--white)' : baseFg,
-        textDecoration: 'none', whiteSpace: 'nowrap',
-        fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
-        letterSpacing: '0.18em', textTransform: 'uppercase',
-        transition: 'background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s',
-        transform: hover ? 'translateY(-2px)' : 'none',
-        boxShadow: hover
+        display: 'inline-flex', alignItems: 'center', gap: 16, padding: '14px 14px 14px 26px', borderRadius: 999, background: hover ? 'var(--tangerine)' : baseBg, color: hover ? 'var(--white)' : baseFg, textDecoration: 'none', whiteSpace: 'nowrap', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', transition: 'background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s', transform: hover ? 'translateY(-2px)' : 'none', boxShadow: hover
           ? '0 22px 44px -18px rgba(255, 113, 51, 0.55)'
-          : '0 18px 36px -18px rgba(38, 49, 102, 0.5)',
-      }}>
+          : '0 18px 36px -18px rgba(38, 49, 102, 0.5)', }}>
       {children}
       <span style={{
-        width: 30, height: 30, borderRadius: '50%', flexShrink: 0,
-        background: hover ? 'var(--white)' : dotBg,
-        color: hover ? 'var(--tangerine)' : dotFg,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        transition: 'background 0.2s, color 0.2s',
-      }}>
+        width: 30, height: 30, borderRadius: '50%', flexShrink: 0, background: hover ? 'var(--white)' : dotBg, color: hover ? 'var(--tangerine)' : dotFg, display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s, color 0.2s', }}>
         <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
           <path d="M5 11L11 5M11 5H6M11 5V10" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
@@ -162,9 +131,7 @@ const PillCTA = ({ href, children, variant = 'ink', target, rel }) => {
 };
 
 Object.assign(window, {
-  Logo, ArrowRight, ArrowDown, ImgSlot, PillCTA,
-  ChainLinkSVG, AluminumSVG, VinylSVG, MetalSVG, DiamondGrid,
-  FENCE_IMG, FENCE_ICON,
+  Logo, ArrowRight, ArrowDown, ImgSlot, PillCTA, ChainLinkSVG, AluminumSVG, VinylSVG, MetalSVG, DiamondGrid, FENCE_IMG, FENCE_ICON,
 });
 
 /* ───── Global Mode (Homeowner / Contractor) ───── */
@@ -630,9 +597,7 @@ window.useTrData = useTrData;
 
 /* Additional ES entries (aluminum hero rewrite) */
 Object.assign(ES_TR, {
-  'Powder-Coated Aluminum': 'Aluminio con pintura en polvo',
-  'Fence Materials.': 'Materiales de cerca.',
-  'Pool-code compliant aluminum fence materials for residential, commercial, and community projects. Available in multiple heights and styles, with gates, posts, rails, and hardware quoted as part of your material package.':
+  'Powder-Coated Aluminum': 'Aluminio con pintura en polvo', 'Fence Materials.': 'Materiales de cerca.', 'Pool-code compliant aluminum fence materials for residential, commercial, and community projects. Available in multiple heights and styles, with gates, posts, rails, and hardware quoted as part of your material package.':
     'Materiales de cerca de aluminio que cumplen el código de piscinas, para proyectos residenciales, comerciales y comunitarios. Disponibles en múltiples alturas y estilos, con portones, postes, rieles y herrajes cotizados como parte de tu paquete de material.',
 });
 
@@ -641,538 +606,52 @@ Object.assign(ES_TR, {
    pages and all gate pages render in Spanish. */
 Object.assign(ES_TR, {
   // ── Shared labels (spec / quick-fact columns) ──
-  "Best For": "Ideal para",
-  "Material": "Material",
-  "Materials": "Materiales",
-  "Options": "Opciones",
-  "Lead Time": "Tiempo de entrega",
-  "Styles": "Estilos",
-  "Post Options": "Opciones de postes",
-  "Mesh": "Malla",
-  "Framework": "Estructura",
-  "Height": "Altura",
-  "Post Spacing": "Separación de postes",
-  "Gates": "Portones",
-  "Gate Types": "Tipos de portón",
-
-  // ── Shared buttons / CTA fragments ──
-  "Request a Quote": "Solicitar cotización",
-  "Request a Gate Quote": "Solicitar cotización de portón",
-  "Call (239) 689-5496": "Llamar (239) 689-5496",
-  "Ready to Quote Your": "¿Listo para cotizar tu",
-
-  // ── Vinyl / PVC ──
-  "Vinyl / PVC fence materials": "Materiales de cerca de vinilo / PVC",
-  "Vinyl / PVC Fence Materials": "Materiales de cerca de vinilo / PVC",
-  "Built for Florida.": "Hechos para Florida.",
-  "Low-maintenance vinyl fence materials for privacy, semi-privacy, pool enclosures, backyards, and HOA projects. Panels, posts, rails, gates, hardware, and accessories available for full material quotes.": "Materiales de cerca de vinilo de bajo mantenimiento para privacidad, semiprivacidad, cerramientos de piscina, patios y proyectos de HOA. Paneles, postes, rieles, portones, herrajes y accesorios disponibles para cotizaciones completas de material.",
-  "Low-maintenance vinyl / PVC": "Vinilo / PVC de bajo mantenimiento",
-  "Privacy, semi-privacy, picket, and ranch rail styles": "Estilos de privacidad, semiprivacidad, picket y ranch rail",
-  "Stock and lead time vary by style, height, color, and quantity": "El stock y el tiempo de entrega varían según estilo, altura, color y cantidad",
-  "Full privacy vinyl fence panels for backyards and property lines.": "Paneles de cerca de vinilo de privacidad total para patios y límites de propiedad.",
-  "Airflow": "Ventilación",
-  "Decorative vinyl fence option with partial visibility and airflow.": "Opción de cerca de vinilo decorativa con visibilidad parcial y ventilación.",
-  "Classic vinyl picket fence for front yards and decorative projects.": "Cerca de vinilo tipo picket clásica para jardines delanteros y proyectos decorativos.",
-  "Open rail": "Riel abierto",
-  "Open vinyl rail system for large properties and boundaries.": "Sistema de rieles de vinilo abiertos para propiedades grandes y linderos.",
-  "4', 5', 6', and other options available by request": "4', 5', 6', y otras opciones disponibles bajo pedido",
-  "White, tan, gray, and selected color options": "Blanco, beige, gris y opciones de color seleccionadas",
-  "Vinyl panels, posts, rails, gates, and hardware": "Paneles de vinilo, postes, rieles, portones y herrajes",
-  "Privacy, semi-privacy, picket, and ranch rail": "Privacidad, semiprivacidad, picket y ranch rail",
-  "Line posts, end posts, corner posts, blank posts, and gate posts available": "Postes de línea, postes de extremo, postes de esquina, postes ciegos y postes para portón disponibles",
-  "Backyard Privacy": "Privacidad de patio",
-  "Low-maintenance vinyl fence materials for residential backyards and property lines.": "Materiales de cerca de vinilo de bajo mantenimiento para patios residenciales y límites de propiedad.",
-  "Pool Enclosures": "Cerramientos de piscina",
-  "Clean vinyl fence options for pool areas and residential projects.": "Opciones de cerca de vinilo limpias para áreas de piscina y proyectos residenciales.",
-  "HOA & Residential Communities": "HOA y comunidades residenciales",
-  "Consistent vinyl fence styles for communities, subdivisions, and shared spaces.": "Estilos de cerca de vinilo consistentes para comunidades, urbanizaciones y espacios compartidos.",
-  "Vinyl fence materials": "Materiales de cerca de vinilo",
-  "Vinyl Fence Materials?": "material de cerca de vinilo?",
-  "Send us your linear footage, height, color, style, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.": "Envíanos tus pies lineales, altura, color, estilo, medidas de portón y ubicación del proyecto. Nuestro equipo te ayudará a preparar una cotización de material para retiro o entrega.",
-
-  // ── Aluminum ──
-  "Powder-coat aluminum": "Aluminio con pintura en polvo",
-  "Pool enclosures, residential yards, HOA communities": "Cerramientos de piscina, patios residenciales, comunidades de HOA",
-  "Powder-coated aluminum": "Aluminio con pintura en polvo",
-  "2-rail, 3-rail, spear-top, flat-top options": "Opciones de 2 rieles, 3 rieles, remate tipo lanza y remate plano",
-  "Stock and lead time vary by style, color, and quantity": "El stock y el tiempo de entrega varían según estilo, color y cantidad",
-  "2-Rail": "2 rieles",
-  "Simple, open-profile aluminum fence option.": "Opción de cerca de aluminio sencilla y de perfil abierto.",
-  "Popular": "Popular",
-  "Popular residential and pool-code configuration.": "Configuración popular residencial y de código de piscinas.",
-  "3-Rail Spear Top": "3 rieles con remate tipo lanza",
-  "Decorative": "Decorativo",
-  "Decorative picket-top style for residential projects.": "Estilo decorativo con remate tipo picket para proyectos residenciales.",
-  "4-Rail": "4 rieles",
-  "Custom": "A medida",
-  "Available for taller or custom aluminum configurations.": "Disponible para configuraciones de aluminio más altas o a medida.",
-  "4', 5', 6', custom options available": "4', 5', 6', opciones a medida disponibles",
-  "Black, bronze, white, and selected powder-coated finishes": "Negro, bronce, blanco y acabados con pintura en polvo seleccionados",
-  "Aluminum fence panels, posts, gates, and hardware": "Paneles de cerca de aluminio, postes, portones y herrajes",
-  "Varies by product style and installation conditions": "Varía según el estilo del producto y las condiciones de instalación",
-  "Ask our team for available manufacturer warranty details": "Consulta a nuestro equipo los detalles de garantía del fabricante disponibles",
-  "Stock and lead time vary by material, color, and quantity": "El stock y el tiempo de entrega varían según material, color y cantidad",
-  "Pool-code aluminum fencing for residential and community pools.": "Cerca de aluminio según código de piscinas para piscinas residenciales y comunitarias.",
-  "Residential Front Yards": "Jardines delanteros residenciales",
-  "Clean, decorative aluminum fence for front yards and property lines.": "Cerca de aluminio decorativa y limpia para jardines delanteros y límites de propiedad.",
-  "HOA & Community Perimeters": "Perímetros de HOA y comunidades",
-  "Durable aluminum fence options for communities and shared spaces.": "Opciones de cerca de aluminio duraderas para comunidades y espacios compartidos.",
-  "Aluminum fence materials": "Materiales de cerca de aluminio",
-  "Aluminum Fence Materials?": "material de cerca de aluminio?",
-  "Send us your material needs, linear footage, height, color, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.": "Envíanos tus necesidades de material, pies lineales, altura, color, medidas de portón y ubicación del proyecto. Nuestro equipo te ayudará a preparar una cotización de material para retiro o entrega.",
-
-  // ── Chain Link ──
-  "Chain Link Fence Materials": "Materiales de cerca de malla ciclónica",
-  "for Any Perimeter.": "para cualquier perímetro.",
-  "Galvanized and vinyl-coated chain link fence materials for residential, commercial, industrial, and recreational projects. Mesh, posts, rails, fittings, gates, and hardware available for full material quotes.": "Materiales de cerca de malla ciclónica galvanizada y recubierta de vinilo para proyectos residenciales, comerciales, industriales y recreativos. Malla, postes, rieles, accesorios, portones y herrajes disponibles para cotizaciones completas de material.",
-  "Security, commercial, industrial, and recreational perimeters": "Perímetros de seguridad, comerciales, industriales y recreativos",
-  "Galvanized and vinyl-coated mesh, posts, rails, and fittings": "Malla galvanizada y recubierta de vinilo, postes, rieles y accesorios",
-  "Galvanized, black, and green vinyl-coated finishes": "Acabados galvanizado, negro y verde recubiertos de vinilo",
-  "Stock and lead time vary by gauge, finish, and quantity": "El stock y el tiempo de entrega varían según calibre, acabado y cantidad",
-  "Classic zinc-coated mesh for security and perimeter fencing.": "Malla recubierta de zinc clásica para cercas de seguridad y perímetro.",
-  "Black Vinyl-Coated": "Recubierta de vinilo negro",
-  "Vinyl-coated mesh with a clean, low-profile residential look.": "Malla recubierta de vinilo con una apariencia residencial limpia y de bajo perfil.",
-  "Green Vinyl-Coated": "Recubierta de vinilo verde",
-  "By request": "Bajo pedido",
-  "Vinyl-coated mesh for parks, courts, and recreational sites.": "Malla recubierta de vinilo para parques, canchas y sitios recreativos.",
-  "Heavy-Gauge Industrial": "Industrial de calibre pesado",
-  "Heavier mesh and framework for high-security commercial perimeters.": "Malla y estructura más pesadas para perímetros comerciales de alta seguridad.",
-  "4', 5', 6', and taller options available": "4', 5', 6', y opciones más altas disponibles",
-  "Galvanized and vinyl-coated mesh in multiple gauges": "Malla galvanizada y recubierta de vinilo en múltiples calibres",
-  "Galvanized, black, and green vinyl-coated": "Galvanizada, negra y verde recubierta de vinilo",
-  "Mesh, posts, rails, fittings, gates, and hardware": "Malla, postes, rieles, accesorios, portones y herrajes",
-  "Line posts, terminal posts, top rail, and tension wire": "Postes de línea, postes terminales, riel superior y alambre de tensión",
-  "Security Perimeters": "Perímetros de seguridad",
-  "Durable chain link fencing for commercial and industrial security.": "Cerca de malla ciclónica duradera para seguridad comercial e industrial.",
-  "Sports & Recreation": "Deportes y recreación",
-  "Vinyl-coated mesh for ball fields, courts, and park enclosures.": "Malla recubierta de vinilo para campos deportivos, canchas y cerramientos de parques.",
-  "Self-Storage & Industrial": "Self-storage e industrial",
-  "Long perimeter runs for storage yards and industrial sites.": "Corridas de perímetro largas para patios de almacenamiento y sitios industriales.",
-  "Chain link fence materials": "Materiales de cerca de malla ciclónica",
-  "Chain Link Fence Materials?": "material de cerca de malla ciclónica?",
-  "Send us your material needs, linear footage, height, finish, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.": "Envíanos tus necesidades de material, pies lineales, altura, acabado, medidas de portón y ubicación del proyecto. Nuestro equipo te ayudará a preparar una cotización de material para retiro o entrega.",
-
-  // ── Metal / DuraFence ──
-  "Metal / DuraFence privacy materials": "Materiales de privacidad Metal / DuraFence",
-  "Metal / DuraFence Privacy": "Privacidad Metal / DuraFence",
-  "Durable metal privacy fence materials for residential, commercial, and high-security projects. Panels, posts, rails, gates, hardware, and accessories available for full material quotes.": "Materiales de cerca de privacidad de metal duraderos para proyectos residenciales, comerciales y de alta seguridad. Paneles, postes, rieles, portones, herrajes y accesorios disponibles para cotizaciones completas de material.",
-  "Privacy fences, modern yards, commercial screens, security projects": "Cercas de privacidad, patios modernos, pantallas comerciales, proyectos de seguridad",
-  "Metal privacy panels, rails, and posts": "Paneles de privacidad de metal, rieles y postes",
-  "Standard board, tall board, slatted privacy, and custom gates": "Tabla estándar, tabla alta, privacidad con listones y portones a medida",
-  "Standard Board": "Tabla estándar",
-  "Clean metal privacy style for residential and commercial projects.": "Estilo de privacidad de metal limpio para proyectos residenciales y comerciales.",
-  "Tall Board": "Tabla alta",
-  "Extra coverage": "Cobertura adicional",
-  "Taller metal privacy option for projects that need extra coverage.": "Opción de privacidad de metal más alta para proyectos que necesitan cobertura adicional.",
-  "Slatted Privacy": "Privacidad con listones",
-  "Modern metal fence style with partial visibility and airflow.": "Estilo de cerca de metal moderno con visibilidad parcial y ventilación.",
-  "Modern Gate": "Portón moderno",
-  "Matching single and double gates with hardware options.": "Portones sencillos y dobles a juego con opciones de herrajes.",
-  "6', 7', 8', and other options available by request": "6', 7', 8', y otras opciones disponibles bajo pedido",
-  "White, black, bronze, and woodgrain": "Blanco, negro, bronce y símil madera",
-  "Metal panels, posts, rails, gates, and hardware": "Paneles de metal, postes, rieles, portones y herrajes",
-  "Standard board, tall board, slatted privacy, and modern gate options": "Tabla estándar, tabla alta, privacidad con listones y opciones de portón moderno",
-  'One 2-1/2" post type for all positions': 'Un solo tipo de poste de 2-1/2" para todas las posiciones',
-  "Modern Privacy": "Privacidad moderna",
-  "Metal privacy fence materials for clean residential and commercial designs.": "Materiales de cerca de privacidad de metal para diseños residenciales y comerciales limpios.",
-  "Commercial Screens": "Pantallas comerciales",
-  "Durable metal fence options for enclosures, screens, and utility areas.": "Opciones de cerca de metal duraderas para cerramientos, pantallas y áreas de servicio.",
-  "Security Projects": "Proyectos de seguridad",
-  "Strong metal fence materials for projects that need privacy and durability.": "Materiales de cerca de metal resistentes para proyectos que necesitan privacidad y durabilidad.",
-  "Metal fence materials": "Materiales de cerca de metal",
-  "Metal Fence Materials?": "material de cerca metálica?",
-
-  // ── EC Fence ──
-  "EC Fence galvanized steel privacy panels": "Paneles de privacidad de acero galvanizado EC Fence",
-  "EC Fence Galvanized Steel": "Acero galvanizado EC Fence",
-  "Privacy Panels.": "Paneles de privacidad.",
-  "Self-mating galvanized steel fence panels for privacy, coastal properties, commercial sites, and modern residential projects. Panels, posts, gates, hardware, and accessories available for full material quotes.": "Paneles de cerca de acero galvanizado autoensamblables para privacidad, propiedades costeras, sitios comerciales y proyectos residenciales modernos. Paneles, postes, portones, herrajes y accesorios disponibles para cotizaciones completas de material.",
-  "Coastal properties, commercial sites, modern residential projects": "Propiedades costeras, sitios comerciales, proyectos residenciales modernos",
-  "Self-mating galvanized steel panels": "Paneles de acero galvanizado autoensamblables",
-  "Bronze, white, 6 ft panels, gates, and sloped runs": "Bronce, blanco, paneles de 6 pies, portones y tramos en pendiente",
-  "Stock and lead time vary by color, quantity, and gate requirements": "El stock y el tiempo de entrega varían según color, cantidad y requisitos de portón",
-  "Bronze 6 Ft": "Bronce 6 pies",
-  "Bronze steel privacy panels for modern projects.": "Paneles de privacidad de acero en bronce para proyectos modernos.",
-  "White 6 Ft": "Blanco 6 pies",
-  "White steel privacy panels for clean residential and commercial designs.": "Paneles de privacidad de acero en blanco para diseños residenciales y comerciales limpios.",
-  "Matching Gate": "Portón a juego",
-  "Single / double": "Sencillo / doble",
-  "Single and double gates available with hardware options.": "Portones sencillos y dobles disponibles con opciones de herrajes.",
-  "Posts & Hardware": "Postes y herrajes",
-  "Full package": "Paquete completo",
-  "Posts, covers, hardware, and accessories for full material packages.": "Postes, cubiertas, herrajes y accesorios para paquetes completos de material.",
-  "Based on EC Fence system requirements": "Según los requisitos del sistema EC Fence",
-  "Single and double gates available by request": "Portones sencillos y dobles disponibles bajo pedido",
-  "Bronze and white": "Bronce y blanco",
-  "Coastal Privacy": "Privacidad costera",
-  "Galvanized steel privacy panels for coastal and Florida properties.": "Paneles de privacidad de acero galvanizado para propiedades costeras y de Florida.",
-  "Commercial Properties": "Propiedades comerciales",
-  "Clean privacy fence option for commercial sites, enclosures, and shared spaces.": "Opción de cerca de privacidad limpia para sitios comerciales, cerramientos y espacios compartidos.",
-  "Modern Residential": "Residencial moderno",
-  "Modern privacy fence material for homes, yards, and property lines.": "Material de cerca de privacidad moderno para hogares, patios y límites de propiedad.",
-  "EC Fence materials": "Materiales EC Fence",
-  "EC Fence Materials?": "material EC Fence?",
-  "Send us your linear footage, color, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.": "Envíanos tus pies lineales, color, medidas de portón y ubicación del proyecto. Nuestro equipo te ayudará a preparar una cotización de material para retiro o entrega.",
-
-  // ── Gate shared (materials / hardware / lead time / specs / hardware cards / checklist) ──
-  "Vinyl, aluminum, chain link, metal, and EC Fence options": "Opciones de vinilo, aluminio, malla ciclónica, metal y EC Fence",
-  "Hinges, latches, drop rods, cane bolts, and accessories": "Bisagras, cerrojos, varillas de fijación, pasadores tipo bastón y accesorios",
-  "Stock and lead time vary by size, material, color, and hardware": "El stock y el tiempo de entrega varían según tamaño, material, color y herrajes",
-  "Single swing, double swing, sliding, cantilever, rolling, and custom gates": "Portones batientes sencillos, dobles, corredizos, cantilever, rodantes y a medida",
-  "Standard and custom sizes available depending on material": "Tamaños estándar y a medida disponibles según el material",
-  "Available heights vary by gate material and style": "Las alturas disponibles varían según el material y el estilo del portón",
-  "Hinges": "Bisagras",
-  "All gate types": "Todos los tipos de portón",
-  "Gate hinges available based on gate type, material, and post setup.": "Bisagras para portón disponibles según el tipo de portón, el material y la configuración de postes.",
-  "Latches": "Cerrojos",
-  "Access": "Acceso",
-  "Latch options for walk gates, pool gates, and general access.": "Opciones de cerrojo para portones peatonales, portones de piscina y acceso general.",
-  "Drop Rods / Cane Bolts": "Varillas de fijación / pasadores tipo bastón",
-  "Double gates": "Portones dobles",
-  "For double gates and added stability when closed.": "Para portones dobles y mayor estabilidad al cerrar.",
-  "Posts & Caps": "Postes y tapas",
-  "Gate posts, blank posts, terminal posts, and post caps available.": "Postes para portón, postes ciegos, postes terminales y tapas de poste disponibles.",
-  "Opening size, preferably post-to-post": "Medida de la abertura, preferiblemente de poste a poste",
-  "Gate height": "Altura del portón",
-  "Material type": "Tipo de material",
-  "Color": "Color",
-  "Single or double gate": "Portón sencillo o doble",
-  "Existing posts or new posts needed": "Postes existentes o postes nuevos necesarios",
-  "Hardware needed": "Herrajes necesarios",
-  "Pickup or delivery location": "Lugar de retiro o entrega",
-  "Photo or drawing of the opening": "Foto o dibujo de la abertura",
-
-  // ── Gate: Single Swing ──
-  "Single swing gate materials & hardware": "Materiales y herrajes para portón batiente sencillo",
-  "Single Swing Gates Built": "Portones batientes sencillos hechos",
-  "for the Right Opening.": "para la abertura correcta.",
-  "Single swing gates for pedestrian access, pool enclosures, side yards, and residential or commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.": "Portones batientes sencillos para acceso peatonal, cerramientos de piscina, patios laterales y aberturas residenciales o comerciales. Disponibles en múltiples materiales, tamaños, colores y opciones de herrajes. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.",
-  "Walk gates, side yards, pool enclosures, pedestrian access": "Portones peatonales, patios laterales, cerramientos de piscina, acceso peatonal",
-  "Standard Walk Gate": "Portón peatonal estándar",
-  "Pedestrian": "Peatonal",
-  "Common single gate sizes for pedestrian access.": "Tamaños comunes de portón sencillo para acceso peatonal.",
-  "Pool safety": "Seguridad de piscina",
-  "Gate options for pool enclosures and safety requirements.": "Opciones de portón para cerramientos de piscina y requisitos de seguridad.",
-  "Custom Opening Gate": "Portón de abertura a medida",
-  "Made to size": "Hecho a medida",
-  "Built to match your exact opening size.": "Fabricado para ajustarse a la medida exacta de tu abertura.",
-  "Matching Material Gate": "Portón de material a juego",
-  "All materials": "Todos los materiales",
-  "Available in aluminum, vinyl, chain link, metal, and EC Fence styles.": "Disponible en estilos de aluminio, vinilo, malla ciclónica, metal y EC Fence.",
-  "Pedestrian Access": "Acceso peatonal",
-  "Single gates for walkways, side yards, and everyday access points.": "Portones sencillos para andadores, patios laterales y puntos de acceso diarios.",
-  "Gate options for pool areas and code-related requirements.": "Opciones de portón para áreas de piscina y requisitos relacionados con el código.",
-  "Service Openings": "Aberturas de servicio",
-  "Single or double gates for maintenance access, equipment, and utility areas.": "Portones sencillos o dobles para acceso de mantenimiento, equipos y áreas de servicio.",
-  "Single swing gate quote": "Cotización de portón batiente sencillo",
-  "Gate?": "portón?",
-  "Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.": "Envíanos la medida de la abertura, la altura del portón, el material, el color, el tipo de apertura, los herrajes que necesitas y la ubicación del proyecto. Las fotos o dibujos nos ayudan a cotizar el portón con mayor precisión.",
-
-  // ── Gate: Double Swing ──
-  "Double swing gate materials & hardware": "Materiales y herrajes para portón batiente doble",
-  "Double Swing Gates Built": "Portones batientes dobles hechos",
-  "for Wider Openings.": "para aberturas más anchas.",
-  "Double swing gates for driveways, equipment access, and wider residential or commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.": "Portones batientes dobles para entradas vehiculares, acceso de equipos y aberturas residenciales o comerciales más anchas. Disponibles en múltiples materiales, tamaños, colores y opciones de herrajes. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.",
-  "Driveways, equipment access, service entrances, wide openings": "Entradas vehiculares, acceso de equipos, entradas de servicio, aberturas anchas",
-  "Standard Driveway Gate": "Portón vehicular estándar",
-  "Vehicle access": "Acceso vehicular",
-  "Common double gate sizes for driveway and vehicle access.": "Tamaños comunes de portón doble para entrada vehicular y acceso de vehículos.",
-  "Privacy Drive Gate": "Portón vehicular de privacidad",
-  "Solid panels": "Paneles sólidos",
-  "Full privacy panels matched to vinyl or metal runs.": "Paneles de privacidad total a juego con corridas de vinilo o metal.",
-  "Built to match your exact driveway opening.": "Fabricado para ajustarse a la medida exacta de tu entrada vehicular.",
-  "Driveway Access": "Acceso vehicular",
-  "Double gates that open wide for vehicles and equipment.": "Portones dobles que abren completamente para vehículos y equipos.",
-  "Wide access for maintenance, utility, and delivery areas.": "Acceso amplio para áreas de mantenimiento, servicios y entregas.",
-  "Estate Entries": "Entradas principales",
-  "Symmetrical double gates for a formal main entrance.": "Portones dobles simétricos para una entrada principal formal.",
-  "Double swing gate quote": "Cotización de portón batiente doble",
-
-  // ── Gate: Sliding ──
-  "Sliding gate materials & hardware": "Materiales y herrajes para portón corredizo",
-  "Sliding Gates Built": "Portones corredizos hechos",
-  "for Tight Openings.": "para aberturas estrechas.",
-  "Track-mounted sliding gates for tight or sloped driveways where a swing gate won’t fit. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.": "Portones corredizos sobre riel para entradas estrechas o con pendiente donde un portón batiente no cabe. Disponibles en múltiples materiales, tamaños, colores y opciones de herrajes. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.",
-  "Tight driveways, sloped sites, limited swing clearance": "Entradas estrechas, sitios con pendiente, espacio limitado para abatir",
-  "Track-Mounted Slide": "Corredizo sobre riel",
-  "Space-saving": "Ahorra espacio",
-  "Slides parallel to the fence on a ground track.": "Se desliza paralelo a la cerca sobre un riel de piso.",
-  "Privacy Slide Gate": "Portón corredizo de privacidad",
-  "Full privacy panels for vinyl or metal runs.": "Paneles de privacidad total para corridas de vinilo o metal.",
-  "Built to match your exact opening and layout.": "Fabricado para ajustarse a la medida y disposición exactas de tu abertura.",
-  "Available in chain link, vinyl, metal, and EC Fence styles.": "Disponible en estilos de malla ciclónica, vinilo, metal y EC Fence.",
-  "Limited Swing Clearance": "Espacio limitado para abatir",
-  "Slides parallel to the fence with no swing arc.": "Se desliza paralelo a la cerca sin arco de apertura.",
-  "Sloped Driveways": "Entradas con pendiente",
-  "Track options for grade changes and uneven ground.": "Opciones de riel para cambios de pendiente y terreno irregular.",
-  "Daily-Use Access": "Acceso de uso diario",
-  "Smooth operation for openings used many times a day.": "Operación suave para aberturas que se usan muchas veces al día.",
-  "Sliding gate quote": "Cotización de portón corredizo",
-
-  // ── Gate: Cantilever ──
-  "Cantilever gate materials & hardware": "Materiales y herrajes para portón cantilever",
-  "Cantilever Gates Built": "Portones cantilever hechos",
-  "for Long Openings.": "para aberturas largas.",
-  "Counter-balanced cantilever gates with no ground track, for sandy, coastal, or long commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.": "Portones cantilever contrapesados sin riel en piso, para aberturas arenosas, costeras o comerciales largas. Disponibles en múltiples materiales, tamaños, colores y opciones de herrajes. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.",
-  "Industrial yards, coastal sites, long openings, debris-prone areas": "Patios industriales, sitios costeros, aberturas largas, áreas propensas a escombros",
-  "No-Ground-Track Frame": "Marco sin riel en piso",
-  "Counter-balanced": "Contrapesado",
-  "Counter-balanced frame floats clear of the driveway.": "El marco contrapesado flota sin tocar la entrada vehicular.",
-  "Coastal / Debris Sites": "Sitios costeros / con escombros",
-  "No track": "Sin riel",
-  "No ground track to jam with sand or debris.": "Sin riel en piso que se atasque con arena o escombros.",
-  "Wide openings": "Aberturas anchas",
-  "Built for wider single openings and telescoping runs.": "Fabricado para aberturas sencillas más anchas y corridas telescópicas.",
-  "Available in chain link, vinyl-coated, metal, and EC Fence styles.": "Disponible en estilos de malla ciclónica, recubierta de vinilo, metal y EC Fence.",
-  "Industrial Perimeters": "Perímetros industriales",
-  "Long openings for yards, storage, and commercial sites.": "Aberturas largas para patios, almacenamiento y sitios comerciales.",
-  "Coastal & Sandy Sites": "Sitios costeros y arenosos",
-  "No ground track to clear in sand or debris.": "Sin riel en piso que limpiar en arena o escombros.",
-  "Wide Openings": "Aberturas anchas",
-  "Single openings sized for larger entrances.": "Aberturas sencillas dimensionadas para entradas más grandes.",
-  "Cantilever gate quote": "Cotización de portón cantilever",
-
-  // ── Gate: Rolling ──
-  "Rolling gate materials & hardware": "Materiales y herrajes para portón rodante",
-  "Rolling Gates Built": "Portones rodantes hechos",
-  "for High-Cycle Use.": "para uso de alto ciclo.",
-  "Industrial rolling gates on ground rollers for high-cycle commercial perimeters, yards, and storage sites. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.": "Portones rodantes industriales sobre rodillos de piso para perímetros comerciales de alto ciclo, patios y sitios de almacenamiento. Disponibles en múltiples materiales, tamaños, colores y opciones de herrajes. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.",
-  "Commercial perimeters, industrial yards, self-storage, high-cycle use": "Perímetros comerciales, patios industriales, self-storage, uso de alto ciclo",
-  "Ground-Roller Frame": "Marco sobre rodillos de piso",
-  "Heavy frame on ground rollers for daily commercial use.": "Marco pesado sobre rodillos de piso para uso comercial diario.",
-  "Continuous duty": "Uso continuo",
-  "Built for sites that open and close many times a day.": "Fabricado para sitios que abren y cierran muchas veces al día.",
-  "Automated-Ready": "Preparado para automatización",
-  "Set up for slide operators and access controls.": "Preparado para operadores corredizos y controles de acceso.",
-  "Wide gates for yards, storage, and industrial sites.": "Portones anchos para patios, almacenamiento y sitios industriales.",
-  "High-Cycle Access": "Acceso de alto ciclo",
-  "Built for hundreds of open-and-close cycles a day.": "Fabricado para cientos de ciclos de apertura y cierre al día.",
-  "Heavy Vehicle Access": "Acceso de vehículos pesados",
-  "Wide spans for trucks and equipment.": "Claros anchos para camiones y equipos.",
-  "Rolling gate quote": "Cotización de portón rodante",
+  "Best For": "Ideal para", "Material": "Material", "Materials": "Materiales", "Options": "Opciones", "Lead Time": "Tiempo de entrega", "Styles": "Estilos", "Post Options": "Opciones de postes", "Mesh": "Malla", "Framework": "Estructura", "Height": "Altura", "Post Spacing": "Separación de postes", "Gates": "Portones", "Gate Types": "Tipos de portón", // ── Shared buttons / CTA fragments ──
+  "Request a Quote": "Solicitar cotización", "Request a Gate Quote": "Solicitar cotización de portón", "Call (239) 689-5496": "Llamar (239) 689-5496", "Ready to Quote Your": "¿Listo para cotizar tu", // ── Vinyl / PVC ──
+  "Vinyl / PVC fence materials": "Materiales de cerca de vinilo / PVC", "Vinyl / PVC Fence Materials": "Materiales de cerca de vinilo / PVC", "Built for Florida.": "Hechos para Florida.", "Low-maintenance vinyl fence materials for privacy, semi-privacy, pool enclosures, backyards, and HOA projects. Panels, posts, rails, gates, hardware, and accessories available for full material quotes.": "Materiales de cerca de vinilo de bajo mantenimiento para privacidad, semiprivacidad, cerramientos de piscina, patios y proyectos de HOA. Paneles, postes, rieles, portones, herrajes y accesorios disponibles para cotizaciones completas de material.", "Low-maintenance vinyl / PVC": "Vinilo / PVC de bajo mantenimiento", "Privacy, semi-privacy, picket, and ranch rail styles": "Estilos de privacidad, semiprivacidad, picket y ranch rail", "Stock and lead time vary by style, height, color, and quantity": "El stock y el tiempo de entrega varían según estilo, altura, color y cantidad", "Full privacy vinyl fence panels for backyards and property lines.": "Paneles de cerca de vinilo de privacidad total para patios y límites de propiedad.", "Airflow": "Ventilación", "Decorative vinyl fence option with partial visibility and airflow.": "Opción de cerca de vinilo decorativa con visibilidad parcial y ventilación.", "Classic vinyl picket fence for front yards and decorative projects.": "Cerca de vinilo tipo picket clásica para jardines delanteros y proyectos decorativos.", "Open rail": "Riel abierto", "Open vinyl rail system for large properties and boundaries.": "Sistema de rieles de vinilo abiertos para propiedades grandes y linderos.", "4', 5', 6', and other options available by request": "4', 5', 6', y otras opciones disponibles bajo pedido", "White, tan, gray, and selected color options": "Blanco, beige, gris y opciones de color seleccionadas", "Vinyl panels, posts, rails, gates, and hardware": "Paneles de vinilo, postes, rieles, portones y herrajes", "Privacy, semi-privacy, picket, and ranch rail": "Privacidad, semiprivacidad, picket y ranch rail", "Line posts, end posts, corner posts, blank posts, and gate posts available": "Postes de línea, postes de extremo, postes de esquina, postes ciegos y postes para portón disponibles", "Backyard Privacy": "Privacidad de patio", "Low-maintenance vinyl fence materials for residential backyards and property lines.": "Materiales de cerca de vinilo de bajo mantenimiento para patios residenciales y límites de propiedad.", "Pool Enclosures": "Cerramientos de piscina", "Clean vinyl fence options for pool areas and residential projects.": "Opciones de cerca de vinilo limpias para áreas de piscina y proyectos residenciales.", "HOA & Residential Communities": "HOA y comunidades residenciales", "Consistent vinyl fence styles for communities, subdivisions, and shared spaces.": "Estilos de cerca de vinilo consistentes para comunidades, urbanizaciones y espacios compartidos.", "Vinyl fence materials": "Materiales de cerca de vinilo", "Vinyl Fence Materials?": "material de cerca de vinilo?", "Send us your linear footage, height, color, style, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.": "Envíanos tus pies lineales, altura, color, estilo, medidas de portón y ubicación del proyecto. Nuestro equipo te ayudará a preparar una cotización de material para retiro o entrega.", // ── Aluminum ──
+  "Powder-coat aluminum": "Aluminio con pintura en polvo", "Pool enclosures, residential yards, HOA communities": "Cerramientos de piscina, patios residenciales, comunidades de HOA", "Powder-coated aluminum": "Aluminio con pintura en polvo", "2-rail, 3-rail, spear-top, flat-top options": "Opciones de 2 rieles, 3 rieles, remate tipo lanza y remate plano", "Stock and lead time vary by style, color, and quantity": "El stock y el tiempo de entrega varían según estilo, color y cantidad", "2-Rail": "2 rieles", "Simple, open-profile aluminum fence option.": "Opción de cerca de aluminio sencilla y de perfil abierto.", "Popular": "Popular", "Popular residential and pool-code configuration.": "Configuración popular residencial y de código de piscinas.", "3-Rail Spear Top": "3 rieles con remate tipo lanza", "Decorative": "Decorativo", "Decorative picket-top style for residential projects.": "Estilo decorativo con remate tipo picket para proyectos residenciales.", "4-Rail": "4 rieles", "Custom": "A medida", "Available for taller or custom aluminum configurations.": "Disponible para configuraciones de aluminio más altas o a medida.", "4', 5', 6', custom options available": "4', 5', 6', opciones a medida disponibles", "Black, bronze, white, and selected powder-coated finishes": "Negro, bronce, blanco y acabados con pintura en polvo seleccionados", "Aluminum fence panels, posts, gates, and hardware": "Paneles de cerca de aluminio, postes, portones y herrajes", "Varies by product style and installation conditions": "Varía según el estilo del producto y las condiciones de instalación", "Ask our team for available manufacturer warranty details": "Consulta a nuestro equipo los detalles de garantía del fabricante disponibles", "Stock and lead time vary by material, color, and quantity": "El stock y el tiempo de entrega varían según material, color y cantidad", "Pool-code aluminum fencing for residential and community pools.": "Cerca de aluminio según código de piscinas para piscinas residenciales y comunitarias.", "Residential Front Yards": "Jardines delanteros residenciales", "Clean, decorative aluminum fence for front yards and property lines.": "Cerca de aluminio decorativa y limpia para jardines delanteros y límites de propiedad.", "HOA & Community Perimeters": "Perímetros de HOA y comunidades", "Durable aluminum fence options for communities and shared spaces.": "Opciones de cerca de aluminio duraderas para comunidades y espacios compartidos.", "Aluminum fence materials": "Materiales de cerca de aluminio", "Aluminum Fence Materials?": "material de cerca de aluminio?", "Send us your material needs, linear footage, height, color, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.": "Envíanos tus necesidades de material, pies lineales, altura, color, medidas de portón y ubicación del proyecto. Nuestro equipo te ayudará a preparar una cotización de material para retiro o entrega.", // ── Chain Link ──
+  "Chain Link Fence Materials": "Materiales de cerca de malla ciclónica", "for Any Perimeter.": "para cualquier perímetro.", "Galvanized and vinyl-coated chain link fence materials for residential, commercial, industrial, and recreational projects. Mesh, posts, rails, fittings, gates, and hardware available for full material quotes.": "Materiales de cerca de malla ciclónica galvanizada y recubierta de vinilo para proyectos residenciales, comerciales, industriales y recreativos. Malla, postes, rieles, accesorios, portones y herrajes disponibles para cotizaciones completas de material.", "Security, commercial, industrial, and recreational perimeters": "Perímetros de seguridad, comerciales, industriales y recreativos", "Galvanized and vinyl-coated mesh, posts, rails, and fittings": "Malla galvanizada y recubierta de vinilo, postes, rieles y accesorios", "Galvanized, black, and green vinyl-coated finishes": "Acabados galvanizado, negro y verde recubiertos de vinilo", "Stock and lead time vary by gauge, finish, and quantity": "El stock y el tiempo de entrega varían según calibre, acabado y cantidad", "Classic zinc-coated mesh for security and perimeter fencing.": "Malla recubierta de zinc clásica para cercas de seguridad y perímetro.", "Black Vinyl-Coated": "Recubierta de vinilo negro", "Vinyl-coated mesh with a clean, low-profile residential look.": "Malla recubierta de vinilo con una apariencia residencial limpia y de bajo perfil.", "Green Vinyl-Coated": "Recubierta de vinilo verde", "By request": "Bajo pedido", "Vinyl-coated mesh for parks, courts, and recreational sites.": "Malla recubierta de vinilo para parques, canchas y sitios recreativos.", "Heavy-Gauge Industrial": "Industrial de calibre pesado", "Heavier mesh and framework for high-security commercial perimeters.": "Malla y estructura más pesadas para perímetros comerciales de alta seguridad.", "4', 5', 6', and taller options available": "4', 5', 6', y opciones más altas disponibles", "Galvanized and vinyl-coated mesh in multiple gauges": "Malla galvanizada y recubierta de vinilo en múltiples calibres", "Galvanized, black, and green vinyl-coated": "Galvanizada, negra y verde recubierta de vinilo", "Mesh, posts, rails, fittings, gates, and hardware": "Malla, postes, rieles, accesorios, portones y herrajes", "Line posts, terminal posts, top rail, and tension wire": "Postes de línea, postes terminales, riel superior y alambre de tensión", "Security Perimeters": "Perímetros de seguridad", "Durable chain link fencing for commercial and industrial security.": "Cerca de malla ciclónica duradera para seguridad comercial e industrial.", "Sports & Recreation": "Deportes y recreación", "Vinyl-coated mesh for ball fields, courts, and park enclosures.": "Malla recubierta de vinilo para campos deportivos, canchas y cerramientos de parques.", "Self-Storage & Industrial": "Self-storage e industrial", "Long perimeter runs for storage yards and industrial sites.": "Corridas de perímetro largas para patios de almacenamiento y sitios industriales.", "Chain link fence materials": "Materiales de cerca de malla ciclónica", "Chain Link Fence Materials?": "material de cerca de malla ciclónica?", "Send us your material needs, linear footage, height, finish, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.": "Envíanos tus necesidades de material, pies lineales, altura, acabado, medidas de portón y ubicación del proyecto. Nuestro equipo te ayudará a preparar una cotización de material para retiro o entrega.", // ── Metal / DuraFence ──
+  "Metal / DuraFence privacy materials": "Materiales de privacidad Metal / DuraFence", "Metal / DuraFence Privacy": "Privacidad Metal / DuraFence", "Durable metal privacy fence materials for residential, commercial, and high-security projects. Panels, posts, rails, gates, hardware, and accessories available for full material quotes.": "Materiales de cerca de privacidad de metal duraderos para proyectos residenciales, comerciales y de alta seguridad. Paneles, postes, rieles, portones, herrajes y accesorios disponibles para cotizaciones completas de material.", "Privacy fences, modern yards, commercial screens, security projects": "Cercas de privacidad, patios modernos, pantallas comerciales, proyectos de seguridad", "Metal privacy panels, rails, and posts": "Paneles de privacidad de metal, rieles y postes", "Standard board, tall board, slatted privacy, and custom gates": "Tabla estándar, tabla alta, privacidad con listones y portones a medida", "Standard Board": "Tabla estándar", "Clean metal privacy style for residential and commercial projects.": "Estilo de privacidad de metal limpio para proyectos residenciales y comerciales.", "Tall Board": "Tabla alta", "Extra coverage": "Cobertura adicional", "Taller metal privacy option for projects that need extra coverage.": "Opción de privacidad de metal más alta para proyectos que necesitan cobertura adicional.", "Slatted Privacy": "Privacidad con listones", "Modern metal fence style with partial visibility and airflow.": "Estilo de cerca de metal moderno con visibilidad parcial y ventilación.", "Modern Gate": "Portón moderno", "Matching single and double gates with hardware options.": "Portones sencillos y dobles a juego con opciones de herrajes.", "6', 7', 8', and other options available by request": "6', 7', 8', y otras opciones disponibles bajo pedido", "White, black, bronze, and woodgrain": "Blanco, negro, bronce y símil madera", "Metal panels, posts, rails, gates, and hardware": "Paneles de metal, postes, rieles, portones y herrajes", "Standard board, tall board, slatted privacy, and modern gate options": "Tabla estándar, tabla alta, privacidad con listones y opciones de portón moderno", 'One 2-1/2" post type for all positions': 'Un solo tipo de poste de 2-1/2" para todas las posiciones', "Modern Privacy": "Privacidad moderna", "Metal privacy fence materials for clean residential and commercial designs.": "Materiales de cerca de privacidad de metal para diseños residenciales y comerciales limpios.", "Commercial Screens": "Pantallas comerciales", "Durable metal fence options for enclosures, screens, and utility areas.": "Opciones de cerca de metal duraderas para cerramientos, pantallas y áreas de servicio.", "Security Projects": "Proyectos de seguridad", "Strong metal fence materials for projects that need privacy and durability.": "Materiales de cerca de metal resistentes para proyectos que necesitan privacidad y durabilidad.", "Metal fence materials": "Materiales de cerca de metal", "Metal Fence Materials?": "material de cerca metálica?", // ── EC Fence ──
+  "EC Fence galvanized steel privacy panels": "Paneles de privacidad de acero galvanizado EC Fence", "EC Fence Galvanized Steel": "Acero galvanizado EC Fence", "Privacy Panels.": "Paneles de privacidad.", "Self-mating galvanized steel fence panels for privacy, coastal properties, commercial sites, and modern residential projects. Panels, posts, gates, hardware, and accessories available for full material quotes.": "Paneles de cerca de acero galvanizado autoensamblables para privacidad, propiedades costeras, sitios comerciales y proyectos residenciales modernos. Paneles, postes, portones, herrajes y accesorios disponibles para cotizaciones completas de material.", "Coastal properties, commercial sites, modern residential projects": "Propiedades costeras, sitios comerciales, proyectos residenciales modernos", "Self-mating galvanized steel panels": "Paneles de acero galvanizado autoensamblables", "Bronze, white, 6 ft panels, gates, and sloped runs": "Bronce, blanco, paneles de 6 pies, portones y tramos en pendiente", "Stock and lead time vary by color, quantity, and gate requirements": "El stock y el tiempo de entrega varían según color, cantidad y requisitos de portón", "Bronze 6 Ft": "Bronce 6 pies", "Bronze steel privacy panels for modern projects.": "Paneles de privacidad de acero en bronce para proyectos modernos.", "White 6 Ft": "Blanco 6 pies", "White steel privacy panels for clean residential and commercial designs.": "Paneles de privacidad de acero en blanco para diseños residenciales y comerciales limpios.", "Matching Gate": "Portón a juego", "Single / double": "Sencillo / doble", "Single and double gates available with hardware options.": "Portones sencillos y dobles disponibles con opciones de herrajes.", "Posts & Hardware": "Postes y herrajes", "Full package": "Paquete completo", "Posts, covers, hardware, and accessories for full material packages.": "Postes, cubiertas, herrajes y accesorios para paquetes completos de material.", "Based on EC Fence system requirements": "Según los requisitos del sistema EC Fence", "Single and double gates available by request": "Portones sencillos y dobles disponibles bajo pedido", "Bronze and white": "Bronce y blanco", "Coastal Privacy": "Privacidad costera", "Galvanized steel privacy panels for coastal and Florida properties.": "Paneles de privacidad de acero galvanizado para propiedades costeras y de Florida.", "Commercial Properties": "Propiedades comerciales", "Clean privacy fence option for commercial sites, enclosures, and shared spaces.": "Opción de cerca de privacidad limpia para sitios comerciales, cerramientos y espacios compartidos.", "Modern Residential": "Residencial moderno", "Modern privacy fence material for homes, yards, and property lines.": "Material de cerca de privacidad moderno para hogares, patios y límites de propiedad.", "EC Fence materials": "Materiales EC Fence", "EC Fence Materials?": "material EC Fence?", "Send us your linear footage, color, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.": "Envíanos tus pies lineales, color, medidas de portón y ubicación del proyecto. Nuestro equipo te ayudará a preparar una cotización de material para retiro o entrega.", // ── Gate shared (materials / hardware / lead time / specs / hardware cards / checklist) ──
+  "Vinyl, aluminum, chain link, metal, and EC Fence options": "Opciones de vinilo, aluminio, malla ciclónica, metal y EC Fence", "Hinges, latches, drop rods, cane bolts, and accessories": "Bisagras, cerrojos, varillas de fijación, pasadores tipo bastón y accesorios", "Stock and lead time vary by size, material, color, and hardware": "El stock y el tiempo de entrega varían según tamaño, material, color y herrajes", "Single swing, double swing, sliding, cantilever, rolling, and custom gates": "Portones batientes sencillos, dobles, corredizos, cantilever, rodantes y a medida", "Standard and custom sizes available depending on material": "Tamaños estándar y a medida disponibles según el material", "Available heights vary by gate material and style": "Las alturas disponibles varían según el material y el estilo del portón", "Hinges": "Bisagras", "All gate types": "Todos los tipos de portón", "Gate hinges available based on gate type, material, and post setup.": "Bisagras para portón disponibles según el tipo de portón, el material y la configuración de postes.", "Latches": "Cerrojos", "Access": "Acceso", "Latch options for walk gates, pool gates, and general access.": "Opciones de cerrojo para portones peatonales, portones de piscina y acceso general.", "Drop Rods / Cane Bolts": "Varillas de fijación / pasadores tipo bastón", "Double gates": "Portones dobles", "For double gates and added stability when closed.": "Para portones dobles y mayor estabilidad al cerrar.", "Posts & Caps": "Postes y tapas", "Gate posts, blank posts, terminal posts, and post caps available.": "Postes para portón, postes ciegos, postes terminales y tapas de poste disponibles.", "Opening size, preferably post-to-post": "Medida de la abertura, preferiblemente de poste a poste", "Gate height": "Altura del portón", "Material type": "Tipo de material", "Color": "Color", "Single or double gate": "Portón sencillo o doble", "Existing posts or new posts needed": "Postes existentes o postes nuevos necesarios", "Hardware needed": "Herrajes necesarios", "Pickup or delivery location": "Lugar de retiro o entrega", "Photo or drawing of the opening": "Foto o dibujo de la abertura", // ── Gate: Single Swing ──
+  "Single swing gate materials & hardware": "Materiales y herrajes para portón batiente sencillo", "Single Swing Gates Built": "Portones batientes sencillos hechos", "for the Right Opening.": "para la abertura correcta.", "Single swing gates for pedestrian access, pool enclosures, side yards, and residential or commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.": "Portones batientes sencillos para acceso peatonal, cerramientos de piscina, patios laterales y aberturas residenciales o comerciales. Disponibles en múltiples materiales, tamaños, colores y opciones de herrajes. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.", "Walk gates, side yards, pool enclosures, pedestrian access": "Portones peatonales, patios laterales, cerramientos de piscina, acceso peatonal", "Standard Walk Gate": "Portón peatonal estándar", "Pedestrian": "Peatonal", "Common single gate sizes for pedestrian access.": "Tamaños comunes de portón sencillo para acceso peatonal.", "Pool safety": "Seguridad de piscina", "Gate options for pool enclosures and safety requirements.": "Opciones de portón para cerramientos de piscina y requisitos de seguridad.", "Custom Opening Gate": "Portón de abertura a medida", "Made to size": "Hecho a medida", "Built to match your exact opening size.": "Fabricado para ajustarse a la medida exacta de tu abertura.", "Matching Material Gate": "Portón de material a juego", "All materials": "Todos los materiales", "Available in aluminum, vinyl, chain link, metal, and EC Fence styles.": "Disponible en estilos de aluminio, vinilo, malla ciclónica, metal y EC Fence.", "Pedestrian Access": "Acceso peatonal", "Single gates for walkways, side yards, and everyday access points.": "Portones sencillos para andadores, patios laterales y puntos de acceso diarios.", "Gate options for pool areas and code-related requirements.": "Opciones de portón para áreas de piscina y requisitos relacionados con el código.", "Service Openings": "Aberturas de servicio", "Single or double gates for maintenance access, equipment, and utility areas.": "Portones sencillos o dobles para acceso de mantenimiento, equipos y áreas de servicio.", "Single swing gate quote": "Cotización de portón batiente sencillo", "Gate?": "portón?", "Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.": "Envíanos la medida de la abertura, la altura del portón, el material, el color, el tipo de apertura, los herrajes que necesitas y la ubicación del proyecto. Las fotos o dibujos nos ayudan a cotizar el portón con mayor precisión.", // ── Gate: Double Swing ──
+  "Double swing gate materials & hardware": "Materiales y herrajes para portón batiente doble", "Double Swing Gates Built": "Portones batientes dobles hechos", "for Wider Openings.": "para aberturas más anchas.", "Double swing gates for driveways, equipment access, and wider residential or commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.": "Portones batientes dobles para entradas vehiculares, acceso de equipos y aberturas residenciales o comerciales más anchas. Disponibles en múltiples materiales, tamaños, colores y opciones de herrajes. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.", "Driveways, equipment access, service entrances, wide openings": "Entradas vehiculares, acceso de equipos, entradas de servicio, aberturas anchas", "Standard Driveway Gate": "Portón vehicular estándar", "Vehicle access": "Acceso vehicular", "Common double gate sizes for driveway and vehicle access.": "Tamaños comunes de portón doble para entrada vehicular y acceso de vehículos.", "Privacy Drive Gate": "Portón vehicular de privacidad", "Solid panels": "Paneles sólidos", "Full privacy panels matched to vinyl or metal runs.": "Paneles de privacidad total a juego con corridas de vinilo o metal.", "Built to match your exact driveway opening.": "Fabricado para ajustarse a la medida exacta de tu entrada vehicular.", "Driveway Access": "Acceso vehicular", "Double gates that open wide for vehicles and equipment.": "Portones dobles que abren completamente para vehículos y equipos.", "Wide access for maintenance, utility, and delivery areas.": "Acceso amplio para áreas de mantenimiento, servicios y entregas.", "Estate Entries": "Entradas principales", "Symmetrical double gates for a formal main entrance.": "Portones dobles simétricos para una entrada principal formal.", "Double swing gate quote": "Cotización de portón batiente doble", // ── Gate: Sliding ──
+  "Sliding gate materials & hardware": "Materiales y herrajes para portón corredizo", "Sliding Gates Built": "Portones corredizos hechos", "for Tight Openings.": "para aberturas estrechas.", "Track-mounted sliding gates for tight or sloped driveways where a swing gate won’t fit. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.": "Portones corredizos sobre riel para entradas estrechas o con pendiente donde un portón batiente no cabe. Disponibles en múltiples materiales, tamaños, colores y opciones de herrajes. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.", "Tight driveways, sloped sites, limited swing clearance": "Entradas estrechas, sitios con pendiente, espacio limitado para abatir", "Track-Mounted Slide": "Corredizo sobre riel", "Space-saving": "Ahorra espacio", "Slides parallel to the fence on a ground track.": "Se desliza paralelo a la cerca sobre un riel de piso.", "Privacy Slide Gate": "Portón corredizo de privacidad", "Full privacy panels for vinyl or metal runs.": "Paneles de privacidad total para corridas de vinilo o metal.", "Built to match your exact opening and layout.": "Fabricado para ajustarse a la medida y disposición exactas de tu abertura.", "Available in chain link, vinyl, metal, and EC Fence styles.": "Disponible en estilos de malla ciclónica, vinilo, metal y EC Fence.", "Limited Swing Clearance": "Espacio limitado para abatir", "Slides parallel to the fence with no swing arc.": "Se desliza paralelo a la cerca sin arco de apertura.", "Sloped Driveways": "Entradas con pendiente", "Track options for grade changes and uneven ground.": "Opciones de riel para cambios de pendiente y terreno irregular.", "Daily-Use Access": "Acceso de uso diario", "Smooth operation for openings used many times a day.": "Operación suave para aberturas que se usan muchas veces al día.", "Sliding gate quote": "Cotización de portón corredizo", // ── Gate: Cantilever ──
+  "Cantilever gate materials & hardware": "Materiales y herrajes para portón cantilever", "Cantilever Gates Built": "Portones cantilever hechos", "for Long Openings.": "para aberturas largas.", "Counter-balanced cantilever gates with no ground track, for sandy, coastal, or long commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.": "Portones cantilever contrapesados sin riel en piso, para aberturas arenosas, costeras o comerciales largas. Disponibles en múltiples materiales, tamaños, colores y opciones de herrajes. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.", "Industrial yards, coastal sites, long openings, debris-prone areas": "Patios industriales, sitios costeros, aberturas largas, áreas propensas a escombros", "No-Ground-Track Frame": "Marco sin riel en piso", "Counter-balanced": "Contrapesado", "Counter-balanced frame floats clear of the driveway.": "El marco contrapesado flota sin tocar la entrada vehicular.", "Coastal / Debris Sites": "Sitios costeros / con escombros", "No track": "Sin riel", "No ground track to jam with sand or debris.": "Sin riel en piso que se atasque con arena o escombros.", "Wide openings": "Aberturas anchas", "Built for wider single openings and telescoping runs.": "Fabricado para aberturas sencillas más anchas y corridas telescópicas.", "Available in chain link, vinyl-coated, metal, and EC Fence styles.": "Disponible en estilos de malla ciclónica, recubierta de vinilo, metal y EC Fence.", "Industrial Perimeters": "Perímetros industriales", "Long openings for yards, storage, and commercial sites.": "Aberturas largas para patios, almacenamiento y sitios comerciales.", "Coastal & Sandy Sites": "Sitios costeros y arenosos", "No ground track to clear in sand or debris.": "Sin riel en piso que limpiar en arena o escombros.", "Wide Openings": "Aberturas anchas", "Single openings sized for larger entrances.": "Aberturas sencillas dimensionadas para entradas más grandes.", "Cantilever gate quote": "Cotización de portón cantilever", // ── Gate: Rolling ──
+  "Rolling gate materials & hardware": "Materiales y herrajes para portón rodante", "Rolling Gates Built": "Portones rodantes hechos", "for High-Cycle Use.": "para uso de alto ciclo.", "Industrial rolling gates on ground rollers for high-cycle commercial perimeters, yards, and storage sites. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.": "Portones rodantes industriales sobre rodillos de piso para perímetros comerciales de alto ciclo, patios y sitios de almacenamiento. Disponibles en múltiples materiales, tamaños, colores y opciones de herrajes. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.", "Commercial perimeters, industrial yards, self-storage, high-cycle use": "Perímetros comerciales, patios industriales, self-storage, uso de alto ciclo", "Ground-Roller Frame": "Marco sobre rodillos de piso", "Heavy frame on ground rollers for daily commercial use.": "Marco pesado sobre rodillos de piso para uso comercial diario.", "Continuous duty": "Uso continuo", "Built for sites that open and close many times a day.": "Fabricado para sitios que abren y cierran muchas veces al día.", "Automated-Ready": "Preparado para automatización", "Set up for slide operators and access controls.": "Preparado para operadores corredizos y controles de acceso.", "Wide gates for yards, storage, and industrial sites.": "Portones anchos para patios, almacenamiento y sitios industriales.", "High-Cycle Access": "Acceso de alto ciclo", "Built for hundreds of open-and-close cycles a day.": "Fabricado para cientos de ciclos de apertura y cierre al día.", "Heavy Vehicle Access": "Acceso de vehículos pesados", "Wide spans for trucks and equipment.": "Claros anchos para camiones y equipos.", "Rolling gate quote": "Cotización de portón rodante",
 });
 
 /* Where-it-fits redesign: badges + blurbs, and new aluminum styles/hero */
 Object.assign(ES_TR, {
   'Aluminum fence materials for residential, commercial, and community projects, with pool-code compliant options available where required. Choose from multiple heights and styles, with gates, posts, rails, and hardware included as part of your complete material package.':
-    'Materiales de cerca de aluminio para proyectos residenciales, comerciales y comunitarios, con opciones que cumplen el código de piscinas donde se requiera. Elige entre múltiples alturas y estilos, con portones, postes, rieles y herrajes incluidos como parte de tu paquete completo de material.',
-  'Smooth Bottom': 'Base lisa',
-  'Rake Bottom': 'Base inclinada',
-  'Puppy Picket': 'Puppy picket',
-  'Pool Code': 'Código de piscinas',
-  'Clean line': 'Línea limpia',
-  'Slopes': 'Pendientes',
-  'Pet-friendly': 'Ideal para mascotas',
-  'Compliant': 'Cumple código',
-  'Flat bottom rail with no picket points below the rail.': 'Riel inferior plano, sin puntas de picket debajo del riel.',
-  'Follows grade changes and sloped runs without gaps.': 'Sigue los cambios de nivel y los tramos inclinados sin dejar huecos.',
-  'Tighter picket spacing at the bottom to keep small pets in.': 'Separación de pickets más cerrada abajo para contener mascotas pequeñas.',
-  'Meets Florida pool barrier requirements for spacing and height.': 'Cumple los requisitos de barrera de piscina de Florida en separación y altura.',
-  'Vinyl earns its keep where privacy, low upkeep, and clean looks meet.': 'El vinilo se gana su lugar donde se cruzan la privacidad, el bajo mantenimiento y un aspecto limpio.',
-  'Aluminum earns its keep where code, curb appeal, and long runs meet.': 'El aluminio se gana su lugar donde se cruzan el código, la buena presencia y los tramos largos.',
-  'Chain link earns its keep where security, scale, and budget meet.': 'La malla ciclónica se gana su lugar donde se cruzan la seguridad, la escala y el presupuesto.',
-  'Metal earns its keep where privacy, strength, and modern looks meet.': 'El metal se gana su lugar donde se cruzan la privacidad, la resistencia y el diseño moderno.',
-  'EC Fence earns its keep where coastal wind, privacy, and speed meet.': 'EC Fence se gana su lugar donde se cruzan el viento costero, la privacidad y la rapidez.',
-  'Full privacy, zero painting': 'Privacidad total, sin pintura',
-  'Clean look for pool areas': 'Aspecto limpio para áreas de piscina',
-  'Consistent community styles': 'Estilos uniformes para comunidades',
-  'Meets pool barrier code': 'Cumple el código de barreras de piscina',
-  'Curb appeal, low upkeep': 'Buena presencia, poco mantenimiento',
-  'Built for shared spaces': 'Hecho para espacios compartidos',
-  'Proven perimeter security': 'Seguridad perimetral comprobada',
-  'Courts, fields and parks': 'Canchas, campos y parques',
-  'Long runs, low cost': 'Tramos largos, bajo costo',
-  'Solid-board look in metal': 'Aspecto de tabla sólida en metal',
-  'Screens and enclosures': 'Pantallas y cerramientos',
-  'Privacy plus durability': 'Privacidad y durabilidad',
-  'Built for salt air': 'Hecho para el aire salino',
-  'Clean commercial screening': 'Cerramiento comercial limpio',
-  'Modern panel look': 'Aspecto de panel moderno',
+    'Materiales de cerca de aluminio para proyectos residenciales, comerciales y comunitarios, con opciones que cumplen el código de piscinas donde se requiera. Elige entre múltiples alturas y estilos, con portones, postes, rieles y herrajes incluidos como parte de tu paquete completo de material.', 'Smooth Bottom': 'Base lisa', 'Rake Bottom': 'Base inclinada', 'Puppy Picket': 'Puppy picket', 'Pool Code': 'Código de piscinas', 'Clean line': 'Línea limpia', 'Slopes': 'Pendientes', 'Pet-friendly': 'Ideal para mascotas', 'Compliant': 'Cumple código', 'Flat bottom rail with no picket points below the rail.': 'Riel inferior plano, sin puntas de picket debajo del riel.', 'Follows grade changes and sloped runs without gaps.': 'Sigue los cambios de nivel y los tramos inclinados sin dejar huecos.', 'Tighter picket spacing at the bottom to keep small pets in.': 'Separación de pickets más cerrada abajo para contener mascotas pequeñas.', 'Meets Florida pool barrier requirements for spacing and height.': 'Cumple los requisitos de barrera de piscina de Florida en separación y altura.', 'Vinyl earns its keep where privacy, low upkeep, and clean looks meet.': 'El vinilo se gana su lugar donde se cruzan la privacidad, el bajo mantenimiento y un aspecto limpio.', 'Aluminum earns its keep where code, curb appeal, and long runs meet.': 'El aluminio se gana su lugar donde se cruzan el código, la buena presencia y los tramos largos.', 'Chain link earns its keep where security, scale, and budget meet.': 'La malla ciclónica se gana su lugar donde se cruzan la seguridad, la escala y el presupuesto.', 'Metal earns its keep where privacy, strength, and modern looks meet.': 'El metal se gana su lugar donde se cruzan la privacidad, la resistencia y el diseño moderno.', 'EC Fence earns its keep where coastal wind, privacy, and speed meet.': 'EC Fence se gana su lugar donde se cruzan el viento costero, la privacidad y la rapidez.', 'Full privacy, zero painting': 'Privacidad total, sin pintura', 'Clean look for pool areas': 'Aspecto limpio para áreas de piscina', 'Consistent community styles': 'Estilos uniformes para comunidades', 'Meets pool barrier code': 'Cumple el código de barreras de piscina', 'Curb appeal, low upkeep': 'Buena presencia, poco mantenimiento', 'Built for shared spaces': 'Hecho para espacios compartidos', 'Proven perimeter security': 'Seguridad perimetral comprobada', 'Courts, fields and parks': 'Canchas, campos y parques', 'Long runs, low cost': 'Tramos largos, bajo costo', 'Solid-board look in metal': 'Aspecto de tabla sólida en metal', 'Screens and enclosures': 'Pantallas y cerramientos', 'Privacy plus durability': 'Privacidad y durabilidad', 'Built for salt air': 'Hecho para el aire salino', 'Clean commercial screening': 'Cerramiento comercial limpio', 'Modern panel look': 'Aspecto de panel moderno',
 });
 
 /* Gate applications badges (where-it-fits row design) */
 Object.assign(ES_TR, {
-  'Everyday walk-through': 'Paso peatonal de todos los días',
-  'Maintenance & utility': 'Mantenimiento y servicios',
-  'Opens wide for vehicles': 'Abre amplio para vehículos',
-  'Formal main entrance': 'Entrada principal formal',
-  'No swing arc needed': 'Sin arco de apertura',
-  'Handles grade changes': 'Maneja cambios de nivel',
-  'Smooth daily operation': 'Operación diaria suave',
-  'Built for long openings': 'Hecho para aberturas largas',
-  'No ground track': 'Sin riel en el piso',
-  'Wide single spans': 'Tramos anchos de una sola pieza',
-  'Yards, storage, industrial': 'Patios, almacenes e industria',
-  'Hundreds of cycles a day': 'Cientos de ciclos al día',
-  'Trucks and equipment': 'Camiones y equipo',
+  'Everyday walk-through': 'Paso peatonal de todos los días', 'Maintenance & utility': 'Mantenimiento y servicios', 'Opens wide for vehicles': 'Abre amplio para vehículos', 'Formal main entrance': 'Entrada principal formal', 'No swing arc needed': 'Sin arco de apertura', 'Handles grade changes': 'Maneja cambios de nivel', 'Smooth daily operation': 'Operación diaria suave', 'Built for long openings': 'Hecho para aberturas largas', 'No ground track': 'Sin riel en el piso', 'Wide single spans': 'Tramos anchos de una sola pieza', 'Yards, storage, industrial': 'Patios, almacenes e industria', 'Hundreds of cycles a day': 'Cientos de ciclos al día', 'Trucks and equipment': 'Camiones y equipo',
 });
 
 /* Metal styles, standard-first order: Modern / Original / P1; catalog download */
 Object.assign(ES_TR, {
-  'Modern, Original, and P1 styles, with matching gates': 'Estilos Modern, Original y P1, con portones a juego',
-  "6' and 8'": "6' y 8'",
-  'Modern, Original, and P1': 'Modern, Original y P1',
-  'Available in Modern, Original, and P1 styles. Custom fabrication is available for gates only.': 'Disponible en estilos Modern, Original y P1. La fabricación a medida está disponible solo para portones.',
-  'Panel': 'Panel',
-  'Contemporary': 'Contemporáneo',
-  'DuraFence P1 privacy panel profile for residential and commercial runs.': 'Perfil de panel de privacidad DuraFence P1 para tramos residenciales y comerciales.',
-  'The original DuraFence full-privacy board profile.': 'El perfil de tabla de privacidad total original de DuraFence.',
-  'Clean-lined DuraFence profile for contemporary projects.': 'Perfil DuraFence de líneas limpias para proyectos contemporáneos.',
+  'Modern, Original, and P1 styles, with matching gates': 'Estilos Modern, Original y P1, con portones a juego', "6' and 8'": "6' y 8'", 'Modern, Original, and P1': 'Modern, Original y P1', 'Available in Modern, Original, and P1 styles. Custom fabrication is available for gates only.': 'Disponible en estilos Modern, Original y P1. La fabricación a medida está disponible solo para portones.', 'Panel': 'Panel', 'Contemporary': 'Contemporáneo', 'DuraFence P1 privacy panel profile for residential and commercial runs.': 'Perfil de panel de privacidad DuraFence P1 para tramos residenciales y comerciales.', 'The original DuraFence full-privacy board profile.': 'El perfil de tabla de privacidad total original de DuraFence.', 'Clean-lined DuraFence profile for contemporary projects.': 'Perfil DuraFence de líneas limpias para proyectos contemporáneos.',
 });
 
 /* Gate-page project gallery strings (names, gate materials, type lines) */
 Object.assign(ES_TR, {
-  '12 ft Opening': 'Abertura de 12 ft',
-  '24 ft Opening': 'Abertura de 24 ft',
-  '30 ft Opening': 'Abertura de 30 ft',
-  'Custom Opening': 'Abertura a medida',
-  'Single Swing Gate': 'Portón batiente sencillo',
-  'Double Swing Gate': 'Portón batiente doble',
-  'Sliding Gate': 'Portón corredizo',
-  'Cantilever Gate': 'Portón cantilever',
-  'Vinyl-Coated Gate': 'Portón recubierto de vinilo',
-  'Chain Link Gate': 'Portón de malla ciclónica',
-  'Aluminum Gate': 'Portón de aluminio',
-  'Metal Gate': 'Portón de metal',
-  'Metal / DuraFence Gate': 'Portón de Metal / DuraFence',
-  'EC Fence Gate': 'Portón EC Fence',
-  'Cape Coral Residential': 'Residencial Cape Coral',
-  'Residential Walk Gate': 'Portón peatonal residencial',
-  'Pool Enclosure Gate': 'Portón de cerramiento de piscina',
-  'Chain Link Service Gate': 'Portón de servicio de malla ciclónica',
-  'Metal Privacy Gate': 'Portón de privacidad de metal',
-  'Driveway Gate': 'Portón vehicular',
-  'Estate Entry': 'Entrada de residencia',
-  'Service Entrance': 'Entrada de servicio',
-  'Tight Driveway': 'Entrada angosta',
-  'Sloped Lot Slide': 'Corredizo en lote inclinado',
-  'Commercial Slide': 'Corredizo comercial',
-  'Industrial Yard': 'Patio industrial',
-  'Coastal Perimeter': 'Perímetro costero',
-  'Storage Facility': 'Instalación de almacenamiento',
-  'Commercial Entrance': 'Entrada comercial',
-  'Self-Storage Facility': 'Autoalmacenamiento',
-  'Transit Hub': 'Centro de tránsito',
-  'Warehouse Entrance': 'Entrada de bodega',
-  'Commercial Perimeter': 'Perímetro comercial',
-  'PVC privacy walk gate, white': 'Portón peatonal de privacidad de PVC, blanco',
-  'Aluminum walk gate, self-closing hardware': 'Portón peatonal de aluminio, herrajes de cierre automático',
-  'Pool-code aluminum gate, magnetic latch': 'Portón de aluminio código de piscinas, cerrojo magnético',
-  'Vinyl gate, sand, matching run': 'Portón de vinilo, arena, a juego con el tramo',
-  'Vinyl-coated black service gate': 'Portón de servicio negro recubierto de vinilo',
-  'Metal privacy gate, matching panels': 'Portón de privacidad de metal, paneles a juego',
-  'Vinyl gate, sand, drop rod + center latch': 'Portón de vinilo, arena, varilla y cerrojo central',
-  'Aluminum double drive gate, residential grade': 'Portón doble vehicular de aluminio, grado residencial',
-  'Vinyl privacy gate, white, matching panels': 'Portón de privacidad de vinilo, blanco, paneles a juego',
-  'Galvanized swing gate, cane bolt': 'Portón abatible galvanizado, pasador de piso',
-  'Metal privacy double gate, matching run': 'Portón doble de privacidad de metal, a juego con el tramo',
-  'Track-mounted slide gate, manual operation': 'Portón corredizo sobre riel, operación manual',
-  'Galvanized slide gate, twin rollers': 'Portón corredizo galvanizado, rodillos dobles',
-  'Vinyl-coated slide gate, ground track': 'Portón corredizo recubierto de vinilo, riel en el piso',
-  'Metal privacy slide gate, matching run': 'Portón corredizo de privacidad de metal, a juego con el tramo',
-  'EC Fence slide gate, commercial spec': 'Portón corredizo EC Fence, especificación comercial',
-  'Galvanized cantilever gate, V-rollers': 'Portón cantilever galvanizado, rodillos en V',
-  'Vinyl-coated cantilever, salt-rated rollers': 'Cantilever recubierto de vinilo, rodillos aptos para salitre',
-  'PVC privacy cantilever gate, white': 'Portón cantilever de privacidad de PVC, blanco',
-  'DuraFence cantilever gate, privacy face': 'Portón cantilever DuraFence, cara de privacidad',
-  'Custom cantilever, telescoping span': 'Cantilever a medida, tramo telescópico',
-  'Galvanized rolling gate, ground rollers': 'Portón rodante galvanizado, rodillos de piso',
-  'Heavy rolling gate, high-cycle frame': 'Portón rodante pesado, marco de alto ciclo',
-  'Rolling gate, continuous-duty hardware': 'Portón rodante, herrajes de uso continuo',
-  'Vinyl-coated rolling gate, visual perimeter': 'Portón rodante recubierto de vinilo, perímetro visual',
-  'Rolling gate, wide vehicle access': 'Portón rodante, acceso vehicular amplio',
+  '12 ft Opening': 'Abertura de 12 ft', '24 ft Opening': 'Abertura de 24 ft', '30 ft Opening': 'Abertura de 30 ft', 'Custom Opening': 'Abertura a medida', 'Single Swing Gate': 'Portón batiente sencillo', 'Double Swing Gate': 'Portón batiente doble', 'Sliding Gate': 'Portón corredizo', 'Cantilever Gate': 'Portón cantilever', 'Vinyl-Coated Gate': 'Portón recubierto de vinilo', 'Chain Link Gate': 'Portón de malla ciclónica', 'Aluminum Gate': 'Portón de aluminio', 'Metal Gate': 'Portón de metal', 'Metal / DuraFence Gate': 'Portón de Metal / DuraFence', 'EC Fence Gate': 'Portón EC Fence', 'Cape Coral Residential': 'Residencial Cape Coral', 'Residential Walk Gate': 'Portón peatonal residencial', 'Pool Enclosure Gate': 'Portón de cerramiento de piscina', 'Chain Link Service Gate': 'Portón de servicio de malla ciclónica', 'Metal Privacy Gate': 'Portón de privacidad de metal', 'Driveway Gate': 'Portón vehicular', 'Estate Entry': 'Entrada de residencia', 'Service Entrance': 'Entrada de servicio', 'Tight Driveway': 'Entrada angosta', 'Sloped Lot Slide': 'Corredizo en lote inclinado', 'Commercial Slide': 'Corredizo comercial', 'Industrial Yard': 'Patio industrial', 'Coastal Perimeter': 'Perímetro costero', 'Storage Facility': 'Instalación de almacenamiento', 'Commercial Entrance': 'Entrada comercial', 'Self-Storage Facility': 'Autoalmacenamiento', 'Transit Hub': 'Centro de tránsito', 'Warehouse Entrance': 'Entrada de bodega', 'Commercial Perimeter': 'Perímetro comercial', 'PVC privacy walk gate, white': 'Portón peatonal de privacidad de PVC, blanco', 'Aluminum walk gate, self-closing hardware': 'Portón peatonal de aluminio, herrajes de cierre automático', 'Pool-code aluminum gate, magnetic latch': 'Portón de aluminio código de piscinas, cerrojo magnético', 'Vinyl gate, sand, matching run': 'Portón de vinilo, arena, a juego con el tramo', 'Vinyl-coated black service gate': 'Portón de servicio negro recubierto de vinilo', 'Metal privacy gate, matching panels': 'Portón de privacidad de metal, paneles a juego', 'Vinyl gate, sand, drop rod + center latch': 'Portón de vinilo, arena, varilla y cerrojo central', 'Aluminum double drive gate, residential grade': 'Portón doble vehicular de aluminio, grado residencial', 'Vinyl privacy gate, white, matching panels': 'Portón de privacidad de vinilo, blanco, paneles a juego', 'Galvanized swing gate, cane bolt': 'Portón abatible galvanizado, pasador de piso', 'Metal privacy double gate, matching run': 'Portón doble de privacidad de metal, a juego con el tramo', 'Track-mounted slide gate, manual operation': 'Portón corredizo sobre riel, operación manual', 'Galvanized slide gate, twin rollers': 'Portón corredizo galvanizado, rodillos dobles', 'Vinyl-coated slide gate, ground track': 'Portón corredizo recubierto de vinilo, riel en el piso', 'Metal privacy slide gate, matching run': 'Portón corredizo de privacidad de metal, a juego con el tramo', 'EC Fence slide gate, commercial spec': 'Portón corredizo EC Fence, especificación comercial', 'Galvanized cantilever gate, V-rollers': 'Portón cantilever galvanizado, rodillos en V', 'Vinyl-coated cantilever, salt-rated rollers': 'Cantilever recubierto de vinilo, rodillos aptos para salitre', 'PVC privacy cantilever gate, white': 'Portón cantilever de privacidad de PVC, blanco', 'DuraFence cantilever gate, privacy face': 'Portón cantilever DuraFence, cara de privacidad', 'Custom cantilever, telescoping span': 'Cantilever a medida, tramo telescópico', 'Galvanized rolling gate, ground rollers': 'Portón rodante galvanizado, rodillos de piso', 'Heavy rolling gate, high-cycle frame': 'Portón rodante pesado, marco de alto ciclo', 'Rolling gate, continuous-duty hardware': 'Portón rodante, herrajes de uso continuo', 'Vinyl-coated rolling gate, visual perimeter': 'Portón rodante recubierto de vinilo, perímetro visual', 'Rolling gate, wide vehicle access': 'Portón rodante, acceso vehicular amplio',
 });
 
 /* Cantilever corrections: suspended design, any surface, 30 ft max, real hardware */
 Object.assign(ES_TR, {
-  'for Any Surface.': 'para cualquier superficie.',
-  'Cantilever gates are suspended in the air on internal rollers — the frame never touches the ground, which is their biggest strength. Designed to work over any surface, with openings up to 30 feet wide including the counterweight section. Send us your opening size and project details for an accurate quote.':
-    'Los portones cantilever se sostienen en el aire sobre rodillos internos: el marco nunca toca el suelo, y esa es su mayor fortaleza. Diseñados para funcionar sobre cualquier superficie, con aberturas de hasta 30 pies de ancho incluyendo la sección de contrapeso. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.',
-  'Driveways and openings over any surface, industrial yards, daily-use access': 'Entradas y aberturas sobre cualquier superficie, patios industriales, acceso de uso diario',
-  'Max Width': 'Ancho máximo',
-  "30' including the counterweight section": "30' incluyendo la sección de contrapeso",
-  'Cantilever rollers, latches, and receiver posts — no hinges': 'Rodillos cantilever, cerrojos y postes receptores — sin bisagras',
-  'Cantilever': 'Cantilever',
-  'Specifications.': 'Especificaciones.',
-  'Cantilever is the gate type — every cantilever gate is suspended in the air. These are the specifications that define your build.': 'Cantilever es el tipo de portón: todo portón cantilever se sostiene en el aire. Estas son las especificaciones que definen tu proyecto.',
-  'Suspended Frame': 'Marco suspendido',
-  'No ground contact': 'Sin contacto con el suelo',
-  'The gate hangs from internal rollers and floats over the opening — nothing touches the ground.': 'El portón cuelga de rodillos internos y flota sobre la abertura: nada toca el suelo.',
-  'Works Over Any Surface': 'Funciona sobre cualquier superficie',
-  'All driveways': 'Todas las entradas',
-  'Concrete, gravel, pavers, grass or uneven ground — the surface below does not matter.': 'Concreto, grava, adoquines, pasto o terreno irregular: la superficie de abajo no importa.',
-  "Max Width 30'": "Ancho máximo 30'",
-  'With counterweight': 'Con contrapeso',
-  'Openings up to 30 feet wide, counting the counterbalance section.': 'Aberturas de hasta 30 pies de ancho, contando la sección de contrapeso.',
-  'Material Options': 'Opciones de material',
-  'Cantilever Rollers': 'Rodillos cantilever',
-  'Load-bearing': 'Soporte de carga',
-  'Internal roller trucks carry the gate — the frame rides on them, suspended in the air.': 'Los carros de rodillos internos cargan el portón: el marco viaja sobre ellos, suspendido en el aire.',
-  'Latches & Receivers': 'Cerrojos y receptores',
-  'Closure': 'Cierre',
-  'Cantilever latch and receiver post catch the nose of the gate when closed.': 'El cerrojo cantilever y el poste receptor sujetan la nariz del portón al cerrar.',
-  'Counterbalance Section': 'Sección de contrapeso',
-  'Structure': 'Estructura',
-  'The tail section counterweights the gate across the opening.': 'La sección de cola contrapesa el portón a lo largo de la abertura.',
-  'Guide & Support Posts': 'Postes guía y de soporte',
-  'Heavy posts carry the rollers — a cantilever gate uses no hinges.': 'Postes pesados cargan los rodillos: un portón cantilever no usa bisagras.',
-  'Any Surface': 'Cualquier superficie',
-  'Designed for various surfaces — the suspended frame clears them all.': 'Diseñado para varias superficies: el marco suspendido las libra todas.',
-  "Single openings up to 30' including the counterweight.": "Aberturas sencillas de hasta 30' incluyendo el contrapeso.",
-  "Up to 30' spans": "Claros de hasta 30'",
-  'Gate Type': 'Tipo de portón',
-  'Cantilever — suspended in the air on rollers, no ground track': 'Cantilever: suspendido en el aire sobre rodillos, sin riel en el piso',
-  'Cantilever rollers, latch, and receiver / guide posts — no hinges': 'Rodillos cantilever, cerrojo y postes receptores/guía — sin bisagras',
-  'Distribution Yard': 'Patio de distribución',
-  'Custom cantilever, 30 ft with counterweight': 'Cantilever a medida, 30 ft con contrapeso',
+  'for Any Surface.': 'para cualquier superficie.', 'Cantilever gates are suspended in the air on internal rollers, the frame never touches the ground, which is their biggest strength. Designed to work over any surface, with openings up to 30 feet wide including the counterweight section. Send us your opening size and project details for an accurate quote.':
+    'Los portones cantilever se sostienen en el aire sobre rodillos internos: el marco nunca toca el suelo, y esa es su mayor fortaleza. Diseñados para funcionar sobre cualquier superficie, con aberturas de hasta 30 pies de ancho incluyendo la sección de contrapeso. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.', 'Driveways and openings over any surface, industrial yards, daily-use access': 'Entradas y aberturas sobre cualquier superficie, patios industriales, acceso de uso diario', 'Max Width': 'Ancho máximo', "30' including the counterweight section": "30' incluyendo la sección de contrapeso", 'Cantilever rollers, latches, and receiver posts, no hinges': 'Rodillos cantilever, cerrojos y postes receptores, sin bisagras', 'Cantilever': 'Cantilever', 'Specifications.': 'Especificaciones.', 'Cantilever is the gate type, every cantilever gate is suspended in the air. These are the specifications that define your build.': 'Cantilever es el tipo de portón: todo portón cantilever se sostiene en el aire. Estas son las especificaciones que definen tu proyecto.', 'Suspended Frame': 'Marco suspendido', 'No ground contact': 'Sin contacto con el suelo', 'The gate hangs from internal rollers and floats over the opening, nothing touches the ground.': 'El portón cuelga de rodillos internos y flota sobre la abertura: nada toca el suelo.', 'Works Over Any Surface': 'Funciona sobre cualquier superficie', 'All driveways': 'Todas las entradas', 'Concrete, gravel, pavers, grass or uneven ground, the surface below does not matter.': 'Concreto, grava, adoquines, pasto o terreno irregular: la superficie de abajo no importa.', "Max Width 30'": "Ancho máximo 30'", 'With counterweight': 'Con contrapeso', 'Openings up to 30 feet wide, counting the counterbalance section.': 'Aberturas de hasta 30 pies de ancho, contando la sección de contrapeso.', 'Material Options': 'Opciones de material', 'Cantilever Rollers': 'Rodillos cantilever', 'Load-bearing': 'Soporte de carga', 'Internal roller trucks carry the gate, the frame rides on them, suspended in the air.': 'Los carros de rodillos internos cargan el portón: el marco viaja sobre ellos, suspendido en el aire.', 'Latches & Receivers': 'Cerrojos y receptores', 'Closure': 'Cierre', 'Cantilever latch and receiver post catch the nose of the gate when closed.': 'El cerrojo cantilever y el poste receptor sujetan la nariz del portón al cerrar.', 'Counterbalance Section': 'Sección de contrapeso', 'Structure': 'Estructura', 'The tail section counterweights the gate across the opening.': 'La sección de cola contrapesa el portón a lo largo de la abertura.', 'Guide & Support Posts': 'Postes guía y de soporte', 'Heavy posts carry the rollers, a cantilever gate uses no hinges.': 'Postes pesados cargan los rodillos: un portón cantilever no usa bisagras.', 'Any Surface': 'Cualquier superficie', 'Designed for various surfaces, the suspended frame clears them all.': 'Diseñado para varias superficies: el marco suspendido las libra todas.', "Single openings up to 30' including the counterweight.": "Aberturas sencillas de hasta 30' incluyendo el contrapeso.", "Up to 30' spans": "Claros de hasta 30'", 'Gate Type': 'Tipo de portón', 'Cantilever, suspended in the air on rollers, no ground track': 'Cantilever: suspendido en el aire sobre rodillos, sin riel en el piso', 'Cantilever rollers, latch, and receiver / guide posts, no hinges': 'Rodillos cantilever, cerrojo y postes receptores/guía, sin bisagras', 'Distribution Yard': 'Patio de distribución', 'Custom cantilever, 30 ft with counterweight': 'Cantilever a medida, 30 ft con contrapeso',
 });
 
 /* Rolling gate corrections: big wheels, chain link first, real hardware, 30 ft */
 Object.assign(ES_TR, {
-  'on Big Wheels.': 'sobre llantas grandes.',
-  'What defines a rolling gate is its big rubber wheels — they carry the gate across the opening and are designed for a variety of surfaces, including grass and uneven ground. Guide rollers mount on the posts. Send us your opening size and project details for an accurate quote.':
-    'Lo que define a un portón rodante son sus llantas grandes de goma: cargan el portón a lo largo de la abertura y están diseñadas para una variedad de superficies, incluyendo césped y terreno irregular. Los rodillos guía van montados en los postes. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.',
-  'Commercial perimeters, industrial yards, grass and uneven surfaces': 'Perímetros comerciales, patios industriales, césped y superficies irregulares',
-  "30' total width, like all specialty gates": "30' de ancho total, como todas las puertas especiales",
-  'Chain link (recommended); other materials require a double frame': 'Malla ciclónica (recomendada); otros materiales requieren doble marco',
-  "Rolling gate kit, LOCK N' LATCH rolling gate latch (PS)": "Kit de portón rodante, cerrojo LOCK N' LATCH para portón rodante (PS)",
-  'Rolling Gate': 'Portón rodante',
-  'Rolling is the gate type — the big wheels are what define it. These are the specifications that shape your build.': 'Rodante es el tipo de portón: las llantas grandes son lo que lo define. Estas son las especificaciones de tu proyecto.',
-  'Big Rubber Wheels': 'Llantas grandes de goma',
-  'Signature feature': 'Rasgo distintivo',
-  'Large wheels carry the gate across the opening — made to roll over grass and uneven surfaces.': 'Las llantas grandes cargan el portón a lo largo de la abertura, hechas para rodar sobre césped y superficies irregulares.',
-  'Post-Mounted Rollers': 'Rodillos montados en postes',
-  'Guides': 'Guías',
-  'Guide rollers mount on the posts, not the ground, keeping the gate aligned as it rolls.': 'Los rodillos guía van en los postes, no en el suelo, y mantienen el portón alineado mientras rueda.',
-  'Posts for Automated Gates': 'Postes para portones mecánicos',
-  'Prep only': 'Solo preparación',
-  'We install the posts and framework for powered gates — we do not build the mechanical operators themselves.': 'Instalamos los postes y la estructura para portones mecánicos; no fabricamos los operadores mecánicos como tal.',
-  'Material & Frame': 'Material y marco',
-  'Chain link first': 'Malla ciclónica primero',
-  'Chain link is the recommended build; other materials require a double frame.': 'La malla ciclónica es la opción recomendada; otros materiales requieren doble marco.',
-  'Rolling Gate Kit': 'Kit de portón rodante',
-  'Core kit': 'Kit principal',
-  'Complete rolling gate kit with the big wheels that define this gate type.': 'Kit completo de portón rodante con las llantas grandes que definen este tipo de portón.',
-  "Lock N' Latch": "Lock N' Latch",
-  'Rolling gate latch · PS': 'Cerrojo para portón rodante · PS',
-  "LOCK N' LATCH rolling gate latch (PS) — the closure made for rolling gates.": "Cerrojo LOCK N' LATCH para portón rodante (PS): el cierre hecho para portones rodantes.",
-  'Guide Rollers': 'Rodillos guía',
-  'Post-mounted': 'Montados en postes',
-  'Rollers mount on the posts to keep the gate tracking straight as it rolls.': 'Los rodillos van en los postes para que el portón ruede derecho.',
-  'Posts & Framework': 'Postes y estructura',
-  'Gate posts and framework — no hinges and no drop rods on a rolling gate.': 'Postes y estructura del portón: un portón rodante no lleva bisagras ni varillas.',
-  'Grass & Uneven Surfaces': 'Césped y superficies irregulares',
-  'The big wheels roll over grass, gravel, and surfaces that are not perfectly smooth.': 'Las llantas grandes ruedan sobre césped, grava y superficies que no son perfectamente lisas.',
-  'Rolls over grass': 'Rueda sobre césped',
-  'Openings for trucks and equipment.': 'Aberturas para camiones y equipo.',
-  "Up to 30' total": "Hasta 30' en total",
-  'Rolling — big rubber wheels roll the gate across the opening': 'Rodante: llantas grandes de goma ruedan el portón a lo largo de la abertura',
-  'Chain link recommended; vinyl, aluminum, metal, and EC Fence require a double frame': 'Malla ciclónica recomendada; vinilo, aluminio, metal y EC Fence requieren doble marco',
-  "Rolling gate kit, LOCK N' LATCH rolling gate latch (PS) — no hinges, no drop rods": "Kit de portón rodante, cerrojo LOCK N' LATCH (PS) — sin bisagras ni varillas",
-  'Heavy chain link rolling gate': 'Portón rodante pesado de malla ciclónica',
-  'Vinyl-coated rolling gate, double frame': 'Portón rodante recubierto de vinilo, doble marco',
-  'Metal rolling gate, double frame': 'Portón rodante de metal, doble marco',
-  'EC Fence rolling gate, double frame': 'Portón rodante EC Fence, doble marco',
+  'on Big Wheels.': 'sobre llantas grandes.', 'What defines a rolling gate is its big rubber wheels, they carry the gate across the opening and are designed for a variety of surfaces, including grass and uneven ground. Guide rollers mount on the posts. Send us your opening size and project details for an accurate quote.':
+    'Lo que define a un portón rodante son sus llantas grandes de goma: cargan el portón a lo largo de la abertura y están diseñadas para una variedad de superficies, incluyendo césped y terreno irregular. Los rodillos guía van montados en los postes. Envíanos la medida de tu abertura y los detalles del proyecto para una cotización precisa.', 'Commercial perimeters, industrial yards, grass and uneven surfaces': 'Perímetros comerciales, patios industriales, césped y superficies irregulares', "30' total width, like all specialty gates": "30' de ancho total, como todas las puertas especiales", 'Chain link (recommended); other materials require a double frame': 'Malla ciclónica (recomendada); otros materiales requieren doble marco', "Rolling gate kit, LOCK N' LATCH rolling gate latch (PS)": "Kit de portón rodante, cerrojo LOCK N' LATCH para portón rodante (PS)", 'Rolling Gate': 'Portón rodante', 'Rolling is the gate type, the big wheels are what define it. These are the specifications that shape your build.': 'Rodante es el tipo de portón: las llantas grandes son lo que lo define. Estas son las especificaciones de tu proyecto.', 'Big Rubber Wheels': 'Llantas grandes de goma', 'Signature feature': 'Rasgo distintivo', 'Large wheels carry the gate across the opening, made to roll over grass and uneven surfaces.': 'Las llantas grandes cargan el portón a lo largo de la abertura, hechas para rodar sobre césped y superficies irregulares.', 'Post-Mounted Rollers': 'Rodillos montados en postes', 'Guides': 'Guías', 'Guide rollers mount on the posts, not the ground, keeping the gate aligned as it rolls.': 'Los rodillos guía van en los postes, no en el suelo, y mantienen el portón alineado mientras rueda.', 'Posts for Automated Gates': 'Postes para portones mecánicos', 'Prep only': 'Solo preparación', 'We install the posts and framework for powered gates, we do not build the mechanical operators themselves.': 'Instalamos los postes y la estructura para portones mecánicos; no fabricamos los operadores mecánicos como tal.', 'Material & Frame': 'Material y marco', 'Chain link first': 'Malla ciclónica primero', 'Chain link is the recommended build; other materials require a double frame.': 'La malla ciclónica es la opción recomendada; otros materiales requieren doble marco.', 'Rolling Gate Kit': 'Kit de portón rodante', 'Core kit': 'Kit principal', 'Complete rolling gate kit with the big wheels that define this gate type.': 'Kit completo de portón rodante con las llantas grandes que definen este tipo de portón.', "Lock N' Latch": "Lock N' Latch", 'Rolling gate latch · PS': 'Cerrojo para portón rodante · PS', "LOCK N' LATCH rolling gate latch (PS), the closure made for rolling gates.": "Cerrojo LOCK N' LATCH para portón rodante (PS): el cierre hecho para portones rodantes.", 'Guide Rollers': 'Rodillos guía', 'Post-mounted': 'Montados en postes', 'Rollers mount on the posts to keep the gate tracking straight as it rolls.': 'Los rodillos van en los postes para que el portón ruede derecho.', 'Posts & Framework': 'Postes y estructura', 'Gate posts and framework, no hinges and no drop rods on a rolling gate.': 'Postes y estructura del portón: un portón rodante no lleva bisagras ni varillas.', 'Grass & Uneven Surfaces': 'Césped y superficies irregulares', 'The big wheels roll over grass, gravel, and surfaces that are not perfectly smooth.': 'Las llantas grandes ruedan sobre césped, grava y superficies que no son perfectamente lisas.', 'Rolls over grass': 'Rueda sobre césped', 'Openings for trucks and equipment.': 'Aberturas para camiones y equipo.', "Up to 30' total": "Hasta 30' en total", 'Rolling, big rubber wheels roll the gate across the opening': 'Rodante: llantas grandes de goma ruedan el portón a lo largo de la abertura', 'Chain link recommended; vinyl, aluminum, metal, and EC Fence require a double frame': 'Malla ciclónica recomendada; vinilo, aluminio, metal y EC Fence requieren doble marco', "Rolling gate kit, LOCK N' LATCH rolling gate latch (PS), no hinges, no drop rods": "Kit de portón rodante, cerrojo LOCK N' LATCH (PS), sin bisagras ni varillas", 'Heavy chain link rolling gate': 'Portón rodante pesado de malla ciclónica', 'Vinyl-coated rolling gate, double frame': 'Portón rodante recubierto de vinilo, doble marco', 'Metal rolling gate, double frame': 'Portón rodante de metal, doble marco', 'EC Fence rolling gate, double frame': 'Portón rodante EC Fence, doble marco',
 });
 
 /* Anchor fix: pages render via Babel after the browser's native hash scroll
@@ -1191,26 +670,14 @@ Object.assign(ES_TR, {
 
 /* Product-examples gallery captions (type strings now rendered via t) */
 Object.assign(ES_TR, {
-  'Vinyl privacy fence, 6 ft, white': 'Cerca de privacidad de vinilo, 6 ft, blanca',
-  'Vinyl semi-privacy, alternating pickets, sand': 'Vinilo semi-privacidad, pickets alternados, arena',
-  'Vinyl privacy with gate, white': 'Privacidad de vinilo con portón, blanco',
-  'Vinyl semi-privacy, community standard': 'Vinilo semi-privacidad, estándar comunitario',
-  'Vinyl privacy, two-tone white and gray': 'Privacidad de vinilo, bicolor blanco y gris',
-  'Horizontal metal board privacy, black': 'Privacidad de tablero metálico horizontal, negro',
-  'Metal fence, 3-rail, brown': 'Cerca metálica, 3 rieles, marrón',
-  'Metal fence, 3-rail, black': 'Cerca metálica, 3 rieles, negra',
-  'Metal fence, 2-rail, white': 'Cerca metálica, 2 rieles, blanca',
-  'Metal board privacy, 6 ft, community standard': 'Privacidad de tablero metálico, 6 ft, estándar comunitario',
-  'EC Fence panels, 6 ft, bronze': 'Paneles EC Fence, 6 ft, bronce',
-  'EC Fence panels, 6 ft, white': 'Paneles EC Fence, 6 ft, blanco',
-  'EC Fence panels, 6 ft, community standard': 'Paneles EC Fence, 6 ft, estándar comunitario',
+  'Vinyl privacy fence, 6 ft, white': 'Cerca de privacidad de vinilo, 6 ft, blanca', 'Vinyl semi-privacy, alternating pickets, sand': 'Vinilo semi-privacidad, pickets alternados, arena', 'Vinyl privacy with gate, white': 'Privacidad de vinilo con portón, blanco', 'Vinyl semi-privacy, community standard': 'Vinilo semi-privacidad, estándar comunitario', 'Vinyl privacy, two-tone white and gray': 'Privacidad de vinilo, bicolor blanco y gris', 'Horizontal metal board privacy, black': 'Privacidad de tablero metálico horizontal, negro', 'Metal fence, 3-rail, brown': 'Cerca metálica, 3 rieles, marrón', 'Metal fence, 3-rail, black': 'Cerca metálica, 3 rieles, negra', 'Metal fence, 2-rail, white': 'Cerca metálica, 2 rieles, blanca', 'Metal board privacy, 6 ft, community standard': 'Privacidad de tablero metálico, 6 ft, estándar comunitario', 'EC Fence panels, 6 ft, bronze': 'Paneles EC Fence, 6 ft, bronce', 'EC Fence panels, 6 ft, white': 'Paneles EC Fence, 6 ft, blanco', 'EC Fence panels, 6 ft, community standard': 'Paneles EC Fence, 6 ft, estándar comunitario',
 });
 
 /* ─────────────────────────────────────────────────────────────
    Hash-anchor scrolling for client-rendered pages.
 
    These pages render via React + Babel-standalone, so when the browser
-   handles the URL fragment the #target does not exist yet — the native
+   handles the URL fragment the #target does not exist yet, the native
    jump is a no-op and links like estimate.html#contact land at the top.
    Any late browser retry then races image-driven layout shift, which is
    what reads as flickering/jumping.
@@ -1278,8 +745,7 @@ Object.assign(ES_TR, {
    En el preview estático no hay backend, así que se abre el correo del
    usuario con los datos ya escritos: nunca se pierde una solicitud. */
 const WFS_LEAD_TO = [
-  'antonello@westernfencesupply.com',
-  'crm+A1AN6482169aaf302a7fe4.ls.32@bcc.marketing360.com',
+  'antonello@westernfencesupply.com', 'crm+A1AN6482169aaf302a7fe4.ls.32@bcc.marketing360.com',
 ];
 
 async function submitLead(formEl, meta) {
@@ -1292,10 +758,7 @@ async function submitLead(formEl, meta) {
   const endpoint = window.WFS_FORM_ENDPOINT;
   if (endpoint) {
     const res = await fetch(endpoint, {
-      method: 'POST',
-      body: fd,
-      headers: window.WFS_NONCE ? { 'X-WP-Nonce': window.WFS_NONCE } : {},
-    });
+      method: 'POST', body: fd, headers: window.WFS_NONCE ? { 'X-WP-Nonce': window.WFS_NONCE } : {}, });
     let data = {};
     try { data = await res.json(); } catch (err) { /* respuesta no JSON */ }
     if (!res.ok || !data.ok) {

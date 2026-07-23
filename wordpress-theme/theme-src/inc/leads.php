@@ -71,7 +71,7 @@ function wfs_lead_body( $form, $data, $attachments, $meta ) {
 
 	foreach ( wfs_lead_fields( $form ) as $key => $label ) {
 		$value = isset( $data[ $key ] ) ? trim( (string) $data[ $key ] ) : '';
-		if ( '' === $value ) { $value = '—'; }
+		if ( '' === $value ) { $value = '(not provided)'; }
 		$out .= $label . ":\n" . $value . "\n" . $rule . "\n\n";
 	}
 
@@ -174,7 +174,7 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 	if ( ! is_email( $email ) ) {
 		return new WP_REST_Response( array(
 			'ok'      => false,
-			'message' => 'Please check your email address — it needs a full domain, like name@company.com.',
+			'message' => 'Please check your email address. It needs a full domain, like name@company.com.',
 		), 400 );
 	}
 
@@ -186,7 +186,7 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 
 	$attachments = wfs_lead_attachments();
 	$body        = wfs_lead_body( $form, $data, $attachments, $meta );
-	$subject     = wfs_form_label( $form ) . ' — ' . $name;
+	$subject     = wfs_form_label( $form ) . ': ' . $name;
 
 	/* Se guarda antes de enviar: si el correo falla, el lead sigue estando. */
 	$lead_id = wp_insert_post( array(

@@ -2,13 +2,13 @@ const App = () => (
   <>
     <SiteHeader />
     <Hero />
-    {/* <InstallerMarquee /> — hidden for now */}
+    {/* <InstallerMarquee />, hidden for now */}
     <AboutIntro />
     <FenceCategories />
     <ProductMarquee />
     <WhyWFS />
     <GateSystems />
-    {/* <ProjectGallery /> — hidden for now */}
+    {/* <ProjectGallery />, hidden for now */}
     <Testimonials />
     <FAQ />
     <ServiceAreas />

@@ -1,6 +1,6 @@
 <?php
 /**
- * Western Fence Supply — tema espejo.
+ * Western Fence Supply, tema espejo.
  *
  * En vez de traducir el diseno a bloques (donde se pierden los 1.355 estilos
  * inline de los componentes), este tema sirve el sitio real tal cual.
@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '2.3.0' );
+define( 'WFS_VERSION', '2.4.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {

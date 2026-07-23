@@ -2,250 +2,39 @@
 
 const MATERIAL_DATA = {
   vinyl: {
-    slug: 'vinyl',
-    name: 'Vinyl / PVC',
-    tag: 'Vinyl / PVC fence materials',
-    heroTitle: 'Vinyl / PVC Fence Materials',
-    heroAccent: 'Built for Florida.',
-    heroBody: 'Low-maintenance vinyl fence materials for privacy, semi-privacy, pool enclosures, backyards, and HOA projects. Panels, posts, rails, gates, hardware, and accessories available for full material quotes.',
-    heroImg: FENCE_IMG.vinyl,
-    viewLabel: { EN: 'View Vinyl / PVC Options', ES: 'Ver opciones de Vinyl / PVC' },
-    bestFor: 'Backyard privacy, pool enclosures, residential subdivisions',
-    quickFacts: [
-      ['Best For', 'Backyard privacy, pool enclosures, residential subdivisions'],
-      ['Material', 'Low-maintenance vinyl / PVC'],
-      ['Options', 'Privacy, semi-privacy, picket, and ranch rail styles'],
-      ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
-    ],
-    profiles: [
-      { name: 'Privacy', tag: 'Classic', img: 'assets/profiles/vinyl-privacy.jpg', notes: 'Full privacy vinyl fence panels for backyards and property lines.' },
-      { name: 'Semi-Privacy', tag: 'Airflow', img: 'assets/profiles/vinyl-semi-privacy.jpg', notes: 'Decorative vinyl fence option with partial visibility and airflow.' },
-      { name: 'Picket', tag: 'Decorative', img: 'assets/profiles/vinyl-picket.jpg', notes: 'Classic vinyl picket fence for front yards and decorative projects.' },
-      { name: 'Ranch Rail', tag: 'Open rail', img: 'assets/profiles/vinyl-ranch-rail.jpg', notes: 'Open vinyl rail system for large properties and boundaries.' },
-    ],
-    specs: [
-      ['Heights', "4', 5', 6', and other options available by request"],
-      ['Colors', 'White, tan, gray, and selected color options'],
-      ['Material', 'Vinyl panels, posts, rails, gates, and hardware'],
-      ['Styles', 'Privacy, semi-privacy, picket, and ranch rail'],
-      ['Post Options', 'Line posts, end posts, corner posts, blank posts, and gate posts available'],
-      ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
-    ],
-    useCasesBlurb: 'Vinyl earns its keep where privacy, low upkeep, and clean looks meet.',
-    useCases: [
-      ['Backyard Privacy', 'Low-maintenance vinyl fence materials for residential backyards and property lines.', 'Full privacy, zero painting'],
-      ['Pool Enclosures', 'Clean vinyl fence options for pool areas and residential projects.', 'Clean look for pool areas'],
-      ['HOA & Residential Communities', 'Consistent vinyl fence styles for communities, subdivisions, and shared spaces.', 'Consistent community styles'],
-    ],
-    cta: {
-      kicker: 'Vinyl fence materials',
-      title: 'Ready to Quote Your',
-      accent: 'Vinyl Fence Materials?',
-      body: 'Send us your linear footage, height, color, style, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.',
-      primary: ['Request a Quote', 'estimate.html'],
-      secondary: ['Call (239) 689-5496', 'tel:2396895496'],
-    },
-    projects: [
-      { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Vinyl', type: 'Vinyl privacy fence, 6 ft, white', contractor: 'Naples Outdoor', year: '2024', imgUrl: 'assets/projects/pvc-closed-top-white.jpg' },
-      { name: 'Fort Myers Estate', loc: 'Fort Myers, FL', size: '410 LF', material: 'Vinyl', type: 'Vinyl semi-privacy, alternating pickets, sand', contractor: 'Estate Fence Pros', year: '2024', imgUrl: 'assets/projects/pvc-semi-privacy-alternative-pickets-sand.jpg' },
-      { name: 'Naples Pool Enclosure', loc: 'Naples, FL', size: '180 LF', material: 'Vinyl', type: 'Vinyl privacy with gate, white', contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/pvc-privacy-gate-white.jpg' },
-      { name: 'Estero Community', loc: 'Estero, FL', size: '44 lots', material: 'Vinyl', type: 'Vinyl semi-privacy, community standard', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/projects/pvc-alternate-semi-privacy.jpg' },
-      { name: 'HOA Boundary', loc: 'Lehigh Acres, FL', size: '60 lots', material: 'Vinyl', type: 'Vinyl privacy, two-tone white and gray', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/projects/pvc-privacy-two-tone-white-and-gray.png' },
-    ],
-  },
-  aluminum: {
-    slug: 'aluminum',
-    name: 'Aluminum',
-    tag: 'Powder-coat aluminum',
-    heroTitle: 'Powder-Coated Aluminum',
-    heroAccent: 'Fence Materials.',
-    heroBody: 'Aluminum fence materials for residential, commercial, and community projects, with pool-code compliant options available where required. Choose from multiple heights and styles, with gates, posts, rails, and hardware included as part of your complete material package.',
-    heroImg: FENCE_IMG.aluminum,
-    bestFor: 'Pool enclosures, residential yards, HOA communities',
-    quickFacts: [
-      ['Best For', 'Pool enclosures, residential yards, HOA communities'],
-      ['Material', 'Powder-coated aluminum'],
-      ['Styles', '2-rail, 3-rail, spear-top, flat-top options'],
-      ['Lead Time', 'Stock and lead time vary by style, color, and quantity'],
-    ],
-    profiles: [
-      { name: '2-Rail', tag: 'Standard', img: 'assets/profiles/aluminum-2-rail-smooth.jpg', notes: 'Simple, open-profile aluminum fence option.' },
-      { name: '3-Rail', tag: 'Popular', img: 'assets/profiles/aluminum-3-rail-rake.jpg', notes: 'Popular residential and pool-code configuration.' },
-      { name: '3-Rail Spear Top', tag: 'Decorative', img: 'assets/profiles/aluminum-spear-top.jpg', notes: 'Decorative picket-top style for residential projects.' },
-      { name: '4-Rail', tag: 'Custom', img: 'assets/profiles/aluminum-custom.jpg', notes: 'Available for taller or custom aluminum configurations.' },
-      { name: 'Smooth Bottom', tag: 'Clean line', img: 'assets/profiles/aluminum-2-rail-smooth.jpg', notes: 'Flat bottom rail with no picket points below the rail.' },
-      { name: 'Rake Bottom', tag: 'Slopes', img: 'assets/profiles/aluminum-3-rail-rake.jpg', notes: 'Follows grade changes and sloped runs without gaps.' },
-      { name: 'Puppy Picket', tag: 'Pet-friendly', img: 'assets/profiles/aluminum-puppy-picket.jpg', notes: 'Tighter picket spacing at the bottom to keep small pets in.' },
-      { name: 'Pool Code', tag: 'Compliant', img: 'assets/profiles/aluminum-pool-code.jpg', notes: 'Meets Florida pool barrier requirements for spacing and height.' },
-    ],
-    specs: [
-      ['Heights', "4', 5', 6', custom options available"],
-      ['Colors', 'Black, bronze, white, and selected powder-coated finishes'],
-      ['Material', 'Aluminum fence panels, posts, gates, and hardware'],
-      ['Wind rating', 'Varies by product style and installation conditions'],
-      ['Warranty', 'Ask our team for available manufacturer warranty details'],
-      ['Lead time', 'Stock and lead time vary by material, color, and quantity'],
-    ],
-    useCasesBlurb: 'Aluminum earns its keep where code, curb appeal, and long runs meet.',
-    useCases: [
-      ['Pool Enclosures', 'Pool-code aluminum fencing for residential and community pools.', 'Meets pool barrier code'],
-      ['Residential Front Yards', 'Clean, decorative aluminum fence for front yards and property lines.', 'Curb appeal, low upkeep'],
-      ['HOA & Community Perimeters', 'Durable aluminum fence options for communities and shared spaces.', 'Built for shared spaces'],
-    ],
-    cta: {
-      kicker: 'Aluminum fence materials',
-      title: 'Ready to Quote Your',
-      accent: 'Aluminum Fence Materials?',
-      body: 'Send us your material needs, linear footage, height, color, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.',
-      primary: ['Request a Quote', 'estimate.html'],
-      secondary: ['Call (239) 689-5496', 'tel:2396895496'],
-    },
-  },
-  chainlink: {
-    slug: 'chain-link',
-    name: 'Chain Link',
-    tag: 'Galvanized + Vinyl Coated',
-    heroTitle: 'Chain Link Fence Materials',
-    heroAccent: 'for Any Perimeter.',
-    heroBody: 'Galvanized and vinyl-coated chain link fence materials for residential, commercial, industrial, and recreational projects. Mesh, posts, rails, fittings, gates, and hardware available for full material quotes.',
-    heroImg: FENCE_IMG.chainlink,
-    viewLabel: { EN: 'View Chain Link Options', ES: 'Ver opciones de chain link' },
-    bestFor: 'Security perimeters, sports fields, industrial and residential sites',
-    quickFacts: [
-      ['Best For', 'Security, commercial, industrial, and recreational perimeters'],
-      ['Material', 'Galvanized and vinyl-coated mesh, posts, rails, and fittings'],
-      ['Options', 'Galvanized, black, and green vinyl-coated finishes'],
-      ['Lead Time', 'Stock and lead time vary by gauge, finish, and quantity'],
-    ],
-    profiles: [
-      { name: 'Galvanized', tag: 'Standard', img: 'assets/profiles/chainlink-galvanized.jpg', notes: 'Classic zinc-coated mesh for security and perimeter fencing.' },
-      { name: 'Black Vinyl-Coated', tag: 'Popular', img: 'assets/profiles/chainlink-black.jpg', notes: 'Vinyl-coated mesh with a clean, low-profile residential look.' },
-      { name: 'Green Vinyl-Coated', tag: 'By request', img: 'assets/profiles/chainlink-green.jpg', notes: 'Vinyl-coated mesh for parks, courts, and recreational sites.' },
-      { name: 'Heavy-Gauge Industrial', tag: 'Commercial', img: 'assets/profiles/chainlink-heavy-gauge.jpg', notes: 'Heavier mesh and framework for high-security commercial perimeters.' },
-    ],
-    specs: [
-      ['Heights', "4', 5', 6', and taller options available"],
-      ['Mesh', 'Galvanized and vinyl-coated mesh in multiple gauges'],
-      ['Finishes', 'Galvanized, black, and green vinyl-coated'],
-      ['Material', 'Mesh, posts, rails, fittings, gates, and hardware'],
-      ['Framework', 'Line posts, terminal posts, top rail, and tension wire'],
-      ['Lead time', 'Stock and lead time vary by gauge, finish, and quantity'],
-    ],
-    useCasesBlurb: 'Chain link earns its keep where security, scale, and budget meet.',
-    useCases: [
-      ['Security Perimeters', 'Durable chain link fencing for commercial and industrial security.', 'Proven perimeter security'],
-      ['Sports & Recreation', 'Vinyl-coated mesh for ball fields, courts, and park enclosures.', 'Courts, fields and parks'],
-      ['Self-Storage & Industrial', 'Long perimeter runs for storage yards and industrial sites.', 'Long runs, low cost'],
-    ],
-    cta: {
-      kicker: 'Chain link fence materials',
-      title: 'Ready to Quote Your',
-      accent: 'Chain Link Fence Materials?',
-      body: 'Send us your material needs, linear footage, height, finish, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.',
-      primary: ['Request a Quote', 'estimate.html'],
-      secondary: ['Call (239) 689-5496', 'tel:2396895496'],
-    },
-  },
-  metal: {
-    slug: 'metal',
-    name: 'Metal / DuraFence',
-    tag: 'Metal / DuraFence privacy materials',
-    heroTitle: 'Metal / DuraFence Privacy',
-    heroAccent: 'Fence Materials.',
-    heroBody: 'Durable metal privacy fence materials for residential, commercial, and high-security projects. Panels, posts, rails, gates, hardware, and accessories available for full material quotes.',
-    heroImg: FENCE_IMG.metal,
-    viewLabel: { EN: 'View Metal / DuraFence Options', ES: 'Ver opciones de Metal / DuraFence' },
-    bestFor: 'Privacy fences, modern yards, commercial screens, security projects',
-    quickFacts: [
-      ['Best For', 'Privacy fences, modern yards, commercial screens, security projects'],
-      ['Material', 'Metal privacy panels, rails, and posts'],
-      ['Options', 'Modern, Original, and P1 styles, with matching gates'],
-      ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
-    ],
-    profilesSub: 'Available in Modern, Original, and P1 styles. Custom fabrication is available for gates only.',
-    profiles: [
-      { name: 'Modern', tag: 'Contemporary', img: 'assets/profiles/metal-modern.jpg', notes: 'Clean-lined DuraFence profile for contemporary projects.' },
-      { name: 'Original', tag: 'Classic', img: 'assets/profiles/metal-original.jpg', notes: 'The original DuraFence full-privacy board profile.' },
-      { name: 'P1', tag: 'Panel', img: 'assets/profiles/metal-p1.jpg', notes: 'DuraFence P1 privacy panel profile for residential and commercial runs.' },
-    ],
-    specs: [
-      ['Heights', "6' and 8'"],
-      ['Colors', 'White, black, bronze, and woodgrain'],
-      ['Material', 'Metal panels, posts, rails, gates, and hardware'],
-      ['Styles', 'Modern, Original, and P1'],
-      ['Post Options', 'One 2-1/2" post type for all positions'],
-      ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'],
-    ],
-    useCasesBlurb: 'Metal earns its keep where privacy, strength, and modern looks meet.',
-    useCases: [
-      ['Modern Privacy', 'Metal privacy fence materials for clean residential and commercial designs.', 'Solid-board look in metal'],
-      ['Commercial Screens', 'Durable metal fence options for enclosures, screens, and utility areas.', 'Screens and enclosures'],
-      ['Security Projects', 'Strong metal fence materials for projects that need privacy and durability.', 'Privacy plus durability'],
-    ],
-    cta: {
-      kicker: 'Metal fence materials',
-      title: 'Ready to Quote Your',
-      accent: 'Metal Fence Materials?',
-      body: 'Send us your linear footage, height, color, style, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.',
-      primary: ['Request a Quote', 'estimate.html'],
-      secondary: ['Call (239) 689-5496', 'tel:2396895496'],
-    },
-    projects: [
-      { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Metal', type: 'Horizontal metal board privacy, black', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/met-fence-horizontal-black.jpg' },
-      { name: 'Commercial Facility', loc: 'Fort Myers, FL', size: '480 LF', material: 'Metal', type: 'Metal fence, 3-rail, brown', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/met-fence-3-rail-brown.jpg' },
-      { name: 'Modern Residential Privacy', loc: 'Naples, FL', size: '260 LF', material: 'Metal', type: 'Metal fence, 3-rail, black', contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/projects/met-fence-3-rail-black.jpg' },
-      { name: 'Utility Screen Enclosure', loc: 'Cape Coral, FL', size: '140 LF', material: 'Metal', type: 'Metal fence, 2-rail, white', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/met-fence-2-rail-white.jpg' },
-    ],
-  },
-  ecfence: {
-    slug: 'ecfence',
-    name: 'EC Fence',
-    tag: 'EC Fence galvanized steel privacy panels',
-    heroTitle: 'EC Fence Galvanized Steel',
-    heroAccent: 'Privacy Panels.',
-    heroBody: 'Self-mating galvanized steel fence panels for privacy, coastal properties, commercial sites, and modern residential projects. Panels, posts, gates, hardware, and accessories available for full material quotes.',
-    heroImg: 'assets/ec-fence.jpg',
-    viewLabel: { EN: 'View EC Fence Options', ES: 'Ver opciones de EC Fence' },
-    bestFor: 'Coastal properties, commercial sites, modern residential projects',
-    quickFacts: [
-      ['Best For', 'Coastal properties, commercial sites, modern residential projects'],
-      ['Material', 'Self-mating galvanized steel panels'],
-      ['Options', 'Bronze, white, 6 ft panels, gates, and sloped runs'],
-      ['Lead Time', 'Stock and lead time vary by color, quantity, and gate requirements'],
-    ],
-    profiles: [
-      { name: 'Bronze 6 Ft', tag: 'Standard', img: 'assets/profiles/ecfence-bronze.jpg', notes: 'Bronze steel privacy panels for modern projects.' },
-      { name: 'White 6 Ft', tag: 'Standard', img: 'assets/profiles/ecfence-white.jpg', notes: 'White steel privacy panels for clean residential and commercial designs.' },
-      { name: 'Matching Gate', tag: 'Single / double', img: 'assets/profiles/ecfence-gate.jpg', notes: 'Single and double gates available with hardware options.' },
-    ],
-    specs: [
-      ['Height', '6 ft'],
-      ['Colors', 'Bronze and white'],
-      ['Material', 'Self-mating galvanized steel panels'],
-      ['Post Spacing', 'Based on EC Fence system requirements'],
-      ['Gates', 'Single and double gates available by request'],
-      ['Lead Time', 'Stock and lead time vary by color, quantity, and gate requirements'],
-    ],
-    useCasesBlurb: 'EC Fence earns its keep where coastal wind, privacy, and speed meet.',
-    useCases: [
-      ['Coastal Privacy', 'Galvanized steel privacy panels for coastal and Florida properties.', 'Built for salt air'],
-      ['Commercial Properties', 'Clean privacy fence option for commercial sites, enclosures, and shared spaces.', 'Clean commercial screening'],
-      ['Modern Residential', 'Modern privacy fence material for homes, yards, and property lines.', 'Modern panel look'],
-    ],
-    cta: {
-      kicker: 'EC Fence materials',
-      title: 'Ready to Quote Your',
-      accent: 'EC Fence Materials?',
-      body: 'Send us your linear footage, color, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.',
-      primary: ['Request a Quote', 'estimate.html'],
-      secondary: ['Call (239) 689-5496', 'tel:2396895496'],
-    },
-    projects: [
-      { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, bronze', contractor: 'Harbor Iron Works', year: '2024', imgUrl: 'assets/projects/ecfence-bronze.jpg' },
-      { name: 'Coastal Privacy Project', loc: 'Sanibel, FL', size: '240 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, white', contractor: 'Harbor Iron Works', year: '2024', imgUrl: 'assets/projects/ecfence-white.jpg' },
-      { name: 'Commercial Property Screen', loc: 'Fort Myers, FL', size: '460 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, bronze', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/ec-fence.jpg' },
-    ],
-  },
+    slug: 'vinyl', name: 'Vinyl / PVC', tag: 'Vinyl / PVC fence materials', heroTitle: 'Vinyl / PVC Fence Materials', heroAccent: 'Built for Florida.', heroBody: 'Low-maintenance vinyl fence materials for privacy, semi-privacy, pool enclosures, backyards, and HOA projects. Panels, posts, rails, gates, hardware, and accessories available for full material quotes.', heroImg: FENCE_IMG.vinyl, viewLabel: { EN: 'View Vinyl / PVC Options', ES: 'Ver opciones de Vinyl / PVC' }, bestFor: 'Backyard privacy, pool enclosures, residential subdivisions', quickFacts: [
+      ['Best For', 'Backyard privacy, pool enclosures, residential subdivisions'], ['Material', 'Low-maintenance vinyl / PVC'], ['Options', 'Privacy, semi-privacy, picket, and ranch rail styles'], ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'], ], profiles: [
+      { name: 'Privacy', tag: 'Classic', img: 'assets/profiles/vinyl-privacy.jpg', notes: 'Full privacy vinyl fence panels for backyards and property lines.' }, { name: 'Semi-Privacy', tag: 'Airflow', img: 'assets/profiles/vinyl-semi-privacy.jpg', notes: 'Decorative vinyl fence option with partial visibility and airflow.' }, { name: 'Picket', tag: 'Decorative', img: 'assets/profiles/vinyl-picket.jpg', notes: 'Classic vinyl picket fence for front yards and decorative projects.' }, { name: 'Ranch Rail', tag: 'Open rail', img: 'assets/profiles/vinyl-ranch-rail.jpg', notes: 'Open vinyl rail system for large properties and boundaries.' }, ], specs: [
+      ['Heights', "4', 5', 6', and other options available by request"], ['Colors', 'White, tan, gray, and selected color options'], ['Material', 'Vinyl panels, posts, rails, gates, and hardware'], ['Styles', 'Privacy, semi-privacy, picket, and ranch rail'], ['Post Options', 'Line posts, end posts, corner posts, blank posts, and gate posts available'], ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'], ], useCasesBlurb: 'Vinyl earns its keep where privacy, low upkeep, and clean looks meet.', useCases: [
+      ['Backyard Privacy', 'Low-maintenance vinyl fence materials for residential backyards and property lines.', 'Full privacy, zero painting'], ['Pool Enclosures', 'Clean vinyl fence options for pool areas and residential projects.', 'Clean look for pool areas'], ['HOA & Residential Communities', 'Consistent vinyl fence styles for communities, subdivisions, and shared spaces.', 'Consistent community styles'], ], cta: {
+      kicker: 'Vinyl fence materials', title: 'Ready to Quote Your', accent: 'Vinyl Fence Materials?', body: 'Send us your linear footage, height, color, style, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.', primary: ['Request a Quote', 'estimate.html'], secondary: ['Call (239) 689-5496', 'tel:2396895496'], }, projects: [
+      { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Vinyl', type: 'Vinyl privacy fence, 6 ft, white', contractor: 'Naples Outdoor', year: '2024', imgUrl: 'assets/projects/pvc-closed-top-white.jpg' }, { name: 'Fort Myers Estate', loc: 'Fort Myers, FL', size: '410 LF', material: 'Vinyl', type: 'Vinyl semi-privacy, alternating pickets, sand', contractor: 'Estate Fence Pros', year: '2024', imgUrl: 'assets/projects/pvc-semi-privacy-alternative-pickets-sand.jpg' }, { name: 'Naples Pool Enclosure', loc: 'Naples, FL', size: '180 LF', material: 'Vinyl', type: 'Vinyl privacy with gate, white', contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/pvc-privacy-gate-white.jpg' }, { name: 'Estero Community', loc: 'Estero, FL', size: '44 lots', material: 'Vinyl', type: 'Vinyl semi-privacy, community standard', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/projects/pvc-alternate-semi-privacy.jpg' }, { name: 'HOA Boundary', loc: 'Lehigh Acres, FL', size: '60 lots', material: 'Vinyl', type: 'Vinyl privacy, two-tone white and gray', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/projects/pvc-privacy-two-tone-white-and-gray.png' }, ], }, aluminum: {
+    slug: 'aluminum', name: 'Aluminum', tag: 'Powder-coat aluminum', heroTitle: 'Powder-Coated Aluminum', heroAccent: 'Fence Materials.', heroBody: 'Aluminum fence materials for residential, commercial, and community projects, with pool-code compliant options available where required. Choose from multiple heights and styles, with gates, posts, rails, and hardware included as part of your complete material package.', heroImg: FENCE_IMG.aluminum, bestFor: 'Pool enclosures, residential yards, HOA communities', quickFacts: [
+      ['Best For', 'Pool enclosures, residential yards, HOA communities'], ['Material', 'Powder-coated aluminum'], ['Styles', '2-rail, 3-rail, spear-top, flat-top options'], ['Lead Time', 'Stock and lead time vary by style, color, and quantity'], ], profiles: [
+      { name: '2-Rail', tag: 'Standard', img: 'assets/profiles/aluminum-2-rail-smooth.jpg', notes: 'Simple, open-profile aluminum fence option.' }, { name: '3-Rail', tag: 'Popular', img: 'assets/profiles/aluminum-3-rail-rake.jpg', notes: 'Popular residential and pool-code configuration.' }, { name: '3-Rail Spear Top', tag: 'Decorative', img: 'assets/profiles/aluminum-spear-top.jpg', notes: 'Decorative picket-top style for residential projects.' }, { name: '4-Rail', tag: 'Custom', img: 'assets/profiles/aluminum-custom.jpg', notes: 'Available for taller or custom aluminum configurations.' }, { name: 'Smooth Bottom', tag: 'Clean line', img: 'assets/profiles/aluminum-2-rail-smooth.jpg', notes: 'Flat bottom rail with no picket points below the rail.' }, { name: 'Rake Bottom', tag: 'Slopes', img: 'assets/profiles/aluminum-3-rail-rake.jpg', notes: 'Follows grade changes and sloped runs without gaps.' }, { name: 'Puppy Picket', tag: 'Pet-friendly', img: 'assets/profiles/aluminum-puppy-picket.jpg', notes: 'Tighter picket spacing at the bottom to keep small pets in.' }, { name: 'Pool Code', tag: 'Compliant', img: 'assets/profiles/aluminum-pool-code.jpg', notes: 'Meets Florida pool barrier requirements for spacing and height.' }, ], specs: [
+      ['Heights', "4', 5', 6', custom options available"], ['Colors', 'Black, bronze, white, and selected powder-coated finishes'], ['Material', 'Aluminum fence panels, posts, gates, and hardware'], ['Wind rating', 'Varies by product style and installation conditions'], ['Warranty', 'Ask our team for available manufacturer warranty details'], ['Lead time', 'Stock and lead time vary by material, color, and quantity'], ], useCasesBlurb: 'Aluminum earns its keep where code, curb appeal, and long runs meet.', useCases: [
+      ['Pool Enclosures', 'Pool-code aluminum fencing for residential and community pools.', 'Meets pool barrier code'], ['Residential Front Yards', 'Clean, decorative aluminum fence for front yards and property lines.', 'Curb appeal, low upkeep'], ['HOA & Community Perimeters', 'Durable aluminum fence options for communities and shared spaces.', 'Built for shared spaces'], ], cta: {
+      kicker: 'Aluminum fence materials', title: 'Ready to Quote Your', accent: 'Aluminum Fence Materials?', body: 'Send us your material needs, linear footage, height, color, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.', primary: ['Request a Quote', 'estimate.html'], secondary: ['Call (239) 689-5496', 'tel:2396895496'], }, }, chainlink: {
+    slug: 'chain-link', name: 'Chain Link', tag: 'Galvanized + Vinyl Coated', heroTitle: 'Chain Link Fence Materials', heroAccent: 'for Any Perimeter.', heroBody: 'Galvanized and vinyl-coated chain link fence materials for residential, commercial, industrial, and recreational projects. Mesh, posts, rails, fittings, gates, and hardware available for full material quotes.', heroImg: FENCE_IMG.chainlink, viewLabel: { EN: 'View Chain Link Options', ES: 'Ver opciones de chain link' }, bestFor: 'Security perimeters, sports fields, industrial and residential sites', quickFacts: [
+      ['Best For', 'Security, commercial, industrial, and recreational perimeters'], ['Material', 'Galvanized and vinyl-coated mesh, posts, rails, and fittings'], ['Options', 'Galvanized, black, and green vinyl-coated finishes'], ['Lead Time', 'Stock and lead time vary by gauge, finish, and quantity'], ], profiles: [
+      { name: 'Galvanized', tag: 'Standard', img: 'assets/profiles/chainlink-galvanized.jpg', notes: 'Classic zinc-coated mesh for security and perimeter fencing.' }, { name: 'Black Vinyl-Coated', tag: 'Popular', img: 'assets/profiles/chainlink-black.jpg', notes: 'Vinyl-coated mesh with a clean, low-profile residential look.' }, { name: 'Green Vinyl-Coated', tag: 'By request', img: 'assets/profiles/chainlink-green.jpg', notes: 'Vinyl-coated mesh for parks, courts, and recreational sites.' }, { name: 'Heavy-Gauge Industrial', tag: 'Commercial', img: 'assets/profiles/chainlink-heavy-gauge.jpg', notes: 'Heavier mesh and framework for high-security commercial perimeters.' }, ], specs: [
+      ['Heights', "4', 5', 6', and taller options available"], ['Mesh', 'Galvanized and vinyl-coated mesh in multiple gauges'], ['Finishes', 'Galvanized, black, and green vinyl-coated'], ['Material', 'Mesh, posts, rails, fittings, gates, and hardware'], ['Framework', 'Line posts, terminal posts, top rail, and tension wire'], ['Lead time', 'Stock and lead time vary by gauge, finish, and quantity'], ], useCasesBlurb: 'Chain link earns its keep where security, scale, and budget meet.', useCases: [
+      ['Security Perimeters', 'Durable chain link fencing for commercial and industrial security.', 'Proven perimeter security'], ['Sports & Recreation', 'Vinyl-coated mesh for ball fields, courts, and park enclosures.', 'Courts, fields and parks'], ['Self-Storage & Industrial', 'Long perimeter runs for storage yards and industrial sites.', 'Long runs, low cost'], ], cta: {
+      kicker: 'Chain link fence materials', title: 'Ready to Quote Your', accent: 'Chain Link Fence Materials?', body: 'Send us your material needs, linear footage, height, finish, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.', primary: ['Request a Quote', 'estimate.html'], secondary: ['Call (239) 689-5496', 'tel:2396895496'], }, }, metal: {
+    slug: 'metal', name: 'Metal / DuraFence', tag: 'Metal / DuraFence privacy materials', heroTitle: 'Metal / DuraFence Privacy', heroAccent: 'Fence Materials.', heroBody: 'Durable metal privacy fence materials for residential, commercial, and high-security projects. Panels, posts, rails, gates, hardware, and accessories available for full material quotes.', heroImg: FENCE_IMG.metal, viewLabel: { EN: 'View Metal / DuraFence Options', ES: 'Ver opciones de Metal / DuraFence' }, bestFor: 'Privacy fences, modern yards, commercial screens, security projects', quickFacts: [
+      ['Best For', 'Privacy fences, modern yards, commercial screens, security projects'], ['Material', 'Metal privacy panels, rails, and posts'], ['Options', 'Modern, Original, and P1 styles, with matching gates'], ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'], ], profilesSub: 'Available in Modern, Original, and P1 styles. Custom fabrication is available for gates only.', profiles: [
+      { name: 'Modern', tag: 'Contemporary', img: 'assets/profiles/metal-modern.jpg', notes: 'Clean-lined DuraFence profile for contemporary projects.' }, { name: 'Original', tag: 'Classic', img: 'assets/profiles/metal-original.jpg', notes: 'The original DuraFence full-privacy board profile.' }, { name: 'P1', tag: 'Panel', img: 'assets/profiles/metal-p1.jpg', notes: 'DuraFence P1 privacy panel profile for residential and commercial runs.' }, ], specs: [
+      ['Heights', "6' and 8'"], ['Colors', 'White, black, bronze, and woodgrain'], ['Material', 'Metal panels, posts, rails, gates, and hardware'], ['Styles', 'Modern, Original, and P1'], ['Post Options', 'One 2-1/2" post type for all positions'], ['Lead Time', 'Stock and lead time vary by style, height, color, and quantity'], ], useCasesBlurb: 'Metal earns its keep where privacy, strength, and modern looks meet.', useCases: [
+      ['Modern Privacy', 'Metal privacy fence materials for clean residential and commercial designs.', 'Solid-board look in metal'], ['Commercial Screens', 'Durable metal fence options for enclosures, screens, and utility areas.', 'Screens and enclosures'], ['Security Projects', 'Strong metal fence materials for projects that need privacy and durability.', 'Privacy plus durability'], ], cta: {
+      kicker: 'Metal fence materials', title: 'Ready to Quote Your', accent: 'Metal Fence Materials?', body: 'Send us your linear footage, height, color, style, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.', primary: ['Request a Quote', 'estimate.html'], secondary: ['Call (239) 689-5496', 'tel:2396895496'], }, projects: [
+      { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'Metal', type: 'Horizontal metal board privacy, black', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/met-fence-horizontal-black.jpg' }, { name: 'Commercial Facility', loc: 'Fort Myers, FL', size: '480 LF', material: 'Metal', type: 'Metal fence, 3-rail, brown', contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/met-fence-3-rail-brown.jpg' }, { name: 'Modern Residential Privacy', loc: 'Naples, FL', size: '260 LF', material: 'Metal', type: 'Metal fence, 3-rail, black', contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/projects/met-fence-3-rail-black.jpg' }, { name: 'Utility Screen Enclosure', loc: 'Cape Coral, FL', size: '140 LF', material: 'Metal', type: 'Metal fence, 2-rail, white', contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/met-fence-2-rail-white.jpg' }, ], }, ecfence: {
+    slug: 'ecfence', name: 'EC Fence', tag: 'EC Fence galvanized steel privacy panels', heroTitle: 'EC Fence Galvanized Steel', heroAccent: 'Privacy Panels.', heroBody: 'Self-mating galvanized steel fence panels for privacy, coastal properties, commercial sites, and modern residential projects. Panels, posts, gates, hardware, and accessories available for full material quotes.', heroImg: 'assets/ec-fence.jpg', viewLabel: { EN: 'View EC Fence Options', ES: 'Ver opciones de EC Fence' }, bestFor: 'Coastal properties, commercial sites, modern residential projects', quickFacts: [
+      ['Best For', 'Coastal properties, commercial sites, modern residential projects'], ['Material', 'Self-mating galvanized steel panels'], ['Options', 'Bronze, white, 6 ft panels, gates, and sloped runs'], ['Lead Time', 'Stock and lead time vary by color, quantity, and gate requirements'], ], profiles: [
+      { name: 'Bronze 6 Ft', tag: 'Standard', img: 'assets/profiles/ecfence-bronze.jpg', notes: 'Bronze steel privacy panels for modern projects.' }, { name: 'White 6 Ft', tag: 'Standard', img: 'assets/profiles/ecfence-white.jpg', notes: 'White steel privacy panels for clean residential and commercial designs.' }, { name: 'Matching Gate', tag: 'Single / double', img: 'assets/profiles/ecfence-gate.jpg', notes: 'Single and double gates available with hardware options.' }, ], specs: [
+      ['Height', '6 ft'], ['Colors', 'Bronze and white'], ['Material', 'Self-mating galvanized steel panels'], ['Post Spacing', 'Based on EC Fence system requirements'], ['Gates', 'Single and double gates available by request'], ['Lead Time', 'Stock and lead time vary by color, quantity, and gate requirements'], ], useCasesBlurb: 'EC Fence earns its keep where coastal wind, privacy, and speed meet.', useCases: [
+      ['Coastal Privacy', 'Galvanized steel privacy panels for coastal and Florida properties.', 'Built for salt air'], ['Commercial Properties', 'Clean privacy fence option for commercial sites, enclosures, and shared spaces.', 'Clean commercial screening'], ['Modern Residential', 'Modern privacy fence material for homes, yards, and property lines.', 'Modern panel look'], ], cta: {
+      kicker: 'EC Fence materials', title: 'Ready to Quote Your', accent: 'EC Fence Materials?', body: 'Send us your linear footage, color, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.', primary: ['Request a Quote', 'estimate.html'], secondary: ['Call (239) 689-5496', 'tel:2396895496'], }, projects: [
+      { name: 'Cape Coral Residential', loc: 'Cape Coral, FL', size: '320 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, bronze', contractor: 'Harbor Iron Works', year: '2024', imgUrl: 'assets/projects/ecfence-bronze.jpg' }, { name: 'Coastal Privacy Project', loc: 'Sanibel, FL', size: '240 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, white', contractor: 'Harbor Iron Works', year: '2024', imgUrl: 'assets/projects/ecfence-white.jpg' }, { name: 'Commercial Property Screen', loc: 'Fort Myers, FL', size: '460 LF', material: 'EC Fence', type: 'EC Fence panels, 6 ft, bronze', contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/ec-fence.jpg' }, ], },
 };
 
 const MaterialHero = ({ data }) => {
@@ -259,9 +48,7 @@ const MaterialHero = ({ data }) => {
     subtitle={data.heroBody}
     image={data.heroImg}
     actions={[
-      { label: t('Request a Material Quote', 'Solicitar cotización de material'), href: 'estimate.html', primary: true },
-      { label: data.viewLabel ? t(data.viewLabel.EN, data.viewLabel.ES) : t(`View ${data.name} Styles`, `Ver estilos de ${data.name}`), href: '#styles' },
-    ]}
+      { label: t('Request a Material Quote', 'Solicitar cotización de material'), href: 'estimate.html', primary: true }, { label: data.viewLabel ? t(data.viewLabel.EN, data.viewLabel.ES) : t(`View ${data.name} Styles`, `Ver estilos de ${data.name}`), href: '#styles' }, ]}
   />
   );
 };
@@ -270,11 +57,7 @@ const MaterialQuickFacts = ({ data }) => (
   <section style={{ background: 'var(--white)', padding: '64px 0' }}>
     <div className="container">
       <FeatureRow items={data.quickFacts || [
-        [useT()('Best for', 'Ideal para'), data.bestFor],
-        [useT()('Material', 'Material'), data.specs.find(s => s[0] === 'Material')?.[1] || '—'],
-        [useT()('Starts at', 'Desde'), data.specs.find(s => s[0] === 'Starts at')?.[1] || '—'],
-        [useT()('Lead time', 'Plazo de entrega'), data.specs.find(s => s[0] === 'Lead time')?.[1] || '—'],
-      ]}/>
+        [useT()('Best for', 'Ideal para'), data.bestFor], [useT()('Material', 'Material'), data.specs.find(s => s[0] === 'Material')?.[1] || '—'], [useT()('Starts at', 'Desde'), data.specs.find(s => s[0] === 'Starts at')?.[1] || '—'], [useT()('Lead time', 'Plazo de entrega'), data.specs.find(s => s[0] === 'Lead time')?.[1] || '—'], ]}/>
     </div>
   </section>
 );
@@ -420,11 +203,7 @@ const MaterialProfiles = ({ data }) => (
       <div className="wfs-profiles-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(data.profiles.length, 4)}, 1fr)`, gap: 14 }}>
         {data.profiles.map((p, i) => (
           <article key={p.name} style={{
-            background: 'var(--white)',
-            border: '1px solid rgba(0,16,17,0.12)',
-            overflow: 'hidden',
-            display: 'flex', flexDirection: 'column',
-          }}>
+            background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', overflow: 'hidden', display: 'flex', flexDirection: 'column', }}>
             <div style={{ aspectRatio: '16 / 10', background: p.img ? 'var(--white)' : DIAG.bg, borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
               {p.img
                 ? <img src={p.img} alt={p.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}/>
@@ -432,9 +211,7 @@ const MaterialProfiles = ({ data }) => (
             </div>
             <div style={{ padding: 24 }}>
               <div className="mono" style={{
-                fontSize: 13.5, letterSpacing: '0.22em', textTransform: 'uppercase',
-                color: 'var(--tangerine)', fontWeight: 700, marginBottom: 14,
-              }}>0{i+1} · {p.tag}</div>
+                fontSize: 13.5, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--tangerine)', fontWeight: 700, marginBottom: 14, }}>0{i+1} · {p.tag}</div>
               <h3 className="display" style={{ margin: '0 0 12px', fontSize: 23.5, lineHeight: 1.1 }}>{p.name}</h3>
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
             </div>
@@ -451,11 +228,7 @@ const MaterialSpecs = ({ data }) => (
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
           <div className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12,
-            marginBottom: 18,
-            fontSize: 14, fontWeight: 700, letterSpacing: '0.22em',
-            textTransform: 'uppercase', color: 'var(--blue-ice)',
-          }}>
+            display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 18, fontSize: 14, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--blue-ice)', }}>
             <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
             {useT()('Tech specs', 'Especificaciones')}
           </div>
@@ -477,15 +250,9 @@ const MaterialSpecs = ({ data }) => (
           <div style={{ position: 'relative', background: 'var(--white)', borderTop: '4px solid var(--tangerine)' }}>
           {data.specs.map(([k, v], i) => (
             <div key={k} style={{
-              display: 'grid', gridTemplateColumns: '220px 1fr',
-              borderBottom: i === data.specs.length - 1 ? 'none' : '1px solid rgba(0,16,17,0.08)',
-            }}>
+              display: 'grid', gridTemplateColumns: '220px 1fr', borderBottom: i === data.specs.length - 1 ? 'none' : '1px solid rgba(0,16,17,0.08)', }}>
               <div className="mono" style={{
-                padding: '14px 18px',
-                fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase',
-                color: 'var(--charcoal)', fontWeight: 700,
-                background: '#ffffff',
-              }}>{k}</div>
+                padding: '14px 18px', fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 700, background: '#ffffff', }}>{k}</div>
               <div style={{ padding: '14px 18px', fontSize: 15.5, color: 'var(--ink)' }}>{v}</div>
             </div>
           ))}
@@ -503,21 +270,15 @@ const MaterialUseCases = ({ data }) => {
     <div className="container">
       {/* Title + right blurb over a heavy rule */}
       <div style={{
-        display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end',
-        paddingBottom: 28, borderBottom: '2px solid var(--ink)',
-      }}>
+        display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end', paddingBottom: 28, borderBottom: '2px solid var(--ink)', }}>
         <h2 className="display" style={{
-          margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02,
-          letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase',
-        }}>
+          margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02, letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase', }}>
           {t('Three jobs', 'Tres trabajos')}<br/>
           <span style={{ color: 'var(--tangerine)' }}>{t('this material wins.', 'que este material gana.')}</span>
         </h2>
         {data.useCasesBlurb && (
           <p style={{
-            margin: 0, maxWidth: 340, justifySelf: 'end', textAlign: 'right',
-            fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)',
-          }}>{data.useCasesBlurb}</p>
+            margin: 0, maxWidth: 340, justifySelf: 'end', textAlign: 'right', fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)', }}>{data.useCasesBlurb}</p>
         )}
       </div>
       {/* Rows: outlined number · title + badge · description · arrow.
@@ -528,10 +289,7 @@ const MaterialUseCases = ({ data }) => {
       {/* Bottom-right link */}
       <div style={{ display: 'flex', justifyContent: 'flex-end', paddingTop: 26 }}>
         <a href="products.html" className="mono" style={{
-          display: 'inline-flex', alignItems: 'center', gap: 10,
-          fontSize: 14, fontWeight: 700, letterSpacing: '0.2em',
-          textTransform: 'uppercase', color: 'var(--tangerine)',
-        }}>
+          display: 'inline-flex', alignItems: 'center', gap: 10, fontSize: 14, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--tangerine)', }}>
           {t(`See all ${data.name} applications`, `Ver todas las aplicaciones de ${data.name}`)}
           <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
             <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
