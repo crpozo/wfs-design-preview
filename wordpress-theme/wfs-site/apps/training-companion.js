@@ -1,9 +1,2 @@
-const App = () => (
-  <>
-    <TrainingHeader />
-    <TrainingHero />
-    <TrainingSteps />
-    <TrainingFooter />
-  </>
-);
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+const App = () => /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(TrainingHeader, null), /* @__PURE__ */ React.createElement(TrainingHero, null), /* @__PURE__ */ React.createElement(TrainingSteps, null), /* @__PURE__ */ React.createElement(TrainingFooter, null));
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));

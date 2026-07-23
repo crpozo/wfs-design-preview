@@ -1,13 +1,2 @@
-const App = () => (
-  <>
-    <SiteHeader active="Fences" />
-    <ProductsHero />
-    <FenceCategories />
-    <ProductHardware />
-    <GateSystems />
-    <FeaturedGrid />
-    <ProductsCTA />
-    <Footer />
-  </>
-);
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+const App = () => /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(SiteHeader, { active: "Fences" }), /* @__PURE__ */ React.createElement(ProductsHero, null), /* @__PURE__ */ React.createElement(FenceCategories, null), /* @__PURE__ */ React.createElement(ProductHardware, null), /* @__PURE__ */ React.createElement(GateSystems, null), /* @__PURE__ */ React.createElement(FeaturedGrid, null), /* @__PURE__ */ React.createElement(ProductsCTA, null), /* @__PURE__ */ React.createElement(Footer, null));
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));

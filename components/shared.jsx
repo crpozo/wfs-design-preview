@@ -787,11 +787,16 @@ function openLiveChat(e) {
   var api = window.Tawk_API;
   if (!api) { return false; }
   if (e && e.preventDefault) { e.preventDefault(); }
+  /* La burbuja va oculta; al pedir chat hay que mostrarla y abrirla. */
+  function open() {
+    try { if (typeof window.Tawk_API.showWidget === 'function') window.Tawk_API.showWidget(); } catch (err) {}
+    try { window.Tawk_API.maximize(); } catch (err) {}
+  }
   if (typeof api.maximize === 'function') {
-    try { api.maximize(); } catch (err) {}
+    open();
   } else {
     /* El widget aun no termina de cargar: se abre en cuanto este listo. */
-    api.onLoad = function () { try { window.Tawk_API.maximize(); } catch (err) {} };
+    api.onLoad = open;
   }
   return true;
 }

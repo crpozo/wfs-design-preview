@@ -1,12 +1,2 @@
-const App = () => (
-  <>
-    <SiteHeader active="Get a Quote" />
-    <EstimateHero />
-    <LiveAgentBand />
-    <div id="form">
-      <FinalCTA />
-    </div>
-    <Footer />
-  </>
-);
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+const App = () => /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(SiteHeader, { active: "Get a Quote" }), /* @__PURE__ */ React.createElement(EstimateHero, null), /* @__PURE__ */ React.createElement(LiveAgentBand, null), /* @__PURE__ */ React.createElement("div", { id: "form" }, /* @__PURE__ */ React.createElement(FinalCTA, null)), /* @__PURE__ */ React.createElement(Footer, null));
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));

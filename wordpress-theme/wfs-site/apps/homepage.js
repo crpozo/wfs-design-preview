@@ -1,19 +1,2 @@
-const App = () => (
-  <>
-    <SiteHeader />
-    <Hero />
-    {/* <InstallerMarquee />, hidden for now */}
-    <AboutIntro />
-    <FenceCategories />
-    <ProductMarquee />
-    <WhyWFS />
-    <GateSystems />
-    {/* <ProjectGallery />, hidden for now */}
-    <Testimonials />
-    <FAQ />
-    <ServiceAreas />
-    <FinalCTA />
-    <Footer />
-  </>
-);
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+const App = () => /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(SiteHeader, null), /* @__PURE__ */ React.createElement(Hero, null), /* @__PURE__ */ React.createElement(AboutIntro, null), /* @__PURE__ */ React.createElement(FenceCategories, null), /* @__PURE__ */ React.createElement(ProductMarquee, null), /* @__PURE__ */ React.createElement(WhyWFS, null), /* @__PURE__ */ React.createElement(GateSystems, null), /* @__PURE__ */ React.createElement(Testimonials, null), /* @__PURE__ */ React.createElement(FAQ, null), /* @__PURE__ */ React.createElement(ServiceAreas, null), /* @__PURE__ */ React.createElement(FinalCTA, null), /* @__PURE__ */ React.createElement(Footer, null));
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));

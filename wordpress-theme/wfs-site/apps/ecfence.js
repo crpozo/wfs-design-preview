@@ -1,1 +1,1 @@
-ReactDOM.createRoot(document.getElementById('root')).render(<MaterialPage slug="ecfence" />);
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(MaterialPage, { slug: "ecfence" }));

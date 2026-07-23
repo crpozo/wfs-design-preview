@@ -4,7 +4,7 @@
 No reinterpreta el diseño: copia los componentes y el CSS tal cual, y hace que
 WordPress los sirva. Por construccion el resultado es identico al preview.
 """
-import re, shutil, pathlib, json, html
+import re, shutil, pathlib, json, subprocess, html
 
 SRC   = pathlib.Path(__file__).resolve().parent.parent
 OUT   = SRC / "wordpress-theme" / "wfs-site"
@@ -64,4 +64,32 @@ for f in sorted(SRC.glob("*.html")):
     pages[slug] = {"title": title, "file": f.name, "components": comps}
 
 (OUT / "apps" / "manifest.json").write_text(json.dumps(pages, indent=2))
+
+# ------------------------------------------------- precompilar el JSX
+# Sin esto el navegador tiene que descargar Babel (3 MB) y compilar 740 KB
+# de JSX en cada carga, bloqueando el pintado. Precompilar deja el mismo
+# resultado (React.createElement) hecho de antemano.
+def transpile(path):
+    out = path.with_suffix(".js")
+    subprocess.run(
+        ["npx", "--yes", "esbuild@0.24.0", str(path),
+         "--loader:" + path.suffix + "=jsx", "--outfile=" + str(out),
+         "--allow-overwrite", "--log-level=error"],
+        check=True)
+    if out != path:
+        path.unlink()
+    return out
+
+try:
+    for f in sorted((OUT / "components").glob("*.jsx")):
+        transpile(f)
+    for slug in pages:
+        transpile(OUT / "apps" / f"{slug}.js")
+    for page in pages.values():
+        page["components"] = [c.replace(".jsx", ".js") for c in page["components"]]
+    (OUT / "apps" / "manifest.json").write_text(json.dumps(pages, indent=2))
+    (OUT / "precompiled").write_text("1")
+    print("  JSX precompilado: se elimina Babel del navegador")
+except (subprocess.CalledProcessError, FileNotFoundError) as err:
+    print(f"  ! sin esbuild ({err}), el tema cargara Babel en el navegador")
 print(f"  paginas: {len(pages)}   componentes: {len(list((OUT/'components').glob('*.jsx')))}")

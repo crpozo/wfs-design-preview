@@ -1,0 +1,260 @@
+const CONTACT_YARDS = [
+  {
+    key: "fm",
+    name: "Fort Myers",
+    chip: { EN: "HQ \xB7 FORT MYERS", ES: "SEDE \xB7 FORT MYERS" },
+    address: "2621 Fowler St, Fort Myers, FL 33901",
+    phone: "(239) 689-5496",
+    tel: "tel:+12396895496",
+    email: "sales@westernfencesupply.com",
+    mapQ: "2621 Fowler St, Fort Myers, FL 33901"
+  },
+  {
+    key: "pc",
+    name: "Port Charlotte",
+    chip: { EN: "PORT CHARLOTTE", ES: "PORT CHARLOTTE" },
+    address: "1145 Enterprise Dr, Port Charlotte, FL 33953",
+    phone: "(941) 623-6890",
+    tel: "tel:+19416236890",
+    email: "salespc@westernfencesupply.com",
+    mapQ: "1145 Enterprise Dr, Port Charlotte, FL 33953"
+  }
+];
+const ContactHero = () => {
+  const t = useT();
+  return /* @__PURE__ */ React.createElement(
+    PageHero,
+    {
+      crumbs: [[t("Home", "Inicio"), "Homepage.html"], [t("Contact", "Contacto"), null]],
+      eyebrow: t("Contact \xB7 Western Fence Supply", "Contacto \xB7 Western Fence Supply"),
+      title: t("Contact.", "Contacto."),
+      subtitle: t("Phones, emails, addresses and hours for both yards, right here. Looking for material pricing? Use the quote form so it reaches the right rep.", "Tel\xE9fonos, correos, direcciones y horarios de ambas sucursales, aqu\xED mismo. \xBFBuscas precios de material? Usa el formulario de cotizaci\xF3n para que llegue al asesor correcto."),
+      image: "https://crpozo.github.io/wfs-design-preview/assets/hero-warehouse.webp"
+    }
+  );
+};
+const ContactInfo = () => {
+  const t = useT();
+  return /* @__PURE__ */ React.createElement("section", { style: { background: "var(--white)", padding: "clamp(56px, 8vh, 90px) 0" } }, /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("div", { style: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+    gap: 24,
+    flexWrap: "wrap",
+    paddingBottom: 24,
+    marginBottom: 36,
+    borderBottom: "2px solid var(--ink)"
+  } }, /* @__PURE__ */ React.createElement("h2", { className: "display", style: {
+    margin: 0,
+    fontSize: "clamp(26px, 2.8vw, 40px)",
+    lineHeight: 1.02,
+    fontWeight: 800,
+    textTransform: "uppercase",
+    letterSpacing: "-0.01em"
+  } }, t("Visit or call", "Visita o llama a"), " ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--tangerine)" } }, t("a yard.", "una sucursal."))), /* @__PURE__ */ React.createElement("div", { className: "mono", style: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 10,
+    fontSize: 14,
+    fontWeight: 700,
+    letterSpacing: "0.16em",
+    textTransform: "uppercase",
+    color: "var(--charcoal)"
+  } }, /* @__PURE__ */ React.createElement("span", { "aria-hidden": true, style: { width: 8, height: 8, borderRadius: "50%", background: "var(--tangerine)" } }), t("Mon\u2013Fri 7am\u20134pm \xB7 Sat 7am\u201312pm", "Lun\u2013Vie 7am\u20134pm \xB7 S\xE1b 7am\u201312pm"))), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 } }, CONTACT_YARDS.map((y) => /* @__PURE__ */ React.createElement("article", { key: y.key, style: {
+    border: "1px solid rgba(0,16,17,0.12)",
+    borderTop: "3px solid var(--tangerine)",
+    padding: "28px 30px 30px",
+    display: "flex",
+    flexDirection: "column",
+    gap: 20
+  } }, /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("h3", { className: "display", style: { margin: "0 0 6px", fontSize: 28.5, lineHeight: 1 } }, y.name), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 16, color: "var(--charcoal)" } }, y.address)), /* @__PURE__ */ React.createElement("span", { className: "mono", style: {
+    flexShrink: 0,
+    background: "var(--ink)",
+    color: "var(--white)",
+    padding: "5px 10px",
+    fontSize: 13,
+    letterSpacing: "0.18em",
+    fontWeight: 700,
+    textTransform: "uppercase"
+  } }, t(y.chip))), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gap: 12, paddingTop: 4 } }, /* @__PURE__ */ React.createElement("a", { href: y.tel, style: { display: "flex", alignItems: "center", gap: 12 } }, /* @__PURE__ */ React.createElement("span", { "aria-hidden": true, style: {
+    width: 34,
+    height: 34,
+    flexShrink: 0,
+    border: "1.5px solid var(--ink)",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "var(--tangerine)"
+  } }, /* @__PURE__ */ React.createElement("svg", { width: "15", height: "15", viewBox: "0 0 16 16", fill: "none", stroke: "currentColor", strokeWidth: "1.4" }, /* @__PURE__ */ React.createElement("path", { d: "M3 3h3l1.5 4-2 1c1 2 2.5 3.5 4.5 4.5l1-2 4 1.5v3c0 0.5-0.5 1-1 1C8 16 0 8 0 4c0-0.5 0.5-1 1-1z", transform: "translate(0.5,0)" }))), /* @__PURE__ */ React.createElement("span", { className: "display", style: { fontSize: 22.5, fontWeight: 800, letterSpacing: "0.01em", color: "var(--ink)" } }, y.phone)), /* @__PURE__ */ React.createElement("a", { href: `mailto:${y.email}`, style: { display: "flex", alignItems: "center", gap: 12 } }, /* @__PURE__ */ React.createElement("span", { "aria-hidden": true, style: {
+    width: 34,
+    height: 34,
+    flexShrink: 0,
+    border: "1.5px solid var(--ink)",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    color: "var(--tangerine)"
+  } }, /* @__PURE__ */ React.createElement("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.7" }, /* @__PURE__ */ React.createElement("rect", { x: "3", y: "5", width: "18", height: "14", rx: "1.5" }), /* @__PURE__ */ React.createElement("path", { d: "M3 7 L12 13 L21 7" }))), /* @__PURE__ */ React.createElement("span", { style: { fontSize: 15.5, color: "var(--laser-blue)", wordBreak: "break-all" } }, y.email))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 12, flexWrap: "wrap", marginTop: "auto", paddingTop: 8 } }, /* @__PURE__ */ React.createElement("a", { href: y.tel, className: "mono", style: {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 8,
+    padding: "12px 20px",
+    background: "var(--ink)",
+    color: "var(--white)",
+    fontSize: 13.5,
+    fontWeight: 700,
+    letterSpacing: "0.16em",
+    textTransform: "uppercase"
+  } }, t("Call this location", "Llamar a esta sucursal")), /* @__PURE__ */ React.createElement(
+    "a",
+    {
+      href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(y.mapQ)}`,
+      target: "_blank",
+      rel: "noopener",
+      className: "mono",
+      style: {
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 8,
+        padding: "12px 20px",
+        border: "1px solid var(--ink)",
+        color: "var(--ink)",
+        fontSize: 13.5,
+        fontWeight: 700,
+        letterSpacing: "0.16em",
+        textTransform: "uppercase"
+      }
+    },
+    t("Get directions", "C\xF3mo llegar"),
+    /* @__PURE__ */ React.createElement("svg", { width: "12", height: "12", viewBox: "0 0 16 16", fill: "none" }, /* @__PURE__ */ React.createElement("path", { d: "M3 8h10m0 0L9 4m4 4l-4 4", stroke: "currentColor", strokeWidth: "1.8", strokeLinecap: "square" }))
+  ))))), /* @__PURE__ */ React.createElement("p", { style: { margin: "18px 0 0", fontSize: 14.5, color: "var(--charcoal)" } }, t("General inquiries:", "Consultas generales:"), " ", /* @__PURE__ */ React.createElement("a", { href: "mailto:sales@westernfencesupply.com", style: { color: "var(--ink)", borderBottom: "1px solid var(--tangerine)" } }, "sales@westernfencesupply.com"), " \xB7 ", /* @__PURE__ */ React.createElement("a", { href: "locations.html", style: { color: "var(--ink)", borderBottom: "1px solid var(--tangerine)" } }, t("Pickup info & maps", "Info de retiro y mapas")))));
+};
+const ContactForm = () => {
+  const t = useT();
+  const [submitted, setSubmitted] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [error, setError] = React.useState("");
+  const busy = React.useRef(false);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (busy.current) return;
+    busy.current = true;
+    setSending(true);
+    setError("");
+    try {
+      await submitLead(e.target, { form: "contact", subject: "Website Contact Message" });
+      setSubmitted(true);
+    } catch (err) {
+      setError(err && err.message || t(
+        "We couldn't send your message. Please call (239) 689-5496 or email sales@westernfencesupply.com.",
+        "No pudimos enviar tu mensaje. Llama al (239) 689-5496 o escribe a sales@westernfencesupply.com."
+      ));
+    } finally {
+      busy.current = false;
+      setSending(false);
+    }
+  };
+  const inputStyle = {
+    width: "100%",
+    padding: "14px 16px",
+    border: "1px solid rgba(0,16,17,0.25)",
+    background: "var(--white)",
+    fontFamily: "var(--sans)",
+    fontSize: 15.5,
+    color: "var(--ink)"
+  };
+  const labelStyle = {
+    display: "block",
+    marginBottom: 8,
+    fontFamily: "var(--mono)",
+    fontSize: 13.5,
+    fontWeight: 700,
+    letterSpacing: "0.18em",
+    textTransform: "uppercase",
+    color: "var(--ink)"
+  };
+  const expectations = [
+    { EN: "Replies during business hours, usually the same day", ES: "Respondemos en horario laboral, normalmente el mismo d\xEDa" },
+    { EN: "A real person from the yard, no chatbot", ES: "Una persona real de la sucursal, sin chatbot" },
+    { EN: "English and Spanish", ES: "Ingl\xE9s y espa\xF1ol" }
+  ];
+  return /* @__PURE__ */ React.createElement("section", { id: "message", style: { background: "var(--white)", padding: "0 0 clamp(64px, 9vh, 110px)", scrollMarginTop: 120 } }, /* @__PURE__ */ React.createElement("div", { className: "container" }, /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: 0, alignItems: "stretch" } }, /* @__PURE__ */ React.createElement("div", { className: "wfs-brand-texture", style: {
+    backgroundColor: "var(--ink)",
+    color: "var(--white)",
+    padding: "clamp(32px, 4vw, 52px)",
+    display: "flex",
+    flexDirection: "column",
+    gap: 22
+  } }, /* @__PURE__ */ React.createElement("h2", { className: "display", style: {
+    margin: 0,
+    fontSize: "clamp(26px, 2.6vw, 38px)",
+    lineHeight: 1.05,
+    textTransform: "uppercase",
+    fontWeight: 800,
+    color: "var(--white)"
+  } }, t("Send us a", "Env\xEDanos un"), " ", /* @__PURE__ */ React.createElement("span", { style: { color: "var(--tangerine)" } }, t("message.", "mensaje."))), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 16, lineHeight: 1.65, color: "var(--alice-blue)", maxWidth: 340 } }, t("Questions, feedback, or anything that is not a material quote. For pricing, use the quote form so it reaches the right rep with the right details.", "Preguntas, comentarios o cualquier tema que no sea una cotizaci\xF3n de material. Para precios, usa el formulario de cotizaci\xF3n para que llegue al asesor correcto con los datos correctos.")), /* @__PURE__ */ React.createElement("ul", { style: { listStyle: "none", margin: "auto 0 0", padding: 0, display: "grid", gap: 12 } }, expectations.map((x, i) => /* @__PURE__ */ React.createElement("li", { key: i, style: { display: "flex", gap: 12, alignItems: "flex-start", fontSize: 15, lineHeight: 1.5, color: "var(--alice-blue)" } }, /* @__PURE__ */ React.createElement("svg", { width: "14", height: "14", viewBox: "0 0 16 16", fill: "none", style: { flexShrink: 0, marginTop: 3 } }, /* @__PURE__ */ React.createElement("path", { d: "M3 8 L7 12 L13 4", stroke: "var(--tangerine)", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" })), t(x))))), /* @__PURE__ */ React.createElement("div", { style: {
+    background: "var(--white)",
+    border: "1px solid rgba(0,16,17,0.15)",
+    padding: "clamp(28px, 3.5vw, 48px)"
+  } }, submitted ? /* @__PURE__ */ React.createElement("div", { style: { padding: "48px 0", textAlign: "center" } }, /* @__PURE__ */ React.createElement("span", { "aria-hidden": true, style: {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 60,
+    height: 60,
+    borderRadius: "50%",
+    background: "var(--tangerine)",
+    color: "var(--white)",
+    marginBottom: 18
+  } }, /* @__PURE__ */ React.createElement("svg", { width: "26", height: "26", viewBox: "0 0 16 16", fill: "none" }, /* @__PURE__ */ React.createElement("path", { d: "M3 8.5 L6.5 12 L13 4.5", stroke: "currentColor", strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round" }))), /* @__PURE__ */ React.createElement("div", { className: "display", style: { fontSize: 27.5, marginBottom: 10 } }, t("Message sent.", "Mensaje enviado.")), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 16, color: "var(--charcoal)" } }, t("Thanks, we reply during business hours, usually the same day.", "Gracias: respondemos en horario laboral, normalmente el mismo d\xEDa."))) : /* @__PURE__ */ React.createElement("form", { onSubmit: handleSubmit, style: { display: "grid", gap: 18 } }, /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 18 } }, /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { style: labelStyle }, t("Full name", "Nombre completo")), /* @__PURE__ */ React.createElement("input", { name: "name", required: true, style: inputStyle, placeholder: "Jane Smith" })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { style: labelStyle }, t("Email", "Correo")), /* @__PURE__ */ React.createElement("input", { name: "email", required: true, type: "email", style: inputStyle, placeholder: "jane@email.com" }))), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { style: labelStyle }, t("Phone (optional)", "Tel\xE9fono (opcional)")), /* @__PURE__ */ React.createElement("input", { name: "phone", style: inputStyle, placeholder: "(239) 555-0142" })), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement("label", { style: labelStyle }, t("Message", "Mensaje")), /* @__PURE__ */ React.createElement(
+    "textarea",
+    {
+      name: "message",
+      required: true,
+      rows: 5,
+      style: { ...inputStyle, resize: "vertical", minHeight: 120 },
+      placeholder: t("How can we help?", "\xBFC\xF3mo podemos ayudarte?")
+    }
+  )), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, flexWrap: "wrap" } }, /* @__PURE__ */ React.createElement("span", { style: { fontSize: 14, color: "var(--charcoal)", maxWidth: 300 } }, t("By submitting, you agree to be contacted by Western Fence Supply.", "Al enviar, aceptas que Western Fence Supply te contacte.")), /* @__PURE__ */ React.createElement(
+    "button",
+    {
+      type: "submit",
+      disabled: sending,
+      style: {
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 10,
+        opacity: sending ? 0.6 : 1,
+        padding: "15px 28px",
+        background: "var(--tangerine)",
+        color: "var(--white)",
+        fontFamily: "var(--sans)",
+        fontSize: 14.5,
+        fontWeight: 700,
+        letterSpacing: "0.14em",
+        textTransform: "uppercase",
+        cursor: "pointer",
+        boxShadow: "0 10px 26px rgba(255, 113, 51,0.35)",
+        transition: "transform 0.18s"
+      },
+      onMouseEnter: (e) => {
+        e.currentTarget.style.transform = "translateY(-1px)";
+      },
+      onMouseLeave: (e) => {
+        e.currentTarget.style.transform = "";
+      }
+    },
+    sending ? t("Sending\u2026", "Enviando\u2026") : t("Send message", "Enviar mensaje"),
+    /* @__PURE__ */ React.createElement("svg", { width: "13", height: "13", viewBox: "0 0 16 16", fill: "none" }, /* @__PURE__ */ React.createElement("path", { d: "M3 8h10m0 0L9 4m4 4l-4 4", stroke: "currentColor", strokeWidth: "1.8", strokeLinecap: "round" }))
+  )), error && /* @__PURE__ */ React.createElement("p", { role: "alert", style: {
+    margin: 0,
+    padding: "14px 16px",
+    borderRadius: 12,
+    background: "rgba(255,113,51,0.08)",
+    border: "1px solid rgba(255,113,51,0.35)",
+    fontSize: 15.5,
+    lineHeight: 1.5,
+    color: "var(--ink)"
+  } }, error))))));
+};
+Object.assign(window, { ContactHero, ContactInfo, ContactForm });

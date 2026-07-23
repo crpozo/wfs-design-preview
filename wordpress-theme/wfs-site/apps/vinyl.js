@@ -1,1 +1,1 @@
-ReactDOM.createRoot(document.getElementById('root')).render(<MaterialPage slug="vinyl" />);
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(MaterialPage, { slug: "vinyl" }));

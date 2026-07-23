@@ -1,1 +1,1 @@
-ReactDOM.createRoot(document.getElementById('root')).render(<GatePage slug="rolling" />);
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(GatePage, { slug: "rolling" }));

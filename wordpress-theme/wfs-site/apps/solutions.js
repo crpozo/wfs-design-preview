@@ -1,13 +1,2 @@
-const App = () => (
-  <>
-    <SiteHeader />
-    <SolutionsHero />
-    <SolutionsAudiences />
-    <div id="yards">
-      <ServiceAreas />
-    </div>
-    <SolutionsCTA />
-    <Footer />
-  </>
-);
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+const App = () => /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(SiteHeader, null), /* @__PURE__ */ React.createElement(SolutionsHero, null), /* @__PURE__ */ React.createElement(SolutionsAudiences, null), /* @__PURE__ */ React.createElement("div", { id: "yards" }, /* @__PURE__ */ React.createElement(ServiceAreas, null)), /* @__PURE__ */ React.createElement(SolutionsCTA, null), /* @__PURE__ */ React.createElement(Footer, null));
+ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));

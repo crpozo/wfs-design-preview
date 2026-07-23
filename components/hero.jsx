@@ -62,7 +62,7 @@ const Hero = () => {
           video's own first frame, so playback starts with no visible swap. */}
       <video
         ref={videoRef}
-        src="assets/second-video.mp4?v=234"
+        src="assets/second-video.mp4?v=279"
         poster="assets/second-video-poster.jpg?v=245"
         autoPlay muted loop playsInline preload="auto"
         aria-hidden="true"

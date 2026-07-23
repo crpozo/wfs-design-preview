@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '2.10.0' );
+define( 'WFS_VERSION', '3.0.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -97,56 +97,122 @@ function wfs_link_map() {
 	return $map;
 }
 
-/** Imprime las etiquetas <script> del sitio, en el mismo orden que el original. */
+/** True si el build precompilo el JSX y por tanto no hace falta Babel. */
+function wfs_is_precompiled() {
+	return file_exists( get_theme_file_path( 'precompiled' ) );
+}
+
+/**
+ * Imprime las etiquetas <script> del sitio, en el mismo orden que el original.
+ *
+ * Con el JSX precompilado se cargan los builds de produccion de React y no se
+ * carga Babel: son 4,2 MB menos y el navegador ya no compila nada al abrir.
+ */
 function wfs_print_app( $slug ) {
 	$pages = wfs_pages();
 	if ( ! isset( $pages[ $slug ] ) ) { return; }
-	$v = WFS_VERSION;
+	$v   = WFS_VERSION;
+	$pre = wfs_is_precompiled();
 
 	echo "\n";
-	echo '<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>' . "\n";
-	echo '<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>' . "\n";
-	echo '<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>' . "\n";
+	if ( $pre ) {
+		echo '<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>' . "\n";
+		echo '<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>' . "\n";
+	} else {
+		echo '<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>' . "\n";
+		echo '<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>' . "\n";
+		echo '<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>' . "\n";
+	}
 
+	$type = $pre ? '' : ' type="text/babel"';
 	foreach ( $pages[ $slug ]['components'] as $comp ) {
 		printf(
-			'<script type="text/babel" src="%s"></script>' . "\n",
+			'<script%s src="%s"></script>' . "\n",
+			$type,
 			esc_url( get_theme_file_uri( 'components/' . $comp ) . '?ver=' . $v )
 		);
 	}
 
-	$app = get_theme_file_path( 'apps/' . $slug . '.js' );
+	$ext = $pre ? '.js' : '.js';
+	$app = get_theme_file_path( 'apps/' . $slug . $ext );
 	if ( file_exists( $app ) ) {
-		echo '<script type="text/babel">' . "\n";
+		echo '<script' . $type . '>' . "\n";
 		echo file_get_contents( $app );
 		echo "</script>\n";
 	}
 }
 
 /**
- * El chat de tawk.to abre maximizado en cada carga porque hay un snippet en el
- * sitio que llama a Tawk_API.maximize(). Esto lo deja minimizado: la burbuja
- * sigue ahi y el chat funciona igual, pero no tapa la pagina al entrar.
+ * Chat de tawk.to: sin burbuja flotante.
  *
- * Corre en wp_footer con prioridad tardia para pisar ese snippet.
- * Para volver al comportamiento anterior: define( 'WFS_TAWK_AUTOOPEN', true );
- * en wp-config.php.
+ * El sitio trae un snippet que llama a Tawk_API.maximize() en cada carga. Aqui
+ * se oculta el widget entero; se muestra solo cuando el visitante pulsa
+ * "Talk to a live agent", y vuelve a ocultarse al cerrarlo.
+ *
+ * Para recuperar la burbuja: define( 'WFS_TAWK_BUBBLE', true ) en wp-config.php
  */
-function wfs_tawk_start_minimized() {
-	if ( defined( 'WFS_TAWK_AUTOOPEN' ) && WFS_TAWK_AUTOOPEN ) { return; }
+function wfs_tawk_hidden_until_asked() {
+	if ( defined( 'WFS_TAWK_BUBBLE' ) && WFS_TAWK_BUBBLE ) { return; }
 	?>
 <script>
 (function () {
   window.Tawk_API = window.Tawk_API || {};
-  window.Tawk_API.onLoad = function () {
-    try { window.Tawk_API.minimize(); } catch (e) {}
-  };
-  /* Por si el widget ya termino de cargar antes de llegar aqui. */
-  if (typeof window.Tawk_API.minimize === 'function') {
-    try { window.Tawk_API.minimize(); } catch (e) {}
-  }
+  function hide() { try { window.Tawk_API.hideWidget(); } catch (e) {} }
+  window.Tawk_API.onLoad = hide;
+  window.Tawk_API.onChatMinimized = hide;
+  window.Tawk_API.onChatHidden = hide;
+  if (typeof window.Tawk_API.hideWidget === 'function') { hide(); }
 })();
 </script>
+<style>
+/* Insignia de reCAPTCHA: el tema no usa ningun formulario que la necesite. */
+.grecaptcha-badge { display: none !important; }
+</style>
 	<?php
 }
-add_action( 'wp_footer', 'wfs_tawk_start_minimized', 9999 );
+add_action( 'wp_footer', 'wfs_tawk_hidden_until_asked', 9999 );
+
+/**
+ * No cargar en el front los assets de plugins que este tema no usa.
+ *
+ * El sitio arrastra 37 archivos JS (586 KB) de Contact Form 7, reCAPTCHA,
+ * UberMenu y TablePress. El tema dibuja sus propias paginas con React y no
+ * usa ninguno, asi que en el front son peso muerto. Los plugins siguen
+ * activos y funcionando en el escritorio.
+ *
+ * Para desactivar este comportamiento: define( 'WFS_KEEP_PLUGIN_ASSETS', true )
+ */
+function wfs_unused_plugin_assets() {
+	return apply_filters( 'wfs_unused_plugin_assets', array(
+		'contact-form-7',
+		'material-design-for-contact-form-7',
+		'ubermenu',
+		'tablepress',
+		'auto-terms-of-service-and-privacy-policy',
+		'recaptcha',
+	) );
+}
+
+function wfs_strip_unused_plugin_assets() {
+	if ( is_admin() ) { return; }
+	if ( defined( 'WFS_KEEP_PLUGIN_ASSETS' ) && WFS_KEEP_PLUGIN_ASSETS ) { return; }
+
+	$needles = wfs_unused_plugin_assets();
+	$sets    = array( 'script' => wp_scripts(), 'style' => wp_styles() );
+
+	foreach ( $sets as $kind => $reg ) {
+		if ( ! $reg ) { continue; }
+		foreach ( (array) $reg->queue as $handle ) {
+			$src  = isset( $reg->registered[ $handle ] ) ? (string) $reg->registered[ $handle ]->src : '';
+			$hay  = $handle . ' ' . $src;
+			foreach ( $needles as $needle ) {
+				if ( false !== stripos( $hay, $needle ) ) {
+					if ( 'script' === $kind ) { wp_dequeue_script( $handle ); }
+					else { wp_dequeue_style( $handle ); }
+					break;
+				}
+			}
+		}
+	}
+}
+add_action( 'wp_enqueue_scripts', 'wfs_strip_unused_plugin_assets', 100 );

@@ -338,16 +338,44 @@ const AboutIntro = () => {
   const [ctaHover, setCtaHover] = React.useState(false);
   const videoRef = React.useRef(null);
 
-  // Keep the looping video playing even if `canplay` fired before React
-  // attached (cached video), play() on mount, resume on any stray pause.
+  // Este video pesa mucho y queda bajo el pliegue: descargarlo al abrir la
+  // pagina retrasaba la carga entera. Se deja el poster visible y solo se
+  // pide el archivo cuando la seccion esta a punto de verse. A partir de ahi
+  // se mantiene reproduciendo aunque `canplay` se adelante a React.
   React.useEffect(() => {
     const v = videoRef.current;
     if (!v) return;
     const tryPlay = () => { const p = v.play(); if (p) p.catch(() => {}); };
-    tryPlay();
-    v.addEventListener('loadeddata', tryPlay);
-    v.addEventListener('pause', tryPlay);
+    let started = false;
+    const start = () => {
+      if (started) return;
+      started = true;
+      if (!v.src) { v.src = v.dataset.src; }
+      v.addEventListener('loadeddata', tryPlay);
+      v.addEventListener('pause', tryPlay);
+      tryPlay();
+    };
+
+    // Se comprueba con la posicion en pantalla y no con IntersectionObserver:
+    // el observador no llega a dispararse en algunos contextos (pestanas en
+    // segundo plano, paneles embebidos) y el video se quedaria sin cargar.
+    const near = () => {
+      const r = v.getBoundingClientRect();
+      return r.top < window.innerHeight + 400 && r.bottom > -400;
+    };
+    const check = () => { if (near()) { start(); stop(); } };
+    const stop = () => {
+      window.removeEventListener('scroll', check);
+      window.removeEventListener('resize', check);
+      clearInterval(timer);
+    };
+    const timer = setInterval(check, 400);
+    window.addEventListener('scroll', check, { passive: true });
+    window.addEventListener('resize', check);
+    check();
+
     return () => {
+      stop();
       v.removeEventListener('loadeddata', tryPlay);
       v.removeEventListener('pause', tryPlay);
     };
@@ -364,13 +392,12 @@ const AboutIntro = () => {
           position: 'relative', aspectRatio: '16 / 9', overflow: 'hidden', boxShadow: '0 26px 54px -26px rgba(38, 49, 102, 0.45)', }}>
           <video
             ref={videoRef}
-            src="assets/first-video.mp4?v=247"
+            data-src="assets/first-video.mp4?v=279"
             poster="assets/first-video-poster.jpg?v=247"
-            autoPlay
             muted
             loop
             playsInline
-            preload="auto"
+            preload="none"
             aria-label="Western Fence Supply, fencing material supplier in Southwest Florida"
             style={{
               position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', }}
