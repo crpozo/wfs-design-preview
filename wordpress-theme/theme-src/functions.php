@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '2.2.0' );
+define( 'WFS_VERSION', '2.3.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -25,6 +25,18 @@ function wfs_pages() {
 	$pages = file_exists( $json ) ? json_decode( file_get_contents( $json ), true ) : array();
 	if ( ! is_array( $pages ) ) { $pages = array(); }
 	return $pages;
+}
+
+/** Assets que viajan dentro del tema, para servirlos desde este dominio. */
+function wfs_local_assets() {
+	$json = get_theme_file_path( 'assets-local.json' );
+	$list = file_exists( $json ) ? json_decode( file_get_contents( $json ), true ) : array();
+	if ( ! is_array( $list ) ) { return array(); }
+	$map = array();
+	foreach ( $list as $rel ) {
+		$map[ $rel ] = get_theme_file_uri( 'assets/' . $rel );
+	}
+	return $map;
 }
 
 /** Slug de la pagina que se esta pidiendo. */

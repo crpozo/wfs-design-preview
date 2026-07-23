@@ -1,4 +1,4 @@
-# Western Fence Supply — Tema de WordPress (`wfs-site-2.2.0.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-2.3.0.zip`)
 
 Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
 componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
@@ -40,7 +40,7 @@ WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
 ## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube `wfs-site-2.2.0.zip` → **Instalar ahora** → **Activar**
+2. Sube `wfs-site-2.3.0.zip` → **Instalar ahora** → **Activar**
 3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
    (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 
@@ -136,16 +136,37 @@ anterior). No existen las dos cosas al mismo tiempo sin trabajo adicional — ve
 
 ## Imágenes y videos
 
-Pesan 158 MB, muy por encima del límite de subida de WordPress (suele ser 2–64 MB), así
-que **no van dentro del zip**: apuntan por URL a
+Pesan 165 MB, muy por encima del límite de subida de WordPress (suele ser 2–64 MB), así
+que **no van todos dentro del zip**: apuntan por URL a
 `https://crpozo.github.io/wfs-design-preview/assets`.
 
-El sitio funciona apenas se activa. Para producción conviene mover esa carpeta al
-hosting propio y añadir una línea a `wp-config.php`:
+**Lo que sí viaja dentro del tema** es lo que el visitante ve en la barra de direcciones:
+
+| Archivo | Por qué va dentro |
+|---|---|
+| `assets/wfs-catalog.pdf` | Es una descarga: la URL queda a la vista |
+
+Al activarse, el tema reescribe esas URLs para servirlas desde tu dominio en vez del
+preview. Para añadir más, se ponen en `theme-src/assets/` y se regenera.
+
+### Mover el resto (recomendado para producción)
+
+Todo lo demás (fotos y videos) sigue apuntando al preview. Funciona, pero depende de un
+repo externo. Para independizarlo:
+
+1. Sube la carpeta `assets/` del repo a tu hosting, por ejemplo a
+   `wp-content/uploads/wfs/assets/`
+2. Añade una línea a `wp-config.php`:
 
 ```php
 define( 'WFS_ASSETS', 'https://westernfencesupply.com/wp-content/uploads/wfs/assets' );
 ```
+
+Nada más: todas las rutas cambian de golpe.
+
+> **Vale la pena optimizar antes de subir.** Hay 12 imágenes PNG de entre 2 y 3,6 MB
+> cada una (`ALUM.png`, `CHAINLINK.png`, los portones…). Pasarlas a WebP bajaría el peso
+> del sitio muchísimo y aceleraría la carga. Son 99 MB solo en los 3 videos.
 
 ## Regenerar el tema
 

@@ -27,6 +27,8 @@ window.WFS_NONCE = <?php echo wp_json_encode( wp_create_nonce( 'wp_rest' ) ); ?>
 /* Los componentes enlazan a "products.html". Aqui se traduce a la URL real de
    WordPress, conservando el ancla (#contact) cuando la hay. */
 window.WFS_LINKS = <?php echo wp_json_encode( wfs_link_map() ); ?>;
+window.WFS_ASSET_BASE = <?php echo wp_json_encode( WFS_ASSETS ); ?>;
+window.WFS_LOCAL_ASSETS = <?php echo wp_json_encode( wfs_local_assets() ); ?>;
 (function () {
   var map = window.WFS_LINKS || {};
   function resolve(href) {
@@ -35,12 +37,27 @@ window.WFS_LINKS = <?php echo wp_json_encode( wfs_link_map() ); ?>;
     if (!m || !map[m[1]]) { return null; }
     return map[m[1]] + (m[2] || '');
   }
+  /* Los assets que viajan en el tema se sirven desde este dominio, no desde
+     el preview: la URL es la del cliente y no depende de un repo externo. */
+  var local = window.WFS_LOCAL_ASSETS || {};
+  var base = (window.WFS_ASSET_BASE || '').replace(/\/$/, '') + '/';
+  function localize(el, attr) {
+    var v = el.getAttribute(attr);
+    if (!v || v.indexOf(base) !== 0) { return; }
+    var rel = v.slice(base.length).split('?')[0];
+    if (local[rel]) { el.setAttribute(attr, local[rel]); }
+  }
   function patch(root) {
-    var links = (root || document).querySelectorAll('a[href*=".html"]');
+    var scope = root || document;
+    var links = scope.querySelectorAll('a[href*=".html"]');
     for (var i = 0; i < links.length; i++) {
       var to = resolve(links[i].getAttribute('href'));
       if (to) { links[i].setAttribute('href', to); }
     }
+    var a = scope.querySelectorAll('a[href]');
+    for (var j = 0; j < a.length; j++) { localize(a[j], 'href'); }
+    var m = scope.querySelectorAll('img[src], source[src], video[src]');
+    for (var k = 0; k < m.length; k++) { localize(m[k], 'src'); }
   }
   document.addEventListener('click', function (e) {
     var a = e.target && e.target.closest ? e.target.closest('a[href*=".html"]') : null;

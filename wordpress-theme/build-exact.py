@@ -24,6 +24,14 @@ for item in sorted((SRC / "wordpress-theme" / "theme-src").iterdir()):
     dst = OUT / item.name
     shutil.copytree(item, dst) if item.is_dir() else shutil.copy2(item, dst)
 
+# --------------------------------------------------- assets propios del tema
+LOCAL = sorted(
+    str(f.relative_to(OUT / "assets")).replace("\\", "/")
+    for f in (OUT / "assets").rglob("*") if f.is_file()
+) if (OUT / "assets").exists() else []
+(OUT / "apps").mkdir(exist_ok=True)
+(OUT / "assets-local.json").write_text(json.dumps(LOCAL, indent=2))
+
 # ---------------------------------------------------------------- componentes
 for jsx in sorted((SRC / "components").glob("*.jsx")):
     txt = jsx.read_text()
