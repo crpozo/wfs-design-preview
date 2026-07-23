@@ -83,8 +83,9 @@ const SiteHeader = ({ active }) => {
 
           {/* Right: live agent + phone + lang toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-            {/* Live agent, goes to the "real sales rep, no chatbot" band */}
-            <a href="estimate.html#quote" style={{
+            {/* Live agent: abre el chat de tawk. Si no esta cargado, cae al
+                enlace de la banda "real sales rep, no chatbot". */}
+            <a href="estimate.html#quote" onClick={openLiveChat} style={{
               display: 'inline-flex', alignItems: 'center', gap: 9, padding: '6px 15px', borderRadius: 999, background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.3)', color: 'var(--white)', textDecoration: 'none', fontFamily: 'inherit', fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', whiteSpace: 'nowrap', transition: 'background 0.15s ease, border-color 0.15s ease', }}
             onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.borderColor = 'var(--white)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; }}>

@@ -1,4 +1,4 @@
-# Western Fence Supply — Tema de WordPress (`wfs-site-2.3.0.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-2.5.0.zip`)
 
 Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
 componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
@@ -40,7 +40,7 @@ WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
 ## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube `wfs-site-2.3.0.zip` → **Instalar ahora** → **Activar**
+2. Sube `wfs-site-2.5.0.zip` → **Instalar ahora** → **Activar**
 3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
    (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 
@@ -117,6 +117,11 @@ define( 'WFS_TAWK_AUTOOPEN', true );
 
 > Conviene igual borrar ese snippet en el sitio (búscalo por `Tawk_API.maximize`), para
 > no tener dos instrucciones peleando.
+
+El botón **Talk to a live agent** de la barra superior abre el chat. Si el widget aún no
+terminó de cargar, queda en cola y se abre en cuanto está listo. Y si la página no tiene
+chat (el preview de GitHub, por ejemplo), el enlace sigue llevando a la banda de
+*"real sales rep, no chatbot"*, así el botón nunca queda muerto.
 
 ## Cómo se edita
 

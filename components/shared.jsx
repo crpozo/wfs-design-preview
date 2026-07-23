@@ -781,4 +781,19 @@ async function submitLead(formEl, meta) {
   return { ok: true, fallback: true };
 }
 
-Object.assign(window, { WFS_LEAD_TO, submitLead });
+/* Abre el chat en vivo (tawk.to). Si la pagina no lo tiene cargado, devuelve
+   false y el enlace sigue su curso normal, asi el boton nunca queda muerto. */
+function openLiveChat(e) {
+  var api = window.Tawk_API;
+  if (!api) { return false; }
+  if (e && e.preventDefault) { e.preventDefault(); }
+  if (typeof api.maximize === 'function') {
+    try { api.maximize(); } catch (err) {}
+  } else {
+    /* El widget aun no termina de cargar: se abre en cuanto este listo. */
+    api.onLoad = function () { try { window.Tawk_API.maximize(); } catch (err) {} };
+  }
+  return true;
+}
+
+Object.assign(window, { WFS_LEAD_TO, submitLead, openLiveChat });
