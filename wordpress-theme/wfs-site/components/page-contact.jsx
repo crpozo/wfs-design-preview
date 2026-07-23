@@ -3,8 +3,8 @@
 
 const CONTACT_YARDS = [
   {
-    key: 'fm', name: 'Fort Myers', chip: { EN: 'HQ · FORT MYERS', ES: 'SEDE · FORT MYERS' }, address: '2621 Fowler St, Fort Myers, FL 33901', phone: '(239) 689-5496', tel: 'tel:+12396895496', email: 'westernfencesupply@gmail.com', mapQ: '2621 Fowler St, Fort Myers, FL 33901', }, {
-    key: 'pc', name: 'Port Charlotte', chip: { EN: 'PORT CHARLOTTE', ES: 'PORT CHARLOTTE' }, address: '1145 Enterprise Dr, Port Charlotte, FL 33953', phone: '(941) 391-6613', tel: 'tel:+19413916613', email: 'westernfencesupplypc@gmail.com', mapQ: '1145 Enterprise Dr, Port Charlotte, FL 33953', },
+    key: 'fm', name: 'Fort Myers', chip: { EN: 'HQ · FORT MYERS', ES: 'SEDE · FORT MYERS' }, address: '2621 Fowler St, Fort Myers, FL 33901', phone: '(239) 689-5496', tel: 'tel:+12396895496', email: 'sales@westernfencesupply.com', mapQ: '2621 Fowler St, Fort Myers, FL 33901', }, {
+    key: 'pc', name: 'Port Charlotte', chip: { EN: 'PORT CHARLOTTE', ES: 'PORT CHARLOTTE' }, address: '1145 Enterprise Dr, Port Charlotte, FL 33953', phone: '(941) 623-6890', tel: 'tel:+19416236890', email: 'salespc@westernfencesupply.com', mapQ: '1145 Enterprise Dr, Port Charlotte, FL 33953', },
 ];
 
 const ContactHero = () => {

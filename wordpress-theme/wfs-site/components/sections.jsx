@@ -702,7 +702,7 @@ const ServiceAreas = () => {
           {/* Yard cards stacked */}
           <div style={{ display: 'grid', gridTemplateRows: 'repeat(3, 1fr)', gap: 12 }}>
             {[
-              { city: t('Fort Myers · HQ', 'Fort Myers · Sede'), addr: '2621 Fowler St, FL 33901', phone: '(239) 689-5496' }, { city: 'Port Charlotte', addr: '1145 Enterprise Dr, FL 33953', phone: '(941) 391-6613' }, { city: t('Service area', 'Área de servicio'), addr: t('Serving customers throughout Florida', 'Atendemos clientes en toda Florida'), phone: t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm') }, ].map((y, i) => (
+              { city: t('Fort Myers · HQ', 'Fort Myers · Sede'), addr: '2621 Fowler St, FL 33901', phone: '(239) 689-5496' }, { city: 'Port Charlotte', addr: '1145 Enterprise Dr, FL 33953', phone: '(941) 623-6890' }, { city: t('Service area', 'Área de servicio'), addr: t('Serving customers throughout Florida', 'Atendemos clientes en toda Florida'), phone: t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm') }, ].map((y, i) => (
               <div key={i} className="wfs-yard-card" style={{
                 border: '1px solid rgba(0,16,17,0.18)', padding: '16px 18px', background: 'var(--white)', boxShadow: '0 6px 18px rgba(38,49,102,0.12)', display: 'flex', alignItems: 'center', gap: 16, }}>
                 <div className="mono" style={{
@@ -782,7 +782,7 @@ const FinalCTA = () => {
               <div style={labelStyle}>{t('Call us', 'Llámanos')}</div>
               <a href="tel:2396895496" className="display" style={{ fontSize: 29.5, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>(239) 689-5496</a>
               <div style={{ fontSize: 14.5, color: 'var(--charcoal)', marginBottom: 12 }}>{t('Fort Myers yard', 'Sucursal Fort Myers')}</div>
-              <a href="tel:9413916613" className="display" style={{ fontSize: 29.5, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>(941) 391-6613</a>
+              <a href="tel:9416236890" className="display" style={{ fontSize: 29.5, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>(941) 623-6890</a>
               <div style={{ fontSize: 14.5, color: 'var(--charcoal)' }}>{t('Port Charlotte yard', 'Sucursal Port Charlotte')}</div>
               <div style={{ fontSize: 14.5, color: 'var(--charcoal)', marginTop: 12 }}>{t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm')}</div>
             </div>
