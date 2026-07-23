@@ -80,7 +80,7 @@ const Hero = () => {
           headline and buttons stay crisp. Colour is set in CSS so it can
           match the section below at each breakpoint. */}
       <div aria-hidden className="wfs-hero-fade" style={{
-        position: 'absolute', left: 0, right: 0, bottom: 0, height: 'clamp(55px, 7vh, 95px)', zIndex: 1, pointerEvents: 'none', }}/>
+        position: 'absolute', left: 0, right: 0, bottom: 0, height: 'clamp(30px, 3.6vh, 52px)', zIndex: 1, pointerEvents: 'none', }}/>
 
       {/* Main content */}
       <div style={{

@@ -845,16 +845,16 @@ input:focus, select:focus, textarea:focus {
 .wfs-hero-fade {
   background: linear-gradient(180deg,
     rgba(255,255,255,0) 0%,
-    rgba(255,255,255,0.10) 50%,
-    rgba(255,255,255,0.40) 80%,
+    rgba(255,255,255,0.04) 62%,
+    rgba(255,255,255,0.22) 88%,
     #ffffff 100%);
 }
 @media (max-width: 640px) {
   .wfs-hero-fade {
     background: linear-gradient(180deg,
       rgba(245,245,247,0) 0%,
-      rgba(245,245,247,0.10) 50%,
-      rgba(245,245,247,0.40) 80%,
+      rgba(245,245,247,0.04) 62%,
+      rgba(245,245,247,0.22) 88%,
       #f5f5f7 100%);
   }
 }
