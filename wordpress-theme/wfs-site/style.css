@@ -1,0 +1,16 @@
+/*
+Theme Name: Western Fence Supply
+Theme URI: https://westernfencesupply.com
+Author: Western Fence Supply
+Description: Tema espejo del sitio de Western Fence Supply. Sirve exactamente el mismo codigo, el mismo CSS y los mismos componentes del diseno aprobado, sin reinterpretarlo.
+Version: 2.0.0
+Requires at least: 5.6
+Tested up to: 6.8
+Requires PHP: 7.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: wfs
+*/
+
+/* El diseno real vive en css/styles.css y en los componentes.
+   Este archivo solo declara el tema ante WordPress. */

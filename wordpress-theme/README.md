@@ -1,93 +1,107 @@
-# Western Fence Supply — Tema de WordPress (`wfs-theme.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-2.0.0.zip`)
 
-Tema propio, **sin Elementor y sin plugins**. Se sube como cualquier tema, se activa y
-se edita con el **editor visual nativo de WordPress** (Apariencia → Editor).
+Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
+componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
+que el resultado en WordPress es idéntico al de
+`https://crpozo.github.io/wfs-design-preview/`.
 
-## Instalación (2 minutos)
+## Por qué se cambió el enfoque
+
+El primer intento tradujo el diseño a bloques de Gutenberg y se perdía todo. La razón,
+medida sobre el código:
+
+| Dónde vive el diseño | Cantidad |
+|---|---|
+| Estilos inline dentro de los componentes React | **1.355** |
+| Reglas en `styles.css` | 210 |
+
+Es decir, **el 87% del diseño está en los componentes**, no en la hoja de estilos. Un
+tema de bloques no puede expresar eso: obliga a reinterpretar cada sección a mano, y ahí
+es donde se perdían las sombras, los espaciados, el video del hero, el mapa, el carrusel
+y los acordeones.
+
+Con este enfoque no hay reinterpretación posible, porque es literalmente el mismo código.
+
+## Verificación
+
+Las dos versiones se midieron con el mismo ancho de ventana (800px):
+
+| | Preview GitHub | Tema WordPress |
+|---|---|---|
+| Alto total de la página | 12.588 px | **12.588 px** |
+| Secciones | 12 | **12** |
+| Alturas por sección | `392, 1071, 1364, 0, 531, 891, 1364, 0, 648, 1140, 1658, 2140` | **idénticas** |
+| Videos | 2 | **2** |
+| Imágenes | 75 | **75** |
+
+Las 29 páginas del sitio renderizan, y los 72 enlaces internos quedan apuntando a
+WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
+
+## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube **`wfs-theme.zip`** → **Instalar ahora** → **Activar**
-3. Listo. La portada ya trae hero, presentación, ventajas, materiales y CTA.
+2. Sube `wfs-site-2.0.0.zip` → **Instalar ahora** → **Activar**
+3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
+   (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 
-> Requiere WordPress **6.1 o superior** (para el editor de sitio completo).
-> No necesitas tema padre ni ningún plugin.
+Requiere WordPress 5.6+. Sin tema padre, sin Elementor, sin plugins.
 
 ## Cómo se edita
 
-| Qué quieres cambiar | Dónde |
-|---|---|
-| Textos, fotos, botones de una página | **Páginas → Editar** (editor normal) |
-| Portada, cabecera, pie, plantillas | **Apariencia → Editor** |
-| Colores, tipografías, tamaños de todo el sitio | **Apariencia → Editor → Estilos** |
-| Menú de navegación | **Apariencia → Editor → Navegación** |
-| Logo y nombre del sitio | **Apariencia → Editor** → clic en el logo/título |
+Con honestidad, porque aquí está el compromiso real:
 
-Todo es arrastrar bloques, escribir encima y cambiar imágenes con un clic — igual que
-Elementor pero con el editor que ya trae WordPress.
+| Qué | Dónde | Facilidad |
+|---|---|---|
+| Textos, precios, teléfonos, secciones | Archivos `components/*.jsx` del tema | Requiere tocar código |
+| Colores, tipografías, espaciados | `css/styles.css` del tema | Requiere tocar código |
+| Fotos y videos | Ver *Imágenes* abajo | Fácil |
+| Páginas nuevas, SEO, plugins, analítica | WordPress normal | Fácil |
 
-## Secciones listas para insertar (patrones)
+**El editor visual de WordPress no edita estas páginas.** Es el precio de que quede
+idéntico: o se ve exactamente igual (este tema), o se edita con bloques (el intento
+anterior). No existen las dos cosas al mismo tiempo sin trabajo adicional — ver
+*Siguiente paso opcional*.
 
-Al editar cualquier página: botón **+** → pestaña **Patrones** → categoría
-**Western Fence Supply**.
+## Imágenes y videos
 
-| Patrón | Qué es |
-|---|---|
-| Hero | Titular sobre foto con dos botones |
-| Intro | Foto + texto + datos (20+ años, 2 sucursales) |
-| Ventajas | 4 tarjetas redondeadas con sombra |
-| Materiales | Rejilla de los 5 sistemas con foto |
-| Tabla comparativa | Comparativa con foto por columna |
-| Código de piscinas | 6 requisitos con sus diagramas |
-| CTA | Banda navy de cierre |
-| Cotizar | Datos de contacto + formulario embebido |
+Pesan 158 MB, muy por encima del límite de subida de WordPress (suele ser 2–64 MB), así
+que **no van dentro del zip**: apuntan por URL a
+`https://crpozo.github.io/wfs-design-preview/assets`.
 
-Para armar una página nueva: créala, elige la plantilla **“Página ancha (sin título)”**
-en Ajustes de página, e inserta los patrones que quieras.
+El sitio funciona apenas se activa. Para producción conviene mover esa carpeta al
+hosting propio y añadir una línea a `wp-config.php`:
 
-## Sistema de diseño
+```php
+define( 'WFS_ASSETS', 'https://westernfencesupply.com/wp-content/uploads/wfs/assets' );
+```
 
-Ya viene cargado en **Estilos**, así que si cambias un color ahí, cambia en todo el sitio:
+## Regenerar el tema
 
-| Token | Valor |
-|---|---|
-| Navy (marca) | `#263167` |
-| Naranja (marca) | `#ff7133` |
-| Gris texto | `#565656` |
-| Fondo claro | `#f5f5f7` |
-| Títulos | Archivo |
-| Texto | Inter |
+Cada vez que cambie el sitio, se vuelve a generar el tema desde el código real:
 
-Incluye también: tarjetas con esquinas de 18px y sombra suave, botones pill que se
-ponen naranjas al pasar el mouse, y el piso de legibilidad (nada de letra diminuta).
+```bash
+python3 wordpress-theme/build-exact.py
+```
 
-## Formulario de cotización
-
-El patrón **Cotizar** trae un `<iframe>` con tu formulario de **JotForm**, que ya maneja
-el **campo de archivo para el plano/layout** sin instalar nada.
-
-Para apuntarlo a otro formulario: edita la página → bloque **HTML personalizado** →
-cambia la URL del `src`.
-
-Si algún día prefieres un formulario nativo, instala el plugin de formularios que
-quieras y pega su shortcode en ese mismo bloque; los estilos (`.wfs-form`) ya están.
-
-## Imágenes
-
-Las fotos apuntan por URL al sitio de preview
-(`https://crpozo.github.io/wfs-design-preview/assets/...`), así que el tema funciona
-apenas lo activas, sin subir nada.
-
-> Para producción conviene subirlas a **Medios** y reemplazarlas desde el editor
-> (clic en la imagen → Reemplazar), y así no depender del dominio de preview.
+El script copia componentes y CSS, reescribe las rutas de assets y extrae la app de cada
+una de las 29 páginas. Nada se escribe a mano, así que el tema no se puede desincronizar
+del sitio.
 
 ## Estructura
 
 ```
-wfs/
-├── style.css        Cabecera del tema + utilidades (tarjetas, eyebrow, tabla, formulario)
-├── theme.json       Sistema de diseño: colores, tipografías, tamaños, sombras
-├── functions.php    Carga de fuentes y categoría de patrones
-├── templates/       Portada, página, entrada, 404, índice, página ancha
-├── parts/           Cabecera y pie
-└── patterns/        Las 8 secciones reutilizables
+wfs-site/
+├── style.css        Cabecera del tema (solo declara el tema ante WordPress)
+├── functions.php    Mapa de páginas, creación automática, carga de scripts
+├── index.php        Plantilla única: renderiza la página según el slug
+├── css/styles.css   El CSS real del sitio, sin tocar
+├── components/*.jsx Los 21 componentes reales del sitio, sin tocar
+└── apps/*.js        La app de cada una de las 29 páginas
 ```
+
+## Siguiente paso opcional
+
+Si además de que se vea igual quieren **editar los textos desde WordPress**, se puede
+hacer por partes: sacar los textos de los componentes a campos del panel de WordPress
+(precios, teléfonos, titulares, direcciones) sin tocar el diseño. Es trabajo adicional y
+conviene hacerlo por secciones, empezando por las que más cambian.

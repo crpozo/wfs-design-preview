@@ -1,0 +1,864 @@
+/* ───── Western Fences Supply — Homepage ───── */
+/* Brand fonts: Mirano Extended (proprietary) → Archivo @ wdth 125 ; Space Grotesk for UI/body */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Primary */
+  --laser-blue: #2e59c1;
+  --indigo-blue: #263166;
+  --alice-blue: #dbe9ee;
+  /* Secondary */
+  --blue-ice: #97baff;
+  --glaucous: #6381d6;
+  --silver: #c1c1c1;
+  --charcoal: #565656;
+  /* Tertiary */
+  --tangerine: #ff7133;
+  --coral: #ffa180;
+  /* Neutrals */
+  --white: #ffffff;
+  --parchment: #ffffff;
+  --linen: #ffffff;
+  --almond: #e5d8ca;
+  --ink: #263167;
+
+  --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --sans: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  /* Body copy: Inter — an open-source face drawn on the same principles as
+     SF Pro (tall x-height, open apertures, neutral UI feel). SF Pro itself
+     can't be self-hosted; Inter gives the same look on every device, not
+     just Apple ones. System stack kept as the fallback. */
+  --body: 'Inter', -apple-system, BlinkMacSystemFont, system-ui,
+          'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  --radius: 14px;
+  --radius-lg: 22px;
+  --max: 1440px;
+  --pad: clamp(20px, 4vw, 56px);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--parchment);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img { display: block; max-width: 100%; }
+
+/* ─── Global readability floor for body copy ───
+   Components set paragraph sizes inline (11-14px), which reads too small.
+   These overrides lift every small paragraph site-wide without touching
+   headings, chips, tabs or mono eyebrow labels. */
+p[style*="font-size: 11"],
+p[style*="font-size: 12"],
+p[style*="font-size: 13"],
+p[style*="font-size: 14"],
+p[style*="font-size: 15"] { font-size: 17.5px !important; }
+p[style*="font-size: clamp(13px"],
+p[style*="font-size: clamp(14px"] { font-size: clamp(17.5px, 1.25vw, 19px) !important; }
+
+/* ─── Frameless images ───
+   Cards that lead with a photo drop their hairline border, and image
+   areas drop the divider under the image. Bordered boxes without photos
+   (spec tables, checklists, CTA boxes) keep their borders. */
+article[style*="border: 1px solid"]:has(img),
+a[style*="border: 1px solid"]:has(img),
+article[style*="border: 1.5px solid"]:has(img),
+a[style*="border: 1.5px solid"]:has(img) { border: none !important; }
+div[style*="border-bottom: 1px solid"]:has(> img) { border-bottom: none !important; }
+/* Style/profile cards (SVG illustrations + photos) share this grid */
+.wfs-profiles-grid > article,
+.wfs-profiles-grid > a { border: none !important; }
+.wfs-profiles-grid > article > div:first-child,
+.wfs-profiles-grid > a > div:first-child { border-bottom: none !important; }
+
+/* Display type — Mirano Extended substitute: Archivo at wdth 125 */
+.display {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 125;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  text-transform: capitalize;
+  line-height: 0.92;
+}
+.display-extended {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 125;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  line-height: 0.9;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.mono { font-family: var(--mono); }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px;
+  border-radius: 2px;
+  font-weight: 500;
+  font-size: 16.5px;
+  letter-spacing: 0.01em;
+  transition: transform 0.15s ease, background 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary { background: var(--tangerine); color: var(--ink); }
+.btn-primary:hover { background: #ff7133; }
+.btn-dark { background: var(--ink); color: var(--parchment); }
+.btn-dark:hover { background: var(--indigo-blue); }
+.btn-light { background: var(--parchment); color: var(--ink); }
+.btn-light:hover { background: var(--white); }
+.btn-ghost { color: inherit; border: 1px solid currentColor; padding: 14px 20px; }
+.btn-ghost:hover { background: currentColor; color: var(--white) !important; }
+.btn-ghost.on-dark:hover { color: var(--ink) !important; }
+
+.arrow-icon {
+  width: 16px; height: 16px;
+  display: inline-block;
+}
+
+/* Layout */
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--pad);
+}
+
+section { position: relative; }
+
+/* Patterns (SVG fills via background) */
+.pat-chain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><path d='M0 20 L10 10 L20 20 L10 30 Z M20 20 L30 10 L40 20 L30 30 Z M0 0 L10 10 M20 0 L30 10 M40 0 L30 10 M0 40 L10 30 M20 40 L30 30 M40 40 L30 30' stroke='%232e59c1' stroke-width='1.2' fill='none' opacity='0.35'/></svg>");
+}
+.pat-diamond {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 28 28'><path d='M14 0 L28 14 L14 28 L0 14 Z' stroke='%23263166' stroke-width='1' fill='none' opacity='0.25'/></svg>");
+}
+.pat-slats {
+  background-image: repeating-linear-gradient(90deg, transparent 0 14px, rgba(255,255,255,0.08) 14px 16px);
+}
+.pat-noise {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Image placeholder */
+.img-placeholder {
+  position: relative;
+  background: var(--almond);
+  background-image:
+    repeating-linear-gradient(135deg, rgba(0,0,0,0.04) 0 2px, transparent 2px 14px);
+  overflow: hidden;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  color: var(--charcoal);
+}
+.img-placeholder.dark {
+  background: #263166;
+  background-image:
+    repeating-linear-gradient(135deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 14px);
+  color: var(--blue-ice);
+}
+.img-placeholder .label {
+  font-family: var(--mono);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.85);
+  color: var(--ink);
+  border-radius: 6px;
+  margin: 16px;
+}
+.img-placeholder.dark .label {
+  background: rgba(0,16,17,0.7);
+  color: var(--alice-blue);
+}
+
+/* Logo mark — geometric WFS chevron (original) */
+.wfs-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 125;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.wfs-mark svg { width: 28px; height: 28px; }
+
+/* Reusable */
+.divider {
+  height: 1px;
+  background: currentColor;
+  opacity: 0.15;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 14px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+}
+
+.dot {
+  width: 6px; height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+  display: inline-block;
+}
+
+/* ───── Responsive ───── */
+
+/* Tablet (≤ 1024px) */
+@media (max-width: 1024px) {
+  :root { --pad: clamp(20px, 4vw, 32px); }
+
+  /* Collapse 5-col grids → 3-col */
+  [style*="repeat(5, 1fr)"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+  /* Collapse 4-col grids → 2-col */
+  [style*="repeat(4, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Collapse 3-col grids → 2-col */
+  [style*="repeat(3, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  /* Collapse asymmetric two-column layouts → stack */
+  [style*="grid-template-columns: 1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1.6fr"],
+  [style*="grid-template-columns: 1.4fr 1fr"],
+  [style*="grid-template-columns: 1fr 1.4fr"],
+  [style*="grid-template-columns: 1fr 1.2fr"],
+  [style*="grid-template-columns: 1.2fr 1fr"],
+  [style*="grid-template-columns: 1fr 1.3fr"],
+  [style*="grid-template-columns: 1.7fr 1fr"],
+  [style*="grid-template-columns: 220px 1fr"],
+  [style*="grid-template-columns: 1.1fr 1.2fr 1fr"],
+  [style*="grid-template-columns: 1fr 320px"],
+  [style*="grid-template-columns: 2fr 1fr 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  /* Stat strips: drop the vertical dividers + left indent once the row wraps,
+     and add spacing so the stacked numbers don't collide */
+  .wfs-stat-grid { gap: 28px 32px !important; }
+  .wfs-stat-cell { padding-left: 0 !important; border-left: none !important; }
+
+  /* When the editorial 2-col header collapses, reset right-aligned paragraphs */
+  [style*="grid-template-columns: 1fr 1fr"] [style*="text-align: right"],
+  [style*="grid-template-columns: 1fr 1fr"] [style*="justify-self: end"] {
+    text-align: left !important;
+    justify-self: start !important;
+    margin-top: 4px !important;
+  }
+
+  /* Hide desktop-only nav links */
+  .wfs-desktop-nav { display: none !important; }
+  /* Hide secondary CTAs on tablet */
+  .wfs-hide-tablet { display: none !important; }
+  /* Show hamburger trigger + mobile menu panel below desktop */
+  .wfs-mobile-trigger { display: inline-flex !important; }
+  .wfs-mobile-menu { display: flex !important; }
+}
+
+/* Mobile (≤ 640px) */
+@media (max-width: 640px) {
+  :root { --pad: 22px; }
+
+  /* Prevent horizontal scroll from any wide element */
+  html, body { overflow-x: hidden; }
+
+  /* Footer: wrap the link row and let long emails break */
+  footer [style*="display: flex"][style*="gap: 24"] {
+    flex-wrap: wrap !important;
+    gap: 10px 18px !important;
+    justify-content: flex-start !important;
+  }
+  footer a, footer .mono { overflow-wrap: anywhere; }
+
+  /* All multi-col grids → single column */
+  [style*="repeat(5, 1fr)"],
+  [style*="repeat(4, 1fr)"],
+  [style*="repeat(3, 1fr)"],
+  [style*="repeat(2, 1fr)"],
+  [style*="repeat(6, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Estimate hero steps: when stacked, drop the column separators
+     (left border + indent) so 01/02/03 align flush; divide with a
+     top border instead */
+  .wfs-est-steps > div {
+    padding-left: 0 !important;
+    border-left: none !important;
+  }
+  .wfs-est-steps > div + div {
+    border-top: 1px solid rgba(255,255,255,0.18);
+    padding-top: 20px;
+  }
+
+  /* Tighter section padding */
+  section { padding-top: 40px !important; padding-bottom: 40px !important; }
+
+  /* Hide utility bar on phone — too cluttered */
+  .wfs-utility-bar { display: none !important; }
+  .wfs-hide-mobile { display: none !important; }
+
+  /* Hero gets less padding, smaller minHeight */
+  .wfs-hero { min-height: 100svh !important; padding-top: 40px !important; }
+
+  /* Smaller display titles on phone */
+  .display { letter-spacing: -0.01em; }
+
+  /* Project gallery row height */
+  .wfs-projects-grid { grid-auto-rows: 280px !important; }
+
+  /* FAQ stack: drop sticky on mobile so the CTA panel can collapse */
+  .wfs-faq-sidebar { position: static !important; }
+
+  /* Map: keep 4/3 instead of 192/152 letterbox awkwardness */
+  .wfs-map { aspect-ratio: 4 / 3 !important; }
+
+  /* Fence/gate cards: portrait 4/5 is too tall when stacked → make them landscape */
+  [style*="aspect-ratio: 4 / 5"] { aspect-ratio: 5 / 4 !important; }
+
+  /* Project cards: shorter rows on mobile */
+  .wfs-projects-grid { grid-auto-rows: 220px !important; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Fence Arena — Fortnite-style system selector
+   Big crossfading "ambiente" background + glossy rarity cards.
+   ───────────────────────────────────────────────────────────── */
+.fence-arena {
+  position: relative;
+  overflow: hidden;
+  background: #001011;
+  isolation: isolate;
+}
+/* Stacked background layers crossfade between fence environments */
+.fence-arena__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.14);
+  transition: opacity 0.9s ease, transform 8s ease-out;
+  z-index: 0;
+}
+.fence-arena__bg.is-active {
+  opacity: 1;
+  transform: scale(1.02);
+}
+/* Color wash keyed to the active fence's rarity, sits over the photo */
+.fence-arena__wash {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  mix-blend-mode: soft-light;
+  opacity: 0.55;
+  transition: background 0.7s ease;
+  pointer-events: none;
+}
+.fence-arena__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 16, 17,0.62) 0%, rgba(0, 16, 17,0.22) 26%, rgba(0, 16, 17,0.55) 62%, rgba(0, 16, 17,0.93) 100%),
+    radial-gradient(130% 90% at 12% 22%, rgba(0, 16, 17,0) 38%, rgba(0, 16, 17,0.6) 100%);
+}
+/* Faint moving grid for the "game UI" feel */
+.fence-arena__grid {
+  position: absolute;
+  inset: -2px;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.14;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(120% 80% at 50% 100%, #000 10%, transparent 70%);
+  -webkit-mask-image: radial-gradient(120% 80% at 50% 100%, #000 10%, transparent 70%);
+}
+.fence-arena__inner { position: relative; z-index: 2; }
+
+/* Detail copy crossfade */
+.fence-detail { animation: fence-detail-in 0.5s ease both; }
+@keyframes fence-detail-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Card rail ───────────────────────────── */
+.fence-rail {
+  display: flex;
+  gap: 14px;
+  align-items: flex-end;
+}
+.fence-rail > * { flex: 1 1 0; min-width: 0; }
+
+.fence-card {
+  position: relative;
+  display: block;
+  aspect-ratio: 2 / 3;
+  padding: 2.5px;                 /* gradient frame thickness */
+  border: 0;
+  background: linear-gradient(160deg, var(--r1, #6381d6), var(--r2, #263166));
+  clip-path: polygon(0 0, calc(100% - 17px) 0, 100% 17px, 100% 100%, 17px 100%, 0 calc(100% - 17px));
+  cursor: pointer;
+  transform: translateY(0);
+  transition: transform 0.32s cubic-bezier(.2,.8,.25,1), filter 0.32s ease;
+  filter: saturate(0.7) brightness(0.72);
+  text-decoration: none;
+}
+.fence-card:hover { transform: translateY(-7px); filter: saturate(0.95) brightness(0.92); }
+.fence-card.is-active {
+  transform: translateY(-16px) scale(1.05);
+  filter: saturate(1.12) brightness(1.05);
+  animation: fence-card-glow 2.4s ease-in-out infinite;
+}
+@keyframes fence-card-glow {
+  0%,100% { box-shadow: 0 18px 40px rgba(0,0,0,0.5), 0 0 0 0 var(--r1, #6381d6); }
+  50%     { box-shadow: 0 18px 50px rgba(0,0,0,0.55), 0 0 22px 1px var(--r1, #6381d6); }
+}
+.fence-card__inner {
+  position: absolute;
+  inset: 2.5px;
+  overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+  background: #001011;
+}
+.fence-card__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 0.6s ease;
+}
+.fence-card:hover .fence-card__img,
+.fence-card.is-active .fence-card__img { transform: scale(1.1); }
+.fence-card__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 16, 17,0) 32%, rgba(0, 16, 17,0.6) 66%, rgba(0, 16, 17,0.95) 100%);
+}
+/* diagonal gloss sweep */
+.fence-card__sheen {
+  position: absolute;
+  top: -60%;
+  left: -120%;
+  width: 60%;
+  height: 220%;
+  transform: rotate(18deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.32), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+.fence-card:hover .fence-card__sheen { left: 160%; }
+
+/* Gate variant — mirror the bevels (cut top-left + bottom-right) so the gates
+   rail is a deliberate mirror of the fences rail */
+.gate-card {
+  clip-path: polygon(17px 0, 100% 0, 100% calc(100% - 17px), calc(100% - 17px) 100%, 0 100%, 0 17px);
+}
+.gate-card .fence-card__inner {
+  clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+}
+.gate-card .fence-card__sheen { transform: rotate(-18deg); }
+
+/* Mobile: don't force a full-height section; rail becomes a scroll strip */
+@media (max-width: 720px) {
+  .fence-arena { min-height: auto !important; }
+  .fence-rail {
+    gap: 10px;
+    margin-top: 24px !important;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  .fence-rail > * { flex: 0 0 46%; scroll-snap-align: center; max-height: none !important; }
+  .fence-card.is-active { transform: translateY(-8px) scale(1.02); }
+}
+
+/* Expanding fence slats (homepage fences section) */
+.wfs-slats {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+.wfs-slat {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  min-width: 0;
+  text-decoration: none;
+  transition: flex-grow 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.wfs-slat__vlabel {
+  writing-mode: vertical-rl;
+}
+@media (max-width: 900px) {
+  .wfs-slats { flex-direction: column; }
+  .wfs-slat__vlabel { writing-mode: horizontal-tb; }
+}
+
+/* WFS brand texture: chain-link mesh weave */
+.wfs-brand-texture {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-opacity%3D%220.02%22%20stroke-width%3D%2210%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M74%2014%20L106%2046%20Q120%2060%20106%2074%20L74%20106%20Q60%20120%2046%20106%20L14%2074%20Q0%2060%2014%2046%20L46%2014%20Q60%200%2074%2014%20Z%22%2F%3E%3Cpath%20d%3D%22M14%20-46%20L46%20-14%20Q60%200%2046%2014%20L14%2046%20Q0%2060%20-14%2046%20L-46%2014%20Q-60%200%20-46%20-14%20L-14%20-46%20Q0%20-60%2014%20-46%20Z%22%2F%3E%3Cpath%20d%3D%22M134%20-46%20L166%20-14%20Q180%200%20166%2014%20L134%2046%20Q120%2060%20106%2046%20L74%2014%20Q60%200%2074%20-14%20L106%20-46%20Q120%20-60%20134%20-46%20Z%22%2F%3E%3Cpath%20d%3D%22M14%2074%20L46%20106%20Q60%20120%2046%20134%20L14%20166%20Q0%20180%20-14%20166%20L-46%20134%20Q-60%20120%20-46%20106%20L-14%2074%20Q0%2060%2014%2074%20Z%22%2F%3E%3Cpath%20d%3D%22M134%2074%20L166%20106%20Q180%20120%20166%20134%20L134%20166%20Q120%20180%20106%20166%20L74%20134%20Q60%20120%2074%20106%20L106%2074%20Q120%2060%20134%2074%20Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size: 120px 120px;
+  background-repeat: repeat;
+}
+
+/* Poster-style bars rising from the bottom (for laser-blue bands) */
+.wfs-bars-texture {
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22192%22%20height%3D%22360%22%20viewBox%3D%220%200%20192%20360%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.10%22%3E%3Cpath%20d%3D%22M0%20360%20L0%20140%20Q0%20110%2036%20110%20L36%20360%20Z%22%2F%3E%3Cpath%20d%3D%22M64%20360%20L64%2095%20Q64%2065%20100%2065%20L100%20360%20Z%22%2F%3E%3Cpath%20d%3D%22M128%20360%20L128%2050%20Q128%2020%20164%2020%20L164%20360%20Z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  background-size: 192px 360px;
+  background-repeat: repeat-x;
+  background-position: left bottom;
+}
+
+@media (max-width: 900px) {
+  .wfs-articles-hero { grid-template-columns: 1fr !important; }
+}
+
+/* Installer logos marquee */
+.wfs-marquee { width: 100%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.wfs-marquee__track { display: flex; width: max-content; align-items: center; animation: wfsMarquee 90s linear infinite; }
+.wfs-logo-cell { display: inline-flex; align-items: center; padding: 0 clamp(26px, 4vw, 56px); flex-shrink: 0; }
+.wfs-logo-img { height: clamp(50px, 5.5vw, 70px); width: auto; max-width: 220px; object-fit: contain; }
+.wfs-logo-fallback { display: none; font-size: clamp(20px, 2.2vw, 30px); font-weight: 700; color: rgba(38, 49, 102, 0.32); white-space: nowrap; letter-spacing: -0.01em; line-height: 1; }
+
+/* Gate quick-facts floating card */
+@media (max-width: 860px) {
+  .wfs-gate-facts { grid-template-columns: 1fr 1fr !important; }
+  .wfs-gate-facts > div:nth-child(3) { border-left: none !important; }
+}
+@media (max-width: 520px) {
+  .wfs-gate-facts { grid-template-columns: 1fr !important; }
+  .wfs-gate-facts > div { border-left: none !important; }
+}
+@keyframes wfsMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* Product carousel: manual scroll (arrow buttons), hidden scrollbar */
+.wfs-pcar { scrollbar-width: none; -ms-overflow-style: none; }
+.wfs-pcar::-webkit-scrollbar { display: none; }
+
+/* Mobile: expanding slats stack and show all content (no hover on touch) */
+@media (max-width: 900px) {
+  .wfs-slats { flex-direction: column; }
+  .wfs-slat { flex: 1 1 auto !important; min-height: 260px; }
+  .wfs-slat__vlabel { display: none !important; }
+  .wfs-slat__expanded { opacity: 1 !important; transform: none !important; pointer-events: auto !important; }
+  .wfs-slat__overlay { background: linear-gradient(180deg, rgba(38,49,103,0.10) 28%, rgba(38,49,103,0.85) 100%) !important; }
+}
+
+/* Mobile: slat section grows so every stacked slat is visible */
+@media (max-width: 900px) {
+  .wfs-slat-section { height: auto !important; overflow: visible !important; }
+}
+
+/* Mobile system carousel (Fences/Gates): horizontal snap cards + progress.
+   Hidden on desktop; on phones it replaces the hover-driven slats. */
+.wfs-msys { display: none; }
+.wfs-msys__scroller {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scroll-padding-left: var(--pad);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0 var(--pad);
+}
+.wfs-msys__scroller::-webkit-scrollbar { display: none; }
+.wfs-msys__card {
+  flex: 0 0 84%;
+  scroll-snap-align: start;
+  display: block;
+  text-decoration: none;
+}
+.wfs-msys__imgwrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: #263166;
+}
+.wfs-msys__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.wfs-msys__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(38,49,103,0.28) 0%, rgba(38,49,103,0.55) 100%);
+}
+@media (max-width: 640px) {
+  .wfs-msys { display: block; }
+  .wfs-slat-section { display: none !important; }
+  .wfs-systemtabs { display: none !important; }
+}
+
+
+/* Header nav: hamburger earlier + keep desktop nav on one line */
+@media (max-width: 1200px) {
+  .wfs-desktop-nav { display: none !important; }
+  .wfs-mobile-trigger { display: inline-flex !important; }
+  .wfs-mobile-menu { display: flex !important; }
+}
+@media (max-width: 1360px) {
+  .wfs-hide-tablet { display: none !important; }
+  .wfs-desktop-nav { gap: 18px !important; }
+}
+
+/* Header quote pill: collapse to just the arrow circle on phones so the long
+   label (especially Spanish "Solicitar cotización de material") never overflows
+   the bar or clips under the hamburger */
+/* Desktop: arrow icon in the pill circle; phone/contact icon hidden */
+.wfs-quote-pill__contact { display: none; }
+
+@media (max-width: 600px) {
+  .wfs-quote-pill { padding: 5px !important; gap: 0 !important; }
+  .wfs-quote-pill__label,
+  .wfs-quote-pill__dot,
+  .wfs-quote-pill__arrow { display: none !important; }
+  /* Collapsed to just the circle — show the contact (phone) icon instead of the arrow */
+  .wfs-quote-pill__contact { display: block !important; }
+}
+
+/* Material profile cards: horizontal snap carousel on phones so the
+   4-5 stacked cards don't take a full screen each */
+@media (max-width: 640px) {
+  .wfs-profiles-grid {
+    display: flex !important;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 12px !important;
+    margin: 0 calc(-1 * var(--pad));
+    padding: 0 var(--pad);
+  }
+  .wfs-profiles-grid::-webkit-scrollbar { display: none; }
+  .wfs-profiles-grid > article,
+  .wfs-profiles-grid > a {
+    flex: 0 0 72%;
+    scroll-snap-align: start;
+  }
+  .wfs-profiles-grid > article > div:first-child,
+  .wfs-profiles-grid > a > div:first-child {
+    aspect-ratio: 16 / 9 !important;
+  }
+}
+
+/* Service-area yard cards: drop the phone / hours onto its own line on phones
+   so long strings ("Mon–Fri 7am–4pm · Sat 7am–12pm") never clip off-screen */
+@media (max-width: 640px) {
+  .wfs-yard-card { flex-wrap: wrap !important; }
+  .wfs-yard-meta {
+    flex-basis: 100% !important;
+    margin-left: 38px !important;
+    margin-top: 2px !important;
+    text-align: left !important;
+    white-space: normal !important;
+  }
+
+  /* Florida map pins: shrink labels and stack them above / below the dot so a
+     long label ("FORT MYERS · HQ") never runs off the narrower phone map */
+  .wfs-map-pin {
+    font-size: 11.5px !important;
+    letter-spacing: 0.1em !important;
+    padding: 3px 7px !important;
+  }
+  .wfs-map-pin--fm {
+    left: 69.3% !important;
+    top: calc(67.1% + 20px) !important;
+    transform: translate(-50%, 0) !important;
+  }
+  .wfs-map-pin--pc {
+    left: 68.2% !important;
+    top: calc(63.2% - 20px) !important;
+    transform: translate(-50%, -100%) !important;
+  }
+}
+
+/* Where-it-fits rows: stack description under title on phones */
+@media (max-width: 860px) {
+  .wfs-usecase-row {
+    grid-template-columns: 52px 1fr 44px !important;
+    row-gap: 12px !important;
+    padding: 26px 14px !important;
+    margin: 0 -14px !important;
+  }
+  .wfs-usecase-row > p { grid-column: 2 / 4; grid-row: 2; }
+  .wfs-usecase-num { font-size: 37.5px !important; }
+}
+
+/* Materials-comparison rows: stack into a card on smaller screens so the
+   5 columns + material thumbnail don't get crushed */
+@media (max-width: 900px) {
+  .wfs-matrow { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .wfs-matrow__thumb { width: 100% !important; height: 150px !important; }
+}
+
+@keyframes wfsSlideFade {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Measure-once timeline: stack on small screens, hide the ruler */
+@media (max-width: 900px) {
+  .wfs-tape { display: none !important; }
+  .wfs-tape-row { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .wfs-tape-row > div { grid-column: auto !important; }
+  .wfs-tape-row + .wfs-tape-row { margin-top: 28px; }
+  .wfs-tape-wrap span[aria-hidden] { display: none !important; }
+}
+
+/* Why-partner grid: drop the column dividers when it stacks */
+@media (max-width: 1024px) {
+  /* Perks grid sits on the dark ink section — use white-alpha dividers */
+  .wfs-perk-cell { border-left: none !important; border-top: 1px solid rgba(255,255,255,0.12) !important; }
+  .wfs-perks-grid .wfs-perk-cell:first-child { border-top: none !important; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Apple-style mobile polish (≤ 640px)
+   Softer light-gray canvas + rounded, floating cards with deeper
+   shadows so the phone view reads modern instead of flat/boxy.
+   Scoped to phones — the desktop layout is already tuned.
+   Selectors match the browser-serialized inline style form
+   (rgba() with spaces after commas; var(--x) preserved verbatim).
+   ───────────────────────────────────────────────────────────── */
+/* Site-wide card styling (all breakpoints) — every boxed panel gets the
+   same rounded corners + soft shadow as the testimonial cards, so nothing
+   reads as a flat hairline rectangle. Selectors match the browser-
+   serialized inline style form (rgba() with spaces; var(--x) verbatim). */
+
+/* Flat bordered boxes → rounded floating cards */
+[style*="border: 1px solid rgba(38, 49, 102, 0.14)"],
+[style*="border: 1px solid rgba(0, 16, 17, 0.1)"],
+[style*="border: 1px solid rgba(0, 16, 17, 0.12)"],
+[style*="border: 1px solid rgba(0, 16, 17, 0.15)"],
+[style*="border: 1px solid rgba(0, 16, 17, 0.18)"] {
+  border-radius: 18px !important;
+  border-color: rgba(38, 49, 102, 0.08) !important;
+  box-shadow: 0 18px 40px -22px rgba(38, 49, 102, 0.34) !important;
+  background: var(--white) !important;
+}
+
+/* Form fields: round the corners, no drop shadow */
+[style*="border: 1px solid rgba(0, 16, 17, 0.25)"] { border-radius: 12px !important; }
+
+/* Small chips: icon frames, FAQ toggle, hamburger */
+[style*="border: 1.5px solid var(--ink)"] { border-radius: 12px !important; }
+[style*="border: 1px solid rgba(0, 16, 17, 0.2)"] { border-radius: 9px !important; }
+.wfs-faq-toggle { border-radius: 9px !important; }
+.wfs-mobile-trigger { border-radius: 12px !important; }
+
+/* Media / image cards: round + clip; soften the map's hard border */
+.wfs-map,
+.wfs-msys__imgwrap,
+.wfs-msys__card,
+.wfs-projects-grid > *,
+[style*="aspect-ratio: 3 / 4"],
+[style*="aspect-ratio: 4 / 5"],
+[style*="aspect-ratio: 5 / 4"],
+[style*="aspect-ratio: 4 / 3"],
+[style*="aspect-ratio: 3 / 2"],
+[style*="aspect-ratio: 16 / 9"] {
+  border-radius: 18px !important;
+  overflow: hidden !important;
+}
+.wfs-map {
+  border-color: transparent !important;
+  box-shadow: 0 18px 40px -20px rgba(38, 49, 102, 0.45) !important;
+}
+
+@media (max-width: 640px) {
+  /* Warm light-gray canvas (Apple #f5f5f7) instead of flat white, so the
+     white cards float. Phones only; dark (ink) sections are untouched. */
+  body { background: #f5f5f7; }
+  section[style*="background: var(--white)"],
+  section[style*="background: var(--parchment)"],
+  section[style*="background: var(--linen)"] {
+    background: #f5f5f7 !important;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   Legibility pass for the small uppercase "mono" labels.
+   Eyebrows/labels ran 10–14px with very wide tracking (0.18–0.22em),
+   which is hard to scan — especially for the older audience this site
+   serves. Lift anything under 15px to a readable floor and relax the
+   tracking: on small caps, wide letter-spacing hurts more than size.
+   ───────────────────────────────────────────────────────────── */
+.mono[style*="font-size: 10"],
+.mono[style*="font-size: 11"],
+.mono[style*="font-size: 12"],
+.mono[style*="font-size: 13"],
+.mono[style*="font-size: 14"] {
+  font-size: 15.5px !important;
+  letter-spacing: 0.11em !important;
+}
+
+/* Quote-form fields: visible focus ring (inline styles can't express :focus) */
+input:focus, select:focus, textarea:focus {
+  border-color: var(--tangerine) !important;
+  box-shadow: 0 0 0 3px rgba(255, 113, 51, 0.18) !important;
+}
+
+/* Hero → next-section dissolve. The colour matches whatever section follows
+   the hero (white on desktop, the Apple-grey canvas on phones). */
+.wfs-hero-fade {
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.10) 50%,
+    rgba(255,255,255,0.40) 80%,
+    #ffffff 100%);
+}
+@media (max-width: 640px) {
+  .wfs-hero-fade {
+    background: linear-gradient(180deg,
+      rgba(245,245,247,0) 0%,
+      rgba(245,245,247,0.10) 50%,
+      rgba(245,245,247,0.40) 80%,
+      #f5f5f7 100%);
+  }
+}
+
+/* Body copy in the system face (SF Pro on Apple devices). Headings keep
+   Archivo (.display) and the small labels keep their mono face. */
+p { font-family: var(--body); }
