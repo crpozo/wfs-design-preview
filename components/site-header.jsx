@@ -184,6 +184,24 @@ const SiteHeader = ({ active }) => {
               </span>
             </a>
 
+            {/* Live agent (mobile only): the utility-bar button is hidden on
+                phones, so this is the only way to reach the chat there. Same
+                openLiveChat handler; falls back to the estimate anchor. */}
+            <a
+              href="estimate.html#quote"
+              onClick={openLiveChat}
+              className="wfs-mobile-chat"
+              aria-label={t('Talk to a live agent', 'Habla con un asesor')}
+              style={{
+                display: 'none', position: 'relative', width: 42, height: 42, alignItems: 'center', justifyContent: 'center', background: 'var(--ink)', color: 'var(--white)', cursor: 'pointer', flexShrink: 0, }}>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 20l1.9-5.7a8.5 8.5 0 0 1-.9-3.8A8.38 8.38 0 0 1 12.5 2 8.38 8.38 0 0 1 21 10.5z"/>
+              </svg>
+              {/* Green "online" dot, same signal as the desktop button */}
+              <span aria-hidden style={{
+                position: 'absolute', top: 5, right: 5, width: 8, height: 8, borderRadius: '50%', background: '#3ddc84', boxShadow: '0 0 0 2px var(--ink)', }}/>
+            </a>
+
             {/* Hamburger */}
             <button
               className="wfs-mobile-trigger"
