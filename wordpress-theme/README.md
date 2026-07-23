@@ -1,4 +1,4 @@
-# Western Fence Supply — Tema de WordPress (`wfs-site-2.0.0.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-2.1.0.zip`)
 
 Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
 componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
@@ -40,11 +40,59 @@ WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
 ## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube `wfs-site-2.0.0.zip` → **Instalar ahora** → **Activar**
+2. Sube `wfs-site-2.1.0.zip` → **Instalar ahora** → **Activar**
 3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
    (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 
 Requiere WordPress 5.6+. Sin tema padre, sin Elementor, sin plugins.
+
+## Formularios
+
+Los tres formularios del sitio (cotización, contacto y garantía) **envían de verdad**.
+Antes no: mostraban "gracias" y no salía nada.
+
+Cada envío llega a:
+
+- **antonello@westernfencesupply.com** (en Para)
+- **crm+A1AN6482169aaf302a7fe4.ls.32@bcc.marketing360.com** (en copia oculta, para Marketing 360)
+
+El `Reply-To` es el correo del cliente, así que se le responde directo desde el correo.
+El plano o las fotos viajan como adjunto.
+
+Cada envío **también queda guardado** en WordPress (menú **Leads**), así que aunque el
+correo falle el lead no se pierde.
+
+Para cambiar los destinatarios: **Ajustes → Escritura → Destinatarios de formularios**
+(uno por línea; el primero va en Para, los demás en copia oculta).
+
+> **Importante para que lleguen:** WordPress envía con `wp_mail`, que por defecto usa el
+> correo del servidor y suele terminar en spam. Hay que conectar **Amazon SES** con un
+> plugin SMTP y verificar el dominio (SPF + DKIM). Sin eso los correos pueden no llegar.
+
+### Formato del correo
+
+```
+Name:
+Marisol Rivera
+_________________________________________________________________________
+
+Phone Number:
+(239) 555-0142
+_________________________________________________________________________
+
+…
+
+Form Submission Information:
+Form:
+Material Quote Request
+Page:
+https://westernfencesupply.com/estimate/
+Date of Submission:
+July 23, 2026
+Time of Submission
+8:15 am EDT
+_________________________________________________________________________
+```
 
 ## Cómo se edita
 

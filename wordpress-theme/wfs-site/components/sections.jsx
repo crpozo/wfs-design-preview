@@ -1087,7 +1087,26 @@ const ServiceAreas = () => {
 const FinalCTA = () => {
   const t = useT();
   const [submitted, setSubmitted] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [error, setError] = React.useState('');
   const [fileName, setFileName] = React.useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (sending) return;
+    setSending(true); setError('');
+    try {
+      await submitLead(e.target, { form: 'quote', subject: 'Material Quote Request' });
+      setSubmitted(true);
+    } catch (err) {
+      setError(t(
+        "We couldn't send your request. Please call us at (239) 689-5496 or email sales@westernfencesupply.com.",
+        'No pudimos enviar tu solicitud. Llámanos al (239) 689-5496 o escribe a sales@westernfencesupply.com.'
+      ));
+    } finally {
+      setSending(false);
+    }
+  };
   const inputStyle = {
     width: '100%', padding: '15px 16px',
     border: '1px solid rgba(0,16,17,0.16)', background: 'var(--white)',
@@ -1170,7 +1189,7 @@ const FinalCTA = () => {
           </div>
 
           {/* Right: form */}
-          <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} style={{
+          <form onSubmit={handleSubmit} style={{
             background: 'var(--white)', padding: 'clamp(28px, 3vw, 40px)',
             border: '1px solid rgba(0,16,17,0.08)', borderRadius: 22,
             boxShadow: '0 34px 70px -34px rgba(38,49,102,0.4)',
@@ -1184,49 +1203,49 @@ const FinalCTA = () => {
             ) : (
               <>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginBottom: 18 }}>
-                  <div><label style={labelStyle}>{t('Full name', 'Nombre completo')}</label><input type="text" required style={inputStyle} placeholder="Jane Smith"/></div>
-                  <div><label style={labelStyle}>{t('Company (optional)', 'Empresa (opcional)')}</label><input type="text" style={inputStyle} placeholder="Acme Fence Co."/></div>
+                  <div><label style={labelStyle}>{t('Full name', 'Nombre completo')}</label><input type="text" name="name" required style={inputStyle} placeholder="Jane Smith"/></div>
+                  <div><label style={labelStyle}>{t('Company (optional)', 'Empresa (opcional)')}</label><input type="text" name="company" style={inputStyle} placeholder="Acme Fence Co."/></div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginBottom: 18 }}>
-                  <div><label style={labelStyle}>{t('Email', 'Correo')}</label><input type="email" required style={inputStyle} placeholder="jane@email.com"/></div>
-                  <div><label style={labelStyle}>{t('Phone', 'Teléfono')}</label><input type="tel" required style={inputStyle} placeholder="(239) 555-0142"/></div>
+                  <div><label style={labelStyle}>{t('Email', 'Correo')}</label><input type="email" name="email" required style={inputStyle} placeholder="jane@email.com"/></div>
+                  <div><label style={labelStyle}>{t('Phone', 'Teléfono')}</label><input type="tel" name="phone" required style={inputStyle} placeholder="(239) 555-0142"/></div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginBottom: 18 }}>
                   <div><label style={labelStyle}>{t('I am a', 'Soy')}</label>
-                    <select style={inputStyle}>
-                      <option>{t('Homeowner', 'Propietario')}</option>
-                      <option>{t('DIY / Self-installer', 'DIY / Auto-instalador')}</option>
-                      <option>{t('Contractor', 'Contratista')}</option>
-                      <option>{t('Commercial / Builder', 'Comercial / Constructor')}</option>
+                    <select name="audience" style={inputStyle}>
+                      <option value="Homeowner">{t('Homeowner', 'Propietario')}</option>
+                      <option value="DIY / Self-installer">{t('DIY / Self-installer', 'DIY / Auto-instalador')}</option>
+                      <option value="Contractor">{t('Contractor', 'Contratista')}</option>
+                      <option value="Commercial / Builder">{t('Commercial / Builder', 'Comercial / Constructor')}</option>
                     </select>
                   </div>
                   <div><label style={labelStyle}>{t('Project type', 'Tipo de proyecto')}</label>
-                    <select style={inputStyle}>
-                      <option>{t('Vinyl / PVC', 'Vinilo / PVC')}</option>
-                      <option>{t('Aluminum', 'Aluminio')}</option>
-                      <option>{t('Chain Link', 'Malla ciclónica')}</option>
-                      <option>Metal / DuraFence</option>
-                      <option>EC Fence</option>
-                      <option>{t('Gate System', 'Sistema de portón')}</option>
-                      <option>{t('Other', 'Otro')}</option>
+                    <select name="project_type" style={inputStyle}>
+                      <option value="Vinyl / PVC">{t('Vinyl / PVC', 'Vinilo / PVC')}</option>
+                      <option value="Aluminum">{t('Aluminum', 'Aluminio')}</option>
+                      <option value="Chain Link">{t('Chain Link', 'Malla ciclónica')}</option>
+                      <option value="Metal / DuraFence">Metal / DuraFence</option>
+                      <option value="EC Fence">EC Fence</option>
+                      <option value="Gate System">{t('Gate System', 'Sistema de portón')}</option>
+                      <option value="Other">{t('Other', 'Otro')}</option>
                     </select>
                   </div>
                 </div>
                 <div style={{ marginBottom: 18 }}>
                   <label style={labelStyle}>{t('How did you hear about us?', '¿Cómo te enteraste de nosotros?')}</label>
-                  <select style={inputStyle}>
-                    <option>{t('Select an option', 'Selecciona una opción')}</option>
-                    <option>{t('Google / web search', 'Búsqueda en Google / web')}</option>
-                    <option>{t('Referral / word of mouth', 'Referencia / recomendación')}</option>
-                    <option>{t('Social media', 'Redes sociales')}</option>
-                    <option>{t('Drove by / signage', 'Pasé por ahí / letrero')}</option>
-                    <option>{t('Repeat customer', 'Cliente recurrente')}</option>
-                    <option>{t('Other', 'Otro')}</option>
+                  <select name="source" style={inputStyle}>
+                    <option value="Select an option">{t('Select an option', 'Selecciona una opción')}</option>
+                    <option value="Google / web search">{t('Google / web search', 'Búsqueda en Google / web')}</option>
+                    <option value="Referral / word of mouth">{t('Referral / word of mouth', 'Referencia / recomendación')}</option>
+                    <option value="Social media">{t('Social media', 'Redes sociales')}</option>
+                    <option value="Drove by / signage">{t('Drove by / signage', 'Pasé por ahí / letrero')}</option>
+                    <option value="Repeat customer">{t('Repeat customer', 'Cliente recurrente')}</option>
+                    <option value="Other">{t('Other', 'Otro')}</option>
                   </select>
                 </div>
                 <div style={{ marginBottom: 18 }}>
                   <label style={labelStyle}>{t('Project details', 'Detalles del proyecto')}</label>
-                  <textarea rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: 100 }} placeholder={t('Approx. linear feet, height, location/zip, timeline, anything else relevant…', 'Aprox. pies lineales, altura, ubicación/código postal, plazo, cualquier otro detalle relevante…')}/>
+                  <textarea name="details" rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: 100 }} placeholder={t('Approx. linear feet, height, location/zip, timeline, anything else relevant…', 'Aprox. pies lineales, altura, ubicación/código postal, plazo, cualquier otro detalle relevante…')}/>
                 </div>
 
                 {/* Drawing / layout upload — lets people send the sketch with the request */}
@@ -1257,7 +1276,7 @@ const FinalCTA = () => {
                       </span>
                     </span>
                   </label>
-                  <input id="wfs-upload" type="file" accept=".pdf,.jpg,.jpeg,.png,.heic,.webp"
+                  <input id="wfs-upload" name="drawing" type="file" accept=".pdf,.jpg,.jpeg,.png,.heic,.webp"
                     onChange={(e) => setFileName(e.target.files && e.target.files[0] ? e.target.files[0].name : '')}
                     style={{ display: 'none' }}/>
                 </div>
@@ -1266,17 +1285,25 @@ const FinalCTA = () => {
                   <p className="mono" style={{ margin: 0, fontSize: 14, letterSpacing: '0.04em', color: 'var(--charcoal)', maxWidth: 280 }}>
                     {t('By submitting, you agree to be contacted by Western Fence Supply.', 'Al enviar, aceptas ser contactado por Western Fence Supply.')}
                   </p>
-                  <button type="submit" style={{
+                  <button type="submit" disabled={sending} style={{
                     display: 'inline-flex', alignItems: 'center', gap: 10,
                     padding: '16px 28px', borderRadius: 999,
                     background: 'var(--ink)', color: 'var(--white)',
                     fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600,
                     boxShadow: '0 12px 28px -12px rgba(38,49,102,0.6)',
+                    opacity: sending ? 0.6 : 1, cursor: sending ? 'wait' : 'pointer',
                   }}>
-                    {t('Request quote', 'Solicitar cotización')}
+                    {sending ? t('Sending…', 'Enviando…') : t('Request quote', 'Solicitar cotización')}
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
                   </button>
                 </div>
+                {error && (
+                  <p role="alert" style={{
+                    margin: '18px 0 0', padding: '14px 16px', borderRadius: 12,
+                    background: 'rgba(255,113,51,0.08)', border: '1px solid rgba(255,113,51,0.35)',
+                    fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)',
+                  }}>{error}</p>
+                )}
               </>
             )}
           </form>

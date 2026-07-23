@@ -422,6 +422,26 @@ const ClaimsProcess = () => {
 
 const ClaimsForm = () => {
   const t = useT();
+  const [submitted, setSubmitted] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [error, setError] = React.useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (sending) return;
+    setSending(true); setError('');
+    try {
+      await submitLead(e.target, { form: 'warranty', subject: 'Warranty Claim' });
+      setSubmitted(true);
+    } catch (err) {
+      setError(t(
+        "We couldn't send your claim. Please email claims@westernfencesupply.com or call (239) 689-5496.",
+        'No pudimos enviar tu reclamo. Escribe a claims@westernfencesupply.com o llama al (239) 689-5496.'
+      ));
+    } finally {
+      setSending(false);
+    }
+  };
   const Field = ({ label, name, type = 'text', placeholder, required, children, span = 1 }) => (
     <div style={{ gridColumn: `span ${span}` }}>
       <label htmlFor={name} className="mono" style={{
@@ -470,7 +490,14 @@ const ClaimsForm = () => {
               }}>{t('≈ 4 minutes', '≈ 4 minutos')}</span>
             </div>
 
-            <form onSubmit={e => { e.preventDefault(); alert(t('Demo form, would submit to claims@westernfencesupply.com', 'Formulario demo, se enviaría a claims@westernfencesupply.com')); }}
+            {submitted ? (
+              <div style={{ padding: '56px 0', textAlign: 'center' }}>
+                <div className="mono" style={{ fontSize: 14, letterSpacing: '0.18em', color: 'var(--tangerine)', marginBottom: 16, textTransform: 'uppercase', fontWeight: 700 }}>{t('Claim received', 'Reclamo recibido')}</div>
+                <h3 className="display" style={{ fontSize: 31.5, margin: '0 0 12px', lineHeight: 1.1 }}>{t('Thanks, your claim is in.', 'Gracias, tu reclamo fue recibido.')}</h3>
+                <p style={{ fontSize: 15.5, color: 'var(--charcoal)', maxWidth: 380, margin: '0 auto' }}>{t('Our warranty team will email you a claim number and next steps.', 'Nuestro equipo de garantías te enviará por correo el número de reclamo y los siguientes pasos.')}</p>
+              </div>
+            ) : (
+            <form onSubmit={handleSubmit}
               style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
 
               <Field label={t('Full name', 'Nombre completo')} name="name" required placeholder="Marisol R."/>
@@ -538,8 +565,9 @@ const ClaimsForm = () => {
               </Field>
 
               <div style={{ gridColumn: 'span 2', display: 'flex', gap: 16, alignItems: 'center', marginTop: 8, flexWrap: 'wrap' }}>
-                <button type="submit" style={{
+                <button type="submit" disabled={sending} style={{
                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                  opacity: sending ? 0.6 : 1,
                   padding: '16px 36px',
                   background: 'var(--ink)', color: 'var(--white)',
                   fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
@@ -550,7 +578,7 @@ const ClaimsForm = () => {
                 }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '8px 8px 0 var(--tangerine)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '6px 6px 0 var(--tangerine)'; }}>
-                  {t('Submit claim', 'Enviar reclamo')}
+                  {sending ? t('Sending…', 'Enviando…') : t('Submit claim', 'Enviar reclamo')}
                 </button>
                 <span className="mono" style={{
                   fontSize: 13.5, fontWeight: 700, letterSpacing: '0.16em',
@@ -559,7 +587,15 @@ const ClaimsForm = () => {
                   {t("You'll get a claim number by email", 'Recibirás un número de reclamo por email')}
                 </span>
               </div>
+              {error && (
+                <p role="alert" style={{
+                  gridColumn: 'span 2', margin: 0, padding: '14px 16px',
+                  background: 'rgba(255,113,51,0.08)', border: '1px solid rgba(255,113,51,0.35)',
+                  fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)',
+                }}>{error}</p>
+              )}
             </form>
+            )}
           </article>
 
           {/* Right, help sidebar */}

@@ -147,6 +147,25 @@ const ContactInfo = () => {
 const ContactForm = () => {
   const t = useT();
   const [submitted, setSubmitted] = React.useState(false);
+  const [sending, setSending] = React.useState(false);
+  const [error, setError] = React.useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (sending) return;
+    setSending(true); setError('');
+    try {
+      await submitLead(e.target, { form: 'contact', subject: 'Website Contact Message' });
+      setSubmitted(true);
+    } catch (err) {
+      setError(t(
+        "We couldn't send your message. Please call (239) 689-5496 or email sales@westernfencesupply.com.",
+        'No pudimos enviar tu mensaje. Llama al (239) 689-5496 o escribe a sales@westernfencesupply.com.'
+      ));
+    } finally {
+      setSending(false);
+    }
+  };
   const inputStyle = {
     width: '100%', padding: '14px 16px',
     border: '1px solid rgba(0,16,17,0.25)', background: 'var(--white)',
@@ -216,32 +235,33 @@ const ContactForm = () => {
               </p>
             </div>
           ) : (
-            <form onSubmit={(e) => { e.preventDefault(); setSubmitted(true); }} style={{ display: 'grid', gap: 18 }}>
+            <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 18 }}>
               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18 }}>
                 <div>
                   <label style={labelStyle}>{t('Full name', 'Nombre completo')}</label>
-                  <input required style={inputStyle} placeholder="Jane Smith"/>
+                  <input name="name" required style={inputStyle} placeholder="Jane Smith"/>
                 </div>
                 <div>
                   <label style={labelStyle}>{t('Email', 'Correo')}</label>
-                  <input required type="email" style={inputStyle} placeholder="jane@email.com"/>
+                  <input name="email" required type="email" style={inputStyle} placeholder="jane@email.com"/>
                 </div>
               </div>
               <div>
                 <label style={labelStyle}>{t('Phone (optional)', 'Teléfono (opcional)')}</label>
-                <input style={inputStyle} placeholder="(239) 555-0142"/>
+                <input name="phone" style={inputStyle} placeholder="(239) 555-0142"/>
               </div>
               <div>
                 <label style={labelStyle}>{t('Message', 'Mensaje')}</label>
-                <textarea required rows={5} style={{ ...inputStyle, resize: 'vertical', minHeight: 120 }}
+                <textarea name="message" required rows={5} style={{ ...inputStyle, resize: 'vertical', minHeight: 120 }}
                   placeholder={t('How can we help?', '¿Cómo podemos ayudarte?')}/>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16, flexWrap: 'wrap' }}>
                 <span style={{ fontSize: 14, color: 'var(--charcoal)', maxWidth: 300 }}>
                   {t('By submitting, you agree to be contacted by Western Fence Supply.', 'Al enviar, aceptas que Western Fence Supply te contacte.')}
                 </span>
-                <button type="submit" style={{
+                <button type="submit" disabled={sending} style={{
                   display: 'inline-flex', alignItems: 'center', gap: 10,
+                  opacity: sending ? 0.6 : 1,
                   padding: '15px 28px', background: 'var(--tangerine)', color: 'var(--white)',
                   fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
                   letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer',
@@ -250,10 +270,17 @@ const ContactForm = () => {
                 }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; }}>
-                  {t('Send message', 'Enviar mensaje')}
+                  {sending ? t('Sending…', 'Enviando…') : t('Send message', 'Enviar mensaje')}
                   <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
                 </button>
               </div>
+              {error && (
+                <p role="alert" style={{
+                  margin: 0, padding: '14px 16px', borderRadius: 12,
+                  background: 'rgba(255,113,51,0.08)', border: '1px solid rgba(255,113,51,0.35)',
+                  fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)',
+                }}>{error}</p>
+              )}
             </form>
           )}
         </div>

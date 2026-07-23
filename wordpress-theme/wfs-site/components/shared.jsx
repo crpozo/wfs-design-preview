@@ -1269,3 +1269,53 @@ Object.assign(ES_TR, {
     }, 50);
   }
 })();
+
+/* ------------------------------------------------------------------ leads
+   Envío real de formularios.
+
+   En WordPress, index.php define window.WFS_FORM_ENDPOINT y el envío va al
+   backend, que despacha a los destinatarios y guarda el lead.
+   En el preview estático no hay backend, así que se abre el correo del
+   usuario con los datos ya escritos: nunca se pierde una solicitud. */
+const WFS_LEAD_TO = [
+  'antonello@westernfencesupply.com',
+  'crm+A1AN6482169aaf302a7fe4.ls.32@bcc.marketing360.com',
+];
+
+async function submitLead(formEl, meta) {
+  const fd = new FormData(formEl);
+  fd.append('_form', meta.form || 'lead');
+  fd.append('_subject', meta.subject || 'Website lead');
+  fd.append('_page', (location.pathname.split('/').filter(Boolean).pop() || 'homepage'));
+  fd.append('_url', location.href);
+
+  const endpoint = window.WFS_FORM_ENDPOINT;
+  if (endpoint) {
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      body: fd,
+      headers: window.WFS_NONCE ? { 'X-WP-Nonce': window.WFS_NONCE } : {},
+    });
+    let data = {};
+    try { data = await res.json(); } catch (err) { /* respuesta no JSON */ }
+    if (!res.ok || !data.ok) {
+      throw new Error(data.message || 'No pudimos enviar el formulario.');
+    }
+    return data;
+  }
+
+  /* Sin backend: mailto con todo el detalle ya cargado. */
+  const lines = [];
+  fd.forEach((value, key) => {
+    if (key.charAt(0) === '_') return;
+    if (typeof value === 'string' && value.trim()) lines.push(key + ': ' + value.trim());
+    else if (value && value.name) lines.push(key + ': ' + value.name + ' (adjuntar manualmente)');
+  });
+  lines.push('', 'Enviado desde: ' + location.href);
+  window.location.href = 'mailto:' + WFS_LEAD_TO.join(',')
+    + '?subject=' + encodeURIComponent(meta.subject || 'Website lead')
+    + '&body=' + encodeURIComponent(lines.join('\n'));
+  return { ok: true, fallback: true };
+}
+
+Object.assign(window, { WFS_LEAD_TO, submitLead });

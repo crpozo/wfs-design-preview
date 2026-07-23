@@ -948,34 +948,13 @@ const ContractorHero = () => {
           {t(' — without an out-of-state distributor in the middle.', ', sin un distribuidor de fuera del estado de por medio.')}
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginBottom: 22 }}>
-          <a href="estimate.html#contact" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12,
-            padding: '15px 26px',
-            background: 'var(--tangerine)', color: 'var(--white)',
-            fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700,
-            letterSpacing: '0.18em', textTransform: 'uppercase',
-            boxShadow: '0 10px 28px rgba(255, 113, 51,0.4)',
-            transition: 'transform 0.18s, box-shadow 0.18s',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(255, 113, 51,0.5)'; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(255, 113, 51,0.4)'; }}>
+          <PillCTA href="estimate.html#contact" variant="light">
             {t('Get a quick quote', 'Cotiza rápido')}
-            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
-          </a>
-          <a href="https://form.jotform.com/westernfencesupply/account-setup-form"
-            target="_blank" rel="noopener" className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-            padding: '14px 24px',
-            border: '1px solid rgba(255,255,255,0.6)', color: 'var(--white)',
-            fontSize: 14, fontWeight: 700, letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(4px)',
-            transition: 'background 0.2s ease',
-          }}
-          onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; }}
-          onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}>
+          </PillCTA>
+          <PillCTA href="https://form.jotform.com/westernfencesupply/account-setup-form"
+            target="_blank" rel="noopener">
             {t('Become a WFS partner', 'Hazte socio de WFS')}
-          </a>
+          </PillCTA>
         </div>
       </div>
 
@@ -1179,7 +1158,7 @@ const ContractorHowItWorks = () => {
         }}>
           {/* Connector */}
           <div aria-hidden style={{
-            position: 'absolute', top: 36, left: '10%', right: '10%', height: 1,
+            position: 'absolute', top: 47, left: '10%', right: '10%', height: 1,
             borderTop: '1px dashed rgba(38, 49, 102,0.2)',
             zIndex: 0, pointerEvents: 'none',
           }}/>
@@ -1187,29 +1166,34 @@ const ContractorHowItWorks = () => {
             <div key={s.n} style={{
               position: 'relative', zIndex: 1,
               background: 'var(--white)',
-              border: '1.5px solid var(--ink)',
-              padding: '24px 24px 28px',
+              border: '1px solid rgba(38, 49, 102, 0.14)',
+              padding: '24px 22px 26px',
             }}>
               {/* Top row, number + icon */}
               <div style={{
                 display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-                marginBottom: 24,
+                marginBottom: 18,
               }}>
                 <span className="mono" style={{
                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                  width: 36, height: 36,
+                  width: 46, height: 46,
                   background: 'var(--tangerine)',
                   color: 'var(--white)',
                   fontSize: 14, fontWeight: 700, letterSpacing: '0.05em',
                 }}>{s.n}</span>
-                <span style={{ color: 'var(--ink)' }}>{s.svg}</span>
+                <span style={{
+                  width: 46, height: 46,
+                  border: '1.5px solid var(--ink)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  color: 'var(--tangerine)',
+                }}>{s.svg}</span>
               </div>
               <h3 className="display" style={{
-                margin: '0 0 10px', fontSize: 19.5,
-                letterSpacing: '-0.005em', color: 'var(--ink)',
+                margin: '0 0 8px', fontSize: 19.5,
+                lineHeight: 1.15, letterSpacing: '-0.01em', color: 'var(--ink)',
               }}>{t(s.title)}</h3>
               <p className="mono" style={{
-                margin: 0, fontSize: 14.5, lineHeight: 1.6,
+                margin: 0, fontSize: 14.5, lineHeight: 1.55,
                 color: 'var(--charcoal)',
               }}>{t(s.body)}</p>
             </div>

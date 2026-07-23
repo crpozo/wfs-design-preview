@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Genera el tema de WordPress 'wfs-exact' a partir del sitio real.
+"""Genera el tema de WordPress 'wfs-site' a partir del sitio real.
 
 No reinterpreta el diseño: copia los componentes y el CSS tal cual, y hace que
 WordPress los sirva. Por construccion el resultado es identico al preview.
@@ -7,7 +7,7 @@ WordPress los sirva. Por construccion el resultado es identico al preview.
 import re, shutil, pathlib, json, html
 
 SRC   = pathlib.Path(__file__).resolve().parent.parent
-OUT   = SRC / "wordpress-theme" / "wfs-exact"
+OUT   = SRC / "wordpress-theme" / "wfs-site"
 ASSET_BASE = "https://crpozo.github.io/wfs-design-preview/assets"
 
 SKIP = {"index.html"}
@@ -18,6 +18,11 @@ if OUT.exists():
 (OUT / "apps").mkdir(parents=True)
 (OUT / "components").mkdir()
 (OUT / "css").mkdir()
+
+# ---------------------------------------------------------------- archivos PHP del tema
+for item in sorted((SRC / "wordpress-theme" / "theme-src").iterdir()):
+    dst = OUT / item.name
+    shutil.copytree(item, dst) if item.is_dir() else shutil.copy2(item, dst)
 
 # ---------------------------------------------------------------- componentes
 for jsx in sorted((SRC / "components").glob("*.jsx")):
