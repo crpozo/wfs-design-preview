@@ -320,6 +320,7 @@ const SiteHeader = ({ active }) => {
           position: "relative",
           width: 42,
           height: 42,
+          borderRadius: "50%",
           alignItems: "center",
           justifyContent: "center",
           background: "var(--ink)",
