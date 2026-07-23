@@ -165,8 +165,17 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 
 	$email = isset( $data['email'] ) ? sanitize_email( $data['email'] ) : '';
 	$name  = isset( $data['name'] ) ? $data['name'] : '';
-	if ( ! $name || ! is_email( $email ) ) {
-		return new WP_REST_Response( array( 'ok' => false, 'message' => 'Please enter your name and a valid email.' ), 400 );
+
+	if ( ! $name ) {
+		return new WP_REST_Response( array( 'ok' => false, 'message' => 'Please enter your name.' ), 400 );
+	}
+	/* El navegador acepta "you@company" sin dominio; nosotros no, porque a esa
+	   direccion no llega nada. Se dice exactamente que falta. */
+	if ( ! is_email( $email ) ) {
+		return new WP_REST_Response( array(
+			'ok'      => false,
+			'message' => 'Please check your email address — it needs a full domain, like name@company.com.',
+		), 400 );
 	}
 
 	$meta = array(

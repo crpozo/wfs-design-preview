@@ -158,7 +158,7 @@ const ContactForm = () => {
       await submitLead(e.target, { form: 'contact', subject: 'Website Contact Message' });
       setSubmitted(true);
     } catch (err) {
-      setError(t(
+      setError((err && err.message) || t(
         "We couldn't send your message. Please call (239) 689-5496 or email sales@westernfencesupply.com.",
         'No pudimos enviar tu mensaje. Llama al (239) 689-5496 o escribe a sales@westernfencesupply.com.'
       ));

@@ -1,4 +1,4 @@
-# Western Fence Supply — Tema de WordPress (`wfs-site-2.1.0.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-2.2.0.zip`)
 
 Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
 componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
@@ -40,7 +40,7 @@ WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
 ## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube `wfs-site-2.1.0.zip` → **Instalar ahora** → **Activar**
+2. Sube `wfs-site-2.2.0.zip` → **Instalar ahora** → **Activar**
 3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
    (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 
@@ -93,6 +93,30 @@ Time of Submission
 8:15 am EDT
 _________________________________________________________________________
 ```
+
+## Chat de tawk.to
+
+El chat se abría **maximizado en cada carga**, tapando la página. No lo causa el tema:
+en el sitio hay un snippet que lo fuerza.
+
+```javascript
+window.Tawk_API.onLoad = function(){
+  window.Tawk_API.maximize();   // ← esto lo abre solo
+};
+```
+
+El tema ahora lo deja **minimizado**: la burbuja sigue visible y el chat funciona igual,
+pero no invade al entrar. Lo hace en `wp_footer` con prioridad tardía, así que pisa ese
+snippet sin necesidad de encontrarlo.
+
+Para volver al comportamiento anterior, en `wp-config.php`:
+
+```php
+define( 'WFS_TAWK_AUTOOPEN', true );
+```
+
+> Conviene igual borrar ese snippet en el sitio (búscalo por `Tawk_API.maximize`), para
+> no tener dos instrucciones peleando.
 
 ## Cómo se edita
 

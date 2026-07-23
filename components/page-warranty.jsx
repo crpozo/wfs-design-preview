@@ -434,7 +434,7 @@ const ClaimsForm = () => {
       await submitLead(e.target, { form: 'warranty', subject: 'Warranty Claim' });
       setSubmitted(true);
     } catch (err) {
-      setError(t(
+      setError((err && err.message) || t(
         "We couldn't send your claim. Please email claims@westernfencesupply.com or call (239) 689-5496.",
         'No pudimos enviar tu reclamo. Escribe a claims@westernfencesupply.com o llama al (239) 689-5496.'
       ));

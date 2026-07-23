@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '2.1.0' );
+define( 'WFS_VERSION', '2.2.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -110,3 +110,31 @@ function wfs_print_app( $slug ) {
 		echo "</script>\n";
 	}
 }
+
+/**
+ * El chat de tawk.to abre maximizado en cada carga porque hay un snippet en el
+ * sitio que llama a Tawk_API.maximize(). Esto lo deja minimizado: la burbuja
+ * sigue ahi y el chat funciona igual, pero no tapa la pagina al entrar.
+ *
+ * Corre en wp_footer con prioridad tardia para pisar ese snippet.
+ * Para volver al comportamiento anterior: define( 'WFS_TAWK_AUTOOPEN', true );
+ * en wp-config.php.
+ */
+function wfs_tawk_start_minimized() {
+	if ( defined( 'WFS_TAWK_AUTOOPEN' ) && WFS_TAWK_AUTOOPEN ) { return; }
+	?>
+<script>
+(function () {
+  window.Tawk_API = window.Tawk_API || {};
+  window.Tawk_API.onLoad = function () {
+    try { window.Tawk_API.minimize(); } catch (e) {}
+  };
+  /* Por si el widget ya termino de cargar antes de llegar aqui. */
+  if (typeof window.Tawk_API.minimize === 'function') {
+    try { window.Tawk_API.minimize(); } catch (e) {}
+  }
+})();
+</script>
+	<?php
+}
+add_action( 'wp_footer', 'wfs_tawk_start_minimized', 9999 );
