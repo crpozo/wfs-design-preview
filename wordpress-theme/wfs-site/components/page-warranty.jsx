@@ -266,10 +266,14 @@ const ClaimsForm = () => {
   const [submitted, setSubmitted] = React.useState(false);
   const [sending, setSending] = React.useState(false);
   const [error, setError] = React.useState('');
+  /* setSending no es sincrono: dos clics rapidos leerian sending=false los
+     dos y se enviaria por duplicado. La referencia se actualiza al momento. */
+  const busy = React.useRef(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (sending) return;
+    if (busy.current) return;
+    busy.current = true;
     setSending(true); setError('');
     try {
       await submitLead(e.target, { form: 'warranty', subject: 'Warranty Claim' });
@@ -279,6 +283,7 @@ const ClaimsForm = () => {
         "We couldn't send your claim. Please email claims@westernfencesupply.com or call (239) 689-5496.", 'No pudimos enviar tu reclamo. Escribe a claims@westernfencesupply.com o llama al (239) 689-5496.'
       ));
     } finally {
+      busy.current = false;
       setSending(false);
     }
   };

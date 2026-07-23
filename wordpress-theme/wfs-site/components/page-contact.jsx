@@ -106,10 +106,14 @@ const ContactForm = () => {
   const [submitted, setSubmitted] = React.useState(false);
   const [sending, setSending] = React.useState(false);
   const [error, setError] = React.useState('');
+  /* setSending no es sincrono: dos clics rapidos leerian sending=false los
+     dos y se enviaria por duplicado. La referencia se actualiza al momento. */
+  const busy = React.useRef(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (sending) return;
+    if (busy.current) return;
+    busy.current = true;
     setSending(true); setError('');
     try {
       await submitLead(e.target, { form: 'contact', subject: 'Website Contact Message' });
@@ -119,6 +123,7 @@ const ContactForm = () => {
         "We couldn't send your message. Please call (239) 689-5496 or email sales@westernfencesupply.com.", 'No pudimos enviar tu mensaje. Llama al (239) 689-5496 o escribe a sales@westernfencesupply.com.'
       ));
     } finally {
+      busy.current = false;
       setSending(false);
     }
   };
