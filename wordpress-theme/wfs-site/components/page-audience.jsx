@@ -37,18 +37,21 @@ const HomeownerHero = () => {
           {t('Premium manufacturing-direct fencing. We help you plan the project and quote the material for the build.', 'Cercas premium directas de fábrica. Te ayudamos a planear el proyecto y a cotizar el material para la obra.')}
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
-          <a href="estimate.html#contact" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 28px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', boxShadow: '0 10px 28px rgba(255, 113, 51,0.4)', transition: 'transform 0.18s, box-shadow 0.18s', }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(255, 113, 51,0.5)'; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(255, 113, 51,0.4)'; }}>
+          <a href="estimate.html#contact"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 113, 51,0.35)'; }}>
             {t('Get started', 'Comenzar')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
-          <a href="#fences" className="mono" style={{
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '15px 26px', border: '1px solid rgba(255,255,255,0.6)', color: 'var(--white)', fontSize: 14, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', background: 'rgba(255,255,255,0.06)', backdropFilter: 'blur(4px)', transition: 'background 0.2s ease', }}
-          onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.14)'; }}
-          onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; }}>
+          <a href="#fences"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'rgba(255,255,255,0.08)', color: 'var(--white)', border: '1px solid rgba(255,255,255,0.55)', backdropFilter: 'blur(6px)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', transition: 'background 0.18s, border-color 0.18s', }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.18)'; e.currentTarget.style.borderColor = 'var(--white)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.55)'; }}>
             {t('See fence styles', 'Ver estilos de cerca')}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
         </div>
       </div>
@@ -581,13 +584,23 @@ const ContractorHero = () => {
           {t(', without an out-of-state distributor in the middle.', ', sin un distribuidor de fuera del estado de por medio.')}
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginBottom: 22 }}>
-          <PillCTA href="estimate.html#contact" variant="light">
+          <a href="estimate.html#contact"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 113, 51,0.35)'; }}>
             {t('Get a quick quote', 'Cotiza rápido')}
-          </PillCTA>
-          <PillCTA href="https://form.jotform.com/westernfencesupply/account-setup-form"
-            target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+          </a>
+          <a href="https://form.jotform.com/westernfencesupply/account-setup-form"
+            target="_blank" rel="noopener"
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'rgba(255,255,255,0.08)', color: 'var(--white)', border: '1px solid rgba(255,255,255,0.55)', backdropFilter: 'blur(6px)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', transition: 'background 0.18s, border-color 0.18s', }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.18)'; e.currentTarget.style.borderColor = 'var(--white)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.55)'; }}>
             {t('Become a WFS partner', 'Hazte socio de WFS')}
-          </PillCTA>
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
+          </a>
         </div>
       </div>
 
@@ -718,13 +731,10 @@ const ContractorHowItWorks = () => {
           {steps.map((s, i) => (
             <div key={s.n} style={{
               position: 'relative', zIndex: 1, background: 'var(--white)', border: '1px solid rgba(38, 49, 102, 0.14)', padding: '24px 22px 26px', }}>
-              {/* Top row, number + icon */}
-              <div style={{
-                display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18, }}>
+              {/* Top row: solo el número del paso */}
+              <div style={{ marginBottom: 18 }}>
                 <span className="mono" style={{
                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: 46, height: 46, background: 'var(--tangerine)', color: 'var(--white)', fontSize: 14, fontWeight: 700, letterSpacing: '0.05em', }}>{s.n}</span>
-                <span style={{
-                  width: 46, height: 46, border: '1.5px solid var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--tangerine)', }}>{s.svg}</span>
               </div>
               <h3 className="display" style={{
                 margin: '0 0 8px', fontSize: 19.5, lineHeight: 1.15, letterSpacing: '-0.01em', color: 'var(--ink)', }}>{t(s.title)}</h3>
@@ -907,6 +917,7 @@ const ContractorPage = () => (
   <>
     <SiteHeader />
     <ContractorHero />
+    <ContractorStatsStrip />
     <ContractorBenefits />
     <ContractorHowItWorks />
     <ContractorWholesaleKit />

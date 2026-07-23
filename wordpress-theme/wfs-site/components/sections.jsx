@@ -750,6 +750,10 @@ const FinalCTA = () => {
     width: '100%', padding: '15px 16px', border: '1px solid rgba(0,16,17,0.16)', background: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, color: 'var(--ink)', outline: 'none', borderRadius: 12, };
   const labelStyle = {
     fontFamily: 'var(--mono)', fontSize: 14, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 600, marginBottom: 8, display: 'block', };
+  /* La tarjeta del formulario va sobre azul, así que sus etiquetas y textos
+     de apoyo necesitan su propio tono. labelStyle se sigue usando en la
+     columna izquierda, que está sobre blanco. */
+  const formLabelStyle = { ...labelStyle, color: 'rgba(255,255,255,0.72)' };
   return (
     <section id="contact" style={{ background: 'var(--white)', padding: '120px 0', position: 'relative', overflow: 'hidden', scrollMarginTop: 110 }}>
       {/* Decorative background pattern + accent shapes */}
@@ -805,25 +809,25 @@ const FinalCTA = () => {
 
           {/* Right: form */}
           <form onSubmit={handleSubmit} style={{
-            background: 'var(--white)', padding: 'clamp(28px, 3vw, 40px)', border: '1px solid rgba(0,16,17,0.08)', borderRadius: 22, boxShadow: '0 34px 70px -34px rgba(38,49,102,0.4)', }}>
+            background: 'var(--ink)', padding: 'clamp(28px, 3vw, 40px)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 22, boxShadow: '0 34px 70px -34px rgba(38,49,102,0.55)', }}>
             {submitted ? (
               <div style={{ padding: '64px 0', textAlign: 'center' }}>
                 <div className="mono" style={{ fontSize: 14, letterSpacing: '0.18em', color: 'var(--tangerine)', marginBottom: 16, textTransform: 'uppercase', fontWeight: 700 }}>{t('Submitted', 'Enviado')}</div>
-                <h3 className="display" style={{ fontSize: 33.5, margin: '0 0 12px', lineHeight: 1.1 }}>{t("Thanks, we'll be in touch.", 'Gracias, pronto te contactamos.')}</h3>
-                <p style={{ fontSize: 15.5, color: 'var(--charcoal)', maxWidth: 360, margin: '0 auto' }}>{t('One of our reps will reach out within 24 hours with stock, pricing and lead time for your project.', 'Uno de nuestros representantes se comunicará en 24 horas con stock, precios y plazo de entrega para tu proyecto.')}</p>
+                <h3 className="display" style={{ fontSize: 33.5, margin: '0 0 12px', lineHeight: 1.1, color: 'var(--white)' }}>{t("Thanks, we'll be in touch.", 'Gracias, pronto te contactamos.')}</h3>
+                <p style={{ fontSize: 15.5, color: 'rgba(255,255,255,0.72)', maxWidth: 360, margin: '0 auto' }}>{t('One of our reps will reach out within 24 hours with stock, pricing and lead time for your project.', 'Uno de nuestros representantes se comunicará en 24 horas con stock, precios y plazo de entrega para tu proyecto.')}</p>
               </div>
             ) : (
               <>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginBottom: 18 }}>
-                  <div><label style={labelStyle}>{t('Full name', 'Nombre completo')}</label><input type="text" name="name" required style={inputStyle} placeholder="Jane Smith"/></div>
-                  <div><label style={labelStyle}>{t('Company (optional)', 'Empresa (opcional)')}</label><input type="text" name="company" style={inputStyle} placeholder="Acme Fence Co."/></div>
+                  <div><label style={formLabelStyle}>{t('Full name', 'Nombre completo')}</label><input type="text" name="name" required style={inputStyle} placeholder="Jane Smith"/></div>
+                  <div><label style={formLabelStyle}>{t('Company (optional)', 'Empresa (opcional)')}</label><input type="text" name="company" style={inputStyle} placeholder="Acme Fence Co."/></div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginBottom: 18 }}>
-                  <div><label style={labelStyle}>{t('Email', 'Correo')}</label><input type="email" name="email" required style={inputStyle} placeholder="jane@email.com"/></div>
-                  <div><label style={labelStyle}>{t('Phone', 'Teléfono')}</label><input type="tel" name="phone" required style={inputStyle} placeholder="(239) 555-0142"/></div>
+                  <div><label style={formLabelStyle}>{t('Email', 'Correo')}</label><input type="email" name="email" required style={inputStyle} placeholder="jane@email.com"/></div>
+                  <div><label style={formLabelStyle}>{t('Phone', 'Teléfono')}</label><input type="tel" name="phone" required style={inputStyle} placeholder="(239) 555-0142"/></div>
                 </div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 18, marginBottom: 18 }}>
-                  <div><label style={labelStyle}>{t('I am a', 'Soy')}</label>
+                  <div><label style={formLabelStyle}>{t('I am a', 'Soy')}</label>
                     <select name="audience" style={inputStyle}>
                       <option value="Homeowner">{t('Homeowner', 'Propietario')}</option>
                       <option value="DIY / Self-installer">{t('DIY / Self-installer', 'DIY / Auto-instalador')}</option>
@@ -831,7 +835,7 @@ const FinalCTA = () => {
                       <option value="Commercial / Builder">{t('Commercial / Builder', 'Comercial / Constructor')}</option>
                     </select>
                   </div>
-                  <div><label style={labelStyle}>{t('Project type', 'Tipo de proyecto')}</label>
+                  <div><label style={formLabelStyle}>{t('Project type', 'Tipo de proyecto')}</label>
                     <select name="project_type" style={inputStyle}>
                       <option value="Vinyl / PVC">{t('Vinyl / PVC', 'Vinilo / PVC')}</option>
                       <option value="Aluminum">{t('Aluminum', 'Aluminio')}</option>
@@ -844,7 +848,7 @@ const FinalCTA = () => {
                   </div>
                 </div>
                 <div style={{ marginBottom: 18 }}>
-                  <label style={labelStyle}>{t('How did you hear about us?', '¿Cómo te enteraste de nosotros?')}</label>
+                  <label style={formLabelStyle}>{t('How did you hear about us?', '¿Cómo te enteraste de nosotros?')}</label>
                   <select name="source" style={inputStyle}>
                     <option value="Select an option">{t('Select an option', 'Selecciona una opción')}</option>
                     <option value="Google / web search">{t('Google / web search', 'Búsqueda en Google / web')}</option>
@@ -856,26 +860,26 @@ const FinalCTA = () => {
                   </select>
                 </div>
                 <div style={{ marginBottom: 18 }}>
-                  <label style={labelStyle}>{t('Project details', 'Detalles del proyecto')}</label>
+                  <label style={formLabelStyle}>{t('Project details', 'Detalles del proyecto')}</label>
                   <textarea name="details" rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: 100 }} placeholder={t('Approx. linear feet, height, location/zip, timeline, anything else relevant…', 'Aprox. pies lineales, altura, ubicación/código postal, plazo, cualquier otro detalle relevante…')}/>
                 </div>
 
                 {/* Drawing / layout upload, lets people send the sketch with the request */}
                 <div style={{ marginBottom: 24 }}>
-                  <label style={labelStyle}>{t('Drawing or layout (optional)', 'Plano o diseño (opcional)')}</label>
+                  <label style={formLabelStyle}>{t('Drawing or layout (optional)', 'Plano o diseño (opcional)')}</label>
                   <label htmlFor="wfs-upload" style={{
-                    display: 'flex', alignItems: 'center', gap: 14, padding: '16px 18px', borderRadius: 12, border: '1.5px dashed ' + (fileName ? 'var(--tangerine)' : 'rgba(0,16,17,0.2)'), background: fileName ? 'rgba(255,113,51,0.06)' : '#fbfbfc', cursor: 'pointer', transition: 'border-color 0.15s, background 0.15s', }}>
+                    display: 'flex', alignItems: 'center', gap: 14, padding: '16px 18px', borderRadius: 12, border: '1.5px dashed ' + (fileName ? 'var(--tangerine)' : 'rgba(255,255,255,0.3)'), background: fileName ? 'rgba(255,113,51,0.12)' : 'rgba(255,255,255,0.06)', cursor: 'pointer', transition: 'border-color 0.15s, background 0.15s', }}>
                     <span aria-hidden style={{
-                      width: 42, height: 42, borderRadius: 11, flexShrink: 0, background: fileName ? 'var(--tangerine)' : 'var(--ink)', color: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', }}>
+                      width: 42, height: 42, borderRadius: 11, flexShrink: 0, background: fileName ? 'var(--tangerine)' : 'rgba(255,255,255,0.16)', color: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', }}>
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M12 16V4"/><path d="M8 8l4-4 4 4"/><path d="M4 16v2.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V16"/>
                       </svg>
                     </span>
                     <span style={{ minWidth: 0 }}>
-                      <span style={{ display: 'block', fontSize: 16, fontWeight: 600, color: 'var(--ink)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                      <span style={{ display: 'block', fontSize: 16, fontWeight: 600, color: 'var(--white)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                         {fileName || t('Upload your drawing or layout', 'Sube tu plano o diseño')}
                       </span>
-                      <span style={{ display: 'block', fontSize: 14.5, color: 'var(--charcoal)', marginTop: 2 }}>
+                      <span style={{ display: 'block', fontSize: 14.5, color: 'rgba(255,255,255,0.65)', marginTop: 2 }}>
                         {fileName ? t('Tap to choose a different file', 'Toca para elegir otro archivo') : t('PDF, JPG or PNG · up to 10 MB', 'PDF, JPG o PNG · hasta 10 MB')}
                       </span>
                     </span>
@@ -886,18 +890,18 @@ const FinalCTA = () => {
                 </div>
 
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
-                  <p className="mono" style={{ margin: 0, fontSize: 14, letterSpacing: '0.04em', color: 'var(--charcoal)', maxWidth: 280 }}>
+                  <p className="mono" style={{ margin: 0, fontSize: 14, letterSpacing: '0.04em', color: 'rgba(255,255,255,0.65)', maxWidth: 280 }}>
                     {t('By submitting, you agree to be contacted by Western Fence Supply.', 'Al enviar, aceptas ser contactado por Western Fence Supply.')}
                   </p>
                   <button type="submit" disabled={sending} style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 10, padding: '16px 28px', borderRadius: 999, background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, boxShadow: '0 12px 28px -12px rgba(38,49,102,0.6)', opacity: sending ? 0.6 : 1, cursor: sending ? 'wait' : 'pointer', }}>
+                    display: 'inline-flex', alignItems: 'center', gap: 10, padding: '16px 28px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, boxShadow: '0 12px 30px -10px rgba(255,113,51,0.55)', opacity: sending ? 0.6 : 1, cursor: sending ? 'wait' : 'pointer', }}>
                     {sending ? t('Sending…', 'Enviando…') : t('Request quote', 'Solicitar cotización')}
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
                   </button>
                 </div>
                 {error && (
                   <p role="alert" style={{
-                    margin: '18px 0 0', padding: '14px 16px', borderRadius: 12, background: 'rgba(255,113,51,0.08)', border: '1px solid rgba(255,113,51,0.35)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)', }}>{error}</p>
+                    margin: '18px 0 0', padding: '14px 16px', borderRadius: 12, background: 'rgba(255,113,51,0.16)', border: '1px solid rgba(255,113,51,0.5)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--white)', }}>{error}</p>
                 )}
               </>
             )}

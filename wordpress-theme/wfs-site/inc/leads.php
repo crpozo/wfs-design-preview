@@ -141,6 +141,39 @@ function wfs_lead_attachments() {
 	return $out;
 }
 
+/** Guarda el motivo exacto por el que PHPMailer no pudo enviar. */
+function wfs_capture_mail_error( $wp_error ) {
+	$GLOBALS['wfs_mail_error'] = $wp_error instanceof WP_Error
+		? $wp_error->get_error_message()
+		: 'unknown';
+}
+add_action( 'wp_mail_failed', 'wfs_capture_mail_error' );
+
+/**
+ * Envía y, si falla, reintenta sin adjuntos.
+ *
+ * Un adjunto ilegible hace que PHPMailer aborte el correo entero. Antes de
+ * dar el envío por perdido conviene intentarlo sin el archivo: es preferible
+ * que el lead llegue sin plano a que no llegue.
+ */
+function wfs_send_lead_mail( $to, $subject, $body, $headers, $attachments ) {
+	$GLOBALS['wfs_mail_error'] = '';
+	$sent = wp_mail( $to, $subject, $body, $headers, $attachments );
+	if ( $sent ) { return array( true, '', false ); }
+
+	$first = $GLOBALS['wfs_mail_error'];
+
+	if ( $attachments ) {
+		$note = $body . "\nNote: the attachment could not be sent with this email. "
+			. "It is stored with the lead in WordPress.\n";
+		$GLOBALS['wfs_mail_error'] = '';
+		$sent = wp_mail( $to, $subject, $note, $headers );
+		if ( $sent ) { return array( true, $first, true ); }
+	}
+
+	return array( false, $first ? $first : $GLOBALS['wfs_mail_error'], false );
+}
+
 /**
  * Procesa el envío: valida, guarda y despacha.
  */
@@ -208,10 +241,16 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 	);
 	foreach ( $to as $bcc ) { $headers[] = 'Bcc: ' . $bcc; }
 
-	$sent = wp_mail( $primary, $subject, $body, $headers, $attachments );
+	list( $sent, $error, $dropped ) = wfs_send_lead_mail( $primary, $subject, $body, $headers, $attachments );
 
 	if ( $lead_id && ! is_wp_error( $lead_id ) ) {
 		update_post_meta( $lead_id, '_wfs_mail_sent', $sent ? 'yes' : 'no' );
+		if ( $error ) { update_post_meta( $lead_id, '_wfs_mail_error', $error ); }
+		if ( $dropped ) { update_post_meta( $lead_id, '_wfs_mail_dropped_attachment', 'yes' ); }
+	}
+	if ( $error ) {
+		update_option( 'wfs_last_mail_error', gmdate( 'Y-m-d H:i' ) . ' UTC · ' . $error );
+		error_log( 'WFS lead mail failed: ' . $error );
 	}
 
 	if ( ! $sent ) {
@@ -233,4 +272,43 @@ add_action( 'admin_init', function () {
 		echo '<textarea name="wfs_lead_recipients" rows="3" class="large-text code">' . esc_textarea( $value ) . '</textarea>';
 		echo '<p class="description">Un correo por línea. El primero va en Para; los demás en copia oculta.</p>';
 	}, 'writing' );
+} );
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Diagnóstico en el panel: por qué no salió el correo.
+   Sin esto, un fallo de entrega es invisible hasta que alguien reclama.
+   ───────────────────────────────────────────────────────────────────────── */
+
+/** Columna "Correo" en la lista de Leads. */
+add_filter( 'manage_wfs_lead_posts_columns', function ( $cols ) {
+	$cols['wfs_mail'] = 'Correo';
+	return $cols;
+} );
+
+add_action( 'manage_wfs_lead_posts_custom_column', function ( $col, $post_id ) {
+	if ( 'wfs_mail' !== $col ) { return; }
+	$sent = get_post_meta( $post_id, '_wfs_mail_sent', true );
+	if ( 'yes' === $sent ) {
+		echo '<span style="color:#046b33">Enviado</span>';
+		if ( get_post_meta( $post_id, '_wfs_mail_dropped_attachment', true ) ) {
+			echo '<br><small>sin el adjunto</small>';
+		}
+		return;
+	}
+	$err = get_post_meta( $post_id, '_wfs_mail_error', true );
+	echo '<strong style="color:#b32d2e">No salió</strong>';
+	if ( $err ) { echo '<br><small>' . esc_html( $err ) . '</small>'; }
+}, 10, 2 );
+
+/** Aviso con el último error de entrega. */
+add_action( 'admin_notices', function () {
+	if ( ! current_user_can( 'manage_options' ) ) { return; }
+	$screen = get_current_screen();
+	if ( ! $screen || 'wfs_lead' !== $screen->post_type ) { return; }
+	$last = get_option( 'wfs_last_mail_error' );
+	if ( ! $last ) { return; }
+	echo '<div class="notice notice-error"><p><strong>El envío de correo está fallando.</strong><br>';
+	echo esc_html( $last );
+	echo '<br>Los leads se siguen guardando aquí, pero no llegan por correo. ';
+	echo 'Suele resolverse conectando un SMTP autenticado (Amazon SES).</p></div>';
 } );
