@@ -3,7 +3,7 @@ Theme Name: Western Fence Supply
 Theme URI: https://crpozo.github.io/wfs-design-preview/
 Author: Western Fence Supply
 Description: Tema de bloques para Western Fence Supply. Se edita 100% con el editor visual de WordPress (Apariencia -> Editor). No requiere plugins ni Elementor. Incluye la paleta, tipografias y secciones prediseñadas del sitio.
-Version: 1.0.1
+Version: 1.0.2
 Requires at least: 6.1
 Tested up to: 6.6
 Requires PHP: 7.4
@@ -45,11 +45,6 @@ Tags: full-site-editing, block-patterns, business, one-column, custom-colors, cu
 .wfs-dark :where(h1,h2,h3,h4,p){color:#fff}
 
 /* Hero con foto de fondo */
-.wfs-hero{position:relative;isolation:isolate}
-.wfs-hero::after{
-  content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(95deg,rgba(38,49,103,.86) 0%,rgba(38,49,103,.62) 55%,rgba(38,49,103,.35) 100%);
-}
 .wfs-hero :where(h1,h2,p){color:#fff}
 
 /* Tabla comparativa */

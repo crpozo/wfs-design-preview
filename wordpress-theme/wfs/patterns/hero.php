@@ -6,8 +6,8 @@
  * Description: Titular principal sobre foto, con dos botones.
  */
 ?>
-<!-- wp:cover {"url":"https://crpozo.github.io/wfs-design-preview/assets/second-video-poster.jpg","dimRatio":0,"minHeight":78,"minHeightUnit":"vh","className":"wfs-hero","align":"full","style":{"spacing":{"padding":{"left":"24px","right":"24px"}}}} -->
-<div class="wp-block-cover alignfull wfs-hero" style="padding-right:24px;padding-left:24px;min-height:78vh"><span aria-hidden="true" class="wp-block-cover__background has-background-dim-0 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="https://crpozo.github.io/wfs-design-preview/assets/second-video-poster.jpg" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:group {"layout":{"type":"constrained","contentSize":"1360px"}} -->
+<!-- wp:cover {"url":"https://crpozo.github.io/wfs-design-preview/assets/hero-warehouse.webp","dimRatio":70,"overlayColor":"ink","minHeight":72,"minHeightUnit":"vh","className":"wfs-hero","align":"full","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|50","left":"24px","right":"24px"}}}} -->
+<div class="wp-block-cover alignfull wfs-hero" style="padding-top:var(--wp--preset--spacing--50);padding-right:24px;padding-bottom:var(--wp--preset--spacing--50);padding-left:24px;min-height:72vh"><span aria-hidden="true" class="wp-block-cover__background has-ink-background-color has-background-dim-70 has-background-dim"></span><img class="wp-block-cover__image-background" alt="" src="https://crpozo.github.io/wfs-design-preview/assets/hero-warehouse.webp" data-object-fit="cover"/><div class="wp-block-cover__inner-container"><!-- wp:group {"layout":{"type":"constrained","contentSize":"1360px"}} -->
 <div class="wp-block-group"><!-- wp:paragraph {"className":"wfs-eyebrow"} -->
 <p class="wfs-eyebrow">Factory direct fence supply · Fort Myers + Port Charlotte, FL</p>
 <!-- /wp:paragraph -->
