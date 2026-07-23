@@ -9,7 +9,7 @@ se edita con el **editor visual nativo de WordPress** (Apariencia → Editor).
 2. Sube **`wfs-theme.zip`** → **Instalar ahora** → **Activar**
 3. Listo. La portada ya trae hero, presentación, ventajas, materiales y CTA.
 
-> Requiere WordPress **6.4 o superior** (para el editor de sitio completo).
+> Requiere WordPress **6.1 o superior** (para el editor de sitio completo).
 > No necesitas tema padre ni ningún plugin.
 
 ## Cómo se edita
