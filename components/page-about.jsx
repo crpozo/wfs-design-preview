@@ -194,7 +194,7 @@ const AboutCTA = () => {
     kicker={t('Visit the yard', 'Visita la sucursal')}
     title={t('Walk the shop,', 'Recorre el taller,')}
     accent={t('meet the team.', 'conoce al equipo.')}
-    body={t("Both yards are open Monday-Friday 7am-4pm and Saturday 7am-12pm. Call ahead and we'll have your materials staged when you pull in.", 'Ambas sucursales abren de lunes a viernes de 7am a 4pm y los sábados de 7am a 12pm. Llama con anticipación y tendremos tus materiales listos cuando llegues.')}
+    body={t("Both yards are open Monday-Friday 7:30am-3:30pm. Saturday: Fort Myers 7am-12pm, Port Charlotte 7-11:30am. Call ahead and we'll have your materials staged when you pull in.", 'Ambas sucursales abren de lunes a viernes de 7am a 4pm y los sábados de 7am a 12pm. Llama con anticipación y tendremos tus materiales listos cuando llegues.')}
     primary={[t('Get a quote', 'Obtén una cotización'), 'estimate.html']}
     secondary={[t('Yard locations', 'Ubicaciones de sucursales'), 'solutions.html#yards']}
   />

@@ -110,7 +110,7 @@ const EstimateHero = () => {
   } }, [
     ["01", t("Send your run", "Env\xEDa tu tramo"), t("Linear feet \xB7 height \xB7 gate count \xB7 ZIP. Survey or sketch optional.", "Pies lineales \xB7 altura \xB7 cantidad de portones \xB7 c\xF3digo postal. Levantamiento o dibujo opcional.")],
     ["02", t("We quote in 24h", "Cotizamos en 24 h"), t("Stock, lead time, delivery or pickup window, all in one email.", "Existencias, tiempo de entrega, ventana de entrega o retiro, todo en un solo correo.")],
-    ["03", t("Pickup or delivery", "Retiro o entrega"), t("FM or PC yard \xB7 Mon-Fri 7am-4pm, Sat 7am-12pm. Same-day staging if called ahead.", "Sucursal de FM o PC \xB7 lun-vie 7am-4pm, s\xE1b 7am-12pm. Preparaci\xF3n el mismo d\xEDa si avisas con anticipaci\xF3n.")]
+    ["03", t("Pickup or delivery", "Retiro o entrega"), t("FM or PC yard \xB7 Mon-Fri 7:30am-3:30pm, Sat mornings. Same-day staging if called ahead.", "Sucursal de FM o PC \xB7 lun-vie 7:30am-3:30pm, s\xE1b por la ma\xF1ana. Preparaci\xF3n el mismo d\xEDa si avisas con anticipaci\xF3n.")]
   ].map(([n, title, sub], i, arr) => /* @__PURE__ */ React.createElement("div", { key: n, style: {
     paddingLeft: i === 0 ? 0 : 28,
     borderLeft: i === 0 ? "none" : "1px solid rgba(255,255,255,0.18)"

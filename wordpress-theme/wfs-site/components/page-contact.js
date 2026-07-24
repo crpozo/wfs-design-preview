@@ -7,6 +7,7 @@ const CONTACT_YARDS = [
     phone: "(239) 689-5496",
     tel: "tel:+12396895496",
     email: "sales@westernfencesupply.com",
+    hours: { EN: "Mon\u2013Fri 7:30am\u20133:30pm \xB7 Sat 7am\u201312pm \xB7 Sun closed", ES: "Lun\u2013Vie 7:30am\u20133:30pm \xB7 S\xE1b 7am\u201312pm \xB7 Dom cerrado" },
     mapQ: "2621 Fowler St, Fort Myers, FL 33901"
   },
   {
@@ -17,6 +18,7 @@ const CONTACT_YARDS = [
     phone: "(941) 623-6890",
     tel: "tel:+19416236890",
     email: "salespc@westernfencesupply.com",
+    hours: { EN: "Mon\u2013Fri 7:30am\u20133:30pm \xB7 Sat 7\u201311:30am \xB7 Sun closed", ES: "Lun\u2013Vie 7:30am\u20133:30pm \xB7 S\xE1b 7\u201311:30am \xB7 Dom cerrado" },
     mapQ: "1145 Enterprise Dr, Port Charlotte, FL 33953"
   }
 ];
@@ -60,7 +62,7 @@ const ContactInfo = () => {
     letterSpacing: "0.16em",
     textTransform: "uppercase",
     color: "var(--charcoal)"
-  } }, /* @__PURE__ */ React.createElement("span", { "aria-hidden": true, style: { width: 8, height: 8, borderRadius: "50%", background: "var(--tangerine)" } }), t("Mon\u2013Fri 7am\u20134pm \xB7 Sat 7am\u201312pm", "Lun\u2013Vie 7am\u20134pm \xB7 S\xE1b 7am\u201312pm"))), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 } }, CONTACT_YARDS.map((y) => /* @__PURE__ */ React.createElement("article", { key: y.key, style: {
+  } }, /* @__PURE__ */ React.createElement("span", { "aria-hidden": true, style: { width: 8, height: 8, borderRadius: "50%", background: "var(--tangerine)" } }), t("Mon\u2013Fri 7:30am\u20133:30pm \xB7 Saturday varies by yard", "Lun\u2013Vie 7:30am\u20133:30pm \xB7 El s\xE1bado var\xEDa por sucursal"))), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 } }, CONTACT_YARDS.map((y) => /* @__PURE__ */ React.createElement("article", { key: y.key, style: {
     border: "1px solid rgba(0,16,17,0.12)",
     borderTop: "3px solid var(--tangerine)",
     padding: "28px 30px 30px",
@@ -94,7 +96,7 @@ const ContactInfo = () => {
     alignItems: "center",
     justifyContent: "center",
     color: "var(--tangerine)"
-  } }, /* @__PURE__ */ React.createElement("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.7" }, /* @__PURE__ */ React.createElement("rect", { x: "3", y: "5", width: "18", height: "14", rx: "1.5" }), /* @__PURE__ */ React.createElement("path", { d: "M3 7 L12 13 L21 7" }))), /* @__PURE__ */ React.createElement("span", { style: { fontSize: 15.5, color: "var(--laser-blue)", wordBreak: "break-all" } }, y.email))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 12, flexWrap: "wrap", marginTop: "auto", paddingTop: 8 } }, /* @__PURE__ */ React.createElement("a", { href: y.tel, className: "mono", style: {
+  } }, /* @__PURE__ */ React.createElement("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "1.7" }, /* @__PURE__ */ React.createElement("rect", { x: "3", y: "5", width: "18", height: "14", rx: "1.5" }), /* @__PURE__ */ React.createElement("path", { d: "M3 7 L12 13 L21 7" }))), /* @__PURE__ */ React.createElement("span", { style: { fontSize: 15.5, color: "var(--laser-blue)", wordBreak: "break-all" } }, y.email)), /* @__PURE__ */ React.createElement("div", { style: { fontSize: 15.5, color: "var(--charcoal)", lineHeight: 1.5, paddingLeft: 46 } }, t(y.hours))), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", gap: 12, flexWrap: "wrap", marginTop: "auto", paddingTop: 8 } }, /* @__PURE__ */ React.createElement("a", { href: y.tel, className: "mono", style: {
     display: "inline-flex",
     alignItems: "center",
     gap: 8,

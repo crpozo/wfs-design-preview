@@ -2,9 +2,11 @@
 
 const YARDS = [
   {
-    key: 'fm', chip: { EN: 'HQ · FORT MYERS', ES: 'SEDE · FORT MYERS' }, name: 'Fort Myers', address: '2621 Fowler St, Fort Myers, FL 33901', phone: '(239) 689-5496', tel: 'tel:2396895496', email: 'sales@westernfencesupply.com', photo: 'assets/hero-warehouse.webp', mapQ: '2621 Fowler St, Fort Myers, FL 33901', notes: [
+    key: 'fm', chip: { EN: 'HQ · FORT MYERS', ES: 'SEDE · FORT MYERS' }, name: 'Fort Myers', address: '2621 Fowler St, Fort Myers, FL 33901', phone: '(239) 689-5496', tel: 'tel:2396895496', email: 'sales@westernfencesupply.com',
+    hours: { EN: 'Mon–Fri 7:30am–3:30pm · Sat 7am–12pm · Sun closed', ES: 'Lun–Vie 7:30am–3:30pm · Sáb 7am–12pm · Dom cerrado' }, photo: 'assets/hero-warehouse.webp', mapQ: '2621 Fowler St, Fort Myers, FL 33901', notes: [
       { EN: 'Main warehouse, most material ships from here', ES: 'Almacén principal: la mayoría del material sale de aquí' }, { EN: 'In-house gate fabrication shop', ES: 'Taller de fabricación de portones en planta' }, { EN: 'Same-day pickup on standard qualifying orders', ES: 'Retiro el mismo día en pedidos estándar que califiquen' }, ], }, {
-    key: 'pc', chip: { EN: 'PORT CHARLOTTE', ES: 'PORT CHARLOTTE' }, name: 'Port Charlotte', address: '1145 Enterprise Dr, Port Charlotte, FL 33953', phone: '(941) 623-6890', tel: 'tel:9416236890', email: 'salespc@westernfencesupply.com', photo: 'assets/wfs-shop.webp', mapQ: '1145 Enterprise Dr, Port Charlotte, FL 33953', notes: [
+    key: 'pc', chip: { EN: 'PORT CHARLOTTE', ES: 'PORT CHARLOTTE' }, name: 'Port Charlotte', address: '1145 Enterprise Dr, Port Charlotte, FL 33953', phone: '(941) 623-6890', tel: 'tel:9416236890', email: 'salespc@westernfencesupply.com',
+    hours: { EN: 'Mon–Fri 7:30am–3:30pm · Sat 7–11:30am · Sun closed', ES: 'Lun–Vie 7:30am–3:30pm · Sáb 7–11:30am · Dom cerrado' }, photo: 'assets/wfs-shop.webp', mapQ: '1145 Enterprise Dr, Port Charlotte, FL 33953', notes: [
       { EN: 'Pickup point for Charlotte County and north', ES: 'Punto de retiro para el condado de Charlotte y el norte' }, { EN: 'Stock varies by yard, call ahead to confirm', ES: 'El stock varía por sucursal: llama antes para confirmar' }, { EN: 'Same supplier-direct pricing as Fort Myers', ES: 'El mismo precio directo de proveedor que Fort Myers' }, ], },
 ];
 
@@ -37,7 +39,7 @@ const LocationsYards = () => {
         </h2>
         <div className="mono" style={{
           fontSize: 14.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)', textAlign: 'right', }}>
-          {t('Mon–Fri 7am–4pm · Sat 7am–12pm', 'Lun–Vie 7am–4pm · Sáb 7am–12pm')}
+          {t('Mon–Fri 7:30am–3:30pm · Saturday varies by yard', 'Lun–Vie 7:30am–3:30pm · El sábado varía por sucursal')}
         </div>
       </div>
 
@@ -69,6 +71,8 @@ const LocationsYards = () => {
                   fontSize: 15.5, fontWeight: 700, letterSpacing: '0.06em', color: 'var(--ink)', }}>{y.phone}</a>
                 <a href={`mailto:${y.email}`} style={{
                   fontSize: 15, color: 'var(--laser-blue)', wordBreak: 'break-all', }}>{y.email}</a>
+                {/* Horario propio: el sabado no coincide entre sucursales. */}
+                <div style={{ fontSize: 15, color: 'var(--charcoal)', lineHeight: 1.5, marginTop: 2 }}>{t(y.hours)}</div>
               </div>
 
               {/* What this yard does */}

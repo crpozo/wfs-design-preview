@@ -702,7 +702,7 @@ const ServiceAreas = () => {
           {/* Yard cards stacked */}
           <div style={{ display: 'grid', gridTemplateRows: 'repeat(3, 1fr)', gap: 12 }}>
             {[
-              { city: t('Fort Myers · HQ', 'Fort Myers · Sede'), addr: '2621 Fowler St, FL 33901', phone: '(239) 689-5496' }, { city: 'Port Charlotte', addr: '1145 Enterprise Dr, FL 33953', phone: '(941) 623-6890' }, { city: t('Service area', 'Área de servicio'), addr: t('Serving customers throughout Florida', 'Atendemos clientes en toda Florida'), phone: t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm') }, ].map((y, i) => (
+              { city: t('Fort Myers · HQ', 'Fort Myers · Sede'), addr: '2621 Fowler St, FL 33901', phone: '(239) 689-5496' }, { city: 'Port Charlotte', addr: '1145 Enterprise Dr, FL 33953', phone: '(941) 623-6890' }, { city: t('Service area', 'Área de servicio'), addr: t('Serving customers throughout Florida', 'Atendemos clientes en toda Florida'), phone: t('Mon-Fri 7:30am-3:30pm · Sat mornings', 'Lun-Vie 7:30am-3:30pm · Sáb por la mañana') }, ].map((y, i) => (
               <div key={i} className="wfs-yard-card" style={{
                 border: '1px solid rgba(0,16,17,0.18)', padding: '16px 18px', background: 'var(--white)', boxShadow: '0 6px 18px rgba(38,49,102,0.12)', display: 'flex', alignItems: 'center', gap: 16, }}>
                 <div className="mono" style={{
@@ -792,11 +792,13 @@ const FinalCTA = () => {
               { name: 'Fort Myers', chip: t('Yard 1 · HQ', 'Sucursal 1 · Sede'),
                 phone: '(239) 689-5496', tel: 'tel:2396895496',
                 email: 'sales@westernfencesupply.com',
-                addr: ['2621 Fowler St', 'Fort Myers, FL 33901'] },
+                addr: ['2621 Fowler St', 'Fort Myers, FL 33901'],
+                hours: t('Mon–Fri 7:30am–3:30pm · Sat 7am–12pm', 'Lun–Vie 7:30am–3:30pm · Sáb 7am–12pm') },
               { name: 'Port Charlotte', chip: t('Yard 2', 'Sucursal 2'),
                 phone: '(941) 623-6890', tel: 'tel:9416236890',
                 email: 'salespc@westernfencesupply.com',
-                addr: ['1145 Enterprise Dr', 'Port Charlotte, FL 33953'] },
+                addr: ['1145 Enterprise Dr', 'Port Charlotte, FL 33953'],
+                hours: t('Mon–Fri 7:30am–3:30pm · Sat 7–11:30am', 'Lun–Vie 7:30am–3:30pm · Sáb 7–11:30am') },
             ].map((y, i) => (
               <div key={y.name} style={{
                 marginBottom: 24, paddingBottom: 24,
@@ -810,9 +812,10 @@ const FinalCTA = () => {
                 <a href={y.tel} className="display" style={{ fontSize: 27, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>{y.phone}</a>
                 <a href={`mailto:${y.email}`} style={{ fontSize: 16.5, color: 'var(--ink)', display: 'block', marginTop: 4, borderBottom: '1px solid var(--tangerine)', width: 'fit-content' }}>{y.email}</a>
                 <div style={{ fontSize: 15, color: 'var(--charcoal)', lineHeight: 1.5, marginTop: 12 }}>{y.addr[0]}<br/>{y.addr[1]}</div>
+                <div style={{ fontSize: 14.5, color: 'var(--charcoal)', marginTop: 8 }}>{y.hours}</div>
               </div>
             ))}
-            <div style={{ fontSize: 14.5, color: 'var(--charcoal)', marginBottom: 32 }}>{t('Both yards · Mon-Fri 7am-4pm · Sat 7am-12pm', 'Ambas sucursales · Lun-Vie 7am-4pm · Sáb 7am-12pm')}</div>
+
             <div style={{ paddingTop: 24, borderTop: '1px solid rgba(0,16,17,0.15)' }}>
               <div className="mono" style={{ fontSize: 14, letterSpacing: '0.16em', color: 'var(--ink)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ width: 8, height: 8, background: '#ff7133', borderRadius: '50%' }}/>
@@ -863,13 +866,21 @@ const FinalCTA = () => {
                 </div>
                 <div style={{ marginBottom: 18 }}>
                   <label style={formLabelStyle}>{t('How did you hear about us?', '¿Cómo te enteraste de nosotros?')}</label>
+                  {/* El value va en ingles siempre, para que el CRM reciba
+                      la misma etiqueta aunque el visitante navegue en espanol. */}
                   <select name="source" style={inputStyle}>
-                    <option value="Select an option">{t('Select an option', 'Selecciona una opción')}</option>
-                    <option value="Google / web search">{t('Google / web search', 'Búsqueda en Google / web')}</option>
-                    <option value="Referral / word of mouth">{t('Referral / word of mouth', 'Referencia / recomendación')}</option>
-                    <option value="Social media">{t('Social media', 'Redes sociales')}</option>
-                    <option value="Drove by / signage">{t('Drove by / signage', 'Pasé por ahí / letrero')}</option>
-                    <option value="Repeat customer">{t('Repeat customer', 'Cliente recurrente')}</option>
+                    <option value="">{t('Select an option', 'Selecciona una opción')}</option>
+                    <option value="Google Search">{t('Google Search', 'Búsqueda en Google')}</option>
+                    <option value="AI Assistant">{t('AI Assistant (ChatGPT, Claude, Gemini, Grok, etc.)', 'Asistente de IA (ChatGPT, Claude, Gemini, Grok, etc.)')}</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="TikTok">TikTok</option>
+                    <option value="Yard Signs / Job Site Signs">{t('Yard Signs / Job Site Signs', 'Letreros en obra / en el jardín')}</option>
+                    <option value="Referral / Word of Mouth">{t('Referral / Word of Mouth', 'Referencia / recomendación')}</option>
+                    <option value="Contractor / Installer Recommendation">{t('Contractor / Installer Recommendation', 'Recomendación de contratista / instalador')}</option>
+                    <option value="Recurring Customer">{t('Recurring Customer', 'Cliente recurrente')}</option>
+                    <option value="Driving By / Walk-In / Store Visit">{t('Driving By / Walk-In / Store Visit', 'Pasé por ahí / visita a la tienda')}</option>
+                    <option value="TV Commercial">{t('TV Commercial', 'Comercial de TV')}</option>
                     <option value="Other">{t('Other', 'Otro')}</option>
                   </select>
                 </div>

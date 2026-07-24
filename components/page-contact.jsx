@@ -3,8 +3,10 @@
 
 const CONTACT_YARDS = [
   {
-    key: 'fm', name: 'Fort Myers', chip: { EN: 'HQ · FORT MYERS', ES: 'SEDE · FORT MYERS' }, address: '2621 Fowler St, Fort Myers, FL 33901', phone: '(239) 689-5496', tel: 'tel:+12396895496', email: 'sales@westernfencesupply.com', mapQ: '2621 Fowler St, Fort Myers, FL 33901', }, {
-    key: 'pc', name: 'Port Charlotte', chip: { EN: 'PORT CHARLOTTE', ES: 'PORT CHARLOTTE' }, address: '1145 Enterprise Dr, Port Charlotte, FL 33953', phone: '(941) 623-6890', tel: 'tel:+19416236890', email: 'salespc@westernfencesupply.com', mapQ: '1145 Enterprise Dr, Port Charlotte, FL 33953', },
+    key: 'fm', name: 'Fort Myers', chip: { EN: 'HQ · FORT MYERS', ES: 'SEDE · FORT MYERS' }, address: '2621 Fowler St, Fort Myers, FL 33901', phone: '(239) 689-5496', tel: 'tel:+12396895496', email: 'sales@westernfencesupply.com',
+    hours: { EN: 'Mon–Fri 7:30am–3:30pm · Sat 7am–12pm · Sun closed', ES: 'Lun–Vie 7:30am–3:30pm · Sáb 7am–12pm · Dom cerrado' }, mapQ: '2621 Fowler St, Fort Myers, FL 33901', }, {
+    key: 'pc', name: 'Port Charlotte', chip: { EN: 'PORT CHARLOTTE', ES: 'PORT CHARLOTTE' }, address: '1145 Enterprise Dr, Port Charlotte, FL 33953', phone: '(941) 623-6890', tel: 'tel:+19416236890', email: 'salespc@westernfencesupply.com',
+    hours: { EN: 'Mon–Fri 7:30am–3:30pm · Sat 7–11:30am · Sun closed', ES: 'Lun–Vie 7:30am–3:30pm · Sáb 7–11:30am · Dom cerrado' }, mapQ: '1145 Enterprise Dr, Port Charlotte, FL 33953', },
 ];
 
 const ContactHero = () => {
@@ -36,7 +38,7 @@ const ContactInfo = () => {
         <div className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10, fontSize: 14, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)', }}>
           <span aria-hidden style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>
-          {t('Mon–Fri 7am–4pm · Sat 7am–12pm', 'Lun–Vie 7am–4pm · Sáb 7am–12pm')}
+          {t('Mon–Fri 7:30am–3:30pm · Saturday varies by yard', 'Lun–Vie 7:30am–3:30pm · El sábado varía por sucursal')}
         </div>
       </div>
 
@@ -73,6 +75,8 @@ const ContactInfo = () => {
                 </span>
                 <span style={{ fontSize: 15.5, color: 'var(--laser-blue)', wordBreak: 'break-all' }}>{y.email}</span>
               </a>
+              {/* Horario propio: el sabado no coincide entre sucursales. */}
+              <div style={{ fontSize: 15.5, color: 'var(--charcoal)', lineHeight: 1.5, paddingLeft: 46 }}>{t(y.hours)}</div>
             </div>
 
             {/* Actions */}
