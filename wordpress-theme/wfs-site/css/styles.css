@@ -850,6 +850,19 @@ section { position: relative; }
   letter-spacing: 0.11em !important;
 }
 
+/* Los PARRAFOS de descripcion que usan .mono se veian mas chicos y con
+   interletrado (por la regla de arriba), distintos del cuerpo normal de 16px.
+   Aqui se igualan al cuerpo: 16px, sin interletrado. Mas especifico que la
+   regla de arriba (p.mono > .mono), asi que gana. Las etiquetas (spans/divs
+   con .mono) NO se tocan y conservan su estilo. */
+p.mono[style*="font-size: 12"],
+p.mono[style*="font-size: 13"],
+p.mono[style*="font-size: 14"],
+p.mono[style*="font-size: 15"] {
+  font-size: 16px !important;
+  letter-spacing: normal !important;
+}
+
 /* Quote-form fields: visible focus ring (inline styles can't express :focus) */
 input:focus, select:focus, textarea:focus {
   border-color: var(--tangerine) !important;
