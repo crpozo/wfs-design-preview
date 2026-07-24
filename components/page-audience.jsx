@@ -779,7 +779,7 @@ const ContractorWholesaleKit = () => {
           <div key={i} className="wfs-usecase-row" style={{
             display: 'grid', gridTemplateColumns: '104px 1fr 1.2fr', gap: 28, alignItems: 'center', padding: '34px 0', borderBottom: '1px solid rgba(0,16,17,0.1)', }}>
             <span className="display wfs-usecase-num" aria-hidden style={{
-              fontSize: 61.5, lineHeight: 1, fontWeight: 800, color: 'transparent', WebkitTextStroke: '1.5px rgba(38,49,102,0.32)', }}>0{i + 1}</span>
+              fontSize: 61.5, lineHeight: 1, fontWeight: 800, color: 'var(--tangerine)', }}>0{i + 1}</span>
             <h3 className="display" style={{
               margin: 0, fontSize: 'clamp(18px, 1.6vw, 24px)', lineHeight: 1.1, textTransform: 'uppercase', letterSpacing: '0.01em', color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 14, }}>
               <span aria-hidden style={{ display: 'inline-flex', color: 'var(--tangerine)', flexShrink: 0 }}>{it.svg}</span>

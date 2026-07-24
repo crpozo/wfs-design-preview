@@ -787,8 +787,10 @@ function openLiveChat(e) {
   var api = window.Tawk_API;
   if (!api) { return false; }
   if (e && e.preventDefault) { e.preventDefault(); }
-  /* La burbuja va oculta; al pedir chat hay que mostrarla y abrirla. */
+  /* La burbuja va oculta; al pedir chat hay que mostrarla y abrirla. El flag
+     detiene el bucle que oculta la burbuja, para que no cierre lo que abrimos. */
   function open() {
+    window.__wfsChatOpened = true;
     try { if (typeof window.Tawk_API.showWidget === 'function') window.Tawk_API.showWidget(); } catch (err) {}
     try { window.Tawk_API.maximize(); } catch (err) {}
   }

@@ -1158,8 +1158,7 @@ const ContractorWholesaleKit = () => {
     fontSize: 61.5,
     lineHeight: 1,
     fontWeight: 800,
-    color: "transparent",
-    WebkitTextStroke: "1.5px rgba(38,49,102,0.32)"
+    color: "var(--tangerine)"
   } }, "0", i + 1), /* @__PURE__ */ React.createElement("h3", { className: "display", style: {
     margin: 0,
     fontSize: "clamp(18px, 1.6vw, 24px)",

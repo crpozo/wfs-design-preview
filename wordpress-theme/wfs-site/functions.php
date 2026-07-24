@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '3.2.0' );
+define( 'WFS_VERSION', '3.3.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -157,14 +157,35 @@ function wfs_tawk_hidden_until_asked() {
 <script>
 (function () {
   window.Tawk_API = window.Tawk_API || {};
-  function hide() { try { window.Tawk_API.hideWidget(); } catch (e) {} }
+  window.__wfsChatOpened = window.__wfsChatOpened || false;
+  function hide() {
+    if (window.__wfsChatOpened) return;   /* si el usuario ya abrio, no pelear */
+    try { window.Tawk_API.hideWidget(); } catch (e) {}
+  }
   window.Tawk_API.onLoad = hide;
   window.Tawk_API.onChatMinimized = hide;
   window.Tawk_API.onChatHidden = hide;
-  if (typeof window.Tawk_API.hideWidget === 'function') { hide(); }
+  hide();
+  /* Respaldo del parpadeo: sigue ocultando los primeros segundos por si la
+     API aun no estaba lista cuando tawk pinto la burbuja. Se detiene en cuanto
+     el usuario abre el chat. */
+  var ticks = 0;
+  var iv = setInterval(function () {
+    hide();
+    if (window.__wfsChatOpened || ++ticks > 50) { clearInterval(iv); }
+  }, 80);
 })();
 </script>
 <style>
+/* Burbuja de tawk oculta por defecto: el chat se abre solo desde el boton
+   "Talk to a live agent". Se oculta el lanzador minificado (no la ventana
+   maximizada), asi el boton sigue abriendo el chat. Esto mata el parpadeo:
+   la burbuja se veia un instante al cargar y desaparecia. */
+#tawkchat-minified-wrapper,
+#tawkchat-minified-container,
+.tawk-min-container,
+.tawk-button-large,
+[class*="tawk-min"] { display: none !important; visibility: hidden !important; }
 /* Insignia de reCAPTCHA: el tema no usa ningun formulario que la necesite. */
 .grecaptcha-badge { display: none !important; }
 </style>

@@ -1227,6 +1227,7 @@ function openLiveChat(e) {
     e.preventDefault();
   }
   function open() {
+    window.__wfsChatOpened = true;
     try {
       if (typeof window.Tawk_API.showWidget === "function") window.Tawk_API.showWidget();
     } catch (err) {
