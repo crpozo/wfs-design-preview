@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '3.7.0' );
+define( 'WFS_VERSION', '3.7.1' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -309,6 +309,42 @@ function wfs_lock_phone_numbers() {
     return null;
   }
 
+  var PHONE = /(?:\+?1[\s.-])?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}/g;
+
+  /* A que sucursal pertenece un nodo: se sube hasta encontrar UNA sola de
+     las dos, para no adivinar cuando el contenedor menciona las dos. */
+  function yardOf(node) {
+    var el = node.nodeType === 3 ? node.parentElement : node;
+    for (var i = 0; el && i < 6; i++, el = el.parentElement) {
+      var t = (el.textContent || '').toLowerCase();
+      var fm = t.indexOf('fort myers') !== -1, pc = t.indexOf('port charlotte') !== -1;
+      if (fm && !pc) { return YARD['fort myers']; }
+      if (pc && !fm) { return YARD['port charlotte']; }
+    }
+    return null;
+  }
+
+  /* Los rastreadores tambien cambian telefonos escritos como texto suelto,
+     fuera de un enlace. Ahi hay que mirar el contexto para saber cual va. */
+  function restoreText() {
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    var node, pending = [];
+    while ((node = walker.nextNode())) {
+      var v = node.nodeValue;
+      if (!v || v.indexOf('-') === -1) { continue; }
+      PHONE.lastIndex = 0;
+      if (!PHONE.test(v)) { continue; }
+      PHONE.lastIndex = 0;
+      var out = v.replace(PHONE, function (m) {
+        if (REAL[digits(m)]) { return m; }        /* ya es uno de los reales */
+        var want = yardOf(node);
+        return want ? REAL[want] : m;
+      });
+      if (out !== v) { pending.push([node, out]); }
+    }
+    for (var i = 0; i < pending.length; i++) { pending[i][0].nodeValue = pending[i][1]; }
+  }
+
   var fixing = false;
   function restore() {
     if (fixing) { return; }
@@ -329,6 +365,7 @@ function wfs_lock_phone_numbers() {
       });
       if (fixed !== shown) { a.textContent = fixed; }
     }
+    restoreText();
     fixing = false;
   }
 
