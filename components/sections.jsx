@@ -785,25 +785,34 @@ const FinalCTA = () => {
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 48, alignItems: 'start' }}>
-          {/* Left: contact info */}
+          {/* Left: contact info, grouped by yard so the two locations read
+              as two distinct places, each with its own phone/email/address. */}
           <div style={{ paddingTop: 8 }}>
-            <div style={{ marginBottom: 32 }}>
-              <div style={labelStyle}>{t('Call us', 'Llámanos')}</div>
-              <a href="tel:2396895496" className="display" style={{ fontSize: 29.5, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>(239) 689-5496</a>
-              <div style={{ fontSize: 14.5, color: 'var(--charcoal)', marginBottom: 12 }}>{t('Fort Myers yard', 'Sucursal Fort Myers')}</div>
-              <a href="tel:9416236890" className="display" style={{ fontSize: 29.5, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>(941) 623-6890</a>
-              <div style={{ fontSize: 14.5, color: 'var(--charcoal)' }}>{t('Port Charlotte yard', 'Sucursal Port Charlotte')}</div>
-              <div style={{ fontSize: 14.5, color: 'var(--charcoal)', marginTop: 12 }}>{t('Mon-Fri 7am-4pm · Sat 7am-12pm', 'Lun-Vie 7am-4pm · Sáb 7am-12pm')}</div>
-            </div>
-            <div style={{ marginBottom: 32 }}>
-              <div style={labelStyle}>{t('Email', 'Correo')}</div>
-              <a href="mailto:sales@westernfencesupply.com" style={{ fontSize: 17.5, color: 'var(--ink)' }}>sales@westernfencesupply.com</a>
-            </div>
-            <div style={{ marginBottom: 32 }}>
-              <div style={labelStyle}>{t('Visit', 'Visítanos')}</div>
-              <div style={{ fontSize: 15.5, color: 'var(--ink)', lineHeight: 1.5, marginBottom: 14 }}>2621 Fowler St<br/>Fort Myers, FL 33901</div>
-              <div style={{ fontSize: 15.5, color: 'var(--ink)', lineHeight: 1.5 }}>1145 Enterprise Dr<br/>Port Charlotte, FL 33953</div>
-            </div>
+            {[
+              { name: 'Fort Myers', chip: t('Yard 1 · HQ', 'Sucursal 1 · Sede'),
+                phone: '(239) 689-5496', tel: 'tel:2396895496',
+                email: 'sales@westernfencesupply.com',
+                addr: ['2621 Fowler St', 'Fort Myers, FL 33901'] },
+              { name: 'Port Charlotte', chip: t('Yard 2', 'Sucursal 2'),
+                phone: '(941) 623-6890', tel: 'tel:9416236890',
+                email: 'salespc@westernfencesupply.com',
+                addr: ['1145 Enterprise Dr', 'Port Charlotte, FL 33953'] },
+            ].map((y, i) => (
+              <div key={y.name} style={{
+                marginBottom: 24, paddingBottom: 24,
+                borderBottom: i === 0 ? '1px solid rgba(0,16,17,0.12)' : 'none',
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
+                  <span style={{ width: 9, height: 9, borderRadius: '50%', background: 'var(--tangerine)', flexShrink: 0 }}/>
+                  <span className="display" style={{ fontSize: 21, color: 'var(--ink)', lineHeight: 1 }}>{y.name}</span>
+                  <span style={{ ...labelStyle, margin: 0, fontSize: 11.5, color: 'var(--charcoal)' }}>{y.chip}</span>
+                </div>
+                <a href={y.tel} className="display" style={{ fontSize: 27, color: 'var(--ink)', textDecoration: 'none', display: 'block', lineHeight: 1.15 }}>{y.phone}</a>
+                <a href={`mailto:${y.email}`} style={{ fontSize: 16.5, color: 'var(--ink)', display: 'block', marginTop: 4, borderBottom: '1px solid var(--tangerine)', width: 'fit-content' }}>{y.email}</a>
+                <div style={{ fontSize: 15, color: 'var(--charcoal)', lineHeight: 1.5, marginTop: 12 }}>{y.addr[0]}<br/>{y.addr[1]}</div>
+              </div>
+            ))}
+            <div style={{ fontSize: 14.5, color: 'var(--charcoal)', marginBottom: 32 }}>{t('Both yards · Mon-Fri 7am-4pm · Sat 7am-12pm', 'Ambas sucursales · Lun-Vie 7am-4pm · Sáb 7am-12pm')}</div>
             <div style={{ paddingTop: 24, borderTop: '1px solid rgba(0,16,17,0.15)' }}>
               <div className="mono" style={{ fontSize: 14, letterSpacing: '0.16em', color: 'var(--ink)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 10 }}>
                 <span style={{ width: 8, height: 8, background: '#ff7133', borderRadius: '50%' }}/>
