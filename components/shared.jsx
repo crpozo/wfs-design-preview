@@ -791,6 +791,9 @@ function openLiveChat(e) {
      detiene el bucle que oculta la burbuja, para que no cierre lo que abrimos. */
   function open() {
     window.__wfsChatOpened = true;
+    /* Esta clase es la que destapa el chat: el CSS del tema lo mantiene
+       oculto mientras no este puesta, para que ningun trigger lo abra solo. */
+    try { document.documentElement.classList.add('wfs-chat-open'); } catch (err) {}
     try { if (typeof window.Tawk_API.showWidget === 'function') window.Tawk_API.showWidget(); } catch (err) {}
     try { window.Tawk_API.maximize(); } catch (err) {}
   }

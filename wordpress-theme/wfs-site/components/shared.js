@@ -1229,6 +1229,10 @@ function openLiveChat(e) {
   function open() {
     window.__wfsChatOpened = true;
     try {
+      document.documentElement.classList.add("wfs-chat-open");
+    } catch (err) {
+    }
+    try {
       if (typeof window.Tawk_API.showWidget === "function") window.Tawk_API.showWidget();
     } catch (err) {
     }

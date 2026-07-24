@@ -1,4 +1,4 @@
-# Western Fence Supply — Tema de WordPress (`wfs-site-3.5.0.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-3.6.0.zip`)
 
 Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
 componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
@@ -40,7 +40,7 @@ WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
 ## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube `wfs-site-3.5.0.zip` → **Instalar ahora** → **Activar**
+2. Sube `wfs-site-3.6.0.zip` → **Instalar ahora** → **Activar**
 3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
    (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 

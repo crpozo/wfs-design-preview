@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '3.5.0' );
+define( 'WFS_VERSION', '3.6.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -157,35 +157,58 @@ function wfs_tawk_hidden_until_asked() {
 <script>
 (function () {
   window.Tawk_API = window.Tawk_API || {};
+  /* Lo pone en true openLiveChat() cuando el visitante pulsa el boton. */
   window.__wfsChatOpened = window.__wfsChatOpened || false;
-  function hide() {
-    if (window.__wfsChatOpened) return;   /* si el usuario ya abrio, no pelear */
+
+  function shut() {
+    if (window.__wfsChatOpened) { return; }   /* si lo abrio el usuario, no tocar */
+    try { window.Tawk_API.minimize(); } catch (e) {}
     try { window.Tawk_API.hideWidget(); } catch (e) {}
   }
-  window.Tawk_API.onLoad = hide;
-  window.Tawk_API.onChatMinimized = hide;
-  window.Tawk_API.onChatHidden = hide;
-  hide();
-  /* Respaldo del parpadeo: sigue ocultando los primeros segundos por si la
-     API aun no estaba lista cuando tawk pinto la burbuja. Se detiene en cuanto
-     el usuario abre el chat. */
-  var ticks = 0;
-  var iv = setInterval(function () {
-    hide();
-    if (window.__wfsChatOpened || ++ticks > 50) { clearInterval(iv); }
-  }, 80);
+
+  /* Todos los momentos en que tawk puede mostrarse por su cuenta. Incluye
+     onChatMaximized, que es lo que dispara un trigger del panel de tawk
+     ("mensaje proactivo") minutos despues de cargar la pagina. */
+  window.Tawk_API.onLoad          = shut;
+  window.Tawk_API.onChatMaximized = shut;
+  window.Tawk_API.onChatMinimized = shut;
+  window.Tawk_API.onChatHidden    = shut;
+  window.Tawk_API.onChatStarted   = shut;
+  shut();
+
+  /* Vigilancia permanente: un trigger puede saltar en cualquier momento, no
+     solo al cargar. Se observa el DOM en vez de sondear con un temporizador,
+     y se para en cuanto el visitante abre el chat a proposito. */
+  function watch() {
+    if (!document.body || !window.MutationObserver) { return; }
+    var mo = new MutationObserver(function () {
+      if (window.__wfsChatOpened) { mo.disconnect(); return; }
+      if (document.querySelector('iframe[src*="tawk.to"]')) { shut(); }
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', watch);
+  } else {
+    watch();
+  }
 })();
 </script>
 <style>
-/* Burbuja de tawk oculta por defecto: el chat se abre solo desde el boton
-   "Talk to a live agent". Se oculta el lanzador minificado (no la ventana
-   maximizada), asi el boton sigue abriendo el chat. Esto mata el parpadeo:
-   la burbuja se veia un instante al cargar y desaparecia. */
-#tawkchat-minified-wrapper,
-#tawkchat-minified-container,
-.tawk-min-container,
-.tawk-button-large,
-[class*="tawk-min"] { display: none !important; visibility: hidden !important; }
+/* Burbuja y ventana de tawk ocultas mientras el visitante no pida el chat.
+   La clase la pone/quita el propio boton "Talk to a live agent". Cubrir la
+   ventana maximizada es lo que evita que un trigger del panel de tawk la
+   abra sola pasados unos segundos. */
+html:not(.wfs-chat-open) #tawkchat-minified-wrapper,
+html:not(.wfs-chat-open) #tawkchat-minified-container,
+html:not(.wfs-chat-open) #tawkchat-container,
+html:not(.wfs-chat-open) .tawk-min-container,
+html:not(.wfs-chat-open) .tawk-button-large,
+html:not(.wfs-chat-open) [class*="tawk-min"],
+html:not(.wfs-chat-open) iframe[title*="chat" i][src*="tawk"] {
+  display: none !important;
+  visibility: hidden !important;
+}
 /* Insignia de reCAPTCHA: el tema no usa ningun formulario que la necesite. */
 .grecaptcha-badge { display: none !important; }
 </style>
