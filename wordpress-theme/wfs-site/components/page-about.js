@@ -122,6 +122,7 @@ const AboutStory = () => {
 };
 const AboutValues = () => {
   const t = useT();
+  const [hovered, setHovered] = React.useState(-1);
   const rules = [
     [{ EN: "No low-grade material", ES: "Nada de material de baja calidad" }, { EN: "If we wouldn't put it on our own job, we don't stock it. We turn down lower price points every quarter to protect the catalog.", ES: "Si no lo pondr\xEDamos en nuestra propia obra, no lo tenemos en existencia. Cada trimestre rechazamos precios m\xE1s bajos para proteger el cat\xE1logo." }],
     [{ EN: "Real lead-time honesty", ES: "Honestidad real en los tiempos de entrega" }, { EN: "Stocked items ship in 1\u20133 days. Custom orders can be completed in as little as 2 days, depending on the request. We tell you the truth on the first call, no soft dates.", ES: "Los art\xEDculos en existencia se env\xEDan en 1 a 3 d\xEDas. Los pedidos a medida pueden completarse en tan solo 2 d\xEDas, seg\xFAn la solicitud. Te decimos la verdad en la primera llamada, sin fechas imprecisas." }],
@@ -159,26 +160,39 @@ const AboutValues = () => {
     fontSize: 16,
     lineHeight: 1.6,
     color: "var(--charcoal)"
-  } }, t("Same standard we held when we were the contractors using this material every day.", "El mismo est\xE1ndar que manten\xEDamos cuando \xE9ramos los contratistas que usaban este material todos los d\xEDas."))), rules.map(([label, body], i) => /* @__PURE__ */ React.createElement("div", { key: i, className: "wfs-usecase-row", style: {
-    display: "grid",
-    gridTemplateColumns: "104px 1fr 1.2fr",
-    gap: 28,
-    alignItems: "center",
-    padding: "34px 0",
-    borderBottom: "1px solid rgba(0,16,17,0.1)"
-  } }, /* @__PURE__ */ React.createElement("span", { className: "display wfs-usecase-num", "aria-hidden": true, style: {
-    fontSize: 61.5,
-    lineHeight: 1,
-    fontWeight: 800,
-    color: "transparent",
-    WebkitTextStroke: "1.5px rgba(38,49,102,0.32)"
-  } }, "0", i + 1), /* @__PURE__ */ React.createElement("h3", { className: "display", style: {
-    margin: 0,
-    fontSize: "clamp(18px, 1.6vw, 24px)",
-    lineHeight: 1.1,
-    textTransform: "uppercase",
-    letterSpacing: "0.01em"
-  } }, t(label)), /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 16, lineHeight: 1.6, color: "var(--charcoal)" } }, t(body))))));
+  } }, t("Same standard we held when we were the contractors using this material every day.", "El mismo est\xE1ndar que manten\xEDamos cuando \xE9ramos los contratistas que usaban este material todos los d\xEDas."))), rules.map(([label, body], i) => /* @__PURE__ */ React.createElement(
+    "div",
+    {
+      key: i,
+      className: "wfs-usecase-row",
+      onMouseEnter: () => setHovered(i),
+      onMouseLeave: () => setHovered(-1),
+      style: {
+        display: "grid",
+        gridTemplateColumns: "104px 1fr 1.2fr",
+        gap: 28,
+        alignItems: "center",
+        padding: "34px 0",
+        borderBottom: "1px solid rgba(0,16,17,0.1)"
+      }
+    },
+    /* @__PURE__ */ React.createElement("span", { className: "display wfs-usecase-num", "aria-hidden": true, style: {
+      fontSize: 61.5,
+      lineHeight: 1,
+      fontWeight: 800,
+      color: "transparent",
+      WebkitTextStroke: hovered === i ? "1.5px var(--tangerine)" : "1.5px rgba(38,49,102,0.32)",
+      transition: "stroke 0.22s ease"
+    } }, "0", i + 1),
+    /* @__PURE__ */ React.createElement("h3", { className: "display", style: {
+      margin: 0,
+      fontSize: "clamp(18px, 1.6vw, 24px)",
+      lineHeight: 1.1,
+      textTransform: "uppercase",
+      letterSpacing: "0.01em"
+    } }, t(label)),
+    /* @__PURE__ */ React.createElement("p", { style: { margin: 0, fontSize: 16, lineHeight: 1.6, color: "var(--charcoal)" } }, t(body))
+  ))));
 };
 const AboutShop = () => {
   const t = useT();
