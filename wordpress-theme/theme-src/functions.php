@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '3.6.0' );
+define( 'WFS_VERSION', '3.7.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -260,3 +260,96 @@ function wfs_strip_unused_plugin_assets() {
 	}
 }
 add_action( 'wp_enqueue_scripts', 'wfs_strip_unused_plugin_assets', 100 );
+
+/**
+ * Los telefonos del sitio no los cambia nadie.
+ *
+ * El sitio carga dos rastreadores de llamadas (Google Ads Call Tracking via
+ * gstatic/wcm/loader.js y Marketing 360 via callconversions.mad.services).
+ * Ambos sustituyen el numero real por uno de una bolsa, asi que cambiaba en
+ * cada recarga y se veia el parpadeo: React pintaba el real y el rastreador
+ * lo reemplazaba medio segundo despues.
+ *
+ * Aqui se restauran los numeros reales en cuanto algo los toca.
+ *
+ * OJO: esto desactiva la atribucion de llamadas en Google Ads y Marketing 360.
+ * Para devolver el control a los rastreadores, en wp-config.php:
+ *   define( 'WFS_ALLOW_CALL_TRACKING', true );
+ */
+function wfs_lock_phone_numbers() {
+	if ( defined( 'WFS_ALLOW_CALL_TRACKING' ) && WFS_ALLOW_CALL_TRACKING ) { return; }
+	?>
+<script>
+(function () {
+  /* Google Ads cambia el numero llamando a _googWcmGet. Si ya existe cuando
+     su script carga, no lo redefine, asi que dejarlo aqui como funcion vacia
+     evita la sustitucion desde el principio: el visitante nunca llega a ver
+     el numero del rastreador. El observador de abajo cubre a Marketing 360,
+     que reescribe el DOM directamente. */
+  try {
+    Object.defineProperty(window, '_googWcmGet', {
+      value: function () {}, writable: false, configurable: false,
+    });
+  } catch (e) { window._googWcmGet = function () {}; }
+
+  /* Digitos -> como debe verse. Fuente: fichas de Google de cada sucursal. */
+  var REAL = { '2396895496': '(239) 689-5496', '9416236890': '(941) 623-6890' };
+  var YARD = { 'fort myers': '2396895496', 'port charlotte': '9416236890' };
+
+  function digits(s) { return (s || '').replace(/\D/g, '').replace(/^1(\d{10})$/, '$1'); }
+
+  /* Que numero le toca a este enlace: el suyo si aun es correcto, el que ya
+     guardamos, o el de la sucursal que lo rodea. */
+  function canonical(a) {
+    var d = digits(a.getAttribute('href'));
+    if (REAL[d]) { a.dataset.wfsPhone = d; return d; }
+    if (a.dataset.wfsPhone) { return a.dataset.wfsPhone; }
+    var ctx = ((a.closest('section, article, div, footer') || {}).textContent || '').toLowerCase();
+    for (var name in YARD) { if (ctx.indexOf(name) !== -1) { return YARD[name]; } }
+    return null;
+  }
+
+  var fixing = false;
+  function restore() {
+    if (fixing) { return; }
+    fixing = true;
+    var links = document.querySelectorAll('a[href^="tel:"]');
+    for (var i = 0; i < links.length; i++) {
+      var a = links[i], want = canonical(a);
+      if (!want) { continue; }
+      if (digits(a.getAttribute('href')) !== want) { a.setAttribute('href', 'tel:' + want); }
+      /* Se reemplaza el telefono DENTRO del texto, para que tambien funcione
+         en enlaces tipo "Call (239) 689-5496" y no solo cuando el enlace es
+         unicamente el numero. */
+      var shown = a.textContent;
+      /* El "+1" y su separador solo cuentan si van juntos, para no comerse el
+         espacio de un texto como "Call (239) 689-5496". */
+      var fixed = shown.replace(/(?:\+?1[\s.-])?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}/g, function (m) {
+        return digits(m) === want ? m : REAL[want];
+      });
+      if (fixed !== shown) { a.textContent = fixed; }
+    }
+    fixing = false;
+  }
+
+  function watch() {
+    if (!document.body) { return; }
+    restore();
+    if (!window.MutationObserver) { return; }
+    new MutationObserver(restore).observe(document.body, {
+      childList: true, subtree: true, characterData: true,
+      attributes: true, attributeFilter: ['href'],
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', watch);
+  } else {
+    watch();
+  }
+})();
+</script>
+	<?php
+}
+/* En <head> con prioridad 0: tiene que correr ANTES que Google Tag Manager,
+   asi el numero real nunca llega a sustituirse y no hay parpadeo. */
+add_action( 'wp_head', 'wfs_lock_phone_numbers', 0 );
