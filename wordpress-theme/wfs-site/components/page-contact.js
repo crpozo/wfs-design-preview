@@ -4,7 +4,7 @@ const CONTACT_YARDS = [
     name: "Fort Myers",
     chip: { EN: "HQ \xB7 FORT MYERS", ES: "SEDE \xB7 FORT MYERS" },
     address: "2621 Fowler St, Fort Myers, FL 33901",
-    phone: "(239) 689-5496",
+    phone: "+1 239-689-5496",
     tel: "tel:+12396895496",
     email: "sales@westernfencesupply.com",
     hours: { EN: "Mon\u2013Fri 7:30am\u20133:30pm \xB7 Sat 7am\u201312pm \xB7 Sun closed", ES: "Lun\u2013Vie 7:30am\u20133:30pm \xB7 S\xE1b 7am\u201312pm \xB7 Dom cerrado" },
@@ -15,7 +15,7 @@ const CONTACT_YARDS = [
     name: "Port Charlotte",
     chip: { EN: "PORT CHARLOTTE", ES: "PORT CHARLOTTE" },
     address: "1145 Enterprise Dr, Port Charlotte, FL 33953",
-    phone: "(941) 623-6890",
+    phone: "+1 941-623-6890",
     tel: "tel:+19416236890",
     email: "salespc@westernfencesupply.com",
     hours: { EN: "Mon\u2013Fri 7:30am\u20133:30pm \xB7 Sat 7\u201311:30am \xB7 Sun closed", ES: "Lun\u2013Vie 7:30am\u20133:30pm \xB7 S\xE1b 7\u201311:30am \xB7 Dom cerrado" },
@@ -148,8 +148,8 @@ const ContactForm = () => {
       setSubmitted(true);
     } catch (err) {
       setError(err && err.message || t(
-        "We couldn't send your message. Please call (239) 689-5496 or email sales@westernfencesupply.com.",
-        "No pudimos enviar tu mensaje. Llama al (239) 689-5496 o escribe a sales@westernfencesupply.com."
+        "We couldn't send your message. Please call +1 239-689-5496 or email sales@westernfencesupply.com.",
+        "No pudimos enviar tu mensaje. Llama al +1 239-689-5496 o escribe a sales@westernfencesupply.com."
       ));
     } finally {
       busy.current = false;

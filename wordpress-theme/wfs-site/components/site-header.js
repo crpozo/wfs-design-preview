@@ -166,7 +166,7 @@ const SiteHeader = ({ active }) => {
     gap: 8,
     color: "var(--alice-blue)",
     textDecoration: "none"
-  } }, /* @__PURE__ */ React.createElement("svg", { width: "11", height: "11", viewBox: "0 0 16 16", fill: "none", stroke: "currentColor", strokeWidth: "1.4" }, /* @__PURE__ */ React.createElement("path", { d: "M3 3h3l1.5 4-2 1c1 2 2.5 3.5 4.5 4.5l1-2 4 1.5v3c0 0.5-0.5 1-1 1C8 16 0 8 0 4c0-0.5 0.5-1 1-1z", transform: "translate(0.5,0)" })), "(239) 689-5496"), /* @__PURE__ */ React.createElement("span", { style: { width: 1, height: 14, background: "rgba(255,255,255,0.15)" } }), /* @__PURE__ */ React.createElement("div", { style: { display: "inline-flex", alignItems: "center", gap: 14 } }, ["EN", "ES"].map((l) => {
+  } }, /* @__PURE__ */ React.createElement("svg", { width: "11", height: "11", viewBox: "0 0 16 16", fill: "none", stroke: "currentColor", strokeWidth: "1.4" }, /* @__PURE__ */ React.createElement("path", { d: "M3 3h3l1.5 4-2 1c1 2 2.5 3.5 4.5 4.5l1-2 4 1.5v3c0 0.5-0.5 1-1 1C8 16 0 8 0 4c0-0.5 0.5-1 1-1z", transform: "translate(0.5,0)" })), "+1 239-689-5496"), /* @__PURE__ */ React.createElement("span", { style: { width: 1, height: 14, background: "rgba(255,255,255,0.15)" } }), /* @__PURE__ */ React.createElement("div", { style: { display: "inline-flex", alignItems: "center", gap: 14 } }, ["EN", "ES"].map((l) => {
     const isActive = curLang === l;
     return /* @__PURE__ */ React.createElement("button", { key: l, onClick: () => setCurLang(l), style: {
       display: "inline-flex",
@@ -523,7 +523,7 @@ const SiteHeader = ({ active }) => {
       borderRadius: "50%",
       background: "#ff7133",
       boxShadow: "0 0 0 3px rgba(255, 113, 51,0.25)"
-    } }), t("Call (239) 689-5496", "Llamar (239) 689-5496")), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 10 } }, /* @__PURE__ */ React.createElement("span", { className: "mono", style: {
+    } }), t("Call +1 239-689-5496", "Llamar +1 239-689-5496")), /* @__PURE__ */ React.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 10 } }, /* @__PURE__ */ React.createElement("span", { className: "mono", style: {
       fontSize: 13.5,
       fontWeight: 700,
       letterSpacing: "0.22em",

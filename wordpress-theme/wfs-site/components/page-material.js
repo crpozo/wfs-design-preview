@@ -41,7 +41,7 @@ const MATERIAL_DATA = {
       accent: "Vinyl Fence Materials?",
       body: "Send us your linear footage, height, color, style, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.",
       primary: ["Request a Quote", "estimate.html"],
-      secondary: ["Call (239) 689-5496", "tel:2396895496"]
+      secondary: ["Call +1 239-689-5496", "tel:2396895496"]
     },
     projects: [
       { name: "Cape Coral Residential", loc: "Cape Coral, FL", size: "320 LF", material: "Vinyl", type: "Vinyl privacy fence, 6 ft, white", contractor: "Naples Outdoor", year: "2024", imgUrl: "https://crpozo.github.io/wfs-design-preview/assets/projects/pvc-closed-top-white.jpg" },
@@ -96,7 +96,7 @@ const MATERIAL_DATA = {
       accent: "Aluminum Fence Materials?",
       body: "Send us your material needs, linear footage, height, color, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.",
       primary: ["Request a Quote", "estimate.html"],
-      secondary: ["Call (239) 689-5496", "tel:2396895496"]
+      secondary: ["Call +1 239-689-5496", "tel:2396895496"]
     }
   },
   chainlink: {
@@ -141,7 +141,7 @@ const MATERIAL_DATA = {
       accent: "Chain Link Fence Materials?",
       body: "Send us your material needs, linear footage, height, finish, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.",
       primary: ["Request a Quote", "estimate.html"],
-      secondary: ["Call (239) 689-5496", "tel:2396895496"]
+      secondary: ["Call +1 239-689-5496", "tel:2396895496"]
     }
   },
   metal: {
@@ -186,7 +186,7 @@ const MATERIAL_DATA = {
       accent: "Metal Fence Materials?",
       body: "Send us your linear footage, height, color, style, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.",
       primary: ["Request a Quote", "estimate.html"],
-      secondary: ["Call (239) 689-5496", "tel:2396895496"]
+      secondary: ["Call +1 239-689-5496", "tel:2396895496"]
     },
     projects: [
       { name: "Cape Coral Residential", loc: "Cape Coral, FL", size: "320 LF", material: "Metal", type: "Horizontal metal board privacy, black", contractor: "Gulf Perimeter LLC", year: "2024", imgUrl: "https://crpozo.github.io/wfs-design-preview/assets/projects/met-fence-horizontal-black.jpg" },
@@ -236,7 +236,7 @@ const MATERIAL_DATA = {
       accent: "EC Fence Materials?",
       body: "Send us your linear footage, color, gate sizes, and project location. Our team will help prepare a material quote for pickup or delivery.",
       primary: ["Request a Quote", "estimate.html"],
-      secondary: ["Call (239) 689-5496", "tel:2396895496"]
+      secondary: ["Call +1 239-689-5496", "tel:2396895496"]
     },
     projects: [
       { name: "Cape Coral Residential", loc: "Cape Coral, FL", size: "320 LF", material: "EC Fence", type: "EC Fence panels, 6 ft, bronze", contractor: "Harbor Iron Works", year: "2024", imgUrl: "https://crpozo.github.io/wfs-design-preview/assets/projects/ecfence-bronze.jpg" },
@@ -500,7 +500,7 @@ const MaterialCTA = ({ data }) => {
       accent: c ? c.accent : useT()("dimensions.", "medidas."),
       body: c ? c.body : useT()("We'll come back with stocked components, lead time and a delivery or pickup plan from Fort Myers or Port Charlotte.", "Te respondemos con componentes en stock, plazo de entrega y un plan de entrega o recogida desde Fort Myers o Port Charlotte."),
       primary: c ? c.primary : [useT()("Request a quote", "Solicitar cotizaci\xF3n"), "estimate.html"],
-      secondary: c ? c.secondary : ["Call (239) 689-5496", "tel:2396895496"]
+      secondary: c ? c.secondary : ["Call +1 239-689-5496", "tel:2396895496"]
     }
   );
 };

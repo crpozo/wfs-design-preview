@@ -272,7 +272,7 @@ const ResourcesCTA = () => {
       accent: t("or send the project.", "o env\xEDenos el proyecto."),
       body: t("Our sales representatives split calls Monday through Friday during business hours. Or send a sketch + ZIP and we'll come back inside a day.", "Nuestros representantes de ventas atienden llamadas de lunes a viernes en horario laboral. O env\xEDe un boceto + c\xF3digo postal y le responderemos en menos de un d\xEDa."),
       primary: [t("Request a quote", "Solicitar una cotizaci\xF3n"), "estimate.html"],
-      secondary: [t("Call (239) 689-5496", "Llamar al (239) 689-5496"), "tel:2396895496"]
+      secondary: [t("Call +1 239-689-5496", "Llamar al +1 239-689-5496"), "tel:2396895496"]
     }
   );
 };

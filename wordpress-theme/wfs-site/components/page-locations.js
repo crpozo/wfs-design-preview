@@ -4,7 +4,7 @@ const YARDS = [
     chip: { EN: "HQ \xB7 FORT MYERS", ES: "SEDE \xB7 FORT MYERS" },
     name: "Fort Myers",
     address: "2621 Fowler St, Fort Myers, FL 33901",
-    phone: "(239) 689-5496",
+    phone: "+1 239-689-5496",
     tel: "tel:2396895496",
     email: "sales@westernfencesupply.com",
     hours: { EN: "Mon\u2013Fri 7:30am\u20133:30pm \xB7 Sat 7am\u201312pm \xB7 Sun closed", ES: "Lun\u2013Vie 7:30am\u20133:30pm \xB7 S\xE1b 7am\u201312pm \xB7 Dom cerrado" },
@@ -21,7 +21,7 @@ const YARDS = [
     chip: { EN: "PORT CHARLOTTE", ES: "PORT CHARLOTTE" },
     name: "Port Charlotte",
     address: "1145 Enterprise Dr, Port Charlotte, FL 33953",
-    phone: "(941) 623-6890",
+    phone: "+1 941-623-6890",
     tel: "tel:9416236890",
     email: "salespc@westernfencesupply.com",
     hours: { EN: "Mon\u2013Fri 7:30am\u20133:30pm \xB7 Sat 7\u201311:30am \xB7 Sun closed", ES: "Lun\u2013Vie 7:30am\u20133:30pm \xB7 S\xE1b 7\u201311:30am \xB7 Dom cerrado" },
@@ -159,7 +159,7 @@ const LocationsCTA = () => {
       accent: t("before you arrive?", "antes de llegar?"),
       body: t("Send your order or quote request first and we'll have it pulled, staged and ready at the bay, Fort Myers or Port Charlotte.", "Env\xEDa tu pedido o solicitud de cotizaci\xF3n primero y lo tendremos preparado y listo en la bah\xEDa, en Fort Myers o Port Charlotte."),
       primary: [t("Request a Quote", "Solicitar cotizaci\xF3n"), "estimate.html#contact"],
-      secondary: [t("Call (239) 689-5496", "Llamar (239) 689-5496"), "tel:2396895496"]
+      secondary: [t("Call +1 239-689-5496", "Llamar +1 239-689-5496"), "tel:2396895496"]
     }
   );
 };

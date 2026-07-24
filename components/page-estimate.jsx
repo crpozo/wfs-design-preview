@@ -115,7 +115,7 @@ const LiveAgentBand = () => {
           </div>
           <div className="display" style={{
             fontSize: 'clamp(30px, 3.6vw, 46px)', lineHeight: 1, letterSpacing: '-0.02em', marginBottom: 18, }}>
-            (239) 689-5496
+            +1 239-689-5496
           </div>
           <div className="mono" style={{
             fontSize: 14, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--alice-blue)', lineHeight: 1.5, }}>

@@ -66,7 +66,7 @@ const GATE_DATA = {
       accent: "Gate?",
       body: "Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.",
       primary: ["Request a Gate Quote", "estimate.html#contact"],
-      secondary: ["Call (239) 689-5496", "tel:2396895496"]
+      secondary: ["Call +1 239-689-5496", "tel:2396895496"]
     }
   },
   double: {
@@ -108,7 +108,7 @@ const GATE_DATA = {
       accent: "Gate?",
       body: "Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.",
       primary: ["Request a Gate Quote", "estimate.html#contact"],
-      secondary: ["Call (239) 689-5496", "tel:2396895496"]
+      secondary: ["Call +1 239-689-5496", "tel:2396895496"]
     }
   },
   sliding: {
@@ -150,7 +150,7 @@ const GATE_DATA = {
       accent: "Gate?",
       body: "Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.",
       primary: ["Request a Gate Quote", "estimate.html#contact"],
-      secondary: ["Call (239) 689-5496", "tel:2396895496"]
+      secondary: ["Call +1 239-689-5496", "tel:2396895496"]
     }
   },
   cantilever: {
@@ -208,7 +208,7 @@ const GATE_DATA = {
       accent: "Gate?",
       body: "Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.",
       primary: ["Request a Gate Quote", "estimate.html#contact"],
-      secondary: ["Call (239) 689-5496", "tel:2396895496"]
+      secondary: ["Call +1 239-689-5496", "tel:2396895496"]
     }
   },
   rolling: {
@@ -266,7 +266,7 @@ const GATE_DATA = {
       accent: "Gate?",
       body: "Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.",
       primary: ["Request a Gate Quote", "estimate.html#contact"],
-      secondary: ["Call (239) 689-5496", "tel:2396895496"]
+      secondary: ["Call +1 239-689-5496", "tel:2396895496"]
     }
   }
 };

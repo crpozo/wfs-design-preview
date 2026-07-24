@@ -99,7 +99,7 @@ const SiteHeader = ({ active }) => {
               <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
                 <path d="M3 3h3l1.5 4-2 1c1 2 2.5 3.5 4.5 4.5l1-2 4 1.5v3c0 0.5-0.5 1-1 1C8 16 0 8 0 4c0-0.5 0.5-1 1-1z" transform="translate(0.5,0)"/>
               </svg>
-              (239) 689-5496
+              +1 239-689-5496
             </a>
             <span style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.15)' }}/>
             {/* Lang toggle */}
@@ -337,7 +337,7 @@ const SiteHeader = ({ active }) => {
               display: 'inline-flex', alignItems: 'center', gap: 14, padding: '14px 16px', background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--mono)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', }}>
               <span style={{
                 width: 7, height: 7, borderRadius: '50%', background: '#ff7133', boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)', }}/>
-              {t('Call (239) 689-5496', 'Llamar (239) 689-5496')}
+              {t('Call +1 239-689-5496', 'Llamar +1 239-689-5496')}
             </a>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
               <span className="mono" style={{

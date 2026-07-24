@@ -668,7 +668,7 @@ const HomeownerClosingCTA = () => {
     fontWeight: 700,
     letterSpacing: "0.18em",
     textTransform: "uppercase"
-  } }, t("Call (239) 689-5496", "Llamar (239) 689-5496")))));
+  } }, t("Call +1 239-689-5496", "Llamar +1 239-689-5496")))));
 };
 const HomeownerPaths = () => {
   const t = useT();
@@ -1317,7 +1317,7 @@ const ContractorClosingCTA = () => {
     fontWeight: 700,
     letterSpacing: "0.18em",
     textTransform: "uppercase"
-  } }, "(239) 689-5496"))), /* @__PURE__ */ React.createElement("div", { style: {
+  } }, "+1 239-689-5496"))), /* @__PURE__ */ React.createElement("div", { style: {
     border: "1.5px solid rgba(255,255,255,0.25)",
     background: "rgba(255,255,255,0.04)",
     padding: "32px 32px 28px"

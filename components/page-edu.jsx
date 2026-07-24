@@ -186,7 +186,7 @@ const FaqCTA = () => {
   return (
   <CTABand
     kicker={t("Didn't find your question?", '¿No encontraste tu pregunta?')}
-    title={t('Call (239) 689-5496', 'Llama al (239) 689-5496')}
+    title={t('Call +1 239-689-5496', 'Llama al +1 239-689-5496')}
     accent={t('or send the project.', 'o envía el proyecto.')}
     body={t('Our sales representatives split calls Monday through Friday during business hours.', 'Nuestros representantes de ventas atienden las llamadas de lunes a viernes en horario de oficina.')}
     primary={[t('Request a quote', 'Solicitar una cotización'), 'estimate.html']}
@@ -277,7 +277,7 @@ const MaterialsCompCTA = () => {
     accent={t("we'll come back in 24h.", 'te respondemos en 24h.')}
     body={t("Don't have a material picked? Tell us the use case and your rep will recommend one based on stock and lead time.", '¿No has elegido un material? Cuéntanos el caso de uso y tu representante te recomendará uno según el inventario y el tiempo de entrega.')}
     primary={[t('Request a quote', 'Solicitar una cotización'), 'estimate.html']}
-    secondary={[t('Call (239) 689-5496', 'Llama al (239) 689-5496'), 'tel:2396895496']}
+    secondary={[t('Call +1 239-689-5496', 'Llama al +1 239-689-5496'), 'tel:2396895496']}
   />
   );
 };

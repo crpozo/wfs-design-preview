@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '3.7.1' );
+define( 'WFS_VERSION', '3.8.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -293,7 +293,7 @@ function wfs_lock_phone_numbers() {
   } catch (e) { window._googWcmGet = function () {}; }
 
   /* Digitos -> como debe verse. Fuente: fichas de Google de cada sucursal. */
-  var REAL = { '2396895496': '(239) 689-5496', '9416236890': '(941) 623-6890' };
+  var REAL = { '2396895496': '+1 239-689-5496', '9416236890': '+1 941-623-6890' };
   var YARD = { 'fort myers': '2396895496', 'port charlotte': '9416236890' };
 
   function digits(s) { return (s || '').replace(/\D/g, '').replace(/^1(\d{10})$/, '$1'); }

@@ -600,7 +600,7 @@ Object.assign(ES_TR, {
   // ── Shared buttons / CTA fragments ──
   "Request a Quote": "Solicitar cotizaci\xF3n",
   "Request a Gate Quote": "Solicitar cotizaci\xF3n de port\xF3n",
-  "Call (239) 689-5496": "Llamar (239) 689-5496",
+  "Call +1 239-689-5496": "Llamar +1 239-689-5496",
   "Ready to Quote Your": "\xBFListo para cotizar tu",
   // ── Vinyl / PVC ──
   "Vinyl / PVC fence materials": "Materiales de cerca de vinilo / PVC",

@@ -212,7 +212,7 @@ const LiveAgentBand = () => {
       lineHeight: 1,
       letterSpacing: "-0.02em",
       marginBottom: 18
-    } }, "(239) 689-5496"),
+    } }, "+1 239-689-5496"),
     /* @__PURE__ */ React.createElement("div", { className: "mono", style: {
       fontSize: 14,
       letterSpacing: "0.18em",

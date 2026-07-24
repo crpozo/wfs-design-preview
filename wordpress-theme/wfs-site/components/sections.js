@@ -937,8 +937,8 @@ const ServiceAreas = () => {
     color: "var(--alice-blue)",
     fontWeight: 700
   } }, t("WFS yard locations", "Sucursales de WFS")))), /* @__PURE__ */ React.createElement("div", { style: { display: "grid", gridTemplateRows: "repeat(3, 1fr)", gap: 12 } }, [
-    { city: t("Fort Myers \xB7 HQ", "Fort Myers \xB7 Sede"), addr: "2621 Fowler St, FL 33901", phone: "(239) 689-5496" },
-    { city: "Port Charlotte", addr: "1145 Enterprise Dr, FL 33953", phone: "(941) 623-6890" },
+    { city: t("Fort Myers \xB7 HQ", "Fort Myers \xB7 Sede"), addr: "2621 Fowler St, FL 33901", phone: "+1 239-689-5496" },
+    { city: "Port Charlotte", addr: "1145 Enterprise Dr, FL 33953", phone: "+1 941-623-6890" },
     { city: t("Service area", "\xC1rea de servicio"), addr: t("Serving customers throughout Florida", "Atendemos clientes en toda Florida"), phone: t("Mon-Fri 7:30am-3:30pm \xB7 Sat mornings", "Lun-Vie 7:30am-3:30pm \xB7 S\xE1b por la ma\xF1ana") }
   ].map((y, i) => /* @__PURE__ */ React.createElement("div", { key: i, className: "wfs-yard-card", style: {
     border: "1px solid rgba(0,16,17,0.18)",
@@ -990,8 +990,8 @@ const FinalCTA = () => {
       setSubmitted(true);
     } catch (err) {
       setError(err && err.message || t(
-        "We couldn't send your request. Please call us at (239) 689-5496 or email sales@westernfencesupply.com.",
-        "No pudimos enviar tu solicitud. Ll\xE1manos al (239) 689-5496 o escribe a sales@westernfencesupply.com."
+        "We couldn't send your request. Please call us at +1 239-689-5496 or email sales@westernfencesupply.com.",
+        "No pudimos enviar tu solicitud. Ll\xE1manos al +1 239-689-5496 o escribe a sales@westernfencesupply.com."
       ));
     } finally {
       busy.current = false;
@@ -1057,7 +1057,7 @@ const FinalCTA = () => {
     {
       name: "Fort Myers",
       chip: t("Yard 1 \xB7 HQ", "Sucursal 1 \xB7 Sede"),
-      phone: "(239) 689-5496",
+      phone: "+1 239-689-5496",
       tel: "tel:2396895496",
       email: "sales@westernfencesupply.com",
       addr: ["2621 Fowler St", "Fort Myers, FL 33901"],
@@ -1066,7 +1066,7 @@ const FinalCTA = () => {
     {
       name: "Port Charlotte",
       chip: t("Yard 2", "Sucursal 2"),
-      phone: "(941) 623-6890",
+      phone: "+1 941-623-6890",
       tel: "tel:9416236890",
       email: "salespc@westernfencesupply.com",
       addr: ["1145 Enterprise Dr", "Port Charlotte, FL 33953"],

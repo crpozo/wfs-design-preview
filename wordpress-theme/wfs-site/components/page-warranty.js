@@ -251,7 +251,7 @@ const WarrantyCTA = () => {
         "Ten a la mano tu n\xFAmero de orden, fecha de instalaci\xF3n y unas fotos fechadas. O llama a la sucursal y un representante te gu\xEDa paso a paso."
       ),
       primary: [t("Start a claim", "Iniciar reclamo"), "warranty-claims.html"],
-      secondary: [t("Call (239) 689-5496", "Llamar (239) 689-5496"), "tel:2396895496"],
+      secondary: [t("Call +1 239-689-5496", "Llamar +1 239-689-5496"), "tel:2396895496"],
       theme: "ink"
     }
   );
@@ -359,8 +359,8 @@ const ClaimsForm = () => {
       setSubmitted(true);
     } catch (err) {
       setError(err && err.message || t(
-        "We couldn't send your claim. Please email claims@westernfencesupply.com or call (239) 689-5496.",
-        "No pudimos enviar tu reclamo. Escribe a claims@westernfencesupply.com o llama al (239) 689-5496."
+        "We couldn't send your claim. Please email claims@westernfencesupply.com or call +1 239-689-5496.",
+        "No pudimos enviar tu reclamo. Escribe a claims@westernfencesupply.com o llama al +1 239-689-5496."
       ));
     } finally {
       busy.current = false;
@@ -579,7 +579,7 @@ const ClaimsForm = () => {
     color: "var(--white)",
     lineHeight: 1.1,
     letterSpacing: "-0.005em"
-  } }, "(239) 689-5496"), /* @__PURE__ */ React.createElement("a", { href: "mailto:claims@westernfencesupply.com", className: "mono", style: {
+  } }, "+1 239-689-5496"), /* @__PURE__ */ React.createElement("a", { href: "mailto:claims@westernfencesupply.com", className: "mono", style: {
     display: "block",
     wordBreak: "break-all",
     fontSize: 14.5,
@@ -851,7 +851,7 @@ const SpecsStamped = () => {
     fontWeight: 700,
     letterSpacing: "0.18em",
     textTransform: "uppercase"
-  } }, "(239) 689-5496")))));
+  } }, "+1 239-689-5496")))));
 };
 const SpecsCTA = () => {
   const t = useT();
