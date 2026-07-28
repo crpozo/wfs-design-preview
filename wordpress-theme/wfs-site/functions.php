@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '3.9.0' );
+define( 'WFS_VERSION', '4.0.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -16,6 +16,7 @@ if ( ! defined( 'WFS_ASSETS' ) ) {
 }
 
 require_once get_theme_file_path( 'inc/leads.php' );
+require_once get_theme_file_path( 'inc/redirects.php' );
 
 /** Mapa de paginas del sitio: slug => title, archivo original, componentes. */
 function wfs_pages() {
