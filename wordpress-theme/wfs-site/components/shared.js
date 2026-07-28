@@ -1219,32 +1219,32 @@ async function submitLead(formEl, meta) {
   return { ok: true, fallback: true };
 }
 function openLiveChat(e) {
+  if (typeof window.wfsLoadChat === "function") {
+    if (e && e.preventDefault) {
+      e.preventDefault();
+    }
+    window.wfsLoadChat();
+    return true;
+  }
   var api = window.Tawk_API;
-  if (!api) {
+  if (!api || typeof api.maximize !== "function") {
     return false;
   }
   if (e && e.preventDefault) {
     e.preventDefault();
   }
-  function open() {
-    window.__wfsChatOpened = true;
-    try {
-      document.documentElement.classList.add("wfs-chat-open");
-    } catch (err) {
-    }
-    try {
-      if (typeof window.Tawk_API.showWidget === "function") window.Tawk_API.showWidget();
-    } catch (err) {
-    }
-    try {
-      window.Tawk_API.maximize();
-    } catch (err) {
-    }
+  window.__wfsChatOpened = true;
+  try {
+    document.documentElement.classList.add("wfs-chat-open");
+  } catch (err) {
   }
-  if (typeof api.maximize === "function") {
-    open();
-  } else {
-    api.onLoad = open;
+  try {
+    if (typeof api.showWidget === "function") api.showWidget();
+  } catch (err) {
+  }
+  try {
+    api.maximize();
+  } catch (err) {
   }
   return true;
 }

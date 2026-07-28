@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.0.0' );
+define( 'WFS_VERSION', '4.1.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -156,57 +156,81 @@ function wfs_tawk_hidden_until_asked() {
 	if ( defined( 'WFS_TAWK_BUBBLE' ) && WFS_TAWK_BUBBLE ) { return; }
 	?>
 <script>
+/* Tawk no se carga hasta que el visitante pide el chat.
+ *
+ * Ocultarlo con CSS no bastaba: tawk crea sus contenedores con id aleatorio
+ * (balo8vstm6t1785250275106...), asi que ningun selector los atrapa a tiempo y
+ * el globo "We Are Here!" alcanzaba a verse un segundo antes de esconderse.
+ *
+ * Aqui se intercepta la insercion del script de tawk y se guarda su URL. El
+ * boton "Talk to a live agent" lo carga en ese momento. Sin script no hay
+ * elemento, y sin elemento no hay parpadeo posible. De paso, la pagina deja de
+ * descargar los 8 archivos de tawk en cada visita.
+ *
+ * Para volver a cargarlo siempre: define( 'WFS_TAWK_BUBBLE', true ) en wp-config.php
+ */
 (function () {
-  window.Tawk_API = window.Tawk_API || {};
-  /* Lo pone en true openLiveChat() cuando el visitante pulsa el boton. */
-  window.__wfsChatOpened = window.__wfsChatOpened || false;
+  var TAWK = /embed\.tawk\.to/;
+  window.__wfsTawkSrc = null;
+  window.__wfsChatOpened = false;
 
-  function shut() {
-    if (window.__wfsChatOpened) { return; }   /* si lo abrio el usuario, no tocar */
-    try { window.Tawk_API.minimize(); } catch (e) {}
-    try { window.Tawk_API.hideWidget(); } catch (e) {}
-  }
+  /* Se guardan los originales: cargar el chat luego tiene que poder insertar
+     el script sin que el propio interceptor lo bloquee. */
+  var rawInsert = Node.prototype.insertBefore;
+  var rawAppend = Node.prototype.appendChild;
 
-  /* Todos los momentos en que tawk puede mostrarse por su cuenta. Incluye
-     onChatMaximized, que es lo que dispara un trigger del panel de tawk
-     ("mensaje proactivo") minutos despues de cargar la pagina. */
-  window.Tawk_API.onLoad          = shut;
-  window.Tawk_API.onChatMaximized = shut;
-  window.Tawk_API.onChatMinimized = shut;
-  window.Tawk_API.onChatHidden    = shut;
-  window.Tawk_API.onChatStarted   = shut;
-  shut();
+  function intercept(original) {
+    return function (node) {
+      try {
+        if (node && node.tagName === 'SCRIPT' && TAWK.test(node.src || '')) {
+          window.__wfsTawkSrc = node.src;   /* se guarda para cargarlo luego */
+          return node;                      /* y no se inserta */
+        }
+      } catch (e) {}
+      return original.apply(this, arguments);
+    };
+  }
+  Node.prototype.insertBefore = intercept(rawInsert);
+  Node.prototype.appendChild  = intercept(rawAppend);
 
-  /* Vigilancia permanente: un trigger puede saltar en cualquier momento, no
-     solo al cargar. Se observa el DOM en vez de sondear con un temporizador,
-     y se para en cuanto el visitante abre el chat a proposito. */
-  function watch() {
-    if (!document.body || !window.MutationObserver) { return; }
-    var mo = new MutationObserver(function () {
-      if (window.__wfsChatOpened) { mo.disconnect(); return; }
-      if (document.querySelector('iframe[src*="tawk.to"]')) { shut(); }
-    });
-    mo.observe(document.body, { childList: true, subtree: true });
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', watch);
-  } else {
-    watch();
-  }
+  /* Carga tawk bajo demanda y lo abre en cuanto esta listo. */
+  window.wfsLoadChat = function () {
+    window.__wfsChatOpened = true;
+    document.documentElement.classList.add('wfs-chat-open');
+
+    if (window.Tawk_API && typeof window.Tawk_API.maximize === 'function') {
+      try { window.Tawk_API.showWidget(); } catch (e) {}
+      try { window.Tawk_API.maximize(); } catch (e) {}
+      return;
+    }
+    if (window.__wfsTawkLoading) { return; }
+    window.__wfsTawkLoading = true;
+
+    window.Tawk_API = window.Tawk_API || {};
+    window.Tawk_API.onLoad = function () {
+      try { window.Tawk_API.showWidget(); } catch (e) {}
+      try { window.Tawk_API.maximize(); } catch (e) {}
+    };
+    var s = document.createElement('script');
+    s.async = true;
+    s.charset = 'UTF-8';
+    s.setAttribute('crossorigin', '*');
+    s.src = window.__wfsTawkSrc || 'https://embed.tawk.to/6881734e416fc119149ce7c5/1j0srns0p';
+    /* con el original, si no el interceptor bloquearia su propia carga */
+    rawAppend.call(document.head, s);
+  };
 })();
 </script>
 <style>
-/* Burbuja y ventana de tawk ocultas mientras el visitante no pida el chat.
-   La clase la pone/quita el propio boton "Talk to a live agent". Cubrir la
-   ventana maximizada es lo que evita que un trigger del panel de tawk la
-   abra sola pasados unos segundos. */
+/* Respaldo: si algun dia tawk se cargara igual, su burbuja y su globo siguen
+   ocultos mientras el visitante no pida el chat. */
 html:not(.wfs-chat-open) #tawkchat-minified-wrapper,
 html:not(.wfs-chat-open) #tawkchat-minified-container,
 html:not(.wfs-chat-open) #tawkchat-container,
 html:not(.wfs-chat-open) .tawk-min-container,
 html:not(.wfs-chat-open) .tawk-button-large,
 html:not(.wfs-chat-open) [class*="tawk-min"],
-html:not(.wfs-chat-open) iframe[title*="chat" i][src*="tawk"] {
+html:not(.wfs-chat-open) [class*="tawk-bubble"] {
   display: none !important;
   visibility: hidden !important;
 }
@@ -215,7 +239,9 @@ html:not(.wfs-chat-open) iframe[title*="chat" i][src*="tawk"] {
 </style>
 	<?php
 }
-add_action( 'wp_footer', 'wfs_tawk_hidden_until_asked', 9999 );
+/* En <head> con prioridad 0: el interceptor tiene que existir antes de que el
+   snippet del sitio intente insertar el script de tawk. */
+add_action( 'wp_head', 'wfs_tawk_hidden_until_asked', 0 );
 
 /**
  * No cargar en el front los assets de plugins que este tema no usa.

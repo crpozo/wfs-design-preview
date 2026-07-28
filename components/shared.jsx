@@ -784,25 +784,23 @@ async function submitLead(formEl, meta) {
 /* Abre el chat en vivo (tawk.to). Si la pagina no lo tiene cargado, devuelve
    false y el enlace sigue su curso normal, asi el boton nunca queda muerto. */
 function openLiveChat(e) {
+  /* En WordPress el tema no carga tawk hasta que se pide, para que no
+     parpadee al abrir la pagina. wfsLoadChat se encarga de descargarlo y
+     abrirlo, y sabe si ya estaba cargado. */
+  if (typeof window.wfsLoadChat === 'function') {
+    if (e && e.preventDefault) { e.preventDefault(); }
+    window.wfsLoadChat();
+    return true;
+  }
+
+  /* Sin tema (el preview de GitHub) el enlace sigue su curso normal. */
   var api = window.Tawk_API;
-  if (!api) { return false; }
+  if (!api || typeof api.maximize !== 'function') { return false; }
   if (e && e.preventDefault) { e.preventDefault(); }
-  /* La burbuja va oculta; al pedir chat hay que mostrarla y abrirla. El flag
-     detiene el bucle que oculta la burbuja, para que no cierre lo que abrimos. */
-  function open() {
-    window.__wfsChatOpened = true;
-    /* Esta clase es la que destapa el chat: el CSS del tema lo mantiene
-       oculto mientras no este puesta, para que ningun trigger lo abra solo. */
-    try { document.documentElement.classList.add('wfs-chat-open'); } catch (err) {}
-    try { if (typeof window.Tawk_API.showWidget === 'function') window.Tawk_API.showWidget(); } catch (err) {}
-    try { window.Tawk_API.maximize(); } catch (err) {}
-  }
-  if (typeof api.maximize === 'function') {
-    open();
-  } else {
-    /* El widget aun no termina de cargar: se abre en cuanto este listo. */
-    api.onLoad = open;
-  }
+  window.__wfsChatOpened = true;
+  try { document.documentElement.classList.add('wfs-chat-open'); } catch (err) {}
+  try { if (typeof api.showWidget === 'function') api.showWidget(); } catch (err) {}
+  try { api.maximize(); } catch (err) {}
   return true;
 }
 
