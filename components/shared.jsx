@@ -753,6 +753,7 @@ async function submitLead(formEl, meta) {
   fd.append('_form', meta.form || 'lead');
   fd.append('_subject', meta.subject || 'Website lead');
   fd.append('_page', (location.pathname.split('/').filter(Boolean).pop() || 'homepage'));
+  try { fd.append('_lang', localStorage.getItem('wfs:lang') || 'EN'); } catch (err) { fd.append('_lang', 'EN'); }
   fd.append('_url', location.href);
 
   const endpoint = window.WFS_FORM_ENDPOINT;

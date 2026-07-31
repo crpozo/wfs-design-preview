@@ -175,6 +175,75 @@ function wfs_send_lead_mail( $to, $subject, $body, $headers, $attachments ) {
 }
 
 /**
+ * Confirmacion al remitente: "tu solicitud llego bien al sitio de WFS".
+ * En el idioma en que navegaba (el formulario manda _lang), con los datos
+ * de contacto reales por si necesita algo antes de que le respondan.
+ */
+function wfs_send_confirmation( $email, $name, $form, $lang ) {
+	$es = ( 'ES' === strtoupper( (string) $lang ) );
+
+	$what = array(
+		'quote'    => $es ? 'tu solicitud de cotización de material' : 'your material quote request',
+		'contact'  => $es ? 'tu mensaje' : 'your message',
+		'warranty' => $es ? 'tu reclamo de garantía' : 'your warranty claim',
+	);
+	$next = array(
+		'quote'    => $es
+			? 'Uno de nuestros representantes te responderá en un plazo de 24 horas hábiles con existencias, precios y tiempo de entrega.'
+			: 'One of our reps will get back to you within 24 business hours with stock, pricing and lead time.',
+		'contact'  => $es
+			? 'Respondemos en horario laboral, normalmente el mismo día.'
+			: 'We reply during business hours, usually the same day.',
+		'warranty' => $es
+			? 'Nuestro equipo de garantías te enviará por correo un número de reclamo y los siguientes pasos.'
+			: 'Our warranty team will email you a claim number and next steps.',
+	);
+	$w = isset( $what[ $form ] ) ? $what[ $form ] : $what['quote'];
+	$n = isset( $next[ $form ] ) ? $next[ $form ] : $next['quote'];
+
+	$subject = $es
+		? 'Recibimos tu solicitud, Western Fence Supply'
+		: 'We received your request, Western Fence Supply';
+
+	$body  = ( $es ? 'Hola ' : 'Hi ' ) . $name . ",
+
+";
+	$body .= ( $es
+		? "Gracias por escribirnos. Confirmamos que $w llegó correctamente a través del sitio de Western Fence Supply. $n"
+		: "Thanks for reaching out. This is a confirmation that $w was received through the Western Fence Supply website. $n" ) . "
+
+";
+	$body .= ( $es ? "Si necesitas algo antes, llámanos:" : "If you need anything sooner, give us a call:" ) . "
+
+";
+	$body .= "Fort Myers, HQ
+(239) 689-5496 · 2621 Fowler St, Fort Myers, FL 33901
+";
+	$body .= ( $es ? "Lun-Vie 7:30am-3:30pm · Sáb 7am-12pm
+
+" : "Mon-Fri 7:30am-3:30pm · Sat 7am-12pm
+
+" );
+	$body .= "Port Charlotte
+(941) 623-6890 · 1145 Enterprise Dr, Port Charlotte, FL 33953
+";
+	$body .= ( $es ? "Lun-Vie 7:30am-3:30pm · Sáb 7-11:30am
+
+" : "Mon-Fri 7:30am-3:30pm · Sat 7-11:30am
+
+" );
+	$body .= "Western Fence Supply
+https://westernfencesupply.com
+";
+
+	$headers = array(
+		'Content-Type: text/plain; charset=UTF-8',
+		'Reply-To: Western Fence Supply <sales@westernfencesupply.com>',
+	);
+	return wp_mail( $email, $subject, $body, $headers );
+}
+
+/**
  * Procesa el envío: valida, guarda y despacha.
  */
 function wfs_handle_lead( WP_REST_Request $request ) {
@@ -244,7 +313,13 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 
 	list( $sent, $error, $dropped ) = wfs_send_lead_mail( $primary, $subject, $body, $headers, $attachments );
 
+	/* Confirmacion al cliente: independiente del correo interno; si falla no
+	   afecta la respuesta (su solicitud ya esta guardada igual). */
+	$lang    = isset( $raw['_lang'] ) ? sanitize_text_field( $raw['_lang'] ) : 'EN';
+	$confirm = wfs_send_confirmation( $email, $name, $form, $lang );
+
 	if ( $lead_id && ! is_wp_error( $lead_id ) ) {
+		update_post_meta( $lead_id, '_wfs_confirm_sent', $confirm ? 'yes' : 'no' );
 		update_post_meta( $lead_id, '_wfs_mail_sent', $sent ? 'yes' : 'no' );
 		if ( $error ) { update_post_meta( $lead_id, '_wfs_mail_error', $error ); }
 		if ( $dropped ) { update_post_meta( $lead_id, '_wfs_mail_dropped_attachment', 'yes' ); }
@@ -267,7 +342,11 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 		), 200 );
 	}
 
-	return new WP_REST_Response( array( 'ok' => true, 'mail' => 'sent' ), 200 );
+	return new WP_REST_Response( array(
+		'ok'      => true,
+		'mail'    => 'sent',
+		'confirm' => $confirm ? 'sent' : 'failed',
+	), 200 );
 }
 
 /** Campo en Ajustes → Escritura para cambiar los destinatarios sin tocar código. */
