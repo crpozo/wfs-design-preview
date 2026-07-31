@@ -141,6 +141,48 @@ function wfs_lead_attachments() {
 	return $out;
 }
 
+/**
+ * Envio por SMTP propio (Amazon SES), sin depender del plugin del sitio.
+ *
+ * El servicio SMTP conectado al WordPress del cliente se quedo sin creditos
+ * ("Maximum credits exceeded") y TODOS los correos del formulario mueren ahi.
+ * Con estas constantes en wp-config.php, los correos del formulario salen por
+ * SES directamente y el plugin roto deja de importar:
+ *
+ *   define( 'WFS_SMTP_HOST', 'email-smtp.us-east-1.amazonaws.com' );
+ *   define( 'WFS_SMTP_USER', 'AKIA...' );          // credencial SMTP de SES
+ *   define( 'WFS_SMTP_PASS', '...' );
+ *   define( 'WFS_SMTP_FROM', 'no-reply@westernfencesupply.com' ); // dominio verificado en SES
+ *
+ * Solo toca los correos de los formularios: el resto del correo del sitio
+ * sigue su camino normal.
+ */
+function wfs_smtp_configured() {
+	return defined( 'WFS_SMTP_HOST' ) && defined( 'WFS_SMTP_USER' ) && defined( 'WFS_SMTP_PASS' );
+}
+
+add_action( 'phpmailer_init', function ( $phpmailer ) {
+	if ( empty( $GLOBALS['wfs_smtp_active'] ) || ! wfs_smtp_configured() ) { return; }
+	$phpmailer->isSMTP();
+	$phpmailer->Host       = WFS_SMTP_HOST;
+	$phpmailer->SMTPAuth   = true;
+	$phpmailer->Username   = WFS_SMTP_USER;
+	$phpmailer->Password   = WFS_SMTP_PASS;
+	$phpmailer->Port       = defined( 'WFS_SMTP_PORT' ) ? WFS_SMTP_PORT : 587;
+	$phpmailer->SMTPSecure = 'tls';
+	if ( defined( 'WFS_SMTP_FROM' ) ) {
+		$phpmailer->setFrom( WFS_SMTP_FROM, 'Western Fence Supply' );
+	}
+}, PHP_INT_MAX );
+
+/** wp_mail de los formularios con el flag puesto, para que SES aplique solo aqui. */
+function wfs_mail( $to, $subject, $body, $headers = array(), $attachments = array() ) {
+	$GLOBALS['wfs_smtp_active'] = true;
+	$sent = wp_mail( $to, $subject, $body, $headers, $attachments );
+	$GLOBALS['wfs_smtp_active'] = false;
+	return $sent;
+}
+
 /** Guarda el motivo exacto por el que PHPMailer no pudo enviar. */
 function wfs_capture_mail_error( $wp_error ) {
 	$GLOBALS['wfs_mail_error'] = $wp_error instanceof WP_Error
@@ -158,7 +200,7 @@ add_action( 'wp_mail_failed', 'wfs_capture_mail_error' );
  */
 function wfs_send_lead_mail( $to, $subject, $body, $headers, $attachments ) {
 	$GLOBALS['wfs_mail_error'] = '';
-	$sent = wp_mail( $to, $subject, $body, $headers, $attachments );
+	$sent = wfs_mail( $to, $subject, $body, $headers, $attachments );
 	if ( $sent ) { return array( true, '', false ); }
 
 	$first = $GLOBALS['wfs_mail_error'];
@@ -167,7 +209,7 @@ function wfs_send_lead_mail( $to, $subject, $body, $headers, $attachments ) {
 		$note = $body . "\nNote: the attachment could not be sent with this email. "
 			. "It is stored with the lead in WordPress.\n";
 		$GLOBALS['wfs_mail_error'] = '';
-		$sent = wp_mail( $to, $subject, $note, $headers );
+		$sent = wfs_mail( $to, $subject, $note, $headers );
 		if ( $sent ) { return array( true, $first, true ); }
 	}
 
@@ -240,7 +282,7 @@ https://westernfencesupply.com
 		'Content-Type: text/plain; charset=UTF-8',
 		'Reply-To: Western Fence Supply <sales@westernfencesupply.com>',
 	);
-	return wp_mail( $email, $subject, $body, $headers );
+	return wfs_mail( $email, $subject, $body, $headers );
 }
 
 /**
@@ -396,5 +438,5 @@ add_action( 'admin_notices', function () {
 	echo '<div class="notice notice-error"><p><strong>Email sending is failing.</strong><br>';
 	echo esc_html( $last );
 	echo '<br>Leads are still being saved here, but they are not arriving by email. ';
-	echo 'This is usually resolved by connecting an authenticated SMTP service (Amazon SES).</p></div>';
+	echo 'Fix: add the WFS_SMTP_* constants (Amazon SES credentials) to wp-config.php; the theme then sends form email through SES directly, bypassing the exhausted provider.</p></div>';
 } );
