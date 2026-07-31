@@ -255,13 +255,19 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 	}
 
 	if ( ! $sent ) {
+		/* El lead YA esta guardado, asi que al visitante se le confirma: hizo
+		   su parte y asustarlo con un error de correo solo pierde ventas. El
+		   fallo queda visible para el equipo en el panel (Leads -> columna
+		   Correo, con el motivo exacto) y en "detail" para depurar desde la
+		   pestana Network sin entrar al panel. */
 		return new WP_REST_Response( array(
-			'ok'      => false,
-			'message' => 'We saved your request but email delivery failed. Please call (239) 689-5496.',
-		), 500 );
+			'ok'     => true,
+			'mail'   => 'failed',
+			'detail' => $error ? $error : 'wp_mail returned false without error detail',
+		), 200 );
 	}
 
-	return new WP_REST_Response( array( 'ok' => true ), 200 );
+	return new WP_REST_Response( array( 'ok' => true, 'mail' => 'sent' ), 200 );
 }
 
 /** Campo en Ajustes → Escritura para cambiar los destinatarios sin tocar código. */
