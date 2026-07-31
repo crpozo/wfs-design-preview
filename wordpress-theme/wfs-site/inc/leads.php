@@ -352,11 +352,11 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 /** Campo en Ajustes → Escritura para cambiar los destinatarios sin tocar código. */
 add_action( 'admin_init', function () {
 	register_setting( 'writing', 'wfs_lead_recipients', array( 'type' => 'string', 'sanitize_callback' => 'sanitize_textarea_field' ) );
-	add_settings_field( 'wfs_lead_recipients', 'Destinatarios de formularios', function () {
+	add_settings_field( 'wfs_lead_recipients', 'Form lead recipients', function () {
 		$value = get_option( 'wfs_lead_recipients' );
 		if ( ! $value ) { $value = implode( "\n", wfs_lead_recipients() ); }
 		echo '<textarea name="wfs_lead_recipients" rows="3" class="large-text code">' . esc_textarea( $value ) . '</textarea>';
-		echo '<p class="description">Un correo por línea. El primero va en Para; los demás en copia oculta.</p>';
+		echo '<p class="description">One address per line. The first goes in To; the rest are Bcc.</p>';
 	}, 'writing' );
 } );
 
@@ -367,7 +367,7 @@ add_action( 'admin_init', function () {
 
 /** Columna "Correo" en la lista de Leads. */
 add_filter( 'manage_wfs_lead_posts_columns', function ( $cols ) {
-	$cols['wfs_mail'] = 'Correo';
+	$cols['wfs_mail'] = 'Email';
 	return $cols;
 } );
 
@@ -375,14 +375,14 @@ add_action( 'manage_wfs_lead_posts_custom_column', function ( $col, $post_id ) {
 	if ( 'wfs_mail' !== $col ) { return; }
 	$sent = get_post_meta( $post_id, '_wfs_mail_sent', true );
 	if ( 'yes' === $sent ) {
-		echo '<span style="color:#046b33">Enviado</span>';
+		echo '<span style="color:#046b33">Sent</span>';
 		if ( get_post_meta( $post_id, '_wfs_mail_dropped_attachment', true ) ) {
-			echo '<br><small>sin el adjunto</small>';
+			echo '<br><small>without the attachment</small>';
 		}
 		return;
 	}
 	$err = get_post_meta( $post_id, '_wfs_mail_error', true );
-	echo '<strong style="color:#b32d2e">No salió</strong>';
+	echo '<strong style="color:#b32d2e">Failed</strong>';
 	if ( $err ) { echo '<br><small>' . esc_html( $err ) . '</small>'; }
 }, 10, 2 );
 
@@ -393,8 +393,8 @@ add_action( 'admin_notices', function () {
 	if ( ! $screen || 'wfs_lead' !== $screen->post_type ) { return; }
 	$last = get_option( 'wfs_last_mail_error' );
 	if ( ! $last ) { return; }
-	echo '<div class="notice notice-error"><p><strong>El envío de correo está fallando.</strong><br>';
+	echo '<div class="notice notice-error"><p><strong>Email sending is failing.</strong><br>';
 	echo esc_html( $last );
-	echo '<br>Los leads se siguen guardando aquí, pero no llegan por correo. ';
-	echo 'Suele resolverse conectando un SMTP autenticado (Amazon SES).</p></div>';
+	echo '<br>Leads are still being saved here, but they are not arriving by email. ';
+	echo 'This is usually resolved by connecting an authenticated SMTP service (Amazon SES).</p></div>';
 } );
