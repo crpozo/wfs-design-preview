@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.2.0' );
+define( 'WFS_VERSION', '4.2.1' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -191,6 +191,10 @@ function wfs_tawk_hidden_until_asked() {
   function intercept(original) {
     return function (node) {
       try {
+        /* Cuando el visitante ya pidio el chat, TODO pasa: los 8 chunks
+           internos de tawk tambien vienen de embed.tawk.to, y bloquearlos
+           dejaba el chat a medio arrancar (el boton "no abria"). */
+        if (window.__wfsChatOpened) { return original.apply(this, arguments); }
         if (node && node.tagName === 'SCRIPT' && TAWK.test(node.src || '')) {
           window.__wfsTawkSrc = node.src;   /* se guarda para cargarlo luego */
           return node;                      /* y no se inserta */
@@ -206,27 +210,36 @@ function wfs_tawk_hidden_until_asked() {
   window.wfsLoadChat = function () {
     window.__wfsChatOpened = true;
     document.documentElement.classList.add('wfs-chat-open');
+    /* interceptor fuera: a partir de aqui tawk carga con total normalidad */
+    Node.prototype.insertBefore = rawInsert;
+    Node.prototype.appendChild  = rawAppend;
 
     if (window.Tawk_API && typeof window.Tawk_API.maximize === 'function') {
       try { window.Tawk_API.showWidget(); } catch (e) {}
       try { window.Tawk_API.maximize(); } catch (e) {}
       return;
     }
-    if (window.__wfsTawkLoading) { return; }
-    window.__wfsTawkLoading = true;
-
-    window.Tawk_API = window.Tawk_API || {};
-    window.Tawk_API.onLoad = function () {
-      try { window.Tawk_API.showWidget(); } catch (e) {}
-      try { window.Tawk_API.maximize(); } catch (e) {}
-    };
-    var s = document.createElement('script');
-    s.async = true;
-    s.charset = 'UTF-8';
-    s.setAttribute('crossorigin', '*');
-    s.src = window.__wfsTawkSrc || 'https://embed.tawk.to/6881734e416fc119149ce7c5/1j0srns0p';
-    /* con el original, si no el interceptor bloquearia su propia carga */
-    rawAppend.call(document.head, s);
+    if (!window.__wfsTawkLoading) {
+      window.__wfsTawkLoading = true;
+      window.Tawk_API = window.Tawk_API || {};
+      var s = document.createElement('script');
+      s.async = true;
+      s.charset = 'UTF-8';
+      s.setAttribute('crossorigin', '*');
+      s.src = window.__wfsTawkSrc || 'https://embed.tawk.to/6881734e416fc119149ce7c5/1j0srns0p';
+      rawAppend.call(document.head, s);
+    }
+    /* Respaldo por sondeo en vez de fiarse de onLoad: el snippet del sitio
+       tambien escribe onLoad y podria pisarlo. En cuanto la API existe, se
+       abre; 30s de margen y se rinde en silencio. */
+    var tries = 0;
+    var iv = setInterval(function () {
+      if (window.Tawk_API && typeof window.Tawk_API.maximize === 'function') {
+        clearInterval(iv);
+        try { window.Tawk_API.showWidget(); } catch (e) {}
+        try { window.Tawk_API.maximize(); } catch (e) {}
+      } else if (++tries > 100) { clearInterval(iv); }
+    }, 300);
   };
 })();
 </script>

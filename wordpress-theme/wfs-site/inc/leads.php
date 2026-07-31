@@ -231,12 +231,13 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 
 	$to      = wfs_lead_recipients();
 	$primary = array_shift( $to );
-	$host    = wp_parse_url( home_url(), PHP_URL_HOST );
-	$host    = preg_replace( '/^www\./', '', (string) $host );
 
+	/* Sin "From:" personalizado: varios hosts rechazan remitentes que no
+	   existen como buzon (no-reply@...) y el envio entero devuelve false.
+	   Con el From por defecto de WordPress el servidor siempre se acepta a
+	   si mismo, y el Reply-To sigue llevando al cliente. */
 	$headers = array(
 		'Content-Type: text/plain; charset=UTF-8',
-		'From: Western Fence Supply Website <no-reply@' . $host . '>',
 		'Reply-To: ' . $name . ' <' . $email . '>',
 	);
 	foreach ( $to as $bcc ) { $headers[] = 'Bcc: ' . $bcc; }
