@@ -175,12 +175,74 @@ add_action( 'phpmailer_init', function ( $phpmailer ) {
 	}
 }, PHP_INT_MAX );
 
-/** wp_mail de los formularios con el flag puesto, para que SES aplique solo aqui. */
+/**
+ * Envio de los formularios.
+ *
+ * Con las constantes WFS_SMTP_* puestas NO se usa wp_mail: el plugin de
+ * correo del sitio lo reemplaza entero y manda por su propia API (la que
+ * responde "Maximum credits exceeded"), asi que un gancho en phpmailer_init
+ * nunca llega a correr. Aqui se habla SMTP directamente con el PHPMailer que
+ * trae WordPress, y ningun plugin puede interceptarlo.
+ *
+ * Sin las constantes, cae a wp_mail como siempre.
+ */
 function wfs_mail( $to, $subject, $body, $headers = array(), $attachments = array() ) {
-	$GLOBALS['wfs_smtp_active'] = true;
-	$sent = wp_mail( $to, $subject, $body, $headers, $attachments );
-	$GLOBALS['wfs_smtp_active'] = false;
-	return $sent;
+	if ( ! wfs_smtp_configured() ) {
+		$GLOBALS['wfs_smtp_active'] = true;
+		$sent = wp_mail( $to, $subject, $body, $headers, $attachments );
+		$GLOBALS['wfs_smtp_active'] = false;
+		return $sent;
+	}
+
+	if ( ! class_exists( 'PHPMailer\\PHPMailer\\PHPMailer' ) ) {
+		require_once ABSPATH . WPINC . '/PHPMailer/PHPMailer.php';
+		require_once ABSPATH . WPINC . '/PHPMailer/SMTP.php';
+		require_once ABSPATH . WPINC . '/PHPMailer/Exception.php';
+	}
+
+	try {
+		$mail = new PHPMailer\PHPMailer\PHPMailer( true );
+		$mail->isSMTP();
+		$mail->Host       = WFS_SMTP_HOST;
+		$mail->SMTPAuth   = true;
+		$mail->Username   = WFS_SMTP_USER;
+		$mail->Password   = WFS_SMTP_PASS;
+		$mail->Port       = defined( 'WFS_SMTP_PORT' ) ? WFS_SMTP_PORT : 587;
+		$mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
+		$mail->CharSet    = 'UTF-8';
+		$mail->isHTML( false );
+
+		$from = defined( 'WFS_SMTP_FROM' ) ? WFS_SMTP_FROM : WFS_SMTP_USER;
+		$mail->setFrom( $from, 'Western Fence Supply' );
+		$mail->addAddress( $to );
+
+		foreach ( (array) $headers as $h ) {
+			if ( stripos( $h, 'Reply-To:' ) === 0 ) {
+				/* "Reply-To: Nombre <correo>" o "Reply-To: correo" */
+				$v = trim( substr( $h, 9 ) );
+				if ( preg_match( '/^(.*)<([^>]+)>$/', $v, $m ) ) {
+					$mail->addReplyTo( trim( $m[2] ), trim( $m[1] ) );
+				} elseif ( is_email( $v ) ) {
+					$mail->addReplyTo( $v );
+				}
+			} elseif ( stripos( $h, 'Bcc:' ) === 0 ) {
+				$v = trim( substr( $h, 4 ) );
+				if ( is_email( $v ) ) { $mail->addBCC( $v ); }
+			}
+		}
+
+		foreach ( (array) $attachments as $file ) {
+			if ( $file && file_exists( $file ) ) { $mail->addAttachment( $file ); }
+		}
+
+		$mail->Subject = $subject;
+		$mail->Body    = $body;
+		$mail->send();
+		return true;
+	} catch ( Throwable $e ) {
+		$GLOBALS['wfs_mail_error'] = 'SMTP: ' . $e->getMessage();
+		return false;
+	}
 }
 
 /** Guarda el motivo exacto por el que PHPMailer no pudo enviar. */
@@ -380,6 +442,7 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 		return new WP_REST_Response( array(
 			'ok'     => true,
 			'mail'   => 'failed',
+			'via'    => wfs_smtp_configured() ? 'smtp' : 'default',
 			'detail' => $error ? $error : 'wp_mail returned false without error detail',
 		), 200 );
 	}
@@ -387,6 +450,7 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 	return new WP_REST_Response( array(
 		'ok'      => true,
 		'mail'    => 'sent',
+		'via'     => wfs_smtp_configured() ? 'smtp' : 'default',
 		'confirm' => $confirm ? 'sent' : 'failed',
 	), 200 );
 }
