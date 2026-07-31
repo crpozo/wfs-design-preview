@@ -19,7 +19,7 @@ const ProjectsHero = () => {
       title={t('Real projects.', 'Proyectos reales.')}
       accent={t('Real perimeters.', 'Perímetros reales.')}
       subtitle={t('A selection of completed fence and gate projects across Southwest Florida and beyond. Filter by material below.', 'Una selección de proyectos de cercas y portones terminados en el suroeste de Florida y más allá. Filtra por material abajo.')}
-      image="assets/MET.png"
+      image="assets/MET.webp"
     />
   );
 };
@@ -72,14 +72,17 @@ const ProjectsCaseStudy = () => {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 56, alignItems: 'center' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 10, width: 'min(100%, 620px)', justifySelf: 'center', position: 'relative' }}>
             <div style={{ position: 'relative', aspectRatio: '4 / 5', overflow: 'hidden' }}>
-              <img src="assets/projects/cl-swing-gate-galv-4.jpg"
+              <img loading="lazy" decoding="async" src="assets/projects/cl-swing-gate-galv-4.jpg"
                 alt={t('Fort Myers Industrial Park perimeter', 'Perímetro del Fort Myers Industrial Park')}
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
             </div>
             <div style={{ display: 'grid', gridTemplateRows: '1fr 1fr', gap: 10 }}>
-              {['assets/projects/cl-fence-black-2.jpg', 'assets/projects/cl-gate-black.jpg'].map((src) => (
+              {[
+                ['assets/projects/cl-fence-black-2.jpg', 'Black chain link fence run at the industrial park'],
+                ['assets/projects/cl-gate-black.jpg', 'Black chain link gate at the industrial park'],
+              ].map(([src, alt]) => (
                 <div key={src} style={{ position: 'relative', overflow: 'hidden' }}>
-                  <img src={src} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
+                  <img src={src} alt={alt} loading="lazy" decoding="async" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
                 </div>
               ))}
             </div>

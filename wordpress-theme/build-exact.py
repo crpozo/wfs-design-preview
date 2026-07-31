@@ -43,6 +43,14 @@ for jsx in sorted((SRC / "components").glob("*.jsx")):
 css = (SRC / "styles.css").read_text()
 css = re.sub(r"url\((['\"]?)assets/", r"url(\1" + ASSET_BASE + "/", css)
 (OUT / "css" / "styles.css").write_text(css)
+try:
+    subprocess.run(["npx", "--yes", "esbuild@0.24.0", str(OUT / "css" / "styles.css"),
+                    "--minify", "--allow-overwrite",
+                    "--outfile=" + str(OUT / "css" / "styles.css"),
+                    "--log-level=error"], check=True)
+    print("  CSS minificado")
+except Exception as err:
+    print(f"  ! CSS sin minificar: {err}")
 
 # ---------------------------------------------------------------- paginas
 RE_TITLE = re.compile(r"<title>(.*?)</title>", re.S)
@@ -74,6 +82,7 @@ def transpile(path):
     subprocess.run(
         ["npx", "--yes", "esbuild@0.24.0", str(path),
          "--loader:" + path.suffix + "=jsx", "--outfile=" + str(out),
+         "--minify", "--target=es2017",
          "--allow-overwrite", "--log-level=error"],
         check=True)
     if out != path:

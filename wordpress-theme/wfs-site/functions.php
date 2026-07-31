@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.1.0' );
+define( 'WFS_VERSION', '4.2.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -17,6 +17,7 @@ if ( ! defined( 'WFS_ASSETS' ) ) {
 
 require_once get_theme_file_path( 'inc/leads.php' );
 require_once get_theme_file_path( 'inc/redirects.php' );
+require_once get_theme_file_path( 'inc/seo.php' );
 
 /** Mapa de paginas del sitio: slug => title, archivo original, componentes. */
 function wfs_pages() {
@@ -117,15 +118,18 @@ function wfs_print_app( $slug ) {
 
 	echo "\n";
 	if ( $pre ) {
-		echo '<script src="https://unpkg.com/react@18.3.1/umd/react.production.min.js" integrity="sha384-DGyLxAyjq0f9SPpVevD6IgztCFlnMF6oW/XQGmfe+IsZ8TqEiDrcHkMLKI6fiB/Z" crossorigin="anonymous"></script>' . "\n";
-		echo '<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js" integrity="sha384-gTGxhz21lVGYNMcdJOyq01Edg0jhn/c22nsx0kyqP0TxaV5WVdsSH1fSDUf5YJj1" crossorigin="anonymous"></script>' . "\n";
+		/* React va DENTRO del tema: sin unpkg no hay tercer origen en la ruta
+		   critica, y con defer nada bloquea el parseo del HTML. El orden entre
+		   scripts defer se conserva, asi que react -> componentes -> app. */
+		echo '<script defer src="' . esc_url( get_theme_file_uri( 'vendor/react.production.min.js' ) . '?ver=' . $v ) . '"></script>' . "\n";
+		echo '<script defer src="' . esc_url( get_theme_file_uri( 'vendor/react-dom.production.min.js' ) . '?ver=' . $v ) . '"></script>' . "\n";
 	} else {
 		echo '<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>' . "\n";
 		echo '<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>' . "\n";
 		echo '<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>' . "\n";
 	}
 
-	$type = $pre ? '' : ' type="text/babel"';
+	$type = $pre ? ' defer' : ' type="text/babel"';
 	foreach ( $pages[ $slug ]['components'] as $comp ) {
 		printf(
 			'<script%s src="%s"></script>' . "\n",
@@ -134,8 +138,13 @@ function wfs_print_app( $slug ) {
 		);
 	}
 
-	$ext = $pre ? '.js' : '.js';
-	$app = get_theme_file_path( 'apps/' . $slug . $ext );
+	if ( $pre && file_exists( get_theme_file_path( 'apps/' . $slug . '.js' ) ) ) {
+		/* La app tambien como archivo con defer, no inline: un inline no puede
+		   diferirse y ademas asi cachea entre visitas. */
+		echo '<script defer src="' . esc_url( get_theme_file_uri( 'apps/' . $slug . '.js' ) . '?ver=' . $v ) . '"></script>' . "\n";
+		return;
+	}
+	$app = get_theme_file_path( 'apps/' . $slug . '.js' );
 	if ( file_exists( $app ) ) {
 		echo '<script' . $type . '>' . "\n";
 		echo file_get_contents( $app );

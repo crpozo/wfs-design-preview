@@ -33,7 +33,7 @@ const ResourceArticles = () => {
             <article key={i} style={{
               background: 'var(--white)', border: '1px solid rgba(0,16,17,0.1)', display: 'flex', flexDirection: 'column', cursor: 'pointer', }}>
               <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', background: '#263166' }}>
-                <img src={FENCE_IMG[p.img]} alt=""
+                <img loading="lazy" decoding="async" src={FENCE_IMG[p.img]} alt=""
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
                 <span className="mono" style={{
                   position: 'absolute', top: 14, left: 14, background: 'var(--tangerine)', color: 'var(--ink)', padding: '5px 10px', fontSize: 13.5, letterSpacing: '0.18em', fontWeight: 700, textTransform: 'uppercase', }}>{t(p.tag)}</span>

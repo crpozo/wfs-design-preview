@@ -25,7 +25,7 @@ const InstallerMarquee = () => {
         <div className="wfs-marquee__track">
           {row.map((l, i) => (
             <span key={i} className="wfs-logo-cell">
-              <img src={l.src} alt={l.name} className="wfs-logo-img"
+              <img loading="lazy" decoding="async" src={l.src} alt={l.name} className="wfs-logo-img"
                 onError={e => { e.currentTarget.style.display = 'none'; const fb = e.currentTarget.nextSibling; if (fb) fb.style.display = 'inline'; }} />
               <span className="display wfs-logo-fallback">{l.name}</span>
             </span>
@@ -188,7 +188,7 @@ const FeaturedGrid = () => {
             <article key={p.sku} style={{
               opacity: pg === page ? 1 : 0, transform: pg === page ? 'none' : 'translateY(16px)', transition: 'opacity 0.45s ease, transform 0.6s cubic-bezier(0.3, 0, 0.2, 1)', transitionDelay: pg === page ? `${140 + idx * 90}ms` : '0ms', }}>
               <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#263166', overflow: 'hidden' }}>
-                <img src={p.imgUrl || FENCE_IMG[p.img]} alt={t(p.name)}
+                <img loading="lazy" decoding="async" src={p.imgUrl || FENCE_IMG[p.img]} alt={t(p.name)}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
               <div className="mono" style={{
@@ -234,7 +234,7 @@ const ProjectCard = ({ p, i, layout }) => {
       onMouseLeave={() => setHover(false)}
       style={{
         gridColumn: layout.col, gridRow: layout.row, position: 'relative', overflow: 'hidden', background: '#263166', textDecoration: 'none', display: 'block', }}>
-      <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
+      <img loading="lazy" decoding="async" src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
         style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: hover ? 'scale(1.05)' : 'scale(1)', transition: 'transform 0.7s ease', }} />
       <div style={{
@@ -289,7 +289,7 @@ const FeaturedProject = ({ p, num, total }) => {
       onMouseLeave={() => setHover(false)}
       style={{
         position: 'relative', overflow: 'hidden', background: '#263166', textDecoration: 'none', display: 'block', minHeight: 'min(52vh, 500px)', maxHeight: 620, animation: 'wfsSlideFade 0.5s cubic-bezier(0.3, 0, 0.2, 1)', }}>
-      <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
+      <img loading="lazy" decoding="async" src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
         style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: hover ? 'scale(1.04)' : 'scale(1)', transition: 'transform 0.7s ease', }} />
       <div style={{
@@ -346,7 +346,7 @@ const ProjectListRow = ({ p, active, onSelect }) => {
       style={{
         display: 'grid', gridTemplateColumns: '72px 1fr auto', gap: 14, alignItems: 'center', padding: 8, width: '100%', textAlign: 'left', cursor: 'pointer', background: active ? '#ffffff' : 'transparent', border: '1px solid', borderColor: active ? 'rgba(38, 49, 102,0.22)' : 'rgba(0,16,17,0.10)', borderLeftWidth: 3, borderLeftColor: active ? 'var(--tangerine)' : 'transparent', transition: 'background 0.2s ease, border-color 0.2s ease', }}>
       <span style={{ display: 'block', width: 72, height: 50, overflow: 'hidden', background: '#263166' }}>
-        <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
+        <img loading="lazy" decoding="async" src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
       </span>
       <span style={{ display: 'block', minWidth: 0 }}>
@@ -383,7 +383,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
   const t = useT();
   const curated = Array.isArray(items) && items.length > 0;
   const projects = curated ? items : [
-    { name: { EN: 'Cape Coral Residential', ES: 'Residencial Cape Coral' }, loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: { EN: 'Chainlink fence, black', ES: 'Cerca de malla ciclónica, negra' }, contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/projects/cl-privacy-slats-black.jpg' }, { name: { EN: 'Estero Community', ES: 'Comunidad Estero' }, loc: 'Estero, FL', size: { EN: '38 lots', ES: '38 lotes' }, material: 'Metal', type: { EN: 'Metal fence, horizontal, black', ES: 'Cerca de metal, horizontal, negra' }, contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/met-fence-horizontal-black.jpg' }, { name: { EN: 'Fort Myers Estate', ES: 'Residencia Fort Myers' }, loc: 'Fort Myers, FL', size: '420 LF', material: 'Aluminum', type: { EN: '2-rail aluminum, smooth bottom, white', ES: 'Aluminio de 2 rieles, base lisa, blanco' }, contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/projects/alum-2-rail-smooth-bottom-white.jpg' }, { name: { EN: 'Naples Pool Enclosure', ES: 'Cerramiento de piscina Naples' }, loc: 'Naples, FL', size: '180 LF', material: 'Vinyl', type: { EN: 'Vinyl closed top, white', ES: 'Vinilo tope cerrado, blanco' }, contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/pvc-closed-top-white.jpg' }, { name: { EN: 'Bonita Springs Self-Storage', ES: 'Autoalmacenamiento Bonita Springs' }, loc: 'Bonita Springs, FL', size: '0.9 mi', material: 'Chain Link', type: { EN: 'Galvanized mesh with galvanized swing gate', ES: 'Malla galvanizada con portón abatible galvanizado' }, contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/projects/cl-swing-gate-galv-4.jpg' }, { name: { EN: 'Punta Gorda Marina', ES: 'Marina Punta Gorda' }, loc: 'Punta Gorda, FL', size: '240 LF', material: 'EC Fence', type: { EN: 'EC Fence panels, 6 ft, white finish', ES: 'Paneles EC Fence, 6 ft, acabado blanco' }, contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/projects/ecfence-white.jpg' }, { name: { EN: 'Lehigh Acres Warehouse', ES: 'Bodega Lehigh Acres' }, loc: 'Lehigh Acres, FL', size: '0.6 mi', material: 'Chain Link', type: { EN: 'Chainlink fence, black', ES: 'Cerca de malla ciclónica, negra' }, contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/cl-gate-black.jpg' }, { name: { EN: 'Marco Island Villa', ES: 'Villa Marco Island' }, loc: 'Marco Island, FL', size: '260 LF', material: 'Aluminum', type: { EN: 'Aluminum puppy picket, bronze estate finish', ES: 'Aluminio puppy picket, acabado bronce de alta gama' }, contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/projects/alum-puppy-picket-bronze.jpg' }, { name: { EN: 'Sanibel Beachfront', ES: 'Frente de playa Sanibel' }, loc: 'Sanibel, FL', size: '150 LF', material: 'Vinyl', type: { EN: 'Vinyl privacy, two-tone white and gray', ES: 'Privacidad de vinilo, bicolor blanco y gris' }, contractor: 'Naples Outdoor', year: '2024', imgUrl: 'assets/projects/pvc-privacy-two-tone-white-and-gray.png' }, { name: { EN: 'Immokalee Ag Facility', ES: 'Instalación agrícola Immokalee' }, loc: 'Immokalee, FL', size: '1.4 mi', material: 'Chain Link', type: { EN: 'Chainlink fence, black', ES: 'Cerca de malla ciclónica, negra' }, contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/cl-fence-black-2.jpg' }, { name: { EN: 'Port Charlotte HOA', ES: 'HOA Port Charlotte' }, loc: 'Port Charlotte, FL', size: { EN: '52 lots', ES: '52 lotes' }, material: 'EC Fence', type: { EN: 'EC Fence panels, 6 ft, bronze finish', ES: 'Paneles EC Fence, 6 ft, acabado bronce' }, contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/projects/ecfence-bronze.jpg' }, { name: { EN: 'Golden Gate Estates', ES: 'Golden Gate Estates' }, loc: 'Golden Gate, FL', size: '300 LF', material: 'Metal', type: { EN: 'Metal fence, 3-rail, brown finish', ES: 'Cerca metálica, 3 rieles, acabado marrón' }, contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/projects/met-fence-3-rail-brown.jpg' }, ];
+    { name: { EN: 'Cape Coral Residential', ES: 'Residencial Cape Coral' }, loc: 'Cape Coral, FL', size: '320 LF', material: 'Chain Link', type: { EN: 'Chainlink fence, black', ES: 'Cerca de malla ciclónica, negra' }, contractor: 'Coastline Fence Co.', year: '2024', imgUrl: 'assets/projects/cl-privacy-slats-black.jpg' }, { name: { EN: 'Estero Community', ES: 'Comunidad Estero' }, loc: 'Estero, FL', size: { EN: '38 lots', ES: '38 lotes' }, material: 'Metal', type: { EN: 'Metal fence, horizontal, black', ES: 'Cerca de metal, horizontal, negra' }, contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/met-fence-horizontal-black.jpg' }, { name: { EN: 'Fort Myers Estate', ES: 'Residencia Fort Myers' }, loc: 'Fort Myers, FL', size: '420 LF', material: 'Aluminum', type: { EN: '2-rail aluminum, smooth bottom, white', ES: 'Aluminio de 2 rieles, base lisa, blanco' }, contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/projects/alum-2-rail-smooth-bottom-white.jpg' }, { name: { EN: 'Naples Pool Enclosure', ES: 'Cerramiento de piscina Naples' }, loc: 'Naples, FL', size: '180 LF', material: 'Vinyl', type: { EN: 'Vinyl closed top, white', ES: 'Vinilo tope cerrado, blanco' }, contractor: 'Naples Outdoor', year: '2025', imgUrl: 'assets/projects/pvc-closed-top-white.jpg' }, { name: { EN: 'Bonita Springs Self-Storage', ES: 'Autoalmacenamiento Bonita Springs' }, loc: 'Bonita Springs, FL', size: '0.9 mi', material: 'Chain Link', type: { EN: 'Galvanized mesh with galvanized swing gate', ES: 'Malla galvanizada con portón abatible galvanizado' }, contractor: 'Industrial Fence FL', year: '2024', imgUrl: 'assets/projects/cl-swing-gate-galv-4.jpg' }, { name: { EN: 'Punta Gorda Marina', ES: 'Marina Punta Gorda' }, loc: 'Punta Gorda, FL', size: '240 LF', material: 'EC Fence', type: { EN: 'EC Fence panels, 6 ft, white finish', ES: 'Paneles EC Fence, 6 ft, acabado blanco' }, contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/projects/ecfence-white.jpg' }, { name: { EN: 'Lehigh Acres Warehouse', ES: 'Bodega Lehigh Acres' }, loc: 'Lehigh Acres, FL', size: '0.6 mi', material: 'Chain Link', type: { EN: 'Chainlink fence, black', ES: 'Cerca de malla ciclónica, negra' }, contractor: 'Industrial Fence FL', year: '2025', imgUrl: 'assets/projects/cl-gate-black.jpg' }, { name: { EN: 'Marco Island Villa', ES: 'Villa Marco Island' }, loc: 'Marco Island, FL', size: '260 LF', material: 'Aluminum', type: { EN: 'Aluminum puppy picket, bronze estate finish', ES: 'Aluminio puppy picket, acabado bronce de alta gama' }, contractor: 'Estate Fence Pros', year: '2025', imgUrl: 'assets/projects/alum-puppy-picket-bronze.jpg' }, { name: { EN: 'Sanibel Beachfront', ES: 'Frente de playa Sanibel' }, loc: 'Sanibel, FL', size: '150 LF', material: 'Vinyl', type: { EN: 'Vinyl privacy, two-tone white and gray', ES: 'Privacidad de vinilo, bicolor blanco y gris' }, contractor: 'Naples Outdoor', year: '2024', imgUrl: 'assets/projects/pvc-privacy-two-tone-white-and-gray.webp' }, { name: { EN: 'Immokalee Ag Facility', ES: 'Instalación agrícola Immokalee' }, loc: 'Immokalee, FL', size: '1.4 mi', material: 'Chain Link', type: { EN: 'Chainlink fence, black', ES: 'Cerca de malla ciclónica, negra' }, contractor: 'Gulf Perimeter LLC', year: '2024', imgUrl: 'assets/projects/cl-fence-black-2.jpg' }, { name: { EN: 'Port Charlotte HOA', ES: 'HOA Port Charlotte' }, loc: 'Port Charlotte, FL', size: { EN: '52 lots', ES: '52 lotes' }, material: 'EC Fence', type: { EN: 'EC Fence panels, 6 ft, bronze finish', ES: 'Paneles EC Fence, 6 ft, acabado bronce' }, contractor: 'Harbor Iron Works', year: '2025', imgUrl: 'assets/projects/ecfence-bronze.jpg' }, { name: { EN: 'Golden Gate Estates', ES: 'Golden Gate Estates' }, loc: 'Golden Gate, FL', size: '300 LF', material: 'Metal', type: { EN: 'Metal fence, 3-rail, brown finish', ES: 'Cerca metálica, 3 rieles, acabado marrón' }, contractor: 'Gulf Perimeter LLC', year: '2025', imgUrl: 'assets/projects/met-fence-3-rail-brown.jpg' }, ];
 
   const PER = 5;
   const pages = Math.ceil(projects.length / PER);
@@ -431,7 +431,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
                   <article key={p.name.EN || p.name} style={{
                     opacity: pg === page ? 1 : 0, transform: pg === page ? 'none' : 'translateY(16px)', transition: 'opacity 0.45s ease, transform 0.6s cubic-bezier(0.3, 0, 0.2, 1)', transitionDelay: pg === page ? `${140 + idx * 90}ms` : '0ms', }}>
                     <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#263166', overflow: 'hidden' }}>
-                      <img src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
+                      <img loading="lazy" decoding="async" src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
                         style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                     </div>
                     <div className="mono" style={{
@@ -650,7 +650,7 @@ const ServiceAreas = () => {
           <div className="wfs-map" style={{
             position: 'relative', background: 'var(--ink)', border: '1px solid var(--ink)', overflow: 'hidden', aspectRatio: '192 / 152', }}>
             {/* Map, viewBox cropped to Florida (624 432 192 152) */}
-            <img src="assets/us-map.svg" alt={t('Florida map showing WFS service area', 'Mapa de Florida que muestra la zona de servicio de WFS')}
+            <img loading="lazy" decoding="async" src="assets/us-map.svg" alt={t('Florida map showing WFS service area', 'Mapa de Florida que muestra la zona de servicio de WFS')}
               style={{
                 position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', }}/>
 

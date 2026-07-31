@@ -1,1 +1,1 @@
-ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(HomeownerPage, null));
+ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(HomeownerPage,null));

@@ -220,7 +220,7 @@ const ClaimsHero = () => {
     subtitle={t(
       'One short form, four required fields. A rep follows up by phone the next business morning to schedule inspection or ship replacement material.', 'Un formulario corto, cuatro campos obligatorios. Un representante hace seguimiento por teléfono la mañana hábil siguiente para agendar inspección o enviar material de reemplazo.'
     )}
-    image="assets/gate-cantilever.jpg"
+    image="assets/gate-cantilever.webp"
   />
   );
 };
@@ -487,7 +487,7 @@ const SpecsHero = () => {
     subtitle={t(
       'PDF spec sheets, profile drawings and wind-load data for every system we stock. Formatted for AHJ submission and HOA review. Stamped copies on request.', 'Hojas técnicas PDF, dibujos de perfil y datos de carga eólica para cada sistema que manejamos. Formateadas para presentación AHJ y revisión HOA. Copias selladas a solicitud.'
     )}
-    image="assets/ECFENCE.png"
+    image="assets/ECFENCE.webp"
   />
   );
 };

@@ -13,6 +13,22 @@ $wfs_slug = wfs_current_slug();
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" type="image/svg+xml" href="<?php echo esc_url( WFS_ASSETS . '/favicon.svg' ); ?>" />
+<?php
+/* Preconectar a los origenes de la ruta critica ahorra un RTT+TLS por cada
+   uno. Las fuentes van por <link>, no por @import dentro del CSS: el import
+   encadenaba styles.css -> google -> woff2 en serie (parte de los 3.260 ms
+   de bloqueo que midio Lighthouse). */
+$wfs_assets_origin = wp_parse_url( WFS_ASSETS, PHP_URL_SCHEME ) . '://' . wp_parse_url( WFS_ASSETS, PHP_URL_HOST );
+?>
+<link rel="preconnect" href="<?php echo esc_url( $wfs_assets_origin ); ?>" crossorigin />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Inter:wght@300;400;500;600;700&display=swap" />
+<?php if ( 'homepage' === $wfs_slug ) : ?>
+<!-- El LCP del home es el poster del video del hero: pedirlo desde el head
+     evita que Lighthouse marque "LCP request discovery" -->
+<link rel="preload" as="image" fetchpriority="high" href="<?php echo esc_url( WFS_ASSETS . '/second-video-poster.jpg' ); ?>" />
+<?php endif; ?>
 <link rel="stylesheet" href="<?php echo esc_url( get_theme_file_uri( 'css/styles.css' ) . '?ver=' . WFS_VERSION ); ?>" />
 <?php wp_head(); ?>
 </head>

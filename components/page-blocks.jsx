@@ -180,7 +180,7 @@ const FeatureRow = ({ items }) => (
   </div>
 );
 
-const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageRight = true, dark = false }) => {
+const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageAlt, imageRight = true, dark = false }) => {
   const bg = dark ? 'var(--ink)' : 'var(--white)';
   const fg = dark ? 'var(--parchment)' : 'var(--ink)';
   const sub = dark ? 'var(--alice-blue)' : 'var(--charcoal)';
@@ -215,7 +215,7 @@ const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageRight = 
           <div style={{
             order: imageRight ? 2 : 1, position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', background: '#263166', }}>
             {image && (
-              <img src={image} alt=""
+              <img src={image} alt={typeof imageAlt === 'string' ? imageAlt : ''} loading="lazy" decoding="async"
                 style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
             )}
           </div>

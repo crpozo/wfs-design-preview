@@ -13,8 +13,8 @@ const Logo = ({ light = false }) => (
 
 const FENCE_IMG = {
   // Real product photos uploaded to assets/
-  aluminum:  'assets/ALUM.png', chainlink: 'assets/CHAINLINK.png?v=204', metal:     'assets/MET.png', vinyl:     'assets/PVC.png', ecfence:   'assets/ECFENCE.png', shop:      'assets/wfs-shop.webp', // Gate systems
-  'gate-single':     'assets/SINGLE_SWING_GATE.png', 'gate-double':     'assets/DOUBLE_GATE.png', 'gate-sliding':    'assets/SLIDING_GATE.png?v=204', 'gate-cantilever': 'assets/CANTILEVER.png?v=204', 'gate-rolling':    'assets/ROLLING_GATE.png?v=204',
+  aluminum:  'assets/ALUM.webp', chainlink: 'assets/CHAINLINK.webp?v=204', metal:     'assets/MET.webp', vinyl:     'assets/PVC.webp', ecfence:   'assets/ECFENCE.webp', shop:      'assets/wfs-shop.webp', // Gate systems
+  'gate-single':     'assets/SINGLE_SWING_GATE.webp', 'gate-double':     'assets/DOUBLE_GATE.webp', 'gate-sliding':    'assets/SLIDING_GATE.webp?v=204', 'gate-cantilever': 'assets/CANTILEVER.webp?v=204', 'gate-rolling':    'assets/ROLLING_GATE.webp?v=204',
 };
 
 const FENCE_ICON = {

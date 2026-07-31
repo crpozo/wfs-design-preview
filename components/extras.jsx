@@ -13,7 +13,7 @@ const IconStrip = () => {
               display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, padding: '24px 16px', borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.08)', transition: 'background 0.2s', }}
             onMouseEnter={e => e.currentTarget.style.background = 'var(--parchment)'}
             onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
-              <img src={FENCE_ICON[it.key]} alt="" style={{ height: 56, width: 56 }} />
+              <img loading="lazy" decoding="async" src={FENCE_ICON[it.key]} alt="" style={{ height: 56, width: 56 }} />
               <span className="display" style={{ fontSize: 19.5, color: 'var(--ink)' }}>{t(it.label)}</span>
               <span className="mono" style={{ fontSize: 14, color: 'var(--laser-blue)', letterSpacing: '0.14em', display: 'flex', alignItems: 'center', gap: 6 }}>
                 {t('EXPLORE STYLES', 'EXPLORAR ESTILOS')} <ArrowRight size={11} />
@@ -45,7 +45,7 @@ const Gates = () => {
             <article key={i} style={{
               background: 'var(--white)', borderRadius: 'var(--radius)', overflow: 'hidden', border: '1px solid rgba(0,16,17,0.06)', }}>
               <div style={{ position: 'relative', height: 200, background: '#263166' }}>
-                <img src={FENCE_IMG[g.img]} alt={t(g.name)}
+                <img loading="lazy" decoding="async" src={FENCE_IMG[g.img]} alt={t(g.name)}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,16,17,0) 50%, rgba(0,16,17,0.5) 100%)' }}/>
                 <div className="mono" style={{
@@ -71,7 +71,7 @@ const Testimonials = () => {
     { name: 'Lauren Johnson', mat: 'aluminum', text: { EN: "Customer service is the best I've seen anywhere. They made sure we had every part for our aluminum fence and delivered with no issues.", ES: 'El servicio al cliente es el mejor que he visto. Se aseguraron de que tuviéramos cada pieza para nuestra cerca de aluminio y entregaron sin problemas.' }, tag: { EN: 'Aluminum · Fort Myers', ES: 'Aluminio · Fort Myers' } }, { name: 'Sally Barney', mat: 'chainlink', text: { EN: 'Their prices are the best in Lee County. I checked several competitors and they were not even close.', ES: 'Sus precios son los mejores del condado de Lee. Comparé con varios competidores y ni se acercaron.' }, tag: { EN: 'Chain Link · Estero', ES: 'Malla ciclónica · Estero' } }, { name: 'Yanier Ortiz', mat: 'vinyl', text: { EN: "Best company in town, best materials at a great price. You don't have to drive to Miami anymore, everything you need is right here.", ES: 'La mejor empresa de la ciudad, los mejores materiales a buen precio. Ya no tienes que manejar hasta Miami, todo lo que necesitas está aquí.' }, tag: { EN: 'Vinyl · Fort Myers', ES: 'Vinilo · Fort Myers' } }, { name: 'Reinier Carmenates', mat: 'metal', text: { EN: "I've installed fences in Lee County for 5 years. I've never paid such a low price for such good material.", ES: 'He instalado cercas en el condado de Lee por 5 años. Nunca había pagado un precio tan bajo por material tan bueno.' }, tag: { EN: 'Contractor · Naples', ES: 'Contratista · Naples' } }, { name: 'Marcus Reed', mat: 'chainlink', text: { EN: 'Ordered Friday, picked up Monday. The crew loaded 300 ft of chain link in fifteen minutes flat.', ES: 'Pedí el viernes y recogí el lunes. El equipo cargó 300 pies de malla ciclónica en quince minutos exactos.' }, tag: { EN: 'Chain Link · Punta Gorda', ES: 'Malla ciclónica · Punta Gorda' } }, { name: 'Dana Whitfield', mat: 'aluminum', text: { EN: 'The gate hardware arrived complete and the crew saved us two site visits. Everything fit the first time.', ES: 'Los herrajes del portón llegaron completos y nos ahorraron dos visitas a obra. Todo encajó a la primera.' }, tag: { EN: 'Contractor · Bonita Springs', ES: 'Contratista · Bonita Springs' } }, { name: 'Carlos Mendez', mat: 'vinyl', text: { EN: 'They quoted our whole community in a day and delivered in phases exactly as promised.', ES: 'Cotizaron toda nuestra comunidad en un día y entregaron por fases exactamente como lo prometieron.' }, tag: { EN: 'HOA · Cape Coral', ES: 'HOA · Cape Coral' } }, ];
   /* Small swatch of the material that project actually used */
   const MAT_IMG = {
-    vinyl: 'assets/compare/vinyl.png?v=250', aluminum: 'assets/compare/aluminum.png?v=250', chainlink: 'assets/compare/chainlink.webp?v=250', metal: 'assets/compare/metal.png?v=250', };
+    vinyl: 'assets/compare/vinyl.webp?v=250', aluminum: 'assets/compare/aluminum.webp?v=250', chainlink: 'assets/compare/chainlink.webp?v=250', metal: 'assets/compare/metal.webp?v=250', };
   const n = reviews.length;
   const [active, setActive] = React.useState(2);
   const [locked, setLocked] = React.useState(false);
@@ -269,7 +269,7 @@ const Articles = () => {
             onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-4px)'}
             onMouseLeave={e => e.currentTarget.style.transform = ''}>
               <div style={{ position: 'relative', height: 240, background: '#263166' }}>
-                <img src={FENCE_IMG[p.img]} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img loading="lazy" decoding="async" src={FENCE_IMG[p.img]} alt="" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
                 <span className="mono" style={{
                   position: 'absolute', top: 16, left: 16, fontSize: 13.5, letterSpacing: '0.14em', background: 'var(--tangerine)', color: 'var(--ink)', padding: '5px 10px', borderRadius: 3, fontWeight: 600, }}>{t(p.tag).toUpperCase()}</span>
               </div>
@@ -321,7 +321,7 @@ const ShopTour = () => {
         </div>
         <div style={{
           position: 'relative', background: 'var(--parchment)', borderRadius: 'var(--radius-lg)', overflow: 'hidden', aspectRatio: '4 / 3', }}>
-          <img src={FENCE_IMG.shop} alt={t('Western Fence Supply Fort Myers shop', 'Planta de Western Fence Supply en Fort Myers')}
+          <img loading="lazy" decoding="async" src={FENCE_IMG.shop} alt={t('Western Fence Supply Fort Myers shop', 'Planta de Western Fence Supply en Fort Myers')}
             style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           <span className="mono" style={{
             position: 'absolute', bottom: 18, left: 18, fontSize: 13.5, letterSpacing: '0.14em', background: 'var(--ink)', color: 'var(--alice-blue)', padding: '5px 10px', borderRadius: 3, }}>FORT MYERS · FL</span>

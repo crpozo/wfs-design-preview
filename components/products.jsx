@@ -103,7 +103,7 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
         <div style={{
           position: 'absolute', inset: '6%', border: '1px solid rgba(0,16,17,0.18)', borderRadius: '50%', background: '#ffffff', }}/>
         {/* Active image */}
-        <img
+        <img loading="lazy" decoding="async"
           key={item.id}
           src={FENCE_IMG[item.img]}
           alt={item.name}
@@ -145,7 +145,7 @@ const FenceCard = ({ item, index, featured }) => {
       {/* Image */}
       <div style={{
         position: 'relative', aspectRatio: featured ? '4 / 3.2' : '4 / 3.2', overflow: 'hidden', background: '#ffffff', }}>
-        <img src={FENCE_IMG[item.img]} alt={item.name}
+        <img loading="lazy" decoding="async" src={FENCE_IMG[item.img]} alt={item.name}
           style={{
             width: '100%', height: '100%', objectFit: 'cover', display: 'block', transform: hover ? 'scale(1.04)' : 'scale(1)', transition: 'transform 0.6s ease', }}/>
         {/* Number badge */}
@@ -200,7 +200,7 @@ const FenceStyleCard = ({ item, index }) => {
       onMouseLeave={() => setHover(false)}
       style={{
         position: 'relative', display: 'block', textDecoration: 'none', color: 'var(--white)', aspectRatio: '4 / 5', overflow: 'hidden', background: '#263166', transition: 'transform 0.35s ease', transform: hover ? 'translateY(-4px)' : 'none', }}>
-      <img src={FENCE_IMG[item.img]} alt={nameStr}
+      <img loading="lazy" decoding="async" src={FENCE_IMG[item.img]} alt={nameStr}
         style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: hover ? 'scale(1.06)' : 'scale(1)', transition: 'transform 0.7s ease', }}/>
       {/* Bottom scrim for legibility */}
@@ -271,7 +271,7 @@ const SystemCard = ({ item, index, active, onSelect, rarity, variant }) => {
       aria-label={nameStr}
     >
       <div className="fence-card__inner">
-        <img className="fence-card__img" src={FENCE_IMG[item.img]} alt={nameStr} />
+        <img loading="lazy" decoding="async" className="fence-card__img" src={FENCE_IMG[item.img]} alt={nameStr} />
         <div className="fence-card__scrim" />
         <span className="fence-card__sheen" />
 
@@ -444,7 +444,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
               onMouseEnter={() => setActive(i)}
               onFocus={() => setActive(i)}
               style={{ flexGrow: exp ? 3.2 : 1, flexBasis: 0 }}>
-              <img src={FENCE_IMG[c.img]} alt={t(c.name)} style={{
+              <img loading="lazy" decoding="async" src={FENCE_IMG[c.img]} alt={t(c.name)} style={{
                 position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', }}/>
               {/* Navy overlay, lighter on the expanded slat */}
               <div aria-hidden className="wfs-slat__overlay" style={{
@@ -532,7 +532,7 @@ const SystemCarousel = ({ id, chapter, label, items, topLink, ctaLabel }) => {
         {items.map((c, i) => (
           <a key={c.id} href={c.href} className="wfs-msys__card">
             <div className="wfs-msys__imgwrap">
-              <img src={FENCE_IMG[c.img]} alt={t(c.name)} className="wfs-msys__img"/>
+              <img loading="lazy" decoding="async" src={FENCE_IMG[c.img]} alt={t(c.name)} className="wfs-msys__img"/>
               <div aria-hidden className="wfs-msys__overlay"/>
               <span className="mono" style={{
                 position: 'absolute', top: 16, left: 16, background: 'var(--ink)', color: 'var(--white)', padding: '5px 9px', fontSize: 14.5, fontWeight: 700, lineHeight: 1, }}>0{i + 1}</span>
@@ -619,7 +619,7 @@ const SystemTabs = ({ id, chapter, label, items, topLink, ctaLabel }) => {
       {/* Active panel */}
       <a key={cur.id} href={cur.href} className="wfs-systemtabs__panel" style={{
         position: 'relative', display: 'flex', alignItems: 'flex-end', minHeight: 'clamp(420px, 56vh, 600px)', overflow: 'hidden', textDecoration: 'none', }}>
-        <img src={FENCE_IMG[cur.img]} alt={t(cur.name)} style={{
+        <img loading="lazy" decoding="async" src={FENCE_IMG[cur.img]} alt={t(cur.name)} style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', animation: 'fadeUp 0.45s ease', }}/>
         {/* Light left wash for text legibility, photo stays visible + subtle bottom fade */}
         <div aria-hidden style={{

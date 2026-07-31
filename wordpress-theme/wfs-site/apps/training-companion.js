@@ -1,2 +1,1 @@
-const App = () => /* @__PURE__ */ React.createElement(React.Fragment, null, /* @__PURE__ */ React.createElement(TrainingHeader, null), /* @__PURE__ */ React.createElement(TrainingHero, null), /* @__PURE__ */ React.createElement(TrainingSteps, null), /* @__PURE__ */ React.createElement(TrainingFooter, null));
-ReactDOM.createRoot(document.getElementById("root")).render(/* @__PURE__ */ React.createElement(App, null));
+const App=()=>React.createElement(React.Fragment,null,React.createElement(TrainingHeader,null),React.createElement(TrainingHero,null),React.createElement(TrainingSteps,null),React.createElement(TrainingFooter,null));ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App,null));
