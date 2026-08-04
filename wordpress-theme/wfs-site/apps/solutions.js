@@ -1,1 +1,4 @@
-const App=()=>React.createElement(React.Fragment,null,React.createElement(SiteHeader,null),React.createElement(SolutionsHero,null),React.createElement(SolutionsAudiences,null),React.createElement("div",{id:"yards"},React.createElement(ServiceAreas,null)),React.createElement(SolutionsCTA,null),React.createElement(Footer,null));ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App,null));
+(function(){const App=()=>React.createElement(React.Fragment,null,React.createElement(SiteHeader,null),React.createElement(SolutionsHero,null),React.createElement(SolutionsAudiences,null),React.createElement("div",{id:"yards"},React.createElement(ServiceAreas,null)),React.createElement(SolutionsCTA,null),React.createElement(Footer,null));ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App,null));
+
+;Object.assign(window,{App:typeof App!=="undefined"?App:window.App});
+})();

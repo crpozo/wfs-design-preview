@@ -77,14 +77,33 @@ for f in sorted(SRC.glob("*.html")):
 # Sin esto el navegador tiene que descargar Babel (3 MB) y compilar 740 KB
 # de JSX en cada carga, bloqueando el pintado. Precompilar deja el mismo
 # resultado (React.createElement) hecho de antemano.
+TOPDECL = re.compile(r"^(?:const|let|var|function|class|async function)\s+([A-Za-z_$][\w$]*)", re.M)
+
 def transpile(path):
     out = path.with_suffix(".js")
+    # Nombres declarados a nivel superior en el FUENTE: dentro del envoltorio
+    # se reexportan todos a window, replicando el ambito global que estos
+    # scripts siempre asumieron entre si (SystemTabs, MAT_LABELS y compania
+    # se consumen entre archivos sin export explicito).
+    names = sorted(set(TOPDECL.findall(path.read_text())))
     subprocess.run(
         ["npx", "--yes", "esbuild@0.24.0", str(path),
          "--loader:" + path.suffix + "=jsx", "--outfile=" + str(out),
-         "--minify", "--target=es2017",
+         "--minify-whitespace", "--minify-syntax", "--target=es2017",
          "--allow-overwrite", "--log-level=error"],
         check=True)
+    # Cada archivo va envuelto en una funcion, replicando el aislamiento que
+    # Babel les daba en el preview (cada script en su propio ambito). Sin esto,
+    # dos componentes que declaran la misma const de nivel superior (MAT_LABELS
+    # en sections y page-projects) chocan como scripts planos: el segundo muere
+    # con SyntaxError al parsearse. Los exports cruzados ya van por
+    # Object.assign(window, ...), asi que el envoltorio no cambia nada mas.
+    exports = ""
+    if names:
+        pairs = ",".join(f"{n}:typeof {n}!==\"undefined\"?{n}:window.{n}" for n in names)
+        exports = ";Object.assign(window,{" + pairs + "});"
+    wrapped = "(function(){" + out.read_text() + "\n" + exports + "\n})();"
+    out.write_text(wrapped)
     if out != path:
         path.unlink()
     return out

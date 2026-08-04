@@ -1,1 +1,4 @@
-ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(MaterialPage,{slug:"ecfence"}));
+(function(){ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(MaterialPage,{slug:"ecfence"}));
+
+
+})();
