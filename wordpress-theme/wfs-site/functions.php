@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.4.2' );
+define( 'WFS_VERSION', '4.5.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -165,39 +165,37 @@ function wfs_tawk_hidden_until_asked() {
 	if ( defined( 'WFS_TAWK_BUBBLE' ) && WFS_TAWK_BUBBLE ) { return; }
 	?>
 <script>
-/* Tawk no se carga hasta que el visitante pide el chat.
+/* Burbuja de chat propia; la de tawk se mantiene oculta siempre.
  *
- * Ocultarlo con CSS no bastaba: tawk crea sus contenedores con id aleatorio
- * (balo8vstm6t1785250275106...), asi que ningun selector los atrapa a tiempo y
- * el globo "We Are Here!" alcanzaba a verse un segundo antes de esconderse.
+ * Por que no usar la burbuja nativa: tawk pinta junto a ella el globo
+ * "We Are Here!" (un iframe de 124x95 que se comprobo visible con el chat
+ * minimizado) y en movil usa una pestana lateral. Ambas cosas son ajustes del
+ * panel de tawk, no del sitio. hideWidget() apaga las dos de una vez, asi que
+ * el tema pinta su propia burbuja: identica en escritorio y movil, sin globo
+ * posible, y con el color de la marca.
  *
- * Aqui se intercepta la insercion del script de tawk y se guarda su URL. El
- * boton "Talk to a live agent" lo carga en ese momento. Sin script no hay
- * elemento, y sin elemento no hay parpadeo posible. De paso, la pagina deja de
- * descargar los 8 archivos de tawk en cada visita.
+ * El script de tawk se carga en la primera interaccion, no al abrir: la pagina
+ * no arrastra sus 8 archivos de entrada y la burbuja igual se ve desde el
+ * primer momento porque es nuestra.
  *
- * Para volver a cargarlo siempre: define( 'WFS_TAWK_BUBBLE', true ) en wp-config.php
+ * Para volver al widget nativo: define( 'WFS_TAWK_BUBBLE', true ) en wp-config.
  */
 (function () {
   var TAWK = /embed\.tawk\.to/;
   window.__wfsTawkSrc = null;
-  window.__wfsChatOpened = false;
+  window.__wfsChatOpen = false;
 
-  /* Se guardan los originales: cargar el chat luego tiene que poder insertar
-     el script sin que el propio interceptor lo bloquee. */
   var rawInsert = Node.prototype.insertBefore;
   var rawAppend = Node.prototype.appendChild;
+  var loading = false, restored = false;
 
+  /* Se aparta el script de tawk para cargarlo nosotros mas tarde. */
   function intercept(original) {
     return function (node) {
       try {
-        /* Cuando el visitante ya pidio el chat, TODO pasa: los 8 chunks
-           internos de tawk tambien vienen de embed.tawk.to, y bloquearlos
-           dejaba el chat a medio arrancar (el boton "no abria"). */
-        if (window.__wfsChatOpened) { return original.apply(this, arguments); }
-        if (node && node.tagName === 'SCRIPT' && TAWK.test(node.src || '')) {
-          window.__wfsTawkSrc = node.src;   /* se guarda para cargarlo luego */
-          return node;                      /* y no se inserta */
+        if (!restored && node && node.tagName === 'SCRIPT' && TAWK.test(node.src || '')) {
+          window.__wfsTawkSrc = node.src;
+          return node;
         }
       } catch (e) {}
       return original.apply(this, arguments);
@@ -206,62 +204,165 @@ function wfs_tawk_hidden_until_asked() {
   Node.prototype.insertBefore = intercept(rawInsert);
   Node.prototype.appendChild  = intercept(rawAppend);
 
-  /* Carga tawk bajo demanda y lo abre en cuanto esta listo. */
-  window.wfsLoadChat = function () {
-    window.__wfsChatOpened = true;
-    document.documentElement.classList.add('wfs-chat-open');
-    /* interceptor fuera: a partir de aqui tawk carga con total normalidad */
-    Node.prototype.insertBefore = rawInsert;
-    Node.prototype.appendChild  = rawAppend;
+  function api() { return window.Tawk_API; }
+  function ready() { var a = api(); return a && typeof a.maximize === 'function'; }
 
-    if (window.Tawk_API && typeof window.Tawk_API.maximize === 'function') {
-      try { window.Tawk_API.showWidget(); } catch (e) {}
-      try { window.Tawk_API.maximize(); } catch (e) {}
-      return;
-    }
-    if (!window.__wfsTawkLoading) {
-      window.__wfsTawkLoading = true;
+  /* El visitante cerro el chat: se vuelve a ocultar tawk y reaparece la
+     burbuja del tema. */
+  function closed() {
+    window.__wfsChatOpen = false;
+    keepHidden();
+    showBubble(true);
+  }
+
+  /* Mientras el visitante no pida chat, todo lo de tawk queda oculto. */
+  function keepHidden() {
+    if (window.__wfsChatOpen) { return; }
+    try { api().hideWidget(); } catch (e) {}
+  }
+
+  function loadTawk(onReady) {
+    if (ready()) { if (onReady) { onReady(); } return; }
+    if (!loading) {
+      loading = true;
+      restored = true;
+      Node.prototype.insertBefore = rawInsert;
+      Node.prototype.appendChild  = rawAppend;
       window.Tawk_API = window.Tawk_API || {};
       var s = document.createElement('script');
-      s.async = true;
-      s.charset = 'UTF-8';
+      s.async = true; s.charset = 'UTF-8';
       s.setAttribute('crossorigin', '*');
       s.src = window.__wfsTawkSrc || 'https://embed.tawk.to/6881734e416fc119149ce7c5/1j0srns0p';
       rawAppend.call(document.head, s);
     }
-    /* Respaldo por sondeo en vez de fiarse de onLoad: el snippet del sitio
-       tambien escribe onLoad y podria pisarlo. En cuanto la API existe, se
-       abre; 30s de margen y se rinde en silencio. */
     var tries = 0;
     var iv = setInterval(function () {
-      if (window.Tawk_API && typeof window.Tawk_API.maximize === 'function') {
+      if (ready()) {
         clearInterval(iv);
-        try { window.Tawk_API.showWidget(); } catch (e) {}
-        try { window.Tawk_API.maximize(); } catch (e) {}
+        keepHidden();
+        /* Callbacks como via rapida... */
+        try {
+          api().onChatMinimized = closed;
+          api().onChatHidden    = closed;
+          api().onUnreadCountChanged = function (n) { badge(n); };
+        } catch (e) {}
+        /* ...y un vigilante que consulta el estado real, porque tawk no
+           siempre dispara esos callbacks (se comprobo: al minimizar, el globo
+           reaparecia y la burbuja no volvia). Aqui no dependemos de eventos. */
+        setInterval(function () {
+          var max = false;
+          try { max = api().isChatMaximized(); } catch (e) { return; }
+          if (window.__wfsChatOpen && !max) { closed(); }
+          else if (!window.__wfsChatOpen) { keepHidden(); }
+        }, 700);
+        if (onReady) { onReady(); }
       } else if (++tries > 100) { clearInterval(iv); }
-    }, 300);
-  };
+    }, 200);
+  }
+
+  /* ---- burbuja propia ---- */
+  var el, dot;
+  function showBubble(v) { if (el) { el.style.display = v ? 'flex' : 'none'; } }
+  function badge(n) {
+    if (!dot) { return; }
+    dot.style.display = (n > 0) ? 'flex' : 'none';
+    dot.textContent = n > 9 ? '9+' : String(n);
+  }
+
+  function openChat() {
+    window.__wfsChatOpen = true;
+    showBubble(false);
+    loadTawk(function () {
+      try { api().showWidget(); } catch (e) {}
+      try { api().maximize(); } catch (e) {}
+    });
+  }
+  /* El boton "Talk to a live agent" de la cabecera usa esto. */
+  window.wfsLoadChat = openChat;
+
+  function build() {
+    if (el || !document.body) { return; }
+    el = document.createElement('button');
+    el.type = 'button';
+    el.className = 'wfs-chat-bubble';
+    el.setAttribute('aria-label', 'Chat with Western Fence Supply');
+    el.innerHTML =
+      '<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"' +
+      ' stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' +
+      '<path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 20l1.9-5.7a8.5 8.5 0 0 1-.9-3.8' +
+      'A8.38 8.38 0 0 1 12.5 2 8.38 8.38 0 0 1 21 10.5z"/></svg>' +
+      '<span class="wfs-chat-bubble__badge" aria-hidden="true"></span>';
+    el.addEventListener('click', openChat);
+    document.body.appendChild(el);
+    dot = el.querySelector('.wfs-chat-bubble__badge');
+    badge(0);
+  }
+
+  /* Tawk se carga en la primera interaccion real, y nace oculto. */
+  var events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
+  function warm() {
+    events.forEach(function (e) { window.removeEventListener(e, warm, true); });
+    if (!window.__wfsChatOpen) { loadTawk(null); }
+  }
+  events.forEach(function (e) { window.addEventListener(e, warm, { capture: true, passive: true, once: true }); });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', build);
+  } else {
+    build();
+  }
 })();
 </script>
 <style>
-/* Respaldo: si algun dia tawk se cargara igual, su burbuja y su globo siguen
-   ocultos mientras el visitante no pida el chat. */
-html:not(.wfs-chat-open) #tawkchat-minified-wrapper,
-html:not(.wfs-chat-open) #tawkchat-minified-container,
-html:not(.wfs-chat-open) #tawkchat-container,
-html:not(.wfs-chat-open) .tawk-min-container,
-html:not(.wfs-chat-open) .tawk-button-large,
-html:not(.wfs-chat-open) [class*="tawk-min"],
-html:not(.wfs-chat-open) [class*="tawk-bubble"] {
-  display: none !important;
-  visibility: hidden !important;
+/* Burbuja del tema. Misma pieza en escritorio y movil, abajo a la derecha. */
+.wfs-chat-bubble {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #263167;
+  color: #fff;
+  cursor: pointer;
+  z-index: 2147483000;
+  box-shadow: 0 10px 26px -6px rgba(38, 49, 103, 0.55);
+  transition: transform 0.18s ease, background 0.18s ease;
 }
+.wfs-chat-bubble:hover { background: #ff7133; transform: translateY(-2px); }
+.wfs-chat-bubble:focus-visible { outline: 3px solid #ff7133; outline-offset: 3px; }
+.wfs-chat-bubble__badge {
+  display: none;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #ff7133;
+  color: #fff;
+  font: 700 12px/20px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 2px #263167;
+}
+@media (max-width: 640px) {
+  .wfs-chat-bubble { width: 52px; height: 52px; right: 16px; bottom: 16px; }
+}
+@media print { .wfs-chat-bubble { display: none !important; } }
+
 /* Insignia de reCAPTCHA: el tema no usa ningun formulario que la necesite. */
 .grecaptcha-badge { display: none !important; }
 </style>
 	<?php
 }
-/* En <head> con prioridad 0: el interceptor tiene que existir antes de que el
+/* En <head> con prioridad 0: el interceptor debe existir antes de que el
    snippet del sitio intente insertar el script de tawk. */
 add_action( 'wp_head', 'wfs_tawk_hidden_until_asked', 0 );
 
