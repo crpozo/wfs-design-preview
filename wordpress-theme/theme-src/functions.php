@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.5.1' );
+define( 'WFS_VERSION', '4.5.2' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -265,7 +265,7 @@ function wfs_tawk_hidden_until_asked() {
           try { max = api().isChatMaximized(); } catch (e) { return; }
           if (window.__wfsChatOpen && !max) { closed(); }
           else if (!window.__wfsChatOpen) { keepHidden(); }
-        }, 700);
+        }, 250);
         if (onReady) { onReady(); }
       } else if (++tries > 100) { clearInterval(iv); }
     }, 200);
@@ -373,9 +373,15 @@ function wfs_tawk_hidden_until_asked() {
    responder a hideWidget(). No se puede usar display ni visibility ni opacity:
    tawk las fija inline con !important y ganan sobre cualquier hoja de estilos.
    clip-path es la unica que deja libre, y recorta el elemento por completo. */
-html:not(.wfs-chat-open) iframe[scrolling="no"][width="64px"],
-html:not(.wfs-chat-open) iframe[scrolling="no"][width="124px"] {
+/* SIN condicion: el lanzador (64x60) y el globo (124x95) de tawk no deben
+   verse NUNCA, ni siquiera con el chat abierto. Antes esto colgaba de
+   html:not(.wfs-chat-open), y al cerrar con la X tawk los mostraba antes de
+   que el vigilante quitara la clase: ese era el parpadeo de unos segundos.
+   La ventana del chat (350px) no se toca, asi que abrir sigue funcionando. */
+iframe[scrolling="no"][width="64px"],
+iframe[scrolling="no"][width="124px"] {
   clip-path: inset(50%) !important;
+  pointer-events: none !important;
 }
 /* Insignia de reCAPTCHA: el tema no usa ningun formulario que la necesite. */
 .grecaptcha-badge { display: none !important; }
