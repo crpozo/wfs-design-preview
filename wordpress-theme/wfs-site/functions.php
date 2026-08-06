@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.5.2' );
+define( 'WFS_VERSION', '4.6.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -213,7 +213,7 @@ function wfs_tawk_hidden_until_asked() {
     window.__wfsChatOpen = false;
     document.documentElement.classList.remove('wfs-chat-open');
     keepHidden();
-    showBubble(true);
+    setMode(false);
   }
 
   /* Mientras el visitante no pida chat, todo lo de tawk queda oculto. */
@@ -272,8 +272,22 @@ function wfs_tawk_hidden_until_asked() {
   }
 
   /* ---- burbuja propia ---- */
-  var el, dot;
-  function showBubble(v) { if (el) { el.style.display = v ? 'flex' : 'none'; } }
+  var el, dot, icon;
+  var ICON_CHAT  = '<path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 20l1.9-5.7a8.5 8.5 0 0 1-.9-3.8A8.38 8.38 0 0 1 12.5 2 8.38 8.38 0 0 1 21 10.5z"/>';
+  var ICON_CLOSE = '<path d="M6 9l6 6 6-6"/>';
+
+  /* La burbuja esta SIEMPRE visible: con el chat cerrado abre, y con el chat
+     abierto hace de boton de cerrar. Asi el lanzador de tawk (que es su boton
+     de cerrar) puede quedar oculto para siempre sin dejar al visitante sin
+     manera de cerrar el chat. */
+  function setMode(open) {
+    if (!el) { return; }
+    if (icon) { icon.innerHTML = open ? ICON_CLOSE : ICON_CHAT; }
+    el.setAttribute('aria-label', open ? 'Close chat' : 'Chat with Western Fence Supply');
+    el.classList.toggle('is-open', !!open);
+    if (open) { badge(0); }
+  }
+  function showBubble(v) { if (el) { el.style.display = 'flex'; } }
   function badge(n) {
     if (!dot) { return; }
     dot.style.display = (n > 0) ? 'flex' : 'none';
@@ -283,11 +297,20 @@ function wfs_tawk_hidden_until_asked() {
   function openChat() {
     window.__wfsChatOpen = true;
     document.documentElement.classList.add('wfs-chat-open');
-    showBubble(false);
+    setMode(true);
     loadTawk(function () {
       try { api().showWidget(); } catch (e) {}
       try { api().maximize(); } catch (e) {}
     });
+  }
+
+  function closeChat() {
+    try { api().minimize(); } catch (e) {}
+    closed();
+  }
+
+  function toggleChat() {
+    if (window.__wfsChatOpen) { closeChat(); } else { openChat(); }
   }
   /* El boton "Talk to a live agent" de la cabecera usa esto. */
   window.wfsLoadChat = openChat;
@@ -304,10 +327,12 @@ function wfs_tawk_hidden_until_asked() {
       '<path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 20l1.9-5.7a8.5 8.5 0 0 1-.9-3.8' +
       'A8.38 8.38 0 0 1 12.5 2 8.38 8.38 0 0 1 21 10.5z"/></svg>' +
       '<span class="wfs-chat-bubble__badge" aria-hidden="true"></span>';
-    el.addEventListener('click', openChat);
+    el.addEventListener('click', toggleChat);
     document.body.appendChild(el);
-    dot = el.querySelector('.wfs-chat-bubble__badge');
+    dot  = el.querySelector('.wfs-chat-bubble__badge');
+    icon = el.querySelector('svg');
     badge(0);
+    setMode(false);
   }
 
   /* Tawk se carga en la primera interaccion real, y nace oculto. */
@@ -347,6 +372,9 @@ function wfs_tawk_hidden_until_asked() {
   transition: transform 0.18s ease, background 0.18s ease;
 }
 .wfs-chat-bubble:hover { background: #ff7133; transform: translateY(-2px); }
+/* Con el chat abierto la burbuja hace de boton de cerrar. */
+.wfs-chat-bubble.is-open { background: #1c2550; }
+.wfs-chat-bubble.is-open:hover { background: #ff7133; }
 .wfs-chat-bubble:focus-visible { outline: 3px solid #ff7133; outline-offset: 3px; }
 .wfs-chat-bubble__badge {
   display: none;
