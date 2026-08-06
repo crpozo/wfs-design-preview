@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.5.0' );
+define( 'WFS_VERSION', '4.5.1' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -211,6 +211,7 @@ function wfs_tawk_hidden_until_asked() {
      burbuja del tema. */
   function closed() {
     window.__wfsChatOpen = false;
+    document.documentElement.classList.remove('wfs-chat-open');
     keepHidden();
     showBubble(true);
   }
@@ -229,6 +230,16 @@ function wfs_tawk_hidden_until_asked() {
       Node.prototype.insertBefore = rawInsert;
       Node.prototype.appendChild  = rawAppend;
       window.Tawk_API = window.Tawk_API || {};
+      /* El snippet del sitio deja puesto Tawk_API.onLoad = maximize(), y por eso
+         el chat se abria solo en cuanto tawk terminaba de cargar. Se sobreescribe
+         aqui, justo antes de inyectar el script, para que el arranque solo oculte. */
+      window.Tawk_API.onLoad = function () {
+        try { window.Tawk_API.hideWidget(); } catch (e) {}
+        if (window.__wfsChatOpen) {
+          try { window.Tawk_API.showWidget(); } catch (e) {}
+          try { window.Tawk_API.maximize(); } catch (e) {}
+        }
+      };
       var s = document.createElement('script');
       s.async = true; s.charset = 'UTF-8';
       s.setAttribute('crossorigin', '*');
@@ -271,6 +282,7 @@ function wfs_tawk_hidden_until_asked() {
 
   function openChat() {
     window.__wfsChatOpen = true;
+    document.documentElement.classList.add('wfs-chat-open');
     showBubble(false);
     loadTawk(function () {
       try { api().showWidget(); } catch (e) {}
@@ -357,6 +369,14 @@ function wfs_tawk_hidden_until_asked() {
 }
 @media print { .wfs-chat-bubble { display: none !important; } }
 
+/* Refuerzo por CSS del lanzador y el globo de tawk, por si su script tarda en
+   responder a hideWidget(). No se puede usar display ni visibility ni opacity:
+   tawk las fija inline con !important y ganan sobre cualquier hoja de estilos.
+   clip-path es la unica que deja libre, y recorta el elemento por completo. */
+html:not(.wfs-chat-open) iframe[scrolling="no"][width="64px"],
+html:not(.wfs-chat-open) iframe[scrolling="no"][width="124px"] {
+  clip-path: inset(50%) !important;
+}
 /* Insignia de reCAPTCHA: el tema no usa ningun formulario que la necesite. */
 .grecaptcha-badge { display: none !important; }
 </style>
