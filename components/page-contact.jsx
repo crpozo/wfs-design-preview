@@ -3,9 +3,9 @@
 
 const CONTACT_YARDS = [
   {
-    key: 'fm', name: 'Fort Myers', chip: { EN: 'HQ · FORT MYERS', ES: 'SEDE · FORT MYERS' }, address: '2621 Fowler St, Fort Myers, FL 33901', phone: '+1 239-689-5496', tel: 'tel:+12396895496', email: 'sales@westernfencesupply.com',
+    key: 'fm', name: 'Fort Myers', chip: { EN: 'HQ · FORT MYERS', ES: 'SEDE · FORT MYERS' }, address: '2621 Fowler St, Fort Myers, FL 33901', phone: '(239) 689-5496', tel: 'tel:+12396895496', email: 'sales@westernfencesupply.com',
     hours: { EN: 'Mon–Fri 7:30am–3:30pm · Sat 7am–12pm · Sun closed', ES: 'Lun–Vie 7:30am–3:30pm · Sáb 7am–12pm · Dom cerrado' }, mapQ: '2621 Fowler St, Fort Myers, FL 33901', }, {
-    key: 'pc', name: 'Port Charlotte', chip: { EN: 'PORT CHARLOTTE', ES: 'PORT CHARLOTTE' }, address: '1145 Enterprise Dr, Port Charlotte, FL 33953', phone: '+1 941-623-6890', tel: 'tel:+19416236890', email: 'salespc@westernfencesupply.com',
+    key: 'pc', name: 'Port Charlotte', chip: { EN: 'PORT CHARLOTTE', ES: 'PORT CHARLOTTE' }, address: '1145 Enterprise Dr, Port Charlotte, FL 33953', phone: '(941) 623-6890', tel: 'tel:+19416236890', email: 'salespc@westernfencesupply.com',
     hours: { EN: 'Mon–Fri 7:30am–3:30pm · Sat 7–11:30am · Sun closed', ES: 'Lun–Vie 7:30am–3:30pm · Sáb 7–11:30am · Dom cerrado' }, mapQ: '1145 Enterprise Dr, Port Charlotte, FL 33953', },
 ];
 
@@ -124,7 +124,7 @@ const ContactForm = () => {
       setSubmitted(true);
     } catch (err) {
       setError((err && err.message) || t(
-        "We couldn't send your message. Please call +1 239-689-5496 or email sales@westernfencesupply.com.", 'No pudimos enviar tu mensaje. Llama al +1 239-689-5496 o escribe a sales@westernfencesupply.com.'
+        "We couldn't send your message. Please call (239) 689-5496 or email sales@westernfencesupply.com.", 'No pudimos enviar tu mensaje. Llama al (239) 689-5496 o escribe a sales@westernfencesupply.com.'
       ));
     } finally {
       busy.current = false;

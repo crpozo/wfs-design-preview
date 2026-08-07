@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.6.0' );
+define( 'WFS_VERSION', '4.7.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -466,22 +466,25 @@ function wfs_strip_unused_plugin_assets() {
 add_action( 'wp_enqueue_scripts', 'wfs_strip_unused_plugin_assets', 100 );
 
 /**
- * Los telefonos del sitio no los cambia nadie.
+ * Candado de telefonos: APAGADO por defecto desde la 4.7.0.
  *
  * El sitio carga dos rastreadores de llamadas (Google Ads Call Tracking via
  * gstatic/wcm/loader.js y Marketing 360 via callconversions.mad.services).
- * Ambos sustituyen el numero real por uno de una bolsa, asi que cambiaba en
- * cada recarga y se veia el parpadeo: React pintaba el real y el rastreador
- * lo reemplazaba medio segundo despues.
+ * Ambos sustituyen el numero real por uno de una bolsa para atribuir la
+ * llamada. Este bloque los revertia, y de paso mataba esa atribucion.
  *
- * Aqui se restauran los numeros reales en cuanto algo los toca.
+ * Marketing pidio expresamente que el intercambio dinamico funcione, asi que
+ * ahora el candado no corre salvo que se pida a proposito, en wp-config.php:
+ *   define( 'WFS_LOCK_PHONE_NUMBERS', true );
  *
- * OJO: esto desactiva la atribucion de llamadas en Google Ads y Marketing 360.
- * Para devolver el control a los rastreadores, en wp-config.php:
- *   define( 'WFS_ALLOW_CALL_TRACKING', true );
+ * Consecuencia esperada: el numero visible puede cambiar entre recargas, y en
+ * la primera carga puede verse un instante el real antes del de rastreo. Eso
+ * es como funciona la insercion dinamica, no una falla.
  */
 function wfs_lock_phone_numbers() {
-	if ( defined( 'WFS_ALLOW_CALL_TRACKING' ) && WFS_ALLOW_CALL_TRACKING ) { return; }
+	$lock = defined( 'WFS_LOCK_PHONE_NUMBERS' ) && WFS_LOCK_PHONE_NUMBERS;
+	if ( defined( 'WFS_ALLOW_CALL_TRACKING' ) && WFS_ALLOW_CALL_TRACKING ) { $lock = false; }
+	if ( ! $lock ) { return; }
 	?>
 <script>
 (function () {
@@ -497,7 +500,7 @@ function wfs_lock_phone_numbers() {
   } catch (e) { window._googWcmGet = function () {}; }
 
   /* Digitos -> como debe verse. Fuente: fichas de Google de cada sucursal. */
-  var REAL = { '2396895496': '+1 239-689-5496', '9416236890': '+1 941-623-6890' };
+  var REAL = { '2396895496': '(239) 689-5496', '9416236890': '(941) 623-6890' };
   var YARD = { 'fort myers': '2396895496', 'port charlotte': '9416236890' };
 
   function digits(s) { return (s || '').replace(/\D/g, '').replace(/^1(\d{10})$/, '$1'); }

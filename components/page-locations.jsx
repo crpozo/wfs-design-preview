@@ -2,10 +2,10 @@
 
 const YARDS = [
   {
-    key: 'fm', chip: { EN: 'HQ · FORT MYERS', ES: 'SEDE · FORT MYERS' }, name: 'Fort Myers', address: '2621 Fowler St, Fort Myers, FL 33901', phone: '+1 239-689-5496', tel: 'tel:2396895496', email: 'sales@westernfencesupply.com',
+    key: 'fm', chip: { EN: 'HQ · FORT MYERS', ES: 'SEDE · FORT MYERS' }, name: 'Fort Myers', address: '2621 Fowler St, Fort Myers, FL 33901', phone: '(239) 689-5496', tel: 'tel:2396895496', email: 'sales@westernfencesupply.com',
     hours: { EN: 'Mon–Fri 7:30am–3:30pm · Sat 7am–12pm · Sun closed', ES: 'Lun–Vie 7:30am–3:30pm · Sáb 7am–12pm · Dom cerrado' }, photo: 'assets/hero-warehouse.webp', mapQ: '2621 Fowler St, Fort Myers, FL 33901', notes: [
       { EN: 'Main warehouse, most material ships from here', ES: 'Almacén principal: la mayoría del material sale de aquí' }, { EN: 'In-house gate fabrication shop', ES: 'Taller de fabricación de portones en planta' }, { EN: 'Same-day pickup on standard qualifying orders', ES: 'Retiro el mismo día en pedidos estándar que califiquen' }, ], }, {
-    key: 'pc', chip: { EN: 'PORT CHARLOTTE', ES: 'PORT CHARLOTTE' }, name: 'Port Charlotte', address: '1145 Enterprise Dr, Port Charlotte, FL 33953', phone: '+1 941-623-6890', tel: 'tel:9416236890', email: 'salespc@westernfencesupply.com',
+    key: 'pc', chip: { EN: 'PORT CHARLOTTE', ES: 'PORT CHARLOTTE' }, name: 'Port Charlotte', address: '1145 Enterprise Dr, Port Charlotte, FL 33953', phone: '(941) 623-6890', tel: 'tel:9416236890', email: 'salespc@westernfencesupply.com',
     hours: { EN: 'Mon–Fri 7:30am–3:30pm · Sat 7–11:30am · Sun closed', ES: 'Lun–Vie 7:30am–3:30pm · Sáb 7–11:30am · Dom cerrado' }, photo: 'assets/wfs-shop.webp', mapQ: '1145 Enterprise Dr, Port Charlotte, FL 33953', notes: [
       { EN: 'Pickup point for Charlotte County and north', ES: 'Punto de retiro para el condado de Charlotte y el norte' }, { EN: 'Stock varies by yard, call ahead to confirm', ES: 'El stock varía por sucursal: llama antes para confirmar' }, { EN: 'Same supplier-direct pricing as Fort Myers', ES: 'El mismo precio directo de proveedor que Fort Myers' }, ], },
 ];
@@ -141,7 +141,7 @@ const LocationsCTA = () => {
     accent={t('before you arrive?', 'antes de llegar?')}
     body={t("Send your order or quote request first and we'll have it pulled, staged and ready at the bay, Fort Myers or Port Charlotte.", 'Envía tu pedido o solicitud de cotización primero y lo tendremos preparado y listo en la bahía, en Fort Myers o Port Charlotte.')}
     primary={[t('Request a Quote', 'Solicitar cotización'), 'estimate.html#contact']}
-    secondary={[t('Call +1 239-689-5496', 'Llamar +1 239-689-5496'), 'tel:2396895496']}
+    secondary={[t('Call (239) 689-5496', 'Llamar (239) 689-5496'), 'tel:2396895496']}
   />
   );
 };

@@ -9,16 +9,52 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
+/** Destinatarios de fabrica. El primero va en Para; el resto en copia oculta. */
+function wfs_lead_recipients_default() {
+	return array(
+		'antonello@westernfencesupply.com',
+		'crm+A1AN6482169aaf302a7fe4.ls.32@bcc.marketing360.com',
+		'crm+A1AN6482169aaf302a7fe4.ls.34@bcc.marketing360.com',
+		'marketing360+A1AN6482169aaf302a7fe4@bcc.mad360.net',
+	);
+}
+
 /** Destinatarios. Se pueden cambiar en Ajustes → Escritura, o por filtro. */
 function wfs_lead_recipients() {
 	$saved = get_option( 'wfs_lead_recipients' );
-	$list  = $saved ? preg_split( '/[\s,;]+/', $saved ) : array(
-		'antonello@westernfencesupply.com',
-		'crm+A1AN6482169aaf302a7fe4.ls.32@bcc.marketing360.com',
-	);
+	$list  = $saved ? preg_split( '/[\s,;]+/', $saved ) : wfs_lead_recipients_default();
 	$list = array_values( array_filter( array_map( 'trim', $list ), 'is_email' ) );
 	return apply_filters( 'wfs_lead_recipients', $list );
 }
+
+/**
+ * Anade los destinatarios nuevos a la lista guardada.
+ *
+ * Si alguien ya edito la lista en Ajustes → Escritura, la opcion pisa a los
+ * valores de fabrica y los correos nuevos nunca llegarian. Esto los agrega una
+ * sola vez, sin tocar lo que el cliente haya puesto ni duplicar lo que ya este.
+ */
+function wfs_lead_recipients_migrate() {
+	if ( get_option( 'wfs_lead_recipients_v' ) === '2' ) { return; }
+	update_option( 'wfs_lead_recipients_v', '2' );
+
+	$saved = get_option( 'wfs_lead_recipients' );
+	if ( ! $saved ) { return; }   // sin opcion guardada mandan los de fabrica
+
+	$list    = array_filter( array_map( 'trim', preg_split( '/[\s,;]+/', $saved ) ) );
+	$lower   = array_map( 'strtolower', $list );
+	$changed = false;
+	foreach ( wfs_lead_recipients_default() as $email ) {
+		if ( ! in_array( strtolower( $email ), $lower, true ) ) {
+			$list[]  = $email;
+			$lower[] = strtolower( $email );
+			$changed = true;
+		}
+	}
+	if ( $changed ) { update_option( 'wfs_lead_recipients', implode( "\n", $list ) ); }
+}
+add_action( 'after_switch_theme', 'wfs_lead_recipients_migrate' );
+add_action( 'init', 'wfs_lead_recipients_migrate' );
 
 /** Etiquetas y orden de los campos en el correo, por formulario. */
 function wfs_lead_fields( $form ) {

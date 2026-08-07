@@ -1,4 +1,4 @@
-# Western Fence Supply — Tema de WordPress (`wfs-site-4.6.0.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-4.7.0.zip`)
 
 Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
 componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
@@ -40,7 +40,7 @@ WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
 ## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube `wfs-site-4.6.0.zip` → **Instalar ahora** → **Activar**
+2. Sube `wfs-site-4.7.0.zip` → **Instalar ahora** → **Activar**
 3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
    (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 
@@ -54,7 +54,9 @@ Antes no: mostraban "gracias" y no salía nada.
 Cada envío llega a:
 
 - **antonello@westernfencesupply.com** (en Para)
-- **crm+A1AN6482169aaf302a7fe4.ls.32@bcc.marketing360.com** (en copia oculta, para Marketing 360)
+- **crm+A1AN6482169aaf302a7fe4.ls.32@bcc.marketing360.com** (copia oculta, Marketing 360)
+- **crm+A1AN6482169aaf302a7fe4.ls.34@bcc.marketing360.com** (copia oculta, Marketing 360)
+- **marketing360+A1AN6482169aaf302a7fe4@bcc.mad360.net** (copia oculta, Marketing 360)
 
 El `Reply-To` es el correo del cliente, así que se le responde directo desde el correo.
 El plano o las fotos viajan como adjunto.
@@ -92,6 +94,36 @@ July 23, 2026
 Time of Submission
 8:15 am EDT
 _________________________________________________________________________
+```
+
+## Telefonos y rastreo de llamadas
+
+Los numeros se muestran **sin el prefijo `+1`**, con el formato que espera el
+rastreador de Marketing 360 para sustituirlos:
+
+```
+(239) 689-5496     Fort Myers
+(941) 623-6890     Port Charlotte
+```
+
+Los `href="tel:"` **no** cambiaron: siguen en digitos puros, que es lo que marca
+el telefono al pulsarlos.
+
+### El candado quedo apagado
+
+Antes el tema **revertia** cualquier sustitucion de numeros, porque el numero
+cambiaba entre recargas y se veia el parpadeo. Eso tambien anulaba la
+atribucion de llamadas, que es justo lo que marketing necesita. Desde la 4.7.0
+el candado **no corre**: los rastreadores mandan.
+
+Consecuencia normal y esperada: el numero visible puede cambiar entre visitas, y
+en la primera carga puede verse un instante el real antes del de rastreo. No es
+un error del tema.
+
+Para volver a fijar los numeros reales, en `wp-config.php`:
+
+```php
+define( 'WFS_LOCK_PHONE_NUMBERS', true );
 ```
 
 ## Chat de tawk.to
