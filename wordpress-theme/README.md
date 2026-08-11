@@ -1,4 +1,4 @@
-# Western Fence Supply — Tema de WordPress (`wfs-site-4.7.0.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-4.8.0.zip`)
 
 Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
 componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
@@ -40,7 +40,7 @@ WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
 ## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube `wfs-site-4.7.0.zip` → **Instalar ahora** → **Activar**
+2. Sube `wfs-site-4.8.0.zip` → **Instalar ahora** → **Activar**
 3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
    (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 
@@ -125,6 +125,54 @@ Para volver a fijar los numeros reales, en `wp-config.php`:
 ```php
 define( 'WFS_LOCK_PHONE_NUMBERS', true );
 ```
+
+## Tipografia de los titulos
+
+Los titulos usan la variable `--display`. Un solo sitio manda sobre todos.
+
+### Mirano Extended no viene incluida
+
+Es una fuente **comercial de Unio Creative Solutions**, y la licencia **web** se
+compra aparte de la de escritorio. No puede viajar en el repo ni en el zip: un
+`@font-face` deja el `.woff2` descargable para cualquier visitante, que es justo
+lo que la licencia prohibe redistribuir.
+
+Lo que circula gratis (Fontesk, Befonts, unblast, freefontdl) es un peso suelto
+*"Freebie Light"* de uso personal, o una copia sin licencia. Ninguno cubre un
+sitio comercial.
+
+Donde se compra la licencia web:
+
+- MyFonts: https://www.myfonts.com/products/var-mirano-extended-1110759
+- Creative Market: https://creativemarket.com/UnioDesigns/292039530-Mirano-Extended-Variable
+
+### Mientras tanto: Archivo en su eje ancho
+
+Archivo ya se carga y es variable, con eje de ancho `wdth 62..125`. Los titulos
+van a **`wdth 125`**, el extremo extendido, que es lo mas parecido a Mirano sin
+pagar nada ni pedir un archivo mas.
+
+Antes esto estaba a medias: las clases `.display` iban a 125, pero los cinco
+titulares de heroe se pisaban a `wdth 100`. Ahora los 29 paginas van a 125.
+
+### Como activar la real
+
+1. Dejar los `.woff2` licenciados en la carpeta `fonts/` del tema, con estos
+   nombres exactos:
+
+```
+MiranoExtended-Regular.woff2
+MiranoExtended-Bold.woff2
+```
+
+2. Nada mas. `wfs_font_face()` los detecta, emite el `@font-face` y precarga la
+   negrita (es el titular del heroe, o sea el LCP). Todos los titulos cambian de
+   golpe porque todos salen de `--display`.
+
+Sin archivos **no imprime nada**, asi que no se pide un 404 en cada carga.
+
+> Al activarla conviene revisar el `letter-spacing` de `.display` y
+> `.display-extended`: estan ajustados al ritmo de Archivo, no al de Mirano.
 
 ## Chat de tawk.to
 

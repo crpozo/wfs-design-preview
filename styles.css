@@ -1,7 +1,38 @@
 /* ───── Western Fences Supply — Homepage ───── */
-/* Brand fonts: Mirano Extended (proprietary) → Archivo @ wdth 125 ; Inter for UI/body */
+/* Brand fonts: Mirano Extended (propietaria) → Archivo @ wdth 125 ; Inter para UI/cuerpo */
 /* Las fuentes se cargan con <link> desde el HTML: un @import aqui encadena
    styles.css -> google -> woff2 en serie y retrasa el primer pintado. */
+
+/* ── Mirano Extended ────────────────────────────────────────────────────────
+   Es una fuente COMERCIAL de Unio Creative Solutions y la licencia web se
+   compra aparte de la de escritorio. Por eso no viaja en el repo: no se puede
+   redistribuir, y un @font-face deja el archivo descargable para cualquiera.
+
+   Hasta que exista esa licencia, los titulos usan Archivo en su eje ancho
+   (wdth 125), que es lo mas cercano disponible sin pagar.
+
+   PARA ACTIVAR LA REAL, dos pasos:
+     1. Dejar los .woff2 licenciados en  fonts/
+     2. Descomentar el bloque de abajo
+   Nada mas: todos los titulos salen de --display, asi que cambian de golpe.
+   (El tema de WordPress lo detecta solo: ver wfs_font_face en functions.php.)
+
+@font-face {
+  font-family: 'Mirano Extended';
+  src: url('fonts/MiranoExtended-Bold.woff2') format('woff2');
+  font-weight: 700 800;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mirano Extended';
+  src: url('fonts/MiranoExtended-Regular.woff2') format('woff2');
+  font-weight: 400 600;
+  font-style: normal;
+  font-display: swap;
+}
+   ── Al activarla conviene revisar el letter-spacing de .display y
+      .display-extended: estan ajustados al ritmo de Archivo, no al de Mirano. */
 
 :root {
   /* Primary */
@@ -23,7 +54,9 @@
   --almond: #e5d8ca;
   --ink: #263167;
 
-  --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  /* Mirano va primero: si algun dia se licencia, entra sola. Mientras no
+     exista el @font-face de arriba, el navegador la salta y usa Archivo. */
+  --display: 'Mirano Extended', 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   /* Se unifico a Inter: antes era Space Grotesk y creaba un tercer
      tipo de letra que desentonaba con el cuerpo. */

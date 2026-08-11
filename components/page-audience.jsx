@@ -28,7 +28,7 @@ const HomeownerHero = () => {
           {t('Homeowner · Built for residential', 'Propietario · Diseñado para residencial')}
         </div>
         <h1 style={{
-          margin: '0 0 22px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 100", fontWeight: 800, fontSize: 'clamp(32px, 4vw, 54px)', lineHeight: 1.02, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', }}>
+          margin: '0 0 22px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 125", fontWeight: 800, fontSize: 'clamp(32px, 4vw, 54px)', lineHeight: 1.02, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', }}>
           {t('Fence solutions', 'Soluciones de cercas')}{' '}
           <span style={{ color: 'var(--coral)' }}>{t('for your home.', 'para tu hogar.')}</span>
         </h1>
@@ -571,7 +571,7 @@ const ContractorHero = () => {
           {t('Wholesale Partner Program · Florida', 'Programa de socios mayoristas · Florida')}
         </div>
         <h1 style={{
-          margin: '0 0 20px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 100", fontWeight: 800, fontSize: 'clamp(32px, 4vw, 54px)', lineHeight: 1.02, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', }}>
+          margin: '0 0 20px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 125", fontWeight: 800, fontSize: 'clamp(32px, 4vw, 54px)', lineHeight: 1.02, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', }}>
           {t('Build with the', 'Construye con el')}{' '}
           <span style={{ color: 'var(--tangerine)' }}>{t('manufacturer.', 'fabricante.')}</span>
         </h1>

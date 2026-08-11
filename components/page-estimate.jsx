@@ -22,7 +22,7 @@ const EstimateHero = () => {
       {/* Main heading */}
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: 720 }}>
         <h1 style={{
-          margin: '0 0 20px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 100", fontWeight: 800, fontSize: 'clamp(30px, 3.4vw, 48px)', lineHeight: 1.02, letterSpacing: '-0.015em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', }}>
+          margin: '0 0 20px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 125", fontWeight: 800, fontSize: 'clamp(30px, 3.4vw, 48px)', lineHeight: 1.02, letterSpacing: '-0.015em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', }}>
           {t('Draw your fence.', 'Dibuja tu cerca.')}{' '}
           <span style={{ color: 'var(--blue-ice)' }}>{t('Get a binding quote in 24 hours.', 'Obtén una cotización en firme en 24 horas.')}</span>
         </h1>

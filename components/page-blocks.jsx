@@ -34,7 +34,7 @@ const PageHero = ({ eyebrow, title, accent, accentBreak, subtitle, image, crumbs
         </div>
       )}
       <h1 style={{
-        margin: '0 0 18px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 100", fontWeight: 800, fontSize: 'clamp(30px, 3.6vw, 50px)', lineHeight: 1.02, letterSpacing: '-0.015em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', maxWidth: 880, }}>
+        margin: '0 0 18px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 125", fontWeight: 800, fontSize: 'clamp(30px, 3.6vw, 50px)', lineHeight: 1.02, letterSpacing: '-0.015em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', maxWidth: 880, }}>
         {title}{accent && <>{accentBreak ? <br/> : ' '}<span style={{ color: 'var(--blue-ice)' }}>{accent}</span></>}
       </h1>
       {subtitle && (

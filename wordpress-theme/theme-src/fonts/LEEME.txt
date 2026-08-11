@@ -1,0 +1,44 @@
+Mirano Extended
+===============
+
+Esta carpeta esta vacia a proposito.
+
+Mirano Extended es una fuente COMERCIAL de Unio Creative Solutions. No se puede
+incluir en el repositorio ni en el zip del tema: la licencia no permite
+redistribuirla, y un @font-face deja el archivo descargable para cualquiera que
+visite el sitio.
+
+QUE HAY QUE COMPRAR
+-------------------
+La licencia de ESCRITORIO no sirve para una web. Hay que comprar la licencia
+WEBFONT, que se vende aparte:
+
+  MyFonts        https://www.myfonts.com/products/var-mirano-extended-1110759
+  Creative Market https://creativemarket.com/UnioDesigns/292039530-Mirano-Extended-Variable
+
+Lo que circula gratis en Fontesk, Befonts, unblast o freefontdl es un peso
+suelto "Freebie Light" de uso personal, o una copia sin licencia. Ninguno cubre
+un sitio comercial como westernfencesupply.com.
+
+COMO ACTIVARLA
+--------------
+1. Convertir los archivos licenciados a .woff2 (el proveedor suele darlos ya
+   convertidos al comprar la licencia web).
+
+2. Dejarlos aqui con EXACTAMENTE estos nombres:
+
+     MiranoExtended-Regular.woff2
+     MiranoExtended-Bold.woff2
+
+3. Nada mas. El tema los detecta al cargar (wfs_font_face en functions.php),
+   emite el @font-face y precarga la negrita. Todos los titulos del sitio
+   cambian de golpe porque todos salen de la variable --display.
+
+Si falta uno de los dos, solo se usa el que este. Si no hay ninguno, el tema no
+imprime nada y los titulos siguen en Archivo (eje ancho, wdth 125), que es la
+sustitucion actual.
+
+DESPUES DE ACTIVARLA
+--------------------
+Revisar el letter-spacing de .display y .display-extended en css/styles.css:
+estan ajustados al ritmo de Archivo, no al de Mirano.

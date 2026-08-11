@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.7.0' );
+define( 'WFS_VERSION', '4.8.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -151,6 +151,49 @@ function wfs_print_app( $slug ) {
 		echo "</script>\n";
 	}
 }
+
+/**
+ * Mirano Extended: se enciende sola en cuanto exista el archivo licenciado.
+ *
+ * La fuente es propietaria (Unio Creative Solutions) y su licencia web se
+ * compra aparte de la de escritorio, asi que no puede viajar en el repo ni en
+ * el zip: un @font-face deja el .woff2 descargable para cualquiera, que es
+ * justo lo que la licencia no permite redistribuir.
+ *
+ * Al dejar los .woff2 licenciados en la carpeta fonts/ del tema, este bloque
+ * emite el @font-face y TODOS los titulos cambian de golpe, porque todos salen
+ * de la variable --display. Mientras no haya archivos no imprime nada, asi que
+ * no se pide un 404 en cada carga.
+ */
+function wfs_font_face() {
+	$dir   = get_theme_file_path( 'fonts' );
+	$pesos = array(
+		'MiranoExtended-Regular.woff2' => '400 600',
+		'MiranoExtended-Bold.woff2'    => '700 800',
+	);
+
+	$css      = '';
+	$preload  = '';
+	foreach ( $pesos as $archivo => $peso ) {
+		if ( ! file_exists( $dir . '/' . $archivo ) ) { continue; }
+		$url  = get_theme_file_uri( 'fonts/' . $archivo ) . '?ver=' . WFS_VERSION;
+		$css .= sprintf(
+			"@font-face{font-family:'Mirano Extended';src:url(%s) format('woff2');font-weight:%s;font-style:normal;font-display:swap}",
+			esc_url( $url ),
+			$peso
+		);
+		/* El titular del hero es el LCP de casi todas las paginas y va en negrita,
+		   asi que ese peso se precarga para que no se pinte primero en Archivo. */
+		if ( '700 800' === $peso ) {
+			$preload = '<link rel="preload" as="font" type="font/woff2" crossorigin href="' . esc_url( $url ) . '">' . "\n";
+		}
+	}
+	if ( '' === $css ) { return; }
+
+	echo $preload;
+	echo '<style id="wfs-mirano">' . $css . "</style>\n";
+}
+add_action( 'wp_head', 'wfs_font_face', 1 );
 
 /**
  * Chat de tawk.to: sin burbuja flotante.
