@@ -95,7 +95,7 @@ const Hero = () => {
           </div>
           <h1 style={{
             margin: '0 0 22px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 125", fontWeight: 800, fontSize: 'clamp(34px, 4.2vw, 56px)', lineHeight: 1.02, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', }}>
-            {t('The Best Place to Buy Fence in', 'El mejor lugar para comprar cercas en el')}{' '}
+            {t('The Best Place to Buy Fences in', 'El mejor lugar para comprar cercas en el')}{' '}
             <span style={{ color: 'var(--blue-ice)' }}>{t('Southwest Florida', 'suroeste de Florida')}</span>
           </h1>
 
