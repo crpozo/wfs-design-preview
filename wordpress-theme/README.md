@@ -1,4 +1,4 @@
-# Western Fence Supply — Tema de WordPress (`wfs-site-4.8.2.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-4.9.0.zip`)
 
 Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
 componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
@@ -40,7 +40,7 @@ WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
 ## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube `wfs-site-4.8.2.zip` → **Instalar ahora** → **Activar**
+2. Sube `wfs-site-4.9.0.zip` → **Instalar ahora** → **Activar**
 3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
    (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 
@@ -95,6 +95,51 @@ Time of Submission
 8:15 am EDT
 _________________________________________________________________________
 ```
+
+## Odoo CRM
+
+Cada lead se copia tambien a Odoo (`crm.lead`), con sus adjuntos.
+
+Es **fire-and-forget**: la peticion sale sin bloquear (`blocking => false`), asi
+que si Odoo esta caido o tarda, el visitante no espera y el flujo normal del
+sitio (lead guardado en WordPress + correos) sigue igual. El precio de eso es
+que **no se entera si Odoo rechaza el envio**: para comprobar que llega hay que
+mirarlo en Odoo.
+
+Si las dos constantes no estan definidas, la funcion no hace nada. Por eso el
+tema se puede instalar antes de tocar `wp-config.php` sin romper nada.
+
+### Lo que hay que anadir a mano en `wp-config.php`
+
+Va **encima** de `/* That's all, stop editing! Happy publishing. */`:
+
+```php
+define( 'WFS_ODOO_LEAD_URL', 'https://reachconcept-westernfencesupply.odoo.com/wfs/v1/crm_lead' );
+define( 'WFS_ODOO_LEAD_KEY', '...' );
+```
+
+La clave no va en el repo ni en el zip a proposito: es una credencial, y el zip
+es publico.
+
+### Payload
+
+```json
+{
+  "name": "...", "email": "...", "phone": "...",
+  "form": "quote",
+  "url": "https://westernfencesupply.com/estimate/",
+  "attachments": [
+    { "filename": "sketch.png", "content_base64": "...", "mime_type": "image/png" }
+  ]
+}
+```
+
+Se manda con la cabecera `X-WFS-Key`. Los campos del formulario van planos en la
+raiz del objeto, mas `form` y `url`.
+
+> Los adjuntos se aceptan hasta 20 MB cada uno, y en base64 crecen un tercio:
+> un plano de 20 MB sale como ~27 MB de JSON. Si Odoo tiene limite de tamano de
+> peticion, ahi es donde se va a notar.
 
 ## Telefonos y rastreo de llamadas
 

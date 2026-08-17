@@ -384,6 +384,46 @@ https://westernfencesupply.com
 }
 
 /**
+ * Push a copy of the lead (with attachments) to Odoo CRM (crm.lead),
+ * best-effort. Fire-and-forget: if Odoo is unreachable the website lead
+ * flow (WP post + email) is untouched.
+ */
+function wfs_push_lead_to_odoo( $form, $data, $meta, $attachments = array() ) {
+	if ( ! defined( 'WFS_ODOO_LEAD_URL' ) || ! defined( 'WFS_ODOO_LEAD_KEY' ) ) { return; }
+
+	$payload = array_merge( $data, array(
+		'form' => $form,
+		'url'  => $meta['url'],
+	) );
+
+	$attachment_payload = array();
+	foreach ( (array) $attachments as $path ) {
+		if ( ! file_exists( $path ) ) { continue; }
+		$content = file_get_contents( $path );
+		if ( false === $content ) { continue; }
+		$filetype = wp_check_filetype( $path );
+		$attachment_payload[] = array(
+			'filename'       => basename( $path ),
+			'content_base64' => base64_encode( $content ),
+			'mime_type'      => $filetype['type'] ? $filetype['type'] : 'application/octet-stream',
+		);
+	}
+	if ( $attachment_payload ) {
+		$payload['attachments'] = $attachment_payload;
+	}
+
+	wp_remote_post( WFS_ODOO_LEAD_URL, array(
+		'timeout'  => 15,
+		'blocking' => false,
+		'headers'  => array(
+			'Content-Type' => 'application/json',
+			'X-WFS-Key'    => WFS_ODOO_LEAD_KEY,
+		),
+		'body'     => wp_json_encode( $payload ),
+	) );
+}
+
+/**
  * Procesa el envío: valida, guarda y despacha.
  */
 function wfs_handle_lead( WP_REST_Request $request ) {
@@ -437,6 +477,8 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 		'post_title'   => $subject,
 		'post_content' => $body,
 	) );
+
+	wfs_push_lead_to_odoo( $form, $data, $meta, $attachments );
 
 	$to      = wfs_lead_recipients();
 	$primary = array_shift( $to );
