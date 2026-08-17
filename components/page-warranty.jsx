@@ -494,43 +494,85 @@ const SpecsHero = () => {
 
 const SpecsLibrary = () => {
   const t = useT();
+  const [mat, setMat] = React.useState('All');
   const [filter, setFilter] = React.useState('All');
   /* Fichas tecnicas reales, generadas desde los PDF de assets/specs.
-     Tamano y numero de paginas salen del archivo, no se escriben a mano. */
+     Titulo, medida, peso y paginas salen del archivo, no se escriben a mano. */
   const docs = [
-      /* Panels */
-      { cat: 'Panel', title: 'Commercial 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high", meta: 'PDF · 129 KB', file: 'alum-4ft-com-2rail-smooth-bottom-3in-panel.pdf' },
-      { cat: 'Panel', title: 'Commercial 3-Rail Rake Bottom', sub: "6' high", meta: 'PDF · 128 KB', file: 'alum-6ft-com-3rail-rake-bottom-panel.pdf' },
-      { cat: 'Panel', title: 'Residential 2-Rail Smooth Bottom', sub: "4' high", meta: 'PDF · 127 KB', file: 'alum-4ft-res-2rail-smooth-bottom-panel.pdf' },
-      { cat: 'Panel', title: 'Residential 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high", meta: 'PDF · 128 KB', file: 'alum-4ft-res-2rail-smooth-bottom-3in-panel.pdf' },
-      { cat: 'Panel', title: 'Residential 3-Rail Puppy Picket', sub: "4' high", meta: 'PDF · 137 KB', file: 'alum-4ft-res-3rail-puppy-picket-panel.pdf' },
-      { cat: 'Panel', title: 'Residential 3-Rail Rake Bottom', sub: "4' high", meta: 'PDF · 130 KB', file: 'alum-4ft-res-3rail-rake-bottom-panel.pdf' },
-      { cat: 'Panel', title: 'Residential 3-Rail Rake Bottom', sub: "5' high", meta: 'PDF · 130 KB', file: 'alum-5ft-res-3rail-rake-bottom-panel.pdf' },
-      /* Gates */
-      { cat: 'Gate', title: 'Commercial 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high x 4' wide", meta: 'PDF · 132 KB', file: 'alum-4x4-com-2rail-smooth-bottom-3in-gate.pdf' },
-      { cat: 'Gate', title: 'Commercial 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high x 5' wide", meta: 'PDF · 131 KB', file: 'alum-4x5-com-2rail-smooth-bottom-3in-gate.pdf' },
-      { cat: 'Gate', title: 'Commercial 3-Rail Rake Bottom', sub: "6' high x 4' wide", meta: 'PDF · 129 KB', file: 'alum-6x4-com-3rail-rake-bottom-gate.pdf' },
-      { cat: 'Gate', title: 'Commercial 3-Rail Rake Bottom', sub: "6' high x 5' wide", meta: 'PDF · 129 KB', file: 'alum-6x5-com-3rail-rake-bottom-gate.pdf' },
-      { cat: 'Gate', title: 'Residential 2-Rail Smooth Bottom', sub: "4' high x 4' wide", meta: 'PDF · 132 KB', file: 'alum-4x4-res-2rail-smooth-bottom-gate.pdf' },
-      { cat: 'Gate', title: 'Residential 2-Rail Smooth Bottom', sub: "4' high x 5' wide", meta: 'PDF · 130 KB', file: 'alum-4x5-res-2rail-smooth-bottom-gate.pdf' },
-      { cat: 'Gate', title: 'Residential 3-Rail Puppy Picket', sub: "4' high x 4' wide", meta: 'PDF · 136 KB', file: 'alum-4x4-res-3rail-puppy-picket-gate.pdf' },
-      { cat: 'Gate', title: 'Residential 3-Rail Puppy Picket', sub: "4' high x 5' wide", meta: 'PDF · 134 KB', file: 'alum-4x5-res-3rail-puppy-picket-gate.pdf' },
-      { cat: 'Gate', title: 'Residential 3-Rail Rake Bottom', sub: "4' high x 4' wide", meta: 'PDF · 134 KB', file: 'alum-4x4-res-3rail-rake-bottom-gate.pdf' },
-      { cat: 'Gate', title: 'Residential 3-Rail Rake Bottom', sub: "4' high x 5' wide", meta: 'PDF · 133 KB', file: 'alum-4x5-res-3rail-rake-bottom-gate.pdf' },
-      { cat: 'Gate', title: 'Residential 3-Rail Rake Bottom', sub: "5' high x 4' wide", meta: 'PDF · 133 KB', file: 'alum-5x4-res-3rail-rake-bottom-gate.pdf' },
-      { cat: 'Gate', title: 'Residential 3-Rail Rake Bottom', sub: "5' high x 5' wide", meta: 'PDF · 133 KB', file: 'alum-5x5-res-3rail-rake-bottom-gate.pdf' },
-      /* Posts */
-      { cat: 'Post', title: 'Commercial 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high", meta: 'PDF · 140 KB', file: 'alum-4ft-com-2rail-smooth-bottom-3in-post.pdf' },
-      { cat: 'Post', title: 'Commercial 3-Rail Rake Bottom', sub: "6' high", meta: 'PDF · 137 KB', file: 'alum-6ft-com-3rail-rake-bottom-post.pdf' },
-      { cat: 'Post', title: 'Residential 2-Rail Smooth Bottom', sub: "4' high", meta: 'PDF · 138 KB', file: 'alum-4ft-res-2rail-smooth-bottom-post.pdf' },
-      { cat: 'Post', title: 'Residential 3-Rail Puppy Picket', sub: "4' high", meta: 'PDF · 140 KB', file: 'alum-4ft-res-3rail-puppy-picket-post.pdf' },
-      { cat: 'Post', title: 'Residential 3-Rail Rake Bottom', sub: "4' high", meta: 'PDF · 143 KB', file: 'alum-4ft-res-3rail-rake-bottom-post.pdf' },
-      { cat: 'Post', title: 'Residential 3-Rail Rake Bottom', sub: "5' high", meta: 'PDF · 138 KB', file: 'alum-5ft-res-3rail-rake-bottom-post.pdf' },
-      /* Sets */
-      { cat: 'Set', title: 'Aluminum Technical Drawings, Full Set', sub: "Every panel profile, residential and commercial", meta: 'PDF · 1.6 MB, 6 pages', file: 'alum-technical-drawings-full-set.pdf' },
+      /* Aluminum · Panel */
+      { mat: 'Aluminum', cat: 'Panel', title: 'Commercial 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high", meta: 'PDF · 129 KB', file: 'alum-4ft-com-2rail-smooth-bottom-3in-panel.pdf' },
+      { mat: 'Aluminum', cat: 'Panel', title: 'Commercial 3-Rail Rake Bottom', sub: "6' high", meta: 'PDF · 128 KB', file: 'alum-6ft-com-3rail-rake-bottom-panel.pdf' },
+      { mat: 'Aluminum', cat: 'Panel', title: 'Residential 2-Rail Smooth Bottom', sub: "4' high", meta: 'PDF · 127 KB', file: 'alum-4ft-res-2rail-smooth-bottom-panel.pdf' },
+      { mat: 'Aluminum', cat: 'Panel', title: 'Residential 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high", meta: 'PDF · 128 KB', file: 'alum-4ft-res-2rail-smooth-bottom-3in-panel.pdf' },
+      { mat: 'Aluminum', cat: 'Panel', title: 'Residential 3-Rail Puppy Picket', sub: "4' high", meta: 'PDF · 137 KB', file: 'alum-4ft-res-3rail-puppy-picket-panel.pdf' },
+      { mat: 'Aluminum', cat: 'Panel', title: 'Residential 3-Rail Rake Bottom', sub: "4' high", meta: 'PDF · 130 KB', file: 'alum-4ft-res-3rail-rake-bottom-panel.pdf' },
+      { mat: 'Aluminum', cat: 'Panel', title: 'Residential 3-Rail Rake Bottom', sub: "5' high", meta: 'PDF · 130 KB', file: 'alum-5ft-res-3rail-rake-bottom-panel.pdf' },
+      /* Aluminum · Gate */
+      { mat: 'Aluminum', cat: 'Gate', title: 'Commercial 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high x 4' wide", meta: 'PDF · 132 KB', file: 'alum-4x4-com-2rail-smooth-bottom-3in-gate.pdf' },
+      { mat: 'Aluminum', cat: 'Gate', title: 'Commercial 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high x 5' wide", meta: 'PDF · 131 KB', file: 'alum-4x5-com-2rail-smooth-bottom-3in-gate.pdf' },
+      { mat: 'Aluminum', cat: 'Gate', title: 'Commercial 3-Rail Rake Bottom', sub: "6' high x 4' wide", meta: 'PDF · 129 KB', file: 'alum-6x4-com-3rail-rake-bottom-gate.pdf' },
+      { mat: 'Aluminum', cat: 'Gate', title: 'Commercial 3-Rail Rake Bottom', sub: "6' high x 5' wide", meta: 'PDF · 129 KB', file: 'alum-6x5-com-3rail-rake-bottom-gate.pdf' },
+      { mat: 'Aluminum', cat: 'Gate', title: 'Residential 2-Rail Smooth Bottom', sub: "4' high x 4' wide", meta: 'PDF · 132 KB', file: 'alum-4x4-res-2rail-smooth-bottom-gate.pdf' },
+      { mat: 'Aluminum', cat: 'Gate', title: 'Residential 2-Rail Smooth Bottom', sub: "4' high x 5' wide", meta: 'PDF · 130 KB', file: 'alum-4x5-res-2rail-smooth-bottom-gate.pdf' },
+      { mat: 'Aluminum', cat: 'Gate', title: 'Residential 3-Rail Puppy Picket', sub: "4' high x 4' wide", meta: 'PDF · 136 KB', file: 'alum-4x4-res-3rail-puppy-picket-gate.pdf' },
+      { mat: 'Aluminum', cat: 'Gate', title: 'Residential 3-Rail Puppy Picket', sub: "4' high x 5' wide", meta: 'PDF · 134 KB', file: 'alum-4x5-res-3rail-puppy-picket-gate.pdf' },
+      { mat: 'Aluminum', cat: 'Gate', title: 'Residential 3-Rail Rake Bottom', sub: "4' high x 4' wide", meta: 'PDF · 134 KB', file: 'alum-4x4-res-3rail-rake-bottom-gate.pdf' },
+      { mat: 'Aluminum', cat: 'Gate', title: 'Residential 3-Rail Rake Bottom', sub: "4' high x 5' wide", meta: 'PDF · 133 KB', file: 'alum-4x5-res-3rail-rake-bottom-gate.pdf' },
+      { mat: 'Aluminum', cat: 'Gate', title: 'Residential 3-Rail Rake Bottom', sub: "5' high x 4' wide", meta: 'PDF · 133 KB', file: 'alum-5x4-res-3rail-rake-bottom-gate.pdf' },
+      { mat: 'Aluminum', cat: 'Gate', title: 'Residential 3-Rail Rake Bottom', sub: "5' high x 5' wide", meta: 'PDF · 133 KB', file: 'alum-5x5-res-3rail-rake-bottom-gate.pdf' },
+      /* Aluminum · Post */
+      { mat: 'Aluminum', cat: 'Post', title: 'Commercial 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high", meta: 'PDF · 140 KB', file: 'alum-4ft-com-2rail-smooth-bottom-3in-post.pdf' },
+      { mat: 'Aluminum', cat: 'Post', title: 'Commercial 3-Rail Rake Bottom', sub: "6' high", meta: 'PDF · 137 KB', file: 'alum-6ft-com-3rail-rake-bottom-post.pdf' },
+      { mat: 'Aluminum', cat: 'Post', title: 'Residential 2-Rail Smooth Bottom', sub: "4' high", meta: 'PDF · 138 KB', file: 'alum-4ft-res-2rail-smooth-bottom-post.pdf' },
+      { mat: 'Aluminum', cat: 'Post', title: 'Residential 3-Rail Puppy Picket', sub: "4' high", meta: 'PDF · 140 KB', file: 'alum-4ft-res-3rail-puppy-picket-post.pdf' },
+      { mat: 'Aluminum', cat: 'Post', title: 'Residential 3-Rail Rake Bottom', sub: "4' high", meta: 'PDF · 143 KB', file: 'alum-4ft-res-3rail-rake-bottom-post.pdf' },
+      { mat: 'Aluminum', cat: 'Post', title: 'Residential 3-Rail Rake Bottom', sub: "5' high", meta: 'PDF · 138 KB', file: 'alum-5ft-res-3rail-rake-bottom-post.pdf' },
+      /* Aluminum · Set */
+      { mat: 'Aluminum', cat: 'Set', title: 'Aluminum Technical Drawings, Full Set', sub: 'Every panel profile, residential and commercial', meta: 'PDF · 1.6 MB, 6 pages', file: 'alum-technical-drawings-full-set.pdf' },
+      /* Chain Link · Gate */
+      { mat: 'Chain Link', cat: 'Gate', title: 'Cantilever Gate', sub: 'Roller, track and counterbalance', meta: 'PDF · 3.9 MB', file: 'chainlink-gate-cantilever.pdf' },
+      { mat: 'Chain Link', cat: 'Gate', title: 'Cantilever Gate, Truss Detail', sub: 'Frame member and bracing dimensions', meta: 'PDF · 342 KB', file: 'chainlink-gate-cantilever-truss-detail.pdf' },
+      { mat: 'Chain Link', cat: 'Gate', title: 'Double Swing Gate', sub: 'Drop rod and latch detail', meta: 'PDF · 109 KB', file: 'chainlink-gate-double.pdf' },
+      { mat: 'Chain Link', cat: 'Gate', title: 'Single Swing Gate', sub: 'Frame, fabric and hardware layout', meta: 'PDF · 37 KB', file: 'chainlink-gate-single.pdf' },
+      /* EC Fence · Engineering */
+      { mat: 'EC Fence', cat: 'Engineering', title: 'Self-Mating Steel Panel, Signed & Sealed', sub: "FBC 2023 · HVHZ · 115 mph Exp C · up to 6' high", meta: 'PDF · 306 KB', file: 'ecfence-hvhz-sealed-engineering.pdf' },
+      /* Hardware · Hinge */
+      { mat: 'Hardware', cat: 'Hinge', title: '5" Heavy Duty Self-Closing Gate Hinge', sub: 'For aluminum gates', meta: 'PDF · 71 KB', file: 'hardware-hinge-alum-5in-heavy-duty-self-closing.pdf' },
+      { mat: 'Hardware', cat: 'Hinge', title: 'Blind Hinge', sub: 'Concealed leaf, butt mount', meta: 'PDF · 45 KB', file: 'hardware-hinge-blind.pdf' },
+      { mat: 'Hardware', cat: 'Hinge', title: 'Chain Link Hinge Set', sub: 'For chain link gates', meta: 'PDF · 83 KB', file: 'hardware-hinge-chain-link.pdf' },
+      { mat: 'Hardware', cat: 'Hinge', title: 'D&D Hinge', sub: 'For PVC and vinyl gates', meta: 'PDF · 57 KB', file: 'hardware-hinge-dd-pvc.pdf' },
+      { mat: 'Hardware', cat: 'Hinge', title: 'D&D Self-Closing Hinge', sub: 'For chain link gates', meta: 'PDF · 269 KB', file: 'hardware-hinge-dd-self-closing-chain-link.pdf' },
+      { mat: 'Hardware', cat: 'Hinge', title: 'Heavy Duty Hinge', sub: 'Commercial gate weight', meta: 'PDF · 211 KB', file: 'hardware-hinge-heavy-duty.pdf' },
+      { mat: 'Hardware', cat: 'Hinge', title: 'Self-Closing Hinge Set', sub: 'For chain link gates', meta: 'PDF · 95 KB', file: 'hardware-hinge-chain-link-self-closing-set.pdf' },
+      { mat: 'Hardware', cat: 'Hinge', title: 'Self-Closing Stainless Steel Hinge', sub: 'For aluminum gates', meta: 'PDF · 172 KB', file: 'hardware-hinge-alum-self-closing-stainless.pdf' },
+      { mat: 'Hardware', cat: 'Hinge', title: 'Spring Hinge', sub: 'For PVC and vinyl gates', meta: 'PDF · 485 KB, 2 pages', file: 'hardware-hinge-spring-pvc.pdf' },
+      { mat: 'Hardware', cat: 'Hinge', title: 'Spring-Loaded Butterfly Hinge', sub: 'Self-closing, adjustable tension', meta: 'PDF · 171 KB', file: 'hardware-hinge-butterfly-spring-loaded.pdf' },
+      { mat: 'Hardware', cat: 'Hinge', title: 'TruClose Heavy Duty Hinge', sub: 'Spring-loaded, self-closing', meta: 'PDF · 153 KB', file: 'hardware-hinge-truclose-heavy-duty.pdf' },
+      /* Hardware · Latch */
+      { mat: 'Hardware', cat: 'Latch', title: 'D&D LokkLatch Regular', sub: 'Key-lockable, both sides', meta: 'PDF · 171 KB', file: 'hardware-latch-dd-lokklatch-regular.pdf' },
+      { mat: 'Hardware', cat: 'Latch', title: 'Gravity Latch', sub: 'For aluminum gates', meta: 'PDF · 135 KB', file: 'hardware-latch-alum-gravity.pdf' },
+      { mat: 'Hardware', cat: 'Latch', title: 'LokkLatch Handle', sub: 'External pull handle', meta: 'PDF · 161 KB', file: 'hardware-latch-lokklatch-handle.pdf' },
+      { mat: 'Hardware', cat: 'Latch', title: 'MagnaLatch Top Pull', sub: 'Magnetic, self-latching, pool gates', meta: 'PDF · 34 KB', file: 'hardware-latch-magnalatch-top-pull.pdf' },
+      { mat: 'Hardware', cat: 'Latch', title: 'PVC Gate Latch', sub: 'For PVC and vinyl gates', meta: 'PDF · 188 KB', file: 'hardware-latch-pvc.pdf' },
+      { mat: 'Hardware', cat: 'Latch', title: 'Pull Latch', sub: 'For aluminum gates', meta: 'PDF · 68 KB, 2 pages', file: 'hardware-latch-alum-pull.pdf' },
+      { mat: 'Hardware', cat: 'Latch', title: 'Stainless Steel Mini Latch', sub: 'For drive gates', meta: 'PDF · 159 KB', file: 'hardware-latch-stainless-mini.pdf' },
+      { mat: 'Hardware', cat: 'Latch', title: 'White Gate Latch with Extension', sub: 'Side and front-on views', meta: 'PDF · 549 KB', file: 'hardware-latch-white-gate-extension.pdf' },
+      { mat: 'Hardware', cat: 'Latch', title: 'Zip Latch', sub: 'Self-latching, adjustable', meta: 'PDF · 834 KB', file: 'hardware-latch-zip.pdf' },
+      /* Hardware · Mount */
+      { mat: 'Hardware', cat: 'Mount', title: '2 x 2 Floor Flange / Mount', sub: 'Surface mount · 2" post socket · 4" base plate', meta: 'PDF · 42 KB', file: 'hardware-2x2-floor-flange-mount.pdf' },
+      { mat: 'Hardware', cat: 'Mount', title: 'Male Wall Hanger', sub: 'Wall-mounted gate pivot', meta: 'PDF · 34 KB', file: 'hardware-male-wall-hanger.pdf' },
     ];
-  const cats = ['All', 'Panel', 'Gate', 'Post', 'Set'];
-  const visible = filter === 'All' ? docs : docs.filter(d => d.cat === filter);
+  /* Los chips se derivan de los documentos: al anadir un material nuevo
+     aparece su filtro solo, sin tocar esta lista a mano. */
+  const order = { Panel: 0, Gate: 1, Post: 2, Set: 3, Engineering: 4, Hinge: 5, Latch: 6, Mount: 7 };
+  const mats = ['All'].concat(Array.from(new Set(docs.map(d => d.mat))));
+  const byMat = mat === 'All' ? docs : docs.filter(d => d.mat === mat);
+  const cats = ['All'].concat(
+    Array.from(new Set(byMat.map(d => d.cat))).sort((a, b) => order[a] - order[b])
+  );
+  /* Si el tipo elegido no existe en el material elegido, se vuelve a Todos. */
+  const cat = cats.indexOf(filter) === -1 ? 'All' : filter;
+  const visible = cat === 'All' ? byMat : byMat.filter(d => d.cat === cat);
 
   return (
     <section style={{ background: 'var(--white)', padding: '120px 0' }}>
@@ -540,23 +582,51 @@ const SpecsLibrary = () => {
           title={t('The full library,', 'La biblioteca completa,')}
           accent={t('filtered or browsed.', 'filtrada o explorada.')}
           sub={t(
-            'Aluminum panel, gate and post drawings, with picket, channel and post dimensions for permit and HOA review. More materials are being added.', 'Planos de paneles, portones y postes de aluminio, con medidas de pickets, canales y postes para permisos y revisión de HOA. Estamos añadiendo más materiales.'
+            'Panel, gate and post drawings plus gate hardware, with the dimensions and load data you need for permit and HOA review. More materials are being added.', 'Planos de paneles, portones y postes, más herrajes de portón, con las medidas y datos de carga que piden permisos y HOA. Estamos añadiendo más materiales.'
           )}
         />
-        {/* Filter chips */}
-        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 28 }}>
-          {cats.map(c => {
-            const active = filter === c;
-            const catLabels = {
-              All: { EN: 'All', ES: 'Todos' }, Panel: { EN: 'Panels', ES: 'Paneles' }, Gate: { EN: 'Gates', ES: 'Portones' }, Post: { EN: 'Posts', ES: 'Postes' }, Set: { EN: 'Full set', ES: 'Set completo' }, };
-            return (
-              <button key={c} onClick={() => setFilter(c)} className="mono" style={{
-                padding: '10px 18px', background: active ? 'var(--ink)' : 'var(--white)', color: active ? 'var(--white)' : 'var(--ink)', border: '1.5px solid var(--ink)', fontSize: 14, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', cursor: 'pointer', transition: 'all 0.18s ease', }}>{t(catLabels[c])}</button>
-            );
-          })}
-          <span className="mono" style={{
-            marginLeft: 'auto', alignSelf: 'center', fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)', }}>{visible.length} {t(visible.length === 1 ? 'document' : 'documents', visible.length === 1 ? 'documento' : 'documentos')}</span>
-        </div>
+        {/* Filtros: material arriba, tipo debajo. Dos ejes, porque con varios
+            materiales una sola fila deja de distinguir "portones de aluminio"
+            de "portones de otra cosa". */}
+        {(() => {
+          const LABELS = {
+            All: { EN: 'All', ES: 'Todos' },
+            Aluminum: { EN: 'Aluminum', ES: 'Aluminio' },
+            'Chain Link': { EN: 'Chain link', ES: 'Malla eslabonada' },
+            'EC Fence': { EN: 'EC Fence', ES: 'EC Fence' },
+            Vinyl: { EN: 'Vinyl', ES: 'Vinilo' },
+            Metal: { EN: 'Metal', ES: 'Metal' },
+            Panel: { EN: 'Panels', ES: 'Paneles' },
+            Gate: { EN: 'Gates', ES: 'Portones' },
+            Post: { EN: 'Posts', ES: 'Postes' },
+            Set: { EN: 'Full set', ES: 'Set completo' },
+            Engineering: { EN: 'Engineering', ES: 'Ingeniería' },
+            Hardware: { EN: 'Hardware', ES: 'Herrajes' },
+            Hinge: { EN: 'Hinges', ES: 'Bisagras' },
+            Latch: { EN: 'Latches', ES: 'Cerrojos' },
+            Mount: { EN: 'Mounts', ES: 'Anclajes' },
+          };
+          const chip = (label, active, onClick, key) => (
+            <button key={key} onClick={onClick} className="mono" style={{
+              padding: '10px 18px', background: active ? 'var(--ink)' : 'var(--white)', color: active ? 'var(--white)' : 'var(--ink)', border: '1.5px solid var(--ink)', fontSize: 14, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', cursor: 'pointer', transition: 'all 0.18s ease', }}>{label}</button>
+          );
+          const row = { display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center' };
+          return (
+            <div style={{ marginBottom: 28, display: 'grid', gap: 12 }}>
+              <div style={row}>
+                {mats.map(m => chip(t(LABELS[m] || { EN: m, ES: m }), mat === m, () => setMat(m), m))}
+                <span className="mono" style={{
+                  marginLeft: 'auto', fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)', }}>{visible.length} {t(visible.length === 1 ? 'document' : 'documents', visible.length === 1 ? 'documento' : 'documentos')}</span>
+              </div>
+              {/* La fila de tipos solo aparece si hay mas de uno que elegir. */}
+              {cats.length > 2 && (
+                <div style={row}>
+                  {cats.map(c => chip(t(LABELS[c] || { EN: c, ES: c }), cat === c, () => setFilter(c), c))}
+                </div>
+              )}
+            </div>
+          );
+        })()}
         {/* Downloads grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
           {visible.map((d, i) => (

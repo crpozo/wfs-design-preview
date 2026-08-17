@@ -1,4 +1,4 @@
-# Western Fence Supply — Tema de WordPress (`wfs-site-4.10.0.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-4.11.0.zip`)
 
 Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
 componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
@@ -40,7 +40,7 @@ WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
 ## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube `wfs-site-4.10.0.zip` → **Instalar ahora** → **Activar**
+2. Sube `wfs-site-4.11.0.zip` → **Instalar ahora** → **Activar**
 3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
    (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 
@@ -101,20 +101,23 @@ _________________________________________________________________________
 La biblioteca estaba **sin configurar**: 14 fichas inventadas, con tamanos y
 fechas de revision falsos, y todas con `href="#"`. No descargaba nada.
 
-Ahora sirve **26 documentos reales de aluminio**, en `assets/specs/`:
+Ahora sirve **53 documentos reales**, en `assets/specs/`:
 
-| Familia | Docs |
+| Material | Docs |
 |---|---|
-| Paneles | 7 |
-| Portones | 12 |
-| Postes | 6 |
-| Set completo (6 paginas) | 1 |
+| Aluminio (7 paneles, 12 portones, 6 postes, 1 set) | 26 |
+| Chain link (portones) | 4 |
+| EC Fence (ingenieria firmada y sellada) | 1 |
+| Herrajes (11 bisagras, 9 cerrojos, 2 anclajes) | 22 |
 
-El titulo, la medida, el peso y el numero de paginas de cada ficha **se generan
-desde el propio PDF**, no se escriben a mano, asi que no se pueden
-desincronizar del archivo.
+Se filtra por **dos ejes**: material arriba, tipo debajo. Los chips salen de los
+propios documentos, asi que al anadir un material nuevo su filtro aparece solo.
+La fila de tipos se oculta cuando el material solo tiene uno.
 
-### Los planos venian rotados
+El peso y el numero de paginas de cada ficha **se generan desde el propio PDF**,
+no se escriben a mano, asi que no se pueden desincronizar del archivo.
+
+### Los planos de aluminio venian rotados
 
 Paneles y portones (19 de 26) abrian de lado: el dibujo estaba girado 90 grados
 dentro de una pagina vertical. Se corrigio con `/Rotate` sobre la pagina, que
@@ -125,6 +128,7 @@ Los postes ya venian bien y no se tocaron.
 
 1. Dejar los PDF en `assets/specs/` y en `wordpress-theme/theme-src/assets/specs/`
 2. Anadir la entrada al array `docs` de `SpecsLibrary` en `components/page-warranty.jsx`
+   (campos: `mat`, `cat`, `title`, `sub`, `meta`, `file`)
 3. Regenerar el tema
 
 Los PDF viajan **dentro del zip** (como el catalogo), porque la URL de una
