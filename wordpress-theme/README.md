@@ -1,4 +1,4 @@
-# Western Fence Supply — Tema de WordPress (`wfs-site-4.9.0.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-4.10.0.zip`)
 
 Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
 componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
@@ -40,7 +40,7 @@ WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
 ## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube `wfs-site-4.9.0.zip` → **Instalar ahora** → **Activar**
+2. Sube `wfs-site-4.10.0.zip` → **Instalar ahora** → **Activar**
 3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
    (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 
@@ -95,6 +95,40 @@ Time of Submission
 8:15 am EDT
 _________________________________________________________________________
 ```
+
+## Fichas tecnicas (/specs/)
+
+La biblioteca estaba **sin configurar**: 14 fichas inventadas, con tamanos y
+fechas de revision falsos, y todas con `href="#"`. No descargaba nada.
+
+Ahora sirve **26 documentos reales de aluminio**, en `assets/specs/`:
+
+| Familia | Docs |
+|---|---|
+| Paneles | 7 |
+| Portones | 12 |
+| Postes | 6 |
+| Set completo (6 paginas) | 1 |
+
+El titulo, la medida, el peso y el numero de paginas de cada ficha **se generan
+desde el propio PDF**, no se escriben a mano, asi que no se pueden
+desincronizar del archivo.
+
+### Los planos venian rotados
+
+Paneles y portones (19 de 26) abrian de lado: el dibujo estaba girado 90 grados
+dentro de una pagina vertical. Se corrigio con `/Rotate` sobre la pagina, que
+solo cambia la orientacion de visualizacion, sin tocar el dibujo ni las cotas.
+Los postes ya venian bien y no se tocaron.
+
+### Anadir mas materiales
+
+1. Dejar los PDF en `assets/specs/` y en `wordpress-theme/theme-src/assets/specs/`
+2. Anadir la entrada al array `docs` de `SpecsLibrary` en `components/page-warranty.jsx`
+3. Regenerar el tema
+
+Los PDF viajan **dentro del zip** (como el catalogo), porque la URL de una
+descarga queda a la vista y no debe depender del preview de GitHub.
 
 ## Odoo CRM
 

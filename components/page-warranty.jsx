@@ -495,13 +495,41 @@ const SpecsHero = () => {
 const SpecsLibrary = () => {
   const t = useT();
   const [filter, setFilter] = React.useState('All');
+  /* Fichas tecnicas reales, generadas desde los PDF de assets/specs.
+     Tamano y numero de paginas salen del archivo, no se escriben a mano. */
   const docs = [
-    // Fences
-    { cat: 'Fences', title: 'Vinyl Privacy + Picket Profiles', meta: 'PDF · 1.1 MB · 24 pages', rev: 'Rev. 2026.02' }, { cat: 'Fences', title: 'Aluminum 3 / 4 / 5 Rail Systems', meta: 'PDF · 980 KB · 18 pages', rev: 'Rev. 2026.01' }, { cat: 'Fences', title: 'Chain Link, Gauges + Mesh Chart', meta: 'PDF · 620 KB · 8 pages', rev: 'Rev. 2025.11' }, { cat: 'Fences', title: 'DuraFence, Metal Board Privacy', meta: 'PDF · 1.4 MB · 22 pages', rev: 'Rev. 2025.12' }, { cat: 'Fences', title: 'EC Fence, Exposure C Wind Load', meta: 'PDF · 1.2 MB · 16 pages', rev: 'Rev. 2026.01', isNew: true }, // Gates
-    { cat: 'Gates', title: 'Single + Double Swing Gates', meta: 'PDF · 740 KB · 12 pages', rev: 'Rev. 2025.10' }, { cat: 'Gates', title: 'Sliding + Cantilever Gates', meta: 'PDF · 980 KB · 18 pages', rev: 'Rev. 2025.12' }, { cat: 'Gates', title: 'Industrial Rolling Gates', meta: 'PDF · 820 KB · 14 pages', rev: 'Rev. 2025.10' }, { cat: 'Gates', title: 'Gate Hardware + Latch Catalog', meta: 'PDF · 540 KB · 10 pages', rev: 'Rev. 2025.09' }, // Code
-    { cat: 'Code', title: 'Florida Pool Code, Profile Sheet', meta: 'PDF · 1.6 MB · 20 pages', rev: 'Rev. 2026.01' }, { cat: 'Code', title: 'HVHZ Wind-Load Letter (Miami-Dade)', meta: 'PDF · 320 KB · 4 pages', rev: 'Rev. 2026.01' }, { cat: 'Code', title: 'NEC Bonding for Metallic Fences', meta: 'PDF · 280 KB · 4 pages', rev: 'Rev. 2025.08' }, // Finishes
-    { cat: 'Finishes', title: 'Powder-coat Color Library', meta: 'PDF · 1.8 MB · 32 pages', rev: 'Rev. 2026.01' }, { cat: 'Finishes', title: 'PVC Color Chart, Vinyl-coated', meta: 'PDF · 460 KB · 4 pages', rev: 'Rev. 2025.11' }, ];
-  const cats = ['All', 'Fences', 'Gates', 'Code', 'Finishes'];
+      /* Panels */
+      { cat: 'Panel', title: 'Commercial 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high", meta: 'PDF · 129 KB', file: 'alum-4ft-com-2rail-smooth-bottom-3in-panel.pdf' },
+      { cat: 'Panel', title: 'Commercial 3-Rail Rake Bottom', sub: "6' high", meta: 'PDF · 128 KB', file: 'alum-6ft-com-3rail-rake-bottom-panel.pdf' },
+      { cat: 'Panel', title: 'Residential 2-Rail Smooth Bottom', sub: "4' high", meta: 'PDF · 127 KB', file: 'alum-4ft-res-2rail-smooth-bottom-panel.pdf' },
+      { cat: 'Panel', title: 'Residential 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high", meta: 'PDF · 128 KB', file: 'alum-4ft-res-2rail-smooth-bottom-3in-panel.pdf' },
+      { cat: 'Panel', title: 'Residential 3-Rail Puppy Picket', sub: "4' high", meta: 'PDF · 137 KB', file: 'alum-4ft-res-3rail-puppy-picket-panel.pdf' },
+      { cat: 'Panel', title: 'Residential 3-Rail Rake Bottom', sub: "4' high", meta: 'PDF · 130 KB', file: 'alum-4ft-res-3rail-rake-bottom-panel.pdf' },
+      { cat: 'Panel', title: 'Residential 3-Rail Rake Bottom', sub: "5' high", meta: 'PDF · 130 KB', file: 'alum-5ft-res-3rail-rake-bottom-panel.pdf' },
+      /* Gates */
+      { cat: 'Gate', title: 'Commercial 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high x 4' wide", meta: 'PDF · 132 KB', file: 'alum-4x4-com-2rail-smooth-bottom-3in-gate.pdf' },
+      { cat: 'Gate', title: 'Commercial 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high x 5' wide", meta: 'PDF · 131 KB', file: 'alum-4x5-com-2rail-smooth-bottom-3in-gate.pdf' },
+      { cat: 'Gate', title: 'Commercial 3-Rail Rake Bottom', sub: "6' high x 4' wide", meta: 'PDF · 129 KB', file: 'alum-6x4-com-3rail-rake-bottom-gate.pdf' },
+      { cat: 'Gate', title: 'Commercial 3-Rail Rake Bottom', sub: "6' high x 5' wide", meta: 'PDF · 129 KB', file: 'alum-6x5-com-3rail-rake-bottom-gate.pdf' },
+      { cat: 'Gate', title: 'Residential 2-Rail Smooth Bottom', sub: "4' high x 4' wide", meta: 'PDF · 132 KB', file: 'alum-4x4-res-2rail-smooth-bottom-gate.pdf' },
+      { cat: 'Gate', title: 'Residential 2-Rail Smooth Bottom', sub: "4' high x 5' wide", meta: 'PDF · 130 KB', file: 'alum-4x5-res-2rail-smooth-bottom-gate.pdf' },
+      { cat: 'Gate', title: 'Residential 3-Rail Puppy Picket', sub: "4' high x 4' wide", meta: 'PDF · 136 KB', file: 'alum-4x4-res-3rail-puppy-picket-gate.pdf' },
+      { cat: 'Gate', title: 'Residential 3-Rail Puppy Picket', sub: "4' high x 5' wide", meta: 'PDF · 134 KB', file: 'alum-4x5-res-3rail-puppy-picket-gate.pdf' },
+      { cat: 'Gate', title: 'Residential 3-Rail Rake Bottom', sub: "4' high x 4' wide", meta: 'PDF · 134 KB', file: 'alum-4x4-res-3rail-rake-bottom-gate.pdf' },
+      { cat: 'Gate', title: 'Residential 3-Rail Rake Bottom', sub: "4' high x 5' wide", meta: 'PDF · 133 KB', file: 'alum-4x5-res-3rail-rake-bottom-gate.pdf' },
+      { cat: 'Gate', title: 'Residential 3-Rail Rake Bottom', sub: "5' high x 4' wide", meta: 'PDF · 133 KB', file: 'alum-5x4-res-3rail-rake-bottom-gate.pdf' },
+      { cat: 'Gate', title: 'Residential 3-Rail Rake Bottom', sub: "5' high x 5' wide", meta: 'PDF · 133 KB', file: 'alum-5x5-res-3rail-rake-bottom-gate.pdf' },
+      /* Posts */
+      { cat: 'Post', title: 'Commercial 2-Rail Smooth Bottom, 3" Spacing', sub: "4' high", meta: 'PDF · 140 KB', file: 'alum-4ft-com-2rail-smooth-bottom-3in-post.pdf' },
+      { cat: 'Post', title: 'Commercial 3-Rail Rake Bottom', sub: "6' high", meta: 'PDF · 137 KB', file: 'alum-6ft-com-3rail-rake-bottom-post.pdf' },
+      { cat: 'Post', title: 'Residential 2-Rail Smooth Bottom', sub: "4' high", meta: 'PDF · 138 KB', file: 'alum-4ft-res-2rail-smooth-bottom-post.pdf' },
+      { cat: 'Post', title: 'Residential 3-Rail Puppy Picket', sub: "4' high", meta: 'PDF · 140 KB', file: 'alum-4ft-res-3rail-puppy-picket-post.pdf' },
+      { cat: 'Post', title: 'Residential 3-Rail Rake Bottom', sub: "4' high", meta: 'PDF · 143 KB', file: 'alum-4ft-res-3rail-rake-bottom-post.pdf' },
+      { cat: 'Post', title: 'Residential 3-Rail Rake Bottom', sub: "5' high", meta: 'PDF · 138 KB', file: 'alum-5ft-res-3rail-rake-bottom-post.pdf' },
+      /* Sets */
+      { cat: 'Set', title: 'Aluminum Technical Drawings, Full Set', sub: "Every panel profile, residential and commercial", meta: 'PDF · 1.6 MB, 6 pages', file: 'alum-technical-drawings-full-set.pdf' },
+    ];
+  const cats = ['All', 'Panel', 'Gate', 'Post', 'Set'];
   const visible = filter === 'All' ? docs : docs.filter(d => d.cat === filter);
 
   return (
@@ -512,7 +540,7 @@ const SpecsLibrary = () => {
           title={t('The full library,', 'La biblioteca completa,')}
           accent={t('filtered or browsed.', 'filtrada o explorada.')}
           sub={t(
-            'Pick a category or scan the whole list. Every doc carries a revision date, older revs available on request.', 'Elige una categoría o explora la lista completa. Cada documento tiene fecha de revisión, versiones anteriores disponibles a solicitud.'
+            'Aluminum panel, gate and post drawings, with picket, channel and post dimensions for permit and HOA review. More materials are being added.', 'Planos de paneles, portones y postes de aluminio, con medidas de pickets, canales y postes para permisos y revisión de HOA. Estamos añadiendo más materiales.'
           )}
         />
         {/* Filter chips */}
@@ -520,7 +548,7 @@ const SpecsLibrary = () => {
           {cats.map(c => {
             const active = filter === c;
             const catLabels = {
-              All: { EN: 'All', ES: 'Todos' }, Fences: { EN: 'Fences', ES: 'Cercas' }, Gates: { EN: 'Gates', ES: 'Portones' }, Code: { EN: 'Code', ES: 'Código' }, Finishes: { EN: 'Finishes', ES: 'Acabados' }, };
+              All: { EN: 'All', ES: 'Todos' }, Panel: { EN: 'Panels', ES: 'Paneles' }, Gate: { EN: 'Gates', ES: 'Portones' }, Post: { EN: 'Posts', ES: 'Postes' }, Set: { EN: 'Full set', ES: 'Set completo' }, };
             return (
               <button key={c} onClick={() => setFilter(c)} className="mono" style={{
                 padding: '10px 18px', background: active ? 'var(--ink)' : 'var(--white)', color: active ? 'var(--white)' : 'var(--ink)', border: '1.5px solid var(--ink)', fontSize: 14, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', cursor: 'pointer', transition: 'all 0.18s ease', }}>{t(catLabels[c])}</button>
@@ -532,8 +560,7 @@ const SpecsLibrary = () => {
         {/* Downloads grid */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 14 }}>
           {visible.map((d, i) => (
-            <a key={d.title} href="#"
-              onClick={e => e.preventDefault()}
+            <a key={d.file} href={'assets/specs/' + d.file} download target="_blank" rel="noopener"
               style={{
                 display: 'flex', alignItems: 'center', gap: 18, padding: '22px 24px', border: '1.5px solid var(--ink)', background: 'var(--white)', color: 'var(--ink)', position: 'relative', transition: 'transform 0.18s ease, box-shadow 0.18s ease', }}
               onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '6px 6px 0 var(--tangerine)'; }}
@@ -560,9 +587,9 @@ const SpecsLibrary = () => {
                   fontSize: 16, fontWeight: 600, color: 'var(--ink)', lineHeight: 1.35, marginBottom: 6, }}>{d.title}</div>
                 <div style={{
                   display: 'flex', gap: 12, flexWrap: 'wrap', fontFamily: 'var(--mono)', fontSize: 13.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 700, }}>
-                  <span>{d.meta}</span>
+                  <span>{d.sub}</span>
                   <span>·</span>
-                  <span>{d.rev}</span>
+                  <span>{d.meta}</span>
                 </div>
               </div>
               <span style={{
