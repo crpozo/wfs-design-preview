@@ -1,0 +1,153 @@
+:root {
+  /* Primarios */
+  --laser-blue:  #2e59c1;
+  --indigo-blue: #263166;
+  --alice-blue:  #dbe9ee;
+  /* Secundarios */
+  --blue-ice:    #97baff;
+  --glaucous:    #6381d6;
+  --silver:      #c1c1c1;
+  --charcoal:    #565656;
+  /* Terciarios (acento) */
+  --tangerine:   #ff7133;
+  --coral:       #ffa180;
+  /* Neutros */
+  --white:       #ffffff;
+  --almond:      #e5d8ca;
+  --ink:         #263167;
+
+  --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono:    var(--sans);
+  --body:    var(--sans);
+
+  --radius:    14px;
+  --radius-lg: 22px;
+  --max:       1440px;
+  --pad:       clamp(20px, 4vw, 56px);
+}
+
+
+.display {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 125;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  text-transform: capitalize;
+  line-height: 0.92;
+}
+.display-extended {
+  font-family: var(--display);
+  font-variation-settings: 'wdth' 125;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  line-height: 0.9;
+}
+
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  font-weight: 700;
+  letter-spacing: 0.22em;   /* 0.18em en versiones más anchas */
+  text-transform: uppercase;
+  color: var(--tangerine);  /* o --charcoal si es metadato */
+}
+
+
+.container {
+  max-width: var(--max);   /* 1440px */
+  margin: 0 auto;
+  padding: 0 var(--pad);   /* clamp(20px, 4vw, 56px) */
+}
+
+
+@media (max-width: 1024px) { }
+@media (max-width:  900px) { }   /* el principal: 2 col -> 1 */
+@media (max-width:  640px) { }   /* móvil */
+
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px;
+  border-radius: 2px;        /* casi recto, a propósito */
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 16.5px;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: transform .15s ease, background .2s ease, color .2s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+
+.btn-primary { background: var(--tangerine); color: var(--ink); }
+.btn-dark    { background: var(--ink);       color: #fff; }
+.btn-dark:hover { background: var(--indigo-blue); }
+.btn-light   { background: #fff;             color: var(--ink); }
+
+/* Fantasma: hereda el color del contexto, se invierte al pasar */
+.btn-ghost   { color: inherit; border: 1px solid currentColor; padding: 14px 20px; }
+.btn-ghost:hover { background: currentColor; color: #fff !important; }
+.btn-ghost.on-dark:hover { color: var(--ink) !important; }
+
+
+.card {
+  background: #fff;
+  border: 1.5px solid var(--ink);
+  padding: 22px 24px;
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 6px 6px 0 var(--tangerine);
+}
+
+
+.section-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: end;
+  padding-bottom: 24px;
+  margin-bottom: 28px;
+  border-bottom: 1px solid rgba(0,16,17,.12);
+}
+.section-header h2 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 800;
+}
+.section-header .accent { color: var(--tangerine); }
+.section-header .right  { display: flex; flex-direction: column; align-items: flex-end; gap: 18px; }
+.section-header p       { margin: 0; max-width: 380px; font-size: 15.5px; line-height: 1.55; color: var(--charcoal); text-align: right; }
+.section-header .more   {
+  font-family: var(--mono); font-size: 14px; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 4px;
+}
+@media (max-width: 900px) {
+  .section-header { grid-template-columns: 1fr; }
+  .section-header .right { align-items: flex-start; }
+  .section-header p { text-align: left; }
+}
+
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, h5, h6 { font-family: var(--display); font-variation-settings: 'wdth' 125; }
+p { font-family: var(--body); line-height: 1.55; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+img, video { max-width: 100%; display: block; }
