@@ -29,13 +29,15 @@
   .section-header p { font-size: 14.5px; }
 
   /* Paso 1: cinco tarjetas que llenan el alto disponible */
-  .grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; height:100%; }
-  .grid-5 .pick { display:flex; flex-direction:column; min-height:0; }
-  .grid-5 .media { flex:1; min-height:0; aspect-ratio:auto; }
+  /* Las tarjetas miden por contenido y se alinean arriba: con 'contain' el
+     panel es pequeno, y estirarlas dejaba 400px de blanco por tarjeta. */
+  .grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; align-items:start; }
+  .grid-5 .pick { display:flex; flex-direction:column; padding:0; }
+  .grid-5 .media { aspect-ratio:4/3; }
 
   /* Paso 2: foto a un lado, datos al otro, en vez de apilado */
   .detail { display:grid; grid-template-columns:0.9fr 1.1fr; gap:28px; height:100%; min-height:0; }
-  .detail .media { height:100%; aspect-ratio:auto; }
+  .detail .media--product { aspect-ratio: 4/3; }
   .detail__side { min-height:0; overflow:auto; }
 
   /* Paso 3 y resumen */
@@ -99,12 +101,26 @@
    garantia y las descripciones SEO). Nada inventado. */
 /* Las mismas fotos que usa el sitio (FENCE_IMG en components/shared.jsx). */
 var IMG = {
-  vinyl:        '../assets/PVC.webp',
-  aluminum:     '../assets/ALUM.webp',
-  'chain-link': '../assets/CHAINLINK.webp',
-  metal:        '../assets/MET.webp',
-  ecfence:      '../assets/ECFENCE.webp'
+  vinyl:        '../assets/compare/vinyl.webp',
+  aluminum:     '../assets/compare/aluminum.webp',
+  'chain-link': '../assets/compare/chainlink.webp',
+  metal:        '../assets/compare/metal.webp',
+  ecfence:      '../assets/profiles/ecfence-bronze.jpg'
 };
+
+/* Una foto por opcion concreta: al cambiar el estilo, cambia el panel.
+   Los archivos ya existen en assets/profiles, no hay nada que producir. */
+var OPTION_IMG = {
+  vinyl:        { 'Privacy':'vinyl-privacy', 'Picket':'vinyl-picket', 'Ranch rail':'vinyl-ranch-rail' },
+  aluminum:     { 'Smooth bottom':'aluminum-2-rail-smooth', 'Rake bottom':'aluminum-3-rail-rake', 'Puppy picket':'aluminum-puppy-picket' },
+  'chain-link': { 'Galvanized':'chainlink-galvanized', 'Black PVC-coated':'chainlink-black', 'Green PVC-coated':'chainlink-green' },
+  metal:        { 'Modern':'metal-modern', 'Original':'metal-original', 'P1':'metal-p1' },
+  ecfence:      { 'Bronze':'ecfence-bronze', 'White':'ecfence-white' }
+};
+function optionImg(m) {
+  var f = OPTION_IMG[m.id] && OPTION_IMG[m.id][state.option];
+  return f ? '../assets/profiles/' + f + '.jpg' : IMG[m.id];
+}
 
 var MATERIALS = [
   { id:'vinyl', name:'Vinyl / PVC', tag:'Catalyst-extruded PVC',
@@ -188,7 +204,7 @@ function render() {
     $('sub').textContent = 'Pick a system and we show what it is good at, what it is not, and what the warranty covers.';
     $('body').innerHTML = '<div class="grid-5">' + MATERIALS.map(function (x, i) {
       return '<button class="pick" data-mat="' + x.id + '" aria-pressed="' + (state.mat === x.id) + '" style="padding:0">' +
-        '<span class="media"><img src="' + IMG[x.id] + '" alt="' + esc(x.name) + ' fence" decoding="async"' +
+        '<span class="media media--product"><img src="' + IMG[x.id] + '" alt="' + esc(x.name) + ' fence panel" decoding="async"' +
           (i === 0 ? ' fetchpriority="high"' : '') + '></span>' +
         '<span style="display:block;padding:22px">' +
         '<span class="kicker">' + esc(x.tag) + '</span>' +
@@ -204,12 +220,14 @@ function render() {
     $('sub').textContent = 'These are the trade-offs before you commit. Then pick your build.';
     $('body').innerHTML =
       '<div class="detail">' +
-      '<div class="media">' +
-        '<img src="' + IMG[m.id] + '" alt="' + esc(m.name) + ' fence" decoding="async">' +
-        '<div class="media__scrim"></div>' +
-        '<div style="position:absolute;left:22px;bottom:20px;color:#fff">' +
-          '<span class="kicker" style="color:var(--tangerine)">' + esc(m.tag) + '</span>' +
-          '<div class="display-extended" style="font-size:clamp(22px,2.2vw,30px);margin-top:6px">' + esc(m.name) + '</div>' +
+      '<div>' +
+        '<div class="media media--product" style="border:1.5px solid var(--ink)">' +
+          '<img src="' + optionImg(m) + '" alt="' + esc(m.name) + ' ' + esc(state.option || '') + ' panel" decoding="async">' +
+        '</div>' +
+        '<div style="margin-top:12px">' +
+          '<span class="kicker">' + esc(m.tag) + '</span>' +
+          '<div class="display" style="font-size:clamp(20px,2vw,26px);margin-top:4px">' +
+            esc(state.option || m.name) + '</div>' +
         '</div>' +
       '</div>' +
       '<div class="detail__side">' +

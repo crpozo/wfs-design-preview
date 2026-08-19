@@ -321,6 +321,16 @@ en este sistema "elegido" y "señalado" se ven igual.
 
 ### Imágenes
 
+Hay **dos tipos de imagen** en el sitio y no se tratan igual:
+
+| | Uso | `object-fit` | Fondo |
+|---|---|---|---|
+| Ambiental | Foto de una instalación, la cerca en contexto | `cover` | recorta |
+| Producto | Panel recortado sobre blanco, la pieza es el sujeto | `contain` | blanco |
+
+Confundirlas es el error típico: recortar un panel de producto le corta los
+postes, y dejar una foto ambiental en `contain` la deja flotando en blanco.
+
 ```css
 .media {
   display: block;          /* si lo pones en un <span> y omites esto, colapsa a 0 */
@@ -338,6 +348,11 @@ en este sistema "elegido" y "señalado" se ven igual.
 }
 .pick:hover .media img { transform: scale(1.1); }
 .media--wide { aspect-ratio: 16 / 9; }
+
+/* Producto: la pieza entera, sin recortar */
+.media--product { aspect-ratio: 4 / 3; background: #fff; }
+.media--product img { object-fit: contain; transform: none; padding: 8px; }
+
 .media__scrim {                      /* solo si va texto blanco encima */
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(38,49,103,0) 40%, rgba(38,49,103,.72) 100%);

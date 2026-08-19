@@ -248,3 +248,17 @@ img, video { max-width: 100%; display: block; }
 .steps .dot { background: none; border: none; padding: 0; cursor: pointer; }
 .steps .dot:disabled { cursor: not-allowed; }
 .steps .dot:not(:disabled):hover { color: var(--tangerine); }
+
+/* Variante producto: panel recortado sobre blanco, sin recortar nada.
+   'contain' en vez de 'cover' porque aqui la pieza es el sujeto, no el fondo. */
+.media--product {
+  aspect-ratio: 4 / 3;
+  background: #fff;
+}
+.media--product img {
+  object-fit: contain;
+  transform: none;
+  padding: 8px;
+}
+.pick:hover .media--product img,
+.pick[aria-pressed="true"] .media--product img { transform: scale(1.04); }
