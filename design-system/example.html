@@ -1,60 +1,248 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Prueba del sistema de diseño</title>
+<title>WFS — Fence selector (design system demo)</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Inter:wght@300;400;500;600;700&display=swap">
 <link rel="stylesheet" href="wfs-design-system.css">
-</head><body>
+<style>
+  /* Solo maquetacion del demo. Todo lo visual sale del sistema de diseño. */
+  .topbar { background: var(--ink); color:#fff; padding: 14px 0; }
+  .topbar .container { display:flex; justify-content:space-between; align-items:center; gap:20px; }
+  .grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+  .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:20px 28px; }
+  .row    { display:flex; gap:10px; flex-wrap:wrap; }
+  .spec   { display:grid; grid-template-columns:150px 1fr; gap:6px 20px; padding:14px 0;
+            border-bottom:1px solid rgba(0,16,17,.10); font-size:15.5px; line-height:1.5; }
+  .spec dt { font-family:var(--mono); font-size:13px; font-weight:700; letter-spacing:.18em;
+             text-transform:uppercase; color:var(--charcoal); }
+  .spec dd { margin:0; }
+  .nav { display:flex; justify-content:space-between; gap:12px; margin-top:38px; }
+  @media (max-width: 900px){ .grid-5,.grid-2{grid-template-columns:1fr} .spec{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
 
-<section style="background:#fff; padding:120px 0">
+<div class="topbar">
   <div class="container">
+    <strong class="display-extended" style="font-size:18px">WESTERN FENCE SUPPLY</strong>
+    <span class="kicker" style="color:var(--blue-ice)">DESIGN SYSTEM · LIVE DEMO</span>
+  </div>
+</div>
+
+<section style="background:#fff; padding:80px 0 120px">
+  <div class="container">
+
+    <div class="steps" id="steps"></div>
+
     <div class="section-header">
-      <h2 class="display">The Full Library,<br><span class="accent">Filtered Or Browsed.</span></h2>
-      <div class="right">
-        <p>Panel, gate and post drawings plus gate hardware, with the dimensions and load data you need for permit and HOA review.</p>
-        <a class="more" href="#">View all <span>&rarr;</span></a>
-      </div>
+      <h2 class="display" id="title"></h2>
+      <div class="right"><p id="sub"></p></div>
     </div>
 
-    <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:28px">
-      <button class="btn btn-dark" style="border-radius:0">ALL</button>
-      <button class="btn" style="border:1.5px solid var(--ink); border-radius:0">ALUMINUM</button>
-      <button class="btn" style="border:1.5px solid var(--ink); border-radius:0">CHAIN LINK</button>
-    </div>
+    <div id="body"></div>
 
-    <div style="display:grid; grid-template-columns:repeat(2,1fr); gap:14px">
-      <article class="card">
-        <div class="kicker">PANEL</div>
-        <div style="font-size:16px;font-weight:600;margin:6px 0">Residential 3-Rail Rake Bottom</div>
-        <div class="kicker" style="color:var(--charcoal);letter-spacing:.14em">4' HIGH &middot; PDF &middot; 130 KB</div>
-      </article>
-      <article class="card">
-        <div class="kicker">GATE</div>
-        <div style="font-size:16px;font-weight:600;margin:6px 0">Cantilever Gate, Truss Detail</div>
-        <div class="kicker" style="color:var(--charcoal);letter-spacing:.14em">CHAIN LINK &middot; PDF &middot; 342 KB</div>
-      </article>
-    </div>
-
-    <div style="margin-top:34px; display:flex; gap:12px">
-      <a class="btn btn-primary" href="#">Request a Quote</a>
-      <a class="btn btn-ghost" href="#">Call (239) 689-5496</a>
+    <div class="nav">
+      <button class="btn btn-ghost" id="back" style="border-radius:2px">← Back</button>
+      <button class="btn btn-primary" id="next" style="border-radius:2px">Continue →</button>
     </div>
   </div>
 </section>
 
-<section style="background:var(--ink); color:#fff; padding:120px 0">
-  <div class="container">
-    <div class="kicker">FACTORY DIRECT FENCE SUPPLY</div>
-    <h2 class="display-extended" style="font-size:clamp(34px,4.2vw,56px);margin:14px 0 22px;color:#fff">
-      The Best Place To Buy<br><span style="color:var(--blue-ice)">Fences In Southwest Florida</span>
-    </h2>
-    <p style="color:rgba(255,255,255,.85);max-width:480px">We're a one stop fence supply shop selling superior fences and gates at wholesale prices.</p>
-    <div style="margin-top:30px; display:flex; gap:12px">
-      <a class="btn btn-primary" href="#">I'm a Homeowner</a>
-      <a class="btn btn-ghost on-dark" href="#">I'm a Contractor</a>
-    </div>
-  </div>
-</section>
+<script>
+/* Datos reales, tomados del copy del propio sitio (page-edu.jsx, la tabla de
+   garantia y las descripciones SEO). Nada inventado. */
+var MATERIALS = [
+  { id:'vinyl', name:'Vinyl / PVC', tag:'Catalyst-extruded PVC',
+    bestFor:'Backyard privacy, residential subdivisions',
+    strength:'Low-upkeep privacy, no painting, made for Florida sun',
+    caveat:'Wind performance varies by profile, ask for specs for your area',
+    warranty:'Lifetime structural · Lifetime UV',
+    optionLabel:'Profile', options:['Privacy','Picket','Ranch rail'],
+    heights:["4'","5'","6'"] },
 
-</body></html>
+  { id:'aluminum', name:'Aluminum', tag:'Powder-coat · 6063-T6',
+    bestFor:'Pool enclosures, ornamental perimeters',
+    strength:'Pool-code compliant options, clean ornamental look',
+    caveat:'Open picket, limited privacy by design',
+    warranty:'Lifetime structural · 20-year finish',
+    optionLabel:'Bottom style', options:['Smooth bottom','Rake bottom','Puppy picket'],
+    heights:["4'","5'","6'"] },
+
+  { id:'chain-link', name:'Chain Link', tag:'Galvanized + vinyl-coated',
+    bestFor:'Security, sports fields, industrial perimeters',
+    strength:'Budget-friendly, parts sold individually, strong stock availability',
+    caveat:'Industrial look, not for ornamental front yards',
+    warranty:'Rust-thru · 15-year color on PVC-coated',
+    optionLabel:'Finish', options:['Galvanized','Black PVC-coated','Green PVC-coated'],
+    heights:["4'","5'","6'","8'"] },
+
+  { id:'metal', name:'Metal / DuraFence', tag:'Aluminum board privacy',
+    bestFor:'Modern privacy, residential and commercial',
+    strength:'Full privacy board look in Modern, Original and P1 styles',
+    caveat:'Lead time varies by color and quantity',
+    warranty:'20 years structural · 10-year finish',
+    optionLabel:'Style', options:['Modern','Original','P1'],
+    heights:["6'","8'"] },
+
+  { id:'ecfence', name:'EC Fence', tag:'Self-mating galvanized steel',
+    bestFor:'Coastal properties, commercial perimeters, modern residential',
+    strength:'Galvanized steel privacy panels built for salt air',
+    caveat:'Quote-based pricing, call for run-specific cost',
+    warranty:'Lifetime structural · 20-year finish',
+    optionLabel:'Color', options:['Bronze','White'],
+    heights:["6'"] }
+];
+
+var state = { step: 0, mat: null, option: null, height: null,
+              feet:'', gates:'', zip:'', when:'', name:'', email:'', phone:'' };
+
+var STEPS = ['Fence', 'Details', 'Your project', 'Summary'];
+var $ = function (id) { return document.getElementById(id); };
+var mat = function () { return MATERIALS.filter(function(m){ return m.id === state.mat; })[0]; };
+
+function renderSteps() {
+  var h = '';
+  STEPS.forEach(function (s, i) {
+    if (i) h += '<span class="bar' + (i <= state.step ? ' on' : '') + '"></span>';
+    h += '<span class="dot' + (i <= state.step ? ' on' : '') + '">' + (i+1) + '. ' + s + '</span>';
+  });
+  $('steps').innerHTML = h;
+}
+
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
+  return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); }
+
+function render() {
+  renderSteps();
+  var m = mat();
+
+  if (state.step === 0) {
+    $('title').innerHTML = 'Start With The<br><span class="accent">Material.</span>';
+    $('sub').textContent = 'Pick a system and we show what it is good at, what it is not, and what the warranty covers.';
+    $('body').innerHTML = '<div class="grid-5">' + MATERIALS.map(function (x) {
+      return '<button class="pick" data-mat="' + x.id + '" aria-pressed="' + (state.mat === x.id) + '">' +
+        '<span class="kicker">' + esc(x.tag) + '</span>' +
+        '<div style="font-size:19px;font-weight:700;margin:10px 0 8px;line-height:1.2">' + esc(x.name) + '</div>' +
+        '<div style="font-size:14.5px;color:var(--charcoal);line-height:1.5">' + esc(x.bestFor) + '</div>' +
+      '</button>';
+    }).join('') + '</div>';
+  }
+
+  else if (state.step === 1) {
+    $('title').innerHTML = esc(m.name) + '<br><span class="accent">At A Glance.</span>';
+    $('sub').textContent = 'These are the trade-offs before you commit. Then pick your build.';
+    $('body').innerHTML =
+      '<dl style="margin:0 0 36px">' +
+        row('Best for', m.bestFor) +
+        row('Strength', m.strength) +
+        row('Trade-off', m.caveat) +
+        row('Warranty', m.warranty) +
+      '</dl>' +
+      '<div style="margin-bottom:26px">' +
+        '<span class="kicker" style="color:var(--charcoal)">' + esc(m.optionLabel) + '</span>' +
+        '<div class="row" style="margin-top:12px">' + m.options.map(function (o) {
+          return '<button class="choice" data-opt="' + esc(o) + '" aria-pressed="' + (state.option === o) + '">' + esc(o) + '</button>';
+        }).join('') + '</div>' +
+      '</div>' +
+      '<div>' +
+        '<span class="kicker" style="color:var(--charcoal)">Height</span>' +
+        '<div class="row" style="margin-top:12px">' + m.heights.map(function (hgt) {
+          return '<button class="choice" data-h="' + esc(hgt) + '" aria-pressed="' + (state.height === hgt) + '">' + esc(hgt) + '</button>';
+        }).join('') + '</div>' +
+      '</div>';
+  }
+
+  else if (state.step === 2) {
+    $('title').innerHTML = 'Now The<br><span class="accent">Project.</span>';
+    $('sub').textContent = 'Four numbers and we can price it. Everything else we confirm by phone.';
+    $('body').innerHTML = '<div class="grid-2">' +
+      field('feet',  'Linear feet',        'number', 'e.g. 180') +
+      field('gates', 'How many gates',     'number', 'e.g. 2') +
+      field('zip',   'Project ZIP',        'text',   'e.g. 33901') +
+      select('when', 'Timeline', ['This week','2 to 4 weeks','1 to 3 months','Just pricing']) +
+      field('name',  'Name',   'text',  'Full name') +
+      field('email', 'Email',  'email', 'you@company.com') +
+      field('phone', 'Phone',  'tel',   '(239) 689-5496') +
+    '</div>';
+  }
+
+  else {
+    $('title').innerHTML = 'Ready To<br><span class="accent">Send.</span>';
+    $('sub').textContent = 'This is what a rep would receive. Nothing is submitted, it is a demo.';
+    $('body').innerHTML =
+      '<div style="background:var(--ink);color:#fff;padding:44px;box-shadow:12px 12px 0 var(--tangerine)">' +
+        '<span class="kicker" style="color:var(--tangerine)">MATERIAL QUOTE REQUEST</span>' +
+        '<div class="display-extended" style="font-size:clamp(26px,3vw,38px);margin:14px 0 26px">' +
+          esc(m.name) + ' · ' + esc(state.height || '—') +
+        '</div>' +
+        '<dl style="margin:0">' +
+          rowDark(m.optionLabel, state.option || '—') +
+          rowDark('Height', state.height || '—') +
+          rowDark('Linear feet', state.feet || '—') +
+          rowDark('Gates', state.gates || '—') +
+          rowDark('ZIP', state.zip || '—') +
+          rowDark('Timeline', state.when || '—') +
+          rowDark('Contact', [state.name, state.email, state.phone].filter(Boolean).join(' · ') || '—') +
+        '</dl>' +
+      '</div>';
+  }
+
+  $('back').style.visibility = state.step === 0 ? 'hidden' : 'visible';
+  $('next').textContent = state.step === 3 ? 'Start over' : 'Continue →';
+  $('next').disabled = !canAdvance();
+  $('next').style.opacity = canAdvance() ? '1' : '.4';
+  $('next').style.cursor = canAdvance() ? 'pointer' : 'not-allowed';
+}
+
+function row(k, v)     { return '<div class="spec"><dt>' + esc(k) + '</dt><dd>' + esc(v) + '</dd></div>'; }
+function rowDark(k, v) { return '<div class="spec" style="border-color:rgba(255,255,255,.18)">' +
+  '<dt style="color:var(--blue-ice)">' + esc(k) + '</dt><dd>' + esc(v) + '</dd></div>'; }
+function field(id, label, type, ph) {
+  return '<div class="field"><label for="f-' + id + '">' + esc(label) + '</label>' +
+    '<input id="f-' + id + '" type="' + type + '" placeholder="' + esc(ph) + '" value="' + esc(state[id]) + '"></div>';
+}
+function select(id, label, opts) {
+  return '<div class="field"><label for="f-' + id + '">' + esc(label) + '</label><select id="f-' + id + '">' +
+    '<option value="">Select…</option>' +
+    opts.map(function (o) { return '<option' + (state[id] === o ? ' selected' : '') + '>' + esc(o) + '</option>'; }).join('') +
+    '</select></div>';
+}
+function canAdvance() {
+  if (state.step === 0) return !!state.mat;
+  if (state.step === 1) return !!state.option && !!state.height;
+  if (state.step === 2) return !!state.feet && !!state.zip && !!state.name;
+  return true;
+}
+
+document.addEventListener('click', function (e) {
+  var p = e.target.closest('[data-mat]');
+  if (p) { if (state.mat !== p.dataset.mat) { state.option = null; state.height = null; }
+           state.mat = p.dataset.mat; return render(); }
+  var o = e.target.closest('[data-opt]'); if (o) { state.option = o.dataset.opt; return render(); }
+  var h = e.target.closest('[data-h]');   if (h) { state.height = h.dataset.h;   return render(); }
+});
+document.addEventListener('input', function (e) {
+  var m = (e.target.id || '').match(/^f-(.+)$/);
+  if (m) { state[m[1]] = e.target.value; $('next').disabled = !canAdvance();
+           $('next').style.opacity = canAdvance() ? '1' : '.4'; }
+});
+document.addEventListener('change', function (e) {
+  var m = (e.target.id || '').match(/^f-(.+)$/);
+  if (m && e.target.tagName === 'SELECT') { state[m[1]] = e.target.value; render(); }
+});
+$('next').addEventListener('click', function () {
+  if (state.step === 3) { state = { step:0, mat:null, option:null, height:null,
+    feet:'', gates:'', zip:'', when:'', name:'', email:'', phone:'' }; }
+  else if (canAdvance()) { state.step++; }
+  render(); window.scrollTo(0, 0);
+});
+$('back').addEventListener('click', function () { if (state.step) state.step--; render(); window.scrollTo(0,0); });
+
+render();
+</script>
+</body>
+</html>

@@ -272,6 +272,66 @@ patrón, no un accidente: *"The Full Library," / "Filtered Or Browsed."*
 
 ---
 
+### Formularios
+
+Aquí hay una incoherencia real del sitio que conviene respetar, no "arreglar":
+**los campos sí llevan redondeo (`12px`) aunque los botones vayan a `2px`.**
+
+```css
+.field label {
+  display: block; margin-bottom: 10px;
+  font-family: var(--mono); font-size: 14.5px;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--charcoal);
+}
+.field input, .field select, .field textarea {
+  width: 100%; padding: 15px 16px;
+  border: 1px solid rgba(0,16,17,.16);
+  border-radius: 12px;
+  font-family: var(--sans); font-size: 16.5px; color: var(--ink);
+  outline: none; transition: border-color .18s ease;
+}
+.field input:focus { border-color: var(--tangerine); }
+```
+
+`font-size: 16.5px` en los campos no es estético: por debajo de 16px, Safari en
+iOS hace zoom al enfocar un input. No lo bajes.
+
+### Opciones seleccionables
+
+Dos variantes, según el peso de la decisión. El estado se marca con
+`aria-pressed`, así el CSS y el lector de pantalla dicen lo mismo.
+
+```css
+/* Chip: para elegir entre pocas opciones cortas */
+.choice { border: 1.5px solid var(--ink); background: #fff; color: var(--ink);
+  padding: 12px 18px; font-family: var(--mono); font-size: 14px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase; cursor: pointer; }
+.choice[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+/* Tarjeta: para elegir entre opciones que necesitan explicación */
+.pick { width: 100%; text-align: left; background: #fff;
+  border: 1.5px solid var(--ink); padding: 24px; cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease; }
+.pick:hover,
+.pick[aria-pressed="true"] { transform: translateY(-3px); box-shadow: 6px 6px 0 var(--tangerine); }
+```
+
+La tarjeta seleccionada usa **la misma sombra dura que el hover**. Es coherente:
+en este sistema "elegido" y "señalado" se ven igual.
+
+### Indicador de pasos
+
+```css
+.steps { display: flex; gap: 10px; align-items: center; }
+.steps .dot { font-family: var(--mono); font-size: 13px; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase; color: var(--silver); }
+.steps .dot.on { color: var(--ink); }
+.steps .bar { flex: 1; max-width: 60px; height: 2px; background: rgba(0,16,17,.12); }
+.steps .bar.on { background: var(--tangerine); }
+```
+
+---
+
 ## 6. Interacción
 
 | Elemento | Hover |
@@ -288,6 +348,12 @@ Duraciones: **`.18s`** para tarjetas, **`.15s`–`.2s`** para botones, siempre
 ---
 
 ## 7. Base para copiar
+
+> **`design-system/example.html`** es un flujo completo funcionando
+> (elegir material → ver características → responder → resumen) construido solo
+> con este CSS. Si el documento dejara de bastar, esa página dejaría de
+> parecerse al sitio y se nota enseguida.
+
 
 ```css
 *, *::before, *::after { box-sizing: border-box; }
