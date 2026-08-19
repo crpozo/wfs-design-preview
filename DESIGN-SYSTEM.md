@@ -385,6 +385,41 @@ Duraciones: **`.18s`** para tarjetas, **`.15s`–`.2s`** para botones, siempre
 
 ---
 
+### Pantalla completa, sin scroll
+
+Cuando una vista debe caber entera en el viewport (un asistente por pasos, un
+panel), manda la altura y es el contenido el que se encoge:
+
+```css
+html, body { height: 100%; }
+body { display: flex; flex-direction: column; overflow: hidden; }
+header, footer { flex: none; }
+main { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.zona-contenido { flex: 1; min-height: 0; overflow: auto; }
+```
+
+`min-height: 0` en cada nivel es lo que hace que funcione: sin él, un hijo flex
+se niega a encogerse por debajo de su contenido y el conjunto desborda.
+
+Para que una foto rellene lo que sobre en vez de imponer su alto, quítale el
+`aspect-ratio` y déjala crecer:
+
+```css
+.card { display: flex; flex-direction: column; min-height: 0; }
+.card .media { flex: 1; min-height: 0; aspect-ratio: auto; }
+```
+
+**Separa las condiciones de ancho y de alto.** Combinarlas con coma manda una
+ventana ancha y baja al diseño de móvil, que no es lo que quieres:
+
+```css
+@media (max-width: 1000px) { /* estrecha: apilar en una columna */ }
+@media (max-height: 620px)  { /* baja: mantener columnas, permitir scroll */ }
+```
+
+Y deja siempre la válvula `overflow: auto`: si de verdad no cabe, es mejor que
+se pueda hacer scroll a que el contenido quede recortado.
+
 ## 7. Base para copiar
 
 > **`design-system/example.html`** es un flujo completo funcionando

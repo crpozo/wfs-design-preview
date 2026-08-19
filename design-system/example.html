@@ -9,19 +9,61 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Inter:wght@300;400;500;600;700&display=swap">
 <link rel="stylesheet" href="wfs-design-system.css">
 <style>
-  /* Solo maquetacion del demo. Todo lo visual sale del sistema de diseño. */
-  .topbar { background: var(--ink); color:#fff; padding: 14px 0; }
+  /* ── Cascaron de pantalla completa ───────────────────────────────────────
+     La altura manda: la pagina ocupa el viewport y es la zona de contenido la
+     que se encoge, no el usuario el que hace scroll. Si aun asi no cabe (una
+     ventana muy baja), #body scrollea solo el, nunca la pagina entera. */
+  html, body { height: 100%; }
+  body { display: flex; flex-direction: column; overflow: hidden; }
+  .topbar { background: var(--ink); color:#fff; padding: 12px 0; flex: none; }
   .topbar .container { display:flex; justify-content:space-between; align-items:center; gap:20px; }
-  .grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
-  .grid-2 { display:grid; grid-template-columns:repeat(2,1fr); gap:20px 28px; }
+
+  main { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 22px 0 20px; }
+  main > .container { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+  #body { flex: 1; min-height: 0; overflow: auto; }
+
+  /* Cabecera mas compacta que en una pagina larga */
+  .steps { margin-bottom: 18px; }
+  .section-header { padding-bottom: 14px; margin-bottom: 18px; gap: 32px; }
+  .section-header h2 { font-size: clamp(24px, 2.6vw, 34px); }
+  .section-header p { font-size: 14.5px; }
+
+  /* Paso 1: cinco tarjetas que llenan el alto disponible */
+  .grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; height:100%; }
+  .grid-5 .pick { display:flex; flex-direction:column; min-height:0; }
+  .grid-5 .media { flex:1; min-height:0; aspect-ratio:auto; }
+
+  /* Paso 2: foto a un lado, datos al otro, en vez de apilado */
+  .detail { display:grid; grid-template-columns:0.9fr 1.1fr; gap:28px; height:100%; min-height:0; }
+  .detail .media { height:100%; aspect-ratio:auto; }
+  .detail__side { min-height:0; overflow:auto; }
+
+  /* Paso 3 y resumen */
+  .grid-2 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px 20px; }
   .row    { display:flex; gap:10px; flex-wrap:wrap; }
-  .spec   { display:grid; grid-template-columns:150px 1fr; gap:6px 20px; padding:14px 0;
-            border-bottom:1px solid rgba(0,16,17,.10); font-size:15.5px; line-height:1.5; }
-  .spec dt { font-family:var(--mono); font-size:13px; font-weight:700; letter-spacing:.18em;
+  .spec   { display:grid; grid-template-columns:132px 1fr; gap:4px 18px; padding:10px 0;
+            border-bottom:1px solid rgba(0,16,17,.10); font-size:15px; line-height:1.45; }
+  .spec dt { font-family:var(--mono); font-size:12.5px; font-weight:700; letter-spacing:.16em;
              text-transform:uppercase; color:var(--charcoal); }
   .spec dd { margin:0; }
-  .nav { display:flex; justify-content:space-between; gap:12px; margin-top:38px; }
-  @media (max-width: 900px){ .grid-5,.grid-2{grid-template-columns:1fr} .spec{grid-template-columns:1fr} }
+  .nav { display:flex; justify-content:space-between; gap:12px; margin-top:18px; flex:none; }
+
+  /* Ventana ESTRECHA: se apila en una columna. */
+  @media (max-width: 1000px) {
+    body { overflow: auto; }
+    .grid-5, .detail { height:auto; grid-template-columns:1fr; }
+    .grid-5 .media, .detail .media { aspect-ratio: 16/9; height:auto; }
+    .grid-2 { grid-template-columns:repeat(2,1fr); }
+  }
+  /* Ventana BAJA pero ancha: conserva las cinco columnas, solo deja scrollear.
+     Van en reglas separadas a proposito: combinarlas con coma mandaba una
+     ventana ancha y baja al diseño de movil, que es justo lo que no toca. */
+  @media (max-height: 620px) {
+    body { overflow: auto; }
+    .grid-5, .detail { height:auto; }
+    .grid-5 .media { aspect-ratio: 4/3; }
+    .detail .media { aspect-ratio: 16/9; height:auto; }
+  }
 </style>
 </head>
 <body>
@@ -33,7 +75,7 @@
   </div>
 </div>
 
-<section style="background:#fff; padding:80px 0 120px">
+<main>
   <div class="container">
 
     <div class="steps" id="steps"></div>
@@ -50,7 +92,7 @@
       <button class="btn btn-primary" id="next" style="border-radius:2px">Continue →</button>
     </div>
   </div>
-</section>
+</main>
 
 <script>
 /* Datos reales, tomados del copy del propio sitio (page-edu.jsx, la tabla de
@@ -161,21 +203,23 @@ function render() {
     $('title').innerHTML = esc(m.name) + '<br><span class="accent">At A Glance.</span>';
     $('sub').textContent = 'These are the trade-offs before you commit. Then pick your build.';
     $('body').innerHTML =
-      '<div class="media media--wide" style="margin-bottom:36px">' +
+      '<div class="detail">' +
+      '<div class="media">' +
         '<img src="' + IMG[m.id] + '" alt="' + esc(m.name) + ' fence" decoding="async">' +
         '<div class="media__scrim"></div>' +
-        '<div style="position:absolute;left:28px;bottom:24px;color:#fff">' +
+        '<div style="position:absolute;left:22px;bottom:20px;color:#fff">' +
           '<span class="kicker" style="color:var(--tangerine)">' + esc(m.tag) + '</span>' +
-          '<div class="display-extended" style="font-size:clamp(24px,2.6vw,34px);margin-top:8px">' + esc(m.name) + '</div>' +
+          '<div class="display-extended" style="font-size:clamp(22px,2.2vw,30px);margin-top:6px">' + esc(m.name) + '</div>' +
         '</div>' +
       '</div>' +
-      '<dl style="margin:0 0 36px">' +
+      '<div class="detail__side">' +
+      '<dl style="margin:0 0 22px">' +
         row('Best for', m.bestFor) +
         row('Strength', m.strength) +
         row('Trade-off', m.caveat) +
         row('Warranty', m.warranty) +
       '</dl>' +
-      '<div style="margin-bottom:26px">' +
+      '<div style="margin-bottom:20px">' +
         '<span class="kicker" style="color:var(--charcoal)">' + esc(m.optionLabel) + '</span>' +
         '<div class="row" style="margin-top:12px">' + m.options.map(function (o) {
           return '<button class="choice" data-opt="' + esc(o) + '" aria-pressed="' + (state.option === o) + '">' + esc(o) + '</button>';
@@ -183,10 +227,11 @@ function render() {
       '</div>' +
       '<div>' +
         '<span class="kicker" style="color:var(--charcoal)">Height</span>' +
-        '<div class="row" style="margin-top:12px">' + m.heights.map(function (hgt) {
+        '<div class="row" style="margin-top:10px">' + m.heights.map(function (hgt) {
           return '<button class="choice" data-h="' + esc(hgt) + '" aria-pressed="' + (state.height === hgt) + '">' + esc(hgt) + '</button>';
         }).join('') + '</div>' +
-      '</div>';
+      '</div>' +
+      '</div></div>';
   }
 
   else if (state.step === 2) {
@@ -207,9 +252,9 @@ function render() {
     $('title').innerHTML = 'Ready To<br><span class="accent">Send.</span>';
     $('sub').textContent = 'This is what a rep would receive. Nothing is submitted, it is a demo.';
     $('body').innerHTML =
-      '<div style="background:var(--ink);color:#fff;padding:44px;box-shadow:12px 12px 0 var(--tangerine)">' +
+      '<div style="background:var(--ink);color:#fff;padding:32px;box-shadow:12px 12px 0 var(--tangerine)">' +
         '<span class="kicker" style="color:var(--tangerine)">MATERIAL QUOTE REQUEST</span>' +
-        '<div class="display-extended" style="font-size:clamp(26px,3vw,38px);margin:14px 0 26px">' +
+        '<div class="display-extended" style="font-size:clamp(22px,2.4vw,32px);margin:10px 0 18px">' +
           esc(m.name) + ' · ' + esc(state.height || '—') +
         '</div>' +
         '<dl style="margin:0">' +
