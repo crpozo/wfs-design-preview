@@ -319,6 +319,44 @@ Dos variantes, según el peso de la decisión. El estado se marca con
 La tarjeta seleccionada usa **la misma sombra dura que el hover**. Es coherente:
 en este sistema "elegido" y "señalado" se ven igual.
 
+### Imágenes
+
+```css
+.media {
+  display: block;          /* si lo pones en un <span> y omites esto, colapsa a 0 */
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;     /* las fotos de producto del sitio son verticales */
+  background: var(--alice-blue);
+}
+.media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform .6s ease;
+}
+.pick:hover .media img { transform: scale(1.1); }
+.media--wide { aspect-ratio: 16 / 9; }
+.media__scrim {                      /* solo si va texto blanco encima */
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(38,49,103,0) 40%, rgba(38,49,103,.72) 100%);
+}
+```
+
+El zoom es **lento a propósito**: `0.6s`, frente a los `0.18s` del resto de
+interacciones. Es el único movimiento pausado del sistema.
+
+`aspect-ratio` en el marco reserva el hueco antes de que cargue la foto, así que
+no hay salto de maquetación. El fondo `--alice-blue` es lo que se ve mientras
+tanto.
+
+> **Cuidado con el peso.** Las fotos de producto del sitio pesan entre 200 y 500 KB
+> cada una. En una fila de cinco tarjetas de 220px eso es casi 2 MB para mostrar
+> imágenes de miniatura, y se ven aparecer una a una. Si reutilizas este patrón,
+> sirve versiones redimensionadas. Y **no pongas `loading="lazy"` en lo que se ve
+> al entrar**: retrasa justo lo que el visitante está mirando.
+
 ### Indicador de pasos
 
 ```css

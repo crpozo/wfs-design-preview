@@ -218,3 +218,33 @@ img, video { max-width: 100%; display: block; }
 .steps .dot.on { color: var(--ink); }
 .steps .bar { flex: 1; height: 2px; background: rgba(0,16,17,.12); max-width: 60px; }
 .steps .bar.on { background: var(--tangerine); }
+
+/* ── Imágenes ─────────────────────────────────────────────────────────────
+   Marco recortado con zoom lento al pasar. El scrim existe para que el texto
+   blanco encima siga leyéndose sobre fotos claras. */
+.media {
+  display: block;              /* imprescindible: si es un <span> queda inline y colapsa a 0 */
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;         /* las fotos de producto son verticales */
+  background: var(--alice-blue);
+}
+.media img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform .6s ease;
+}
+.pick:hover .media img,
+.pick[aria-pressed="true"] .media img { transform: scale(1.1); }
+.media--wide { aspect-ratio: 16 / 9; }   /* para cabeceras anchas */
+.media__scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(38,49,103,0) 40%, rgba(38,49,103,.72) 100%);
+}
+
+/* Los pasos, cuando se puede volver atrás pulsándolos */
+.steps .dot { background: none; border: none; padding: 0; cursor: pointer; }
+.steps .dot:disabled { cursor: not-allowed; }
+.steps .dot:not(:disabled):hover { color: var(--tangerine); }

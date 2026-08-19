@@ -55,6 +55,15 @@
 <script>
 /* Datos reales, tomados del copy del propio sitio (page-edu.jsx, la tabla de
    garantia y las descripciones SEO). Nada inventado. */
+/* Las mismas fotos que usa el sitio (FENCE_IMG en components/shared.jsx). */
+var IMG = {
+  vinyl:        '../assets/PVC.webp',
+  aluminum:     '../assets/ALUM.webp',
+  'chain-link': '../assets/CHAINLINK.webp',
+  metal:        '../assets/MET.webp',
+  ecfence:      '../assets/ECFENCE.webp'
+};
+
 var MATERIALS = [
   { id:'vinyl', name:'Vinyl / PVC', tag:'Catalyst-extruded PVC',
     bestFor:'Backyard privacy, residential subdivisions',
@@ -97,6 +106,7 @@ var MATERIALS = [
     heights:["6'"] }
 ];
 
+var maxStep = 0;
 var state = { step: 0, mat: null, option: null, height: null,
               feet:'', gates:'', zip:'', when:'', name:'', email:'', phone:'' };
 
@@ -108,7 +118,9 @@ function renderSteps() {
   var h = '';
   STEPS.forEach(function (s, i) {
     if (i) h += '<span class="bar' + (i <= state.step ? ' on' : '') + '"></span>';
-    h += '<span class="dot' + (i <= state.step ? ' on' : '') + '">' + (i+1) + '. ' + s + '</span>';
+    var can = i <= maxStep;
+    h += '<button class="dot' + (i <= state.step ? ' on' : '') + '" data-step="' + i + '"' +
+         (can ? '' : ' disabled') + ' aria-current="' + (i === state.step) + '">' + (i+1) + '. ' + s + '</button>';
   });
   $('steps').innerHTML = h;
 }
@@ -117,17 +129,30 @@ function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
   return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); }
 
 function render() {
+  /* Hasta donde se puede saltar: el ultimo paso cuyos requisitos estan cubiertos.
+     Si el usuario cambia de material a mitad, esto se encoge solo y los pasos
+     de mas adelante se vuelven a bloquear. */
+  var reach = 0;
+  if (state.mat) reach = 1;
+  if (reach === 1 && state.option && state.height) reach = 2;
+  if (reach === 2 && state.feet && state.zip && state.name) reach = 3;
+  maxStep = reach;
+  if (state.step > maxStep) state.step = maxStep;
   renderSteps();
   var m = mat();
 
   if (state.step === 0) {
     $('title').innerHTML = 'Start With The<br><span class="accent">Material.</span>';
     $('sub').textContent = 'Pick a system and we show what it is good at, what it is not, and what the warranty covers.';
-    $('body').innerHTML = '<div class="grid-5">' + MATERIALS.map(function (x) {
-      return '<button class="pick" data-mat="' + x.id + '" aria-pressed="' + (state.mat === x.id) + '">' +
+    $('body').innerHTML = '<div class="grid-5">' + MATERIALS.map(function (x, i) {
+      return '<button class="pick" data-mat="' + x.id + '" aria-pressed="' + (state.mat === x.id) + '" style="padding:0">' +
+        '<span class="media"><img src="' + IMG[x.id] + '" alt="' + esc(x.name) + ' fence" decoding="async"' +
+          (i === 0 ? ' fetchpriority="high"' : '') + '></span>' +
+        '<span style="display:block;padding:22px">' +
         '<span class="kicker">' + esc(x.tag) + '</span>' +
-        '<div style="font-size:19px;font-weight:700;margin:10px 0 8px;line-height:1.2">' + esc(x.name) + '</div>' +
-        '<div style="font-size:14.5px;color:var(--charcoal);line-height:1.5">' + esc(x.bestFor) + '</div>' +
+        '<span style="display:block;font-size:19px;font-weight:700;margin:10px 0 8px;line-height:1.2">' + esc(x.name) + '</span>' +
+        '<span style="display:block;font-size:14.5px;color:var(--charcoal);line-height:1.5">' + esc(x.bestFor) + '</span>' +
+        '</span>' +
       '</button>';
     }).join('') + '</div>';
   }
@@ -136,6 +161,14 @@ function render() {
     $('title').innerHTML = esc(m.name) + '<br><span class="accent">At A Glance.</span>';
     $('sub').textContent = 'These are the trade-offs before you commit. Then pick your build.';
     $('body').innerHTML =
+      '<div class="media media--wide" style="margin-bottom:36px">' +
+        '<img src="' + IMG[m.id] + '" alt="' + esc(m.name) + ' fence" decoding="async">' +
+        '<div class="media__scrim"></div>' +
+        '<div style="position:absolute;left:28px;bottom:24px;color:#fff">' +
+          '<span class="kicker" style="color:var(--tangerine)">' + esc(m.tag) + '</span>' +
+          '<div class="display-extended" style="font-size:clamp(24px,2.6vw,34px);margin-top:8px">' + esc(m.name) + '</div>' +
+        '</div>' +
+      '</div>' +
       '<dl style="margin:0 0 36px">' +
         row('Best for', m.bestFor) +
         row('Strength', m.strength) +
@@ -219,6 +252,8 @@ function canAdvance() {
 }
 
 document.addEventListener('click', function (e) {
+  var s = e.target.closest('[data-step]');
+  if (s && !s.disabled) { state.step = +s.dataset.step; render(); window.scrollTo(0,0); return; }
   var p = e.target.closest('[data-mat]');
   if (p) { if (state.mat !== p.dataset.mat) { state.option = null; state.height = null; }
            state.mat = p.dataset.mat; return render(); }
