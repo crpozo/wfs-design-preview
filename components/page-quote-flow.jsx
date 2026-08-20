@@ -90,7 +90,8 @@ const QuoteFlow = () => {
   const topRef = React.useRef(null);
   const endRef = React.useRef(null);
   const prevCount = React.useRef(0);
-  const scrollTop = () => { if (topRef.current) topRef.current.scrollIntoView({ block: 'start', behavior: 'smooth' }); };
+  /* smooth necesita rAF, que se pausa con la pestaña oculta: ahí va instantáneo */
+  const scrollTop = () => { if (topRef.current) topRef.current.scrollIntoView({ block: 'start', behavior: document.hidden ? 'auto' : 'smooth' }); };
 
   /* Cadena de grupos según el árbol real */
   const groups = [];
@@ -106,20 +107,31 @@ const QuoteFlow = () => {
     ? trail[trail.length - 1].to : null;
   const material = trail[0] || null;
 
-  /* Al aparecer un grupo nuevo (o el resumen), acercarlo a la vista */
+  /* Al cambiar de paso, subir al tope DESPUÉS del render del paso nuevo.
+     Si se hiciera en el click, correría sobre el layout viejo y el efecto de
+     la cascada lo pisaría: el resumen quedaba cortado y sin cabecera. */
+  const firstRender = React.useRef(true);
+  React.useEffect(() => {
+    if (firstRender.current) { firstRender.current = false; return; }
+    scrollTop();
+  }, [view]);
+
+  /* Al aparecer un grupo nuevo de la cascada, acercarlo a la vista.
+     Solo dentro del detalle: en los cambios de paso manda el scroll al tope. */
   const visibleCount = groups.length + (terminal ? 1 : 0);
   React.useEffect(() => {
+    if (view !== 'detail') { prevCount.current = visibleCount; return; }
     if (visibleCount > prevCount.current && prevCount.current > 0 && endRef.current) {
       endRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
     prevCount.current = visibleCount;
-  }, [visibleCount]);
+  }, [visibleCount, view]);
 
   const pickAt = (i, opt) => {
     if (trail[i] && trail[i].to === opt.to) return;
     setTrail([...trail.slice(0, i), opt]);
     /* La última elección de la rama lleva al paso de resumen, en su propia pantalla */
-    if (!window.WFS_FLOW[opt.to]) { setView('summary'); scrollTop(); }
+    if (!window.WFS_FLOW[opt.to]) setView('summary');
   };
 
   /* La foto grande: la última elección con imagen (estilo/diseño), o el material */
@@ -170,7 +182,7 @@ const QuoteFlow = () => {
             {groups[0].node.o.map((opt, ci) => (
               <div key={opt.to} className="wfs-flow-in" style={{ animationDelay: `${ci * 70}ms` }}>
                 <FlowMaterialCard opt={opt} selected={!!material && material.to === opt.to}
-                  onPick={() => { pickAt(0, opt); setView('detail'); scrollTop(); }}/>
+                  onPick={() => { pickAt(0, opt); setView('detail'); }}/>
               </div>
             ))}
           </div>
@@ -179,7 +191,7 @@ const QuoteFlow = () => {
         {/* Pantalla 2, "At A Glance": foto a un lado, grupos reales al otro */}
         {onDetail && (
           <div style={{ marginBottom: 22 }}>
-            <button className="btn btn-ghost" onClick={() => { setView('material'); scrollTop(); }} style={{ borderRadius: 2, padding: '10px 16px', fontSize: 14 }}>
+            <button className="btn btn-ghost" onClick={() => setView('material')} style={{ borderRadius: 2, padding: '10px 16px', fontSize: 14 }}>
               ← {t('Change material', 'Cambiar material')}
             </button>
           </div>
@@ -219,7 +231,7 @@ const QuoteFlow = () => {
               {/* Rama completa: el resumen va en su propio paso */}
               {terminal && (
                 <div className="wfs-flow-in">
-                  <button className="btn btn-primary" onClick={() => { setView('summary'); scrollTop(); }} style={{ borderRadius: 2, fontWeight: 600, marginTop: 8 }}>
+                  <button className="btn btn-primary" onClick={() => setView('summary')} style={{ borderRadius: 2, fontWeight: 600, marginTop: 8 }}>
                     {t('View summary', 'Ver resumen')} →
                   </button>
                 </div>
@@ -232,7 +244,7 @@ const QuoteFlow = () => {
         {onSummary && (
           <div style={{ maxWidth: 860, margin: '0 auto' }}>
             <div style={{ marginBottom: 22 }}>
-              <button className="btn btn-ghost" onClick={() => { setView('detail'); scrollTop(); }} style={{ borderRadius: 2, padding: '10px 16px', fontSize: 14 }}>
+              <button className="btn btn-ghost" onClick={() => setView('detail')} style={{ borderRadius: 2, padding: '10px 16px', fontSize: 14 }}>
                 ← {t('Edit options', 'Editar opciones')}
               </button>
             </div>
@@ -270,7 +282,7 @@ const QuoteFlow = () => {
         {/* Empezar de nuevo */}
         {(onDetail || onSummary) && (
           <div style={{ marginTop: 30 }}>
-            <button className="btn btn-ghost" onClick={() => { setTrail([]); setView('material'); scrollTop(); }} style={{ borderRadius: 2 }}>
+            <button className="btn btn-ghost" onClick={() => { setTrail([]); setView('material'); }} style={{ borderRadius: 2 }}>
               {t('Start over', 'Empezar de nuevo')}
             </button>
           </div>
