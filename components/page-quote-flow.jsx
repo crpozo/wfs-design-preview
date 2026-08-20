@@ -118,6 +118,8 @@ const QuoteFlow = () => {
   const pickAt = (i, opt) => {
     if (trail[i] && trail[i].to === opt.to) return;
     setTrail([...trail.slice(0, i), opt]);
+    /* La última elección de la rama lleva al paso de resumen, en su propia pantalla */
+    if (!window.WFS_FLOW[opt.to]) { setView('summary'); scrollTop(); }
   };
 
   /* La foto grande: la última elección con imagen (estilo/diseño), o el material */
@@ -130,8 +132,11 @@ const QuoteFlow = () => {
     return m + (hIdx >= 0 && trail[hIdx] ? ' · ' + trail[hIdx].t : '');
   };
 
-  const onDetail = view === 'detail' && material;
-  const header = onDetail
+  const onSummary = view === 'summary' && !!terminal;
+  const onDetail = !onSummary && view !== 'material' && material;
+  const header = onSummary
+    ? { EN: ['Ready To Draw', 'Your Fence.'], ES: ['Listo Para Dibujar', 'Tu Cerca.'] }
+    : onDetail
     ? { EN: [material.t.replace(/ Fence$/, ''), 'At A Glance.'], ES: [material.t.replace(/ Fence$/, ''), 'En Detalle.'] }
     : { EN: ['Start With The', 'Material.'], ES: ['Empieza Por El', 'Material.'] };
 
@@ -147,14 +152,16 @@ const QuoteFlow = () => {
             <span style={{ color: 'var(--tangerine)' }}>{header[lang === 'ES' ? 'ES' : 'EN'][1]}</span>
           </h2>
           <p style={{ margin: 0, justifySelf: 'end', textAlign: 'right', maxWidth: 380, fontSize: 14.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>
-            {onDetail
+            {onSummary
+              ? t('Review your configuration. The drawing tool opens with these exact options.', 'Revisa tu configuración. La herramienta de dibujo se abre con estas opciones exactas.')
+              : onDetail
               ? t('Pick each option and the next one appears. Same options as the Easy Draw Your Fence tool.', 'Elige cada opción y aparece la siguiente. Las mismas opciones de la herramienta Easy Draw Your Fence.')
               : t('Pick a material to configure your fence. Same options as the Easy Draw Your Fence tool.', 'Elige un material para configurar tu cerca. Las mismas opciones de la herramienta Easy Draw Your Fence.')}
           </p>
         </div>
 
         {/* Pantalla 1: solo la selección de material */}
-        {!onDetail && (
+        {!onDetail && !onSummary && (
           <div className="wfs-flow-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18 }}>
             {groups[0].node.o.map(opt => (
               <FlowMaterialCard key={opt.to} opt={opt} selected={!!material && material.to === opt.to}
@@ -201,38 +208,57 @@ const QuoteFlow = () => {
                 );
               })}
 
-              {/* Resumen: aparece al completar la rama */}
+              {/* Rama completa: el resumen va en su propio paso */}
               {terminal && (
-                <div style={{ background: 'var(--ink)', color: '#fff', padding: 28, boxShadow: '10px 10px 0 var(--tangerine)', marginTop: 30 }}>
-                  <span style={flowKicker}>{t('Your fence configuration', 'La configuración de tu cerca')}</span>
-                  <div className="display-extended" style={{ fontSize: 'clamp(20px, 2.1vw, 28px)', margin: '10px 0 16px', color: '#fff' }}>
-                    {summaryTitle()}
-                  </div>
-                  <dl style={{ margin: '0 0 22px' }}>
-                    {groups.map((g, i) => (
-                      <div key={g.path} style={{
-                        display: 'grid', gridTemplateColumns: '190px 1fr', gap: '4px 22px', padding: '11px 0', boxShadow: 'inset 0 -1px 0 rgba(255,255,255,0.18)', fontSize: 15, lineHeight: 1.45, }} className="wfs-flow-spec">
-                        <dt className="mono" style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--blue-ice)' }}>
-                          {flowName(g.node.h, lang)}
-                        </dt>
-                        <dd style={{ margin: 0 }}>{trail[i] ? trail[i].t : '—'}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <a className="btn btn-primary" href={`${FLOW_APP}${terminal}`} target="_blank" rel="noopener" style={{ borderRadius: 2, fontWeight: 600 }}>
-                    {t('Open the drawing tool', 'Abrir la herramienta de dibujo')} →
-                  </a>
-                  <div style={{ marginTop: 12, fontSize: 14, color: 'rgba(255,255,255,0.72)' }}>
-                    {t('Opens with this exact configuration and builds your material list.', 'Se abre con esta configuración exacta y arma tu lista de materiales.')}
-                  </div>
-                </div>
+                <button className="btn btn-primary" onClick={() => { setView('summary'); scrollTop(); }} style={{ borderRadius: 2, fontWeight: 600, marginTop: 8 }}>
+                  {t('View summary', 'Ver resumen')} →
+                </button>
               )}
             </div>
           </div>
         )}
 
+        {/* Pantalla 3: el resumen, con el envío claro a la herramienta de dibujo */}
+        {onSummary && (
+          <div style={{ maxWidth: 860, margin: '0 auto' }}>
+            <div style={{ marginBottom: 22 }}>
+              <button className="btn btn-ghost" onClick={() => { setView('detail'); scrollTop(); }} style={{ borderRadius: 2, padding: '10px 16px', fontSize: 14 }}>
+                ← {t('Edit options', 'Editar opciones')}
+              </button>
+            </div>
+            <div style={{ background: 'var(--ink)', color: '#fff', padding: 'clamp(26px, 3vw, 40px)', boxShadow: '12px 12px 0 var(--tangerine)' }}>
+              <span style={flowKicker}>{t('Your fence configuration', 'La configuración de tu cerca')}</span>
+              <div className="display-extended" style={{ fontSize: 'clamp(22px, 2.4vw, 32px)', margin: '10px 0 18px', color: '#fff' }}>
+                {summaryTitle()}
+              </div>
+              <dl style={{ margin: '0 0 26px' }}>
+                {groups.map((g, i) => (
+                  <div key={g.path} style={{
+                    display: 'grid', gridTemplateColumns: '210px 1fr', gap: '4px 22px', padding: '12px 0', boxShadow: 'inset 0 -1px 0 rgba(255,255,255,0.18)', fontSize: 15, lineHeight: 1.45, }} className="wfs-flow-spec">
+                    <dt className="mono" style={{ fontSize: 12.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--blue-ice)' }}>
+                      {flowName(g.node.h, lang)}
+                    </dt>
+                    <dd style={{ margin: 0 }}>{trail[i] ? trail[i].t : '—'}</dd>
+                  </div>
+                ))}
+              </dl>
+              {/* CTA: deja claro que redirige a la herramienta de dibujo del app */}
+              <a className="btn btn-primary" href={`${FLOW_APP}${terminal}`} target="_blank" rel="noopener" style={{
+                borderRadius: 2, fontWeight: 700, fontSize: 17, padding: '18px 28px', display: 'inline-flex', alignItems: 'center', gap: 10, }}>
+                {t('Continue to the drawing tool', 'Continuar a la herramienta de dibujo')}
+                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M4 12 L12 4 M6 4 h6 v6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
+                </svg>
+              </a>
+              <div style={{ marginTop: 14, fontSize: 14.5, color: 'rgba(255,255,255,0.72)' }}>
+                {t("You'll be redirected to app.westernfencesupply.com to draw your fence with this exact configuration and get the instant material list.", 'Serás redirigido a app.westernfencesupply.com para dibujar tu cerca con esta configuración exacta y obtener la lista de materiales al instante.')}
+              </div>
+            </div>
+          </div>
+        )}
+
         {/* Empezar de nuevo */}
-        {onDetail && (
+        {(onDetail || onSummary) && (
           <div style={{ marginTop: 30 }}>
             <button className="btn btn-ghost" onClick={() => { setTrail([]); setView('material'); scrollTop(); }} style={{ borderRadius: 2 }}>
               {t('Start over', 'Empezar de nuevo')}
