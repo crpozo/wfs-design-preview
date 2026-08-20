@@ -18,37 +18,49 @@
   .topbar { background: var(--ink); color:#fff; padding: 12px 0; flex: none; }
   .topbar .container { display:flex; justify-content:space-between; align-items:center; gap:20px; }
 
-  main { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 22px 0 20px; }
+  main { flex: 1; min-height: 0; display: flex; flex-direction: column; padding: 34px 0 28px; }
   main > .container { flex: 1; min-height: 0; display: flex; flex-direction: column; }
   #body { flex: 1; min-height: 0; overflow: auto; }
 
   /* Cabecera mas compacta que en una pagina larga */
-  .steps { margin-bottom: 18px; }
-  .section-header { padding-bottom: 14px; margin-bottom: 18px; gap: 32px; }
-  .section-header h2 { font-size: clamp(24px, 2.6vw, 34px); }
+  .steps { margin-bottom: 30px; }
+  .section-header { padding-bottom: 22px; margin-bottom: 30px; gap: 40px; }
+  .section-header h2 { font-size: clamp(26px, 2.9vw, 38px); }
   .section-header p { font-size: 14.5px; }
 
   /* Paso 1: cinco tarjetas que llenan el alto disponible */
-  /* Las tarjetas miden por contenido y se alinean arriba: con 'contain' el
-     panel es pequeno, y estirarlas dejaba 400px de blanco por tarjeta. */
-  .grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:14px; align-items:start; }
+  /* La caja de imagen sigue el formato de las fotos (4:3 apaisado). Estirarla
+     a lo alto no agrandaba el panel: 'contain' lo dibuja igual y solo anadia
+     blanco, se medio un aprovechamiento del 36%. El hueco que sobra se reparte
+     centrando la rejilla, no estirando las tarjetas. */
+  /* Cinco paneles apaisados en fila tienen un tamano natural: estirar la caja
+     no los agranda, 'contain' los dibuja igual y solo anade blanco. Asi que el
+     sobrante se reparte centrando la rejilla y agrandando la composicion
+     (titulo, textos, aire), no estirando cajas. */
+  #body { display:flex; align-items:center; }
+  .grid-5 { display:grid; grid-template-columns:repeat(5,1fr); gap:22px; width:100%; }
   .grid-5 .pick { display:flex; flex-direction:column; padding:0; }
   .grid-5 .media { aspect-ratio:4/3; }
+  .grid-5 .media img { padding:12px; }
+  .grid-5 .pick > span:last-child { padding:26px 24px 28px !important; }
+  .grid-5 .pick .kicker { font-size:13px; }
+  .grid-5 .pick > span:last-child > span:nth-child(2) { font-size:21px !important; margin:12px 0 10px !important; }
+  .grid-5 .pick > span:last-child > span:last-child { font-size:15px !important; }
 
   /* Paso 2: foto a un lado, datos al otro, en vez de apilado */
-  .detail { display:grid; grid-template-columns:0.9fr 1.1fr; gap:28px; height:100%; min-height:0; }
+  .detail { display:grid; grid-template-columns:0.85fr 1.15fr; gap:44px; height:100%; min-height:0; align-content:start; }
   .detail .media--product { aspect-ratio: 4/3; }
   .detail__side { min-height:0; overflow:auto; }
 
   /* Paso 3 y resumen */
-  .grid-2 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px 20px; }
+  .grid-2 { display:grid; grid-template-columns:repeat(4,1fr); gap:26px 24px; }
   .row    { display:flex; gap:10px; flex-wrap:wrap; }
-  .spec   { display:grid; grid-template-columns:132px 1fr; gap:4px 18px; padding:10px 0;
+  .spec   { display:grid; grid-template-columns:150px 1fr; gap:4px 22px; padding:15px 0;
             border-bottom:1px solid rgba(0,16,17,.10); font-size:15px; line-height:1.45; }
   .spec dt { font-family:var(--mono); font-size:12.5px; font-weight:700; letter-spacing:.16em;
              text-transform:uppercase; color:var(--charcoal); }
   .spec dd { margin:0; }
-  .nav { display:flex; justify-content:space-between; gap:12px; margin-top:18px; flex:none; }
+  .nav { display:flex; justify-content:space-between; gap:12px; margin-top:28px; flex:none; }
 
   /* Ventana ESTRECHA: se apila en una columna. */
   @media (max-width: 1000px) {
