@@ -82,10 +82,15 @@ const FlowChip = ({ opt, selected, onPick }) => (
 const QuoteFlow = () => {
   const t = useT();
   const lang = t('EN', 'ES');
-  /* trail: la opción elegida en cada grupo, en orden */
+  /* trail: la opción elegida en cada grupo, en orden.
+     view: 'material' (pantalla 1, solo tarjetas) o 'detail' (pantalla 2, cascada).
+     Elegir material redirige a la pantalla de detalle para mantener limpia la 1ª. */
   const [trail, setTrail] = React.useState([]);
+  const [view, setView] = React.useState('material');
+  const topRef = React.useRef(null);
   const endRef = React.useRef(null);
   const prevCount = React.useRef(0);
+  const scrollTop = () => { if (topRef.current) topRef.current.scrollIntoView({ block: 'start' }); };
 
   /* Cadena de grupos según el árbol real */
   const groups = [];
@@ -125,12 +130,13 @@ const QuoteFlow = () => {
     return m + (hIdx >= 0 && trail[hIdx] ? ' · ' + trail[hIdx].t : '');
   };
 
-  const header = material
+  const onDetail = view === 'detail' && material;
+  const header = onDetail
     ? { EN: [material.t.replace(/ Fence$/, ''), 'At A Glance.'], ES: [material.t.replace(/ Fence$/, ''), 'En Detalle.'] }
     : { EN: ['Start With The', 'Material.'], ES: ['Empieza Por El', 'Material.'] };
 
   return (
-    <section style={{ background: 'var(--white)', padding: '52px 0 110px', scrollMarginTop: 90 }}>
+    <section ref={topRef} style={{ background: 'var(--white)', padding: '52px 0 110px', scrollMarginTop: 90 }}>
       <div className="container">
 
         {/* Cabecera: titular dos líneas + descripción a la derecha */}
@@ -141,21 +147,31 @@ const QuoteFlow = () => {
             <span style={{ color: 'var(--tangerine)' }}>{header[lang === 'ES' ? 'ES' : 'EN'][1]}</span>
           </h2>
           <p style={{ margin: 0, justifySelf: 'end', textAlign: 'right', maxWidth: 380, fontSize: 14.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>
-            {material
+            {onDetail
               ? t('Pick each option and the next one appears. Same options as the Easy Draw Your Fence tool.', 'Elige cada opción y aparece la siguiente. Las mismas opciones de la herramienta Easy Draw Your Fence.')
-              : t('Pick the material and build your fence below. Same options as the Easy Draw Your Fence tool.', 'Elige el material y arma tu cerca abajo. Las mismas opciones de la herramienta Easy Draw Your Fence.')}
+              : t('Pick a material to configure your fence. Same options as the Easy Draw Your Fence tool.', 'Elige un material para configurar tu cerca. Las mismas opciones de la herramienta Easy Draw Your Fence.')}
           </p>
         </div>
 
-        {/* 01 · Material */}
-        <div className="wfs-flow-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18, marginBottom: 40 }}>
-          {groups[0].node.o.map(opt => (
-            <FlowMaterialCard key={opt.to} opt={opt} selected={!!material && material.to === opt.to} onPick={() => pickAt(0, opt)}/>
-          ))}
-        </div>
+        {/* Pantalla 1: solo la selección de material */}
+        {!onDetail && (
+          <div className="wfs-flow-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18 }}>
+            {groups[0].node.o.map(opt => (
+              <FlowMaterialCard key={opt.to} opt={opt} selected={!!material && material.to === opt.to}
+                onPick={() => { pickAt(0, opt); setView('detail'); scrollTop(); }}/>
+            ))}
+          </div>
+        )}
 
-        {/* Detalle "At A Glance": foto a un lado, grupos reales al otro */}
-        {material && (
+        {/* Pantalla 2, "At A Glance": foto a un lado, grupos reales al otro */}
+        {onDetail && (
+          <div style={{ marginBottom: 22 }}>
+            <button className="btn btn-ghost" onClick={() => { setView('material'); scrollTop(); }} style={{ borderRadius: 2, padding: '10px 16px', fontSize: 14 }}>
+              ← {t('Change material', 'Cambiar material')}
+            </button>
+          </div>
+        )}
+        {onDetail && (
           <div className="wfs-flow-detail" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 44, alignItems: 'start' }}>
             <div>
               <div style={{ position: 'relative', aspectRatio: '1.333 / 1', border: INK_BORDER, background: '#fff', overflow: 'hidden' }}>
@@ -216,9 +232,9 @@ const QuoteFlow = () => {
         )}
 
         {/* Empezar de nuevo */}
-        {trail.length > 0 && (
+        {onDetail && (
           <div style={{ marginTop: 30 }}>
-            <button className="btn btn-ghost" onClick={() => setTrail([])} style={{ borderRadius: 2 }}>
+            <button className="btn btn-ghost" onClick={() => { setTrail([]); setView('material'); scrollTop(); }} style={{ borderRadius: 2 }}>
               {t('Start over', 'Empezar de nuevo')}
             </button>
           </div>
