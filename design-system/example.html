@@ -83,6 +83,19 @@
     .grid-5 .media img { padding:16px; }
     .grid-2 { grid-template-columns:repeat(2,1fr); gap:20px 18px; }
     .spec { grid-template-columns:1fr; gap:2px; padding:12px 0; }
+    /* La navegacion se queda pegada abajo: en movil el formulario es largo y
+       obligaba a bajar hasta el final para pulsar Continue en cada paso.
+       El margen negativo la saca a sangre y el safe-area evita que el boton
+       quede debajo de la barra del iPhone. */
+    .nav {
+      position: sticky;
+      bottom: 0;
+      z-index: 5;
+      margin: 20px calc(var(--pad) * -1) 0;
+      padding: 14px var(--pad) calc(14px + env(safe-area-inset-bottom, 0px));
+      background: #fff;
+      border-top: 1px solid rgba(0,16,17,.12);
+    }
     .steps { margin-bottom:20px; gap:6px; }
     .steps .dot { font-size:11px; letter-spacing:.10em; }
     .steps .bar { max-width:22px; }

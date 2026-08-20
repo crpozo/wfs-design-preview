@@ -407,6 +407,35 @@ Duraciones: **`.18s`** para tarjetas, **`.15s`–`.2s`** para botones, siempre
 
 ---
 
+### Barra de acción pegada (móvil)
+
+En un formulario largo, obligar a bajar hasta el final para pulsar el botón
+principal es fricción pura. En móvil la barra se queda abajo:
+
+```css
+@media (max-width: 1000px) {
+  .nav {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    margin: 20px calc(var(--pad) * -1) 0;              /* a sangre */
+    padding: 14px var(--pad) calc(14px + env(safe-area-inset-bottom, 0px));
+    background: #fff;                                  /* opaco, si no se ve el contenido debajo */
+    border-top: 1px solid rgba(0,16,17,.12);
+  }
+}
+```
+
+Tres cosas que se olvidan y hacen que se vea mal:
+
+- **Fondo opaco.** Sin él el contenido pasa por debajo y se lee encima del botón.
+- **`env(safe-area-inset-bottom)`**, o en un iPhone el botón queda bajo la barra
+  de inicio.
+- **Margen negativo de `--pad`** para que la barra llegue a los bordes, no que
+  quede flotando dentro del contenedor.
+
+En escritorio no se activa: si todo cabe en pantalla, pegarla solo resta sitio.
+
 ### Pantalla completa, sin scroll
 
 Cuando una vista debe caber entera en el viewport (un asistente por pasos, un
