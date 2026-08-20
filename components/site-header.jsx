@@ -25,7 +25,7 @@ const SiteHeader = ({ active }) => {
   // NAV: id stays stable (used by `active` prop). label + items get translated.
   const NAV = [
     { id: 'Fences', label: { EN: 'Fences', ES: 'Cercas' }, def: { kind: 'mega-fences' } }, { id: 'Gates', label: { EN: 'Gates', ES: 'Portones' }, def: { kind: 'mega-gates' } }, { id: 'Get a Quote', label: { EN: 'Get a Quote', ES: 'Cotizar' }, def: { kind: 'list', items: [
-      { label: { EN: 'Draw Your Fence', ES: 'Dibuja tu cerca' }, href: 'https://app.westernfencesupply.com/', sub: { EN: 'Sketch or send measurements, pricing in 24h', ES: 'Dibuja o envía medidas, precios en 24h' } }, { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' }, href: 'estimate.html#quote', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte', ES: 'Lun-Vie · Fort Myers + Port Charlotte' } }, { label: { EN: 'Email Sales', ES: 'Escribir a ventas' }, href: 'mailto:sales@westernfencesupply.com', sub: { EN: 'sales@westernfencesupply.com', ES: 'sales@westernfencesupply.com' } }, ]}}, { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [
+      { label: { EN: 'Draw Your Fence', ES: 'Dibuja tu cerca' }, href: 'https://app.westernfencesupply.com/', sub: { EN: 'Sketch or send measurements, pricing in 24h', ES: 'Dibuja o envía medidas, precios en 24h' } }, { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' }, href: 'contact.html', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte', ES: 'Lun-Vie · Fort Myers + Port Charlotte' } }, { label: { EN: 'Email Sales', ES: 'Escribir a ventas' }, href: 'mailto:sales@westernfencesupply.com', sub: { EN: 'sales@westernfencesupply.com', ES: 'sales@westernfencesupply.com' } }, ]}}, { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [
       { label: { EN: 'About WFS', ES: 'Sobre WFS' }, href: 'about.html', sub: { EN: 'Family-owned · fabricated in-house', ES: 'Familiar · fabricado en planta' } }, { label: { EN: 'Yard Locations', ES: 'Sucursales' }, href: 'locations.html', sub: { EN: 'Pickup, hours & directions · FM + PC', ES: 'Retiro, horarios y cómo llegar · FM + PC' } }, { label: { EN: 'Contact', ES: 'Contacto' }, href: 'contact.html', sub: { EN: 'Phone, email, hours by yard', ES: 'Teléfono, email, horarios por sucursal' } }, ]}}, { id: 'Fence Education Hub', label: { EN: 'Fence Education Hub', ES: 'Centro Educativo' }, def: { kind: 'list', items: [
       { label: { EN: 'Blog', ES: 'Blog' }, href: 'blog.html', sub: { EN: 'News, guides and job stories', ES: 'Noticias, guías e historias de obra' } }, { label: { EN: 'FAQ', ES: 'Preguntas frecuentes' }, href: 'faq.html', sub: { EN: 'The questions we get every week', ES: 'Las preguntas que recibimos cada semana' } }, { label: { EN: 'Materials Comparison', ES: 'Comparativa de materiales' }, href: 'materials-comparison.html', sub: { EN: 'Aluminum vs Vinyl vs Chain Link vs Metal', ES: 'Aluminio vs Vinilo vs Malla vs Metal' } }, { label: { EN: 'Florida Pool Code', ES: 'Código de piscinas FL' }, href: 'pool-code.html', sub: { EN: 'Code-compliant enclosure profiles', ES: 'Perfiles de cerramiento según código' } }, ]}}, ];
 
@@ -85,7 +85,7 @@ const SiteHeader = ({ active }) => {
           <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
             {/* Live agent: abre el chat de tawk. Si no esta cargado, cae al
                 enlace de la banda "real sales rep, no chatbot". */}
-            <a href="estimate.html#quote" onClick={openLiveChat} style={{
+            <a href="contact.html" onClick={openLiveChat} style={{
               display: 'inline-flex', alignItems: 'center', gap: 9, padding: '6px 15px', borderRadius: 999, background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.3)', color: 'var(--white)', textDecoration: 'none', fontFamily: 'inherit', fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', whiteSpace: 'nowrap', transition: 'background 0.15s ease, border-color 0.15s ease', }}
             onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.borderColor = 'var(--white)'; }}
             onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; }}>
@@ -164,7 +164,7 @@ const SiteHeader = ({ active }) => {
               </svg>
               {t('Draw Your Fence', 'Dibuja tu cerca')}
             </a>
-            <a href="estimate.html#contact" className="wfs-quote-pill" style={{
+            <a href="contact.html#contact" className="wfs-quote-pill" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 6px 6px 15px', borderRadius: 999, background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, letterSpacing: '0.11em', textTransform: 'uppercase', whiteSpace: 'nowrap', transition: 'background 0.2s ease, transform 0.2s ease', }}
             aria-label={t('Request Material Quote', 'Solicitar cotización de material')}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--laser-blue)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
@@ -188,7 +188,7 @@ const SiteHeader = ({ active }) => {
                 phones, so this is the only way to reach the chat there. Same
                 openLiveChat handler; falls back to the estimate anchor. */}
             <a
-              href="estimate.html#quote"
+              href="contact.html"
               onClick={openLiveChat}
               className="wfs-mobile-chat"
               aria-label={t('Talk to a live agent', 'Habla con un asesor')}
