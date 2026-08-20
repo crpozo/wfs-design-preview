@@ -936,7 +936,8 @@ p { font-family: var(--body); }
    Gutenberg, y hay que estilarlo sin saber que bloques usara marketing.
    ═══════════════════════════════════════════════════════════════════════════ */
 
-.container--narrow { max-width: 760px; }
+.container--narrow  { max-width: 760px; }
+.container--article { max-width: 1180px; }
 
 .wfs-kicker {
   display: block;
@@ -945,70 +946,156 @@ p { font-family: var(--body); }
   letter-spacing: 0.22em; text-transform: uppercase;
   color: var(--tangerine);
 }
-.wfs-kicker--on-dark { color: var(--tangerine); }
 .wfs-accent { color: var(--tangerine); }
 
-/* ── Indice ─────────────────────────────────────────────────────────────── */
-.wfs-blog-hero { background: var(--ink); color: var(--white); padding: 96px 0 84px; }
-.wfs-blog-hero__title {
-  margin: 14px 0 18px;
-  font-size: clamp(34px, 4.2vw, 56px);
-  letter-spacing: -0.02em;
+/* ── Banner ─────────────────────────────────────────────────────────────────
+   Misma receta que PageHero en el resto de paginas interiores: foto al fondo,
+   velo azul en diagonal (fuerte a la izquierda, ligero a la derecha) y titular
+   en dos colores. Replicado en PHP para no arrastrar React hasta el blog. */
+.wfs-hero {
+  position: relative; overflow: hidden;
+  min-height: clamp(340px, 46vh, 460px);
+  display: flex; flex-direction: column; justify-content: center;
+  background: #263166; color: var(--white);
 }
-.wfs-blog-hero__sub {
-  margin: 0; max-width: 560px;
-  font-size: 17.5px; line-height: 1.55;
-  color: rgba(255,255,255,0.85);
+.wfs-hero__img {
+  position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center 45%;
 }
+.wfs-hero__scrim {
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(95deg, rgba(38,49,103,.86) 0%, rgba(38,49,103,.68) 38%, rgba(38,49,103,.42) 68%, rgba(38,49,103,.26) 100%);
+}
+.wfs-hero__inner { position: relative; z-index: 2; width: 100%; padding-top: 64px; padding-bottom: 52px; }
+.wfs-hero__eyebrow {
+  display: inline-flex; align-items: center; gap: 14px; margin-bottom: 22px;
+  font-family: var(--mono); font-size: clamp(12px, 1.1vw, 13px); font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.85);
+}
+.wfs-hero__eyebrow i { width: 34px; height: 3px; background: var(--tangerine); border-radius: 2px; }
+.wfs-hero__title {
+  margin: 0 0 18px;
+  font-family: var(--display); font-variation-settings: 'wdth' 125; font-weight: 800;
+  font-size: clamp(30px, 3.6vw, 50px); line-height: 1.02; letter-spacing: -.015em;
+  text-transform: uppercase; text-shadow: 0 2px 28px rgba(0,0,0,.28); max-width: 880px;
+}
+.wfs-hero__accent { color: var(--blue-ice); }
+.wfs-hero__sub { margin: 0; max-width: 560px; font-size: 17.5px; line-height: 1.55; color: rgba(255,255,255,.88); }
 
-.wfs-blog-list { background: var(--white); padding: 88px 0 120px; }
+/* ── Buscador y filtros ─────────────────────────────────────────────────────
+   El filtrado es del lado del cliente sobre tarjetas ya pintadas por PHP: el
+   HTML sigue trayendo todas las entradas, asi que Google las ve igual y sin JS
+   la pagina se lee entera. */
+.wfs-blog-list { background: var(--white); padding: 64px 0 110px; }
+.wfs-toolbar { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 34px; }
+.wfs-search {
+  display: flex; align-items: center; gap: 10px;
+  flex: 1 1 300px; max-width: 380px;
+  padding: 12px 16px; border: 1px solid rgba(0,16,17,.16); border-radius: 12px;
+}
+.wfs-search:focus-within { border-color: var(--tangerine); }
+.wfs-search svg { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--charcoal); stroke-width: 1.8; stroke-linecap: round; }
+.wfs-search input { flex: 1; border: 0; outline: 0; font-family: var(--sans); font-size: 16.5px; color: var(--ink); background: none; }
+
+.wfs-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.wfs-chip {
+  padding: 11px 16px; border: 1px solid rgba(0,16,17,.16); border-radius: 12px;
+  background: var(--white); color: var(--ink);
+  font-family: var(--sans); font-size: 15px; cursor: pointer;
+  transition: border-color .18s ease, background .18s ease, color .18s ease;
+}
+.wfs-chip:hover { border-color: var(--ink); }
+.wfs-chip.is-on { background: var(--ink); border-color: var(--ink); color: var(--white); }
+
+.wfs-noresults { margin: 34px 0 0; font-size: 17.5px; color: var(--charcoal); }
+
+/* ── Tarjetas del indice ────────────────────────────────────────────────── */
 .wfs-post-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
-
+.wfs-post-card[hidden] { display: none; }
 .wfs-post-card__link {
   display: flex; flex-direction: column; height: 100%;
-  border: 1.5px solid var(--ink); background: var(--white); color: var(--ink);
-  transition: transform .18s ease, box-shadow .18s ease;
+  border: 1px solid rgba(0,16,17,.14); border-radius: 14px; overflow: hidden;
+  background: var(--white); color: var(--ink);
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
-.wfs-post-card__link:hover { transform: translateY(-3px); box-shadow: 6px 6px 0 var(--tangerine); }
-.wfs-post-card__media { display: block; position: relative; overflow: hidden; aspect-ratio: 3 / 2; background: var(--alice-blue); }
-.wfs-post-card__media img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; transform: scale(1.02); transition: transform .6s ease;
+.wfs-post-card__link:hover {
+  transform: translateY(-3px);
+  border-color: var(--ink);
+  box-shadow: 0 14px 30px rgba(38,49,103,.10);
 }
-.wfs-post-card__link:hover .wfs-post-card__media img { transform: scale(1.1); }
-.wfs-post-card__body { display: flex; flex-direction: column; gap: 10px; padding: 26px 24px 28px; flex: 1; }
-.wfs-post-card__title { font-size: 20px; font-weight: 700; line-height: 1.25; }
+.wfs-post-card__media { display: block; position: relative; overflow: hidden; aspect-ratio: 16 / 10; background: var(--alice-blue); margin: 14px 14px 0; border-radius: 10px; }
+.wfs-post-card__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform .6s ease; }
+.wfs-post-card__link:hover .wfs-post-card__media img { transform: scale(1.08); }
+.wfs-post-card__body { display: flex; flex-direction: column; gap: 10px; padding: 20px 22px 24px; flex: 1; }
+.wfs-post-card__title { font-size: 19px; font-weight: 700; line-height: 1.3; }
 .wfs-post-card__excerpt { font-size: 15.5px; line-height: 1.55; color: var(--charcoal); flex: 1; }
 .wfs-post-card__meta {
   font-family: var(--mono); font-size: 13px; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--charcoal);
+  letter-spacing: .12em; text-transform: uppercase; color: var(--charcoal);
 }
+.wfs-post-card__more {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 4px;
+  font-family: var(--mono); font-size: 14px; font-weight: 700;
+  letter-spacing: .1em; color: var(--tangerine);
+}
+.wfs-post-card__more svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
 .wfs-pagination { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 44px; }
-.wfs-pagination .page-numbers {
-  padding: 12px 18px; border: 1.5px solid var(--ink); color: var(--ink);
-  font-family: var(--mono); font-size: 14px; font-weight: 700; letter-spacing: 0.14em;
-}
-.wfs-pagination .page-numbers.current { background: var(--ink); color: var(--white); }
+.wfs-pagination .page-numbers { padding: 12px 18px; border: 1px solid rgba(0,16,17,.16); border-radius: 12px; color: var(--ink); font-family: var(--mono); font-size: 14px; font-weight: 700; }
+.wfs-pagination .page-numbers.current { background: var(--ink); color: var(--white); border-color: var(--ink); }
 
 .wfs-empty { padding: 60px 0; }
 .wfs-empty p { margin: 12px 0 0; font-size: 17.5px; color: var(--charcoal); }
 
 /* ── Una entrada ────────────────────────────────────────────────────────── */
-.wfs-post__head { background: var(--white); padding: 72px 0 28px; }
+.wfs-post { padding-top: 44px; }
 .wfs-post__back {
   display: inline-block; margin-bottom: 26px;
   font-family: var(--mono); font-size: 13.5px; font-weight: 700;
-  letter-spacing: 0.18em; text-transform: uppercase; color: var(--charcoal);
+  letter-spacing: .18em; text-transform: uppercase; color: var(--charcoal);
 }
 .wfs-post__back:hover { color: var(--tangerine); }
-.wfs-post__title { margin: 14px 0 12px; font-size: clamp(30px, 3.6vw, 46px); letter-spacing: -0.015em; }
-.wfs-post__meta {
-  margin: 0; font-family: var(--mono); font-size: 13.5px; font-weight: 700;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--charcoal);
+.wfs-post__head { max-width: 860px; }
+.wfs-post__byline { margin: 0 0 10px; font-size: 15px; color: var(--charcoal); }
+.wfs-post__byline span { font-weight: 600; color: var(--ink); }
+.wfs-post__title {
+  margin: 0 0 16px;
+  font-family: var(--display); font-variation-settings: 'wdth' 125; font-weight: 800;
+  font-size: clamp(30px, 3.8vw, 48px); line-height: 1.08; letter-spacing: -.02em;
 }
-.wfs-post__cover { margin: 34px 0 40px; overflow: hidden; }
+.wfs-post__lead { margin: 0; max-width: 660px; font-size: 18.5px; line-height: 1.6; color: var(--charcoal); }
+
+.wfs-post__cover { margin: 34px 0 22px; overflow: hidden; border-radius: 14px; }
 .wfs-post__cover img { width: 100%; height: auto; display: block; }
+
+.wfs-post__tags { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 46px; }
+.wfs-tag {
+  padding: 9px 18px; border: 1px solid rgba(0,16,17,.2); border-radius: 999px;
+  color: var(--ink); font-size: 14.5px;
+}
+.wfs-tag:hover { border-color: var(--ink); background: var(--ink); color: var(--white); }
+.wfs-tag--sm { padding: 6px 13px; font-size: 13px; }
+
+/* Dos columnas: el articulo y lo que leer despues. */
+.wfs-post__cols { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 64px; padding-bottom: 100px; }
+.wfs-post__main { min-width: 0; }
+
+.wfs-side__title {
+  margin: 0 0 20px;
+  font-family: var(--display); font-variation-settings: 'wdth' 125; font-weight: 800;
+  font-size: 23px; letter-spacing: -.01em;
+}
+.wfs-side-card { padding-bottom: 26px; margin-bottom: 26px; border-bottom: 1px solid rgba(0,16,17,.12); }
+.wfs-side-card:last-child { border-bottom: 0; }
+.wfs-side-card a { display: block; }
+.wfs-side-card__media { display: block; position: relative; overflow: hidden; aspect-ratio: 16 / 10; border-radius: 12px; background: var(--alice-blue); margin-bottom: 14px; }
+.wfs-side-card__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.wfs-side-card__byline { display: block; margin-bottom: 6px; font-size: 13.5px; color: var(--charcoal); }
+.wfs-side-card__title { display: block; margin-bottom: 8px; font-size: 17px; font-weight: 700; line-height: 1.3; }
+.wfs-side-card a:hover .wfs-side-card__title { color: var(--tangerine); }
+.wfs-side-card__excerpt { display: block; font-size: 15px; line-height: 1.5; color: var(--charcoal); }
+.wfs-side-card__tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
 
 /* ── El contenido del editor ────────────────────────────────────────────── */
 /* Se estila por elemento, no por clase de bloque: marketing puede usar
@@ -1017,73 +1104,49 @@ p { font-family: var(--body); }
 .wfs-prose > * + * { margin-top: 1.15em; }
 .wfs-prose h2, .wfs-prose h3, .wfs-prose h4 {
   font-family: var(--display); font-variation-settings: 'wdth' 125;
-  font-weight: 800; line-height: 1.15; letter-spacing: -0.01em;
+  font-weight: 800; line-height: 1.15; letter-spacing: -.01em;
   margin-top: 1.8em; margin-bottom: .5em;
 }
-.wfs-prose h2 { font-size: clamp(26px, 2.6vw, 32px); }
-.wfs-prose h3 { font-size: clamp(21px, 2vw, 25px); }
+.wfs-prose h2 { font-size: clamp(24px, 2.4vw, 30px); }
+.wfs-prose h3 { font-size: clamp(20px, 1.9vw, 24px); }
 .wfs-prose h4 { font-size: 19px; }
 .wfs-prose a { color: var(--laser-blue); text-decoration: underline; text-underline-offset: 3px; }
 .wfs-prose a:hover { color: var(--tangerine); }
 .wfs-prose ul, .wfs-prose ol { padding-left: 1.3em; }
 .wfs-prose li + li { margin-top: .45em; }
-.wfs-prose img, .wfs-prose figure img { width: 100%; height: auto; display: block; }
+.wfs-prose img, .wfs-prose figure img { width: 100%; height: auto; display: block; border-radius: 12px; }
 .wfs-prose figure { margin-left: 0; margin-right: 0; }
-.wfs-prose figcaption {
-  margin-top: 10px; font-family: var(--mono); font-size: 13.5px;
-  letter-spacing: 0.06em; color: var(--charcoal);
-}
+.wfs-prose figcaption { margin-top: 10px; font-family: var(--mono); font-size: 13.5px; letter-spacing: .06em; color: var(--charcoal); }
 .wfs-prose blockquote {
   margin-left: 0; margin-right: 0; padding: 6px 0 6px 26px;
-  border-left: 3px solid var(--tangerine);
-  font-size: 21px; line-height: 1.5;
+  border-left: 3px solid var(--tangerine); font-size: 21px; line-height: 1.5;
 }
 .wfs-prose blockquote p { margin: 0; }
-.wfs-prose code {
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: .9em; background: var(--alice-blue); padding: 2px 6px;
-}
-.wfs-prose pre { background: var(--ink); color: var(--white); padding: 20px; overflow-x: auto; }
+.wfs-prose code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; background: var(--alice-blue); padding: 2px 6px; border-radius: 4px; }
+.wfs-prose pre { background: var(--ink); color: var(--white); padding: 20px; border-radius: 12px; overflow-x: auto; }
 .wfs-prose pre code { background: none; color: inherit; padding: 0; }
 .wfs-prose hr { border: none; border-top: 1px solid rgba(0,16,17,.12); margin: 2.4em 0; }
 /* Las tablas del editor desbordan en movil si no se les deja scroll propio. */
 .wfs-prose table { width: 100%; border-collapse: collapse; display: block; overflow-x: auto; }
-.wfs-prose th, .wfs-prose td {
-  padding: 12px 14px; border: 1px solid rgba(0,16,17,.12);
-  text-align: left; font-size: 16px;
-}
+.wfs-prose th, .wfs-prose td { padding: 12px 14px; border: 1px solid rgba(0,16,17,.12); text-align: left; font-size: 16px; }
 .wfs-prose th { background: var(--ink); color: var(--white); font-family: var(--mono); font-size: 13.5px; letter-spacing: .12em; text-transform: uppercase; }
 
-.wfs-post__tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 48px; }
-.wfs-tag {
-  padding: 9px 16px; border: 1.5px solid var(--ink); color: var(--ink);
-  font-family: var(--mono); font-size: 13px; font-weight: 700;
-  letter-spacing: .14em; text-transform: uppercase;
-}
-.wfs-tag:hover { background: var(--ink); color: var(--white); }
-
 .wfs-post__cta {
-  margin: 64px 0 0; padding: 44px 40px;
+  margin-top: 56px; padding: 40px 36px; border-radius: 16px;
   background: var(--ink); color: var(--white);
-  box-shadow: 12px 12px 0 var(--tangerine);
 }
-.wfs-post__cta-title { margin: 12px 0 26px; font-size: clamp(24px, 2.6vw, 34px); color: var(--white); }
+.wfs-post__cta .wfs-kicker { color: var(--tangerine); }
+.wfs-post__cta-title { margin: 12px 0 26px; font-size: clamp(24px, 2.6vw, 32px); color: var(--white); }
 .wfs-post__cta-actions { display: flex; gap: 12px; flex-wrap: wrap; }
 
-.wfs-post__nav {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
-  margin: 72px auto 110px; padding-top: 34px;
-  border-top: 1px solid rgba(0,16,17,.12);
+@media (max-width: 1000px) {
+  .wfs-post__cols { grid-template-columns: 1fr; gap: 56px; }
+  .wfs-post__side { border-top: 1px solid rgba(0,16,17,.12); padding-top: 34px; }
 }
-.wfs-post__nav-item { display: flex; flex-direction: column; gap: 8px; font-size: 17px; font-weight: 600; line-height: 1.3; }
-.wfs-post__nav-item:hover { color: var(--tangerine); }
-.wfs-post__nav-item--next { text-align: right; align-items: flex-end; }
-
 @media (max-width: 900px) {
   .wfs-post-grid { grid-template-columns: 1fr; }
-  .wfs-blog-hero { padding: 64px 0 56px; }
-  .wfs-blog-list { padding: 56px 0 80px; }
-  .wfs-post__cta { padding: 32px 26px; box-shadow: 8px 8px 0 var(--tangerine); }
-  .wfs-post__nav { grid-template-columns: 1fr; }
-  .wfs-post__nav-item--next { text-align: left; align-items: flex-start; }
+  .wfs-blog-list { padding: 48px 0 80px; }
+  .wfs-hero__inner { padding-top: 48px; padding-bottom: 40px; }
+  .wfs-post__cta { padding: 30px 24px; }
+  .wfs-search { max-width: none; }
 }

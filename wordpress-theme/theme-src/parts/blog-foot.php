@@ -11,6 +11,7 @@ window.WFS_ASSET_BASE   = <?php echo wp_json_encode( WFS_ASSETS ); ?>;
 window.WFS_LOCAL_ASSETS = <?php echo wp_json_encode( wfs_local_assets() ); ?>;
 </script>
 <script src="<?php echo esc_url( get_theme_file_uri( 'apps/wfs-links.js' ) . '?ver=' . WFS_VERSION ); ?>"></script>
+<script defer src="<?php echo esc_url( get_theme_file_uri( 'apps/blog-filter.js' ) . '?ver=' . WFS_VERSION ); ?>"></script>
 <?php wfs_blog_shell_scripts(); ?>
 <?php wp_footer(); ?>
 </body>

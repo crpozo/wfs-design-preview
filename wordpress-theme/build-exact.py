@@ -11,6 +11,11 @@ OUT   = SRC / "wordpress-theme" / "wfs-site"
 ASSET_BASE = "https://crpozo.github.io/wfs-design-preview/assets"
 
 SKIP = {"index.html"}
+# El blog no es una pagina React: lo sirven home.php y single.php desde el tema.
+# blog.html y blog-*.html son solo el preview estatico, generado por
+# wordpress-theme/tools/build.php. Si entraran aqui, el tema crearia paginas de
+# WordPress para ellas y chocarian con el blog de verdad.
+SKIP_PREFIX = ("blog",)
 
 # ---------------------------------------------------------------- limpiar
 if OUT.exists():
@@ -61,6 +66,7 @@ RE_APP   = re.compile(r'<script type="text/babel">(.*?)</script>', re.S)
 
 pages = {}
 for f in sorted(SRC.glob("*.html")):
+    if f.name.lower().startswith(SKIP_PREFIX): continue
     if f.name in SKIP:
         continue
     raw   = f.read_text()

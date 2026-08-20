@@ -38,14 +38,19 @@ function the_permalink(){ echo get_permalink(); }
 function the_title(){ echo htmlspecialchars(cur()->post_title); }
 function get_the_title($p=null){ return is_object($p)?$p->post_title:cur()->post_title; }
 function the_content(){ echo cur()->post_content; }
-function has_post_thumbnail(){ return !empty(cur()->thumb); }
+function has_post_thumbnail($p=null){ $o=is_object($p)?$p:cur(); return !empty($o->thumb); }
 function the_post_thumbnail($s,$a){ echo '<img src="'.cur()->thumb.'" alt="'.$a['alt'].'" loading="lazy" decoding="async">'; }
-function get_the_excerpt(){ return cur()->excerpt; }
+function get_the_excerpt($p=null){ $o=is_object($p)?$p:cur(); return $o->excerpt; }
 function wp_trim_words($s,$n){ $w=explode(' ',$s); return implode(' ',array_slice($w,0,$n)) . (count($w)>$n?'…':''); }
 function wp_strip_all_tags($s){ return trim(strip_tags($s)); }
 function get_the_date($f,$p=null){ $o=is_object($p)?$p:cur(); return date($f, strtotime($o->post_date)); }
-function get_the_category($p=null){ $o=is_object($p)?$p:cur(); return [(object)['name'=>$o->cat]]; }
-function get_the_tags(){ return array_map(fn($n)=>(object)['name'=>$n,'term_id'=>1], cur()->tags); }
+function get_the_category($p=null){
+  $o = is_object($p) ? $p : cur();
+  /* WordPress devuelve terminos completos, con slug. Sin el, el filtro por
+     categoria no tendria con que comparar. */
+  return [(object)['name'=>$o->cat, 'slug'=>strtolower(str_replace(' ','-',$o->cat))]];
+}
+function get_the_tags($id=null){ $o=cur(); if($id){ foreach($GLOBALS['POSTS'] as $q){ if($q->ID===$id){$o=$q;break;} } } return array_map(fn($n)=>(object)['name'=>$n,'term_id'=>1], $o->tags); }
 function get_tag_link($t){ return 'blog.html'; }
 function paginate_links($a){ return null; }
 function get_previous_post(){ $i=$GLOBALS['ONLY']; return isset($GLOBALS['POSTS'][$i+1]) ? $GLOBALS['POSTS'][$i+1] : false; }
@@ -58,3 +63,22 @@ function wfs_local_assets(){ return []; }
 function wfs_link_map(){ return []; }
 /* Se sobrescriben por filtro en vez de redeclarar: blog.php ya las define. */
 require $GLOBALS['SRC'] . '/inc/blog.php';
+function get_the_author(){ return 'Western Fence Supply'; }
+function get_the_author_meta($f,$id=0){ return 'Western Fence Supply'; }
+function get_the_ID(){ return cur()->ID; }
+function get_categories($a=[]){
+  $seen=[]; $out=[];
+  foreach ($GLOBALS['POSTS'] as $p) {
+    $slug = strtolower(str_replace(' ','-',$p->cat));
+    if (isset($seen[$slug])) continue;
+    $seen[$slug]=1; $out[] = (object)['name'=>$p->cat,'slug'=>$slug];
+  }
+  return $out;
+}
+function get_posts($a=[]){
+  $skip = $a['post__not_in'][0] ?? null;
+  $out = [];
+  foreach ($GLOBALS['POSTS'] as $p) { if ($p->ID !== $skip) $out[] = $p; }
+  return array_slice($out, 0, $a['numberposts'] ?? 3);
+}
+function get_the_post_thumbnail($p,$s,$a){ return '<img src="'.$p->thumb.'" alt="'.$a['alt'].'" loading="lazy">'; }

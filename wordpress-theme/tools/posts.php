@@ -3,7 +3,7 @@
    materiales, fabricacion). Si a marketing le sirve alguno, puede publicarlo
    tal cual: no es relleno inventado. */
 return [
- (object)['ID'=>1,'post_title'=>'What Florida Pool Code Actually Requires','post_name'=>'florida-pool-code-requirements',
+ (object)['ID'=>1,'post_author'=>1,'post_title'=>'What Florida Pool Code Actually Requires','post_name'=>'florida-pool-code-requirements',
   'cat'=>'Pool Code','thumb'=>'assets/profiles/aluminum-pool-code.jpg','tags'=>['Pool Code','Aluminum'],
   'post_date'=>'2026-08-12 09:00:00',
   'excerpt'=>'The barrier rules people get wrong most often, and the fence systems that pass without a variance.',
@@ -21,7 +21,7 @@ return [
 <tr><td>Chain link</td><td>Conditional</td><td>Mesh is climbable, ask before you spec it</td></tr></table>
 <p>Bring the pool deck dimensions and we will mark the gate locations on the takeoff.</p>'],
 
- (object)['ID'=>2,'post_title'=>'Vinyl, Aluminum Or Chain Link: How To Pick','post_name'=>'how-to-pick-fence-material',
+ (object)['ID'=>2,'post_author'=>1,'post_title'=>'Vinyl, Aluminum Or Chain Link: How To Pick','post_name'=>'how-to-pick-fence-material',
   'cat'=>'Guides','thumb'=>'assets/compare/vinyl.webp','tags'=>['Vinyl','Aluminum','Chain Link'],
   'post_date'=>'2026-07-29 09:00:00',
   'excerpt'=>'Every material trades something away. Here is what each one gives up, said plainly.',
@@ -35,7 +35,7 @@ return [
 <h2>The short version</h2>
 <ul><li>Backyard privacy, low upkeep: vinyl</li><li>Pool enclosure, HOA front: aluminum</li><li>Security, sports, industrial: chain link</li><li>Modern privacy, coastal salt air: metal or EC Fence</li></ul>'],
 
- (object)['ID'=>3,'post_title'=>'Why Our Gates Ship Ready To Install','post_name'=>'gates-ship-ready-to-install',
+ (object)['ID'=>3,'post_author'=>1,'post_title'=>'Why Our Gates Ship Ready To Install','post_name'=>'gates-ship-ready-to-install',
   'cat'=>'Shop Notes','thumb'=>'assets/SINGLE_SWING_GATE.webp','tags'=>['Gates','Fabrication'],
   'post_date'=>'2026-07-15 09:00:00',
   'excerpt'=>'What happens between your measurements and the gate that comes off the truck.',

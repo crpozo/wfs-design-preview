@@ -15,13 +15,18 @@
 <div id="wfs-header"></div>
 
 
-<section class="wfs-blog-hero">
-  <div class="container">
-    <span class="wfs-kicker">Fence Education Hub · Blog</span>
-    <h1 class="display-extended wfs-blog-hero__title">
-      Guides, News And<br><span class="wfs-accent">Job Stories.</span>
+<!-- Mismo banner que el resto de paginas interiores: foto de fondo, velo
+     azul en diagonal, guion naranja y titular en dos colores. Es la receta de
+     PageHero, replicada en PHP para no arrastrar React hasta aqui. -->
+<section class="wfs-hero">
+  <img class="wfs-hero__img" src="assets/hero-warehouse.webp" alt="" aria-hidden="true" />
+  <div class="wfs-hero__scrim" aria-hidden="true"></div>
+  <div class="container wfs-hero__inner">
+    <span class="wfs-hero__eyebrow"><i aria-hidden="true"></i>Fence Education Hub · Blog</span>
+    <h1 class="wfs-hero__title">
+      Guides, News And<br><span class="wfs-hero__accent">Job Stories.</span>
     </h1>
-    <p class="wfs-blog-hero__sub">
+    <p class="wfs-hero__sub">
       Written by the crew that stocks and fabricates the material, for contractors
       and homeowners across Southwest Florida.
     </p>
@@ -30,8 +35,22 @@
 
 <section class="wfs-blog-list">
   <div class="container">
-          <div class="wfs-post-grid">
-                  <article class="wfs-post-card">
+        <div class="wfs-toolbar">
+      <label class="wfs-search">
+        <svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M13.5 13.5 18 18"/></svg>
+        <input type="search" id="wfs-q" placeholder="Search articles…" autocomplete="off" />
+      </label>
+              <div class="wfs-chips" role="group" aria-label="Filter by category">
+          <button class="wfs-chip is-on" data-cat="">All articles</button>
+                      <button class="wfs-chip" data-cat="pool-code">Pool Code</button>
+                      <button class="wfs-chip" data-cat="guides">Guides</button>
+                      <button class="wfs-chip" data-cat="shop-notes">Shop Notes</button>
+                  </div>
+          </div>
+
+          <div class="wfs-post-grid" id="wfs-posts">
+                            <article class="wfs-post-card" data-cat="pool-code"
+                   data-text="what florida pool code actually requires the barrier rules people get wrong most often, and the fence systems that pass without a variance.">
             <a class="wfs-post-card__link" href="blog-florida-pool-code-requirements.html">
                               <span class="wfs-post-card__media">
                   <img src="assets/profiles/aluminum-pool-code.jpg" alt="What Florida Pool Code Actually Requires" loading="lazy" decoding="async">                </span>
@@ -42,10 +61,12 @@
                 <span class="wfs-post-card__meta">
                   Aug 12, 2026 ·
                   1 min read                </span>
+                <span class="wfs-post-card__more">Learn more <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10m0 0L9 4m4 4l-4 4"/></svg></span>
               </span>
             </a>
           </article>
-                  <article class="wfs-post-card">
+                            <article class="wfs-post-card" data-cat="guides"
+                   data-text="vinyl, aluminum or chain link: how to pick every material trades something away. here is what each one gives up, said plainly.">
             <a class="wfs-post-card__link" href="blog-how-to-pick-fence-material.html">
                               <span class="wfs-post-card__media">
                   <img src="assets/compare/vinyl.webp" alt="Vinyl, Aluminum Or Chain Link: How To Pick" loading="lazy" decoding="async">                </span>
@@ -56,10 +77,12 @@
                 <span class="wfs-post-card__meta">
                   Jul 29, 2026 ·
                   1 min read                </span>
+                <span class="wfs-post-card__more">Learn more <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10m0 0L9 4m4 4l-4 4"/></svg></span>
               </span>
             </a>
           </article>
-                  <article class="wfs-post-card">
+                            <article class="wfs-post-card" data-cat="shop-notes"
+                   data-text="why our gates ship ready to install what happens between your measurements and the gate that comes off the truck.">
             <a class="wfs-post-card__link" href="blog-gates-ship-ready-to-install.html">
                               <span class="wfs-post-card__media">
                   <img src="assets/SINGLE_SWING_GATE.webp" alt="Why Our Gates Ship Ready To Install" loading="lazy" decoding="async">                </span>
@@ -70,12 +93,15 @@
                 <span class="wfs-post-card__meta">
                   Jul 15, 2026 ·
                   1 min read                </span>
+                <span class="wfs-post-card__more">Learn more <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10m0 0L9 4m4 4l-4 4"/></svg></span>
               </span>
             </a>
           </article>
               </div>
 
       
+      <p class="wfs-noresults" id="wfs-noresults" hidden>No articles match that search.</p>
+
       </div>
 </section>
 
@@ -89,6 +115,7 @@
 <script type="text/babel" src="components/page-blocks.jsx?v=310"></script>
 <script type="text/babel" src="components/sections.jsx?v=310"></script>
 <script type="text/babel" src="components/extras.jsx?v=310"></script>
+<script src="wordpress-theme/wfs-site/apps/blog-filter.js" defer></script>
 <script type="text/babel">
 /* En el preview los componentes viven en el ambito del script, no en window,
    asi que se referencian directamente. En el tema lo hace apps/blog-shell.js. */
