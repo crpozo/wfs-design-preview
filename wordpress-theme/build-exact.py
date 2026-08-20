@@ -22,7 +22,9 @@ if OUT.exists():
 # ---------------------------------------------------------------- archivos PHP del tema
 for item in sorted((SRC / "wordpress-theme" / "theme-src").iterdir()):
     dst = OUT / item.name
-    shutil.copytree(item, dst) if item.is_dir() else shutil.copy2(item, dst)
+    # dirs_exist_ok: theme-src ya trae carpetas que el build crea antes
+    # (apps/, con el arranque del blog), y sin esto copytree revienta.
+    shutil.copytree(item, dst, dirs_exist_ok=True) if item.is_dir() else shutil.copy2(item, dst)
 
 # --------------------------------------------------- assets propios del tema
 LOCAL = sorted(

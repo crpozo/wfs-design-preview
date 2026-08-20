@@ -1,4 +1,4 @@
-# Western Fence Supply — Tema de WordPress (`wfs-site-4.11.1.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-4.12.0.zip`)
 
 Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
 componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
@@ -40,7 +40,7 @@ WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
 ## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube `wfs-site-4.11.1.zip` → **Instalar ahora** → **Activar**
+2. Sube `wfs-site-4.12.0.zip` → **Instalar ahora** → **Activar**
 3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
    (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 
@@ -95,6 +95,57 @@ Time of Submission
 8:15 am EDT
 _________________________________________________________________________
 ```
+
+## Blog
+
+Nuevo apartado **Blog**, dentro de *Fence Education Hub* en el menu.
+
+### Como publica marketing
+
+Igual que en cualquier WordPress: **Entradas → Anadir nueva**. No hay pantalla
+nueva que aprender ni codigo que tocar.
+
+Se usan **entradas nativas**, no un tipo de contenido a medida, y esa es la
+decision de fondo: con entradas normales vienen de serie el editor visual, la
+imagen destacada, categorias y etiquetas, el programador de publicacion, los
+borradores, las revisiones y Yoast leyendolas sin configurar nada.
+
+| Campo del editor | Donde sale |
+|---|---|
+| Titulo | Titular de la entrada y de la tarjeta |
+| Imagen destacada | Portada y foto de la tarjeta |
+| Extracto | Resumen de la tarjeta |
+| Categoria | El texto naranja sobre el titulo |
+| Etiquetas | Al final de la entrada |
+| Fecha | Junto al tiempo de lectura |
+
+El **tiempo de lectura se calcula solo** desde el texto. Si hubiera que
+escribirlo a mano, la mitad de las entradas saldrian sin el.
+
+### Como esta hecho
+
+El contenido se pinta en **PHP, no en React**: asi Google lo lee sin ejecutar
+nada y la entrada funciona con JavaScript desactivado. La cabecera y el pie si
+son los **componentes reales del sitio**, montados alrededor, para que el menu
+del blog no pueda desincronizarse del resto.
+
+```
+home.php     indice del blog
+single.php   una entrada
+archive.php  categoria, etiqueta o fecha
+parts/       cabecera y pie comunes
+inc/blog.php crea la pagina Blog y la fija como pagina de entradas
+```
+
+El estilo de lo que llega del editor esta en `.wfs-prose` dentro de
+`css/styles.css`, y va **por elemento, no por clase de bloque**: marketing puede
+usar cualquier bloque de Gutenberg y sigue saliendo con el diseno del sitio.
+
+> **Dos cosas que habia que arreglar para que esto funcionara.** `/blog/` estaba
+> redirigida con un 301 a `/articles/`, asi que el indice era inalcanzable. Y
+> `redirects.php` forzaba un 404 en cualquier slug que no estuviera en el
+> manifiesto de paginas, o sea **en todas las entradas**. Ahora se comprueba
+> primero si WordPress resolvio la peticion a contenido real.
 
 ## Fichas tecnicas (/specs/)
 

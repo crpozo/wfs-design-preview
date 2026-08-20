@@ -45,49 +45,9 @@ window.WFS_NONCE = <?php echo wp_json_encode( wp_create_nonce( 'wp_rest' ) ); ?>
 window.WFS_LINKS = <?php echo wp_json_encode( wfs_link_map() ); ?>;
 window.WFS_ASSET_BASE = <?php echo wp_json_encode( WFS_ASSETS ); ?>;
 window.WFS_LOCAL_ASSETS = <?php echo wp_json_encode( wfs_local_assets() ); ?>;
-(function () {
-  var map = window.WFS_LINKS || {};
-  function resolve(href) {
-    if (!href) { return null; }
-    var m = href.match(/([A-Za-z0-9._-]+\.html)(#.*)?$/);
-    if (!m || !map[m[1]]) { return null; }
-    return map[m[1]] + (m[2] || '');
-  }
-  /* Los assets que viajan en el tema se sirven desde este dominio, no desde
-     el preview: la URL es la del cliente y no depende de un repo externo. */
-  var local = window.WFS_LOCAL_ASSETS || {};
-  var base = (window.WFS_ASSET_BASE || '').replace(/\/$/, '') + '/';
-  function localize(el, attr) {
-    var v = el.getAttribute(attr);
-    if (!v || v.indexOf(base) !== 0) { return; }
-    var rel = v.slice(base.length).split('?')[0];
-    if (local[rel]) { el.setAttribute(attr, local[rel]); }
-  }
-  function patch(root) {
-    var scope = root || document;
-    var links = scope.querySelectorAll('a[href*=".html"]');
-    for (var i = 0; i < links.length; i++) {
-      var to = resolve(links[i].getAttribute('href'));
-      if (to) { links[i].setAttribute('href', to); }
-    }
-    var a = scope.querySelectorAll('a[href]');
-    for (var j = 0; j < a.length; j++) { localize(a[j], 'href'); }
-    var m = scope.querySelectorAll('img[src], source[src], video[src]');
-    for (var k = 0; k < m.length; k++) { localize(m[k], 'src'); }
-  }
-  document.addEventListener('click', function (e) {
-    var a = e.target && e.target.closest ? e.target.closest('a[href*=".html"]') : null;
-    if (!a) { return; }
-    var to = resolve(a.getAttribute('href'));
-    if (to) { a.setAttribute('href', to); }
-  }, true);
-  var root = document.getElementById('root');
-  if (window.MutationObserver && root) {
-    new MutationObserver(function () { patch(root); }).observe(root, { childList: true, subtree: true });
-  }
-  document.addEventListener('DOMContentLoaded', function () { patch(document); });
-})();
+/* El resolvedor vive en apps/wfs-links.js, compartido con el blog. */
 </script>
+<script src="<?php echo esc_url( get_theme_file_uri( 'apps/wfs-links.js' ) . '?ver=' . WFS_VERSION ); ?>"></script>
 
 <?php wfs_print_app( $wfs_slug ); ?>
 <?php wp_footer(); ?>

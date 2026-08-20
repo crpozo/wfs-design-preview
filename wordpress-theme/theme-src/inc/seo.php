@@ -15,6 +15,7 @@ function wfs_seo_map() {
 	return apply_filters( 'wfs_seo_map', array(
 		'about' => array( 't' => 'Family-Owned Fence Supplier', 'd' => 'Family-owned, supply-only fence company with 20+ years of experience, in-house gate fabrication, and yards in Fort Myers and Port Charlotte, Florida.' ),
 		'aluminum' => array( 't' => 'Powder-Coated Aluminum Fence Supply', 'd' => 'Wholesale powder-coated aluminum fence panels, posts, and gates, including pool code options. Pickup or delivery from our Fort Myers and Port Charlotte yards.' ),
+		'blog' => array( 't' => 'Fence Guides, News & Job Stories', 'd' => 'Guides, news and job stories from the crew that stocks and fabricates the material, for contractors and homeowners across Southwest Florida.' ),
 		'articles' => array( 't' => 'Fence Buying Guides & Articles', 'd' => 'Short, plain-English fence guides for Southwest Florida, covering materials, pricing, pool code and hurricane zones, written by the crew that fabricates it.' ),
 		'chain-link' => array( 't' => 'Chain Link Fence Supply, Fort Myers', 'd' => 'Galvanized and vinyl-coated chain link mesh, posts, fittings, and gates for security, sports, and industrial jobs. Pickup or delivery in Southwest Florida.' ),
 		'contact' => array( 't' => 'Contact Us, Fort Myers & Port Charlotte', 'd' => 'Call, email or visit Western Fence Supply. Phone numbers, addresses and hours for our Fort Myers and Port Charlotte yards, plus a quick contact form.' ),

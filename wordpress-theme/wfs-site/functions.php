@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.11.1' );
+define( 'WFS_VERSION', '4.12.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -18,6 +18,7 @@ if ( ! defined( 'WFS_ASSETS' ) ) {
 require_once get_theme_file_path( 'inc/leads.php' );
 require_once get_theme_file_path( 'inc/redirects.php' );
 require_once get_theme_file_path( 'inc/seo.php' );
+require_once get_theme_file_path( 'inc/blog.php' );
 
 /** Mapa de paginas del sitio: slug => title, archivo original, componentes. */
 function wfs_pages() {
@@ -96,7 +97,9 @@ function wfs_link_map() {
 	}
 	$map['Homepage.html'] = home_url( '/' );
 	$map['index.html']    = home_url( '/' );
-	return $map;
+	/* Filtrable para que modulos como el blog anadan sus propias URLs sin
+	   tener que tocar esta funcion. */
+	return apply_filters( 'wfs_link_map', $map );
 }
 
 /** True si el build precompilo el JSX y por tanto no hace falta Babel. */

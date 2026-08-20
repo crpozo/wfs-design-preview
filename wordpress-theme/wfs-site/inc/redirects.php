@@ -24,7 +24,6 @@ function wfs_redirect_exact() {
 	return apply_filters( 'wfs_redirect_exact', array(
 		/* Paginas que cambiaron de nombre */
 		'home'                            => '',
-		'blog'                            => 'articles',
 		'gates'                           => 'products',
 		'fence-service-areas'             => 'locations',
 		'request-a-fence-estimate'        => 'estimate',
@@ -122,6 +121,13 @@ function wfs_redirect_url( $slug ) {
 function wfs_do_legacy_redirect() {
 	if ( is_admin() || wp_doing_ajax() ) { return; }
 	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) { return; }
+
+	/* Si WordPress resolvio la peticion a contenido real, no es una URL vieja:
+	   es una entrada del blog, una categoria o una busqueda. Sin esta guarda
+	   toda entrada publicada daria 404, porque su slug no esta en el manifiesto
+	   de paginas del sitio. Ademas, si una entrada nueva reutiliza el slug de
+	   una vieja, gana la entrada y no la redireccion. */
+	if ( is_singular() || is_home() || is_front_page() || is_archive() || is_search() ) { return; }
 
 	$path = wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/', PHP_URL_PATH );
 	$path = trim( (string) $path, '/' );
