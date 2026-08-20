@@ -184,7 +184,7 @@ tarjetas, con `gap` de 14–18px.
 }
 .btn:hover { transform: translateY(-1px); }
 
-.btn-primary { background: var(--tangerine); color: var(--ink); }
+.btn-primary { background: var(--tangerine); color: #fff; }
 .btn-dark    { background: var(--ink);       color: #fff; }
 .btn-dark:hover { background: var(--indigo-blue); }
 .btn-light   { background: #fff;             color: var(--ink); }
@@ -194,6 +194,13 @@ tarjetas, con `gap` de 14–18px.
 .btn-ghost:hover { background: currentColor; color: #fff !important; }
 .btn-ghost.on-dark:hover { color: var(--ink) !important; }
 ```
+
+> **Contraste del botón naranja.** Blanco sobre `#ff7133` da **2,74:1**, por
+> debajo del mínimo WCAG AA (4,5:1 en texto normal, 3:1 en grande). El texto en
+> `--ink` daba 4,46:1, mejor pero también por debajo del normal. Se usa blanco
+> porque es lo que hace el sitio en la mayoría de sus botones. Si en algún
+> momento hay que cumplir AA sin renunciar al blanco, **`#d64100`** llega a
+> 4,55:1 manteniendo el mismo tono.
 
 `border-radius: 2px` es deliberado. El sitio **no** usa esquinas redondeadas en
 botones ni tarjetas; los tokens `--radius` existen pero apenas se usan.

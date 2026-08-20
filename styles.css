@@ -164,8 +164,11 @@ div[style*="border-bottom: 1px solid"]:has(> img) { border-bottom: none !importa
 .btn-light { background: var(--parchment); color: var(--ink); }
 .btn-light:hover { background: var(--white); }
 .btn-ghost { color: inherit; border: 1px solid currentColor; padding: 14px 20px; }
-.btn-ghost:hover { background: currentColor; color: var(--white) !important; }
-.btn-ghost.on-dark:hover { color: var(--ink) !important; }
+/* currentColor se resuelve al color YA aplicado del elemento, y esta misma
+   regla lo acaba de poner en blanco: salia blanco sobre blanco y el boton
+   desaparecia al pasar el raton. Los dos colores van explicitos. */
+.btn-ghost:hover { background: var(--ink); color: var(--white) !important; border-color: var(--ink); }
+.btn-ghost.on-dark:hover { background: var(--white); color: var(--ink) !important; border-color: var(--white); }
 
 .arrow-icon {
   width: 16px; height: 16px;

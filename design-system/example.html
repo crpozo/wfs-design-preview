@@ -53,21 +53,50 @@
   .detail__side { min-height:0; overflow:auto; }
 
   /* Paso 3 y resumen */
-  .grid-2 { display:grid; grid-template-columns:repeat(4,1fr); gap:26px 24px; }
+  /* Tres columnas: los 7 campos caen en 3 filas y cada uno gana ancho. */
+  .grid-2 { display:grid; grid-template-columns:repeat(3,1fr); gap:26px 28px; }
   .row    { display:flex; gap:10px; flex-wrap:wrap; }
   .spec   { display:grid; grid-template-columns:150px 1fr; gap:4px 22px; padding:15px 0;
             border-bottom:1px solid rgba(0,16,17,.10); font-size:15px; line-height:1.45; }
   .spec dt { font-family:var(--mono); font-size:12.5px; font-weight:700; letter-spacing:.16em;
              text-transform:uppercase; color:var(--charcoal); }
   .spec dd { margin:0; }
+  /* Resumen: siete filas en una columna hacian un panel estrecho y altisimo
+     que obligaba a hacer scroll. En dos columnas cabe de una. */
+  .spec-grid { display:grid; grid-template-columns:repeat(2,1fr); column-gap:48px; }
+  .spec-grid .spec { grid-template-columns:150px 1fr; }
+  @media (max-width: 900px) { .spec-grid { grid-template-columns:1fr; } }
+
   .nav { display:flex; justify-content:space-between; gap:12px; margin-top:28px; flex:none; }
 
-  /* Ventana ESTRECHA: se apila en una columna. */
+  /* Ventana ESTRECHA: se apila y se deja de centrar.
+     Centrar con flex un contenido mas alto que el contenedor lo recorta por
+     ARRIBA y esa parte no se puede alcanzar con scroll: por eso se veian las
+     etiquetas de los campos cortadas. En movil no se centra, y punto. */
   @media (max-width: 1000px) {
     body { overflow: auto; }
+    html, body { height: auto; }
+    main { padding: 20px 0 24px; }
+    #body { display:block; overflow:visible; }
     .grid-5, .detail { height:auto; grid-template-columns:1fr; }
     .grid-5 .media, .detail .media { aspect-ratio: 16/9; height:auto; }
-    .grid-2 { grid-template-columns:repeat(2,1fr); }
+    .grid-5 .media img { padding:16px; }
+    .grid-2 { grid-template-columns:repeat(2,1fr); gap:20px 18px; }
+    .spec { grid-template-columns:1fr; gap:2px; padding:12px 0; }
+    .steps { margin-bottom:20px; gap:6px; }
+    .steps .dot { font-size:11px; letter-spacing:.10em; }
+    .steps .bar { max-width:22px; }
+    .section-header { margin-bottom:22px; gap:16px; }
+  }
+
+  /* Movil de verdad: dos columnas de campos aprietan demasiado. */
+  @media (max-width: 620px) {
+    .topbar .kicker { display:none; }          /* la coletilla parte el titulo en 3 lineas */
+    .topbar strong { font-size:15px; }
+    .grid-2 { grid-template-columns:1fr; }
+    .grid-5 { gap:14px; }
+    .steps { flex-wrap:wrap; row-gap:8px; }
+    .nav .btn { padding:14px 18px; font-size:15px; }
   }
   /* Ventana BAJA pero ancha: conserva las cinco columnas, solo deja scrollear.
      Van en reglas separadas a proposito: combinarlas con coma mandaba una
@@ -287,7 +316,7 @@ function render() {
         '<div class="display-extended" style="font-size:clamp(22px,2.4vw,32px);margin:10px 0 18px">' +
           esc(m.name) + ' · ' + esc(state.height || '—') +
         '</div>' +
-        '<dl style="margin:0">' +
+        '<dl class="spec-grid" style="margin:0">' +
           rowDark(m.optionLabel, state.option || '—') +
           rowDark('Height', state.height || '—') +
           rowDark('Linear feet', state.feet || '—') +

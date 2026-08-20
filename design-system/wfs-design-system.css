@@ -83,15 +83,24 @@
 }
 .btn:hover { transform: translateY(-1px); }
 
-.btn-primary { background: var(--tangerine); color: var(--ink); }
+/* Texto blanco sobre el naranja. Contraste medido: 2.74:1, por debajo del
+   minimo AA (4.5:1 normal, 3:1 grande) — el ink daba 4.46:1. Se usa blanco
+   porque es lo que hace el sitio en 20 sitios frente a 17 con ink, asi que es
+   lo consistente. Si algun dia hay que cumplir AA sin perder el blanco, el
+   naranja que lo aguanta es #d64100 (4.55:1) y mantiene el mismo tono. */
+.btn-primary { background: var(--tangerine); color: #fff; }
 .btn-dark    { background: var(--ink);       color: #fff; }
 .btn-dark:hover { background: var(--indigo-blue); }
 .btn-light   { background: #fff;             color: var(--ink); }
 
 /* Fantasma: hereda el color del contexto, se invierte al pasar */
 .btn-ghost   { color: inherit; border: 1px solid currentColor; padding: 14px 20px; }
-.btn-ghost:hover { background: currentColor; color: #fff !important; }
-.btn-ghost.on-dark:hover { color: var(--ink) !important; }
+/* OJO: la regla original era `background: currentColor; color:#fff !important`.
+   currentColor se resuelve al color YA aplicado del elemento, que esa misma
+   regla acaba de poner en blanco, asi que salia blanco sobre blanco y el boton
+   desaparecia. Se fijan los dos colores explicitamente. */
+.btn-ghost:hover          { background: var(--ink); color: #fff !important; border-color: var(--ink); }
+.btn-ghost.on-dark:hover  { background: #fff; color: var(--ink) !important; border-color: #fff; }
 
 
 .card {
