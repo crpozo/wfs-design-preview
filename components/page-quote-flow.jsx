@@ -90,7 +90,7 @@ const QuoteFlow = () => {
   const topRef = React.useRef(null);
   const endRef = React.useRef(null);
   const prevCount = React.useRef(0);
-  const scrollTop = () => { if (topRef.current) topRef.current.scrollIntoView({ block: 'start' }); };
+  const scrollTop = () => { if (topRef.current) topRef.current.scrollIntoView({ block: 'start', behavior: 'smooth' }); };
 
   /* Cadena de grupos según el árbol real */
   const groups = [];
@@ -143,6 +143,10 @@ const QuoteFlow = () => {
   return (
     <section ref={topRef} style={{ background: 'var(--white)', padding: '52px 0 110px', scrollMarginTop: 90 }}>
       <div className="container">
+       {/* key={view}: al cambiar de pantalla se re-monta todo y corre la
+           animación de entrada; dentro del detalle los grupos conservan su key
+           y solo anima el que aparece */}
+       <div key={view} className="wfs-flow-screen">
 
         {/* Cabecera: titular dos líneas + descripción a la derecha */}
         <div style={{
@@ -163,9 +167,11 @@ const QuoteFlow = () => {
         {/* Pantalla 1: solo la selección de material */}
         {!onDetail && !onSummary && (
           <div className="wfs-flow-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 18 }}>
-            {groups[0].node.o.map(opt => (
-              <FlowMaterialCard key={opt.to} opt={opt} selected={!!material && material.to === opt.to}
-                onPick={() => { pickAt(0, opt); setView('detail'); scrollTop(); }}/>
+            {groups[0].node.o.map((opt, ci) => (
+              <div key={opt.to} className="wfs-flow-in" style={{ animationDelay: `${ci * 70}ms` }}>
+                <FlowMaterialCard opt={opt} selected={!!material && material.to === opt.to}
+                  onPick={() => { pickAt(0, opt); setView('detail'); scrollTop(); }}/>
+              </div>
             ))}
           </div>
         )}
@@ -182,7 +188,7 @@ const QuoteFlow = () => {
           <div className="wfs-flow-detail" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 44, alignItems: 'start' }}>
             <div>
               <div style={{ position: 'relative', aspectRatio: '1.333 / 1', border: INK_BORDER, background: '#fff', overflow: 'hidden' }}>
-                <img src={heroPick.img} alt={heroPick.t} decoding="async" style={{
+                <img key={heroPick.img} className="wfs-flow-in" src={heroPick.img} alt={heroPick.t} decoding="async" style={{
                   position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: 14, }}/>
               </div>
               <div style={{ marginTop: 12 }}>
@@ -195,13 +201,15 @@ const QuoteFlow = () => {
               {groups.slice(1).map((g, gi) => {
                 const i = gi + 1;
                 return (
-                  <div key={g.path} style={{ marginBottom: 24 }}>
+                  <div key={g.path} className="wfs-flow-in" style={{ marginBottom: 24 }}>
                     <span className="mono" style={{ fontSize: 13, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)' }}>
                       {flowName(g.node.h, lang)}
                     </span>
                     <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 12 }}>
-                      {g.node.o.map(opt => (
-                        <FlowChip key={opt.to} opt={opt} selected={!!g.pick && g.pick.to === opt.to} onPick={() => pickAt(i, opt)}/>
+                      {g.node.o.map((opt, ci) => (
+                        <div key={opt.to} className="wfs-flow-in" style={{ animationDelay: `${ci * 45}ms` }}>
+                          <FlowChip opt={opt} selected={!!g.pick && g.pick.to === opt.to} onPick={() => pickAt(i, opt)}/>
+                        </div>
                       ))}
                     </div>
                   </div>
@@ -210,9 +218,11 @@ const QuoteFlow = () => {
 
               {/* Rama completa: el resumen va en su propio paso */}
               {terminal && (
-                <button className="btn btn-primary" onClick={() => { setView('summary'); scrollTop(); }} style={{ borderRadius: 2, fontWeight: 600, marginTop: 8 }}>
-                  {t('View summary', 'Ver resumen')} →
-                </button>
+                <div className="wfs-flow-in">
+                  <button className="btn btn-primary" onClick={() => { setView('summary'); scrollTop(); }} style={{ borderRadius: 2, fontWeight: 600, marginTop: 8 }}>
+                    {t('View summary', 'Ver resumen')} →
+                  </button>
+                </div>
               )}
             </div>
           </div>
@@ -267,9 +277,20 @@ const QuoteFlow = () => {
         )}
 
         <div ref={endRef}/>
+       </div>
       </div>
 
       <style>{`
+        /* Transiciones de paso: entrada suave con leve deslizamiento.
+           Con reduced-motion activo no se anima nada. */
+        @media (prefers-reduced-motion: no-preference) {
+          @keyframes wfsFlowIn {
+            from { opacity: 0; transform: translateY(14px); }
+            to   { opacity: 1; transform: none; }
+          }
+          .wfs-flow-screen { animation: wfsFlowIn 0.38s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+          .wfs-flow-in     { animation: wfsFlowIn 0.34s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+        }
         @media (max-width: 1000px) {
           .wfs-flow-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .wfs-flow-detail { grid-template-columns: 1fr !important; }
