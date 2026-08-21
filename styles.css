@@ -1142,12 +1142,12 @@ p { font-family: var(--body); }
 .wfs-prose th, .wfs-prose td { padding: 12px 14px; border: 1px solid rgba(0,16,17,.12); text-align: left; font-size: 16px; }
 .wfs-prose th { background: var(--ink); color: var(--white); font-family: var(--mono); font-size: 13.5px; letter-spacing: .12em; text-transform: uppercase; }
 
-/* El pie tambien es --ink, asi que sin esta linea el cierre se funde con el y
-   pierde toda la fuerza: parecian un solo bloque oscuro. */
+/* Al ancho del contenido, como la portada. Contenido no toca el pie, asi que ya
+   no hace falta la regla naranja que los separaba cuando iba a sangre. */
 .wfs-post__cta {
-  padding: 60px 0 66px;
+  margin-bottom: 96px;
+  padding: 44px 40px; border-radius: 16px;
   background: var(--ink); color: var(--white);
-  border-top: 4px solid var(--tangerine);
 }
 .wfs-post__cta .wfs-kicker { color: var(--tangerine); }
 .wfs-post__cta-title { margin: 12px 0 26px; font-size: clamp(24px, 2.6vw, 32px); color: var(--white); }
@@ -1159,7 +1159,7 @@ p { font-family: var(--body); }
 }
 @media (max-width: 900px) {
   .wfs-post-grid { grid-template-columns: 1fr; }
-  .wfs-post__cta { padding: 44px 0 48px; }
+  .wfs-post__cta { padding: 32px 26px; margin-bottom: 64px; }
   .wfs-blog-list { padding: 48px 0 80px; }
   .wfs-hero__inner { padding-top: 48px; padding-bottom: 40px; }
   .wfs-search { max-width: none; }
