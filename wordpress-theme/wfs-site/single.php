@@ -24,19 +24,16 @@ while ( have_posts() ) : the_post();
         <p class="wfs-post__lead"><?php echo esc_html( wp_strip_all_tags( $wfs_lead ) ); ?></p>
       <?php endif; ?>
     </header>
-  </div>
 
-  <?php
-  /* La portada va FUERA del contenedor, a sangre de borde a borde. Se saca del
-     marcado en vez de forzarla con 100vw: ese truco cuenta la barra de scroll
-     como ancho y provoca desplazamiento horizontal. */
-  if ( has_post_thumbnail() ) : ?>
-    <figure class="wfs-post__cover">
-      <?php the_post_thumbnail( 'full', array( 'decoding' => 'async', 'alt' => esc_attr( get_the_title() ) ) ); ?>
-    </figure>
-  <?php endif; ?>
+    <?php
+    /* La portada ocupa el ancho del contenido, alineada con el titular. A
+       sangre de pantalla quedaba desligada del articulo. */
+    if ( has_post_thumbnail() ) : ?>
+      <figure class="wfs-post__cover">
+        <?php the_post_thumbnail( 'full', array( 'decoding' => 'async', 'alt' => esc_attr( get_the_title() ) ) ); ?>
+      </figure>
+    <?php endif; ?>
 
-  <div class="container container--article">
     <?php
     /* Las etiquetas van justo bajo la portada, no al final: ahi es donde el
        lector todavia esta decidiendo si el articulo va de lo suyo. */

@@ -1066,15 +1066,13 @@ p { font-family: var(--body); }
 }
 .wfs-post__lead { margin: 0; max-width: 660px; font-size: 18.5px; line-height: 1.6; color: var(--charcoal); }
 
-/* Portada a sangre, de borde a borde. Va fuera del contenedor en el marcado y
-   no forzada con 100vw: ese truco cuenta la barra de scroll como ancho y
-   provoca desplazamiento horizontal.
-   El alto se acota por viewport: a ancho completo, un 16/9 daria 810px en una
-   pantalla de 1440 y el articulo quedaria fuera de vista. */
+/* Portada al ancho del contenido, alineada con el titular. El alto se acota
+   porque una imagen casi cuadrada a este ancho ocupaba mas de una pantalla y
+   empujaba el articulo fuera de vista. */
 .wfs-post__cover {
   margin: 26px 0 26px;
-  overflow: hidden;
-  height: clamp(220px, 34vw, 460px);
+  overflow: hidden; border-radius: 14px;
+  height: clamp(220px, 28vw, 420px);
   background: var(--alice-blue);
 }
 .wfs-post__cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
