@@ -1,1 +1,4 @@
-ReactDOM.createRoot(document.getElementById('root')).render(<WarrantyPage />);
+(function(){ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(WarrantyPage,null));
+
+
+})();

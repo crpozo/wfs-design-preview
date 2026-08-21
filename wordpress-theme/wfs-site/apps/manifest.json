@@ -3,357 +3,357 @@
     "title": "Western Fences Supply, Design Preview",
     "file": "Homepage.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "hero.jsx",
-      "products.jsx",
-      "sections.jsx",
-      "extras.jsx"
+      "shared.js",
+      "site-header.js",
+      "hero.js",
+      "products.js",
+      "sections.js",
+      "extras.js"
     ]
   },
   "about": {
     "title": "About",
     "file": "about.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-about.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-about.js"
     ]
   },
   "aluminum": {
     "title": "Aluminum Fence",
     "file": "aluminum.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "products.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-material.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "products.js",
+      "sections.js",
+      "extras.js",
+      "page-material.js"
     ]
   },
   "articles": {
     "title": "Articles & Guides",
     "file": "articles.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-edu.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-edu.js"
     ]
   },
   "chain-link": {
     "title": "Chain Link Fence",
     "file": "chain-link.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "products.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-material.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "products.js",
+      "sections.js",
+      "extras.js",
+      "page-material.js"
     ]
   },
   "contact": {
     "title": "Contact",
     "file": "contact.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-contact.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-contact.js"
     ]
   },
   "contractors": {
     "title": "For Contractors",
     "file": "contractors.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-audience.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-audience.js"
     ]
   },
   "ecfence": {
     "title": "EC Fence",
     "file": "ecfence.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "products.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-material.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "products.js",
+      "sections.js",
+      "extras.js",
+      "page-material.js"
     ]
   },
   "estimate": {
     "title": "Get a Quote",
     "file": "estimate.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-quote-flow.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-quote-flow.js"
     ]
   },
   "faq": {
     "title": "FAQ",
     "file": "faq.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-edu.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-edu.js"
     ]
   },
   "gate-cantilever": {
     "title": "Cantilever Gates",
     "file": "gate-cantilever.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "products.jsx",
-      "page-gate.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "products.js",
+      "page-gate.js"
     ]
   },
   "gate-double": {
     "title": "Double Swing Gates",
     "file": "gate-double.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "products.jsx",
-      "page-gate.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "products.js",
+      "page-gate.js"
     ]
   },
   "gate-rolling": {
     "title": "Rolling Gates",
     "file": "gate-rolling.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "products.jsx",
-      "page-gate.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "products.js",
+      "page-gate.js"
     ]
   },
   "gate-single": {
     "title": "Single Swing Gates",
     "file": "gate-single.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "products.jsx",
-      "page-gate.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "products.js",
+      "page-gate.js"
     ]
   },
   "gate-sliding": {
     "title": "Sliding Gates",
     "file": "gate-sliding.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "products.jsx",
-      "page-gate.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "products.js",
+      "page-gate.js"
     ]
   },
   "homeowners": {
     "title": "For Homeowners",
     "file": "homeowners.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "products.jsx",
-      "extras.jsx",
-      "page-audience.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "products.js",
+      "extras.js",
+      "page-audience.js"
     ]
   },
   "locations": {
     "title": "Yard Locations",
     "file": "locations.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-locations.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-locations.js"
     ]
   },
   "materials-comparison": {
     "title": "Materials Comparison",
     "file": "materials-comparison.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-resources.jsx",
-      "page-edu.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-resources.js",
+      "page-edu.js"
     ]
   },
   "metal": {
     "title": "Metal / DuraFence",
     "file": "metal.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "products.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-material.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "products.js",
+      "sections.js",
+      "extras.js",
+      "page-material.js"
     ]
   },
   "pool-code": {
     "title": "Florida Pool Code",
     "file": "pool-code.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-edu.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-edu.js"
     ]
   },
   "products": {
     "title": "Products",
     "file": "products.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "products.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-products.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "products.js",
+      "sections.js",
+      "extras.js",
+      "page-products.js"
     ]
   },
   "projects": {
     "title": "Projects",
     "file": "projects.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-projects.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-projects.js"
     ]
   },
   "resources": {
     "title": "Resources",
     "file": "resources.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-resources.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-resources.js"
     ]
   },
   "solutions": {
     "title": "Solutions",
     "file": "solutions.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-solutions.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-solutions.js"
     ]
   },
   "specs": {
     "title": "Manufacturer Specs",
     "file": "specs.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-warranty.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-warranty.js"
     ]
   },
   "training-companion": {
     "title": "WFS Training Companion",
     "file": "training-companion.html",
     "components": [
-      "shared.jsx",
-      "page-training.jsx"
+      "shared.js",
+      "page-training.js"
     ]
   },
   "vinyl": {
     "title": "Vinyl / PVC Fence",
     "file": "vinyl.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "products.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-material.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "products.js",
+      "sections.js",
+      "extras.js",
+      "page-material.js"
     ]
   },
   "warranty-claims": {
     "title": "Submit a Warranty Claim",
     "file": "warranty-claims.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-warranty.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-warranty.js"
     ]
   },
   "warranty": {
     "title": "Lifetime Warranty",
     "file": "warranty.html",
     "components": [
-      "shared.jsx",
-      "site-header.jsx",
-      "page-blocks.jsx",
-      "sections.jsx",
-      "extras.jsx",
-      "page-warranty.jsx"
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-warranty.js"
     ]
   }
 }

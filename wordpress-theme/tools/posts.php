@@ -4,7 +4,7 @@
    tal cual: no es relleno inventado. */
 return [
  (object)['ID'=>1,'post_author'=>1,'post_title'=>'What Florida Pool Code Actually Requires','post_name'=>'florida-pool-code-requirements',
-  'cat'=>'Pool Code','thumb'=>'assets/profiles/aluminum-pool-code.jpg','tags'=>['Pool Code','Aluminum'],
+  'cat'=>'Pool Code','thumb'=>'assets/ALUM.webp','tags'=>['Pool Code','Aluminum'],
   'post_date'=>'2026-08-12 09:00:00',
   'excerpt'=>'The barrier rules people get wrong most often, and the fence systems that pass without a variance.',
   'post_content'=>'<p>Most failed pool inspections in Lee and Charlotte county come down to the same three things, and none of them are the fence panel itself.</p>
@@ -22,7 +22,7 @@ return [
 <p>Bring the pool deck dimensions and we will mark the gate locations on the takeoff.</p>'],
 
  (object)['ID'=>2,'post_author'=>1,'post_title'=>'Vinyl, Aluminum Or Chain Link: How To Pick','post_name'=>'how-to-pick-fence-material',
-  'cat'=>'Guides','thumb'=>'assets/compare/vinyl.webp','tags'=>['Vinyl','Aluminum','Chain Link'],
+  'cat'=>'Guides','thumb'=>'assets/CHAINLINK.webp','tags'=>['Vinyl','Aluminum','Chain Link'],
   'post_date'=>'2026-07-29 09:00:00',
   'excerpt'=>'Every material trades something away. Here is what each one gives up, said plainly.',
   'post_content'=>'<p>There is no best fence material. There is the one that fits what the property needs, and every one of them gives something up.</p>
