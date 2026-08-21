@@ -64,6 +64,24 @@ ob_start(); include $GLOBALS['SRC'] . '/home.php'; $h = ob_get_clean();
 file_put_contents("$OUT/blog.html", preview_head('Blog') . strip_shell($h) . preview_foot());
 echo "  blog.html\n";
 
+/* Una pagina por categoria, para que los filtros del preview lleven a algun
+   sitio. En WordPress esto lo resuelve solo el archivo de categoria. */
+$cats = [];
+foreach ($GLOBALS['POSTS'] as $p) { $cats[strtolower(str_replace(' ','-',$p->cat))] = $p->cat; }
+$id = 0;
+foreach ($cats as $slug => $name) {
+  $id++;
+  $GLOBALS['CAT'] = $name; $GLOBALS['CATID'] = $id;
+  $todos = $GLOBALS['POSTS'];
+  $GLOBALS['POSTS'] = array_values(array_filter($todos, fn($p) => $p->cat === $name));
+  $GLOBALS['i'] = -1; $GLOBALS['ONLY'] = null;
+  ob_start(); include $GLOBALS['SRC'] . '/archive.php'; $h = ob_get_clean();
+  file_put_contents("$OUT/blog-cat-$slug.html", preview_head($name) . strip_shell($h) . preview_foot());
+  echo "  blog-cat-$slug.html\n";
+  $GLOBALS['POSTS'] = $todos;
+}
+$GLOBALS['CAT'] = null; $GLOBALS['CATID'] = 0;
+
 /* Una pagina por entrada */
 foreach ($GLOBALS['POSTS'] as $n => $post) {
   $GLOBALS['ONLY'] = $n; $GLOBALS['i'] = -1;

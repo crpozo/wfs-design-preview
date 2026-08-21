@@ -4,6 +4,10 @@ define('WFS_VERSION', 'preview');
 define('WFS_ASSETS', 'assets');
 
 $GLOBALS['POSTS'] = require __DIR__ . '/posts.php';
+/* Lista completa aparte: get_categories() en WordPress devuelve todas las
+   categorias, no solo las de la consulta actual. Sin esto, en una pagina de
+   categoria solo salia su propio chip. */
+$GLOBALS['ALL'] = $GLOBALS['POSTS'];
 $GLOBALS['i'] = -1;
 $GLOBALS['ONLY'] = null;   // indice de la entrada a renderizar en single
 
@@ -67,11 +71,12 @@ function get_the_author(){ return 'Western Fence Supply'; }
 function get_the_author_meta($f,$id=0){ return 'Western Fence Supply'; }
 function get_the_ID(){ return cur()->ID; }
 function get_categories($a=[]){
-  $seen=[]; $out=[];
-  foreach ($GLOBALS['POSTS'] as $p) {
+  $seen=[]; $out=[]; $id=1;
+  foreach ($GLOBALS['ALL'] as $p) {
     $slug = strtolower(str_replace(' ','-',$p->cat));
     if (isset($seen[$slug])) continue;
-    $seen[$slug]=1; $out[] = (object)['name'=>$p->cat,'slug'=>$slug];
+    $seen[$slug]=1;
+    $out[] = (object)['name'=>$p->cat,'slug'=>$slug,'term_id'=>$id++];
   }
   return $out;
 }
@@ -82,3 +87,12 @@ function get_posts($a=[]){
   return array_slice($out, 0, $a['numberposts'] ?? 3);
 }
 function get_the_post_thumbnail($p,$s,$a){ return '<img src="'.$p->thumb.'" alt="'.$a['alt'].'" loading="lazy">'; }
+
+function is_category(){ return !empty($GLOBALS['CAT']); }
+function is_search(){ return false; }
+function get_queried_object_id(){ return $GLOBALS['CATID'] ?? 0; }
+function get_search_query(){ return ''; }
+function get_category_link($c){ return 'blog-cat-' . $c->slug . '.html'; }
+function single_term_title($p='',$d=true){ return $GLOBALS['CAT'] ?? ''; }
+function get_the_archive_title(){ return ''; }
+function get_the_archive_description(){ return ''; }

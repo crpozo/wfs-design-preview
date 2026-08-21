@@ -981,12 +981,15 @@ p { font-family: var(--body); }
   text-transform: uppercase; text-shadow: 0 2px 28px rgba(0,0,0,.28); max-width: 880px;
 }
 .wfs-hero__accent { color: var(--blue-ice); }
+/* Cabecera mas baja en categorias y busqueda: ahi el titular es una etiqueta,
+   no una promesa de marca, y no necesita el mismo peso visual. */
+.wfs-hero--slim { min-height: clamp(240px, 30vh, 320px); }
 .wfs-hero__sub { margin: 0; max-width: 560px; font-size: 17.5px; line-height: 1.55; color: rgba(255,255,255,.88); }
 
 /* ── Buscador y filtros ─────────────────────────────────────────────────────
-   El filtrado es del lado del cliente sobre tarjetas ya pintadas por PHP: el
-   HTML sigue trayendo todas las entradas, asi que Google las ve igual y sin JS
-   la pagina se lee entera. */
+   Los chips son enlaces a los archivos de categoria y el buscador es un form
+   que postea a WordPress. Todo pasa por el servidor: cuenta bien, pagina bien
+   y funciona sin JavaScript. */
 .wfs-blog-list { background: var(--white); padding: 64px 0 110px; }
 .wfs-toolbar { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-bottom: 34px; }
 .wfs-search {
@@ -996,19 +999,32 @@ p { font-family: var(--body); }
 }
 .wfs-search:focus-within { border-color: var(--tangerine); }
 .wfs-search svg { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--charcoal); stroke-width: 1.8; stroke-linecap: round; }
-.wfs-search input { flex: 1; border: 0; outline: 0; font-family: var(--sans); font-size: 16.5px; color: var(--ink); background: none; }
+/* El input se resetea del todo. Un type=search trae de serie su propio fondo,
+   su anillo de foco y su boton de borrar, y se veia una caja clara dentro del
+   campo al escribir, encima del borde naranja que ya marca el foco. */
+.wfs-search input {
+  flex: 1; min-width: 0;
+  appearance: none; -webkit-appearance: none;
+  border: 0; outline: 0; box-shadow: none;
+  background: transparent;
+  font-family: var(--sans); font-size: 16.5px; color: var(--ink);
+}
+.wfs-search input::-webkit-search-decoration,
+.wfs-search input::-webkit-search-cancel-button,
+.wfs-search input::-webkit-search-results-button { -webkit-appearance: none; }
+.wfs-search input:focus { outline: 0; box-shadow: none; }
 
 .wfs-chips { display: flex; gap: 8px; flex-wrap: wrap; }
 .wfs-chip {
+  display: inline-flex; align-items: center;
   padding: 11px 16px; border: 1px solid rgba(0,16,17,.16); border-radius: 12px;
   background: var(--white); color: var(--ink);
-  font-family: var(--sans); font-size: 15px; cursor: pointer;
+  font-family: var(--sans); font-size: 15px; line-height: 1; white-space: nowrap;
   transition: border-color .18s ease, background .18s ease, color .18s ease;
 }
 .wfs-chip:hover { border-color: var(--ink); }
 .wfs-chip.is-on { background: var(--ink); border-color: var(--ink); color: var(--white); }
 
-.wfs-noresults { margin: 34px 0 0; font-size: 17.5px; color: var(--charcoal); }
 
 /* ── Tarjetas del indice ────────────────────────────────────────────────── */
 .wfs-post-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
@@ -1045,8 +1061,10 @@ p { font-family: var(--body); }
 .wfs-pagination .page-numbers { padding: 12px 18px; border: 1px solid rgba(0,16,17,.16); border-radius: 12px; color: var(--ink); font-family: var(--mono); font-size: 14px; font-weight: 700; }
 .wfs-pagination .page-numbers.current { background: var(--ink); color: var(--white); border-color: var(--ink); }
 
-.wfs-empty { padding: 60px 0; }
-.wfs-empty p { margin: 12px 0 0; font-size: 17.5px; color: var(--charcoal); }
+.wfs-empty { padding: 48px 0 20px; }
+.wfs-empty p { margin: 12px 0 0; font-size: 17.5px; line-height: 1.55; color: var(--charcoal); }
+.wfs-empty a { color: var(--laser-blue); text-decoration: underline; text-underline-offset: 3px; }
+.wfs-empty a:hover { color: var(--tangerine); }
 
 /* ── Una entrada ────────────────────────────────────────────────────────── */
 .wfs-post { padding-top: 34px; }

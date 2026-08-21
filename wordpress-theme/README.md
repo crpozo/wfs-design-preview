@@ -1,4 +1,4 @@
-# Western Fence Supply — Tema de WordPress (`wfs-site-4.12.5.zip`)
+# Western Fence Supply — Tema de WordPress (`wfs-site-4.13.0.zip`)
 
 Este tema **no reconstruye** el sitio: **lo sirve tal cual**. Adentro van los mismos
 componentes, el mismo `styles.css` y el mismo código React del preview de GitHub, así
@@ -40,7 +40,7 @@ WordPress (0 sin mapear), conservando anclas como `#quote` y `#contact`.
 ## Instalación
 
 1. **Apariencia → Temas → Añadir nuevo → Subir tema**
-2. Sube `wfs-site-4.12.5.zip` → **Instalar ahora** → **Activar**
+2. Sube `wfs-site-4.13.0.zip` → **Instalar ahora** → **Activar**
 3. Al activarlo, el tema **crea solo las 29 páginas** y fija la portada.
    (Un tema aporta plantillas, no páginas — por eso antes salían 404.)
 
@@ -140,6 +140,21 @@ inc/blog.php crea la pagina Blog y la fija como pagina de entradas
 El estilo de lo que llega del editor esta en `.wfs-prose` dentro de
 `css/styles.css`, y va **por elemento, no por clase de bloque**: marketing puede
 usar cualquier bloque de Gutenberg y sigue saliendo con el diseno del sitio.
+
+### Filtros y buscador
+
+Los chips son **enlaces a los archivos de categoria** y el buscador es un
+formulario que postea a WordPress. Todo pasa por el servidor.
+
+Se intento antes filtrar en el navegador y no funcionaba: solo veia las entradas
+de la pagina actual, asi que una categoria con entradas en la pagina 2 salia
+vacia, la paginacion seguia mostrando el total sin filtrar, y sus enlaces
+perdian el filtro. Con archivos reales lo resuelve WordPress: cuenta bien,
+pagina bien y funciona sin JavaScript.
+
+La paginacion solo aparece **cuando hay mas de una pagina**, y la categoria por
+defecto de WordPress (Uncategorized) se excluye de los filtros: como chip no
+significa nada para el visitante.
 
 > **Dos cosas que habia que arreglar para que esto funcionara.** `/blog/` estaba
 > redirigida con un 301 a `/articles/`, asi que el indice era inalcanzable. Y
