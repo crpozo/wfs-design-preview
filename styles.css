@@ -1066,14 +1066,15 @@ p { font-family: var(--body); }
 }
 .wfs-post__lead { margin: 0; max-width: 660px; font-size: 18.5px; line-height: 1.6; color: var(--charcoal); }
 
-/* La portada se recorta a apaisado. Sin esto, una imagen casi cuadrada a ancho
-   completo ocupaba mas de una pantalla y empujaba el articulo fuera de vista.
-   Se limita ademas por altura, para que en pantallas anchas no crezca sin fin. */
+/* Portada a sangre, de borde a borde. Va fuera del contenedor en el marcado y
+   no forzada con 100vw: ese truco cuenta la barra de scroll como ancho y
+   provoca desplazamiento horizontal.
+   El alto se acota por viewport: a ancho completo, un 16/9 daria 810px en una
+   pantalla de 1440 y el articulo quedaria fuera de vista. */
 .wfs-post__cover {
-  margin: 26px 0 20px;
-  overflow: hidden; border-radius: 14px;
-  aspect-ratio: 16 / 9;
-  max-height: 400px;
+  margin: 26px 0 26px;
+  overflow: hidden;
+  height: clamp(220px, 34vw, 460px);
   background: var(--alice-blue);
 }
 .wfs-post__cover img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -1087,7 +1088,7 @@ p { font-family: var(--body); }
 .wfs-tag--sm { padding: 6px 13px; font-size: 13px; }
 
 /* Dos columnas: el articulo y lo que leer despues. */
-.wfs-post__cols { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 64px; padding-bottom: 100px; }
+.wfs-post__cols { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 64px; padding-bottom: 84px; }
 .wfs-post__main { min-width: 0; }
 
 .wfs-side__title {
@@ -1111,10 +1112,13 @@ p { font-family: var(--body); }
    cualquier bloque de Gutenberg y sigue saliendo con el estilo del sitio. */
 .wfs-prose { font-family: var(--body); font-size: 18px; line-height: 1.7; color: var(--ink); }
 .wfs-prose > * + * { margin-top: 1.15em; }
+/* Peso 600, no 800: en un texto largo los intertitulos a 800 pesaban tanto que
+   se comian el cuerpo. El titular de la entrada si se queda en 800, que ahi el
+   contraste de jerarquia es lo que se busca. */
 .wfs-prose h2, .wfs-prose h3, .wfs-prose h4 {
   font-family: var(--display); font-variation-settings: 'wdth' 125;
-  font-weight: 800; line-height: 1.15; letter-spacing: -.01em;
-  margin-top: 1.8em; margin-bottom: .5em;
+  font-weight: 600; line-height: 1.2; letter-spacing: -.005em;
+  margin-top: 1.9em; margin-bottom: .55em;
 }
 .wfs-prose h2 { font-size: clamp(24px, 2.4vw, 30px); }
 .wfs-prose h3 { font-size: clamp(20px, 1.9vw, 24px); }
@@ -1140,9 +1144,12 @@ p { font-family: var(--body); }
 .wfs-prose th, .wfs-prose td { padding: 12px 14px; border: 1px solid rgba(0,16,17,.12); text-align: left; font-size: 16px; }
 .wfs-prose th { background: var(--ink); color: var(--white); font-family: var(--mono); font-size: 13.5px; letter-spacing: .12em; text-transform: uppercase; }
 
+/* El pie tambien es --ink, asi que sin esta linea el cierre se funde con el y
+   pierde toda la fuerza: parecian un solo bloque oscuro. */
 .wfs-post__cta {
-  margin-top: 56px; padding: 40px 36px; border-radius: 16px;
+  padding: 60px 0 66px;
   background: var(--ink); color: var(--white);
+  border-top: 4px solid var(--tangerine);
 }
 .wfs-post__cta .wfs-kicker { color: var(--tangerine); }
 .wfs-post__cta-title { margin: 12px 0 26px; font-size: clamp(24px, 2.6vw, 32px); color: var(--white); }
@@ -1154,8 +1161,8 @@ p { font-family: var(--body); }
 }
 @media (max-width: 900px) {
   .wfs-post-grid { grid-template-columns: 1fr; }
+  .wfs-post__cta { padding: 44px 0 48px; }
   .wfs-blog-list { padding: 48px 0 80px; }
   .wfs-hero__inner { padding-top: 48px; padding-bottom: 40px; }
-  .wfs-post__cta { padding: 30px 24px; }
   .wfs-search { max-width: none; }
 }

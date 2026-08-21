@@ -24,13 +24,19 @@ while ( have_posts() ) : the_post();
         <p class="wfs-post__lead"><?php echo esc_html( wp_strip_all_tags( $wfs_lead ) ); ?></p>
       <?php endif; ?>
     </header>
+  </div>
 
-    <?php if ( has_post_thumbnail() ) : ?>
-      <figure class="wfs-post__cover">
-        <?php the_post_thumbnail( 'full', array( 'decoding' => 'async', 'alt' => esc_attr( get_the_title() ) ) ); ?>
-      </figure>
-    <?php endif; ?>
+  <?php
+  /* La portada va FUERA del contenedor, a sangre de borde a borde. Se saca del
+     marcado en vez de forzarla con 100vw: ese truco cuenta la barra de scroll
+     como ancho y provoca desplazamiento horizontal. */
+  if ( has_post_thumbnail() ) : ?>
+    <figure class="wfs-post__cover">
+      <?php the_post_thumbnail( 'full', array( 'decoding' => 'async', 'alt' => esc_attr( get_the_title() ) ) ); ?>
+    </figure>
+  <?php endif; ?>
 
+  <div class="container container--article">
     <?php
     /* Las etiquetas van justo bajo la portada, no al final: ahi es donde el
        lector todavia esta decidiendo si el articulo va de lo suyo. */
@@ -47,15 +53,6 @@ while ( have_posts() ) : the_post();
     <div class="wfs-post__cols">
       <div class="wfs-post__main">
         <div class="wfs-prose"><?php the_content(); ?></div>
-
-        <aside class="wfs-post__cta">
-          <span class="wfs-kicker">Need material for this?</span>
-          <p class="wfs-post__cta-title display">Get a quote in 24 hours.</p>
-          <div class="wfs-post__cta-actions">
-            <a class="btn btn-primary" href="estimate.html">Request a Quote</a>
-            <a class="btn btn-ghost on-dark" href="tel:2396895496">Call (239) 689-5496</a>
-          </div>
-        </aside>
       </div>
 
       <?php
@@ -98,6 +95,19 @@ while ( have_posts() ) : the_post();
       <?php endif; ?>
     </div>
   </div>
+
+  <!-- Cierre a ancho completo: toda entrada acaba ofreciendo cotizacion. Un
+       blog que no lleva a ningun sitio es trafico que se pierde. -->
+  <aside class="wfs-post__cta">
+    <div class="container container--article">
+      <span class="wfs-kicker">Need material for this?</span>
+      <p class="wfs-post__cta-title display">Get a quote in 24 hours.</p>
+      <div class="wfs-post__cta-actions">
+        <a class="btn btn-primary" href="estimate.html">Request a Quote</a>
+        <a class="btn btn-ghost on-dark" href="tel:2396895496">Call (239) 689-5496</a>
+      </div>
+    </div>
+  </aside>
 </article>
 
 <?php
