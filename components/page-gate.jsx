@@ -104,10 +104,11 @@ const GateQuickFacts = ({ data }) => (
   </section>
 );
 
-const GateCardGrid = ({ items }) => (
+const GateCardGrid = ({ items, gateId }) => (
   <div className="wfs-profiles-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(items.length, 4)}, 1fr)`, gap: 14 }}>
     {items.map((p) => (
-      <a key={p.name} href="estimate.html#contact" style={{
+      /* Cada tarjeta abre el configurador con este tipo de porton ya elegido. */
+      <a key={p.name} href={gateId ? `fence-builder.html?g=${gateId}` : 'estimate.html#contact'} style={{
         display: 'flex', flexDirection: 'column', background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', overflow: 'hidden', textDecoration: 'none', color: 'inherit', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
       onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -20px rgba(0,16,17,0.25)'; }}
       onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
@@ -137,7 +138,7 @@ const GateTypes = ({ data }) => (
         accent={data.typesAccent || useT()("Gate Type.", "tipo de portón.")}
         sub={data.typesSub || useT()("Pick the configuration that fits your opening. Every option is available across our fence materials.", "Elige la configuración que se ajuste a tu abertura. Todas las opciones están disponibles en nuestros materiales.")}
       />
-      <GateCardGrid items={data.gateTypes}/>
+      <GateCardGrid items={data.gateTypes} gateId={data.slug}/>
     </div>
   </section>
 );

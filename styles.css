@@ -1193,3 +1193,11 @@ p { font-family: var(--body); }
 }
 .wfs-profile-card__cta { transition: gap .18s ease; }
 .wfs-profile-card:hover .wfs-profile-card__cta { gap: 12px; }
+
+/* Muestra de color del configurador. El borde importa: sin el, el blanco sobre
+   fondo blanco no se distingue de un hueco vacio. */
+.sw {
+  display: inline-block; width: 15px; height: 15px; border-radius: 4px;
+  border: 1px solid rgba(0,16,17,.22); margin-right: 9px; vertical-align: -2px;
+}
+.chip--color { display: inline-flex; align-items: center; }
