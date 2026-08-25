@@ -104,6 +104,32 @@
     'chainlink-gate-single': 1, 'chainlink-gate-double': 1, 'chainlink-gate-cantilever': 1
   };
 
+
+  /* ── Fotos por color ─────────────────────────────────────────────────────
+     Fotos reales de instalacion, de assets/projects. La busqueda va de lo mas
+     concreto a lo mas general: primero material+perfil+color, luego
+     material+color, y si no hay ninguna se queda el dibujo del perfil. Asi el
+     color siempre se ve, y nunca se enseña una foto que no corresponde. */
+  var COLOR_IMG = {
+    /* material | perfil | color */
+    'aluminum|Pool Code|White':            'assets/projects/alum-2-rail-smooth-bottom-pool-code-white.jpg',
+    'aluminum|3-Rail Puppy Picket|Bronze': 'assets/projects/alum-puppy-picket-bronze.jpg',
+    'aluminum|4-Rail Custom|Black':        'assets/projects/alum-4-rail-smooth-bottom-custom-gate-black.jpg',
+    'vinyl|Semi-Privacy|Tan':              'assets/projects/pvc-semi-privacy-alternative-pickets-sand.jpg',
+    'vinyl|Privacy|White':                 'assets/projects/pvc-closed-top-white.jpg',
+    'metal|Modern|Black':                  'assets/projects/met-fence-horizontal-black.jpg',
+    /* material | color */
+    'aluminum|White':   'assets/projects/alum-2-rail-smooth-bottom-white.jpg',
+    'aluminum|Bronze':  'assets/projects/alum-puppy-picket-bronze.jpg',
+    'aluminum|Black':   'assets/projects/alum-4-rail-smooth-bottom-custom-gate-black.jpg',
+    'vinyl|White':      'assets/projects/pvc-closed-top-white.jpg',
+    'vinyl|Tan':        'assets/projects/pvc-gate-sand.jpg',
+    'vinyl|Gray':       'assets/projects/pvc-privacy-two-tone-white-and-gray.webp',
+    'metal|White':      'assets/projects/met-fence-2-rail-white.jpg',
+    'metal|Black':      'assets/projects/met-fence-3-rail-black.jpg',
+    'metal|Woodgrain':  'assets/projects/met-fence-3-rail-brown.jpg'
+  };
+
   var ORDER = ['aluminum', 'chain-link', 'vinyl', 'metal', 'ecfence'];
   var s = { product: null, gate: null, mat: null, style: null, height: null, width: null, color: null, grade: null, open: 0 };
 
@@ -171,6 +197,12 @@
 
   function imgSrc() {
     var st = styleObj();
+    if (s.color && s.mat) {
+      var exacta = COLOR_IMG[s.mat + '|' + s.style + '|' + s.color];
+      if (exacta) { return exacta; }
+      var porColor = COLOR_IMG[s.mat + '|' + s.color];
+      if (porColor) { return porColor; }
+    }
     if (st) { return 'assets/profiles/' + st.img + '.jpg'; }
     if (s.product === 'gate' && gateObj()) { return gateObj().img; }
     return 'assets/profiles/aluminum-2-rail-smooth.jpg';
@@ -178,6 +210,10 @@
 
   function pintarVista() {
     var img = $('preview'), src = imgSrc();
+    /* Un recorte de producto se ve entero (contain, sobre blanco); una foto de
+       instalacion se recorta a la caja (cover). Tratarlas igual dejaba la foto
+       flotando con franjas blancas. */
+    img.classList.toggle('is-photo', src.indexOf('assets/projects/') === 0);
     if (img.getAttribute('src') !== src) {
       img.classList.add('is-swapping');
       var n = new Image();
