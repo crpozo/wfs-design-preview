@@ -15,7 +15,7 @@ SKIP = {"index.html"}
 # blog.html y blog-*.html son solo el preview estatico, generado por
 # wordpress-theme/tools/build.php. Si entraran aqui, el tema crearia paginas de
 # WordPress para ellas y chocarian con el blog de verdad.
-SKIP_PREFIX = ("blog",)
+SKIP_PREFIX = ("blog", "fence-builder")
 
 # ---------------------------------------------------------------- limpiar
 if OUT.exists():

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex,nofollow" />
+<title>Build Your Fence · Western Fence Supply, Design Preview</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Inter:wght@300;400;500;600;700&display=swap" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* Maquetacion propia del configurador. Lo visual sale del sistema de diseno. */
+  .bld { padding: 44px 0 110px; }
+  .bld__grid { display: grid; grid-template-columns: 1fr 460px; gap: 64px; align-items: start; }
+
+  /* La vista previa se queda fija: es el punto del configurador, ver como cambia
+     lo que eliges sin perderlo de vista al bajar por los pasos. */
+  .bld__stage { position: sticky; top: 24px; }
+  .bld__frame {
+    position: relative; border: 1px solid rgba(0,16,17,.14); border-radius: 18px;
+    background: #fff; aspect-ratio: 4 / 3; overflow: hidden; display: grid; place-items: center;
+  }
+  .bld__frame img { width: 100%; height: 100%; object-fit: contain; padding: 26px; transition: opacity .25s ease; }
+  .bld__frame img.is-swapping { opacity: 0; }
+  .bld__badge {
+    position: absolute; top: 16px; left: 16px;
+    font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .18em; text-transform: uppercase; color: var(--tangerine);
+  }
+  .bld__spec { margin-top: 22px; border-top: 1px solid rgba(0,16,17,.12); padding-top: 18px; }
+  .bld__spec dl { display: grid; grid-template-columns: 118px 1fr; gap: 10px 18px; margin: 0; font-size: 15.5px; }
+  .bld__spec dt { font-family: var(--mono); font-size: 12.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--charcoal); }
+  .bld__spec dd { margin: 0; }
+  .bld__spec dd.is-empty { color: var(--silver); }
+
+  /* Pasos: el activo abierto, los resueltos plegados a una linea. */
+  .step { border: 1px solid rgba(0,16,17,.14); border-radius: 16px; padding: 22px 24px; margin-bottom: 14px; transition: border-color .18s ease; }
+  .step.is-open { border-color: var(--ink); }
+  .step.is-locked { opacity: .45; }
+  .step__head { display: flex; align-items: baseline; gap: 12px; }
+  .step__n { font-family: var(--mono); font-size: 12.5px; font-weight: 700; letter-spacing: .18em; color: var(--tangerine); }
+  .step__t { font-size: 17px; font-weight: 700; }
+  .step__val { margin-left: auto; font-size: 15.5px; color: var(--charcoal); }
+  .step__edit { margin-left: auto; font-family: var(--mono); font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--laser-blue); background: none; border: 0; cursor: pointer; }
+  .step__body { margin-top: 18px; display: grid; gap: 10px; }
+  .opt {
+    display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+    padding: 14px 16px; border: 1px solid rgba(0,16,17,.16); border-radius: 12px;
+    background: #fff; color: var(--ink); cursor: pointer;
+    transition: border-color .18s ease, background .18s ease;
+  }
+  .opt:hover { border-color: var(--ink); }
+  .opt[aria-pressed="true"] { border-color: var(--ink); background: rgba(38,49,103,.04); }
+  .opt__thumb { width: 62px; height: 46px; flex: none; border-radius: 8px; background: var(--alice-blue); object-fit: contain; }
+  .opt__name { font-size: 16px; font-weight: 600; }
+  .opt__sub { display: block; font-size: 14px; color: var(--charcoal); margin-top: 2px; }
+  .opt__tick { margin-left: auto; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid rgba(0,16,17,.25); display: grid; place-items: center; flex: none; }
+  .opt[aria-pressed="true"] .opt__tick { background: var(--ink); border-color: var(--ink); }
+  .opt[aria-pressed="true"] .opt__tick::after { content: ""; width: 7px; height: 4px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px,-1px); }
+  .opts-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip {
+    padding: 12px 20px; border: 1px solid rgba(0,16,17,.16); border-radius: 12px;
+    background: #fff; color: var(--ink); font-size: 16px; cursor: pointer;
+    transition: border-color .18s ease, background .18s ease, color .18s ease;
+  }
+  .chip:hover { border-color: var(--ink); }
+  .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+  .bld__done { margin-top: 26px; padding: 30px 28px; border-radius: 16px; background: var(--ink); color: #fff; }
+  .bld__done h2 { margin: 10px 0 8px; font-family: var(--display); font-variation-settings: 'wdth' 125; font-weight: 700; font-size: 26px; }
+  .bld__done p { margin: 0 0 20px; color: rgba(255,255,255,.85); font-size: 16px; line-height: 1.55; }
+  .bld__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .bld__sheet { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.18); font-size: 15px; }
+  .bld__sheet a { color: var(--blue-ice); text-decoration: underline; text-underline-offset: 3px; }
+  .bld__sheet span.none { color: rgba(255,255,255,.6); }
+
+  @media (max-width: 1040px) {
+    .bld__grid { grid-template-columns: 1fr; gap: 34px; }
+    .bld__stage { position: static; }
+  }
+</style>
+</head>
+<body>
+<div id="wfs-header"></div>
+
+<section class="wfs-hero wfs-hero--slim">
+  <img class="wfs-hero__img" src="assets/ALUM.webp" alt="" aria-hidden="true" />
+  <div class="wfs-hero__scrim" aria-hidden="true"></div>
+  <div class="container wfs-hero__inner">
+    <span class="wfs-hero__eyebrow"><i aria-hidden="true"></i>Specs · Build your fence</span>
+    <h1 class="wfs-hero__title">Build It<br><span class="wfs-hero__accent">Step By Step.</span></h1>
+    <p class="wfs-hero__sub">Pick the material, then the profile, height and finish. The drawing updates as you go, and the spec sheet comes with it.</p>
+  </div>
+</section>
+
+<section class="bld">
+  <div class="container">
+    <div class="bld__grid">
+
+      <div id="steps"></div>
+
+      <aside class="bld__stage">
+        <div class="bld__frame">
+          <span class="bld__badge" id="badge">Aluminum</span>
+          <img id="preview" src="assets/profiles/aluminum-2-rail-smooth.jpg" alt="Fence preview" decoding="async" />
+        </div>
+        <div class="bld__spec">
+          <dl id="spec"></dl>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</section>
+
+<div id="wfs-footer"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script type="text/babel" src="components/shared.jsx"></script>
+<script type="text/babel" src="components/site-header.jsx"></script>
+<script type="text/babel" src="components/page-blocks.jsx"></script>
+<script type="text/babel" src="components/sections.jsx"></script>
+<script type="text/babel" src="components/extras.jsx"></script>
+<script type="text/babel">
+ReactDOM.createRoot(document.getElementById("wfs-header")).render(<SiteHeader active="Fence Education Hub" />);
+ReactDOM.createRoot(document.getElementById("wfs-footer")).render(<Footer />);
+</script>
+<script src="fence-builder.js"></script>
+</body>
+</html>
