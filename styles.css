@@ -1182,3 +1182,14 @@ p { font-family: var(--body); }
   .wfs-hero__inner { padding-top: 48px; padding-bottom: 40px; }
   .wfs-search { max-width: none; }
 }
+
+/* Tarjetas de perfil: abren el configurador con ese material y perfil ya
+   elegidos, asi que tienen que verse pulsables y no como una ficha muerta. */
+.wfs-profile-card { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.wfs-profile-card:hover {
+  transform: translateY(-3px);
+  border-color: var(--ink) !important;
+  box-shadow: 0 14px 30px rgba(38,49,103,.12);
+}
+.wfs-profile-card__cta { transition: gap .18s ease; }
+.wfs-profile-card:hover .wfs-profile-card__cta { gap: 12px; }

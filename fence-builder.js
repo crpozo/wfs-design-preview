@@ -12,7 +12,8 @@
         { label: '3-Rail Rake Bottom',         img: 'aluminum-3-rail-rake',    slug: '3rail-rake-bottom',        sub: 'Pickets extend past the bottom rail' },
         { label: '3-Rail Puppy Picket',        img: 'aluminum-puppy-picket',   slug: '3rail-puppy-picket',       sub: 'Extra pickets low down, for pets' },
         { label: 'Pool Code',                  img: 'aluminum-pool-code',      slug: null,                       sub: 'Non-climbable, FBC barrier' },
-        { label: 'Spear Top',                  img: 'aluminum-spear-top',      slug: null,                       sub: 'Ornamental spear finials' }
+        { label: 'Spear Top',                  img: 'aluminum-spear-top',      slug: null,                       sub: 'Ornamental spear finials' },
+        { label: '4-Rail Custom',              img: 'aluminum-custom',         slug: null,                       sub: 'Taller runs and custom configurations' }
       ],
       heights: ["4'", "5'", "6'"],
       gradeLabel: 'Grade',
@@ -58,7 +59,8 @@
       styleLabel: 'Color',
       styles: [
         { label: 'Bronze', img: 'ecfence-bronze', slug: null, sub: 'Warm dark finish' },
-        { label: 'White',  img: 'ecfence-white',  slug: null, sub: 'Bright coastal finish' }
+        { label: 'White',  img: 'ecfence-white',  slug: null, sub: 'Bright coastal finish' },
+        { label: 'Matching Gate', img: 'ecfence-gate', slug: null, sub: 'Gate built to match the run' }
       ],
       heights: ["6'"], grades: []
     }
@@ -75,6 +77,21 @@
 
   var ORDER = ['aluminum', 'chain-link', 'vinyl', 'metal', 'ecfence'];
   var s = { mat: 'aluminum', style: null, height: null, grade: null, open: 0 };
+
+  /* Se puede llegar desde una tarjeta de perfil de la pagina del material:
+     fence-builder.html?m=aluminum&p=aluminum-3-rail-rake
+     El perfil se identifica por su IMAGEN, no por el nombre: la ficha del
+     material y este configurador usan etiquetas distintas ("3-Rail" frente a
+     "3-Rail Rake Bottom") y la imagen es lo unico que coincide siempre. */
+  (function precargar() {
+    var q = new URLSearchParams(location.search);
+    var mat = q.get('m'), img = q.get('p');
+    if (mat && MAT[mat]) { s.mat = mat; s.open = 1; }
+    if (img) {
+      var enc = MAT[s.mat].styles.filter(function (x) { return x.img === img; })[0];
+      if (enc) { s.style = enc.label; s.open = 2; }
+    }
+  })();
 
   var $ = function (id) { return document.getElementById(id); };
   var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) {

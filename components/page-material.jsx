@@ -191,19 +191,27 @@ const ProfileDiagram = ({ slug, name = '', index = 0 }) => {
   );
 };
 
-const MaterialProfiles = ({ data }) => (
+const MaterialProfiles = ({ data }) => {
+  const t = useT();
+  return (
   <section id="styles" style={{ background: 'var(--white)', padding: '120px 0' }}>
     <div className="container">
       <PageSectionHeader
-        number="01" label={useT()("Profiles & styles", "Perfiles y estilos")}
+        number="01" label={t("Profiles & styles", "Perfiles y estilos")}
         title={`${data.name}`}
-        accent={useT()(`${data.profiles.length} ways to spec it.`, `${data.profiles.length} formas de configurarlo.`)}
-        sub={data.profilesSub || useT()("Standard and custom configurations available. Custom heights and colors on request.", "Configuraciones estándar y a medida. Alturas y colores personalizados bajo pedido.")}
+        accent={t(`${data.profiles.length} ways to spec it.`, `${data.profiles.length} formas de configurarlo.`)}
+        sub={data.profilesSub || t("Standard and custom configurations available. Custom heights and colors on request.", "Configuraciones estándar y a medida. Alturas y colores personalizados bajo pedido.")}
       />
       <div className="wfs-profiles-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(data.profiles.length, 4)}, 1fr)`, gap: 14 }}>
         {data.profiles.map((p, i) => (
-          <article key={p.name} style={{
-            background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', overflow: 'hidden', display: 'flex', flexDirection: 'column', }}>
+          /* La tarjeta entera abre el configurador con este material y este
+             perfil ya elegidos. Se enlaza por la IMAGEN y no por el nombre:
+             la ficha del material y el configurador usan etiquetas distintas
+             ("3-Rail" frente a "3-Rail Rake Bottom") y la imagen es lo unico
+             que coincide siempre. */
+          <a key={p.name} href={`fence-builder.html?m=${data.slug}${p.img ? '&p=' + p.img.split('/').pop().replace('.jpg','') : ''}`}
+            className="wfs-profile-card" style={{
+            background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', overflow: 'hidden', display: 'flex', flexDirection: 'column', color: 'var(--ink)', }}>
             <div style={{ aspectRatio: '16 / 10', background: p.img ? 'var(--white)' : DIAG.bg, borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
               {p.img
                 ? <img src={p.img} alt={p.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}/>
@@ -214,13 +222,21 @@ const MaterialProfiles = ({ data }) => (
                 fontSize: 13.5, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--tangerine)', fontWeight: 700, marginBottom: 14, }}>0{i+1} · {p.tag}</div>
               <h3 className="display" style={{ margin: '0 0 12px', fontSize: 23.5, lineHeight: 1.1 }}>{p.name}</h3>
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
+              <span className="mono wfs-profile-card__cta" style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 16, fontSize: 13.5, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--tangerine)', }}>
+                {t('Build with this', 'Configurar con este')}
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </span>
             </div>
-          </article>
+          </a>
         ))}
       </div>
     </div>
   </section>
-);
+  );
+};
 
 const MaterialSpecs = ({ data }) => (
   <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
