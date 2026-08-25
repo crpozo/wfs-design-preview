@@ -23,7 +23,7 @@
         { label: '4-Rail Custom',             img: 'aluminum-custom',        slug: null, sub: 'Taller runs and custom configurations' }
       ],
       heights: ["4'", "5'", "6'"],
-      gateWidths: ["4'", "5'"],
+     
       colors: [ { label: 'Black', hex: '#1c1c1c' }, { label: 'Bronze', hex: '#4a3728' }, { label: 'White', hex: '#f2f2ee' } ],
       /* El grado (residencial o comercial) se quito del configurador: no cambia
          nada de lo que se ve, solo el grosor del picket, y obligaba a decidir
@@ -40,7 +40,7 @@
         { label: 'Green PVC-coated', img: 'chainlink-green',       slug: null, sub: 'Blends into landscaping' },
         { label: 'Heavy Gauge',      img: 'chainlink-heavy-gauge', slug: null, sub: 'For industrial perimeters' }
       ],
-      heights: ["4'", "5'", "6'", "8'"], gateWidths: ["4'", "6'", "10'", "12'"], colors: [], grades: []
+      heights: ["4'", "5'", "6'", "8'"], colors: [], grades: []
     },
     vinyl: {
       name: 'Vinyl / PVC', tag: 'Catalyst-extruded PVC', key: 'vinyl',
@@ -51,7 +51,7 @@
         { label: 'Picket',       img: 'vinyl-picket',       slug: null, sub: 'Open front-yard look' },
         { label: 'Ranch Rail',   img: 'vinyl-ranch-rail',   slug: null, sub: 'Two or three rail, acreage' }
       ],
-      heights: ["4'", "5'", "6'"], gateWidths: ["4'", "5'", "6'"],
+      heights: ["4'", "5'", "6'"],
       colors: [ { label: 'White', hex: '#f2f2ee' }, { label: 'Tan', hex: '#d6c9ae' }, { label: 'Gray', hex: '#8b8b88' } ],
       grades: []
     },
@@ -63,7 +63,7 @@
         { label: 'Original', img: 'metal-original', slug: null, sub: 'Classic board profile' },
         { label: 'P1',       img: 'metal-p1',       slug: null, sub: 'Narrow slat pattern' }
       ],
-      heights: ["6'", "8'"], gateWidths: ["4'", "5'", "6'"],
+      heights: ["6'", "8'"],
       colors: [ { label: 'White', hex: '#f2f2ee' }, { label: 'Black', hex: '#1c1c1c' }, { label: 'Bronze', hex: '#4a3728' }, { label: 'Woodgrain', hex: '#7a5c3e' } ],
       grades: []
     },
@@ -75,7 +75,7 @@
         { label: 'White',         img: 'ecfence-white',  slug: null, sub: 'Bright coastal finish' },
         { label: 'Matching Gate', img: 'ecfence-gate',   slug: null, sub: 'Gate built to match the run' }
       ],
-      heights: ["6'"], gateWidths: ["4'", "5'", "6'"], colors: [], grades: []
+      heights: ["6'"], colors: [], grades: []
     }
   };
 
@@ -200,7 +200,6 @@
     if (!s.mat) { return out; }
     out.push({ key: 'style', title: m().styleLabel });
     out.push({ key: 'height', title: 'Height' });
-    if (s.product === 'gate') { out.push({ key: 'width', title: 'Opening width' }); }
     if (m().colors && m().colors.length) { out.push({ key: 'color', title: 'Color' }); }
     return out;
   }
@@ -220,12 +219,21 @@
     if (s.mat !== 'aluminum' || !st || !st.slug || !s.height) { return null; }
     var n = s.height.replace("'", '');
     /* Se prueban los dos grados: la residencial primero, que es la habitual. */
-    for (var i = 0; i < 2; i++) {
-      var g = ['res', 'com'][i];
-      var k = s.product === 'gate'
-        ? (s.width ? 'alum-' + n + 'x' + s.width.replace("'", '') + '-' + g + '-' + st.slug + '-gate' : null)
-        : 'alum-' + n + 'ft-' + g + '-' + st.slug + '-panel';
-      if (k && SHEETS[k]) { return k; }
+    /* Sin paso de ancho, se prueban las medidas que existen y se ofrece la
+       primera que tenga plano. El ancho del porton lo confirma el rep, que es
+       lo que pasa igualmente: depende de la abertura real. */
+    var grados = ['res', 'com'];
+    for (var i = 0; i < grados.length; i++) {
+      if (s.product === 'gate') {
+        var anchos = ['4', '5'];
+        for (var j = 0; j < anchos.length; j++) {
+          var kg = 'alum-' + n + 'x' + anchos[j] + '-' + grados[i] + '-' + st.slug + '-gate';
+          if (SHEETS[kg]) { return kg; }
+        }
+      } else {
+        var kp = 'alum-' + n + 'ft-' + grados[i] + '-' + st.slug + '-panel';
+        if (SHEETS[kp]) { return kp; }
+      }
     }
     return null;
   }
@@ -240,6 +248,10 @@
       }
     }
     if (st) { return 'assets/profiles/' + st.img + '.jpg'; }
+    /* Con material elegido pero sin perfil, se enseña ese material. Antes caia
+       a la foto del tipo de porton, que es la misma para todos: al cambiar de
+       vinilo a chain link la imagen no se movia. */
+    if (m()) { return 'assets/profiles/' + m().styles[0].img + '.jpg'; }
     if (s.product === 'gate' && gateObj()) { return gateObj().img; }
     return 'assets/profiles/aluminum-2-rail-smooth.jpg';
   }
@@ -268,7 +280,6 @@
     if (m()) {
       filas.push([m().styleLabel, s.style]);
       filas.push(['Height', s.height]);
-      if (s.product === 'gate') { filas.push(['Width', s.width]); }
       if (m().colors.length) { filas.push(['Color', s.color]); }
     }
     $('spec').innerHTML = filas.map(function (f) {
@@ -309,8 +320,8 @@
         return opt('style', x.label, x.label, x.sub, 'assets/profiles/' + x.img + '.jpg');
       }).join('');
     }
-    if (k === 'height' || k === 'width') {
-      var lista = k === 'height' ? m().heights : m().gateWidths;
+    if (k === 'height') {
+      var lista = m().heights;
       return '<div class="opts-row">' + lista.map(function (h) {
         return '<button class="chip" data-set="' + k + '" data-v="' + esc(h) + '" aria-pressed="' + (s[k] === h) + '">' + esc(h) + '</button>';
       }).join('') + '</div>';
@@ -345,7 +356,7 @@
 
     if (completo()) {
       var k = sheetKey();
-      var titulo = [m().name, s.style, s.height + (s.width ? ' x ' + s.width : ''), s.color]
+      var titulo = [m().name, s.style, s.height, s.color]
         .filter(Boolean).join(' · ');
       html += '<div class="bld__done">' +
         '<span class="wfs-kicker">Your build</span>' +
@@ -376,18 +387,20 @@
        existe en chain link, y un ancho de porton no aplica a una cerca. */
     if (campo === 'product' && s.product !== v) {
       s.product = v; s.gate = null; s.mat = null; s.style = null;
-      s.height = null; s.width = null; s.color = null; s.grade = null;
+      s.height = null; s.color = null; s.grade = null;
     } else if (campo === 'mat' && s.mat !== v) {
-      s.mat = v; s.style = null; s.height = null; s.width = null; s.color = null; s.grade = null;
+      s.mat = v; s.style = null; s.height = null; s.color = null; s.grade = null;
     } else { s[campo] = v; }
 
     var lista = steps();
     var i = lista.map(function (x) { return x.key; }).indexOf(campo);
-    /* Color, altura y ancho NO avanzan solos: son las elecciones que uno
-       quiere comparar viendo el dibujo, y si el paso se cierra al primer clic
-       no se puede ir de 4 a 6 pies ni de negro a blanco de un vistazo. El
-       material y el perfil si avanzan, que ahi comparar no aporta nada. */
-    if (campo !== 'color' && campo !== 'height' && campo !== 'width') {
+    /* Solo avanzan las elecciones que ACOTAN: que construyes, tipo de porton y
+       material. Perfil, altura, ancho y color se quedan abiertos, porque son
+       las que uno compara mirando el dibujo, y cerrarlas al primer clic obliga
+       a reabrir el paso para ver la siguiente opcion.
+       Esto incluye el paso de estilo cuando ES el color, como en EC Fence y
+       chain link, donde el acabado es el primer eje del material. */
+    if (campo === 'product' || campo === 'gate' || campo === 'mat') {
       s.open = i + 1 < lista.length ? i + 1 : lista.length;
     }
     render();
