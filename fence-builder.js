@@ -383,10 +383,11 @@
 
     var lista = steps();
     var i = lista.map(function (x) { return x.key; }).indexOf(campo);
-    /* El color NO avanza solo: es la eleccion que uno quiere comparar, y si el
-       paso se cierra al primer clic no se puede ir viendo negro contra blanco.
-       El resto de pasos si avanzan, que ahi comparar no aporta nada. */
-    if (campo !== 'color') {
+    /* Color, altura y ancho NO avanzan solos: son las elecciones que uno
+       quiere comparar viendo el dibujo, y si el paso se cierra al primer clic
+       no se puede ir de 4 a 6 pies ni de negro a blanco de un vistazo. El
+       material y el perfil si avanzan, que ahi comparar no aporta nada. */
+    if (campo !== 'color' && campo !== 'height' && campo !== 'width') {
       s.open = i + 1 < lista.length ? i + 1 : lista.length;
     }
     render();
