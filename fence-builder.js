@@ -25,11 +25,11 @@
       heights: ["4'", "5'", "6'"],
       gateWidths: ["4'", "5'"],
       colors: [ { label: 'Black', hex: '#1c1c1c' }, { label: 'Bronze', hex: '#4a3728' }, { label: 'White', hex: '#f2f2ee' } ],
-      gradeLabel: 'Grade',
-      grades: [
-        { label: 'Residential', slug: 'res', sub: '5/8" pickets · 1" channels' },
-        { label: 'Commercial',  slug: 'com', sub: '3/4" pickets · 1-1/4" channels' }
-      ]
+      /* El grado (residencial o comercial) se quito del configurador: no cambia
+         nada de lo que se ve, solo el grosor del picket, y obligaba a decidir
+         algo tecnico antes de poder pedir precio. La ficha tecnica que se
+         ofrece al final prueba primero la residencial, que es la habitual. */
+      grades: []
     },
     'chain-link': {
       name: 'Chain Link', tag: 'Galvanized + vinyl-coated', key: 'chainlink',
@@ -152,6 +152,15 @@
   };
   var COLOR_SLUG = { 'Black':'black', 'Bronze':'bronze', 'White':'white',
                      'Woodgrain':'woodgrain', 'Gray':'gray', 'Tan':null };
+  /* Los acabados claros se generaron sobre gris para que se vieran; el resto
+     sobre claro. El marco copia ese fondo, asi al escalar el dibujo por altura
+     no se ve el borde de la imagen. */
+  var FONDO = { white: '#787e8a', gray: '#ebebeb' };
+  var FONDO_CLARO = '#ebebeb';
+
+  /* Alto relativo: el panel crece de verdad al subir de 4 a 6 pies, anclado
+     abajo, como una valla real. Son proporciones, no medidas exactas. */
+  var ESCALA = { "3'": 0.62, "4'": 0.74, "5'": 0.87, "6'": 1, "8'": 1 };
 
   var ORDER = ['aluminum', 'chain-link', 'vinyl', 'metal', 'ecfence'];
   var s = { product: null, gate: null, mat: null, style: null, height: null, width: null, color: null, grade: null, open: 0 };
@@ -193,7 +202,6 @@
     out.push({ key: 'height', title: 'Height' });
     if (s.product === 'gate') { out.push({ key: 'width', title: 'Opening width' }); }
     if (m().colors && m().colors.length) { out.push({ key: 'color', title: 'Color' }); }
-    if (m().grades && m().grades.length) { out.push({ key: 'grade', title: m().gradeLabel }); }
     return out;
   }
   function value(k) {
@@ -209,13 +217,17 @@
     if (s.product === 'gate' && s.mat === 'chain-link' && s.gate &&
         SHEETS['chainlink-gate-' + s.gate]) { return 'chainlink-gate-' + s.gate; }
     var st = styleObj();
-    if (s.mat !== 'aluminum' || !st || !st.slug || !s.height || !s.grade) { return null; }
-    var g = m().grades.filter(function (x) { return x.label === s.grade; })[0];
+    if (s.mat !== 'aluminum' || !st || !st.slug || !s.height) { return null; }
     var n = s.height.replace("'", '');
-    var k = s.product === 'gate'
-      ? (s.width ? 'alum-' + n + 'x' + s.width.replace("'", '') + '-' + g.slug + '-' + st.slug + '-gate' : null)
-      : 'alum-' + n + 'ft-' + g.slug + '-' + st.slug + '-panel';
-    return k && SHEETS[k] ? k : null;
+    /* Se prueban los dos grados: la residencial primero, que es la habitual. */
+    for (var i = 0; i < 2; i++) {
+      var g = ['res', 'com'][i];
+      var k = s.product === 'gate'
+        ? (s.width ? 'alum-' + n + 'x' + s.width.replace("'", '') + '-' + g + '-' + st.slug + '-gate' : null)
+        : 'alum-' + n + 'ft-' + g + '-' + st.slug + '-panel';
+      if (k && SHEETS[k]) { return k; }
+    }
+    return null;
   }
 
   function imgSrc() {
@@ -234,6 +246,12 @@
 
   function pintarVista() {
     var img = $('preview'), src = imgSrc();
+    var slug = s.color ? COLOR_SLUG[s.color] : null;
+    var marco = img.parentNode;
+    marco.style.background = (slug && FONDO[slug]) ? FONDO[slug] : FONDO_CLARO;
+    var k = ESCALA[s.height] || 1;
+    img.style.transform = 'scale(' + k + ')';
+    img.style.transformOrigin = 'center bottom';
     if (img.getAttribute('src') !== src) {
       img.classList.add('is-swapping');
       var n = new Image();
@@ -252,7 +270,6 @@
       filas.push(['Height', s.height]);
       if (s.product === 'gate') { filas.push(['Width', s.width]); }
       if (m().colors.length) { filas.push(['Color', s.color]); }
-      if (m().grades.length) { filas.push([m().gradeLabel, s.grade]); }
     }
     $('spec').innerHTML = filas.map(function (f) {
       var sw = '';
@@ -304,7 +321,7 @@
           '<i class="sw" style="background:' + c.hex + '"></i>' + esc(c.label) + '</button>';
       }).join('') + '</div>';
     }
-    return m().grades.map(function (g) { return opt('grade', g.label, g.label, g.sub, null); }).join('');
+    return '';
   }
 
   function pintarPasos() {
@@ -313,8 +330,10 @@
       var val = value(st.key), abierto = s.open === i;
       var bloqueado = i > 0 && !value(lista[i - 1].key);
       var cls = 'step' + (abierto ? ' is-open' : '') + (bloqueado ? ' is-locked' : '');
+      /* Cualquier paso alcanzable se abre pulsando su cabecera, para poder ir
+         y venir sin depender del boton "Change". */
       var h = '<section class="' + cls + '" data-i="' + i + '">' +
-        '<div class="step__head">' +
+        '<div class="step__head"' + (!bloqueado && !abierto ? ' data-edit="' + i + '"' : '') + '>' +
           '<span class="step__n">' + ('0' + (i + 1)) + '</span>' +
           '<span class="step__t">' + esc(st.title) + '</span>' +
           (!abierto && val ? '<span class="step__val">' + esc(val) + '</span>' +
@@ -326,7 +345,7 @@
 
     if (completo()) {
       var k = sheetKey();
-      var titulo = [m().name, s.style, s.height + (s.width ? ' x ' + s.width : ''), s.color, s.grade]
+      var titulo = [m().name, s.style, s.height + (s.width ? ' x ' + s.width : ''), s.color]
         .filter(Boolean).join(' · ');
       html += '<div class="bld__done">' +
         '<span class="wfs-kicker">Your build</span>' +
@@ -364,7 +383,12 @@
 
     var lista = steps();
     var i = lista.map(function (x) { return x.key; }).indexOf(campo);
-    s.open = i + 1 < lista.length ? i + 1 : lista.length;
+    /* El color NO avanza solo: es la eleccion que uno quiere comparar, y si el
+       paso se cierra al primer clic no se puede ir viendo negro contra blanco.
+       El resto de pasos si avanzan, que ahi comparar no aporta nada. */
+    if (campo !== 'color') {
+      s.open = i + 1 < lista.length ? i + 1 : lista.length;
+    }
     render();
   });
 
