@@ -105,30 +105,53 @@
   };
 
 
-  /* ── Fotos por color ─────────────────────────────────────────────────────
-     Fotos reales de instalacion, de assets/projects. La busqueda va de lo mas
-     concreto a lo mas general: primero material+perfil+color, luego
-     material+color, y si no hay ninguna se queda el dibujo del perfil. Asi el
-     color siempre se ve, y nunca se enseña una foto que no corresponde. */
-  var COLOR_IMG = {
-    /* material | perfil | color */
-    'aluminum|Pool Code|White':            'assets/projects/alum-2-rail-smooth-bottom-pool-code-white.jpg',
-    'aluminum|3-Rail Puppy Picket|Bronze': 'assets/projects/alum-puppy-picket-bronze.jpg',
-    'aluminum|4-Rail Custom|Black':        'assets/projects/alum-4-rail-smooth-bottom-custom-gate-black.jpg',
-    'vinyl|Semi-Privacy|Tan':              'assets/projects/pvc-semi-privacy-alternative-pickets-sand.jpg',
-    'vinyl|Privacy|White':                 'assets/projects/pvc-closed-top-white.jpg',
-    'metal|Modern|Black':                  'assets/projects/met-fence-horizontal-black.jpg',
-    /* material | color */
-    'aluminum|White':   'assets/projects/alum-2-rail-smooth-bottom-white.jpg',
-    'aluminum|Bronze':  'assets/projects/alum-puppy-picket-bronze.jpg',
-    'aluminum|Black':   'assets/projects/alum-4-rail-smooth-bottom-custom-gate-black.jpg',
-    'vinyl|White':      'assets/projects/pvc-closed-top-white.jpg',
-    'vinyl|Tan':        'assets/projects/pvc-gate-sand.jpg',
-    'vinyl|Gray':       'assets/projects/pvc-privacy-two-tone-white-and-gray.webp',
-    'metal|White':      'assets/projects/met-fence-2-rail-white.jpg',
-    'metal|Black':      'assets/projects/met-fence-3-rail-black.jpg',
-    'metal|Woodgrain':  'assets/projects/met-fence-3-rail-brown.jpg'
+  /* ── Variantes de color ──────────────────────────────────────────────────
+     Generadas desde el MISMO dibujo del perfil, cambiandole solo el color: en
+     assets/profiles/tinted, una por perfil y acabado. Asi al cambiar de color
+     no salta a otra escena, se ve la misma valla pintada de otro color.
+     Los claros van sobre fondo gris, que en blanco sobre blanco no se veria. */
+  var TINTED = {
+    'aluminum-2-rail-smooth-black': 1,
+    'aluminum-2-rail-smooth-bronze': 1,
+    'aluminum-2-rail-smooth-white': 1,
+    'aluminum-3-rail-rake-black': 1,
+    'aluminum-3-rail-rake-bronze': 1,
+    'aluminum-3-rail-rake-white': 1,
+    'aluminum-custom-black': 1,
+    'aluminum-custom-bronze': 1,
+    'aluminum-custom-white': 1,
+    'aluminum-pool-code-black': 1,
+    'aluminum-pool-code-bronze': 1,
+    'aluminum-pool-code-white': 1,
+    'aluminum-puppy-picket-black': 1,
+    'aluminum-puppy-picket-bronze': 1,
+    'aluminum-puppy-picket-white': 1,
+    'aluminum-spear-top-black': 1,
+    'aluminum-spear-top-bronze': 1,
+    'aluminum-spear-top-white': 1,
+    'metal-modern-black': 1,
+    'metal-modern-bronze': 1,
+    'metal-modern-white': 1,
+    'metal-modern-woodgrain': 1,
+    'metal-original-black': 1,
+    'metal-original-bronze': 1,
+    'metal-original-white': 1,
+    'metal-original-woodgrain': 1,
+    'metal-p1-black': 1,
+    'metal-p1-bronze': 1,
+    'metal-p1-white': 1,
+    'metal-p1-woodgrain': 1,
+    'vinyl-picket-gray': 1,
+    'vinyl-picket-white': 1,
+    'vinyl-privacy-gray': 1,
+    'vinyl-privacy-white': 1,
+    'vinyl-ranch-rail-gray': 1,
+    'vinyl-ranch-rail-white': 1,
+    'vinyl-semi-privacy-gray': 1,
+    'vinyl-semi-privacy-white': 1
   };
+  var COLOR_SLUG = { 'Black':'black', 'Bronze':'bronze', 'White':'white',
+                     'Woodgrain':'woodgrain', 'Gray':'gray', 'Tan':null };
 
   var ORDER = ['aluminum', 'chain-link', 'vinyl', 'metal', 'ecfence'];
   var s = { product: null, gate: null, mat: null, style: null, height: null, width: null, color: null, grade: null, open: 0 };
@@ -197,11 +220,12 @@
 
   function imgSrc() {
     var st = styleObj();
-    if (s.color && s.mat) {
-      var exacta = COLOR_IMG[s.mat + '|' + s.style + '|' + s.color];
-      if (exacta) { return exacta; }
-      var porColor = COLOR_IMG[s.mat + '|' + s.color];
-      if (porColor) { return porColor; }
+    if (st && s.color) {
+      /* Tan en vinilo es el color del propio dibujo, asi que no hay variante. */
+      var slug = COLOR_SLUG[s.color];
+      if (slug && TINTED[st.img + '-' + slug]) {
+        return 'assets/profiles/tinted/' + st.img + '-' + slug + '.jpg';
+      }
     }
     if (st) { return 'assets/profiles/' + st.img + '.jpg'; }
     if (s.product === 'gate' && gateObj()) { return gateObj().img; }
@@ -210,10 +234,6 @@
 
   function pintarVista() {
     var img = $('preview'), src = imgSrc();
-    /* Un recorte de producto se ve entero (contain, sobre blanco); una foto de
-       instalacion se recorta a la caja (cover). Tratarlas igual dejaba la foto
-       flotando con franjas blancas. */
-    img.classList.toggle('is-photo', src.indexOf('assets/projects/') === 0);
     if (img.getAttribute('src') !== src) {
       img.classList.add('is-swapping');
       var n = new Image();
