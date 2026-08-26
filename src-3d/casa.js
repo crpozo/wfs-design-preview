@@ -4,7 +4,7 @@
  * una planta, estuco, cubierta de teja a cuatro aguas, entrada de coche a un
  * lado y piscina al lateral. El objetivo no es lucir la casa sino dar escala
  * y contexto: una cerca de 4 pies y una de 6 solo se distinguen cuando hay al
- * lado una puerta, un coche o un alero de altura conocida.
+ * lado algo de altura conocida, y de eso se encarga la persona de persona.js.
  *
  * Todas las medidas van en pies, igual que la cerca.
  */
@@ -135,41 +135,6 @@ function ventana(g, mats, x, y, z, w, h, rotY) {
 }
 
 
-/**
- * Un todoterreno en la entrada.
- *
- * No es adorno: es la referencia de escala mas fiable que hay. Un coche mide
- * lo que mide, y al lado se ve de un vistazo si la cerca de 6 pies tapa o no.
- * A esta distancia bastan cajas con las proporciones correctas.
- */
-function coche(x, z, rotY, colorHex) {
-  var g = new Group();
-  var pintura = new MeshStandardMaterial({ color: new Color(colorHex), roughness: 0.3, metalness: 0.45 });
-  var cristal = new MeshStandardMaterial({ color: new Color('#4d6070'), roughness: 0.08, metalness: 0.8 });
-  var goma    = new MeshStandardMaterial({ color: new Color('#1d1d1d'), roughness: 0.95 });
-  var L = 15.4, A = 6.3;
-  /* Capo y maletero por separado: con una sola caja y la cabina encima salia
-     un bulto, y a esta distancia lo unico que hace legible un coche es que se
-     le vea el escalon del capo. */
-  g.add(caja(A, 1.9, L, pintura, 0, 1.85, 0));                    // cuerpo
-  g.add(caja(A - 0.35, 1.7, L * 0.42, pintura, 0, 3.6, -1.1));    // cabina
-  g.add(caja(A - 0.12, 1.15, L * 0.4, cristal, 0, 3.75, -1.05));  // lunas
-  g.add(caja(A - 1.1, 0.28, L * 0.4, pintura, 0, 4.5, -1.1));     // techo
-  g.add(caja(A - 0.6, 0.3, 0.5, pintura, 0, 2.75, L / 2 - 0.2));  // faldon delantero
-  for (var i = 0; i < 4; i++) {
-    var rx = (i % 2 ? 1 : -1) * (A / 2 - 0.2);
-    var rz = (i < 2 ? 1 : -1) * L * 0.3;
-    var r = new Mesh(new CylinderGeometry(1.05, 1.05, 0.8, 14), goma);
-    r.rotation.z = Math.PI / 2;
-    r.position.set(rx, 1.05, rz);
-    r.castShadow = true;
-    g.add(r);
-  }
-  g.position.set(x, 0, z);
-  g.rotation.y = rotY;
-  return g;
-}
-
 export function construir() {
   var g = new Group();
   var C = LOTE.casa;
@@ -261,9 +226,6 @@ export function construir() {
   for (var q = 0; q < palmas.length; q++) {
     g.add(palmera(palmas[q][0], palmas[q][1], palmas[q][2]));
   }
-
-  /* Coche aparcado en la calzada, entre el garaje y el porton. */
-  g.add(coche(12, 2, 0.04, '#c8ccd2'));
 
   /* Una persona junto a la cerca del frente. Es la referencia que hace legible
      la altura: entre 5 y 6 pies hay doce pulgadas que sin nada al lado no se
