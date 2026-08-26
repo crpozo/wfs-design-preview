@@ -104,12 +104,20 @@ const GateQuickFacts = ({ data }) => (
   </section>
 );
 
-const GateCardGrid = ({ items, gateId }) => (
+const GateCardGrid = ({ items, gateId }) => {
+  /* En una pagina de porton el configurador ya esta embebido con este tipo
+     fijado, asi que la tarjeta lleva la vista alli en vez de navegar. */
+  const Etiqueta = gateId ? 'button' : 'a';
+  return (
   <div className="wfs-profiles-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(items.length, 4)}, 1fr)`, gap: 14 }}>
     {items.map((p) => (
       /* Cada tarjeta abre el configurador con este tipo de porton ya elegido. */
-      <a key={p.name} href={gateId ? `fence-builder.html?g=${gateId}` : 'estimate.html#contact'} style={{
-        display: 'flex', flexDirection: 'column', background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', overflow: 'hidden', textDecoration: 'none', color: 'inherit', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
+      <Etiqueta key={p.name}
+        {...(gateId
+          ? { type: 'button', onClick: () => { if (window.WFSBuilder) { window.WFSBuilder.ir(); } } }
+          : { href: 'estimate.html#contact' })}
+        style={{
+        display: 'flex', flexDirection: 'column', background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', overflow: 'hidden', textDecoration: 'none', color: 'inherit', textAlign: 'left', font: 'inherit', padding: 0, cursor: 'pointer', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
       onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -20px rgba(0,16,17,0.25)'; }}
       onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
         <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#263166', overflow: 'hidden' }}>
@@ -124,10 +132,39 @@ const GateCardGrid = ({ items, gateId }) => (
           <h3 className="display" style={{ margin: '0 0 10px', fontSize: 22.5, lineHeight: 1.1 }}>{p.name}</h3>
           <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
         </div>
-      </a>
+      </Etiqueta>
     ))}
   </div>
-);
+  );
+};
+
+/* Configurador embebido: la pagina de porton ya fija el tipo, asi que aqui
+   solo se eligen material, perfil, altura y color de ESE porton. */
+const GateBuilder = ({ data }) => {
+  const t = useT();
+  React.useEffect(() => {
+    if (window.WFSBuilder) {
+      window.WFSBuilder.mount(document.getElementById('wfs-builder-gate-' + data.slug),
+        { product: 'gate', gate: data.slug });
+    }
+  }, [data.slug]);
+  return (
+    <section id="build" className="bld" style={{ background: 'var(--white)' }}>
+      <div className="container">
+        <PageSectionHeader
+          number="02" label={t('Build it', 'Configúralo')}
+          title={t('Configure Your', 'Configura tu')}
+          accent={`${data.name} Gate.`}
+          sub={t(
+            'Pick the material, profile, height and color. The drawing updates as you go, and the spec sheet comes with it.',
+            'Elige el material, el perfil, la altura y el color. El dibujo se actualiza sobre la marcha, y la ficha técnica viene con él.'
+          )}
+        />
+        <div id={'wfs-builder-gate-' + data.slug}></div>
+      </div>
+    </section>
+  );
+};
 
 const GateTypes = ({ data }) => (
   <section id="gate-types" style={{ background: 'var(--white)', padding: '120px 0' }}>
@@ -312,6 +349,7 @@ const GatePage = ({ slug }) => {
       <GateHero data={data}/>
       <GateQuickFacts data={data}/>
       <GateTypes data={data}/>
+      <GateBuilder data={data}/>
       <GateQuoteChecklist />
       <GateHardware data={data} />
       <GateSpecs data={data}/>

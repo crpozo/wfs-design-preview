@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.13.0' );
+define( 'WFS_VERSION', '4.14.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -133,7 +133,24 @@ function wfs_print_app( $slug ) {
 	}
 
 	$type = $pre ? ' defer' : ' type="text/babel"';
-	foreach ( $pages[ $slug ]['components'] as $comp ) {
+
+	/* El configurador se monta DENTRO de la pagina de material o de porton, asi
+	   que solo esas dos lo necesitan. No es JSX: va sin type="text/babel" y
+	   antes de los componentes, porque su efecto llama a window.WFSBuilder. El
+	   orden entre scripts defer se conserva. */
+	$comps = $pages[ $slug ]['components'];
+	/* Precompilado los componentes llegan como .js y sin precompilar como .jsx. */
+	$necesita = array( 'page-material.jsx', 'page-material.js', 'page-gate.jsx', 'page-gate.js' );
+	if ( array_intersect( $necesita, $comps )
+		&& file_exists( get_theme_file_path( 'apps/fence-builder.js' ) ) ) {
+		printf(
+			'<script%s src="%s"></script>' . "\n",
+			$pre ? ' defer' : '',
+			esc_url( get_theme_file_uri( 'apps/fence-builder.js' ) . '?ver=' . $v )
+		);
+	}
+
+	foreach ( $comps as $comp ) {
 		printf(
 			'<script%s src="%s"></script>' . "\n",
 			$type,

@@ -191,6 +191,34 @@ const ProfileDiagram = ({ slug, name = '', index = 0 }) => {
   );
 };
 
+/* Configurador incrustado, con el material de esta pagina ya fijado: aqui solo
+   se eligen variantes de este material, no de los otros cuatro. */
+const MaterialBuilder = ({ data }) => {
+  const t = useT();
+  React.useEffect(() => {
+    if (window.WFSBuilder) {
+      window.WFSBuilder.mount(document.getElementById('wfs-builder-' + data.slug),
+        { product: 'fence', material: data.slug });
+    }
+  }, [data.slug]);
+  return (
+    <section id="build" className="bld" style={{ background: 'var(--white)' }}>
+      <div className="container">
+        <PageSectionHeader
+          number="02" label={t('Build it', 'Configúrala')}
+          title={t('Configure Your', 'Configura tu')}
+          accent={`${data.name}.`}
+          sub={t(
+            'Pick the profile, height and color. The drawing updates as you go, and the spec sheet comes with it.',
+            'Elige el perfil, la altura y el color. El dibujo se actualiza sobre la marcha, y la ficha técnica viene con él.'
+          )}
+        />
+        <div id={'wfs-builder-' + data.slug}></div>
+      </div>
+    </section>
+  );
+};
+
 const MaterialProfiles = ({ data }) => {
   const t = useT();
   return (
@@ -204,13 +232,14 @@ const MaterialProfiles = ({ data }) => {
       />
       <div className="wfs-profiles-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(data.profiles.length, 4)}, 1fr)`, gap: 14 }}>
         {data.profiles.map((p, i) => (
-          /* La tarjeta entera abre el configurador con este material y este
-             perfil ya elegidos. Se enlaza por la IMAGEN y no por el nombre:
-             la ficha del material y el configurador usan etiquetas distintas
-             ("3-Rail" frente a "3-Rail Rake Bottom") y la imagen es lo unico
-             que coincide siempre. */
-          <a key={p.name} href={`fence-builder.html?m=${data.slug}${p.img ? '&p=' + p.img.split('/').pop().replace('.jpg','') : ''}`}
-            className="wfs-profile-card" style={{
+          /* La tarjeta elige esta variante en el configurador de ESTA misma
+             pagina, sin navegar a ningun lado. Se identifica por la IMAGEN y no
+             por el nombre: la ficha del material y el configurador usan
+             etiquetas distintas ("3-Rail" frente a "3-Rail Rake Bottom") y la
+             imagen es lo unico que coincide siempre. */
+          <button key={p.name} type="button"
+            onClick={() => { if (window.WFSBuilder && p.img) { window.WFSBuilder.elegir(p.img.split('/').pop().replace('.jpg','')); } }}
+            className="wfs-profile-card" style={{ textAlign: 'left', cursor: 'pointer', font: 'inherit',
             background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', overflow: 'hidden', display: 'flex', flexDirection: 'column', color: 'var(--ink)', }}>
             <div style={{ aspectRatio: '16 / 10', background: p.img ? 'var(--white)' : DIAG.bg, borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
               {p.img
@@ -224,13 +253,13 @@ const MaterialProfiles = ({ data }) => {
               <p style={{ margin: 0, fontSize: 15, lineHeight: 1.55, color: 'var(--charcoal)' }}>{p.notes}</p>
               <span className="mono wfs-profile-card__cta" style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8, marginTop: 16, fontSize: 13.5, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--tangerine)', }}>
-                {t('Build with this', 'Configurar con este')}
+                {t('Configure this', 'Configurar este')}
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                   <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </span>
             </div>
-          </a>
+          </button>
         ))}
       </div>
     </div>
@@ -360,6 +389,7 @@ const MaterialPage = ({ slug }) => {
       <MaterialHero data={data}/>
       <MaterialQuickFacts data={data}/>
       <MaterialProfiles data={data}/>
+      <MaterialBuilder data={data}/>
       <MaterialSpecs data={data}/>
       <MaterialUseCases data={data}/>
       <ProjectGallery featuredMaterial={{ vinyl: 'Vinyl', aluminum: 'Aluminum', chainlink: 'Chain Link', metal: 'Metal', ecfence: 'EC Fence' }[slug]} items={base.projects}/>

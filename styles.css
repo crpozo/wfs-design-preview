@@ -1201,3 +1201,110 @@ p { font-family: var(--body); }
   border: 1px solid rgba(0,16,17,.22); margin-right: 9px; vertical-align: -2px;
 }
 .chip--color { display: inline-flex; align-items: center; }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   CONFIGURADOR
+   Se monta dentro de cualquier pagina (ficha de material, de porton, o suelto).
+   Por eso los estilos viven aqui y no en una pagina concreta.
+   ═══════════════════════════════════════════════════════════════════════════ */
+.bld { padding: 96px 0 110px; }
+
+  .bld__grid { display: grid; grid-template-columns: 1fr 460px; gap: 64px; align-items: start; }
+
+  /* La vista previa se queda fija: es el punto del configurador, ver como cambia
+     lo que eliges sin perderlo de vista al bajar por los pasos. */
+  .bld__stage { position: sticky; top: 24px; }
+  .bld__frame {
+    position: relative; border: 1px solid rgba(0,16,17,.14); border-radius: 18px;
+    background: #ebebeb; aspect-ratio: 4 / 3; overflow: hidden;
+    display: flex; align-items: stretch;
+    transition: background .3s ease;
+  }
+  .bld__frame img {
+    width: 100%; height: 100%; object-fit: contain; padding: 26px;
+    transition: opacity .25s ease, transform .3s ease;
+  }
+  .bld__frame img.is-swapping { opacity: 0; }
+  /* Sobre una foto la etiqueta se perdia: pastilla oscura para que se lea
+     igual encima de un recorte blanco que de una foto de instalacion. */
+  /* La imagen ocupa su propia columna. La cota va AL LADO, no encima: como
+     velo semitransparente se comia el borde derecho de la cerca y parecia que
+     el dibujo se desvanecia. */
+  .bld__media { flex: 1; min-width: 0; position: relative; display: grid; place-items: center; }
+  .bld__scale {
+    width: 108px; flex: none; display: none;
+    border-left: 1px solid rgba(0,16,17,.10);
+  }
+  .bld__scale.is-on { display: block; }
+  .bld__scale svg { width: 100%; height: 100%; }
+  .sc-base { stroke: rgba(38,49,103,.30); stroke-width: 1.5; }
+  .sc-line { stroke: var(--tangerine); stroke-width: 2; }
+  .sc-tick { stroke: var(--tangerine); stroke-width: 2; }
+  .sc-person { fill: rgba(38,49,103,.42); }
+  .sc-label {
+    font-family: var(--mono); font-size: 15px; font-weight: 700;
+    letter-spacing: .06em; fill: var(--ink);
+  }
+
+  .bld__badge {
+    position: absolute; top: 14px; left: 14px; z-index: 2;
+    padding: 6px 12px; border-radius: 999px;
+    background: rgba(38,49,103,.9); backdrop-filter: blur(4px);
+    font-family: var(--mono); font-size: 12px; font-weight: 700;
+    letter-spacing: .18em; text-transform: uppercase; color: #fff;
+  }
+  .bld__spec { margin-top: 22px; border-top: 1px solid rgba(0,16,17,.12); padding-top: 18px; }
+  .bld__spec dl { display: grid; grid-template-columns: 118px 1fr; gap: 10px 18px; margin: 0; font-size: 15.5px; }
+  .bld__spec dt { font-family: var(--mono); font-size: 12.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--charcoal); }
+  .bld__spec dd { margin: 0; }
+  .bld__spec dd.is-empty { color: var(--silver); }
+
+  /* Pasos: el activo abierto, los resueltos plegados a una linea. */
+  .step { border: 1px solid rgba(0,16,17,.14); border-radius: 16px; padding: 22px 24px; margin-bottom: 14px; transition: border-color .18s ease; }
+  .step.is-open { border-color: var(--ink); }
+  .step.is-locked { opacity: .45; }
+  .step__head { display: flex; align-items: baseline; gap: 12px; }
+  /* La cabecera de un paso alcanzable es pulsable. */
+  .step__head[data-edit] { cursor: pointer; }
+  .step__head[data-edit]:hover .step__t { color: var(--laser-blue); }
+  .step__n { font-family: var(--mono); font-size: 12.5px; font-weight: 700; letter-spacing: .18em; color: var(--tangerine); }
+  .step__t { font-size: 17px; font-weight: 700; }
+  .step__val { margin-left: auto; font-size: 15.5px; color: var(--charcoal); }
+  .step__edit { margin-left: auto; font-family: var(--mono); font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--laser-blue); background: none; border: 0; cursor: pointer; }
+  .step__body { margin-top: 18px; display: grid; gap: 10px; }
+  .opt {
+    display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
+    padding: 14px 16px; border: 1px solid rgba(0,16,17,.16); border-radius: 12px;
+    background: #fff; color: var(--ink); cursor: pointer;
+    transition: border-color .18s ease, background .18s ease;
+  }
+  .opt:hover { border-color: var(--ink); }
+  .opt[aria-pressed="true"] { border-color: var(--ink); background: rgba(38,49,103,.04); }
+  .opt__thumb { width: 62px; height: 46px; flex: none; border-radius: 8px; background: var(--alice-blue); object-fit: contain; }
+  .opt__name { font-size: 16px; font-weight: 600; }
+  .opt__sub { display: block; font-size: 14px; color: var(--charcoal); margin-top: 2px; }
+  .opt__tick { margin-left: auto; width: 20px; height: 20px; border-radius: 50%; border: 1.5px solid rgba(0,16,17,.25); display: grid; place-items: center; flex: none; }
+  .opt[aria-pressed="true"] .opt__tick { background: var(--ink); border-color: var(--ink); }
+  .opt[aria-pressed="true"] .opt__tick::after { content: ""; width: 7px; height: 4px; border-left: 2px solid #fff; border-bottom: 2px solid #fff; transform: rotate(-45deg) translate(1px,-1px); }
+  .opts-row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .chip {
+    padding: 12px 20px; border: 1px solid rgba(0,16,17,.16); border-radius: 12px;
+    background: #fff; color: var(--ink); font-size: 16px; cursor: pointer;
+    transition: border-color .18s ease, background .18s ease, color .18s ease;
+  }
+  .chip:hover { border-color: var(--ink); }
+  .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+  .bld__done { margin-top: 26px; padding: 30px 28px; border-radius: 16px; background: var(--ink); color: #fff; }
+  .bld__done h2 { margin: 10px 0 8px; font-family: var(--display); font-variation-settings: 'wdth' 125; font-weight: 700; font-size: 26px; }
+  .bld__done p { margin: 0 0 20px; color: rgba(255,255,255,.85); font-size: 16px; line-height: 1.55; }
+  .bld__actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .bld__sheet { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.18); font-size: 15px; }
+  .bld__sheet a { color: var(--blue-ice); text-decoration: underline; text-underline-offset: 3px; }
+  .bld__sheet span.none { color: rgba(255,255,255,.6); }
+
+  @media (max-width: 1040px) {
+    .bld__grid { grid-template-columns: 1fr; gap: 34px; }
+    .bld__stage { position: static; }
+  }
+

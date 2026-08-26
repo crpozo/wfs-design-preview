@@ -46,6 +46,14 @@ for jsx in sorted((SRC / "components").glob("*.jsx")):
     txt = re.sub(r"(['\"])assets/", r"\1" + ASSET_BASE + "/", txt)
     (OUT / "components" / jsx.name).write_text(txt)
 
+# ------------------------------------------------------- configurador
+# fence-builder.js no es JSX ni una pagina: es el modulo window.WFSBuilder que
+# las paginas de material y de porton montan dentro de si mismas. Va a apps/ y
+# se le reescriben las rutas de assets igual que a los componentes.
+bld = (SRC / "fence-builder.js").read_text()
+bld = re.sub(r"(['\"])assets/", r"\1" + ASSET_BASE + "/", bld)
+(OUT / "apps" / "fence-builder.js").write_text(bld)
+
 # ---------------------------------------------------------------- css
 css = (SRC / "styles.css").read_text()
 css = re.sub(r"url\((['\"]?)assets/", r"url(\1" + ASSET_BASE + "/", css)

@@ -84,11 +84,11 @@
 
   /* ── Tipos de porton ─────────────────────────────────────────────────── */
   var GATES = [
-    { id: 'single',     label: 'Single Swing',   img: 'assets/gate-single-swing.jpg', sub: 'Walk and entry gates' },
-    { id: 'double',     label: 'Double Swing',   img: 'assets/gate-double.jpg',       sub: 'Driveways and wide openings' },
-    { id: 'sliding',    label: 'Sliding',        img: 'assets/gate-sliding.jpg',      sub: 'Track-mounted, tight driveways' },
-    { id: 'cantilever', label: 'Cantilever',     img: 'assets/gate-cantilever.jpg',   sub: 'No ground track, up to 30 ft' },
-    { id: 'rolling',    label: 'Rolling',        img: 'assets/gate-rolling.jpg',      sub: 'Rubber wheels, uneven ground' }
+    { id: 'single',     label: 'Single Swing',   img: 'https://crpozo.github.io/wfs-design-preview/assets/gate-single-swing.jpg', sub: 'Walk and entry gates' },
+    { id: 'double',     label: 'Double Swing',   img: 'https://crpozo.github.io/wfs-design-preview/assets/gate-double.jpg',       sub: 'Driveways and wide openings' },
+    { id: 'sliding',    label: 'Sliding',        img: 'https://crpozo.github.io/wfs-design-preview/assets/gate-sliding.jpg',      sub: 'Track-mounted, tight driveways' },
+    { id: 'cantilever', label: 'Cantilever',     img: 'https://crpozo.github.io/wfs-design-preview/assets/gate-cantilever.jpg',   sub: 'No ground track, up to 30 ft' },
+    { id: 'rolling',    label: 'Rolling',        img: 'https://crpozo.github.io/wfs-design-preview/assets/gate-rolling.jpg',      sub: 'Rubber wheels, uneven ground' }
   ];
 
   /* Fichas que existen en assets/specs. Si la combinacion no esta, se dice en
@@ -311,16 +311,16 @@
       /* Tan en vinilo es el color del propio dibujo, asi que no hay variante. */
       var slug = COLOR_SLUG[s.color];
       if (slug && TINTED[st.img + '-' + slug]) {
-        return 'assets/profiles/tinted/' + st.img + '-' + slug + '.jpg';
+        return 'https://crpozo.github.io/wfs-design-preview/assets/profiles/tinted/' + st.img + '-' + slug + '.jpg';
       }
     }
-    if (st) { return 'assets/profiles/' + st.img + '.jpg'; }
+    if (st) { return 'https://crpozo.github.io/wfs-design-preview/assets/profiles/' + st.img + '.jpg'; }
     /* Con material elegido pero sin perfil, se enseña ese material. Antes caia
        a la foto del tipo de porton, que es la misma para todos: al cambiar de
        vinilo a chain link la imagen no se movia. */
-    if (m()) { return 'assets/profiles/' + m().styles[0].img + '.jpg'; }
+    if (m()) { return 'https://crpozo.github.io/wfs-design-preview/assets/profiles/' + m().styles[0].img + '.jpg'; }
     if (s.product === 'gate' && gateObj()) { return gateObj().img; }
-    return 'assets/profiles/aluminum-2-rail-smooth.jpg';
+    return 'https://crpozo.github.io/wfs-design-preview/assets/profiles/aluminum-2-rail-smooth.jpg';
   }
 
   function pintarVista() {
@@ -369,8 +369,8 @@
 
   function cuerpo(k) {
     if (k === 'product') {
-      return opt('product', 'fence', 'Fence run', 'Panels, posts and rails for a run', 'assets/profiles/aluminum-3-rail-rake.jpg') +
-             opt('product', 'gate',  'Gate',      'Single, double, sliding, cantilever or rolling', 'assets/gate-double.jpg');
+      return opt('product', 'fence', 'Fence run', 'Panels, posts and rails for a run', 'https://crpozo.github.io/wfs-design-preview/assets/profiles/aluminum-3-rail-rake.jpg') +
+             opt('product', 'gate',  'Gate',      'Single, double, sliding, cantilever or rolling', 'https://crpozo.github.io/wfs-design-preview/assets/gate-double.jpg');
     }
     if (k === 'gate') {
       return GATES.map(function (g) { return opt('gate', g.id, g.label, g.sub, g.img); }).join('');
@@ -378,12 +378,12 @@
     if (k === 'mat') {
       return ORDER.map(function (id) {
         var x = MAT[id];
-        return opt('mat', id, x.name, x.tag, 'assets/profiles/' + x.styles[0].img + '.jpg');
+        return opt('mat', id, x.name, x.tag, 'https://crpozo.github.io/wfs-design-preview/assets/profiles/' + x.styles[0].img + '.jpg');
       }).join('');
     }
     if (k === 'style') {
       return m().styles.map(function (x) {
-        return opt('style', x.label, x.label, x.sub, 'assets/profiles/' + x.img + '.jpg');
+        return opt('style', x.label, x.label, x.sub, 'https://crpozo.github.io/wfs-design-preview/assets/profiles/' + x.img + '.jpg');
       }).join('');
     }
     if (k === 'height') {
@@ -440,7 +440,7 @@
           '<a class="btn btn-ghost on-dark" href="specs.html">Browse all spec sheets</a>' +
         '</div>' +
         '<div class="bld__sheet">' + (k ?
-          'Spec sheet for this build: <a href="assets/specs/' + k + '.pdf" download>' + esc(k) + '.pdf</a>' :
+          'Spec sheet for this build: <a href="https://crpozo.github.io/wfs-design-preview/assets/specs/' + k + '.pdf" download>' + esc(k) + '.pdf</a>' :
           '<span class="none">No spec sheet drawn for this exact build yet. Ask us and we will send the closest one.</span>') +
         '</div></div>';
     }
