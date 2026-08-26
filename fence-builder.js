@@ -285,7 +285,7 @@
   var FIJO = { product: opts.product || null, mat: opts.material || null, gate: opts.gate || null };
 
   var s = { product: FIJO.product, gate: FIJO.gate || opts.gateInicial || null, mat: FIJO.mat,
-            style: null, height: null, color: null, open: 0 };
+            style: null, height: null, color: null };
 
   var $ = function (clase) { return root.querySelector('.bld__' + clase); };
 
@@ -332,12 +332,12 @@
     var q = new URLSearchParams(location.search);
     var g = q.get('g'), mat = q.get('m'), img = q.get('p');
     if (g && GATES.filter(function (x) { return x.id === g; })[0]) {
-      s.product = 'gate'; s.gate = g; s.open = 2;
+      s.product = 'gate'; s.gate = g;
     } else if (mat && MAT[mat]) {
-      s.product = 'fence'; s.mat = mat; s.open = 2;
+      s.product = 'fence'; s.mat = mat;
       if (img) {
         var enc = MAT[mat].styles.filter(function (x) { return x.img === img; })[0];
-        if (enc) { s.style = enc.label; s.open = 3; }
+        if (enc) { s.style = enc.label; }
       }
     }
   })();
@@ -715,27 +715,26 @@
 
   function pintarPasos() {
     var lista = steps();
-    /* Los ejes que se comparan mirando (perfil, altura, color) se quedan
-       SIEMPRE abiertos en cuanto son alcanzables: al elegir uno no hay que
-       reabrir el siguiente ni pulsar Change. Los que acotan (que construyes,
-       tipo de porton, material) se pliegan a una linea al contestarlos, que ya
-       no hace falta verlos. */
-    var VISUALES = { style: 1, height: 1, color: 1 };
+    /* Ningun paso se cierra al contestarlo. Elegir abre el siguiente, y el que
+       acabas de tocar sigue desplegado para poder comparar: mirar el aluminio,
+       volver al vinilo, probar otra altura. Plegarlos obligaba a pulsar
+       "Change" para cada comparacion, que es justo lo que uno hace al elegir.
+       Lo unico que sigue cerrado es lo que aun no toca, para que se vea que
+       hay un orden. */
     var html = lista.map(function (st, i) {
       var val = value(st.key);
       var bloqueado = i > 0 && !value(lista[i - 1].key);
-      var abierto = !bloqueado && (VISUALES[st.key] ? true : (s.open === i || !val));
+      var abierto = !bloqueado;
       var cls = 'step' + (abierto ? ' is-open' : '') + (bloqueado ? ' is-locked' : '');
-      /* Cualquier paso alcanzable se abre pulsando su cabecera, para poder ir
-         y venir sin depender del boton "Change". */
       var h = '<section class="' + cls + '" data-i="' + i + '">' +
-        '<div class="step__head"' + (!bloqueado && !abierto ? ' data-edit="' + i + '"' : '') + '>' +
+        '<div class="step__head">' +
           '<span class="step__n">' + ('0' + (i + 1)) + '</span>' +
           '<span class="step__t">' + esc(st.title) + '</span>' +
-          (!abierto && val ? '<span class="step__val">' + esc(val) + '</span>' +
-             '<button class="step__edit" data-edit="' + i + '">Change</button>' : '') +
+          /* El valor elegido se enseña tambien con el paso abierto: asi el
+             resumen esta a mano sin bajar al panel de la derecha. */
+          (val ? '<span class="step__val">' + esc(val) + '</span>' : '') +
         '</div>';
-      if (abierto && !bloqueado) { h += '<div class="step__body">' + cuerpo(st.key) + '</div>'; }
+      if (abierto) { h += '<div class="step__body">' + cuerpo(st.key) + '</div>'; }
       return h + '</section>';
     }).join('');
 
@@ -777,8 +776,6 @@
       });
       return;
     }
-    var edit = e.target.closest('[data-edit]');
-    if (edit) { s.open = +edit.dataset.edit; return render(); }
     var b = e.target.closest('[data-set]');
     if (!b) { return; }
     var campo = b.dataset.set, v = b.dataset.v;
@@ -792,17 +789,6 @@
       s.mat = v; s.style = null; s.height = null; s.color = null; s.grade = null;
     } else { s[campo] = v; }
 
-    var lista = steps();
-    var i = lista.map(function (x) { return x.key; }).indexOf(campo);
-    /* Solo avanzan las elecciones que ACOTAN: que construyes, tipo de porton y
-       material. Perfil, altura, ancho y color se quedan abiertos, porque son
-       las que uno compara mirando el dibujo, y cerrarlas al primer clic obliga
-       a reabrir el paso para ver la siguiente opcion.
-       Esto incluye el paso de estilo cuando ES el color, como en EC Fence y
-       chain link, donde el acabado es el primer eje del material. */
-    if (campo === 'product' || campo === 'gate' || campo === 'mat') {
-      s.open = i + 1 < lista.length ? i + 1 : lista.length;
-    }
     render();
   });
 

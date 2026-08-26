@@ -12,6 +12,7 @@ import { Group, Mesh, BoxGeometry, PlaneGeometry, CylinderGeometry, BufferGeomet
          MeshStandardMaterial, MeshBasicMaterial, BackSide, DoubleSide, Color,
          Float32BufferAttribute } from '../vendor/three/three.module.js';
 import * as T from './texturas.js';
+import * as Persona from './persona.js';
 
 var PUL = 1 / 12;
 
@@ -263,6 +264,12 @@ export function construir() {
 
   /* Coche aparcado en la calzada, entre el garaje y el porton. */
   g.add(coche(12, 2, 0.04, '#c8ccd2'));
+
+  /* Una persona junto a la cerca del frente. Es la referencia que hace legible
+     la altura: entre 5 y 6 pies hay doce pulgadas que sin nada al lado no se
+     ven. Va pegada a la valla y de cara a la calle, que es desde donde mira la
+     camara por defecto. */
+  g.add(Persona.crear(-6, 23.2, Math.PI * 0.86));
 
   /* Buzon: pequeño, pero es una referencia de altura que todo el mundo tiene
      calibrada, y ayuda a leer si la cerca es de 4 o de 6 pies. */

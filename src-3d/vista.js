@@ -16,6 +16,8 @@ import { Scene, PerspectiveCamera, WebGLRenderer, Color, Mesh, Fog, Sphere,
          AmbientLight, SRGBColorSpace, PCFSoftShadowMap,
          ACESFilmicToneMapping, Box3, Vector3 } from '../vendor/three/three.module.js';
 import * as Cerca from './cerca.js';
+import * as Persona from './persona.js';
+import { Group } from '../vendor/three/three.module.js';
 
 /* Ancho de hueco por tipo. Son los anchos con los que se pide cada uno: un
    peatonal de 4 pies y una corredera de 14 no se encuadran igual. */
@@ -169,7 +171,13 @@ export function montarVista(lienzo) {
                       vacio del ancho del porton y la foto se descuadra. */
                    apertura: 0.42 }]
       });
-      actual = res.grupo;
+      /* La persona va DENTRO del grupo que se encuadra, no suelta en la
+         escena: si queda fuera del calculo, al cambiar de altura la camara se
+         reajusta al porton y la referencia se sale del cuadro justo cuando
+         hace falta. Se planta al lado del batiente, no delante. */
+      actual = new Group();
+      actual.add(res.grupo);
+      actual.add(Persona.crear(-(L / 2 + ALA) - 1.4, 1.1, Math.PI * 0.78, '#868d99'));
       esc.add(actual);
       var caja = new Box3().setFromObject(actual);
       encuadrar(caja);
