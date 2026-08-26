@@ -270,7 +270,27 @@ Visor.prototype.pintar = function () {
 };
 
 Visor.prototype.soltar = function () {
+  /* Cada apertura crea un renderer nuevo. dispose() suelta los recursos de
+     three pero NO el contexto WebGL: el navegador solo admite unos 16 vivos, y
+     abrir y cerrar la ventana una docena de veces dejaba de pintar. Hay que
+     pedir la perdida del contexto a mano, y de paso soltar geometrias y
+     materiales, que tampoco se liberan solos. */
+  this.escena.traverse(function (o) {
+    if (o.geometry) { o.geometry.dispose(); }
+    var m = o.material;
+    if (!m) { return; }
+    var lista = Array.isArray(m) ? m : [m];
+    for (var i = 0; i < lista.length; i++) {
+      var mm = lista[i];
+      if (mm.map) { mm.map.dispose(); }
+      if (mm.alphaMap) { mm.alphaMap.dispose(); }
+      mm.dispose();
+    }
+  });
   this.r.dispose();
+  var gl = this.r.getContext && this.r.getContext();
+  var ext = gl && gl.getExtension && gl.getExtension('WEBGL_lose_context');
+  if (ext) { ext.loseContext(); }
 };
 
 /* ── ventana ─────────────────────────────────────────────────────────────── */

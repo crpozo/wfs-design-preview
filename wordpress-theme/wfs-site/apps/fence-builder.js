@@ -362,24 +362,44 @@
   }
 
   /**
-   * Lo que la escena 3D necesita saber.
+   * Lo que falta por elegir para poder montar la escena.
    *
-   * Rellena lo que aun no eligio el usuario con la primera opcion del
-   * material: se puede mirar la casa desde el primer clic, sin obligar a
-   * completar los cuatro pasos antes de ver nada.
+   * La vista 3D tiene que enseñar EXACTAMENTE lo que hay en el resumen. Antes
+   * rellenaba lo que faltaba con la primera opcion del material, y eso llevaba
+   * a que el panel dijera "Color: not chosen yet" mientras la casa salia con
+   * una cerca negra que nadie habia pedido.
    */
-  function estado3D() {
+  function faltan() {
+    var out = [];
+    if (!s.product) { out.push('what you are building'); }
+    if (s.product === 'gate' && !s.gate) { out.push('a gate type'); }
     var mm = m();
-    if (!mm) { return null; }
-    var est = s.style || mm.styles[0].label;
+    if (!mm) { out.push('a material'); return out; }
+    if (!s.style) { out.push('a ' + String(mm.styleLabel).toLowerCase()); }
+    if (!s.height) { out.push('a height'); }
+    /* En chain link y EC Fence el acabado ES el paso de estilo, y colors va
+       vacio: ahi no hay nada mas que pedir. */
+    if (mm.colors.length && !s.color) { out.push('a color'); }
+    return out;
+  }
+
+  function enumerar(lista) {
+    if (lista.length === 1) { return lista[0]; }
+    return lista.slice(0, -1).join(', ') + ' and ' + lista[lista.length - 1];
+  }
+
+  /** Lo que la escena 3D necesita saber. Null mientras falte algo. */
+  function estado3D() {
+    if (faltan().length) { return null; }
+    var mm = m();
     var col = null;
     if (mm.colors.length) {
       var elegido = mm.colors.filter(function (c) { return c.label === s.color; })[0];
-      col = (elegido || mm.colors[0]).hex;
+      col = elegido ? elegido.hex : null;
     }
     return {
-      mat: s.mat, estilo: est, alto: s.height || mm.heights[0], colorHex: col,
-      producto: s.product || 'fence', gate: s.gate,
+      mat: s.mat, estilo: s.style, alto: s.height, colorHex: col,
+      producto: s.product, gate: s.gate,
       etiqueta: mm.tag,
       titulo: mm.name + (s.product === 'gate' ? ' gate' : ' fence'),
       resumen: ficha().filter(function (f) { return f[1]; })
@@ -402,12 +422,20 @@
     }
     $('badge').textContent = m() ? m().name : (gateObj() ? gateObj().label : 'Start here');
 
-    /* El boton se enciende en cuanto hay material: con eso ya se puede montar
-       la cerca en la casa, y el resto de pasos se ven cambiar en vivo. */
+    /* El boton se enciende cuando la configuracion esta completa, y mientras
+       tanto dice que falta. Encenderlo antes obligaba a inventar las opciones
+       sin elegir, y la casa acababa enseñando otra cerca. */
     var b3d = root.querySelector('.bld__3d');
     if (b3d) {
-      b3d.disabled = !m();
-      b3d.title = m() ? '' : 'Pick a material first';
+      var falta = faltan();
+      b3d.disabled = falta.length > 0;
+      b3d.title = falta.length ? 'Pick ' + enumerar(falta) + ' first' : '';
+      var pie = root.querySelector('.bld__3d-pie');
+      if (pie) {
+        pie.textContent = falta.length
+          ? 'Pick ' + enumerar(falta) + ' to see it in 3D.'
+          : 'See it on a real home, with the yard around it.';
+      }
     }
 
     var filas = ficha();
