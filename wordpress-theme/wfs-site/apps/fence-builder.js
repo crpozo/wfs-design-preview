@@ -233,6 +233,20 @@
 
   var ORDER = ['aluminum', 'chain-link', 'vinyl', 'metal', 'ecfence'];
 
+  /* Que material se vende para cada tipo de porton. Sale del texto de cada
+     pagina de porton (la tarjeta de materiales), pero vive AQUI y no alli para
+     que el configurador suelto de fence-builder.html aplique la misma regla:
+     alli no llega nada de page-gate.jsx y ofrecia aluminio para un rolling.
+       sliding y cantilever: "chain link, vinyl, metal, and EC Fence" - sin aluminio
+       rolling: "chain link is the recommended build" */
+  var GATE_MATS = {
+    single:     ORDER,
+    double:     ORDER,
+    sliding:    ['chain-link', 'vinyl', 'metal', 'ecfence'],
+    cantilever: ['chain-link', 'vinyl', 'metal', 'ecfence'],
+    rolling:    ['chain-link']
+  };
+
   /* El visualizador 3D pesa medio mega: no se descarga hasta que alguien
      pulsa el boton, y una sola vez por pagina aunque haya varios
      configuradores. La ruta la puede fijar el tema de WordPress, donde el
@@ -285,7 +299,21 @@
   var FIJO = { product: opts.product || null, mat: opts.material || null, gate: opts.gate || null };
 
   var s = { product: FIJO.product, gate: FIJO.gate || opts.gateInicial || null, mat: FIJO.mat,
-            style: null, height: null, color: null };
+            opcion: null, style: null, height: null, color: null };
+
+  /* Que ofrece cada tipo de porton, segun lo que dice SU pagina: las tarjetas
+     de obra y los materiales que se venden para ese porton. Un corredero no
+     lleva aluminio y un rolling es chain link, y ofrecerlos era prometer algo
+     que la pagina no vende. */
+  var GATES_CFG = opts.gates || {};
+  function cfg() { return GATES_CFG[s.gate] || {}; }
+  /* Las tarjetas de obra son contenido de la pagina y llegan desde ella. */
+  function opciones() { return cfg().opciones || []; }
+  function matsPermitidos() {
+    var lista = GATE_MATS[s.gate];
+    if (!lista || !lista.length) { return ORDER; }
+    return ORDER.filter(function (id) { return lista.indexOf(id) !== -1; });
+  }
 
   var $ = function (clase) { return root.querySelector('.bld__' + clase); };
 
@@ -349,6 +377,10 @@
     if (!FIJO.product) { out.push({ key: 'product', title: 'What are you building' }); }
     if (!s.product) { return out; }
     if (s.product === 'gate' && !FIJO.gate) { out.push({ key: 'gate', title: 'Gate type' }); }
+    if (!s.gate && s.product === 'gate') { return out; }
+    /* Solo si esa pagina trae tarjetas de obra. Cantilever y rolling no
+       tienen: sus tarjetas son componentes, no variantes. */
+    if (s.product === 'gate' && opciones().length) { out.push({ key: 'opcion', title: 'Gate option' }); }
     if (!FIJO.mat) { out.push({ key: 'mat', title: 'Material' }); }
     if (!s.mat) { return out; }
     out.push({ key: 'style', title: m().styleLabel });
@@ -359,6 +391,7 @@
   function value(k) {
     if (k === 'product') { return s.product ? (s.product === 'gate' ? 'Gate' : 'Fence run') : null; }
     if (k === 'gate') { return gateObj() ? gateObj().label : null; }
+    if (k === 'opcion') { return s.opcion || null; }
     if (k === 'mat') { return m() ? m().name : null; }
     return s[k] || null;
   }
@@ -424,6 +457,7 @@
     var filas = [];
     if (s.product) { filas.push(['Building', value('product')]); }
     if (s.product === 'gate') { filas.push(['Gate type', value('gate')]); }
+    if (s.product === 'gate' && opciones().length) { filas.push(['Gate option', value('opcion')]); }
     filas.push(['Material', value('mat')]);
     if (m()) {
       filas.push([m().styleLabel, s.style]);
@@ -444,7 +478,8 @@
   function faltan() {
     var out = [];
     if (!s.product) { out.push('what you are building'); }
-    if (s.product === 'gate' && !s.gate) { out.push('a gate type'); }
+    if (s.product === 'gate' && !s.gate) { out.push('a gate type'); return out; }
+    if (s.product === 'gate' && opciones().length && !s.opcion) { out.push('a gate option'); }
     var mm = m();
     if (!mm) { out.push('a material'); return out; }
     if (!s.style) { out.push('a ' + String(mm.styleLabel).toLowerCase()); }
@@ -681,8 +716,13 @@
     if (k === 'gate') {
       return GATES.map(function (g) { return opt('gate', g.id, g.label, g.sub, g.img); }).join('');
     }
+    if (k === 'opcion') {
+      return opciones().map(function (o) {
+        return opt('opcion', o.name, o.name, o.notes, o.img);
+      }).join('');
+    }
     if (k === 'mat') {
-      return ORDER.map(function (id) {
+      return matsPermitidos().map(function (id) {
         var x = MAT[id];
         /* Recorte de producto, tambien en portones. Se probo con las fotos de
            porton y a 62x46 no se leen: la de aluminio pasa por un camino, la de
@@ -783,8 +823,17 @@
     /* Cambiar algo de arriba invalida lo de abajo: un perfil de vinilo no
        existe en chain link, y un ancho de porton no aplica a una cerca. */
     if (campo === 'product' && s.product !== v) {
-      s.product = v; s.gate = null; s.mat = null; s.style = null;
+      s.product = v; s.gate = null; s.opcion = null; s.mat = null; s.style = null;
       s.height = null; s.color = null; s.grade = null;
+    } else if (campo === 'gate' && s.gate !== v) {
+      /* Cambiar de tipo de porton cambia lo que ese porton ofrece: las
+         tarjetas son otras y puede que el material elegido ya no se venda
+         (un corredero no lleva aluminio). Se conserva lo que siga valiendo. */
+      s.gate = v;
+      s.opcion = null;
+      if (s.mat && matsPermitidos().indexOf(s.mat) === -1) {
+        s.mat = null; s.style = null; s.height = null; s.color = null; s.grade = null;
+      }
     } else if (campo === 'mat' && s.mat !== v) {
       s.mat = v; s.style = null; s.height = null; s.color = null; s.grade = null;
     } else { s[campo] = v; }
