@@ -56,13 +56,25 @@ export function materiales(mat, estilo, colorHex, ancho, altoMalla) {
     };
     var a = acabados[estilo] || acabados.Galvanized;
     m.estructura = metalico(a.poste, a.rug, a.met);
-    var tex = T.malla(a.calibre);
-    /* El rombo mide unas 2": el mosaico trae 4, o sea 8" de lado. */
-    tex.repeat.set(Math.max(1, ancho / (8 * PUL)), Math.max(1, altoMalla / (8 * PUL)));
-    m.malla = new MeshStandardMaterial({
-      color: new Color(a.hilo), roughness: a.rug, metalness: a.met,
-      alphaMap: tex, transparent: true, alphaTest: 0.42, side: DoubleSide
-    });
+    /* Un material de malla por cada ancho de vano.
+       La repeticion de la textura es del material, pero el plano se escala por
+       instancia: con un solo material, un tramo corto o una hoja de porton
+       metian los mismos rombos en menos ancho y el rombo salia el doble de
+       fino que en la cerca de al lado. El rombo mide unas 2": el mosaico trae
+       4, o sea 8" de lado. */
+    var cache = {};
+    m.malla = function (anchoVano, altoVano) {
+      var k = anchoVano.toFixed(2) + 'x' + altoVano.toFixed(2);
+      if (cache[k]) { return cache[k]; }
+      var tex = T.malla(a.calibre).clone();
+      tex.needsUpdate = true;
+      tex.repeat.set(Math.max(1, anchoVano / (8 * PUL)), Math.max(1, altoVano / (8 * PUL)));
+      cache[k] = new MeshStandardMaterial({
+        color: new Color(a.hilo), roughness: a.rug, metalness: a.met,
+        alphaMap: tex, transparent: true, alphaTest: 0.42, side: DoubleSide
+      });
+      return cache[k];
+    };
     return m;
   }
   if (mat === 'vinyl') {
@@ -151,7 +163,9 @@ function vanoAluminio(e, m, est, mk, u0, ancho, alto) {
 function vanoChainLink(e, m, est, mk, u0, ancho, alto) {
   var rotY = mk.rotY;
   var yMalla = 2 * PUL, hMalla = alto - yMalla - 1.5 * PUL;
-  e.plano(m.malla, 'malla', mk.p(u0 + ancho / 2, yMalla + hMalla / 2, 0), [ancho, hMalla, 1], rotY);
+  var mat = m.malla(ancho, hMalla);
+  e.plano(mat, 'malla' + ancho.toFixed(2), mk.p(u0 + ancho / 2, yMalla + hMalla / 2, 0),
+          [ancho, hMalla, 1], rotY);
   e.tuboH(m.estructura, 'railsup', mk.p(u0 + ancho / 2, alto - 1 * PUL, 0), 1.375 * PUL, ancho, rotY);
   /* Alambre de tension abajo: sin el, la malla flota. */
   e.tuboH(m.estructura, 'tension', mk.p(u0 + ancho / 2, yMalla, 0), 0.4 * PUL, ancho, rotY);
@@ -283,7 +297,11 @@ function hoja(e, m, mat, est, a, b, alto) {
   var mk = marco(a, b);
   var ancho = mk.largo;
   var tubo = mat === 'vinyl' ? 3 * PUL : 2 * PUL;
-  var interior = { u0: tubo, ancho: ancho - 2 * tubo, alto: alto - tubo };
+  /* El relleno se construye a la altura COMPLETA, no descontando el bastidor:
+     descontandolo quedaba una ranura de dos pulgadas entre el rail superior
+     del panel y el tubo de arriba, y se leia como una hoja mal montada. Que
+     solapen es lo correcto, es como se fabrica. */
+  var interior = { u0: tubo, ancho: ancho - 2 * tubo, alto: alto };
 
   (VANOS[mat] || vanoAluminio)(e, m, est, mk, interior.u0, Math.max(0.5, interior.ancho), interior.alto);
 
@@ -348,6 +366,10 @@ function porton(e, m, mat, est, alto, h) {
      la finca: hacia fuera quedaria invadiendo la acera. v positivo apunta a la
      calle en el tramo frontal, de ahi el signo. */
   var DENTRO = -10 * PUL;
+  /* Cuanto se aparta la hoja: 1 es del todo (escena de la casa, donde hay que
+     ver que es corredera y no batiente) y menos deja el porton cubriendo parte
+     del hueco, que es como se fotografia un producto. */
+  var fr = h.apertura === undefined ? 1 : h.apertura;
 
   /* Postes de porton: mas gruesos, son los que aguantan el peso. */
   var pa = mk.p(0, 0, 0), pb = mk.p(L, 0, 0);
@@ -368,34 +390,38 @@ function porton(e, m, mat, est, alto, h) {
     return [[o[0], o[2]], [o[0] + dx * c - dz * s, o[2] + dx * s + dz * c]];
   }
 
+  /* h.abierto === false monta las hojas en el plano de la cerca. En la escena
+     de la casa van abiertas, que es como se distingue un batiente de un
+     corredero; en la vista previa aislada, abiertas parecen dos paneles mas. */
+  var ang = h.abierto === false ? 0 : 1;
   if (tipo === 'double') {
-    var iz = girada(0, L / 2, -0.42), de = girada(L, L / 2, 0.42);
+    var iz = girada(0, L / 2, -0.42 * ang), de = girada(L, L / 2, 0.42 * ang);
     hoja(e, m, mat, est, iz[0], iz[1], altoP);
     hoja(e, m, mat, est, de[0], de[1], altoP);
   } else if (tipo === 'single') {
-    var un = girada(0, L, -0.5);
+    var un = girada(0, L, -0.5 * ang);
     hoja(e, m, mat, est, un[0], un[1], altoP);
   } else if (tipo === 'sliding' || tipo === 'rolling') {
     /* Corredera: la hoja se aparta a un lado, montada sobre el rail. */
-    var d = mk.p(L + L * 0.86, 0, DENTRO), o2 = mk.p(L * 0.86, 0, DENTRO);
+    var d = mk.p(L + L * 0.86 * fr, 0, DENTRO), o2 = mk.p(L * 0.86 * fr, 0, DENTRO);
     hoja(e, m, mat, est, [o2[0], o2[2]], [d[0], d[2]], altoP);
-    var rail = mk.p(L * 1.4, 0.5 * PUL, DENTRO);
+    var rail = mk.p(L * (0.5 + 0.9 * fr), 0.5 * PUL, DENTRO);
     e.caja(m.estructura, 'guia', rail, [L * 1.1, 1 * PUL, 4 * PUL], mk.rotY);
     if (tipo === 'rolling') {
       for (var r = 0; r < 2; r++) {
-        var c2 = mk.p(L * (0.95 + r * 0.72), 6 * PUL, DENTRO);
+        var c2 = mk.p(L * (0.09 + 0.86 * fr + r * 0.72), 6 * PUL, DENTRO);
         e.pieza('cilindro', m.estructura, 'rueda', c2, [11 * PUL, 2.4 * PUL, 11 * PUL], mk.rotY, Math.PI / 2);
       }
     }
   } else if (tipo === 'cantilever') {
     /* Cantilever: la hoja vuela sin rail en el suelo, con una cola trasera que
        hace de contrapeso. Es exactamente lo que lo diferencia. */
-    var o3 = mk.p(L * 0.9, 0, DENTRO), d3 = mk.p(L * 0.9 + L * 1.5, 0, DENTRO);
+    var o3 = mk.p(L * 0.9 * fr, 0, DENTRO), d3 = mk.p(L * 0.9 * fr + L * 1.5, 0, DENTRO);
     hoja(e, m, mat, est, [o3[0], o3[2]], [d3[0], d3[2]], altoP);
-    var v1 = mk.p(L * 1.55, altoP + 3 * PUL, DENTRO);
+    var v1 = mk.p(L * (0.65 + 0.9 * fr), altoP + 3 * PUL, DENTRO);
     e.caja(m.estructura, 'viga', v1, [L * 1.5, 3.5 * PUL, 3.5 * PUL], mk.rotY);
     for (var t2 = 0; t2 < 2; t2++) {
-      var pt = mk.p(L * (1.55 + t2 * 0.55), 0, DENTRO - 2 * PUL);
+      var pt = mk.p(L * (0.65 + 0.9 * fr + t2 * 0.55), 0, DENTRO - 2 * PUL);
       e.caja(m.estructura, 'torre', [pt[0], (altoP + 6 * PUL) / 2, pt[2]], [4 * PUL, altoP + 6 * PUL, 4 * PUL], 0);
     }
   }
