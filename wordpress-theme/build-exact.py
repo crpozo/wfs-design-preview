@@ -54,6 +54,14 @@ bld = (SRC / "fence-builder.js").read_text()
 bld = re.sub(r"(['\"])assets/", r"\1" + ASSET_BASE + "/", bld)
 (OUT / "apps" / "fence-builder.js").write_text(bld)
 
+# ------------------------------------------------------- visualizador 3D
+# fence-3d.js va tal cual: es un paquete cerrado que no referencia ningun
+# asset (casa, jardin y texturas se generan en el navegador), asi que no hay
+# rutas que reescribir. Solo se descarga cuando alguien pulsa el boton.
+b3d = SRC / "fence-3d.js"
+if b3d.exists():
+    shutil.copy2(b3d, OUT / "apps" / "fence-3d.js")
+
 # ---------------------------------------------------------------- css
 css = (SRC / "styles.css").read_text()
 css = re.sub(r"url\((['\"]?)assets/", r"url(\1" + ASSET_BASE + "/", css)

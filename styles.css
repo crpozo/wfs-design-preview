@@ -1308,3 +1308,123 @@ p { font-family: var(--body); }
     .bld__stage { position: static; }
   }
 
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   VISTA 3D
+   El boton vive en el configurador; la ventana se inyecta en <body> al abrirse,
+   asi que sus estilos no pueden colgar de .bld.
+   ═══════════════════════════════════════════════════════════════════════════ */
+  .bld__acciones { margin-top: 20px; }
+  .bld__3d {
+    width: 100%; display: inline-flex; align-items: center; justify-content: center;
+    gap: 11px; padding: 16px 22px; border: 0; border-radius: 12px;
+    background: var(--ink); color: var(--white);
+    font-family: var(--mono); font-size: 13px; font-weight: 700;
+    letter-spacing: .17em; text-transform: uppercase; cursor: pointer;
+    transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+  }
+  .bld__3d:hover:not(:disabled) {
+    background: var(--laser-blue); transform: translateY(-2px);
+    box-shadow: 0 16px 34px -18px rgba(38,49,103,.75);
+  }
+  .bld__3d:disabled { opacity: .38; cursor: not-allowed; }
+  /* Cubo isometrico dibujado con bordes: un icono mas y no hay que servirlo. */
+  .bld__3d-ico {
+    width: 15px; height: 15px; flex: none; position: relative;
+    border: 2px solid currentColor; border-radius: 2px; transform: rotate(45deg) skewY(-14deg);
+  }
+  .bld__3d-ico::after {
+    content: ''; position: absolute; inset: -2px 3px 3px -2px;
+    border-right: 2px solid currentColor; border-bottom: 2px solid currentColor;
+  }
+  .bld__3d.is-cargando { pointer-events: none; opacity: .72; }
+  .bld__3d.is-cargando .bld__3d-ico { animation: bld3dGira 1s linear infinite; }
+  @keyframes bld3dGira { to { transform: rotate(405deg) skewY(-14deg); } }
+  .bld__3d.is-error { background: var(--charcoal); pointer-events: none; }
+  .bld__3d-pie { margin: 10px 0 0; font-size: 13.5px; line-height: 1.5; color: var(--charcoal); text-align: center; }
+
+/* La ventana ocupa el viewport entero: la escena necesita sitio, y en movil una
+   caja pequeña hace imposible orbitar sin tocar los bordes. */
+html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
+.v3d {
+  position: fixed; inset: 0; z-index: 9000; display: flex;
+  align-items: center; justify-content: center; padding: 26px;
+  background: rgba(12,16,30,.76); backdrop-filter: blur(6px);
+  animation: v3dEntra .22s ease;
+}
+@keyframes v3dEntra { from { opacity: 0; } }
+  .v3d__caja {
+    width: min(1360px, 100%); height: min(880px, 100%);
+    display: flex; flex-direction: column; overflow: hidden;
+    background: var(--white); border-radius: 18px;
+    box-shadow: 0 50px 120px -40px rgba(0,0,0,.7);
+  }
+  .v3d__top {
+    display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    padding: 18px 24px; border-bottom: 1px solid rgba(0,16,17,.12);
+  }
+  .v3d__eti {
+    display: block; font-family: var(--mono); font-size: 12px; font-weight: 700;
+    letter-spacing: .2em; text-transform: uppercase; color: var(--tangerine); margin-bottom: 5px;
+  }
+  .v3d__tit { margin: 0; font-size: 23px; line-height: 1.15; }
+  .v3d__x {
+    flex: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer;
+    border: 1px solid rgba(0,16,17,.16); background: var(--white);
+    font-size: 15px; color: var(--ink); line-height: 1;
+    transition: background .18s ease, color .18s ease;
+  }
+  .v3d__x:hover { background: var(--ink); color: var(--white); }
+
+  /* La escena manda: el pie se encoge antes que el lienzo. */
+  .v3d__lienzo { position: relative; flex: 1 1 auto; min-height: 0; background: #8dc0e6; }
+  .v3d__lienzo canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: grab; }
+  .v3d__lienzo canvas:active { cursor: grabbing; }
+  .v3d__cargando {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    gap: 12px; background: rgba(255,255,255,.86);
+    font-family: var(--mono); font-size: 12.5px; font-weight: 700;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--ink);
+  }
+  .v3d__cargando span {
+    width: 15px; height: 15px; border-radius: 50%;
+    border: 2px solid rgba(38,49,103,.25); border-top-color: var(--ink);
+    animation: v3dGira .8s linear infinite;
+  }
+  @keyframes v3dGira { to { transform: rotate(360deg); } }
+
+  .v3d__pie {
+    display: flex; align-items: center; gap: 26px; flex-wrap: wrap;
+    padding: 15px 24px; border-top: 1px solid rgba(0,16,17,.12); background: var(--white);
+  }
+  .v3d__vistas { display: flex; gap: 8px; flex: none; }
+  .v3d__vistas button {
+    padding: 9px 15px; border-radius: 999px; cursor: pointer;
+    border: 1px solid rgba(0,16,17,.18); background: var(--white); color: var(--ink);
+    font-family: var(--mono); font-size: 11.5px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+    transition: background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .v3d__vistas button:hover { border-color: var(--ink); }
+  .v3d__vistas button.is-on { background: var(--ink); border-color: var(--ink); color: var(--white); }
+  .v3d__ficha {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px 18px; margin: 0; flex: 1 1 260px;
+  }
+  .v3d__ficha dt {
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    letter-spacing: .15em; text-transform: uppercase; color: var(--charcoal);
+  }
+  .v3d__ficha dd { margin: 0 10px 0 0; font-size: 14.5px; font-weight: 600; color: var(--ink); }
+  .v3d__ayuda { margin: 0; flex: none; font-size: 13px; color: var(--charcoal); }
+
+  @media (max-width: 900px) {
+    .v3d { padding: 0; }
+    .v3d__caja { width: 100%; height: 100%; border-radius: 0; }
+    .v3d__top { padding: 14px 16px; }
+    .v3d__tit { font-size: 19px; }
+    /* En movil el pie se comia media pantalla: se queda lo accionable. */
+    .v3d__pie { padding: 12px 16px; gap: 12px; }
+    .v3d__ayuda, .v3d__ficha { display: none; }
+    .v3d__vistas { width: 100%; }
+    .v3d__vistas button { flex: 1; padding: 11px 8px; letter-spacing: .1em; }
+  }

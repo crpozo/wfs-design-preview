@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.14.0' );
+define( 'WFS_VERSION', '4.15.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -143,6 +143,16 @@ function wfs_print_app( $slug ) {
 	$necesita = array( 'page-material.jsx', 'page-material.js', 'page-gate.jsx', 'page-gate.js' );
 	if ( array_intersect( $necesita, $comps )
 		&& file_exists( get_theme_file_path( 'apps/fence-builder.js' ) ) ) {
+		/* El visualizador 3D no se carga aqui: se descarga solo cuando alguien
+		   pulsa "View in 3D", que es medio mega que la mayoria no gasta. Lo
+		   unico que hace falta de antemano es decirle donde esta, porque en el
+		   tema no cuelga de la raiz del sitio. */
+		if ( file_exists( get_theme_file_path( 'apps/fence-3d.js' ) ) ) {
+			printf(
+				'<script>window.WFS3D_SRC=%s;</script>' . "\n",
+				wp_json_encode( get_theme_file_uri( 'apps/fence-3d.js' ) . '?ver=' . $v )
+			);
+		}
 		printf(
 			'<script%s src="%s"></script>' . "\n",
 			$pre ? ' defer' : '',

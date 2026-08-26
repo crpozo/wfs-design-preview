@@ -178,6 +178,24 @@
 
   var ORDER = ['aluminum', 'chain-link', 'vinyl', 'metal', 'ecfence'];
 
+  /* El visualizador 3D pesa medio mega: no se descarga hasta que alguien
+     pulsa el boton, y una sola vez por pagina aunque haya varios
+     configuradores. La ruta la puede fijar el tema de WordPress, donde el
+     archivo no cuelga de la raiz del sitio. */
+  var carga3D = null;
+  function cargar3D() {
+    if (window.WFS3D) { return Promise.resolve(); }
+    if (carga3D) { return carga3D; }
+    carga3D = new Promise(function (ok, mal) {
+      var sc = document.createElement('script');
+      sc.src = window.WFS3D_SRC || 'fence-3d.js';
+      sc.onload = function () { window.WFS3D ? ok() : mal(new Error('sin WFS3D')); };
+      sc.onerror = function () { carga3D = null; mal(new Error('no carga')); };
+      document.head.appendChild(sc);
+    });
+    return carga3D;
+  }
+
   var ESQUELETO =
     '<div class="bld__grid">' +
       '<div class="bld__steps"></div>' +
@@ -188,6 +206,12 @@
           '<div class="bld__scale"></div>' +
         '</div>' +
         '<div class="bld__spec"><dl></dl></div>' +
+        '<div class="bld__acciones">' +
+          '<button class="bld__3d" type="button" disabled>' +
+            '<span class="bld__3d-ico" aria-hidden="true"></span>View in 3D' +
+          '</button>' +
+          '<p class="bld__3d-pie">See it on a real home, with the yard around it.</p>' +
+        '</div>' +
       '</aside>' +
     '</div>';
 
@@ -323,6 +347,45 @@
     return 'https://crpozo.github.io/wfs-design-preview/assets/profiles/aluminum-2-rail-smooth.jpg';
   }
 
+  /** Las filas del resumen. Las usan el panel y la cabecera de la vista 3D. */
+  function ficha() {
+    var filas = [];
+    if (s.product) { filas.push(['Building', value('product')]); }
+    if (s.product === 'gate') { filas.push(['Gate type', value('gate')]); }
+    filas.push(['Material', value('mat')]);
+    if (m()) {
+      filas.push([m().styleLabel, s.style]);
+      filas.push(['Height', s.height]);
+      if (m().colors.length) { filas.push(['Color', s.color]); }
+    }
+    return filas;
+  }
+
+  /**
+   * Lo que la escena 3D necesita saber.
+   *
+   * Rellena lo que aun no eligio el usuario con la primera opcion del
+   * material: se puede mirar la casa desde el primer clic, sin obligar a
+   * completar los cuatro pasos antes de ver nada.
+   */
+  function estado3D() {
+    var mm = m();
+    if (!mm) { return null; }
+    var est = s.style || mm.styles[0].label;
+    var col = null;
+    if (mm.colors.length) {
+      var elegido = mm.colors.filter(function (c) { return c.label === s.color; })[0];
+      col = (elegido || mm.colors[0]).hex;
+    }
+    return {
+      mat: s.mat, estilo: est, alto: s.height || mm.heights[0], colorHex: col,
+      producto: s.product || 'fence', gate: s.gate,
+      etiqueta: mm.tag,
+      titulo: mm.name + (s.product === 'gate' ? ' gate' : ' fence'),
+      resumen: ficha().filter(function (f) { return f[1]; })
+    };
+  }
+
   function pintarVista() {
     var img = $('img'), src = imgSrc();
     var marco = img.closest('.bld__frame');
@@ -339,15 +402,15 @@
     }
     $('badge').textContent = m() ? m().name : (gateObj() ? gateObj().label : 'Start here');
 
-    var filas = [];
-    if (s.product) { filas.push(['Building', value('product')]); }
-    if (s.product === 'gate') { filas.push(['Gate type', value('gate')]); }
-    filas.push(['Material', value('mat')]);
-    if (m()) {
-      filas.push([m().styleLabel, s.style]);
-      filas.push(['Height', s.height]);
-      if (m().colors.length) { filas.push(['Color', s.color]); }
+    /* El boton se enciende en cuanto hay material: con eso ya se puede montar
+       la cerca en la casa, y el resto de pasos se ven cambiar en vivo. */
+    var b3d = root.querySelector('.bld__3d');
+    if (b3d) {
+      b3d.disabled = !m();
+      b3d.title = m() ? '' : 'Pick a material first';
     }
+
+    var filas = ficha();
     root.querySelector('.bld__spec dl').innerHTML = filas.map(function (f) {
       var sw = '';
       if (f[0] === 'Color' && f[1] && m()) {
@@ -450,6 +513,21 @@
   function render() { pintarPasos(); pintarVista(); }
 
   root.addEventListener('click', function (e) {
+    var v3d = e.target.closest('.bld__3d');
+    if (v3d) {
+      var est = estado3D();
+      if (!est) { return; }
+      v3d.classList.add('is-cargando');
+      cargar3D().then(function () {
+        v3d.classList.remove('is-cargando');
+        window.WFS3D.abrir(est);
+      }, function () {
+        v3d.classList.remove('is-cargando');
+        v3d.classList.add('is-error');
+        v3d.lastChild.textContent = '3D view unavailable';
+      });
+      return;
+    }
     var edit = e.target.closest('[data-edit]');
     if (edit) { s.open = +edit.dataset.edit; return render(); }
     var b = e.target.closest('[data-set]');
