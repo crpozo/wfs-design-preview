@@ -155,8 +155,14 @@
   /* Los acabados claros se generaron sobre gris para que se vieran; el resto
      sobre claro. El marco copia ese fondo, asi al escalar el dibujo por altura
      no se ve el borde de la imagen. */
-  var FONDO = { white: '#787e8a', gray: '#ebebeb' };
-  var FONDO_CLARO = '#ebebeb';
+  /* Fondo del marco = fondo real de la imagen que se este mostrando, medido en
+     el archivo. Sin igualarlo se veia el recuadro de la imagen recortado dentro
+     del marco. Las originales vienen sobre blanco puro; las variantes se
+     generaron sobre gris claro, y las blancas sobre gris medio para que la
+     pieza blanca se distinga. */
+  var FONDO_ORIGINAL = '#ffffff';
+  var FONDO_TINTE    = '#ebebeb';
+  var FONDO_BLANCO   = '#787e8a';
 
   /* Escala de altura: en vez de estirar el dibujo (que engordaria los rieles y
      mentiria sobre la pieza), se dibuja al lado una cota con el numero y una
@@ -290,9 +296,10 @@
 
   function pintarVista() {
     var img = $('preview'), src = imgSrc();
-    var slug = s.color ? COLOR_SLUG[s.color] : null;
-    var marco = img.parentNode;
-    marco.style.background = (slug && FONDO[slug]) ? FONDO[slug] : FONDO_CLARO;
+    var marco = img.closest('.bld__frame');
+    var esTinte = src.indexOf('/tinted/') !== -1;
+    marco.style.background = !esTinte ? FONDO_ORIGINAL
+      : (src.indexOf('-white.jpg') !== -1 ? FONDO_BLANCO : FONDO_TINTE);
     pintarEscala();
     if (img.getAttribute('src') !== src) {
       img.classList.add('is-swapping');
@@ -367,9 +374,16 @@
 
   function pintarPasos() {
     var lista = steps();
+    /* Los ejes que se comparan mirando (perfil, altura, color) se quedan
+       SIEMPRE abiertos en cuanto son alcanzables: al elegir uno no hay que
+       reabrir el siguiente ni pulsar Change. Los que acotan (que construyes,
+       tipo de porton, material) se pliegan a una linea al contestarlos, que ya
+       no hace falta verlos. */
+    var VISUALES = { style: 1, height: 1, color: 1 };
     var html = lista.map(function (st, i) {
-      var val = value(st.key), abierto = s.open === i;
+      var val = value(st.key);
       var bloqueado = i > 0 && !value(lista[i - 1].key);
+      var abierto = !bloqueado && (VISUALES[st.key] ? true : (s.open === i || !val));
       var cls = 'step' + (abierto ? ' is-open' : '') + (bloqueado ? ' is-locked' : '');
       /* Cualquier paso alcanzable se abre pulsando su cabecera, para poder ir
          y venir sin depender del boton "Change". */
