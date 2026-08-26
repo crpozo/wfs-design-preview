@@ -278,9 +278,13 @@
   root.innerHTML = ESQUELETO;
 
   /* Lo que viene fijado por la pagina no se pregunta. */
+  /* Fijado = no se puede cambiar y desaparece como paso. Preseleccionado =
+     viene puesto pero sigue a la vista. En una pagina de porton el tipo va
+     PRESELECCIONADO, no fijado: el primer paso de un porton es que porton es,
+     no de que esta hecho. Fijarlo dejaba "Material" como paso 01. */
   var FIJO = { product: opts.product || null, mat: opts.material || null, gate: opts.gate || null };
 
-  var s = { product: FIJO.product, gate: FIJO.gate, mat: FIJO.mat,
+  var s = { product: FIJO.product, gate: FIJO.gate || opts.gateInicial || null, mat: FIJO.mat,
             style: null, height: null, color: null, open: 0 };
 
   var $ = function (clase) { return root.querySelector('.bld__' + clase); };

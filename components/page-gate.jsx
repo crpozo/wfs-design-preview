@@ -144,8 +144,11 @@ const GateBuilder = ({ data }) => {
   const t = useT();
   React.useEffect(() => {
     if (window.WFSBuilder) {
+      /* gateInicial, no gate: el tipo viene puesto pero sigue siendo el primer
+         paso, que es lo que se elige en un porton. Fijandolo, el paso 01
+         pasaba a ser "Material". */
       window.WFSBuilder.mount(document.getElementById('wfs-builder-gate-' + data.slug),
-        { product: 'gate', gate: data.slug });
+        { product: 'gate', gateInicial: data.slug });
     }
   }, [data.slug]);
   return (
@@ -156,8 +159,8 @@ const GateBuilder = ({ data }) => {
           title={t('Configure Your', 'Configura tu')}
           accent={`${data.name} Gate.`}
           sub={t(
-            'Pick the material, profile, height and color. The drawing updates as you go, and the spec sheet comes with it.',
-            'Elige el material, el perfil, la altura y el color. El dibujo se actualiza sobre la marcha, y la ficha técnica viene con él.'
+            'Pick the gate type, material, profile, height and color. The drawing updates as you go, and the spec sheet comes with it.',
+            'Elige el tipo de portón, el material, el perfil, la altura y el color. El dibujo se actualiza sobre la marcha, y la ficha técnica viene con él.'
           )}
         />
         <div id={'wfs-builder-gate-' + data.slug}></div>
