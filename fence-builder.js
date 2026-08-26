@@ -91,6 +91,60 @@
     { id: 'rolling',    label: 'Rolling',        img: 'assets/gate-rolling.jpg',      sub: 'Rubber wheels, uneven ground' }
   ];
 
+
+  /* ── fotos de porton ──────────────────────────────────────────────────────
+     En una pagina de porton no puede salir un panel de cerca: el cliente esta
+     comprando la hoja, no el tramo. Aqui esta lo que hay fotografiado de
+     verdad en assets, y se busca de lo mas concreto a lo mas general:
+     tipo+acabado, acabado, tipo, y por ultimo el del material.
+     Ojo con las genericas: gate-single-swing / sliding / cantilever / rolling
+     son de chain link, y gate-double es de vinilo blanco. Por eso van dentro
+     del material que les toca y no como comodin de todos. */
+  var PORTONES = {
+    aluminum: {
+      def: 'assets/projects/alum-4-rail-smooth-bottom-custom-gate-black.jpg'
+    },
+    'chain-link': {
+      'sliding|Galvanized':          'assets/gate-sliding.jpg',
+      'rolling|Galvanized':          'assets/gate-rolling.jpg',
+      'cantilever|Black PVC-coated': 'assets/gate-cantilever.jpg',
+      'Galvanized':                  'assets/projects/cl-swing-gate-galv-4.jpg',
+      'Black PVC-coated':            'assets/projects/cl-gate-black.jpg',
+      single:     'assets/gate-single-swing.jpg',
+      sliding:    'assets/gate-sliding.jpg',
+      cantilever: 'assets/gate-cantilever.jpg',
+      rolling:    'assets/gate-rolling.jpg',
+      def:        'assets/projects/cl-gate-black.jpg'
+    },
+    vinyl: {
+      'cantilever|White': 'assets/projects/pvc-privacy-cantilever-gate-white.jpg',
+      'double|White':     'assets/projects/pvc-double-gate-white.jpg',
+      'White':            'assets/projects/pvc-privacy-gate-white.jpg',
+      'Tan':              'assets/projects/pvc-gate-sand.jpg',
+      def:                'assets/projects/pvc-privacy-gate-white.jpg'
+    },
+    /* DuraFence es tabla horizontal, igual que esta hoja. No hay foto propia
+       de porton DuraFence; esta se le parece mucho mas que cualquier picket. */
+    metal:   { def: 'assets/projects/gate-single-matching-ecfence.webp' },
+    ecfence: { def: 'assets/projects/gate-single-matching-ecfence.webp' }
+  };
+
+  /**
+   * La mejor foto de porton para un material.
+   *
+   * El acabado es s.color donde existe, y s.style donde el color ES el paso de
+   * estilo (chain link, EC Fence).
+   */
+  function fotoPorton(mat, tipo, acabado) {
+    var tabla = PORTONES[mat];
+    if (!tabla) { return null; }
+    var claves = [tipo + '|' + acabado, acabado, tipo, 'def'];
+    for (var i = 0; i < claves.length; i++) {
+      if (claves[i] && tabla[claves[i]]) { return tabla[claves[i]]; }
+    }
+    return null;
+  }
+
   /* Fichas que existen en assets/specs. Si la combinacion no esta, se dice en
      vez de ofrecer un enlace roto. */
   var SHEETS = {
@@ -166,6 +220,7 @@
   var FONDO_ORIGINAL = '#ffffff';
   var FONDO_TINTE    = '#ebebeb';
   var FONDO_BLANCO   = '#787e8a';
+  var FONDO_FOTO     = '#e9eaec';
 
   /* Escala de altura: en vez de estirar el dibujo (que engordaria los rieles y
      mentiria sobre la pieza), se dibuja al lado una cota con el numero y una
@@ -329,8 +384,19 @@
     return null;
   }
 
+
   function imgSrc() {
     var st = styleObj();
+
+    /* En una pagina de porton manda la foto de porton. Antes se caia al panel
+       del material y salia una cerca de vinilo en la ficha de "Double Swing
+       Gate", que es justo lo que el cliente NO esta comprando. */
+    if (s.product === 'gate') {
+      var fp = fotoPorton(s.mat, s.gate, s.color || s.style);
+      if (fp) { return fp; }
+      if (gateObj()) { return gateObj().img; }
+    }
+
     if (st && s.color) {
       /* Tan en vinilo es el color del propio dibujo, asi que no hay variante. */
       var slug = COLOR_SLUG[s.color];
@@ -343,7 +409,6 @@
        a la foto del tipo de porton, que es la misma para todos: al cambiar de
        vinilo a chain link la imagen no se movia. */
     if (m()) { return 'assets/profiles/' + m().styles[0].img + '.jpg'; }
-    if (s.product === 'gate' && gateObj()) { return gateObj().img; }
     return 'assets/profiles/aluminum-2-rail-smooth.jpg';
   }
 
@@ -410,13 +475,24 @@
     var img = $('img'), src = imgSrc();
     var marco = img.closest('.bld__frame');
     var esTinte = src.indexOf('/tinted/') !== -1;
-    marco.style.background = !esTinte ? FONDO_ORIGINAL
-      : (src.indexOf('-white.jpg') !== -1 ? FONDO_BLANCO : FONDO_TINTE);
+    /* Los perfiles son recortes sobre blanco y piden aire alrededor; las fotos
+       de porton son fotografias y quedan mejor llenando el marco. */
+    var esFoto = src.indexOf('/profiles/') === -1;
+    marco.classList.toggle('is-foto', esFoto);
+    marco.style.background = esFoto ? FONDO_FOTO
+      : (!esTinte ? FONDO_ORIGINAL
+        : (src.indexOf('-white.jpg') !== -1 ? FONDO_BLANCO : FONDO_TINTE));
     pintarEscala();
     if (img.getAttribute('src') !== src) {
       img.classList.add('is-swapping');
       var n = new Image();
-      n.onload = function () { img.src = src; img.classList.remove('is-swapping'); };
+      n.onload = function () {
+        /* Una foto vertical recortada a 4:3 pierde media hoja, asi que esa se
+           encaja entera en vez de llenar. */
+        marco.classList.toggle('is-vertical', esFoto && n.naturalWidth / n.naturalHeight < 1.15);
+        img.src = src;
+        img.classList.remove('is-swapping');
+      };
       n.onerror = function () { img.classList.remove('is-swapping'); };
       n.src = src;
     }
@@ -469,7 +545,10 @@
     if (k === 'mat') {
       return ORDER.map(function (id) {
         var x = MAT[id];
-        return opt('mat', id, x.name, x.tag, 'assets/profiles/' + x.styles[0].img + '.jpg');
+        /* En una pagina de porton, hasta las miniaturas son de porton. */
+        var mini = (s.product === 'gate' && fotoPorton(id, s.gate, null)) ||
+                   ('assets/profiles/' + x.styles[0].img + '.jpg');
+        return opt('mat', id, x.name, x.tag, mini);
       }).join('');
     }
     if (k === 'style') {

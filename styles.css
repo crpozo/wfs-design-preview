@@ -1225,6 +1225,10 @@ p { font-family: var(--body); }
     transition: opacity .25s ease, transform .3s ease;
   }
   .bld__frame img.is-swapping { opacity: 0; }
+  /* Una foto de porton llena el marco: con el padding de los recortes salia
+     enmarcada en blanco, como una lamina colgada. */
+  .bld__frame.is-foto img { object-fit: cover; padding: 0; }
+  .bld__frame.is-foto.is-vertical img { object-fit: contain; padding: 14px; }
   /* Sobre una foto la etiqueta se perdia: pastilla oscura para que se lea
      igual encima de un recorte blanco que de una foto de instalacion. */
   /* La imagen ocupa su propia columna. La cota va AL LADO, no encima: como
