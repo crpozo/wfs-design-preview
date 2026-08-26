@@ -545,10 +545,13 @@
     if (k === 'mat') {
       return ORDER.map(function (id) {
         var x = MAT[id];
-        /* En una pagina de porton, hasta las miniaturas son de porton. */
-        var mini = (s.product === 'gate' && fotoPorton(id, s.gate, null)) ||
-                   ('assets/profiles/' + x.styles[0].img + '.jpg');
-        return opt('mat', id, x.name, x.tag, mini);
+        /* Recorte de producto, tambien en portones. Se probo con las fotos de
+           porton y a 62x46 no se leen: la de aluminio pasa por un camino, la de
+           chain link por unas escaleras, y DuraFence y EC Fence comparten foto,
+           o sea dos opciones identicas. Aqui lo que hay que distinguir es el
+           MATERIAL, y para eso el recorte gana. La foto de porton manda donde
+           importa, que es la vista grande. */
+        return opt('mat', id, x.name, x.tag, 'assets/profiles/' + x.styles[0].img + '.jpg');
       }).join('');
     }
     if (k === 'style') {
