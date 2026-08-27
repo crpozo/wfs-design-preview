@@ -290,6 +290,7 @@
         '<div class="bld__frame">' +
           '<span class="bld__badge"></span>' +
           '<span class="bld__media"><img class="bld__img" alt="Fence preview" decoding="async"></span>' +
+          '<div class="bld__escala"></div>' +
         '</div>' +
         '<div class="bld__spec"><dl></dl></div>' +
         '<div class="bld__acciones">' +
@@ -540,9 +541,51 @@
     };
   }
 
+  /* 5 pies 9: la estatura media de un adulto en EE.UU. Cambiarla desajusta la
+     lectura de todas las alturas. */
+  var PERSONA_FT = 5.75;
+
+  /**
+   * Referencia de altura: la cota elegida al lado de una persona.
+   *
+   * Va ENCIMA de la foto, en una esquina, y no en una columna propia: como
+   * columna le quitaba ancho a la imagen, que es lo que se ha venido a ver.
+   * Es un diagrama, no una medida sobre la foto: la foto es de un porton
+   * concreto y no cambia de alto, asi que la comparacion honesta es cota
+   * contra persona, las dos a la misma escala.
+   */
+  function pintarEscala() {
+    var caja = $('escala');
+    if (!caja) { return; }
+    var ft = parseFloat(s.height);
+    if (!s.height || !isFinite(ft)) { caja.innerHTML = ''; caja.classList.remove('is-on'); return; }
+    caja.classList.add('is-on');
+
+    var H = 200, base = 184, top = 14;
+    var tope = Math.max(8, ft, PERSONA_FT);
+    var px = function (f) { return (f / tope) * (base - top); };
+    var yCerca = base - px(ft);
+    var yPers = base - px(PERSONA_FT), hPers = px(PERSONA_FT);
+
+    caja.innerHTML =
+      '<svg viewBox="0 0 108 ' + H + '" role="img" aria-label="' +
+        esc(s.height) + ' next to a 5 foot 9 person">' +
+        '<line x1="6" y1="' + base + '" x2="102" y2="' + base + '" class="sc-base"/>' +
+        '<g class="sc-person" transform="translate(72,' + yPers + ') scale(' + (hPers / 100) + ')">' +
+          '<circle cx="11" cy="11" r="11"/>' +
+          '<path d="M11 24c-8 0-13 5-13 13v26h6l1 37h5l1-37h1l1 37h5l1-37h6V37c0-8-5-13-13-13z"/>' +
+        '</g>' +
+        '<line x1="24" y1="' + yCerca + '" x2="24" y2="' + base + '" class="sc-line"/>' +
+        '<line x1="18" y1="' + yCerca + '" x2="30" y2="' + yCerca + '" class="sc-tick"/>' +
+        '<line x1="18" y1="' + base + '" x2="30" y2="' + base + '" class="sc-tick"/>' +
+        '<text x="34" y="' + (yCerca + (base - yCerca) / 2 + 5) + '" class="sc-label">' + esc(s.height) + '</text>' +
+      '</svg>';
+  }
+
   function pintarVista() {
     var img = $('img'), src = imgSrc();
     var marco = img.closest('.bld__frame');
+    pintarEscala();
     var esTinte = src.indexOf('/tinted/') !== -1;
     /* Los perfiles son recortes sobre blanco y piden aire alrededor; las fotos
        de porton son fotografias y quedan mejor llenando el marco. */

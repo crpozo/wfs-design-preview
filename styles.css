@@ -1233,6 +1233,30 @@ p { font-family: var(--body); }
   .bld__frame.is-foto img { object-fit: cover; padding: 0; }
   .bld__frame.is-foto.is-vertical img { object-fit: contain; padding: 14px; }
 
+  /* Referencia de altura, encima de la foto y en una esquina. Va sobre una
+     pastilla translucida porque debajo puede haber cesped, cielo o un panel
+     blanco, y el trazo tiene que leerse igual en los tres. */
+  .bld__escala {
+    position: absolute; left: 14px; bottom: 14px; z-index: 3;
+    width: 88px; height: 168px; display: none;
+    padding: 8px 6px; border-radius: 12px;
+    background: rgba(255,255,255,.82); backdrop-filter: blur(3px);
+    box-shadow: 0 2px 10px -4px rgba(0,16,17,.35);
+  }
+  .bld__escala.is-on { display: block; }
+  .bld__escala svg { width: 100%; height: 100%; display: block; }
+  .sc-base { stroke: rgba(38,49,103,.30); stroke-width: 1.5; }
+  .sc-line { stroke: var(--tangerine); stroke-width: 2.5; }
+  .sc-tick { stroke: var(--tangerine); stroke-width: 2.5; }
+  .sc-person { fill: rgba(38,49,103,.46); }
+  .sc-label {
+    font-family: var(--mono); font-size: 17px; font-weight: 700;
+    letter-spacing: .04em; fill: var(--ink);
+  }
+  @media (max-width: 620px) {
+    .bld__escala { width: 68px; height: 130px; left: 10px; bottom: 10px; }
+  }
+
   /* Sobre una foto la etiqueta se perdia: pastilla oscura para que se lea
      igual encima de un recorte blanco que de una foto de instalacion. */
   .bld__media { flex: 1; min-width: 0; position: relative; display: grid; place-items: center; }
