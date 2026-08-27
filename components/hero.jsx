@@ -34,6 +34,37 @@ const Nav = () => {
   );
 };
 
+/* Banner de campaña del chat, solo en la portada.
+ *
+ * Va entre la cabecera y el hero, a todo el ancho. El boton "Talk to a live
+ * agent" de la barra superior ya abre el chat, pero es una pastilla pequeña
+ * entre otras cinco cosas; esto es una franja que no se puede no ver.
+ *
+ * Abre el MISMO chat que el resto del sitio (tawk.to) via openLiveChat, y
+ * ademas es un enlace de verdad a contact.html: si el widget no ha cargado o
+ * el navegador lo bloquea, el clic sigue llevando a alguien con quien hablar
+ * en vez de no hacer nada.
+ */
+const ChatBanner = () => {
+  const t = useT();
+  return (
+    <a className="wfs-chatbanner" href="contact.html" onClick={openLiveChat}>
+      <span className="wfs-chatbanner__dot" aria-hidden="true"></span>
+      <span className="wfs-chatbanner__txt">
+        {t('New & Improved ChatBot: Chat with a real person NOW!',
+           'ChatBot nuevo y mejorado: habla con una persona real AHORA')}
+      </span>
+      <span className="wfs-chatbanner__cta">
+        <span className="wfs-chatbanner__cta-txt">{t('Start chatting', 'Empezar a chatear')}</span>
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" strokeWidth="1.7"
+                strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </span>
+    </a>
+  );
+};
+
 const Hero = () => {
   const t = useT();
   const [mode, setMode] = useMode();
