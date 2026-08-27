@@ -302,6 +302,42 @@
       '</aside>' +
     '</div>';
 
+  /* Cuanto fondo blanco hay bajo el producto en la imagen, para plantar la
+     cota y la persona en la MISMA base que el producto y no en el borde de la
+     foto: el margen varia del 8% de un recorte de perfil al 24% de una foto de
+     estudio con su sombra, asi que se mide en la propia imagen (escaneando una
+     miniatura desde abajo hasta el primer pixel que no es fondo).
+     Si el canvas esta "tainted" porque la imagen viene de otro dominio (los
+     assets en produccion), se cae a una constante razonable. */
+  var MARGEN_CACHE = {};
+  function margenInferior(img) {
+    var src = img.currentSrc || img.src;
+    if (src in MARGEN_CACHE) { return MARGEN_CACHE[src]; }
+    var v = null;
+    try {
+      var nw = img.naturalWidth, nh = img.naturalHeight;
+      if (nw && nh) {
+        var w = 64, h = Math.max(8, Math.round(nh * 64 / nw));
+        var c = document.createElement('canvas');
+        c.width = w; c.height = h;
+        var g = c.getContext('2d', { willReadFrequently: true });
+        g.drawImage(img, 0, 0, w, h);
+        var d = g.getImageData(0, 0, w, h).data;
+        busca: for (var y = h - 1; y >= 0; y--) {
+          for (var x = 0; x < w; x++) {
+            var i = (y * w + x) * 4;
+            if (d[i] < 200 || d[i + 1] < 200 || d[i + 2] < 200) {
+              v = (h - 1 - y) / h;
+              break busca;
+            }
+          }
+        }
+      }
+    } catch (e) { v = null; }
+    MARGEN_CACHE[src] = v;
+    return v;
+  }
+
   function crear(root, opts) {
   opts = opts || {};
   root.innerHTML = ESQUELETO;
@@ -590,17 +626,25 @@
       contentH = Math.min(innerH, img.naturalHeight * k);
     }
 
-    /* Que parte del alto de la imagen ocupa el producto. En un recorte de
-       estudio lo llena casi entero; en una foto de obra (cover) hay cielo y
-       cesped alrededor y el porton ronda el 60%. Sin esta distincion, con 4
-       pies la persona pedia mas alto que el marco, el tope la recortaba y 4' y
-       5' salian identicas: la proporcion desaparecia justo donde mas se ve. */
-    var fraccion = cs.objectFit === 'cover' ? 0.62 : 0.88;
-    var productoPx = contentH * fraccion;
-    var personaPx = productoPx * (PERSONA_FT / ft);
-    /* El tope descuenta la base: el marco recorta lo que sobresale. */
-    var base = Math.round((mh - contentH) / 2 + contentH * 0.02);
-    personaPx = Math.max(30, Math.min(mh - base - 10, personaPx));
+    /* La persona va FIJA y es la cota la que crece. Antes se escalaba la
+       silueta contra la foto y el efecto era el contrario al buscado: parecia
+       que el usuario crecia y encogia, cuando lo unico que un visitante sabe
+       constante es su propio cuerpo. Ahora la silueta no se mueve y la linea
+       naranja marca hasta donde le llega la altura elegida: al pecho con 4
+       pies, por encima de la cabeza con 8.
+       El tamaño de la persona se elige para que la cota MAS ALTA del material
+       quepa en el marco, asi la proporcion nunca se recorta. */
+    var margen = margenInferior(img);
+    if (margen === null) { margen = cs.objectFit === 'cover' ? 0.02 : 0.10; }
+    var base = Math.round((mh - contentH) / 2 + contentH * margen);
+    var usable = mh - base - 10;
+    var maxFt = 8;
+    if (m() && m().heights && m().heights.length) {
+      maxFt = Math.max.apply(null, m().heights.map(function (x) { return parseFloat(x) || 0; })) || 8;
+    }
+    var personaPx = Math.min(contentH * 0.55, usable * (PERSONA_FT / maxFt) * 0.98);
+    personaPx = Math.max(40, personaPx);
+    var cotaPx = personaPx * (ft / PERSONA_FT);
 
     /* La cota vertical mide el PRODUCTO y lleva su medida en el chip, centrado
        en la linea como en un plano; la persona va al lado sin numero, que es la
@@ -614,8 +658,8 @@
           '<path d="M11 23c-8 0-13 5-13 13v26h6l1 38h5l1-38h1l1 38h5l1-38h6V36c0-8-5-13-13-13z"/>' +
         '</g>' +
       '</svg>';
-    /* La cota mide el producto; la silueta, a su propia escala al lado. */
-    caja.style.height = Math.round(productoPx) + 'px';
+    /* El contenedor es la cota: crece con la altura elegida. */
+    caja.style.height = Math.round(cotaPx) + 'px';
     caja.style.bottom = base + 'px';
     caja.setAttribute('aria-label', s.height + ' product next to a 5 foot 9 person');
     caja.classList.add('is-on');
