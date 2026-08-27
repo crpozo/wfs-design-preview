@@ -330,6 +330,13 @@
   function cfg() { return GATES_CFG[s.gate] || {}; }
   /* Las tarjetas de obra son contenido de la pagina y llegan desde ella. */
   function opciones() { return cfg().opciones || []; }
+  /* La tarjeta elegida puede traer su acabado ya fijado: es el que enseña su
+     propia foto. En ese caso no hay nada que preguntar. */
+  function estiloDeOpcion() {
+    var o = opciones().filter(function (x) { return x.name === s.opcion; })[0];
+    return o && o.estilo ? o.estilo : null;
+  }
+
   function matsPermitidos() {
     var lista = GATE_MATS[s.gate];
     if (!lista || !lista.length) { return ORDER; }
@@ -393,7 +400,10 @@
        sino el ACABADO (galvanizado, negro, verde). Quitarlo dejaba un porton
        cantilever que solo podia ser galvanizado, porque ademas esos materiales
        tienen la lista de colores vacia y tampoco tenian paso de color. */
-    if (s.product !== 'gate' || !(m().colors && m().colors.length)) {
+    /* Y si la tarjeta ya fijo el acabado (Standard Walk Gate es el porton negro
+       de su foto), preguntarlo era inventarse variantes que nadie ha dicho que
+       existan. Solo se pregunta donde no hay tarjeta que lo conteste. */
+    if (s.product !== 'gate' || (!(m().colors && m().colors.length) && !estiloDeOpcion())) {
       out.push({ key: 'style', title: m().styleLabel });
     }
     out.push({ key: 'height', title: 'Height' });
@@ -484,7 +494,7 @@
     if (s.product === 'gate' && opciones().length) { filas.push(['Gate option', value('opcion')]); }
     if (s.product !== 'gate') { filas.push(['Material', value('mat')]); }
     if (m()) {
-      if (s.product !== 'gate' || !(m().colors && m().colors.length)) {
+      if (s.product !== 'gate' || (!(m().colors && m().colors.length) && !estiloDeOpcion())) {
         filas.push([m().styleLabel, s.style]);
       }
       filas.push(['Height', s.height]);
@@ -508,7 +518,7 @@
     if (s.product === 'gate' && opciones().length && !s.opcion) { out.push('a gate option'); }
     var mm = m();
     if (!mm) { out.push(s.product === 'gate' ? 'a gate option' : 'a material'); return out; }
-    if (!s.style && (s.product !== 'gate' || !(mm.colors && mm.colors.length))) {
+    if (!s.style && (s.product !== 'gate' || (!(mm.colors && mm.colors.length) && !estiloDeOpcion()))) {
       out.push('a ' + String(mm.styleLabel).toLowerCase());
     }
     if (!s.height) { out.push('a height'); }
@@ -546,40 +556,68 @@
   var PERSONA_FT = 5.75;
 
   /**
-   * Referencia de altura: la cota elegida al lado de una persona.
+   * Referencia de altura EN PROPORCION con el producto de la foto.
    *
-   * Va ENCIMA de la foto, en una esquina, y no en una columna propia: como
-   * columna le quitaba ancho a la imagen, que es lo que se ha venido a ver.
-   * Es un diagrama, no una medida sobre la foto: la foto es de un porton
-   * concreto y no cambia de alto, asi que la comparacion honesta es cota
-   * contra persona, las dos a la misma escala.
+   * No es un diagrama aparte: la silueta se planta sobre la foto y se escala
+   * contra el producto. Con una cerca de 6 pies, la persona de 5'9" queda un
+   * pelin mas baja que el panel; con una de 4, el panel le llega por el pecho.
+   * El producto de un recorte llena practicamente el alto del dibujo, asi que
+   * su altura en pantalla se toma como ese alto con un pequeño margen: es un
+   * "mas o menos" honesto, no una medicion.
    */
   function pintarEscala() {
     var caja = $('escala');
     if (!caja) { return; }
     var ft = parseFloat(s.height);
-    if (!s.height || !isFinite(ft)) { caja.innerHTML = ''; caja.classList.remove('is-on'); return; }
+    if (!s.height || !isFinite(ft) || ft <= 0) {
+      caja.classList.remove('is-on');
+      return;
+    }
+    var img = $('img');
+    var marco = img.closest('.bld__frame');
+    var mh = marco.clientHeight;
+    if (!mh) { return; }
+
+    /* Alto en pantalla del contenido de la imagen, segun su object-fit. */
+    var cs = getComputedStyle(img);
+    var innerW = img.clientWidth - ((parseFloat(cs.paddingLeft) || 0) + (parseFloat(cs.paddingRight) || 0));
+    var innerH = img.clientHeight - ((parseFloat(cs.paddingTop) || 0) + (parseFloat(cs.paddingBottom) || 0));
+    var contentH = innerH;
+    if (img.naturalWidth && img.naturalHeight) {
+      var k = cs.objectFit === 'cover'
+        ? Math.max(innerW / img.naturalWidth, innerH / img.naturalHeight)
+        : Math.min(innerW / img.naturalWidth, innerH / img.naturalHeight);
+      contentH = Math.min(innerH, img.naturalHeight * k);
+    }
+
+    /* Que parte del alto de la imagen ocupa el producto. En un recorte de
+       estudio lo llena casi entero; en una foto de obra (cover) hay cielo y
+       cesped alrededor y el porton ronda el 60%. Sin esta distincion, con 4
+       pies la persona pedia mas alto que el marco, el tope la recortaba y 4' y
+       5' salian identicas: la proporcion desaparecia justo donde mas se ve. */
+    var fraccion = cs.objectFit === 'cover' ? 0.62 : 0.88;
+    var productoPx = contentH * fraccion;
+    var personaPx = productoPx * (PERSONA_FT / ft);
+    /* El tope descuenta la base y la etiqueta de 5'9": el marco recorta lo que
+       sobresale, y con 4 pies la cabeza salia cortada. */
+    var base = Math.round((mh - contentH) / 2 + contentH * 0.02);
+    personaPx = Math.max(30, Math.min(mh - base - 26, personaPx));
+
+    if (!caja.firstChild) {
+      caja.innerHTML =
+        '<span class="sc-tag">5\'9"</span>' +
+        '<svg viewBox="-4 -1 30 101" aria-hidden="true">' +
+          '<g class="sc-person">' +
+            '<circle cx="11" cy="10" r="10"/>' +
+            '<path d="M11 23c-8 0-13 5-13 13v26h6l1 38h5l1-38h1l1 38h5l1-38h6V36c0-8-5-13-13-13z"/>' +
+          '</g>' +
+        '</svg>';
+    }
+    caja.querySelector('svg').style.height = Math.round(personaPx) + 'px';
+    /* Los pies, a la base del producto: el contenido va centrado en el marco. */
+    caja.style.bottom = base + 'px';
+    caja.setAttribute('aria-label', '5 foot 9 person next to a ' + s.height + ' product');
     caja.classList.add('is-on');
-
-    var H = 200, base = 184, top = 14;
-    var tope = Math.max(8, ft, PERSONA_FT);
-    var px = function (f) { return (f / tope) * (base - top); };
-    var yCerca = base - px(ft);
-    var yPers = base - px(PERSONA_FT), hPers = px(PERSONA_FT);
-
-    caja.innerHTML =
-      '<svg viewBox="0 0 108 ' + H + '" role="img" aria-label="' +
-        esc(s.height) + ' next to a 5 foot 9 person">' +
-        '<line x1="6" y1="' + base + '" x2="102" y2="' + base + '" class="sc-base"/>' +
-        '<g class="sc-person" transform="translate(72,' + yPers + ') scale(' + (hPers / 100) + ')">' +
-          '<circle cx="11" cy="11" r="11"/>' +
-          '<path d="M11 24c-8 0-13 5-13 13v26h6l1 37h5l1-37h1l1 37h5l1-37h6V37c0-8-5-13-13-13z"/>' +
-        '</g>' +
-        '<line x1="24" y1="' + yCerca + '" x2="24" y2="' + base + '" class="sc-line"/>' +
-        '<line x1="18" y1="' + yCerca + '" x2="30" y2="' + yCerca + '" class="sc-tick"/>' +
-        '<line x1="18" y1="' + base + '" x2="30" y2="' + base + '" class="sc-tick"/>' +
-        '<text x="34" y="' + (yCerca + (base - yCerca) / 2 + 5) + '" class="sc-label">' + esc(s.height) + '</text>' +
-      '</svg>';
   }
 
   function pintarVista() {
@@ -805,6 +843,11 @@
 
     render();
   });
+
+  /* La proporcion depende de la imagen ya cargada y del tamaño en pantalla:
+     se recalcula al terminar cada carga y al redimensionar. */
+  $('img').addEventListener('load', pintarEscala);
+  window.addEventListener('resize', pintarEscala, { passive: true });
 
   render();
 
