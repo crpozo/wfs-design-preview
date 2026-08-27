@@ -138,7 +138,10 @@
   function fotoPorton(mat, tipo, acabado) {
     var tabla = PORTONES[mat];
     if (!tabla) { return null; }
-    var claves = [tipo + '|' + acabado, acabado, tipo, 'def'];
+    /* El TIPO manda sobre el acabado: en la pagina de Cantilever, buscar
+       primero por acabado devolvia una foto de porton batiente galvanizado,
+       que es cualquier cosa menos un cantilever. */
+    var claves = [tipo + '|' + acabado, tipo, acabado, 'def'];
     for (var i = 0; i < claves.length; i++) {
       if (claves[i] && tabla[claves[i]]) { return tabla[claves[i]]; }
     }
@@ -263,10 +266,7 @@
       '<aside class="bld__stage">' +
         '<div class="bld__frame">' +
           '<span class="bld__badge"></span>' +
-          '<span class="bld__media">' +
-            '<img class="bld__img" alt="Fence preview" decoding="async">' +
-            '<canvas class="bld__vista3d" hidden></canvas>' +
-          '</span>' +
+          '<span class="bld__media"><img class="bld__img" alt="Fence preview" decoding="async"></span>' +
         '</div>' +
         '<div class="bld__spec"><dl></dl></div>' +
         '<div class="bld__acciones">' +
@@ -414,6 +414,10 @@
        del material y salia una cerca de vinilo en la ficha de "Double Swing
        Gate", que es justo lo que el cliente NO esta comprando. */
     if (s.product === 'gate') {
+      /* La foto de la opcion elegida, que es la misma que enseña su tarjeta:
+         al pulsarla, arriba aparece exactamente eso. */
+      var o = opciones().filter(function (x) { return x.name === s.opcion; })[0];
+      if (o && o.img) { return o.img; }
       var fp = fotoPorton(s.mat, s.gate, s.color || s.style);
       if (fp) { return fp; }
       if (gateObj()) { return gateObj().img; }
@@ -499,141 +503,9 @@
     };
   }
 
-  /* ── vista previa del porton, dibujada ────────────────────────────────────
-     En cercas la foto de producto existe para cada perfil y color, asi que se
-     usa. En portones no existe ni de lejos, y la foto mas parecida acaba
-     enseñando un porton blanco a quien eligio bronce. Aqui se dibuja el
-     porton de verdad, con las mismas cotas que la vista 3D de la casa. */
-  var vista3d = null, obsVista = null;
-
-  /** Lo minimo para poder dibujar: material y perfil. */
-  function estadoVista() {
-    var mm = m();
-    if (s.product !== 'gate' || !mm || !s.style) { return null; }
-    var col = null;
-    if (mm.colors.length) {
-      var c = mm.colors.filter(function (x) { return x.label === s.color; })[0];
-      /* Sin color elegido va null y cerca.js pone el del material, igual que
-         la foto de una cerca sale sin tinte hasta que se elige. */
-      col = c ? c.hex : null;
-    }
-    return { mat: s.mat, estilo: s.style, alto: s.height || mm.heights[0],
-             colorHex: col, gate: s.gate, ancho: s.ancho, marco: s.marco };
-  }
-
-  function medirVista() {
-    if (!vista3d) { return; }
-    var lz = root.querySelector('.bld__vista3d');
-    var r = lz.getBoundingClientRect();
-    if (r.width < 2 || r.height < 2) { return; }
-    try {
-      vista3d.medir(r.width, r.height);
-      vista3d.pintar();
-    } catch (err) { soltarVista(); }
-  }
-
-  /* Ocultar NO es soltar. Al cambiar de material se borra el perfil y la vista
-     se queda sin nada que dibujar, pero destruirla ahi soltaba el contexto
-     WebGL del lienzo, y sobre un lienzo con el contexto perdido ya no se puede
-     montar otro: el configurador se quedaba sin vista para siempre. */
-  function ocultarVista() {
-    var lz = root.querySelector('.bld__vista3d');
-    if (lz) { lz.hidden = true; }
-    root.querySelector('.bld__frame').classList.remove('is-3d');
-  }
-
-  /* Soltar de verdad. Solo cuando el navegador nos quita el contexto: se tira
-     el lienzo y se pone uno limpio, para que un montaje posterior pueda
-     empezar de cero. */
-  function soltarVista() {
-    if (obsVista) { obsVista.disconnect(); obsVista = null; }
-    if (vista3d) { try { vista3d.soltar(); } catch (e) {} vista3d = null; }
-    root.__vista = null;
-    ocultarVista();
-    var lz = root.querySelector('.bld__vista3d');
-    if (lz && lz.parentNode) {
-      var nuevo = document.createElement('canvas');
-      nuevo.className = lz.className;
-      nuevo.hidden = true;
-      lz.parentNode.replaceChild(nuevo, lz);
-    }
-  }
-
-  var pidiendoVista = false;
-  function sincronizarVista() {
-    var est = estadoVista();
-    var lz = root.querySelector('.bld__vista3d');
-    if (!est) { ocultarVista(); return false; }
-
-    if (vista3d) {
-      try {
-        vista3d.actualizar(est);
-        lz.hidden = false;
-        root.querySelector('.bld__frame').classList.add('is-3d');
-        medirVista();
-        return true;
-      } catch (err) {
-        soltarVista();      // se sigue viendo la foto
-        return false;
-      }
-    }
-    if (pidiendoVista) { return false; }
-    pidiendoVista = true;
-    cargar3D().then(function () {
-      pidiendoVista = false;
-      /* Pudo cambiar de material o volver a cerca mientras se descargaba. */
-      var e2 = estadoVista();
-      if (!e2 || !window.WFS3D || !window.WFS3D.vista) { return; }
-      try {
-        vista3d = window.WFS3D.vista(lz);
-      } catch (err) {
-        return;                       // sin WebGL se queda la foto
-      }
-      lz.hidden = false;
-      root.querySelector('.bld__frame').classList.add('is-3d');
-      /* Asa para inspeccionar y forzar un fotograma sin depender del
-         compositor, igual que window.WFS3D.visor() en la ventana grande. */
-      root.__vista = vista3d;
-      /* El navegador puede quitarnos el contexto (poca memoria, demasiados
-         lienzos, la GPU reiniciando). Si pasa, three revienta al recompilar
-         el shader; mejor soltar la vista y dejar que se vea la foto, que
-         sigue debajo. */
-      lz.addEventListener('webglcontextlost', function (ev) {
-        ev.preventDefault();
-        vista3d = null;
-        root.__vista = null;
-        soltarVista();
-        pintarVista();
-      });
-      vista3d.actualizar(e2);
-      medirVista();
-      if (window.ResizeObserver) {
-        obsVista = new ResizeObserver(medirVista);
-        obsVista.observe(lz);
-      }
-      /* Arrastrar gira un poco: es lo primero que intenta todo el mundo al
-         ver algo dibujado, y sale barato. */
-      var x0 = null;
-      lz.addEventListener('pointerdown', function (ev) { x0 = ev.clientX; lz.setPointerCapture(ev.pointerId); });
-      lz.addEventListener('pointermove', function (ev) {
-        if (x0 === null || !vista3d) { return; }
-        vista3d.girar((ev.clientX - x0) * -0.006);
-        vista3d.pintar();
-        x0 = ev.clientX;
-      });
-      var fin = function (ev) { x0 = null; lz.releasePointerCapture && lz.releasePointerCapture(ev.pointerId); };
-      lz.addEventListener('pointerup', fin);
-      lz.addEventListener('pointercancel', fin);
-    }, function () { pidiendoVista = false; });
-    return false;
-  }
-
   function pintarVista() {
     var img = $('img'), src = imgSrc();
     var marco = img.closest('.bld__frame');
-    /* En portones manda el dibujo en cuanto hay material y perfil. Hasta
-       entonces, y en cercas, sigue la foto. */
-    sincronizarVista();
     var esTinte = src.indexOf('/tinted/') !== -1;
     /* Los perfiles son recortes sobre blanco y piden aire alrededor; las fotos
        de porton son fotografias y quedan mejor llenando el marco. */

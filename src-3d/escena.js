@@ -14,7 +14,6 @@ import { Scene, PerspectiveCamera, WebGLRenderer, Group, Color, Fog,
          ACESFilmicToneMapping, SRGBColorSpace, Vector3 } from '../vendor/three/three.module.js';
 import * as Casa from './casa.js';
 import * as Cerca from './cerca.js';
-import { montarVista } from './vista.js';
 
 var PUL = 1 / 12;
 
@@ -420,8 +419,6 @@ export { cerrar, Visor, traza, altoPies };
 
 window.WFS3D = {
   abrir: abrir, cerrar: cerrar,
-  /* Vista previa del porton dentro del configurador, sin casa ni jardin. */
-  vista: montarVista,
   /* Asa para pruebas: deja pintar un fotograma suelto y mirar la escena sin
      depender del lazo de animacion. */
   visor: function () { return estado.visor; },

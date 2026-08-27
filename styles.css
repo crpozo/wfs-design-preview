@@ -1230,15 +1230,6 @@ p { font-family: var(--body); }
   .bld__frame.is-foto img { object-fit: cover; padding: 0; }
   .bld__frame.is-foto.is-vertical img { object-fit: contain; padding: 14px; }
 
-  /* Vista previa dibujada del porton. Cubre la foto en vez de sustituirla en
-     el DOM: si el navegador no puede con WebGL, la foto sigue debajo. */
-  .bld__vista3d {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    display: block; cursor: grab; touch-action: pan-y;
-  }
-  .bld__vista3d:active { cursor: grabbing; }
-  .bld__vista3d[hidden] { display: none; }
-  .bld__frame.is-3d img { opacity: 0; }
   /* Sobre una foto la etiqueta se perdia: pastilla oscura para que se lea
      igual encima de un recorte blanco que de una foto de instalacion. */
   .bld__media { flex: 1; min-width: 0; position: relative; display: grid; place-items: center; }
