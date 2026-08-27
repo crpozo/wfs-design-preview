@@ -92,6 +92,29 @@
   ];
 
 
+  /* Variantes de color de las FOTOS de porton, en assets/gates/tinted.
+     Es la misma foto con el panel repintado, no otra foto: al cambiar el color
+     se ve el mismo porton pintado de otro color.
+     Las genera wordpress-theme/tools/tint-gates.py.
+     Falta a proposito pvc-privacy-cantilever-gate-white: en esa foto el cielo,
+     las nubes, el vinilo y el hormigon comparten tono y no hay umbral que
+     separe la valla. Haria falta una foto de estudio de ese porton. */
+  var TINTADO_PORTON = {
+    'DOUBLE_GATE-gray': 1,
+    'DOUBLE_GATE-tan': 1,
+    'DOUBLE_GATE-white': 1,
+    'gate-single-custom-pvc-gray': 1,
+    'gate-single-custom-pvc-tan': 1,
+    'gate-single-custom-pvc-white': 1,
+    'gate-single-matching-ecfence-black': 1,
+    'gate-single-matching-ecfence-bronze': 1,
+    'gate-single-matching-ecfence-white': 1,
+    'gate-single-matching-ecfence-woodgrain': 1,
+    'pvc-gate-sand-gray': 1,
+    'pvc-gate-sand-tan': 1,
+    'pvc-gate-sand-white': 1
+  };
+
   /* ── fotos de porton ──────────────────────────────────────────────────────
      En una pagina de porton no puede salir un panel de cerca: el cliente esta
      comprando la hoja, no el tramo. Aqui esta lo que hay fotografiado de
@@ -211,7 +234,7 @@
     'vinyl-semi-privacy-white': 1
   };
   var COLOR_SLUG = { 'Black':'black', 'Bronze':'bronze', 'White':'white',
-                     'Woodgrain':'woodgrain', 'Gray':'gray', 'Tan':null };
+                     'Woodgrain':'woodgrain', 'Gray':'gray', 'Tan':'tan' };
   /* Los acabados claros se generaron sobre gris para que se vieran; el resto
      sobre claro. El marco copia ese fondo, asi al escalar el dibujo por altura
      no se ve el borde de la imagen. */
@@ -423,7 +446,15 @@
       /* La foto de la opcion elegida, que es la misma que enseña su tarjeta:
          al pulsarla, arriba aparece exactamente eso. */
       var o = opciones().filter(function (x) { return x.name === s.opcion; })[0];
-      if (o && o.img) { return o.img; }
+      if (o && o.img) {
+        /* Misma foto, repintada al color elegido, si esa variante existe. */
+        var slug = COLOR_SLUG[s.color];
+        var base = o.img.split('/').pop().replace(/\.(jpg|jpeg|png|webp)$/i, '');
+        if (slug && TINTADO_PORTON[base + '-' + slug]) {
+          return 'https://crpozo.github.io/wfs-design-preview/assets/gates/tinted/' + base + '-' + slug + '.jpg';
+        }
+        return o.img;
+      }
       var fp = fotoPorton(s.mat, s.gate, s.color || s.style);
       if (fp) { return fp; }
       if (gateObj()) { return gateObj().img; }
