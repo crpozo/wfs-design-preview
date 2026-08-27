@@ -564,7 +564,17 @@
       n.onerror = function () { img.classList.remove('is-swapping'); };
       n.src = src;
     }
-    $('badge').textContent = m() ? m().name : (gateObj() ? gateObj().label : 'Start here');
+    /* La etiqueta dice QUE es lo que se ve. En un porton eso no es el material:
+       el material dejo de ser un paso y ahora viaja dentro de la opcion, asi
+       que poner "Vinyl / PVC" encima de la foto era enseñar un dato interno.
+       Se pone la opcion elegida, o el tipo de porton mientras no la haya. */
+    var etiqueta;
+    if (s.product === 'gate') {
+      etiqueta = s.opcion || (gateObj() ? gateObj().label : 'Start here');
+    } else {
+      etiqueta = m() ? m().name : 'Start here';
+    }
+    $('badge').textContent = etiqueta;
 
     /* El boton se enciende cuando la configuracion esta completa, y mientras
        tanto dice que falta. Encenderlo antes obligaba a inventar las opciones
