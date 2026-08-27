@@ -289,6 +289,12 @@
      no de que esta hecho. Fijarlo dejaba "Material" como paso 01. */
   var FIJO = { product: opts.product || null, mat: opts.material || null, gate: opts.gate || null };
 
+  /* El paso que la pagina ya contesta llega PLEGADO: estas en la ficha de
+     Single Swing, no hace falta que el paso 01 ocupe cinco tarjetas para
+     decirtelo. Se abre con "Change". */
+  var PLEGABLE = opts.gateInicial ? 'gate' : null;
+  var reabierto = {};
+
   var s = { product: FIJO.product, gate: FIJO.gate || opts.gateInicial || null, mat: FIJO.mat,
             opcion: null, ancho: null, marco: null, style: null, height: null, color: null };
 
@@ -621,15 +627,17 @@
     var html = lista.map(function (st, i) {
       var val = value(st.key);
       var bloqueado = i > 0 && !value(lista[i - 1].key);
-      var abierto = !bloqueado;
+      var plegado = st.key === PLEGABLE && val && !reabierto[st.key];
+      var abierto = !bloqueado && !plegado;
       var cls = 'step' + (abierto ? ' is-open' : '') + (bloqueado ? ' is-locked' : '');
       var h = '<section class="' + cls + '" data-i="' + i + '">' +
-        '<div class="step__head">' +
+        '<div class="step__head"' + (plegado ? ' data-edit="' + esc(st.key) + '"' : '') + '>' +
           '<span class="step__n">' + ('0' + (i + 1)) + '</span>' +
           '<span class="step__t">' + esc(st.title) + '</span>' +
           /* El valor elegido se enseña tambien con el paso abierto: asi el
              resumen esta a mano sin bajar al panel de la derecha. */
           (val ? '<span class="step__val">' + esc(val) + '</span>' : '') +
+          (plegado ? '<button class="step__edit" type="button" data-edit="' + esc(st.key) + '">Change</button>' : '') +
         '</div>';
       if (abierto) { h += '<div class="step__body">' + cuerpo(st.key) + '</div>'; }
       return h + '</section>';
@@ -673,6 +681,8 @@
       });
       return;
     }
+    var edit = e.target.closest('[data-edit]');
+    if (edit) { reabierto[edit.dataset.edit] = true; return render(); }
     var b = e.target.closest('[data-set]');
     if (!b) { return; }
     var campo = b.dataset.set, v = b.dataset.v;
@@ -728,10 +738,35 @@
   }
 
   /* Montaje. En la pagina suelta del configurador se llama sin fijar nada. */
+  /**
+   * Cuanto ocupa la cabecera fija, en una variable CSS.
+   *
+   * El panel derecho se queda pegado al hacer scroll, pero a 24px del borde:
+   * la cabecera del sitio es sticky y mide 132px, asi que le tapaba 108px y
+   * la foto salia cortada por arriba. La altura no es fija (cambia entre
+   * escritorio y movil), asi que se mide.
+   */
+  function medirCabecera() {
+    var alto = 0;
+    var cabs = document.querySelectorAll('header');
+    for (var i = 0; i < cabs.length; i++) {
+      var c = getComputedStyle(cabs[i]);
+      if (c.position !== 'sticky' && c.position !== 'fixed') { continue; }
+      var r = cabs[i].getBoundingClientRect();
+      if (r.top <= 2 && r.width > window.innerWidth * 0.5) { alto = Math.max(alto, r.height); }
+    }
+    document.documentElement.style.setProperty('--wfs-cabecera', Math.round(alto) + 'px');
+  }
+
   window.WFSBuilder = {
     instancias: [],
     mount: function (root, opts) {
       if (!root) { return null; }
+      medirCabecera();
+      if (!this._obsCab) {
+        this._obsCab = true;
+        window.addEventListener('resize', medirCabecera, { passive: true });
+      }
       var api = crear(root, opts);
       this.instancias.push({ root: root, api: api });
       return api;

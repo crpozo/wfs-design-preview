@@ -1213,7 +1213,10 @@ p { font-family: var(--body); }
 
   /* La vista previa se queda fija: es el punto del configurador, ver como cambia
      lo que eliges sin perderlo de vista al bajar por los pasos. */
-  .bld__stage { position: sticky; top: 24px; }
+  /* Se pega POR DEBAJO de la cabecera fija, no a 24px del borde: la cabecera
+     mide 132px y le tapaba la foto por arriba. La variable la pone el propio
+     configurador midiendo la cabecera de verdad. */
+  .bld__stage { position: sticky; top: calc(var(--wfs-cabecera, 0px) + 20px); }
   .bld__frame {
     position: relative; border: 1px solid rgba(0,16,17,.14); border-radius: 18px;
     background: #ebebeb; aspect-ratio: 4 / 3; overflow: hidden;
@@ -1257,7 +1260,12 @@ p { font-family: var(--body); }
   .step__n { font-family: var(--mono); font-size: 12.5px; font-weight: 700; letter-spacing: .18em; color: var(--tangerine); }
   .step__t { font-size: 17px; font-weight: 700; }
   .step__val { margin-left: auto; font-size: 15.5px; color: var(--charcoal); }
-  .step__edit { margin-left: auto; font-family: var(--mono); font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--laser-blue); background: none; border: 0; cursor: pointer; }
+  /* margin-left: 14px y no auto: el valor de al lado ya lleva auto y empuja,
+     con los dos en auto se repartian el hueco y el boton quedaba flotando. */
+  .step__edit { margin-left: 14px; padding: 0; font-family: var(--mono); font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--laser-blue); background: none; border: 0; cursor: pointer; }
+  .step__edit:hover { text-decoration: underline; }
+  .step__head[data-edit] { cursor: pointer; }
+  .step__head[data-edit]:hover .step__t { color: var(--laser-blue); }
   .step__body { margin-top: 18px; display: grid; gap: 10px; }
   .opt {
     display: flex; align-items: center; gap: 14px; width: 100%; text-align: left;
