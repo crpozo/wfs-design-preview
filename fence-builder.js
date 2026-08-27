@@ -222,14 +222,6 @@
   var FONDO_BLANCO   = '#787e8a';
   var FONDO_FOTO     = '#e9eaec';
 
-  /* Escala de altura: en vez de estirar el dibujo (que engordaria los rieles y
-     mentiria sobre la pieza), se dibuja al lado una cota con el numero y una
-     silueta humana. La referencia se lee de un vistazo y el dibujo no se toca.
-     Persona de 5'9", que es la estatura media adulta en EE.UU. */
-  var PERSONA_FT = 5.75;
-  var TOPE_FT = 8;
-
-
 
   var ORDER = ['aluminum', 'chain-link', 'vinyl', 'metal', 'ecfence'];
 
@@ -275,7 +267,6 @@
             '<img class="bld__img" alt="Fence preview" decoding="async">' +
             '<canvas class="bld__vista3d" hidden></canvas>' +
           '</span>' +
-          '<div class="bld__scale"></div>' +
         '</div>' +
         '<div class="bld__spec"><dl></dl></div>' +
         '<div class="bld__acciones">' +
@@ -325,35 +316,6 @@
   }
 
   var $ = function (clase) { return root.querySelector('.bld__' + clase); };
-
-  function pintarEscala() {
-    var caja = $('scale');
-    if (!caja) { return; }
-    if (!s.height) { caja.innerHTML = ''; caja.classList.remove('is-on'); return; }
-    caja.classList.add('is-on');
-
-    var ft = parseFloat(s.height);
-    var H = 200, base = 188, top = 12;
-    var px = function (f) { return (f / TOPE_FT) * (base - top); };
-    var yCerca = base - px(ft);
-    var yPers  = base - px(PERSONA_FT);
-    var hPers  = px(PERSONA_FT);
-
-    caja.innerHTML =
-      '<svg viewBox="0 0 116 ' + H + '" role="img" aria-label="' + esc(s.height) + ' fence next to a 5 foot 9 person">' +
-        '<line x1="8" y1="' + base + '" x2="108" y2="' + base + '" class="sc-base"/>' +
-        /* silueta humana, a la misma escala */
-        '<g class="sc-person" transform="translate(78,' + yPers + ') scale(' + (hPers / 100) + ')">' +
-          '<circle cx="11" cy="11" r="11"/>' +
-          '<path d="M11 24c-8 0-13 5-13 13v26h6l1 37h5l1-37h1l1 37h5l1-37h6V37c0-8-5-13-13-13z"/>' +
-        '</g>' +
-        /* cota de la altura elegida */
-        '<line x1="30" y1="' + yCerca + '" x2="30" y2="' + base + '" class="sc-line"/>' +
-        '<line x1="24" y1="' + yCerca + '" x2="36" y2="' + yCerca + '" class="sc-tick"/>' +
-        '<line x1="24" y1="' + base + '" x2="36" y2="' + base + '" class="sc-tick"/>' +
-        '<text x="40" y="' + (yCerca + (base - yCerca) / 2 + 5) + '" class="sc-label">' + esc(s.height) + '</text>' +
-      '</svg>';
-  }
 
   var esc = function (t) { return String(t).replace(/[&<>"]/g, function (c) {
     return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); };
@@ -680,7 +642,6 @@
     marco.style.background = esFoto ? FONDO_FOTO
       : (!esTinte ? FONDO_ORIGINAL
         : (src.indexOf('-white.jpg') !== -1 ? FONDO_BLANCO : FONDO_TINTE));
-    pintarEscala();
     if (img.getAttribute('src') !== src) {
       img.classList.add('is-swapping');
       var n = new Image();

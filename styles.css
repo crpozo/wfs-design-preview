@@ -1241,25 +1241,7 @@ p { font-family: var(--body); }
   .bld__frame.is-3d img { opacity: 0; }
   /* Sobre una foto la etiqueta se perdia: pastilla oscura para que se lea
      igual encima de un recorte blanco que de una foto de instalacion. */
-  /* La imagen ocupa su propia columna. La cota va AL LADO, no encima: como
-     velo semitransparente se comia el borde derecho de la cerca y parecia que
-     el dibujo se desvanecia. */
   .bld__media { flex: 1; min-width: 0; position: relative; display: grid; place-items: center; }
-  .bld__scale {
-    width: 108px; flex: none; display: none;
-    border-left: 1px solid rgba(0,16,17,.10);
-  }
-  .bld__scale.is-on { display: block; }
-  .bld__scale svg { width: 100%; height: 100%; }
-  .sc-base { stroke: rgba(38,49,103,.30); stroke-width: 1.5; }
-  .sc-line { stroke: var(--tangerine); stroke-width: 2; }
-  .sc-tick { stroke: var(--tangerine); stroke-width: 2; }
-  .sc-person { fill: rgba(38,49,103,.42); }
-  .sc-label {
-    font-family: var(--mono); font-size: 15px; font-weight: 700;
-    letter-spacing: .06em; fill: var(--ink);
-  }
-
   .bld__badge {
     position: absolute; top: 14px; left: 14px; z-index: 2;
     padding: 6px 12px; border-radius: 999px;
