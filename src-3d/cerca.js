@@ -40,12 +40,25 @@ function metalico(hex, rug, met) {
 }
 
 /**
+ * El bastidor del porton, cuando no es del mismo material que el panel.
+ *
+ * Muchos portones de la casa son panel de vinilo dentro de un marco de acero o
+ * aluminio de otro color: eso es lo que se ve en las fotos de la pagina. Con un
+ * solo material salia todo blanco y no se parecia a la foto que el cliente
+ * acaba de pulsar.
+ */
+function conMarco(m, marcoHex) {
+  m.marco = marcoHex ? metalico(marcoHex, 0.42, 0.4) : m.estructura;
+  return m;
+}
+
+/**
  * Los materiales de la cerca segun material y color elegidos.
  *
  * El aluminio de una cerca va con pintura en polvo, no pulido: darle
  * metalness alto lo convierte en cromo y deja de parecer lo que es.
  */
-export function materiales(mat, estilo, colorHex, ancho, altoMalla) {
+export function materiales(mat, estilo, colorHex, ancho, altoMalla, marcoHex) {
   var m = {};
   if (mat === 'chain-link') {
     var acabados = {
@@ -75,12 +88,12 @@ export function materiales(mat, estilo, colorHex, ancho, altoMalla) {
       });
       return cache[k];
     };
-    return m;
+    return conMarco(m, marcoHex);
   }
   if (mat === 'vinyl') {
     m.estructura = new MeshStandardMaterial({ color: new Color(colorHex || '#f2f2ee'), roughness: 0.72, metalness: 0 });
     m.tabla = m.estructura;
-    return m;
+    return conMarco(m, marcoHex);
   }
   if (mat === 'metal') {
     if (colorHex === '#7a5c3e') {   // woodgrain
@@ -90,7 +103,7 @@ export function materiales(mat, estilo, colorHex, ancho, altoMalla) {
       m.tabla = metalico(colorHex || '#1c1c1c', 0.52, 0.28);
       m.estructura = m.tabla;
     }
-    return m;
+    return conMarco(m, marcoHex);
   }
   if (mat === 'ecfence') {
     var ec = estilo === 'White' ? '#eceae4' : '#5a4433';
@@ -101,7 +114,7 @@ export function materiales(mat, estilo, colorHex, ancho, altoMalla) {
   /* aluminio: pintura en polvo */
   m.estructura = metalico(colorHex || '#1c1c1c', 0.55, 0.18);
   m.tabla = m.estructura;
-  return m;
+  return conMarco(m, marcoHex);
 }
 
 /* ── vanos por material ────────────────────────────────────────────────────
@@ -306,10 +319,11 @@ function hoja(e, m, mat, est, a, b, alto) {
   (VANOS[mat] || vanoAluminio)(e, m, est, mk, interior.u0, Math.max(0.5, interior.ancho), interior.alto);
 
   /* Bastidor. */
-  e.caja(m.estructura, 'marco', mk.p(ancho / 2, alto - tubo / 2, 0), [ancho, tubo, tubo * 1.1], mk.rotY);
-  e.caja(m.estructura, 'marco', mk.p(ancho / 2, 3 * PUL + tubo / 2, 0), [ancho, tubo, tubo * 1.1], mk.rotY);
-  e.caja(m.estructura, 'marco', mk.p(tubo / 2, alto / 2 + 1.5 * PUL, 0), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
-  e.caja(m.estructura, 'marco', mk.p(ancho - tubo / 2, alto / 2 + 1.5 * PUL, 0), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
+  var mm = m.marco || m.estructura;
+  e.caja(mm, 'marco', mk.p(ancho / 2, alto - tubo / 2, 0), [ancho, tubo, tubo * 1.1], mk.rotY);
+  e.caja(mm, 'marco', mk.p(ancho / 2, 3 * PUL + tubo / 2, 0), [ancho, tubo, tubo * 1.1], mk.rotY);
+  e.caja(mm, 'marco', mk.p(tubo / 2, alto / 2 + 1.5 * PUL, 0), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
+  e.caja(mm, 'marco', mk.p(ancho - tubo / 2, alto / 2 + 1.5 * PUL, 0), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
 }
 
 /* ── cerca completa ───────────────────────────────────────────────────────── */
@@ -319,13 +333,28 @@ function hoja(e, m, mat, est, a, b, alto) {
  * @param opts.estilo   perfil elegido
  * @param opts.alto     en pies
  * @param opts.color    hex del color elegido
+ * @param opts.marco    hex del bastidor, si es de otro material que el panel
  * @param opts.tramos   [{a:[x,z], b:[x,z]}]
  * @param opts.huecos   [{a:[x,z], b:[x,z], tipo:'single'|...}]
  */
 export function construir(opts) {
   var mat = opts.mat, est = opts.estilo, alto = opts.alto;
+  /* Donde van los postes del porton. Los tramos terminan justo ahi, y plantar
+     los dos en el mismo punto los dejaba peleandose por el mismo pixel: con el
+     marco de otro color salian a rayas de ajedrez. */
+  var postesPorton = [];
+  var hh = opts.huecos || (opts.hueco ? [opts.hueco] : []);
+  for (var q = 0; q < hh.length; q++) {
+    postesPorton.push(hh[q].a, hh[q].b);
+  }
+  function ocupado(x, z) {
+    for (var i = 0; i < postesPorton.length; i++) {
+      if (Math.abs(postesPorton[i][0] - x) < 0.35 && Math.abs(postesPorton[i][1] - z) < 0.35) { return true; }
+    }
+    return false;
+  }
   var vano = VANO[mat] || 6;
-  var m = materiales(mat, est, opts.color, vano, alto);
+  var m = materiales(mat, est, opts.color, vano, alto, opts.marco);
   var e = new Ensamblador();
   var fn = VANOS[mat] || vanoAluminio;
 
@@ -340,6 +369,7 @@ export function construir(opts) {
     /* Postes: uno por junta, y los dos extremos. */
     for (var k = 0; k <= n; k++) {
       var p = mk.p(k * paso, 0, 0);
+      if (ocupado(p[0], p[2])) { continue; }   // ese poste lo pone el porton
       poste(e, m, mat, p[0], p[2], alto);
     }
   }
@@ -374,12 +404,15 @@ function porton(e, m, mat, est, alto, h) {
   /* Postes de porton: mas gruesos, son los que aguantan el peso. */
   var pa = mk.p(0, 0, 0), pb = mk.p(L, 0, 0);
   var sec = mat === 'chain-link' ? 3 * PUL : mat === 'vinyl' ? 5 * PUL : 4 * PUL;
+  /* Los postes del porton van del color del bastidor: en las fotos donde el
+     marco es metalico, los postes lo son tambien. */
+  var mp = m.marco || m.estructura;
   if (mat === 'chain-link') {
-    e.tubo(m.estructura, 'postep', pa[0], (altoP + 4 * PUL) / 2, pa[2], sec, altoP + 4 * PUL);
-    e.tubo(m.estructura, 'postep', pb[0], (altoP + 4 * PUL) / 2, pb[2], sec, altoP + 4 * PUL);
+    e.tubo(mp, 'postep', pa[0], (altoP + 4 * PUL) / 2, pa[2], sec, altoP + 4 * PUL);
+    e.tubo(mp, 'postep', pb[0], (altoP + 4 * PUL) / 2, pb[2], sec, altoP + 4 * PUL);
   } else {
-    e.caja(m.estructura, 'postep', [pa[0], (altoP + 4 * PUL) / 2, pa[2]], [sec, altoP + 4 * PUL, sec], 0);
-    e.caja(m.estructura, 'postep', [pb[0], (altoP + 4 * PUL) / 2, pb[2]], [sec, altoP + 4 * PUL, sec], 0);
+    e.caja(mp, 'postep', [pa[0], (altoP + 4 * PUL) / 2, pa[2]], [sec, altoP + 4 * PUL, sec], 0);
+    e.caja(mp, 'postep', [pb[0], (altoP + 4 * PUL) / 2, pb[2]], [sec, altoP + 4 * PUL, sec], 0);
   }
 
   function girada(u0, u1, ang) {

@@ -159,6 +159,7 @@ export function montarVista(lienzo) {
       var alto = parseFloat(String(est.alto || '6').replace(/[^0-9.]/g, '')) || 6;
       var res = Cerca.construir({
         mat: est.mat, estilo: est.estilo, alto: alto, color: est.colorHex,
+        marco: est.marco,
         /* Los dos tramos van hacia fuera desde el hueco, y en la corredera el
            de la derecha se alarga para que la hoja aparcada tenga contra que
            apoyarse en vez de quedar suelta en el aire. */

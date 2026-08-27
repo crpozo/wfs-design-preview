@@ -1427,48 +1427,38 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
 
 /* ═══════════════════════════════════════════════════════════════════════════
    BANNER DEL CHAT (portada)
-   Franja entre la cabecera y el hero. Tinta sobre naranja, que es el par que
-   ya usa .btn-primary en todo el sitio.
+   Franja entre la cabecera y el hero, alineada al mismo container que el logo
+   y el titular: el texto arranca donde arranca todo lo demas de la pagina.
    ═══════════════════════════════════════════════════════════════════════════ */
 .wfs-chatbanner {
-  display: flex; align-items: center; justify-content: center;
-  gap: 12px; flex-wrap: wrap;
-  padding: 13px 22px; text-decoration: none;
-  background: var(--tangerine); color: var(--ink);
+  display: block; text-decoration: none;
+  background: var(--tangerine); color: var(--white);
   transition: background .18s ease;
 }
 .wfs-chatbanner:hover { background: #ff8347; }
-.wfs-chatbanner__txt {
-  font-size: 16px; font-weight: 700; line-height: 1.3; text-align: center;
-}
-.wfs-chatbanner__cta {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-family: var(--mono); font-size: 12px; font-weight: 700;
-  letter-spacing: .16em; text-transform: uppercase;
-  padding: 7px 14px; border-radius: 999px;
-  background: var(--ink); color: var(--white);
-}
-.wfs-chatbanner:hover .wfs-chatbanner__cta { background: #1b2450; }
-/* Punto "en vivo", el mismo gesto que el de la barra superior. */
-.wfs-chatbanner__dot {
-  width: 9px; height: 9px; border-radius: 50%; flex: none;
-  background: #0f8b3d; box-shadow: 0 0 0 0 rgba(15,139,61,.55);
-  animation: wfsChatPulso 2s ease-out infinite;
-}
-@keyframes wfsChatPulso {
-  70% { box-shadow: 0 0 0 8px rgba(15,139,61,0); }
-  100% { box-shadow: 0 0 0 0 rgba(15,139,61,0); }
-}
-/* Sin animacion para quien la ha desactivado en su sistema. */
-@media (prefers-reduced-motion: reduce) {
-  .wfs-chatbanner__dot { animation: none; }
-}
-@media (max-width: 720px) {
-  .wfs-chatbanner { padding: 11px 14px; gap: 10px; flex-wrap: nowrap; }
-  .wfs-chatbanner__txt { font-size: 14.5px; text-align: left; }
-  /* En movil se cae la etiqueta del boton y queda solo la flecha: con el texto
-     completo la franja se iba a 114px, un 14% de la pantalla, encima del hero.
-     La barra entera sigue siendo el area pulsable. */
-  .wfs-chatbanner__cta-txt { display: none; }
-  .wfs-chatbanner__cta { flex: none; padding: 8px; border-radius: 50%; }
-}
+  .wfs-chatbanner__in {
+    display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+    padding-top: 13px; padding-bottom: 13px;
+  }
+  .wfs-chatbanner__txt {
+    font-size: 16.5px; font-weight: 700; line-height: 1.3; color: var(--white);
+  }
+  .wfs-chatbanner__cta {
+    display: inline-flex; align-items: center; gap: 7px; flex: none;
+    font-family: var(--mono); font-size: 12px; font-weight: 700;
+    letter-spacing: .16em; text-transform: uppercase;
+    padding: 8px 15px; border-radius: 999px;
+    background: var(--ink); color: var(--white);
+    transition: background .18s ease;
+  }
+  .wfs-chatbanner:hover .wfs-chatbanner__cta { background: #1b2450; }
+
+  @media (max-width: 720px) {
+    .wfs-chatbanner__in { gap: 10px; padding-top: 11px; padding-bottom: 11px; }
+    .wfs-chatbanner__txt { font-size: 14.5px; }
+    /* En movil se cae la etiqueta del boton y queda solo la flecha: con el
+       texto completo la franja se iba a dos lineas y media encima del hero.
+       La barra entera sigue siendo el area pulsable. */
+    .wfs-chatbanner__cta-txt { display: none; }
+    .wfs-chatbanner__cta { padding: 8px; border-radius: 50%; }
+  }
