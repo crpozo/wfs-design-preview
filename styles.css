@@ -1233,35 +1233,43 @@ p { font-family: var(--body); }
   .bld__frame.is-foto img { object-fit: cover; padding: 0; }
   .bld__frame.is-foto.is-vertical img { object-fit: contain; padding: 14px; }
 
-  /* Referencia de altura sobre la foto: una cota naranja que mide el PRODUCTO
-     (con su medida en la etiqueta) y, al lado, una persona de 5'9" a la misma
-     escala. La cota mide lo que se compra; la silueta solo da la referencia.
-     El alto de las dos lo pone el configurador, que sabe la proporcion. */
+  /* Referencia de altura sobre la foto: cota vertical que mide el PRODUCTO,
+     con su medida en un chip naranja centrado en la linea como en un plano, y
+     al lado una persona de 5'9" a la misma escala. Va en la esquina derecha,
+     lejos del badge del material, y una linea de suelo une cota y silueta.
+     Los altos los pone el configurador, que es quien sabe la proporcion. */
   .bld__escala {
-    position: absolute; left: 6%; bottom: 0; z-index: 3;
-    display: none; align-items: flex-end; gap: 9px;
+    position: absolute; right: 5%; bottom: 0; z-index: 3;
+    display: none; align-items: flex-end; gap: 11px;
     pointer-events: none;
   }
   .bld__escala.is-on { display: flex; }
+  /* Linea de suelo bajo cota y persona. */
+  .bld__escala::after {
+    content: ''; position: absolute; left: -10px; right: -10px; bottom: -4px;
+    border-top: 2px solid rgba(38,49,103,.30); border-radius: 2px;
+  }
   .bld__escala svg { width: auto; display: block;
     filter: drop-shadow(0 1px 4px rgba(0,16,17,.35)); }
-  .sc-person { fill: rgba(38,49,103,.60); stroke: rgba(255,255,255,.85); stroke-width: 1.2; }
+  .sc-person { fill: rgba(38,49,103,.55); stroke: rgba(255,255,255,.9); stroke-width: 1.3; }
   .sc-cota {
     position: relative; width: 0; height: 100%;
     border-left: 2.5px solid var(--tangerine);
-    filter: drop-shadow(0 0 2px rgba(255,255,255,.9));
+    filter: drop-shadow(0 0 2px rgba(255,255,255,.85));
   }
   .sc-cota::before, .sc-cota::after {
-    content: ''; position: absolute; left: -7px; width: 12px;
+    content: ''; position: absolute; left: -8px; width: 14px;
     border-top: 2.5px solid var(--tangerine);
   }
   .sc-cota::before { top: 0; }
   .sc-cota::after { bottom: 0; }
+  /* El chip va CENTRADO en la linea, como la medida de un plano. */
   .sc-tag {
-    position: absolute; top: -9px; left: 12px;
-    font-family: var(--mono); font-size: 11.5px; font-weight: 700; letter-spacing: .06em;
-    color: var(--ink); background: rgba(255,255,255,.88); padding: 2px 8px;
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .05em;
+    color: var(--white); background: var(--tangerine); padding: 3px 9px;
     border-radius: 999px; white-space: nowrap;
+    box-shadow: 0 1px 6px -2px rgba(0,16,17,.5);
   }
 
   /* Sobre una foto la etiqueta se perdia: pastilla oscura para que se lea

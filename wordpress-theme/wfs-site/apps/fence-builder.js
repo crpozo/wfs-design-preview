@@ -598,14 +598,14 @@
     var fraccion = cs.objectFit === 'cover' ? 0.62 : 0.88;
     var productoPx = contentH * fraccion;
     var personaPx = productoPx * (PERSONA_FT / ft);
-    /* El tope descuenta la base y la etiqueta de 5'9": el marco recorta lo que
-       sobresale, y con 4 pies la cabeza salia cortada. */
+    /* El tope descuenta la base: el marco recorta lo que sobresale. */
     var base = Math.round((mh - contentH) / 2 + contentH * 0.02);
-    personaPx = Math.max(30, Math.min(mh - base - 26, personaPx));
+    personaPx = Math.max(30, Math.min(mh - base - 10, personaPx));
 
-    /* La etiqueta lleva la altura DEL PRODUCTO, sobre una cota que mide el
-       producto de la foto. La persona va al lado sin numero: es la referencia,
-       no lo que se esta midiendo. */
+    /* La cota vertical mide el PRODUCTO y lleva su medida en el chip, centrado
+       en la linea como en un plano; la persona va al lado sin numero, que es la
+       referencia y no lo que se mide. La linea de suelo las une para que se
+       lea que estan sobre la misma base. */
     caja.innerHTML =
       '<span class="sc-cota"><span class="sc-tag">' + esc(s.height) + '</span></span>' +
       '<svg viewBox="-4 -1 30 101" aria-hidden="true" style="height:' + Math.round(personaPx) + 'px">' +
