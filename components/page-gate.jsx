@@ -22,10 +22,11 @@ const GATE_DATA = {
   single: {
     slug: 'single',
       /* Que ofrece ESTE porton. El material no es un paso: en un porton
-         lo que se elige es que porton es, y cada opcion trae el material
-         que enseña su propia foto en la pagina. */
+         lo que se elige es que porton es, y cada opcion trae el material,
+         el perfil y el ANCHO de hueco que la hacen distinta de las demas.
+         Sin el ancho, 'Standard' y 'Custom Opening' dibujaban lo mismo. */
       matDefecto: 'chain-link',
-      opciones: [{ name: 'Standard Walk Gate', mat: 'chain-link' }, { name: 'Custom Opening Gate', mat: 'vinyl', estilo: 'Privacy' }, { name: 'Matching Material Gate', mat: 'ecfence' }], name: 'Single Swing', tag: 'Single swing gate materials & hardware', heroTitle: 'Single Swing Gates Built', heroAccent: 'for the Right Opening.', heroBody: 'Single swing gates for pedestrian access, pool enclosures, side yards, and residential or commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.', heroImg: 'assets/SINGLE_SWING_GATE.webp', quickFacts: [
+      opciones: [{ name: 'Standard Walk Gate', mat: 'chain-link', estilo: 'Galvanized', ancho: 4 }, { name: 'Custom Opening Gate', mat: 'vinyl', estilo: 'Privacy', ancho: 5 }, { name: 'Matching Material Gate', mat: 'ecfence', estilo: 'Bronze', ancho: 4 }], name: 'Single Swing', tag: 'Single swing gate materials & hardware', heroTitle: 'Single Swing Gates Built', heroAccent: 'for the Right Opening.', heroBody: 'Single swing gates for pedestrian access, pool enclosures, side yards, and residential or commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.', heroImg: 'assets/SINGLE_SWING_GATE.webp', quickFacts: [
       ['Best For', 'Walk gates, side yards, pool enclosures, pedestrian access'], ['Materials', GATE_MATERIALS], ['Hardware', GATE_HARDWARE], ['Lead Time', GATE_LEADTIME], ], gateTypes: [
       { name: 'Standard Walk Gate', tag: 'Pedestrian', notes: 'Common single gate sizes for pedestrian access.', img: 'assets/projects/gate-single-walk.webp' }, { name: 'Custom Opening Gate', tag: 'Made to size', notes: 'Built to match your exact opening size.', img: 'assets/projects/gate-single-custom-pvc.webp' }, { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in aluminum, vinyl, chain link, metal, and EC Fence styles.', img: 'assets/projects/gate-single-matching-ecfence.webp' }, ], specs: GATE_SPECS, applications: [
       ['Pedestrian Access', 'Single gates for walkways, side yards, and everyday access points.', 'Everyday walk-through'], ['Pool Enclosures', 'Gate options for pool areas and code-related requirements.', 'Meets pool barrier code'], ['Service Openings', 'Single or double gates for maintenance access, equipment, and utility areas.', 'Maintenance & utility'], ], projects: [
@@ -33,10 +34,11 @@ const GATE_DATA = {
       kicker: 'Single swing gate quote', title: 'Ready to Quote Your', accent: 'Gate?', body: 'Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.', primary: ['Request a Gate Quote', 'estimate.html#contact'], secondary: ['Call (239) 689-5496', 'tel:2396895496'], }, }, double: {
     slug: 'double',
       /* Que ofrece ESTE porton. El material no es un paso: en un porton
-         lo que se elige es que porton es, y cada opcion trae el material
-         que enseña su propia foto en la pagina. */
+         lo que se elige es que porton es, y cada opcion trae el material,
+         el perfil y el ANCHO de hueco que la hacen distinta de las demas.
+         Sin el ancho, 'Standard' y 'Custom Opening' dibujaban lo mismo. */
       matDefecto: 'vinyl',
-      opciones: [{ name: 'Standard Driveway Gate', mat: 'vinyl', estilo: 'Privacy' }, { name: 'Privacy Drive Gate', mat: 'vinyl', estilo: 'Privacy' }, { name: 'Custom Opening Gate', mat: 'vinyl', estilo: 'Privacy' }, { name: 'Matching Material Gate', mat: 'chain-link', estilo: 'Galvanized' }], name: 'Double Swing', tag: 'Double swing gate materials & hardware', heroTitle: 'Double Swing Gates Built', heroAccent: 'for Wider Openings.', heroBody: 'Double swing gates for driveways, equipment access, and wider residential or commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.', heroImg: 'assets/DOUBLE_GATE.webp', quickFacts: [
+      opciones: [{ name: 'Standard Driveway Gate', mat: 'vinyl', estilo: 'Privacy', ancho: 12 }, { name: 'Privacy Drive Gate', mat: 'metal', estilo: 'Modern', ancho: 12 }, { name: 'Custom Opening Gate', mat: 'vinyl', estilo: 'Privacy', ancho: 18 }, { name: 'Matching Material Gate', mat: 'chain-link', estilo: 'Galvanized', ancho: 12 }], name: 'Double Swing', tag: 'Double swing gate materials & hardware', heroTitle: 'Double Swing Gates Built', heroAccent: 'for Wider Openings.', heroBody: 'Double swing gates for driveways, equipment access, and wider residential or commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.', heroImg: 'assets/DOUBLE_GATE.webp', quickFacts: [
       ['Best For', 'Driveways, equipment access, service entrances, wide openings'], ['Materials', GATE_MATERIALS], ['Hardware', GATE_HARDWARE], ['Lead Time', GATE_LEADTIME], ], gateTypes: [
       { name: 'Standard Driveway Gate', tag: 'Vehicle access', notes: 'Common double gate sizes for driveway and vehicle access.', img: 'assets/DOUBLE_GATE.webp' }, { name: 'Privacy Drive Gate', tag: 'Solid panels', notes: 'Full privacy panels matched to vinyl or metal runs.', img: 'assets/projects/pvc-privacy-cantilever-gate-white.webp' }, { name: 'Custom Opening Gate', tag: 'Made to size', notes: 'Built to match your exact driveway opening.', img: 'assets/projects/pvc-gate-sand.jpg' }, { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in aluminum, vinyl, chain link, metal, and EC Fence styles.', img: 'assets/projects/cl-swing-gate-galv-4.jpg' }, ], specs: GATE_SPECS, applications: [
       ['Driveway Access', 'Double gates that open wide for vehicles and equipment.', 'Opens wide for vehicles'], ['Service Openings', 'Wide access for maintenance, utility, and delivery areas.', 'Maintenance & utility'], ['Estate Entries', 'Symmetrical double gates for a formal main entrance.', 'Formal main entrance'], ], projects: [
@@ -44,10 +46,11 @@ const GATE_DATA = {
       kicker: 'Double swing gate quote', title: 'Ready to Quote Your', accent: 'Gate?', body: 'Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.', primary: ['Request a Gate Quote', 'estimate.html#contact'], secondary: ['Call (239) 689-5496', 'tel:2396895496'], }, }, sliding: {
     slug: 'sliding',
       /* Que ofrece ESTE porton. El material no es un paso: en un porton
-         lo que se elige es que porton es, y cada opcion trae el material
-         que enseña su propia foto en la pagina. */
+         lo que se elige es que porton es, y cada opcion trae el material,
+         el perfil y el ANCHO de hueco que la hacen distinta de las demas.
+         Sin el ancho, 'Standard' y 'Custom Opening' dibujaban lo mismo. */
       matDefecto: 'chain-link',
-      opciones: [{ name: 'Track-Mounted Slide', mat: 'chain-link', estilo: 'Galvanized' }, { name: 'Privacy Slide Gate', mat: 'vinyl', estilo: 'Privacy' }, { name: 'Custom Opening Gate', mat: 'vinyl', estilo: 'Privacy' }, { name: 'Matching Material Gate', mat: 'chain-link', estilo: 'Black PVC-coated' }], name: 'Sliding Gates', tag: 'Sliding gate materials & hardware', heroTitle: 'Sliding Gates Built', heroAccent: 'for Tight Openings.', heroBody: 'Track-mounted sliding gates for tight or sloped driveways where a swing gate won’t fit. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.', heroImg: 'assets/SLIDING_GATE.webp', quickFacts: [
+      opciones: [{ name: 'Track-Mounted Slide', mat: 'chain-link', estilo: 'Galvanized', ancho: 14 }, { name: 'Privacy Slide Gate', mat: 'vinyl', estilo: 'Privacy', ancho: 14 }, { name: 'Custom Opening Gate', mat: 'vinyl', estilo: 'Privacy', ancho: 20 }, { name: 'Matching Material Gate', mat: 'chain-link', estilo: 'Black PVC-coated', ancho: 14 }], name: 'Sliding Gates', tag: 'Sliding gate materials & hardware', heroTitle: 'Sliding Gates Built', heroAccent: 'for Tight Openings.', heroBody: 'Track-mounted sliding gates for tight or sloped driveways where a swing gate won’t fit. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.', heroImg: 'assets/SLIDING_GATE.webp', quickFacts: [
       ['Best For', 'Tight driveways, sloped sites, limited swing clearance'], ['Materials', GATE_MATERIALS], ['Hardware', GATE_HARDWARE], ['Lead Time', GATE_LEADTIME], ], gateTypes: [
       { name: 'Track-Mounted Slide', tag: 'Space-saving', notes: 'Slides parallel to the fence on a ground track.', img: 'assets/SLIDING_GATE.webp' }, { name: 'Privacy Slide Gate', tag: 'Solid panels', notes: 'Full privacy panels for vinyl or metal runs.', img: 'assets/projects/pvc-privacy-cantilever-gate-white.webp' }, { name: 'Custom Opening Gate', tag: 'Made to size', notes: 'Built to match your exact opening and layout.', img: 'assets/projects/pvc-gate-sand.jpg' }, { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in chain link, vinyl, metal, and EC Fence styles.', img: 'assets/projects/cl-gate-black.jpg' }, ], specs: GATE_SPECS, applications: [
       ['Limited Swing Clearance', 'Slides parallel to the fence with no swing arc.', 'No swing arc needed'], ['Sloped Driveways', 'Track options for grade changes and uneven ground.', 'Handles grade changes'], ['Daily-Use Access', 'Smooth operation for openings used many times a day.', 'Smooth daily operation'], ], projects: [
@@ -55,8 +58,9 @@ const GATE_DATA = {
       kicker: 'Sliding gate quote', title: 'Ready to Quote Your', accent: 'Gate?', body: 'Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.', primary: ['Request a Gate Quote', 'estimate.html#contact'], secondary: ['Call (239) 689-5496', 'tel:2396895496'], }, }, cantilever: {
     slug: 'cantilever',
       /* Que ofrece ESTE porton. El material no es un paso: en un porton
-         lo que se elige es que porton es, y cada opcion trae el material
-         que enseña su propia foto en la pagina. */
+         lo que se elige es que porton es, y cada opcion trae el material,
+         el perfil y el ANCHO de hueco que la hacen distinta de las demas.
+         Sin el ancho, 'Standard' y 'Custom Opening' dibujaban lo mismo. */
       matDefecto: 'chain-link',
       opciones: [], name: 'Cantilever', tag: 'Cantilever gate materials & hardware', heroTitle: 'Cantilever Gates Built', heroAccent: 'for Any Surface.', heroBody: 'Cantilever gates are suspended in the air on internal rollers, the frame never touches the ground, which is their biggest strength. Designed to work over any surface, with openings up to 30 feet wide including the counterweight section. Send us your opening size and project details for an accurate quote.', heroImg: 'assets/CANTILEVER.webp', quickFacts: [
       ['Best For', 'Driveways and openings over any surface, industrial yards, daily-use access'], ['Max Width', "30' including the counterweight section"], ['Materials', GATE_MATERIALS], ['Hardware', 'Cantilever rollers, latches, and receiver posts, no hinges'], ], typesTitle: 'Cantilever', typesAccent: 'Specifications.', typesSub: 'Cantilever is the gate type, every cantilever gate is suspended in the air. These are the specifications that define your build.', gateTypes: [
@@ -68,8 +72,9 @@ const GATE_DATA = {
       kicker: 'Cantilever gate quote', title: 'Ready to Quote Your', accent: 'Gate?', body: 'Send us your opening size, gate height, material, color, swing type, hardware needs, and project location. Photos or drawings help us quote the gate more accurately.', primary: ['Request a Gate Quote', 'estimate.html#contact'], secondary: ['Call (239) 689-5496', 'tel:2396895496'], }, }, rolling: {
     slug: 'rolling',
       /* Que ofrece ESTE porton. El material no es un paso: en un porton
-         lo que se elige es que porton es, y cada opcion trae el material
-         que enseña su propia foto en la pagina. */
+         lo que se elige es que porton es, y cada opcion trae el material,
+         el perfil y el ANCHO de hueco que la hacen distinta de las demas.
+         Sin el ancho, 'Standard' y 'Custom Opening' dibujaban lo mismo. */
       matDefecto: 'chain-link',
       opciones: [], name: 'Rolling Gate', tag: 'Rolling gate materials & hardware', heroTitle: 'Rolling Gates Built', heroAccent: 'on Big Wheels.', heroBody: 'What defines a rolling gate is its big rubber wheels, they carry the gate across the opening and are designed for a variety of surfaces, including grass and uneven ground. Guide rollers mount on the posts. Send us your opening size and project details for an accurate quote.', heroImg: 'assets/ROLLING_GATE.webp', quickFacts: [
       ['Best For', 'Commercial perimeters, industrial yards, grass and uneven surfaces'], ['Max Width', "30' total width, like all specialty gates"], ['Materials', 'Chain link (recommended); other materials require a double frame'], ['Hardware', "Rolling gate kit, LOCK N' LATCH rolling gate latch (PS)"], ], typesTitle: 'Rolling Gate', typesAccent: 'Specifications.', typesSub: 'Rolling is the gate type, the big wheels are what define it. These are the specifications that shape your build.', gateTypes: [
@@ -184,7 +189,7 @@ const GateBuilder = ({ data }) => {
             var tarjeta = (d.gateTypes || []).filter(function (c) { return c.name === o.name; })[0];
             if (!tarjeta) { return null; }
             return { name: o.name, notes: tarjeta.notes, img: tarjeta.img,
-                     mat: o.mat, estilo: o.estilo };
+                     mat: o.mat, estilo: o.estilo, ancho: o.ancho };
           }).filter(Boolean)
         };
       });

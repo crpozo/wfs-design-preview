@@ -290,7 +290,7 @@
   var FIJO = { product: opts.product || null, mat: opts.material || null, gate: opts.gate || null };
 
   var s = { product: FIJO.product, gate: FIJO.gate || opts.gateInicial || null, mat: FIJO.mat,
-            opcion: null, style: null, height: null, color: null };
+            opcion: null, ancho: null, style: null, height: null, color: null };
 
   /* Que ofrece cada tipo de porton, segun lo que dice SU pagina: las tarjetas
      de obra y los materiales que se venden para ese porton. Un corredero no
@@ -492,7 +492,7 @@
     }
     return {
       mat: s.mat, estilo: s.style, alto: s.height, colorHex: col,
-      producto: s.product, gate: s.gate,
+      producto: s.product, gate: s.gate, ancho: s.ancho,
       etiqueta: mm.tag,
       titulo: mm.name + (s.product === 'gate' ? ' gate' : ' fence'),
       resumen: ficha().filter(function (f) { return f[1]; })
@@ -518,7 +518,7 @@
       col = c ? c.hex : null;
     }
     return { mat: s.mat, estilo: s.style, alto: s.height || mm.heights[0],
-             colorHex: col, gate: s.gate };
+             colorHex: col, gate: s.gate, ancho: s.ancho };
   }
 
   function medirVista() {
@@ -815,7 +815,7 @@
          tarjetas son otras y puede que el material elegido ya no se venda
          (un corredero no lleva aluminio). Se conserva lo que siga valiendo. */
       s.gate = v;
-      s.opcion = null;
+      s.opcion = null; s.ancho = null;
       s.mat = null; s.style = null; s.height = null; s.color = null; s.grade = null;
       /* Sin tarjetas (cantilever, rolling) no hay de donde sacar el material,
          asi que se pone el que esa pagina da por defecto. */
@@ -829,6 +829,7 @@
       var o = opciones().filter(function (x) { return x.name === v; })[0] || {};
       var cambiaMat = o.mat && o.mat !== s.mat;
       s.opcion = v;
+      s.ancho = o.ancho || null;
       if (cambiaMat) { s.mat = o.mat; s.height = null; s.color = null; }
       s.style = o.estilo || (MAT[s.mat] ? MAT[s.mat].styles[0].label : null);
     } else if (campo === 'mat' && s.mat !== v) {

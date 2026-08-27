@@ -152,7 +152,10 @@ export function montarVista(lienzo) {
         actual = null;
       }
       var tipo = est.gate || 'single';
-      var L = HUECO[tipo] || 6;
+      /* El ancho lo manda la opcion elegida: es lo que distingue un porton
+         estandar de uno "a la medida de tu abertura". Sin opcion, la medida
+         habitual de ese tipo. */
+      var L = est.ancho || HUECO[tipo] || 6;
       var alto = parseFloat(String(est.alto || '6').replace(/[^0-9.]/g, '')) || 6;
       var res = Cerca.construir({
         mat: est.mat, estilo: est.estilo, alto: alto, color: est.colorHex,

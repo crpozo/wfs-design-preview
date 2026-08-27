@@ -69,7 +69,12 @@ function traza(estado) {
      cualquier otro a la calzada. El que no se eligio se monta igual, con el
      mismo material y perfil, porque asi es como se instala de verdad. */
   var peatonal = { a: [-14.5, F], b: [-10.5, F], tipo: 'single' };
-  var coches   = { a: [3.5, F], b: [20.5, F],
+  /* El hueco de la calzada se abre al ancho que pida la opcion elegida,
+     centrado en la entrada: un porton "a la medida" tiene que verse mas ancho
+     que el estandar, si no la eleccion no se nota. */
+  var W = (elegido && elegido !== 'single' && estado.ancho) ? estado.ancho : 17;
+  var cx = 12;
+  var coches   = { a: [cx - W / 2, F], b: [cx + W / 2, F],
                    tipo: (elegido && elegido !== 'single') ? elegido : 'double' };
 
   var tramos = [
