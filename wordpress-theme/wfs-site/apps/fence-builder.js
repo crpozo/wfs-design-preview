@@ -603,20 +603,21 @@
     var base = Math.round((mh - contentH) / 2 + contentH * 0.02);
     personaPx = Math.max(30, Math.min(mh - base - 26, personaPx));
 
-    if (!caja.firstChild) {
-      caja.innerHTML =
-        '<span class="sc-tag">5\'9"</span>' +
-        '<svg viewBox="-4 -1 30 101" aria-hidden="true">' +
-          '<g class="sc-person">' +
-            '<circle cx="11" cy="10" r="10"/>' +
-            '<path d="M11 23c-8 0-13 5-13 13v26h6l1 38h5l1-38h1l1 38h5l1-38h6V36c0-8-5-13-13-13z"/>' +
-          '</g>' +
-        '</svg>';
-    }
-    caja.querySelector('svg').style.height = Math.round(personaPx) + 'px';
-    /* Los pies, a la base del producto: el contenido va centrado en el marco. */
+    /* La etiqueta lleva la altura DEL PRODUCTO, sobre una cota que mide el
+       producto de la foto. La persona va al lado sin numero: es la referencia,
+       no lo que se esta midiendo. */
+    caja.innerHTML =
+      '<span class="sc-cota"><span class="sc-tag">' + esc(s.height) + '</span></span>' +
+      '<svg viewBox="-4 -1 30 101" aria-hidden="true" style="height:' + Math.round(personaPx) + 'px">' +
+        '<g class="sc-person">' +
+          '<circle cx="11" cy="10" r="10"/>' +
+          '<path d="M11 23c-8 0-13 5-13 13v26h6l1 38h5l1-38h1l1 38h5l1-38h6V36c0-8-5-13-13-13z"/>' +
+        '</g>' +
+      '</svg>';
+    /* La cota mide el producto; la silueta, a su propia escala al lado. */
+    caja.style.height = Math.round(productoPx) + 'px';
     caja.style.bottom = base + 'px';
-    caja.setAttribute('aria-label', '5 foot 9 person next to a ' + s.height + ' product');
+    caja.setAttribute('aria-label', s.height + ' product next to a 5 foot 9 person');
     caja.classList.add('is-on');
   }
 

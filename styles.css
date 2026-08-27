@@ -1233,22 +1233,34 @@ p { font-family: var(--body); }
   .bld__frame.is-foto img { object-fit: cover; padding: 0; }
   .bld__frame.is-foto.is-vertical img { object-fit: contain; padding: 14px; }
 
-  /* Referencia de altura: una persona de 5'9" plantada sobre la foto y
-     escalada contra el producto, para leer de un vistazo cuanto va a medir.
-     Trazo con borde claro, que debajo puede haber panel blanco, cesped o
-     cielo. El alto lo pone el configurador, que es quien sabe la proporcion. */
+  /* Referencia de altura sobre la foto: una cota naranja que mide el PRODUCTO
+     (con su medida en la etiqueta) y, al lado, una persona de 5'9" a la misma
+     escala. La cota mide lo que se compra; la silueta solo da la referencia.
+     El alto de las dos lo pone el configurador, que sabe la proporcion. */
   .bld__escala {
-    position: absolute; left: 7%; bottom: 0; z-index: 3;
-    display: none; flex-direction: column; align-items: center; gap: 4px;
+    position: absolute; left: 6%; bottom: 0; z-index: 3;
+    display: none; align-items: flex-end; gap: 9px;
     pointer-events: none;
   }
   .bld__escala.is-on { display: flex; }
   .bld__escala svg { width: auto; display: block;
     filter: drop-shadow(0 1px 4px rgba(0,16,17,.35)); }
   .sc-person { fill: rgba(38,49,103,.60); stroke: rgba(255,255,255,.85); stroke-width: 1.2; }
+  .sc-cota {
+    position: relative; width: 0; height: 100%;
+    border-left: 2.5px solid var(--tangerine);
+    filter: drop-shadow(0 0 2px rgba(255,255,255,.9));
+  }
+  .sc-cota::before, .sc-cota::after {
+    content: ''; position: absolute; left: -7px; width: 12px;
+    border-top: 2.5px solid var(--tangerine);
+  }
+  .sc-cota::before { top: 0; }
+  .sc-cota::after { bottom: 0; }
   .sc-tag {
-    font-family: var(--mono); font-size: 10.5px; font-weight: 700; letter-spacing: .06em;
-    color: var(--ink); background: rgba(255,255,255,.85); padding: 2px 7px;
+    position: absolute; top: -9px; left: 12px;
+    font-family: var(--mono); font-size: 11.5px; font-weight: 700; letter-spacing: .06em;
+    color: var(--ink); background: rgba(255,255,255,.88); padding: 2px 8px;
     border-radius: 999px; white-space: nowrap;
   }
 
