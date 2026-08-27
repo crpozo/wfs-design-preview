@@ -315,6 +315,15 @@
     return ORDER.filter(function (id) { return lista.indexOf(id) !== -1; });
   }
 
+  /* Un porton sin tarjetas arranca ya con su material por defecto, para que
+     Height y Color tengan de donde salir sin pedirle nada al visitante. Va
+     AQUI y no junto a la declaracion de s: alli GATES_CFG todavia no tiene
+     valor y cfg() reventaba. */
+  if (s.product === 'gate' && s.gate && !s.mat && !opciones().length) {
+    s.mat = cfg().matDefecto || 'chain-link';
+    s.style = MAT[s.mat] ? MAT[s.mat].styles[0].label : null;
+  }
+
   var $ = function (clase) { return root.querySelector('.bld__' + clase); };
 
   function pintarEscala() {
@@ -381,9 +390,20 @@
     /* Solo si esa pagina trae tarjetas de obra. Cantilever y rolling no
        tienen: sus tarjetas son componentes, no variantes. */
     if (s.product === 'gate' && opciones().length) { out.push({ key: 'opcion', title: 'Gate option' }); }
-    if (!FIJO.mat) { out.push({ key: 'mat', title: 'Material' }); }
+    /* El material NO es un paso en portones: lo que se elige ahi es que porton
+       es, y cada opcion trae el suyo. En una cerca si lo es, porque la cerca
+       ES el material. */
+    if (s.product !== 'gate' && !FIJO.mat) { out.push({ key: 'mat', title: 'Material' }); }
     if (!s.mat) { return out; }
-    out.push({ key: 'style', title: m().styleLabel });
+    /* El perfil no se pregunta en un porton: es del material, y en un porton el
+       material viene con la tarjeta.
+       La excepcion es chain link y EC Fence, donde ese paso NO es el perfil
+       sino el ACABADO (galvanizado, negro, verde). Quitarlo dejaba un porton
+       cantilever que solo podia ser galvanizado, porque ademas esos materiales
+       tienen la lista de colores vacia y tampoco tenian paso de color. */
+    if (s.product !== 'gate' || !(m().colors && m().colors.length)) {
+      out.push({ key: 'style', title: m().styleLabel });
+    }
     out.push({ key: 'height', title: 'Height' });
     if (m().colors && m().colors.length) { out.push({ key: 'color', title: 'Color' }); }
     return out;
@@ -458,9 +478,11 @@
     if (s.product) { filas.push(['Building', value('product')]); }
     if (s.product === 'gate') { filas.push(['Gate type', value('gate')]); }
     if (s.product === 'gate' && opciones().length) { filas.push(['Gate option', value('opcion')]); }
-    filas.push(['Material', value('mat')]);
+    if (s.product !== 'gate') { filas.push(['Material', value('mat')]); }
     if (m()) {
-      filas.push([m().styleLabel, s.style]);
+      if (s.product !== 'gate' || !(m().colors && m().colors.length)) {
+        filas.push([m().styleLabel, s.style]);
+      }
       filas.push(['Height', s.height]);
       if (m().colors.length) { filas.push(['Color', s.color]); }
     }
@@ -481,8 +503,10 @@
     if (s.product === 'gate' && !s.gate) { out.push('a gate type'); return out; }
     if (s.product === 'gate' && opciones().length && !s.opcion) { out.push('a gate option'); }
     var mm = m();
-    if (!mm) { out.push('a material'); return out; }
-    if (!s.style) { out.push('a ' + String(mm.styleLabel).toLowerCase()); }
+    if (!mm) { out.push(s.product === 'gate' ? 'a gate option' : 'a material'); return out; }
+    if (!s.style && (s.product !== 'gate' || !(mm.colors && mm.colors.length))) {
+      out.push('a ' + String(mm.styleLabel).toLowerCase());
+    }
     if (!s.height) { out.push('a height'); }
     /* En chain link y EC Fence el acabado ES el paso de estilo, y colors va
        vacio: ahi no hay nada mas que pedir. */
@@ -831,9 +855,21 @@
          (un corredero no lleva aluminio). Se conserva lo que siga valiendo. */
       s.gate = v;
       s.opcion = null;
-      if (s.mat && matsPermitidos().indexOf(s.mat) === -1) {
-        s.mat = null; s.style = null; s.height = null; s.color = null; s.grade = null;
+      s.mat = null; s.style = null; s.height = null; s.color = null; s.grade = null;
+      /* Sin tarjetas (cantilever, rolling) no hay de donde sacar el material,
+         asi que se pone el que esa pagina da por defecto. */
+      if (!opciones().length) {
+        s.mat = cfg().matDefecto || 'chain-link';
+        s.style = MAT[s.mat] ? MAT[s.mat].styles[0].label : null;
       }
+    } else if (campo === 'opcion' && s.opcion !== v) {
+      /* La opcion trae su material y su perfil: es lo que enseña su foto en la
+         pagina. Si cambian, lo de abajo deja de valer. */
+      var o = opciones().filter(function (x) { return x.name === v; })[0] || {};
+      var cambiaMat = o.mat && o.mat !== s.mat;
+      s.opcion = v;
+      if (cambiaMat) { s.mat = o.mat; s.height = null; s.color = null; }
+      s.style = o.estilo || (MAT[s.mat] ? MAT[s.mat].styles[0].label : null);
     } else if (campo === 'mat' && s.mat !== v) {
       s.mat = v; s.style = null; s.height = null; s.color = null; s.grade = null;
     } else { s[campo] = v; }
