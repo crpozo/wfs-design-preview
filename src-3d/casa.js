@@ -221,8 +221,11 @@ export function construir() {
   for (var k = 0; k < arbustos.length; k++) {
     g.add(arbusto(arbustos[k][0], arbustos[k][1], arbustos[k][2]));
   }
+  /* Ninguna palmera pisa la piscina ni su terraza: el vaso va en x -44..-30 y
+     z -40..-16, y la terraza en x -47..-27, z -45..-11. Las dos que caian ahi
+     dentro se reparten por el jardin. */
   var palmas = [[-34, 12, 17], [-41, 2, 13], [41, 20, 15], [40, -6, 19],
-                [-42, -44, 16], [26, -44, 18], [-32, 31, 12], [-40, -18, 14]];
+                [-44, -48, 16], [26, -44, 18], [-32, 31, 12], [-31, 19, 14]];
   for (var q = 0; q < palmas.length; q++) {
     g.add(palmera(palmas[q][0], palmas[q][1], palmas[q][2]));
   }

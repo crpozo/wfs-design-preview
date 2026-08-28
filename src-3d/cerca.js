@@ -82,9 +82,15 @@ export function materiales(mat, estilo, colorHex, ancho, altoMalla, marcoHex) {
       var tex = T.malla(a.calibre).clone();
       tex.needsUpdate = true;
       tex.repeat.set(Math.max(1, anchoVano / (8 * PUL)), Math.max(1, altoVano / (8 * PUL)));
+      /* alphaTest bajo + mezcla: con el umbral alto de antes, al alejarse los
+         mipmaps promedian el alambre (~15% de cobertura) por debajo del corte
+         y la malla desaparecia entera: la cerca de chain link no se veia en la
+         vista de la casa. Asi, de cerca el rombo sale nitido y de lejos queda
+         el velo semitransparente que es exactamente como se ve una malla real
+         a esa distancia. */
       cache[k] = new MeshStandardMaterial({
         color: new Color(a.hilo), roughness: a.rug, metalness: a.met,
-        alphaMap: tex, transparent: true, alphaTest: 0.42, side: DoubleSide
+        alphaMap: tex, transparent: true, alphaTest: 0.06, side: DoubleSide
       });
       return cache[k];
     };
@@ -129,13 +135,21 @@ function vanoAluminio(e, m, est, mk, u0, ancho, alto) {
   var pitch = est.indexOf('3" Spacing') !== -1 ? 3.75 * PUL : 4.65 * PUL;
   if (est === 'Pool Code') { pitch = 4.65 * PUL; }
 
-  var rails = [];
-  var yBajo = 3 * PUL;
-  if (est === '3-Rail Rake Bottom') { rails = [yTop, alto * 0.42, yBajo + 3 * PUL]; }
-  else if (est === '3-Rail Puppy Picket') { rails = [yTop, alto * 0.5, yBajo + 2 * PUL]; }
-  else if (est === 'Pool Code') { rails = [yTop, yTop - 3.5 * PUL]; }   // los dos arriba: no escalable
-  else if (est === '4-Rail Custom') { rails = [yTop, alto * 0.66, alto * 0.36, yBajo + 2 * PUL]; }
-  else { rails = [yTop, yBajo + 2 * PUL]; }
+  /* Donde va cada riel, MEDIDO en la foto de su perfil (fraccion de la altura,
+     0 = base). Antes iban a ojo y el resultado no era la cerca elegida: el
+     intermedio del 3-Rail estaba a 0,42 cuando la foto lo tiene a 0,81, Pool
+     Code se quedaba sin riel inferior y Spear Top sin su doble riel de arriba. */
+  var RIELES = {
+    '2-Rail Smooth Bottom':      [0.96, 0.05],
+    '2-Rail Smooth, 3" Spacing': [0.96, 0.05],
+    '3-Rail Rake Bottom':        [0.95, 0.81, 0.08],
+    '3-Rail Puppy Picket':       [0.92, 0.36, 0.07],
+    'Pool Code':                 [0.97, 0.88, 0.06],
+    'Spear Top':                 [0.86, 0.77, 0.10],
+    '4-Rail Custom':             [0.86, 0.77, 0.16, 0.07]
+  };
+  var rails = (RIELES[est] || [0.96, 0.05]).map(function (f) { return f * alto; });
+  yTop = rails[0];
 
   for (var i = 0; i < rails.length; i++) {
     var c = mk.p(u0 + ancho / 2, rails[i], 0);
@@ -148,7 +162,9 @@ function vanoAluminio(e, m, est, mk, u0, ancho, alto) {
   var arriba = yTop + rail / 2;
   if (est === '3-Rail Rake Bottom') { abajo -= 3 * PUL; }
   if (est === 'Pool Code') { abajo = 2 * PUL; }
-  if (est === 'Spear Top') { arriba = yTop + 5 * PUL; }
+  /* En spear top los rieles quedan mas abajo porque encima van las puntas:
+     el picket sigue hasta casi la cima y la punta remata por encima. */
+  if (est === 'Spear Top') { arriba = alto - 1 * PUL; }
 
   var n = Math.max(2, Math.round((ancho - pk) / pitch));
   var paso = (ancho - pk) / n;
