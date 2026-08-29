@@ -89,20 +89,29 @@ function cubierta(x0, x1, z0, z1, yBase, altura, vuelo, mat) {
 /** Palmera: tronco conico y dos cuadros cruzados con la fronda recortada. */
 function palmera(x, z, altura) {
   var g = new Group();
+  /* Leve inclinacion, distinta por palmera (sale de su posicion, no de un
+     random, para que el resultado sea estable entre renders): rectas todas,
+     parecian postes de luz. */
+  var lean = Math.sin(x * 12.9898 + z * 78.233) * 0.06;
   var tronco = new Mesh(
     new CylinderGeometry(0.3, 0.52, altura, 8),
     new MeshStandardMaterial({ color: new Color('#8a7355'), roughness: 0.9 })
   );
   tronco.position.set(x, altura / 2, z);
+  tronco.rotation.z = lean;
   tronco.castShadow = true;
   g.add(tronco);
   var hoja = new MeshStandardMaterial({
     map: T.fronda(), transparent: true, alphaTest: 0.42, side: DoubleSide, roughness: 0.85
   });
-  for (var i = 0; i < 2; i++) {
+  /* Tres cuadros a 60 grados en vez de dos a 90: la copa deja de "apagarse"
+     cuando la camara queda alineada con uno de los planos. */
+  /* La copa sigue a la punta del tronco inclinado. */
+  var cx = x - Math.sin(lean) * altura * 0.5;
+  for (var i = 0; i < 3; i++) {
     var q = new Mesh(new PlaneGeometry(altura * 0.95, altura * 0.95), hoja);
-    q.position.set(x, altura + altura * 0.16, z);
-    q.rotation.y = i * Math.PI / 2;
+    q.position.set(cx, altura + altura * 0.16, z);
+    q.rotation.y = i * Math.PI / 3 + lean * 4;
     q.castShadow = true;
     g.add(q);
   }
@@ -115,10 +124,10 @@ function arbusto(x, z, r) {
   var mat = new MeshStandardMaterial({
     map: T.follaje(), transparent: true, alphaTest: 0.4, side: DoubleSide, roughness: 0.9
   });
-  for (var i = 0; i < 2; i++) {
+  for (var i = 0; i < 3; i++) {
     var q = new Mesh(new PlaneGeometry(r * 2, r * 2), mat);
     q.position.set(x, r * 0.85, z);
-    q.rotation.y = i * Math.PI / 2 + 0.4;
+    q.rotation.y = i * Math.PI / 3 + 0.4;
     q.castShadow = true;
     g.add(q);
   }
@@ -232,9 +241,10 @@ export function construir() {
 
   /* Una persona junto a la cerca del frente. Es la referencia que hace legible
      la altura: entre 5 y 6 pies hay doce pulgadas que sin nada al lado no se
-     ven. Va pegada a la valla y de cara a la calle, que es desde donde mira la
-     camara por defecto. */
-  g.add(Persona.crear(-6, 23.2, Math.PI * 0.86));
+     ven. Va FUERA de la cerca, en la acera junto al porton peatonal: dentro
+     del jardin quedaba en sombra contra la valla y costaba encontrarla. Y en
+     el naranja de la marca, que no se confunde con nada de la escena. */
+  g.add(Persona.crear(-8.6, 29.2, Math.PI * 0.94, '#ff7133'));
 
   /* Buzon: pequeño, pero es una referencia de altura que todo el mundo tiene
      calibrada, y ayuda a leer si la cerca es de 4 o de 6 pies. */

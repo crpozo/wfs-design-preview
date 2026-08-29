@@ -57,11 +57,14 @@ function ruido(ctx, n, celda, alfa, tinte) {
 /** Cesped: ruido verde con briznas cortas encima. */
 export function cesped() {
   if (cache.cesped) { return cache.cesped; }
-  var n = 256, c = lienzo(n), g = c.getContext('2d');
-  ruido(g, n, 11, 0.15, [96, 132, 66]);
-  for (var i = 0; i < 2600; i++) {
+  /* 512 y no 256: son texturas de canvas, asi que la resolucion extra cuesta
+     unos milisegundos al generar y nada de descarga. A 256 el cesped se veia
+     como manchas al acercarse. */
+  var n = 512, c = lienzo(n), g = c.getContext('2d');
+  ruido(g, n, 15, 0.13, [96, 132, 66]);
+  for (var i = 0; i < 9000; i++) {
     var x = Math.random() * n, y = Math.random() * n;
-    var l = 2 + Math.random() * 4, a = Math.random() * Math.PI;
+    var l = 3 + Math.random() * 6, a = Math.random() * Math.PI;
     g.strokeStyle = 'rgba(' + (78 + Math.random() * 60 | 0) + ',' +
       (108 + Math.random() * 62 | 0) + ',' + (52 + Math.random() * 34 | 0) + ',0.5)';
     g.lineWidth = 1;
@@ -78,10 +81,10 @@ export function cesped() {
 export function estuco(hex) {
   var k = 'estuco' + hex;
   if (cache[k]) { return cache[k]; }
-  var n = 256, c = lienzo(n), g = c.getContext('2d');
+  var n = 384, c = lienzo(n), g = c.getContext('2d');
   var r = parseInt(hex.slice(1, 3), 16), v = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
-  ruido(g, n, 7, 0.13, [r, v, b]);
-  for (var i = 0; i < 5200; i++) {
+  ruido(g, n, 9, 0.13, [r, v, b]);
+  for (var i = 0; i < 11000; i++) {
     g.fillStyle = 'rgba(255,255,255,' + (Math.random() * 0.07) + ')';
     g.beginPath();
     g.arc(Math.random() * n, Math.random() * n, Math.random() * 1.6, 0, 6.284);
@@ -94,19 +97,28 @@ export function estuco(hex) {
 /** Teja de barril: la cubierta habitual del suroeste de Florida. */
 export function teja() {
   if (cache.teja) { return cache.teja; }
-  var n = 256, c = lienzo(n), g = c.getContext('2d');
+  var n = 512, c = lienzo(n), g = c.getContext('2d');
   g.fillStyle = '#a8613f';
   g.fillRect(0, 0, n, n);
-  var filas = 6, alto = n / filas;
+  var filas = 8, alto = n / filas;
   for (var f = 0; f < filas; f++) {
     var y = f * alto;
     var desfase = (f % 2) * (n / 12);
     for (var x = -n / 12; x < n; x += n / 6) {
+      /* Cada teja con su tono, deterministico: todas identicas se leian como
+         un estampado; la teja real varia pieza a pieza. */
+      var j = (Math.sin((x + desfase) * 0.7 + f * 13.7) * 0.5 + 0.5) * 26 - 13;
+      var aj = function (hx) {
+        var r = Math.max(0, Math.min(255, parseInt(hx.slice(1, 3), 16) + j));
+        var v = Math.max(0, Math.min(255, parseInt(hx.slice(3, 5), 16) + j * 0.6));
+        var b = Math.max(0, Math.min(255, parseInt(hx.slice(5, 7), 16) + j * 0.4));
+        return 'rgb(' + (r | 0) + ',' + (v | 0) + ',' + (b | 0) + ')';
+      };
       var grd = g.createLinearGradient(x + desfase, 0, x + desfase + n / 6, 0);
-      grd.addColorStop(0, '#7d4229');
-      grd.addColorStop(0.35, '#c2794f');
-      grd.addColorStop(0.7, '#a8613f');
-      grd.addColorStop(1, '#6f3a24');
+      grd.addColorStop(0, aj('#7d4229'));
+      grd.addColorStop(0.35, aj('#c2794f'));
+      grd.addColorStop(0.7, aj('#a8613f'));
+      grd.addColorStop(1, aj('#6f3a24'));
       g.fillStyle = grd;
       g.beginPath();
       g.moveTo(x + desfase, y + alto);
@@ -123,9 +135,9 @@ export function teja() {
 /** Hormigon para calzada, acera y terraza. */
 export function hormigon() {
   if (cache.hormigon) { return cache.hormigon; }
-  var n = 256, c = lienzo(n), g = c.getContext('2d');
-  ruido(g, n, 12, 0.1, [176, 172, 164]);
-  for (var i = 0; i < 1400; i++) {
+  var n = 384, c = lienzo(n), g = c.getContext('2d');
+  ruido(g, n, 16, 0.1, [176, 172, 164]);
+  for (var i = 0; i < 3200; i++) {
     g.fillStyle = 'rgba(0,0,0,' + (Math.random() * 0.07) + ')';
     g.fillRect(Math.random() * n, Math.random() * n, 1, 1);
   }
