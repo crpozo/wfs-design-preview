@@ -310,7 +310,7 @@
      Si el canvas esta "tainted" porque la imagen viene de otro dominio (los
      assets en produccion), se cae a una constante razonable. */
   var MARGEN_CACHE = {};
-  function margenInferior(img) {
+  function medirMargenes(img) {
     var src = img.currentSrc || img.src;
     if (src in MARGEN_CACHE) { return MARGEN_CACHE[src]; }
     var v = null;
@@ -323,15 +323,17 @@
         var g = c.getContext('2d', { willReadFrequently: true });
         g.drawImage(img, 0, 0, w, h);
         var d = g.getImageData(0, 0, w, h).data;
-        busca: for (var y = h - 1; y >= 0; y--) {
+        var oscuro = function (y) {
           for (var x = 0; x < w; x++) {
             var i = (y * w + x) * 4;
-            if (d[i] < 200 || d[i + 1] < 200 || d[i + 2] < 200) {
-              v = (h - 1 - y) / h;
-              break busca;
-            }
+            if (d[i] < 200 || d[i + 1] < 200 || d[i + 2] < 200) { return true; }
           }
-        }
+          return false;
+        };
+        var inf = null, sup = null;
+        for (var y = h - 1; y >= 0; y--) { if (oscuro(y)) { inf = (h - 1 - y) / h; break; } }
+        for (var y2 = 0; y2 < h; y2++) { if (oscuro(y2)) { sup = y2 / h; break; } }
+        if (inf !== null && sup !== null && inf + sup < 0.9) { v = { inf: inf, sup: sup }; }
       }
     } catch (e) { v = null; }
     MARGEN_CACHE[src] = v;
@@ -607,6 +609,8 @@
     var ft = parseFloat(s.height);
     if (!s.height || !isFinite(ft) || ft <= 0) {
       caja.classList.remove('is-on');
+      var md = $('img') && $('img').parentNode;
+      if (md) { md.style.transform = ''; }
       return;
     }
     var img = $('img');
@@ -626,25 +630,39 @@
       contentH = Math.min(innerH, img.naturalHeight * k);
     }
 
-    /* La persona va FIJA y es la cota la que crece. Antes se escalaba la
-       silueta contra la foto y el efecto era el contrario al buscado: parecia
-       que el usuario crecia y encogia, cuando lo unico que un visitante sabe
-       constante es su propio cuerpo. Ahora la silueta no se mueve y la linea
-       naranja marca hasta donde le llega la altura elegida: al pecho con 4
-       pies, por encima de la cabeza con 8.
-       El tamaño de la persona se elige para que la cota MAS ALTA del material
-       quepa en el marco, asi la proporcion nunca se recorta. */
-    var margen = margenInferior(img);
-    if (margen === null) { margen = cs.objectFit === 'cover' ? 0.02 : 0.10; }
-    var base = Math.round((mh - contentH) / 2 + contentH * margen);
+    /* Tres piezas que tienen que contar la misma historia:
+         - la PERSONA va fija: es lo unico que el visitante sabe constante;
+         - la COTA naranja mide la altura elegida a la escala de la persona;
+         - y la FOTO se escala para que el producto mida lo que dice la cota.
+       Sin lo tercero, la linea decia "4 pies" mientras la valla de la foto
+       seguia enorme al lado: la cota y la imagen se contradecian, y la gracia
+       es precisamente ver que tan grande o pequeña queda la cerca. Escalar la
+       foto entera no deforma el producto: solo lo acerca o lo aleja. */
+    var margenes = medirMargenes(img);
+    if (!margenes) {
+      margenes = cs.objectFit === 'cover'
+        ? { inf: 0.02, sup: 0.02 }
+        : { inf: 0.10, sup: 0.06 };
+    }
+    var base = Math.round((mh - contentH) / 2 + contentH * margenes.inf);
     var usable = mh - base - 10;
     var maxFt = 8;
     if (m() && m().heights && m().heights.length) {
       maxFt = Math.max.apply(null, m().heights.map(function (x) { return parseFloat(x) || 0; })) || 8;
     }
-    var personaPx = Math.min(contentH * 0.55, usable * (PERSONA_FT / maxFt) * 0.98);
+    /* La persona sale del alto del MARCO, no de la imagen: si dependiera de la
+       imagen, cambiaria de tamaño al cambiar de perfil. */
+    var personaPx = Math.min(mh * 0.42, usable * (PERSONA_FT / maxFt) * 0.98);
     personaPx = Math.max(40, personaPx);
     var cotaPx = personaPx * (ft / PERSONA_FT);
+
+    /* Escala de la foto: el producto dibujado pasa a medir cotaPx. El pivote
+       es su base, que asi no se mueve del suelo. */
+    var productoPx = contentH * Math.max(0.15, 1 - margenes.inf - margenes.sup);
+    var k = Math.max(0.2, Math.min(1.12, cotaPx / productoPx));
+    var media = img.parentNode;
+    media.style.transformOrigin = '50% ' + (mh - base) + 'px';
+    media.style.transform = 'scale(' + k.toFixed(4) + ')';
 
     /* La cota vertical mide el PRODUCTO y lleva su medida en el chip, centrado
        en la linea como en un plano; la persona va al lado sin numero, que es la

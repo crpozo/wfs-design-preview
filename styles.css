@@ -1274,7 +1274,10 @@ p { font-family: var(--body); }
 
   /* Sobre una foto la etiqueta se perdia: pastilla oscura para que se lea
      igual encima de un recorte blanco que de una foto de instalacion. */
-  .bld__media { flex: 1; min-width: 0; position: relative; display: grid; place-items: center; }
+  .bld__media { flex: 1; min-width: 0; position: relative; display: grid; place-items: center;
+    /* La foto crece o encoge al elegir altura; la transicion hace visible el
+       cambio de tamaño, que es justo lo que se quiere enseñar. */
+    transition: transform .4s cubic-bezier(.22,.8,.3,1); will-change: transform; }
   .bld__badge {
     position: absolute; top: 14px; left: 14px; z-index: 2;
     padding: 6px 12px; border-radius: 999px;
