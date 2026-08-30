@@ -333,7 +333,32 @@
         var inf = null, sup = null;
         for (var y = h - 1; y >= 0; y--) { if (oscuro(y)) { inf = (h - 1 - y) / h; break; } }
         for (var y2 = 0; y2 < h; y2++) { if (oscuro(y2)) { sup = y2 / h; break; } }
-        if (inf !== null && sup !== null && inf + sup < 0.9) { v = { inf: inf, sup: sup }; }
+        /* Fondo: media 3x3 en cada esquina. Si las cuatro coinciden, la foto
+           tiene fondo liso (estudio) y sabemos de que color pintarlo. */
+        var esquina = function (x0, y0) {
+          var r = 0, g2 = 0, b = 0;
+          for (var dy = 0; dy < 3; dy++) {
+            for (var dx = 0; dx < 3; dx++) {
+              var q = ((y0 + dy) * w + (x0 + dx)) * 4;
+              r += d[q]; g2 += d[q + 1]; b += d[q + 2];
+            }
+          }
+          return [r / 9, g2 / 9, b / 9];
+        };
+        var es = [esquina(0, 0), esquina(w - 3, 0), esquina(0, h - 3), esquina(w - 3, h - 3)];
+        var uniforme = true;
+        for (var a = 1; a < 4; a++) {
+          for (var ch = 0; ch < 3; ch++) {
+            if (Math.abs(es[a][ch] - es[0][ch]) > 26) { uniforme = false; }
+          }
+        }
+        var fondo = uniforme
+          ? [Math.round((es[0][0] + es[3][0]) / 2), Math.round((es[0][1] + es[3][1]) / 2),
+             Math.round((es[0][2] + es[3][2]) / 2)]
+          : null;
+        if (inf !== null && sup !== null && inf + sup < 0.9) {
+          v = { inf: inf, sup: sup, fondo: fondo };
+        }
       }
     } catch (e) { v = null; }
     MARGEN_CACHE[src] = v;
@@ -640,9 +665,12 @@
        foto entera no deforma el producto: solo lo acerca o lo aleja. */
     var margenes = medirMargenes(img);
     if (!margenes) {
+      /* Sin lectura de pixeles (canvas tainted en produccion) no sabemos el
+         color del fondo, asi que la foto no se escala: mejor quieta que con
+         un recuadro visible alrededor. */
       margenes = cs.objectFit === 'cover'
-        ? { inf: 0.02, sup: 0.02 }
-        : { inf: 0.10, sup: 0.06 };
+        ? { inf: 0.02, sup: 0.02, fondo: null }
+        : { inf: 0.10, sup: 0.06, fondo: null };
     }
     var base = Math.round((mh - contentH) / 2 + contentH * margenes.inf);
     var usable = mh - base - 10;
@@ -657,12 +685,22 @@
     var cotaPx = personaPx * (ft / PERSONA_FT);
 
     /* Escala de la foto: el producto dibujado pasa a medir cotaPx. El pivote
-       es su base, que asi no se mueve del suelo. */
-    var productoPx = contentH * Math.max(0.15, 1 - margenes.inf - margenes.sup);
-    var k = Math.max(0.2, Math.min(1.12, cotaPx / productoPx));
+       es su base, que asi no se mueve del suelo.
+       SOLO se escala si el fondo de la foto es liso: entonces el marco se
+       pinta de ese mismo color, la costura desaparece y lo unico que se ve
+       cambiar de tamaño es el objeto. Si el fondo es una escena real (cesped,
+       cielo), encoger la foto dejaba un recuadro flotando dentro del marco,
+       asi que ahi la proporcion la cuentan solo la cota y la persona. */
     var media = img.parentNode;
-    media.style.transformOrigin = '50% ' + (mh - base) + 'px';
-    media.style.transform = 'scale(' + k.toFixed(4) + ')';
+    if (margenes.fondo) {
+      marco.style.background = 'rgb(' + margenes.fondo.join(',') + ')';
+      var productoPx = contentH * Math.max(0.15, 1 - margenes.inf - margenes.sup);
+      var k = Math.max(0.2, Math.min(1.12, cotaPx / productoPx));
+      media.style.transformOrigin = '50% ' + (mh - base) + 'px';
+      media.style.transform = 'scale(' + k.toFixed(4) + ')';
+    } else {
+      media.style.transform = '';
+    }
 
     /* La cota vertical mide el PRODUCTO y lleva su medida en el chip, centrado
        en la linea como en un plano; la persona va al lado sin numero, que es la
@@ -686,7 +724,6 @@
   function pintarVista() {
     var img = $('img'), src = imgSrc();
     var marco = img.closest('.bld__frame');
-    pintarEscala();
     var esTinte = src.indexOf('/tinted/') !== -1;
     /* Los perfiles son recortes sobre blanco y piden aire alrededor; las fotos
        de porton son fotografias y quedan mejor llenando el marco. */
@@ -746,6 +783,10 @@
       return '<dt>' + esc(f[0]) + '</dt><dd' + (f[1] ? '' : ' class="is-empty"') + '>' +
              sw + esc(f[1] || 'Not chosen yet') + '</dd>';
     }).join('');
+
+    /* Al final, no al principio: la escala pinta el marco del color del fondo
+       de la foto y tiene que pisar el que esta funcion acaba de poner. */
+    pintarEscala();
   }
 
   function opt(set, v, nombre, sub, img) {
