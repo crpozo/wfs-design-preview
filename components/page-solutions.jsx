@@ -55,7 +55,7 @@ const SolutionsCTA = () => {
     accent={t('We\'ll route you to the right rep.', 'Lo dirigimos al asesor indicado.')}
     body={t('One form, one rep, one quote in 24 hours. Doesn\'t matter if you\'re building 80 LF for the backyard or 0.9 miles for a self-storage perimeter.', 'Un formulario, un asesor, una cotización en 24 horas. No importa si construye 80 LF para el patio trasero o 0.9 millas para el perímetro de un self-storage.')}
     primary={[t('Request a quote', 'Solicitar una cotización'), 'estimate.html']}
-    secondary={[t('Call Fort Myers', 'Llamar a Fort Myers'), 'tel:2396895496']}
+    secondary={[t('Call Fort Myers', 'Llamar a Fort Myers'), 'tel:2394652482']}
   />
   );
 };

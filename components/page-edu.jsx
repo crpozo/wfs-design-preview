@@ -186,11 +186,11 @@ const FaqCTA = () => {
   return (
   <CTABand
     kicker={t("Didn't find your question?", '¿No encontraste tu pregunta?')}
-    title={t('Call (239) 689-5496', 'Llama al (239) 689-5496')}
+    title={t('Call (239) 465-2482', 'Llama al (239) 465-2482')}
     accent={t('or send the project.', 'o envía el proyecto.')}
     body={t('Our sales representatives split calls Monday through Friday during business hours.', 'Nuestros representantes de ventas atienden las llamadas de lunes a viernes en horario de oficina.')}
     primary={[t('Request a quote', 'Solicitar una cotización'), 'estimate.html']}
-    secondary={[t('Call the yard', 'Llama al almacén'), 'tel:2396895496']}
+    secondary={[t('Call the yard', 'Llama al almacén'), 'tel:2394652482']}
   />
   );
 };
@@ -277,7 +277,7 @@ const MaterialsCompCTA = () => {
     accent={t("we'll come back in 24h.", 'te respondemos en 24h.')}
     body={t("Don't have a material picked? Tell us the use case and your rep will recommend one based on stock and lead time.", '¿No has elegido un material? Cuéntanos el caso de uso y tu representante te recomendará uno según el inventario y el tiempo de entrega.')}
     primary={[t('Request a quote', 'Solicitar una cotización'), 'estimate.html']}
-    secondary={[t('Call (239) 689-5496', 'Llama al (239) 689-5496'), 'tel:2396895496']}
+    secondary={[t('Call (239) 465-2482', 'Llama al (239) 465-2482'), 'tel:2394652482']}
   />
   );
 };
@@ -424,7 +424,7 @@ const PoolCodeCTA = () => {
     accent={t('pool enclosure.', 'cerramiento de piscina.')}
     body={t('Send us your layout, measurements, and project details, and we will prepare a material quote based on the information provided. Western Fence Supply supplies materials only. Installation, code compliance, permitting, inspections, and final approval are not included.', 'Envíanos tu distribución, medidas y detalles del proyecto, y prepararemos una cotización de materiales con base en la información proporcionada. Western Fence Supply provee únicamente materiales. La instalación, el cumplimiento de código, los permisos, las inspecciones y la aprobación final no están incluidos.')}
     primary={[t('Request a quote', 'Solicitar una cotización'), 'estimate.html#contact']}
-    secondary={[t('Call the yard', 'Llama al almacén'), 'tel:2396895496']}
+    secondary={[t('Call the yard', 'Llama al almacén'), 'tel:2394652482']}
   />
   <section style={{ background: '#ffffff', borderTop: '1px solid rgba(0,16,17,0.08)', padding: '26px 0' }}>
     <div className="container">

@@ -91,7 +91,7 @@ const ProductsCTA = () => {
     accent={t("we'll come back with stock + price.", 'te respondemos con existencias y precio.')}
     body={t("Linear feet, height, color, gate count. We'll quote it in 24 hours with delivery and pickup options for both yards.", 'Pies lineales, altura, color, número de portones. Lo cotizamos en 24 horas con opciones de entrega y retiro para ambas sucursales.')}
     primary={[t('Request a quote', 'Solicitar cotización'), 'estimate.html']}
-    secondary={[t('Talk to a rep', 'Habla con un representante'), 'tel:2396895496']}
+    secondary={[t('Talk to a rep', 'Habla con un representante'), 'tel:2394652482']}
   />
   );
 };

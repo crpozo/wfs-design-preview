@@ -102,7 +102,7 @@ while ( have_posts() ) : the_post();
       <p class="wfs-post__cta-title display">Get a quote in 24 hours.</p>
       <div class="wfs-post__cta-actions">
         <a class="btn btn-primary" href="estimate.html">Request a Quote</a>
-        <a class="btn btn-ghost on-dark" href="tel:2396895496">Call (239) 689-5496</a>
+        <a class="btn btn-ghost on-dark" href="tel:2394652482">Call (239) 465-2482</a>
       </div>
     </aside>
   </div>

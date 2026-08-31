@@ -189,7 +189,7 @@ const ResourcesCTA = () => {
       accent={t('or send the project.', 'o envíenos el proyecto.')}
       body={t('Our sales representatives split calls Monday through Friday during business hours. Or send a sketch + ZIP and we\'ll come back inside a day.', 'Nuestros representantes de ventas atienden llamadas de lunes a viernes en horario laboral. O envíe un boceto + código postal y le responderemos en menos de un día.')}
       primary={[t('Request a quote', 'Solicitar una cotización'), 'estimate.html']}
-      secondary={[t('Call (239) 689-5496', 'Llamar al (239) 689-5496'), 'tel:2396895496']}
+      secondary={[t('Call (239) 465-2482', 'Llamar al (239) 465-2482'), 'tel:2394652482']}
     />
   );
 };

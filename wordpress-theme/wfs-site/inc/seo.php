@@ -148,8 +148,8 @@ function wfs_local_schema() {
 	$data = array(
 		'@context' => 'https://schema.org',
 		'@graph'   => array(
-			$yard( 'fort-myers', '+12396895496', 'sales@westernfencesupply.com', '2621 Fowler St', 'Fort Myers', '33901', '12:00' ),
-			$yard( 'port-charlotte', '+19416236890', 'salespc@westernfencesupply.com', '1145 Enterprise Dr', 'Port Charlotte', '33953', '11:30' ),
+			$yard( 'fort-myers', '+12394652482', 'sales@westernfencesupply.com', '2621 Fowler St', 'Fort Myers', '33901', '12:00' ),
+			$yard( 'port-charlotte', '+19414675821', 'salespc@westernfencesupply.com', '1145 Enterprise Dr', 'Port Charlotte', '33953', '11:30' ),
 		),
 	);
 	echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES ) . '</script>' . "\n";

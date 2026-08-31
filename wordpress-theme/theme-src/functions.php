@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.24.1' );
+define( 'WFS_VERSION', '4.25.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -573,8 +573,8 @@ function wfs_lock_phone_numbers() {
   } catch (e) { window._googWcmGet = function () {}; }
 
   /* Digitos -> como debe verse. Fuente: fichas de Google de cada sucursal. */
-  var REAL = { '2396895496': '(239) 689-5496', '9416236890': '(941) 623-6890' };
-  var YARD = { 'fort myers': '2396895496', 'port charlotte': '9416236890' };
+  var REAL = { '2394652482': '(239) 465-2482', '9414675821': '(941) 467-5821' };
+  var YARD = { 'fort myers': '2394652482', 'port charlotte': '9414675821' };
 
   function digits(s) { return (s || '').replace(/\D/g, '').replace(/^1(\d{10})$/, '$1'); }
 
@@ -635,11 +635,11 @@ function wfs_lock_phone_numbers() {
       if (!want) { continue; }
       if (digits(a.getAttribute('href')) !== want) { a.setAttribute('href', 'tel:' + want); }
       /* Se reemplaza el telefono DENTRO del texto, para que tambien funcione
-         en enlaces tipo "Call (239) 689-5496" y no solo cuando el enlace es
+         en enlaces tipo "Call (239) 465-2482" y no solo cuando el enlace es
          unicamente el numero. */
       var shown = a.textContent;
       /* El "+1" y su separador solo cuentan si van juntos, para no comerse el
-         espacio de un texto como "Call (239) 689-5496". */
+         espacio de un texto como "Call (239) 465-2482". */
       var fixed = shown.replace(/(?:\+?1[\s.-])?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}/g, function (m) {
         return digits(m) === want ? m : REAL[want];
       });

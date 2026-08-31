@@ -464,8 +464,8 @@ const HomeownerClosingCTA = () => {
       <div style={{ display: 'flex', flexDirection: 'column', gap: 14, alignItems: 'stretch' }}>
         <a href="estimate.html" style={{
           display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '18px 28px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', }}>{t('Get a Quote', 'Cotizar')}</a>
-        <a href="tel:2396895496" style={{
-          display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '18px 28px', background: 'transparent', color: 'var(--white)', border: '1.5px solid rgba(255,255,255,0.5)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', }}>{t('Call (239) 689-5496', 'Llamar (239) 689-5496')}</a>
+        <a href="tel:2394652482" style={{
+          display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '18px 28px', background: 'transparent', color: 'var(--white)', border: '1.5px solid rgba(255,255,255,0.5)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', }}>{t('Call (239) 465-2482', 'Llamar (239) 465-2482')}</a>
       </div>
     </div>
   </section>
@@ -873,8 +873,8 @@ const ContractorClosingCTA = () => {
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
           <a href="https://form.jotform.com/westernfencesupply/account-setup-form" target="_blank" rel="noopener" style={{
             display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '18px 32px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', }}>{t('Open an Account', 'Abrir una cuenta')}</a>
-          <a href="tel:2396895496" style={{
-            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '18px 32px', background: 'transparent', color: 'var(--white)', border: '1.5px solid rgba(255,255,255,0.5)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', }}>(239) 689-5496</a>
+          <a href="tel:2394652482" style={{
+            display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '18px 32px', background: 'transparent', color: 'var(--white)', border: '1.5px solid rgba(255,255,255,0.5)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', }}>(239) 465-2482</a>
         </div>
       </div>
 

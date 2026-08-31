@@ -119,7 +119,7 @@ const ProjectsCTA = () => {
       accent={t("Let's spec the material.", 'Especifiquemos el material.')}
       body={t("We work with contractors, GCs, HOAs and homeowners across SW Florida. Send the scope and we'll come back with stock, pricing and lead time within 24 hours.", 'Trabajamos con contratistas, contratistas generales, HOAs y propietarios en todo el suroeste de Florida. Envíanos el alcance y te responderemos con existencias, precios y plazo de entrega en un plazo de 24 horas.')}
       primary={[t('Start a quote', 'Solicitar cotización'), 'estimate.html']}
-      secondary={[t('Talk to a rep', 'Habla con un asesor'), 'tel:2396895496']}
+      secondary={[t('Talk to a rep', 'Habla con un asesor'), 'tel:2394652482']}
     />
   );
 };

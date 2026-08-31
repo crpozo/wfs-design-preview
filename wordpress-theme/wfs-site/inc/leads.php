@@ -357,7 +357,7 @@ function wfs_send_confirmation( $email, $name, $form, $lang ) {
 
 ";
 	$body .= "Fort Myers, HQ
-(239) 689-5496 · 2621 Fowler St, Fort Myers, FL 33901
+(239) 465-2482 · 2621 Fowler St, Fort Myers, FL 33901
 ";
 	$body .= ( $es ? "Lun-Vie 7:30am-3:30pm · Sáb 7am-12pm
 
@@ -365,7 +365,7 @@ function wfs_send_confirmation( $email, $name, $form, $lang ) {
 
 " );
 	$body .= "Port Charlotte
-(941) 623-6890 · 1145 Enterprise Dr, Port Charlotte, FL 33953
+(941) 467-5821 · 1145 Enterprise Dr, Port Charlotte, FL 33953
 ";
 	$body .= ( $es ? "Lun-Vie 7:30am-3:30pm · Sáb 7-11:30am
 
@@ -432,7 +432,7 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 	$key = 'wfs_lead_' . md5( $ip );
 	$hits = (int) get_transient( $key );
 	if ( $hits >= 5 ) {
-		return new WP_REST_Response( array( 'ok' => false, 'message' => 'Too many submissions. Please call us at (239) 689-5496.' ), 429 );
+		return new WP_REST_Response( array( 'ok' => false, 'message' => 'Too many submissions. Please call us at (239) 465-2482.' ), 429 );
 	}
 	set_transient( $key, $hits + 1, 10 * MINUTE_IN_SECONDS );
 
