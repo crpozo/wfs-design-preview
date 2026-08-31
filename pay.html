@@ -100,7 +100,7 @@ h1 {
 
 <script>
 /* ══════════════════════════════════════════════════════════════════════════
-   ENLACES DE PAGO — editar SOLO este bloque cuando cambie un destino.
+   ENLACES DE PAGO: editar SOLO este bloque cuando cambie un destino.
    La URL /pay no cambia nunca (las tarjetas NFC y los QR apuntan aqui);
    lo que se actualiza son estos destinos.
 
@@ -113,7 +113,7 @@ h1 {
    ══════════════════════════════════════════════════════════════════════════ */
 var CUENTA = {
   titular:  'WESTERN FENCE SUPPLY LLC',
-  banco:    'Bank of America — Business Checking',
+  banco:    'Bank of America, Business Checking',
   direccion:'2640 Evans Ave, Fort Myers, FL 33901',
   cuenta:   '898131229920',
   rutaWire: '026009593',
@@ -139,7 +139,7 @@ var OPCIONES = [
               ['Routing number (paper & electronic)', CUENTA.rutaACH]]
   }},
   { id: 'debit', nombre: 'Debit Card', sub: 'At the sales desk', panel: {
-      nota: 'Hand your debit card to your sales rep — we process it right at the desk. <strong>No fee.</strong>',
+      nota: 'Hand your debit card to your sales rep and we process it right at the desk. <strong>No fee.</strong>',
       datos: []
   }},
   { id: 'paypal', nombre: 'PayPal', sub: 'Ask your sales rep', panel: {
