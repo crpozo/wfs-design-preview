@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.25.0' );
+define( 'WFS_VERSION', '4.26.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -70,6 +70,21 @@ function wfs_install_pages() {
 			'post_type'      => 'page',
 			'post_name'      => $slug,
 			'post_title'     => $page['title'],
+			'post_status'    => 'publish',
+			'post_content'   => '',
+			'comment_status' => 'closed',
+			'ping_status'    => 'closed',
+		) );
+	}
+
+	/* /pay no esta en el manifest (no es una app React): es la pagina del
+	   mostrador que abren las tarjetas NFC y los QR, servida por la plantilla
+	   page-pay.php. La URL tiene que existir SIEMPRE, por eso se crea aqui. */
+	if ( ! get_page_by_path( 'pay' ) ) {
+		wp_insert_post( array(
+			'post_type'      => 'page',
+			'post_name'      => 'pay',
+			'post_title'     => 'WFS Payment',
 			'post_status'    => 'publish',
 			'post_content'   => '',
 			'comment_status' => 'closed',

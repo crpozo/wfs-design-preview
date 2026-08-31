@@ -15,7 +15,9 @@ SKIP = {"index.html"}
 # blog.html y blog-*.html son solo el preview estatico, generado por
 # wordpress-theme/tools/build.php. Si entraran aqui, el tema crearia paginas de
 # WordPress para ellas y chocarian con el blog de verdad.
-SKIP_PREFIX = ("blog", "fence-builder")
+# pay tampoco: es una pagina autonoma sin React (la del mostrador, NFC/QR) y
+# viaja al tema como plantilla page-pay.php, no como app.
+SKIP_PREFIX = ("blog", "fence-builder", "pay")
 
 # ---------------------------------------------------------------- limpiar
 if OUT.exists():
@@ -61,6 +63,17 @@ bld = re.sub(r"(['\"])assets/", r"\1" + ASSET_BASE + "/", bld)
 b3d = SRC / "fence-3d.js"
 if b3d.exists():
     shutil.copy2(b3d, OUT / "apps" / "fence-3d.js")
+
+# ------------------------------------------------------- pagina de pago
+# pay.html es autonoma (sin React): se convierte en la plantilla page-pay.php,
+# que WordPress aplica solo a la pagina con slug "pay". Mismo origen de verdad
+# que el preview; solo se reescriben las rutas de assets.
+pagohtml = (SRC / "pay.html").read_text()
+pagohtml = re.sub(r"(['\"])assets/", r"\1" + ASSET_BASE + "/", pagohtml)
+(OUT / "page-pay.php").write_text(
+    "<?php\n/**\n * Template Name: WFS Pay\n * La pagina /pay del mostrador (NFC/QR)."
+    " Documento completo a proposito:\n * sin cabecera ni pie del tema, tiene que abrir"
+    " al instante en un movil.\n */\n?>" + pagohtml)
 
 # ---------------------------------------------------------------- css
 css = (SRC / "styles.css").read_text()
