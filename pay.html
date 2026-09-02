@@ -7,7 +7,7 @@
 <title>WFS Payment · Western Fence Supply</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 /* Pagina de pago para el mostrador: se abre tocando una tarjeta NFC o un QR.
    Es autonoma a proposito (sin React, sin styles.css): tiene que pintar al
@@ -16,7 +16,7 @@
 :root {
   --ink: #263167; --tangerine: #ff7133; --laser: #2e59c1;
   --charcoal: #565656; --linea: rgba(0,16,17,.14);
-  --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --display: 'Alfa Slab One', 'Rockwell', 'Georgia', serif;
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -48,16 +48,16 @@ body {
 .sede.is-pc .sede__ind { transform: translateX(100%); }
 .sede__btn {
   position: relative; z-index: 1; min-height: 46px; border: 0; background: none;
-  font-family: var(--sans); font-size: 15px; font-weight: 700; color: var(--ink);
+  font-family: var(--display); font-size: 14.5px; font-weight: 400; color: var(--ink);
   border-radius: 999px; cursor: pointer; transition: color .2s ease;
   -webkit-tap-highlight-color: transparent;
 }
 .sede__btn[aria-pressed="true"] { color: #fff; }
 
 h1 {
-  font-family: var(--display); font-weight: 800; font-stretch: 90%;
-  text-transform: uppercase; text-align: center; line-height: 1.06;
-  font-size: clamp(26px, 7.4vw, 34px); letter-spacing: .01em; margin-bottom: 10px;
+  font-family: var(--display); font-weight: 400;
+  text-transform: uppercase; text-align: center; line-height: 1.1;
+  font-size: clamp(24px, 6.8vw, 32px); letter-spacing: .02em; margin-bottom: 10px;
 }
 .sub { text-align: center; font-size: 16.5px; color: var(--charcoal); margin-bottom: 22px; }
 
@@ -78,8 +78,8 @@ h1 {
   display: grid; place-items: center; background: #fff;
 }
 .opcion__logo svg { width: 44px; height: 44px; display: block; }
-.opcion__nombre { flex: 1; min-width: 0; }
-.opcion__sub { display: block; font-size: 12.5px; font-weight: 500; opacity: .78; margin-top: 2px; }
+.opcion__nombre { flex: 1; min-width: 0; font-family: var(--display); font-weight: 400; font-size: 19px; letter-spacing: .01em; }
+.opcion__sub { display: block; font-family: var(--sans); font-size: 12.5px; font-weight: 500; opacity: .78; margin-top: 2px; letter-spacing: 0; }
 .opcion__flecha { flex: none; transition: transform .2s ease; }
 .opcion.is-open .opcion__flecha { transform: rotate(90deg); }
 
@@ -216,12 +216,12 @@ function opciones(sede) {
    color y letra. Las de banco, wire y tarjeta son iconos en el azul de WFS. */
 var LOGOS = {
   zelle:   '<svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" fill="#6d1ed4"/>' +
-           '<text x="22" y="31" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="900" font-size="26" fill="#fff">Z</text></svg>',
+           '<text x="22" y="31" text-anchor="middle" font-family="Alfa Slab One,Rockwell,Georgia,serif" font-weight="400" font-size="26" fill="#fff">Z</text></svg>',
   cashapp: '<svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" fill="#00d632"/>' +
-           '<text x="22" y="31" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="900" font-size="26" fill="#fff">$</text></svg>',
+           '<text x="22" y="31" text-anchor="middle" font-family="Alfa Slab One,Rockwell,Georgia,serif" font-weight="400" font-size="26" fill="#fff">$</text></svg>',
   paypal:  '<svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" fill="#fff"/>' +
-           '<text x="16" y="32" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="900" font-style="italic" font-size="26" fill="#003087">P</text>' +
-           '<text x="24" y="34" text-anchor="middle" font-family="Archivo,Arial,sans-serif" font-weight="900" font-style="italic" font-size="26" fill="#009cde">P</text></svg>',
+           '<text x="16" y="32" text-anchor="middle" font-family="Alfa Slab One,Rockwell,Georgia,serif" font-weight="400" font-style="italic" font-size="26" fill="#003087">P</text>' +
+           '<text x="24" y="34" text-anchor="middle" font-family="Alfa Slab One,Rockwell,Georgia,serif" font-weight="400" font-style="italic" font-size="26" fill="#009cde">P</text></svg>',
   ach:     '<svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" fill="#e9edf7"/>' +
            '<path d="M22 9 9 16h26L22 9zM11 18v12h4V18h-4zm9 0v12h4V18h-4zm9 0v12h4V18h-4zM9 32h26v4H9z" fill="#263167"/></svg>',
   wire:    '<svg viewBox="0 0 44 44" aria-hidden="true"><rect width="44" height="44" fill="#e9edf7"/>' +
