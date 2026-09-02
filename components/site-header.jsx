@@ -81,19 +81,10 @@ const SiteHeader = ({ active }) => {
             </div>
           </div>
 
-          {/* Right: live agent + phone + lang toggle */}
+          {/* Right: phone + lang toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 24 }}>
-            {/* Live agent: abre el chat de tawk. Si no esta cargado, cae al
-                enlace de la banda "real sales rep, no chatbot". */}
-            <a href="contact.html" onClick={openLiveChat} style={{
-              display: 'inline-flex', alignItems: 'center', gap: 9, padding: '6px 15px', borderRadius: 999, background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.3)', color: 'var(--white)', textDecoration: 'none', fontFamily: 'inherit', fontSize: 13, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', whiteSpace: 'nowrap', transition: 'background 0.15s ease, border-color 0.15s ease', }}
-            onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.borderColor = 'var(--white)'; }}
-            onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.3)'; }}>
-              <span aria-hidden style={{
-                width: 7, height: 7, borderRadius: '50%', flexShrink: 0, background: '#3ddc84', boxShadow: '0 0 0 3px rgba(61,220,132,0.25)', }}/>
-              {t({ EN: 'Talk to a live agent', ES: 'Habla con un asesor' })}
-            </a>
-            <span style={{ width: 1, height: 14, background: 'rgba(255,255,255,0.15)' }}/>
+            {/* El "Talk to a live agent" que iba aqui se quito: con el banner
+                de chat en la portada y el widget abriendose solo, era ruido. */}
             <a href="tel:2394652482" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--alice-blue)', textDecoration: 'none', }}>
               <svg width="11" height="11" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.4">
@@ -157,8 +148,13 @@ const SiteHeader = ({ active }) => {
 
           {/* CTAs */}
           <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
+            {/* Boton celeste con la MISMA caja que el pill de cotizacion (23px de
+                icono + 6px arriba y abajo): antes era un enlace subrayado mas
+                bajo y quedaba descentrado respecto al naranja. */}
             <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" className="mono wfs-hide-tablet" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 7, padding: '7px 0', fontSize: 13, fontWeight: 700, letterSpacing: '0.11em', textTransform: 'uppercase', color: 'var(--ink)', whiteSpace: 'nowrap', borderBottom: '1px solid var(--ink)', }}>
+              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 15px 6px 13px', minHeight: 35, borderRadius: 999, background: '#9fd1ff', color: 'var(--ink)', fontSize: 13, fontWeight: 700, letterSpacing: '0.11em', textTransform: 'uppercase', whiteSpace: 'nowrap', textDecoration: 'none', transition: 'background 0.2s ease, transform 0.2s ease', }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#7fc0ff'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = '#9fd1ff'; e.currentTarget.style.transform = 'none'; }}>
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                 <path d="M3 3 H13 V13 H3 Z M3 6 H13 M6 3 V13" stroke="currentColor" strokeWidth="1.4"/>
               </svg>
