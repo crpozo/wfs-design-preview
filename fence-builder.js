@@ -289,7 +289,7 @@
       '<aside class="bld__stage">' +
         '<div class="bld__frame">' +
           '<span class="bld__badge"></span>' +
-          '<span class="bld__media"><img class="bld__img" alt="Fence preview" decoding="async"></span>' +
+          '<span class="bld__media"><img class="bld__img" alt="Fence preview" decoding="async" crossorigin="anonymous"></span>' +
           '<div class="bld__escala"></div>' +
         '</div>' +
         '<div class="bld__spec"><dl></dl></div>' +
@@ -734,7 +734,12 @@
         : (src.indexOf('-white.jpg') !== -1 ? FONDO_BLANCO : FONDO_TINTE));
     if (img.getAttribute('src') !== src) {
       img.classList.add('is-swapping');
+      /* crossorigin: en produccion las imagenes vienen de GitHub Pages (otro
+         dominio, que si manda Access-Control-Allow-Origin: *). Sin esto el
+         canvas queda "tainted", no se puede medir el producto y la foto no se
+         escala a la altura elegida: la cota decia 6' y la cerca seguia enorme. */
       var n = new Image();
+      n.crossOrigin = 'anonymous';
       n.onload = function () {
         /* Una foto vertical recortada a 4:3 pierde media hoja, asi que esa se
            encaja entera en vez de llenar. */

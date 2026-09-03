@@ -48,7 +48,12 @@ function metalico(hex, rug, met) {
  * acaba de pulsar.
  */
 function conMarco(m, marcoHex) {
-  m.marco = marcoHex ? metalico(marcoHex, 0.42, 0.4) : m.estructura;
+  /* Sin marco explicito, el bastidor de la hoja va del MISMO material que las
+     tablas. Antes iba del metal de la estructura, y con negro daba igual (todo
+     negro) pero con woodgrain o bronce el marco oscuro resaltaba como un cajon
+     alrededor de la hoja y el porton parecia otro producto. */
+  m.marcoExplicito = !!marcoHex;
+  m.marco = marcoHex ? metalico(marcoHex, 0.42, 0.4) : (m.tabla || m.estructura);
   return m;
 }
 
@@ -420,9 +425,10 @@ function porton(e, m, mat, est, alto, h) {
   /* Postes de porton: mas gruesos, son los que aguantan el peso. */
   var pa = mk.p(0, 0, 0), pb = mk.p(L, 0, 0);
   var sec = mat === 'chain-link' ? 3 * PUL : mat === 'vinyl' ? 5 * PUL : 4 * PUL;
-  /* Los postes del porton van del color del bastidor: en las fotos donde el
-     marco es metalico, los postes lo son tambien. */
-  var mp = m.marco || m.estructura;
+  /* Los postes del porton: del color del bastidor solo cuando ese bastidor es
+     un marco metalico explicito (fotos con marco gris); si no, como los demas
+     postes de la cerca, que asi no desentonan con la linea. */
+  var mp = m.marcoExplicito ? m.marco : m.estructura;
   if (mat === 'chain-link') {
     e.tubo(mp, 'postep', pa[0], (altoP + 4 * PUL) / 2, pa[2], sec, altoP + 4 * PUL);
     e.tubo(mp, 'postep', pb[0], (altoP + 4 * PUL) / 2, pb[2], sec, altoP + 4 * PUL);
@@ -446,7 +452,10 @@ function porton(e, m, mat, est, alto, h) {
   if (tipo === 'double') {
     var iz = girada(0, L / 2, -0.42 * ang), de = girada(L, L / 2, 0.42 * ang);
     hoja(e, m, mat, est, iz[0], iz[1], altoP);
-    hoja(e, m, mat, est, de[0], de[1], altoP);
+    /* La derecha se pasa de punta a bisagra para que su "cara" apunte a la
+       calle como la del resto de la valla: de bisagra a punta salia montada
+       al reves y desde la calle se veia su cara trasera, mas oscura. */
+    hoja(e, m, mat, est, de[1], de[0], altoP);
   } else if (tipo === 'single') {
     var un = girada(0, L, -0.5 * ang);
     hoja(e, m, mat, est, un[0], un[1], altoP);

@@ -85,6 +85,12 @@ function traza(estado) {
     { a: [-X, Z], b: [X, Z] }
   ];
   var foco = (elegido && elegido !== 'single') ? coches : peatonal;
+  /* Viendo una CERCA, los portones van cerrados y en el plano de la valla:
+     abiertos quedaban de canto respecto al sol, la hoja salia el doble de
+     oscura que los paneles y parecia otro producto ("cambia todito"). Los
+     portones abiertos son para cuando el producto elegido ES un porton, que
+     ahi hay que ver como abre. */
+  if (!elegido) { peatonal.abierto = false; coches.abierto = false; }
   return {
     tramos: tramos, huecos: [peatonal, coches],
     foco: { x: (foco.a[0] + foco.b[0]) / 2, z: F, ancho: foco.b[0] - foco.a[0] }
