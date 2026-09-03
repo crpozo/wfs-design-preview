@@ -11,7 +11,7 @@
 import { Scene, PerspectiveCamera, WebGLRenderer, Group, Color, Fog,
          HemisphereLight, DirectionalLight, AmbientLight, Mesh, SphereGeometry,
          MeshBasicMaterial, BackSide, CanvasTexture, PCFSoftShadowMap,
-         ACESFilmicToneMapping, SRGBColorSpace, Vector3 } from '../vendor/three/three.module.js';
+         ACESFilmicToneMapping, SRGBColorSpace, Vector3, PMREMGenerator, PlaneGeometry } from '../vendor/three/three.module.js';
 import * as Casa from './casa.js';
 import * as Cerca from './cerca.js';
 
@@ -117,7 +117,7 @@ function Visor(lienzo) {
   this.r.shadowMap.enabled = true;
   this.r.shadowMap.type = PCFSoftShadowMap;
   this.r.toneMapping = ACESFilmicToneMapping;
-  this.r.toneMappingExposure = 1.02;
+  this.r.toneMappingExposure = 1.12;
   this.r.outputColorSpace = SRGBColorSpace;
 
   /* Luz: sol de media tarde. Un cenital plano aplana los perfiles y hace que
@@ -132,8 +132,22 @@ function Visor(lienzo) {
   sol.shadow.bias = -0.0006;
   sol.shadow.normalBias = 0.03;
   this.escena.add(sol);
-  this.escena.add(new HemisphereLight(0xbcd8f0, 0x6d7a52, 0.85));
-  this.escena.add(new AmbientLight(0xffffff, 0.16));
+  this.escena.add(new HemisphereLight(0xbcd8f0, 0x6d7a52, 0.7));
+  this.escena.add(new AmbientLight(0xffffff, 0.1));
+
+  /* Mapa de entorno: cielo arriba, suelo verde abajo, generado UNA vez a 256px
+     a partir del mismo cielo de la escena. Es lo que hace que el PBR deje de
+     verse plano: reflejos en cristales y agua, y luz de cielo/suelo en todo
+     lo demas. Cuesta unos milisegundos y nada de descarga. */
+  var pm = new PMREMGenerator(this.r);
+  var env = new Scene();
+  env.add(cielo());
+  var suelo = new Mesh(new PlaneGeometry(4000, 4000), new MeshBasicMaterial({ color: new Color('#6f8a4a') }));
+  suelo.rotation.x = -Math.PI / 2; suelo.position.y = -2;
+  env.add(suelo);
+  this.escena.environment = pm.fromScene(env, 0.04).texture;
+  this.escena.environmentIntensity = 0.55;
+  pm.dispose();
 
   this.mundo = new Group();
   this.escena.add(this.mundo);

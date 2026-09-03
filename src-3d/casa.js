@@ -8,7 +8,7 @@
  *
  * Todas las medidas van en pies, igual que la cerca.
  */
-import { Group, Mesh, BoxGeometry, PlaneGeometry, CylinderGeometry, BufferGeometry,
+import { Group, Mesh, BoxGeometry, PlaneGeometry, CylinderGeometry, SphereGeometry, BufferGeometry,
          MeshStandardMaterial, MeshBasicMaterial, BackSide, DoubleSide, Color,
          Float32BufferAttribute } from '../vendor/three/three.module.js';
 import * as T from './texturas.js';
@@ -119,17 +119,24 @@ function palmera(x, z, altura) {
 }
 
 /** Arbusto: mismo truco de cuadros cruzados, mas pequeño. */
+var HOJAS = null;
 function arbusto(x, z, r) {
+  /* Tres esferas solapadas en dos verdes: de cerca, tres planos cruzados con
+     textura se veian como cartones. Geometria compartida entre todos. */
+  if (!HOJAS) {
+    HOJAS = { geo: new SphereGeometry(1, 12, 9),
+              a: new MeshStandardMaterial({ color: new Color('#3f7a34'), roughness: 0.95 }),
+              b: new MeshStandardMaterial({ color: new Color('#4f8f3c'), roughness: 0.95 }) };
+  }
   var g = new Group();
-  var mat = new MeshStandardMaterial({
-    map: T.follaje(), transparent: true, alphaTest: 0.4, side: DoubleSide, roughness: 0.9
-  });
-  for (var i = 0; i < 3; i++) {
-    var q = new Mesh(new PlaneGeometry(r * 2, r * 2), mat);
-    q.position.set(x, r * 0.85, z);
-    q.rotation.y = i * Math.PI / 3 + 0.4;
-    q.castShadow = true;
-    g.add(q);
+  var bolas = [[0, 0.72, 0, 0.78], [-0.45, 0.55, 0.3, 0.6], [0.45, 0.6, -0.25, 0.62]];
+  for (var i = 0; i < bolas.length; i++) {
+    var b = bolas[i];
+    var s = new Mesh(HOJAS.geo, i === 1 ? HOJAS.b : HOJAS.a);
+    s.position.set(x + b[0] * r, b[1] * r, z + b[2] * r);
+    s.scale.setScalar(b[3] * r);
+    s.castShadow = true;
+    g.add(s);
   }
   return g;
 }
@@ -139,8 +146,11 @@ function ventana(g, mats, x, y, z, w, h, rotY) {
   g.add(caja(w + 0.5, h + 0.5, 0.34, mats.trim, x, y, z, rotY));
   var v = caja(w, h, 0.42, mats.vidrio, x, y, z, rotY);
   g.add(v);
-  /* Peinazo: sin el, el cristal se lee como un agujero negro. */
+  /* Peinazo y montante: sin ellos el cristal se lee como un agujero negro. */
   g.add(caja(w, 0.16, 0.5, mats.trim, x, y, z, rotY));
+  g.add(caja(0.16, h, 0.5, mats.trim, x, y, z, rotY));
+  /* Alfeizar: un poco mas ancho que el marco y saliente. */
+  g.add(caja(w + 0.9, 0.22, 0.7, mats.trim, x, y - h / 2 - 0.3, z, rotY));
 }
 
 
@@ -154,7 +164,7 @@ export function construir() {
     zocalo:  new MeshStandardMaterial({ color: new Color('#cfc6b6'), roughness: 0.95 }),
     teja:    new MeshStandardMaterial({ map: T.teja(), roughness: 0.85 }),
     trim:    new MeshStandardMaterial({ color: new Color('#ffffff'), roughness: 0.6 }),
-    vidrio:  new MeshStandardMaterial({ color: new Color('#2b3b46'), roughness: 0.12, metalness: 0.5 }),
+    vidrio:  new MeshStandardMaterial({ color: new Color('#22323f'), roughness: 0.08, metalness: 0.75 }),
     puerta:  new MeshStandardMaterial({ color: new Color('#5d4436'), roughness: 0.55 }),
     garaje:  new MeshStandardMaterial({ color: new Color('#f0eee8'), roughness: 0.7 }),
     cesped:  new MeshStandardMaterial({ map: T.cesped(), roughness: 1 }),
@@ -184,6 +194,15 @@ export function construir() {
              (LOTE.calzada.x0 + LOTE.calzada.x1) / 2, 0.04, 11));
   /* Camino a la puerta. */
   g.add(losa(4, 40, mats.hormigon, -12, 0.04, 8));
+  /* Juntas de dilatacion: lineas oscuras cada 8 pies en la calzada y cada 5
+     en la acera. Sin ellas el hormigon era una mancha continua. */
+  var junta = new MeshStandardMaterial({ color: new Color('#8f8a80'), roughness: 1 });
+  for (var jz = -8; jz <= 30; jz += 8) {
+    g.add(losa(LOTE.calzada.x1 - LOTE.calzada.x0, 0.12, junta, (LOTE.calzada.x0 + LOTE.calzada.x1) / 2, 0.045, jz));
+  }
+  for (var jx = -60; jx <= 60; jx += 5) {
+    g.add(losa(0.12, 4, junta, jx, 0.035, 32));
+  }
 
   /* ── casa ─────────────────────────────────────────────────────────────── */
   g.add(caja(anchoCasa, C.alto, fondoCasa, mats.pared, cx, C.alto / 2, cz));
@@ -198,6 +217,10 @@ export function construir() {
     g.add(caja(15.6, 0.12, 0.62, mats.trim, 12, 1.1 + i * 1.85, zf));
   }
   g.add(caja(3.4, 7.4, 0.45, mats.puerta, -12, 3.7, zf));
+  /* Pomo y plafones de la puerta. */
+  g.add(caja(0.22, 0.22, 0.5, mats.trim, -10.9, 3.5, zf + 0.1));
+  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12, 5.3, zf + 0.04));
+  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12, 2.1, zf + 0.04));
   g.add(caja(4.1, 8.1, 0.28, mats.trim, -12, 4.05, zf - 0.06));
   ventana(g, mats, -20.5, 5.4, zf, 5, 4.4);
   ventana(g, mats, -5.5, 5.4, zf, 4, 4.4);

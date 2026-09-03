@@ -109,9 +109,19 @@ export function materiales(mat, estilo, colorHex, ancho, altoMalla, marcoHex) {
   if (mat === 'metal') {
     if (colorHex === '#7a5c3e') {   // woodgrain
       m.tabla = new MeshStandardMaterial({ map: T.veta(), roughness: 0.62, metalness: 0.12 });
+      m.tablaFondo = new MeshStandardMaterial({ map: T.veta(), color: new Color('#b9b9b9'), roughness: 0.7, metalness: 0.12 });
       m.estructura = metalico('#6b5136', 0.6, 0.15);
     } else {
-      m.tabla = metalico(colorHex || '#1c1c1c', 0.52, 0.28);
+      /* Chapa pintada: satinada, poco metalica. El color se aclara un 80%
+         porque, medido contra la foto del perfil, el bronce salia a la mitad
+         de brillo (#281b0c frente a #4d3b2c; con +45% se quedo en #372613): la cara vertical recibe el sol
+         de lado y el tone mapping se come los medios tonos. El negro sigue
+         negro y el blanco satura, que es lo que toca. */
+      var base = new Color(colorHex || '#1c1c1c').multiplyScalar(1.8);
+      m.tabla = new MeshStandardMaterial({ color: base, roughness: 0.42, metalness: 0.12 });
+      /* Los planos entre nervios, un poco mas oscuros: es lo que hace leer el
+         relieve de frente, cuando los lados del nervio apenas se ven. */
+      m.tablaFondo = new MeshStandardMaterial({ color: base.clone().multiplyScalar(0.8), roughness: 0.5, metalness: 0.12 });
       m.estructura = m.tabla;
     }
     return conMarco(m, marcoHex);
@@ -267,16 +277,33 @@ function vanoVinilo(e, m, est, mk, u0, ancho, alto) {
 }
 
 /** DuraFence: tablas horizontales de aluminio. */
+/** DuraFence: chapa de acero CORRUGADA VERTICAL con remate redondeado.
+ *  Antes se dibujaba como tablas horizontales anchas y no se parecia en nada a
+ *  la foto del perfil. Las medidas salen de contar ondas en las fotos sobre
+ *  un panel de 8 pies: Modern ~13 ondas anchas, Original ~15 nervios finos
+ *  con planos anchos, P1 ~17 intermedios. */
 function vanoMetal(e, m, est, mk, u0, ancho, alto) {
   var rotY = mk.rotY;
-  var altoT = est === 'Modern' ? 7.5 * PUL : est === 'P1' ? 3 * PUL : 5.5 * PUL;
-  var luz = est === 'P1' ? 1.2 * PUL : est === 'Modern' ? 0.35 * PUL : 0.6 * PUL;
-  var paso = altoT + luz;
-  var y = 3 * PUL;
-  while (y + altoT <= alto - 1 * PUL) {
-    e.caja(m.tabla, 'tabla', mk.p(u0 + ancho / 2, y + altoT / 2, 0), [ancho, altoT, 1.2 * PUL], rotY);
-    y += paso;
+  var P = est === 'Modern' ? { paso: 7.4 * PUL, rib: 4.4 * PUL }
+        : est === 'P1'     ? { paso: 5.6 * PUL, rib: 3.0 * PUL }
+        :                    { paso: 6.4 * PUL, rib: 2.2 * PUL };
+  var prof = 1.2 * PUL;                      // relieve del nervio
+  var y0 = 2 * PUL, h = alto - y0;
+  var n = Math.max(1, Math.round(ancho / P.paso)), paso = ancho / n;
+  /* Chapa de fondo, un pelo mas baja que los nervios: entre remate y remate
+     el borde superior baja, que es el festoneado de la foto. */
+  e.caja(m.tablaFondo || m.tabla, 'chapa', mk.p(u0 + ancho / 2, y0 + (h - P.rib / 2) / 2, -prof / 2),
+         [ancho, h - P.rib / 2, 0.3 * PUL], rotY);
+  for (var i = 0; i < n; i++) {
+    var u = u0 + paso / 2 + i * paso;
+    e.caja(m.tabla, 'nervio', mk.p(u, y0 + h / 2, 0), [P.rib, h, prof], rotY);
+    /* Remate redondeado de cada nervio: medio cilindro visto de frente. */
+    e.pieza('cilindro', m.tabla, 'remate', mk.p(u, y0 + h, 0), [P.rib, prof, P.rib], rotY, Math.PI / 2);
   }
+  /* Los dos rails van DETRAS de la chapa, como en el producto: desde la calle
+     no se ven, desde el jardin si. */
+  e.caja(m.estructura, 'rail', mk.p(u0 + ancho / 2, y0 + h * 0.22, -prof - 0.9 * PUL), [ancho, 1.5 * PUL, 1.5 * PUL], rotY);
+  e.caja(m.estructura, 'rail', mk.p(u0 + ancho / 2, y0 + h * 0.80, -prof - 0.9 * PUL), [ancho, 1.5 * PUL, 1.5 * PUL], rotY);
 }
 
 /** EC Fence: paneles verticales de acero que encajan entre si. */
@@ -339,12 +366,17 @@ function hoja(e, m, mat, est, a, b, alto) {
 
   (VANOS[mat] || vanoAluminio)(e, m, est, mk, interior.u0, Math.max(0.5, interior.ancho), interior.alto);
 
-  /* Bastidor. */
+  /* Bastidor. En chapa y tablas va DETRAS del panel, como se fabrica: desde
+     la calle no asoma nada (el tubo superior asomando sobre el panel era el
+     "adorno" que el cliente pidio quitar). En aluminio y chain link el
+     bastidor es parte del aspecto y va en el plano. */
   var mm = m.marco || m.estructura;
-  e.caja(mm, 'marco', mk.p(ancho / 2, alto - tubo / 2, 0), [ancho, tubo, tubo * 1.1], mk.rotY);
-  e.caja(mm, 'marco', mk.p(ancho / 2, 3 * PUL + tubo / 2, 0), [ancho, tubo, tubo * 1.1], mk.rotY);
-  e.caja(mm, 'marco', mk.p(tubo / 2, alto / 2 + 1.5 * PUL, 0), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
-  e.caja(mm, 'marco', mk.p(ancho - tubo / 2, alto / 2 + 1.5 * PUL, 0), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
+  var vB = (mat === 'aluminum' || mat === 'chain-link') ? 0 : -(tubo / 2 + 1.2 * PUL);
+  var yTop = vB === 0 ? alto - tubo / 2 : alto - tubo / 2 - 2 * PUL;
+  e.caja(mm, 'marco', mk.p(ancho / 2, yTop, vB), [ancho, tubo, tubo * 1.1], mk.rotY);
+  e.caja(mm, 'marco', mk.p(ancho / 2, 3 * PUL + tubo / 2, vB), [ancho, tubo, tubo * 1.1], mk.rotY);
+  e.caja(mm, 'marco', mk.p(tubo / 2, alto / 2 + 1.5 * PUL, vB), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
+  e.caja(mm, 'marco', mk.p(ancho - tubo / 2, alto / 2 + 1.5 * PUL, vB), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
 }
 
 /* ── cerca completa ───────────────────────────────────────────────────────── */
