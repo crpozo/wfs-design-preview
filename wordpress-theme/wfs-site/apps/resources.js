@@ -1,0 +1,4 @@
+(function(){const App=()=>React.createElement(React.Fragment,null,React.createElement(SiteHeader,{active:"Fence Education Hub"}),React.createElement(ResourcesHero,null),React.createElement(ResourceArticles,null),React.createElement(MaterialsComparison,null),React.createElement(PoolCodeSection,null),React.createElement(FAQ,null),React.createElement(DownloadsSection,null),React.createElement(ResourcesCTA,null),React.createElement(Footer,null));ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App,null));
+
+;Object.assign(window,{App:typeof App!=="undefined"?App:window.App});
+})();
