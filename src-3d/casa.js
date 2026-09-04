@@ -229,19 +229,41 @@ export function construir() {
   };
 
   /* ── suelo ─────────────────────────────────────────────────────────────── */
-  g.add(losa(400, 400, mats.cesped, 0, 0, -40));
+  /* Cesped del lote y alrededores; mas alla, un campo mas apagado y con
+     grano grande: la misma hierba verde brillante hasta el horizonte era lo
+     que hacia que el fondo se viera de maqueta. */
+  g.add(losa(320, 320, mats.cesped, 0, 0, -40));
+  var campo = new MeshStandardMaterial({ map: T.cesped(), color: new Color('#b9bf9c'), roughness: 1 });
+  g.add(losa(1400, 1400, campo, 0, -0.02, -40));
   /* Arboleda al fondo, sobre un cilindro que rodea la escena. Va sin luz ni
      niebla: es telon, y sombrearlo solo lo ensuciaria. */
   var telon = new Mesh(
-    new CylinderGeometry(168, 168, 34, 48, 1, true),
-    new MeshBasicMaterial({ map: T.arboleda(), side: BackSide, transparent: true, alphaTest: 0.35, fog: false })
+    new CylinderGeometry(168, 168, 44, 64, 1, true),
+    /* Con niebla: es lo que la funde con el horizonte en vez de recortarla. */
+    new MeshBasicMaterial({ map: T.arboleda(), side: BackSide, transparent: true, alphaTest: 0.35 })
   );
   /* Apoyada en el cesped, no mas alla de su borde: a 235 pies caia fuera del
      plano de hierba y los arboles se veian flotando sobre el vacio. */
-  telon.position.set(0, 15, -40);
+  telon.position.set(0, 20, -40);
   g.add(telon);
   g.add(losa(400, 22, mats.asfalto, 0, 0.02, 45));                       // calle
   g.add(losa(400, 4, mats.hormigon, 0, 0.03, 32));                       // acera publica
+  /* Bordillos y linea central: una calle sin bordillo es una franja gris. */
+  var bordillo = new MeshStandardMaterial({ color: new Color('#cdc8bd'), roughness: 0.9 });
+  g.add(caja(400, 0.5, 0.6, bordillo, 0, 0.25, 34.3));
+  g.add(caja(400, 0.5, 0.6, bordillo, 0, 0.25, 55.8));
+  var amarillo = new MeshStandardMaterial({ color: new Color('#d8b23a'), roughness: 0.9 });
+  for (var lx = -200; lx < 200; lx += 30) {
+    g.add(losa(10, 0.35, amarillo, lx + 5, 0.03, 45));
+  }
+  /* Casas vecinas, lejos y apagadas: una casa sola en un prado no es un
+     barrio. Solo volumen y tejado; nadie las mira de cerca. */
+  var vecino = new MeshStandardMaterial({ color: new Color('#e3dccb'), roughness: 0.95 });
+  var tejaV = new MeshStandardMaterial({ map: T.teja(), color: new Color('#c9b7ad'), roughness: 0.9 });
+  [[-98, -30, 44, 30], [98, -34, 40, 30], [-30, -128, 48, 30], [60, -130, 40, 28]].forEach(function (n) {
+    g.add(caja(n[2], 10, n[3], vecino, n[0], 5, n[1]));
+    g.add(cubierta(n[0] - n[2] / 2, n[0] + n[2] / 2, n[1] - n[3] / 2, n[1] + n[3] / 2, 10, 7, 2, tejaV));
+  });
   /* Entrada de coche: cruza la linea de cerca, por eso llega hasta la calle. */
   g.add(losa(LOTE.calzada.x1 - LOTE.calzada.x0, 46, mats.hormigon,
              (LOTE.calzada.x0 + LOTE.calzada.x1) / 2, 0.04, 11));

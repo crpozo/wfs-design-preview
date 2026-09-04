@@ -43,7 +43,7 @@
         { label: 'Green PVC-coated', img: 'chainlink-green',       slug: null, sub: 'Blends into landscaping' },
         { label: 'Heavy Gauge',      img: 'chainlink-heavy-gauge', slug: null, sub: 'For industrial perimeters' }
       ],
-      heights: ["4'", "5'", "6'", "8'"], colors: [], grades: []
+      heights: ["4'", "5'", "6'"], colors: [], grades: []
     },
     vinyl: {
       name: 'Vinyl / PVC', tag: 'Catalyst-extruded PVC', key: 'vinyl',

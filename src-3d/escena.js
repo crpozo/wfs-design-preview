@@ -131,7 +131,9 @@ function Visor(lienzo) {
   this.lienzo = lienzo;
   this.escena = new Scene();
   this.escena.background = new Color('#8dc0e6');
-  this.escena.fog = new Fog(new Color('#cfe2f0'), 130, 460);
+  /* Niebla del color del horizonte, mas cercana: es lo que funde el campo y
+     la arboleda con el cielo en vez de dejar un borde. */
+  this.escena.fog = new Fog(new Color('#cfe2f0'), 90, 360);
   this.escena.add(cielo());
 
   this.camara = new PerspectiveCamera(42, 16 / 9, 0.5, 900);

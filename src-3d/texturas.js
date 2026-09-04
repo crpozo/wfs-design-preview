@@ -325,36 +325,51 @@ export function agua() {
  */
 export function arboleda() {
   if (cache.arboleda) { return cache.arboleda; }
-  var w = 1024, h = 256, c = document.createElement('canvas');
+  /* Tres capas con perspectiva atmosferica: la de atras azulada y desvaida,
+     la del medio apagada, la de delante saturada y con troncos. Cada copa es
+     un racimo de circulos (no una elipse: eso eran las piruletas), con la
+     parte baja mas oscura y la alta con luz. 2048 de ancho para que las
+     copas tengan forma cuando el cilindro las estira. */
+  var w = 2048, h = 512, c = document.createElement('canvas');
   c.width = w; c.height = h;
   var g = c.getContext('2d');
   g.clearRect(0, 0, w, h);
-  /* Dos capas: la de atras mas clara y desvaida, para dar profundidad. */
-  var capas = [{ y: h * 0.42, esc: 0.72, col: '#7d9a86', n: 90 },
-               { y: h * 0.55, esc: 1, col: '#4f6b4f', n: 120 }];
+  var semilla = 11;
+  function rnd() { semilla = (semilla * 9301 + 49297) % 233280; return semilla / 233280; }
+  var capas = [
+    { base: h * 0.50, esc: 0.62, n: 120, arriba: '#9fb3a6', abajo: '#7f978a', tronco: null },
+    { base: h * 0.62, esc: 0.85, n: 110, arriba: '#6f8f5e', abajo: '#4f6d44', tronco: null },
+    { base: h * 0.78, esc: 1.0,  n: 95,  arriba: '#4f7d3c', abajo: '#2f5229', tronco: '#4a3a2a' }
+  ];
   for (var k = 0; k < capas.length; k++) {
     var cp = capas[k];
-    g.fillStyle = cp.col;
-    for (var i = 0; i < cp.n; i++) {
-      var x = (i / cp.n) * w + (Math.random() - 0.5) * (w / cp.n) * 1.6;
-      var r = (16 + Math.random() * 26) * cp.esc;
-      var alto = (30 + Math.random() * 58) * cp.esc;
-      g.beginPath();
-      g.ellipse(x, cp.y + (h - cp.y) * 0.35 - alto * 0.4, r, alto * 0.6, 0, 0, 6.284);
-      g.fill();
-      /* Alguna copa mas alta rompe la linea. Se probo con palmeras y a esta
-         escala salian piruletas: un palo y una bola. Mejor solo masa. */
-      if (Math.random() < 0.16) {
-        g.beginPath();
-        g.ellipse(x, cp.y - alto * 0.35, r * 0.6, alto * 0.5, 0, 0, 6.284);
-        g.fill();
+    for (var q = 0; q < cp.n; q++) {
+      var x = (q / cp.n) * w + (rnd() - 0.5) * (w / cp.n) * 1.5;
+      var alto = (70 + rnd() * 110) * cp.esc, r = (22 + rnd() * 26) * cp.esc;
+      var cy = cp.base - alto * 0.55;
+      if (cp.tronco) {
+        g.fillStyle = cp.tronco;
+        g.fillRect(x - 3 * cp.esc, cy, 6 * cp.esc, cp.base - cy + 10);
+      }
+      /* Copa: 6-9 circulos apiñados, mas oscuros abajo. */
+      var bolas = 6 + Math.floor(rnd() * 4);
+      for (var b = 0; b < bolas; b++) {
+        var bx = x + (rnd() - 0.5) * r * 1.6, by = cy + (rnd() - 0.5) * alto * 0.5;
+        var br = r * (0.55 + rnd() * 0.55);
+        var grd = g.createRadialGradient(bx - br * 0.3, by - br * 0.4, br * 0.1, bx, by, br);
+        grd.addColorStop(0, cp.arriba);
+        grd.addColorStop(1, cp.abajo);
+        g.fillStyle = grd;
+        g.beginPath(); g.arc(bx, by, br, 0, 6.284); g.fill();
       }
     }
-    g.fillRect(0, cp.y + (h - cp.y) * 0.35, w, h);
+    /* Masa continua bajo las copas, para que no se vea el cielo entre troncos. */
+    g.fillStyle = cp.abajo;
+    g.fillRect(0, cp.base, w, h - cp.base);
   }
   var t = new CanvasTexture(c);
   t.wrapS = RepeatWrapping;
-  t.repeat.set(13, 1);
+  t.repeat.set(7, 1);
   t.colorSpace = SRGBColorSpace;
   t.anisotropy = 8;
   return (cache.arboleda = t);
