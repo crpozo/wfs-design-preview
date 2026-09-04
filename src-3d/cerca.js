@@ -373,8 +373,14 @@ function hoja(e, m, mat, est, a, b, alto) {
   var mm = m.marco || m.estructura;
   var vB = (mat === 'aluminum' || mat === 'chain-link') ? 0 : -(tubo / 2 + 1.2 * PUL);
   var yTop = vB === 0 ? alto - tubo / 2 : alto - tubo / 2 - 2 * PUL;
-  e.caja(mm, 'marco', mk.p(ancho / 2, yTop, vB), [ancho, tubo, tubo * 1.1], mk.rotY);
-  e.caja(mm, 'marco', mk.p(ancho / 2, 3 * PUL + tubo / 2, vB), [ancho, tubo, tubo * 1.1], mk.rotY);
+  /* En aluminio los rieles del propio panel YA son el bastidor horizontal:
+     añadir los tubos de arriba y abajo dejaba dos barras a cuatro pulgadas
+     una de otra en la cima de cada porton ("un riel extra arriba"). Solo van
+     los montantes verticales. */
+  if (mat !== 'aluminum') {
+    e.caja(mm, 'marco', mk.p(ancho / 2, yTop, vB), [ancho, tubo, tubo * 1.1], mk.rotY);
+    e.caja(mm, 'marco', mk.p(ancho / 2, 3 * PUL + tubo / 2, vB), [ancho, tubo, tubo * 1.1], mk.rotY);
+  }
   e.caja(mm, 'marco', mk.p(tubo / 2, alto / 2 + 1.5 * PUL, vB), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
   e.caja(mm, 'marco', mk.p(ancho - tubo / 2, alto / 2 + 1.5 * PUL, vB), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
 }

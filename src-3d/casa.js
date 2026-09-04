@@ -268,7 +268,7 @@ export function construir() {
   g.add(losa(LOTE.calzada.x1 - LOTE.calzada.x0, 46, mats.hormigon,
              (LOTE.calzada.x0 + LOTE.calzada.x1) / 2, 0.04, 11));
   /* Camino a la puerta. */
-  g.add(losa(4, 40, mats.hormigon, -12, 0.04, 8));
+  g.add(losa(4, 40, mats.hormigon, -12, 0.045, 8));
   /* Juntas de dilatacion: lineas oscuras cada 8 pies en la calzada y cada 5
      en la acera. Sin ellas el hormigon era una mancha continua. */
   var junta = new MeshStandardMaterial({ color: new Color('#8f8a80'), roughness: 1 });
@@ -335,16 +335,17 @@ export function construir() {
   /* Puerta del garaje en la cara adelantada: 16 plafones en 4 filas y una
      fila de ventanitas arriba, como las puertas seccionales de verdad. */
   var zg = G.z1 + 0.01;
-  g.add(caja(16, 7.6, 0.5, mats.garaje, gcx, 3.9, zg));
+  /* Tambien por delante del zocalo del ala, por lo mismo. */
+  g.add(caja(16, 7.6, 0.5, mats.garaje, gcx, 3.9, zg + 0.2));
   g.add(caja(16.7, 8.3, 0.3, mats.trim, gcx, 4.2, zg - 0.06));
   for (var fi = 0; fi < 4; fi++) {
     for (var co = 0; co < 4; co++) {
       var px0 = gcx - 8 + 2 + co * 4, py0 = 1.0 + fi * 1.85;
       if (fi === 3) {
-        g.add(caja(2.6, 0.9, 0.6, mats.vidrio, px0, py0 + 0.1, zg));
+        g.add(caja(2.6, 0.9, 0.6, mats.vidrio, px0, py0 + 0.1, zg + 0.22));
       } else {
-        g.add(caja(3.2, 1.3, 0.62, mats2.panel, px0, py0, zg));
-        g.add(caja(2.6, 0.8, 0.7, mats.garaje, px0, py0, zg));
+        g.add(caja(3.2, 1.3, 0.62, mats2.panel, px0, py0, zg + 0.22));
+        g.add(caja(2.6, 0.8, 0.7, mats.garaje, px0, py0, zg + 0.24));
       }
     }
   }
@@ -352,7 +353,10 @@ export function construir() {
   /* Portico de entrada: tejado de teja a cuatro aguas sobre las columnas, en
      vez de la losa plana. */
   var P = { x0: -17.6, x1: -6.4, z0: zf - 0.6, z1: zf + 7 };
-  g.add(losa(11, 7, mats.hormigon, -12, 0.06, zf + 3.4));
+  /* Cotas de losa: calle .02, acera .03, calzada .04, camino .045, mantillo .05,
+     terraza .07, porche .09. Ninguna comparte plano con otra: dos losas a la
+     misma cota se rayan (z-fighting). */
+  g.add(losa(11, 7, mats.hormigon, -12, 0.09, zf + 3.4));
   g.add(caja(11, 0.5, 1.4, mats.hormigon, -12, 0.25, zf + 7.4));        // escalon
   g.add(caja(0.8, 9.1, 0.8, mats.trim, -16.6, 4.55, zf + 6.6));
   g.add(caja(0.8, 9.1, 0.8, mats.trim, -7.4, 4.55, zf + 6.6));
@@ -363,13 +367,15 @@ export function construir() {
   g.add(caja(0.4, 0.5, P.z1 - P.z0 + 2.4, mats.trim, P.x0 - 1.2, 8.95, (P.z0 + P.z1) / 2));
   g.add(caja(0.4, 0.5, P.z1 - P.z0 + 2.4, mats.trim, P.x1 + 1.2, 8.95, (P.z0 + P.z1) / 2));
 
-  /* Puerta con plafones, pomo, vidriera lateral y aplique. */
-  g.add(caja(3.4, 7.4, 0.45, mats.puerta, -12.6, 3.7, zf));
+  /* Puerta con plafones, pomo, vidriera lateral y aplique. Todo POR DELANTE
+     del zocalo (que sobresale 0,3): con la puerta a ras de fachada, su parte
+     baja quedaba coplanar con la banda y la GPU rayaba la union (z-fighting). */
+  g.add(caja(3.4, 7.4, 0.45, mats.puerta, -12.6, 3.7, zf + 0.22));
   g.add(caja(5.4, 8.1, 0.28, mats.trim, -12, 4.05, zf - 0.06));
-  g.add(caja(0.22, 0.22, 0.5, mats.trim, -11.5, 3.5, zf + 0.1));
-  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12.6, 5.3, zf + 0.04));
-  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12.6, 2.1, zf + 0.04));
-  g.add(caja(1.1, 6.8, 0.42, mats.vidrio, -10.1, 3.9, zf));              // vidriera
+  g.add(caja(0.22, 0.22, 0.5, mats.trim, -11.5, 3.5, zf + 0.34));
+  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12.6, 5.3, zf + 0.30));
+  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12.6, 2.1, zf + 0.30));
+  g.add(caja(1.1, 6.8, 0.42, mats.vidrio, -10.1, 3.9, zf + 0.22));       // vidriera
   g.add(caja(0.5, 0.9, 0.5, mats2.aplique, -15.2, 6.3, zf + 0.2));       // aplique
 
   /* Ventanas con contraventanas. */
@@ -405,7 +411,7 @@ export function construir() {
 
   /* ── piscina y terraza, en el lateral ─────────────────────────────────── */
   var px = -37, pz = -28;
-  g.add(losa(20, 34, mats.hormigon, px, 0.05, pz));
+  g.add(losa(20, 34, mats.hormigon, px, 0.07, pz));
   g.add(caja(15, 0.9, 26, mats.borde, px, 0.42, pz));
   g.add(caja(13.2, 1, 24.2, mats.agua, px, 0.5, pz));
   for (var s = 0; s < 3; s++) {

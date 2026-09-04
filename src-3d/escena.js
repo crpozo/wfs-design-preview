@@ -159,8 +159,11 @@ function Visor(lienzo) {
   sol.shadow.mapSize.set(tactil ? 2048 : 4096, tactil ? 2048 : 4096);
   var s = sol.shadow.camera;
   s.left = -64; s.right = 64; s.top = 64; s.bottom = -64; s.near = 1; s.far = 260;
-  sol.shadow.bias = -0.0006;
-  sol.shadow.normalBias = 0.03;
+  /* Sesgo: con el mapa a 4096 y el encuadre ceñido, el sesgo negativo de
+     antes dejaba que las losas horizontales se sombrearan a si mismas en
+     bandas (shadow acne). Sesgo casi nulo y normalBias de dos texeles. */
+  sol.shadow.bias = -0.00005;
+  sol.shadow.normalBias = 0.07;
   this.escena.add(sol);
   this.escena.add(new HemisphereLight(0xbcd8f0, 0x6d7a52, 0.7));
   this.escena.add(new AmbientLight(0xffffff, 0.1));
