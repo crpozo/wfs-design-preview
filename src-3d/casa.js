@@ -8,9 +8,9 @@
  *
  * Todas las medidas van en pies, igual que la cerca.
  */
-import { Group, Mesh, BoxGeometry, PlaneGeometry, CylinderGeometry, SphereGeometry, BufferGeometry,
+import { Group, Mesh, InstancedMesh, Object3D, BoxGeometry, PlaneGeometry, CylinderGeometry, SphereGeometry, BufferGeometry,
          MeshStandardMaterial, MeshBasicMaterial, BackSide, DoubleSide, Color,
-         Float32BufferAttribute } from '../vendor/three/three.module.js';
+         Float32BufferAttribute, Vector3 } from '../vendor/three/three.module.js';
 import * as T from './texturas.js';
 import * as Persona from './persona.js';
 
@@ -33,6 +33,18 @@ function caja(w, h, d, mat, x, y, z, rotY) {
   if (rotY) { m.rotation.y = rotY; }
   m.castShadow = true;
   m.receiveShadow = true;
+  return m;
+}
+
+/** Barra entre dos puntos, para las limatesas de la cubierta: caja() solo
+ *  gira en Y y una limatesa va inclinada. */
+function barra(p, q, diam, mat) {
+  var dx = q[0] - p[0], dy = q[1] - p[1], dz = q[2] - p[2];
+  var L = Math.sqrt(dx * dx + dy * dy + dz * dz);
+  var m = new Mesh(new CylinderGeometry(diam / 2, diam / 2, L, 6), mat);
+  m.position.set((p[0] + q[0]) / 2, (p[1] + q[1]) / 2, (p[2] + q[2]) / 2);
+  m.quaternion.setFromUnitVectors(new Vector3(0, 1, 0), new Vector3(dx, dy, dz).normalize());
+  m.castShadow = true;
   return m;
 }
 
@@ -87,6 +99,29 @@ function cubierta(x0, x1, z0, z1, yBase, altura, vuelo, mat) {
 }
 
 /** Palmera: tronco conico y dos cuadros cruzados con la fronda recortada. */
+var FRONDA_GEO = {};
+function frondaGeo(largo) {
+  /* Plano de 7 tramos curvado: arquea hacia arriba en la base y cae en la
+     punta, como una hoja de palma de verdad. Una geometria por largo. */
+  var k = largo.toFixed(1);
+  if (FRONDA_GEO[k]) { return FRONDA_GEO[k]; }
+  /* La hoja sale del cogollo hacia FUERA (z), sube un poco al principio y
+     cae hacia la punta. La primera version arqueaba hacia arriba y las copas
+     parecian cepillos de botella. */
+  var geo = new PlaneGeometry(largo * 0.6, largo, 1, 7);
+  var pos = geo.attributes.position;
+  for (var i = 0; i < pos.count; i++) {
+    var y = pos.getY(i);                     // -largo/2 .. largo/2
+    var u = (y + largo / 2) / largo;         // 0 base .. 1 punta
+    pos.setY(i, u * largo * 0.42 - u * u * largo * 0.62);
+    pos.setZ(i, u * largo * 0.92);
+  }
+  geo.computeVertexNormals();
+  FRONDA_GEO[k] = geo;
+  return geo;
+}
+
+var HOJA_MAT = null;
 function palmera(x, z, altura) {
   var g = new Group();
   /* Leve inclinacion, distinta por palmera (sale de su posicion, no de un
@@ -95,49 +130,67 @@ function palmera(x, z, altura) {
   var lean = Math.sin(x * 12.9898 + z * 78.233) * 0.06;
   var tronco = new Mesh(
     new CylinderGeometry(0.3, 0.52, altura, 8),
-    new MeshStandardMaterial({ color: new Color('#8a7355'), roughness: 0.9 })
+    new MeshStandardMaterial({ map: T.corteza(), roughness: 0.92 })
   );
   tronco.position.set(x, altura / 2, z);
   tronco.rotation.z = lean;
   tronco.castShadow = true;
   g.add(tronco);
-  var hoja = new MeshStandardMaterial({
-    map: T.fronda(), transparent: true, alphaTest: 0.42, side: DoubleSide, roughness: 0.85
-  });
-  /* Tres cuadros a 60 grados en vez de dos a 90: la copa deja de "apagarse"
-     cuando la camara queda alineada con uno de los planos. */
-  /* La copa sigue a la punta del tronco inclinado. */
-  var cx = x - Math.sin(lean) * altura * 0.5;
-  for (var i = 0; i < 3; i++) {
-    var q = new Mesh(new PlaneGeometry(altura * 0.95, altura * 0.95), hoja);
-    q.position.set(cx, altura + altura * 0.16, z);
-    q.rotation.y = i * Math.PI / 3 + lean * 4;
-    q.castShadow = true;
-    g.add(q);
+  if (!HOJA_MAT) {
+    HOJA_MAT = new MeshStandardMaterial({
+      map: T.frondaHoja(), transparent: true, alphaTest: 0.4, side: DoubleSide, roughness: 0.85
+    });
   }
+  /* Copa: diez frondas curvadas alrededor del cogollo, cada una con su giro y
+     su caida. Antes eran tres planos cruzados con toda la copa pintada, y de
+     cerca se veian como cartones. */
+  var cx = x - Math.sin(lean) * altura * 0.5, cy = altura - 0.2;
+  var largo = altura * 0.62;
+  var geo = frondaGeo(largo);
+  var n = 10;
+  /* Las diez hojas en UN InstancedMesh: una llamada de dibujo por palmera (y
+     otra en la pasada de sombra) en vez de diez. Con ocho palmeras eran 160
+     llamadas solo de frondas. */
+  var copa = new InstancedMesh(geo, HOJA_MAT, n);
+  var d = new Object3D();
+  for (var i = 0; i < n; i++) {
+    var fase = Math.sin(i * 7.3 + x) * 0.5;
+    d.position.set(cx, cy, z);
+    d.rotation.order = 'YXZ';
+    d.rotation.y = (i / n) * Math.PI * 2 + fase * 0.4 + lean * 4;
+    /* Ligera variacion de caida por hoja; la forma ya la da la geometria. */
+    d.rotation.x = 0.12 - fase * 0.2;
+    d.updateMatrix();
+    copa.setMatrixAt(i, d.matrix);
+  }
+  copa.castShadow = true;
+  g.add(copa);
+  var cogollo = new Mesh(new SphereGeometry(0.55, 8, 6), new MeshStandardMaterial({ color: new Color('#6b5a3a'), roughness: 1 }));
+  cogollo.position.set(cx, cy, z);
+  g.add(cogollo);
   return g;
 }
 
-/** Arbusto: mismo truco de cuadros cruzados, mas pequeño. */
-var HOJAS = null;
-function arbusto(x, z, r) {
-  /* Tres esferas solapadas en dos verdes: de cerca, tres planos cruzados con
-     textura se veian como cartones. Geometria compartida entre todos. */
-  if (!HOJAS) {
-    HOJAS = { geo: new SphereGeometry(1, 12, 9),
-              a: new MeshStandardMaterial({ color: new Color('#3f7a34'), roughness: 0.95 }),
-              b: new MeshStandardMaterial({ color: new Color('#4f8f3c'), roughness: 0.95 }) };
-  }
-  var g = new Group();
+/** Arbustos: tres esferas solapadas en dos verdes. TODOS los arbustos van en
+ *  dos InstancedMesh (uno por verde): 30 esferas por dos llamadas, no treinta. */
+function arbustos(lista) {
+  var geo = new SphereGeometry(1, 12, 9);
   var bolas = [[0, 0.72, 0, 0.78], [-0.45, 0.55, 0.3, 0.6], [0.45, 0.6, -0.25, 0.62]];
-  for (var i = 0; i < bolas.length; i++) {
-    var b = bolas[i];
-    var s = new Mesh(HOJAS.geo, i === 1 ? HOJAS.b : HOJAS.a);
-    s.position.set(x + b[0] * r, b[1] * r, z + b[2] * r);
-    s.scale.setScalar(b[3] * r);
-    s.castShadow = true;
-    g.add(s);
+  var a = new InstancedMesh(geo, new MeshStandardMaterial({ color: new Color('#3f7a34'), roughness: 0.95 }), lista.length * 2);
+  var b = new InstancedMesh(geo, new MeshStandardMaterial({ color: new Color('#4f8f3c'), roughness: 0.95 }), lista.length);
+  var d = new Object3D(), ia = 0, ib = 0;
+  for (var k = 0; k < lista.length; k++) {
+    var x = lista[k][0], z = lista[k][1], r = lista[k][2];
+    for (var i = 0; i < bolas.length; i++) {
+      var q = bolas[i];
+      d.position.set(x + q[0] * r, q[1] * r, z + q[2] * r);
+      d.scale.setScalar(q[3] * r);
+      d.updateMatrix();
+      if (i === 1) { b.setMatrixAt(ib++, d.matrix); } else { a.setMatrixAt(ia++, d.matrix); }
+    }
   }
+  a.castShadow = b.castShadow = true;
+  var g = new Group(); g.add(a); g.add(b);
   return g;
 }
 
@@ -208,6 +261,22 @@ export function construir() {
   g.add(caja(anchoCasa, C.alto, fondoCasa, mats.pared, cx, C.alto / 2, cz));
   g.add(caja(anchoCasa + 0.6, 1.4, fondoCasa + 0.6, mats.zocalo, cx, 0.7, cz));
   g.add(cubierta(C.x0, C.x1, C.z0, C.z1, C.alto, 8.2, 2.4, mats.teja));
+  /* Cumbrera y limatesas con teja de remate, y canalon blanco en los aleros:
+     son las lineas que hacen que una cubierta se lea como cubierta. La
+     geometria replica la de cubierta(): mismo vuelo y misma altura. */
+  var vA = C.x0 - 2.4, vB = C.x1 + 2.4, vC = C.z0 - 2.4, vD = C.z1 + 2.4;
+  var sang = Math.min((vD - vC) / 2, (vB - vA) / 2 - 0.5), yr = C.alto + 8.2;
+  var R0 = [vA + sang, yr, cz], R1 = [vB - sang, yr, cz];
+  var remate = new MeshStandardMaterial({ color: new Color('#8d4a2c'), roughness: 0.8 });
+  g.add(barra(R0, R1, 0.55, remate));
+  g.add(barra([vA, C.alto, vC], R0, 0.5, remate));
+  g.add(barra([vA, C.alto, vD], R0, 0.5, remate));
+  g.add(barra([vB, C.alto, vC], R1, 0.5, remate));
+  g.add(barra([vB, C.alto, vD], R1, 0.5, remate));
+  g.add(caja(vB - vA, 0.4, 0.45, mats.trim, cx, C.alto - 0.1, vD));
+  g.add(caja(vB - vA, 0.4, 0.45, mats.trim, cx, C.alto - 0.1, vC));
+  g.add(caja(0.35, C.alto, 0.35, mats.trim, vA + 0.3, C.alto / 2, vD - 0.1));
+  g.add(caja(0.35, C.alto, 0.35, mats.trim, vB - 0.3, C.alto / 2, vD - 0.1));
 
   /* Fachada a la calle: garaje a la derecha, entrada a la izquierda. */
   var zf = C.z1 + 0.01;
@@ -247,12 +316,10 @@ export function construir() {
 
   /* ── plantacion ───────────────────────────────────────────────────────── */
   g.add(losa(anchoCasa + 6, 5, mats.mantillo, cx, 0.05, C.z1 + 2.6));
-  var arbustos = [[-24, -8, 1.5], [-18.5, -8, 1.2], [-3, -8.4, 1.4], [2, -8.4, 1.2],
+  var listaArbustos = [[-24, -8, 1.5], [-18.5, -8, 1.2], [-3, -8.4, 1.4], [2, -8.4, 1.2],
                   [7, -8.4, 1.3], [21, -8.6, 1.6], [-30, 6, 1.8], [-30, 14, 1.5],
                   [30, 4, 1.7], [30, 13, 1.4]];
-  for (var k = 0; k < arbustos.length; k++) {
-    g.add(arbusto(arbustos[k][0], arbustos[k][1], arbustos[k][2]));
-  }
+  g.add(arbustos(listaArbustos));
   /* Ninguna palmera pisa la piscina ni su terraza: el vaso va en x -44..-30 y
      z -40..-16, y la terraza en x -47..-27, z -45..-11. Las dos que caian ahi
      dentro se reparten por el jardin. */

@@ -20,19 +20,42 @@ var PUL = 1 / 12;
 /* ── cielo ───────────────────────────────────────────────────────────────── */
 
 function cielo() {
+  /* Degradado de cielo con nubes procedurales: 512 de ancho para que las
+     nubes tengan forma, y una banda entre el horizonte y media altura, que es
+     donde se ven desde una calle. Cada nube son varias manchas radiales
+     solapadas; el resultado es un cielo de Florida a media tarde. */
   var c = document.createElement('canvas');
-  c.width = 4; c.height = 256;
+  c.width = 1024; c.height = 512;
   var g = c.getContext('2d');
-  var grd = g.createLinearGradient(0, 0, 0, 256);
+  var grd = g.createLinearGradient(0, 0, 0, 512);
   grd.addColorStop(0, '#3f7fc4');
   grd.addColorStop(0.42, '#8dc0e6');
   grd.addColorStop(0.76, '#cfe2f0');
   grd.addColorStop(1, '#e8e4d8');
   g.fillStyle = grd;
-  g.fillRect(0, 0, 4, 256);
+  g.fillRect(0, 0, 1024, 512);
+  var semilla = 7;
+  function rnd() { semilla = (semilla * 9301 + 49297) % 233280; return semilla / 233280; }
+  for (var i = 0; i < 26; i++) {
+    /* Banda entre el 30% y el 45% de la altura (justo sobre el horizonte, que
+       esta en el 50%) y tamaños contenidos: cerca del cenit la esfera estira
+       el mapa y una nube grande se convertia en un lavado blanco. */
+    var cx = rnd() * 1024, cy = 155 + rnd() * 75, ancho = 40 + rnd() * 60;
+    var manchas = 5 + Math.floor(rnd() * 6);
+    for (var k = 0; k < manchas; k++) {
+      var mx = cx + (rnd() - 0.5) * ancho, my = cy + (rnd() - 0.5) * ancho * 0.28;
+      var r = ancho * (0.18 + rnd() * 0.22);
+      var rg = g.createRadialGradient(mx, my, 0, mx, my, r);
+      rg.addColorStop(0, 'rgba(255,255,255,' + (0.45 + rnd() * 0.3) + ')');
+      rg.addColorStop(0.6, 'rgba(255,255,255,' + (0.18 + rnd() * 0.15) + ')');
+      rg.addColorStop(1, 'rgba(255,255,255,0)');
+      g.fillStyle = rg;
+      g.beginPath(); g.arc(mx, my, r, 0, Math.PI * 2); g.fill();
+    }
+  }
   var t = new CanvasTexture(c);
   t.colorSpace = SRGBColorSpace;
-  var m = new Mesh(new SphereGeometry(600, 24, 16), new MeshBasicMaterial({ map: t, side: BackSide, fog: false }));
+  var m = new Mesh(new SphereGeometry(600, 32, 20), new MeshBasicMaterial({ map: t, side: BackSide, fog: false }));
   return m;
 }
 
@@ -126,9 +149,14 @@ function Visor(lienzo) {
   var sol = new DirectionalLight(0xfff2df, 2.7);
   sol.position.set(-62, 74, 58);
   sol.castShadow = true;
-  sol.shadow.mapSize.set(2048, 2048);
+  /* Sombras: el encuadre se ciñe al lote (antes cubria 190 pies de lado y
+     medio mapa se iba en cesped vacio), y en escritorio el mapa sube a 4096.
+     En tactil se queda en 2048: 64 MB de mapa de profundidad en un movil
+     es pedir un cierre de pestaña. */
+  var tactil = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+  sol.shadow.mapSize.set(tactil ? 2048 : 4096, tactil ? 2048 : 4096);
   var s = sol.shadow.camera;
-  s.left = -95; s.right = 95; s.top = 95; s.bottom = -95; s.near = 1; s.far = 260;
+  s.left = -64; s.right = 64; s.top = 64; s.bottom = -64; s.near = 1; s.far = 260;
   sol.shadow.bias = -0.0006;
   sol.shadow.normalBias = 0.03;
   this.escena.add(sol);

@@ -6,7 +6,7 @@
  * mas nitido generado que fotografiado, porque se genera a la resolucion que
  * pide la camara y repite sin costura por construccion.
  */
-import { CanvasTexture, RepeatWrapping, SRGBColorSpace } from '../vendor/three/three.module.js';
+import { CanvasTexture, RepeatWrapping, ClampToEdgeWrapping, SRGBColorSpace } from '../vendor/three/three.module.js';
 
 var cache = {};
 
@@ -57,17 +57,22 @@ function ruido(ctx, n, celda, alfa, tinte) {
 /** Cesped: ruido verde con briznas cortas encima. */
 export function cesped() {
   if (cache.cesped) { return cache.cesped; }
-  /* 512 y no 256: son texturas de canvas, asi que la resolucion extra cuesta
-     unos milisegundos al generar y nada de descarga. A 256 el cesped se veia
-     como manchas al acercarse. */
-  var n = 512, c = lienzo(n), g = c.getContext('2d');
-  ruido(g, n, 15, 0.13, [96, 132, 66]);
-  for (var i = 0; i < 9000; i++) {
+  /* 1024: son texturas de canvas, la resolucion cuesta milisegundos al
+     generar y nada de descarga. Dos capas de ruido (manchas grandes de tono y
+     grano fino) y muchas briznas encima: un cesped real no es un verde plano. */
+  var n = 1024, c = lienzo(n), g = c.getContext('2d');
+  ruido(g, n, 160, 0.10, [96, 132, 66]);
+  g.globalCompositeOperation = 'overlay';
+  var c2 = lienzo(n), g2 = c2.getContext('2d');
+  ruido(g2, n, 14, 0.5, [128, 128, 128]);
+  g.drawImage(c2, 0, 0);
+  g.globalCompositeOperation = 'source-over';
+  for (var i = 0; i < 34000; i++) {
     var x = Math.random() * n, y = Math.random() * n;
-    var l = 3 + Math.random() * 6, a = Math.random() * Math.PI;
-    g.strokeStyle = 'rgba(' + (78 + Math.random() * 60 | 0) + ',' +
-      (108 + Math.random() * 62 | 0) + ',' + (52 + Math.random() * 34 | 0) + ',0.5)';
-    g.lineWidth = 1;
+    var l = 4 + Math.random() * 9, a = -Math.PI / 2 + (Math.random() - 0.5) * 1.2;
+    g.strokeStyle = 'rgba(' + (74 + Math.random() * 64 | 0) + ',' +
+      (104 + Math.random() * 66 | 0) + ',' + (48 + Math.random() * 36 | 0) + ',0.55)';
+    g.lineWidth = 1 + Math.random();
     g.beginPath();
     g.moveTo(x, y);
     g.lineTo(x + Math.cos(a) * l, y + Math.sin(a) * l);
@@ -77,7 +82,6 @@ export function cesped() {
   return cache.cesped;
 }
 
-/** Estuco: el acabado de pared de casi toda casa de Florida. */
 export function estuco(hex) {
   var k = 'estuco' + hex;
   if (cache[k]) { return cache[k]; }
@@ -135,17 +139,52 @@ export function teja() {
 /** Hormigon para calzada, acera y terraza. */
 export function hormigon() {
   if (cache.hormigon) { return cache.hormigon; }
-  var n = 384, c = lienzo(n), g = c.getContext('2d');
-  ruido(g, n, 16, 0.1, [176, 172, 164]);
-  for (var i = 0; i < 3200; i++) {
-    g.fillStyle = 'rgba(0,0,0,' + (Math.random() * 0.07) + ')';
-    g.fillRect(Math.random() * n, Math.random() * n, 1, 1);
+  var n = 512, c = lienzo(n), g = c.getContext('2d');
+  ruido(g, n, 22, 0.1, [176, 172, 164]);
+  /* Arido: motas claras y oscuras de tamaño variable. */
+  for (var i = 0; i < 9000; i++) {
+    var v = Math.random() < 0.5 ? 0 : 255;
+    g.fillStyle = 'rgba(' + v + ',' + v + ',' + v + ',' + (Math.random() * 0.09) + ')';
+    var s = Math.random() < 0.85 ? 1 : 2;
+    g.fillRect(Math.random() * n, Math.random() * n, s, s);
   }
   cache.hormigon = envolver(c, 8, 8);
   return cache.hormigon;
 }
 
-/** Veta de madera, para el acabado woodgrain de DuraFence. */
+/** Una sola hoja de palmera (pinnada): raquis vertical con foliolos a los
+ *  lados, para las frondas 3D curvadas. 256x512, de abajo (base) a arriba. */
+export function frondaHoja() {
+  if (cache.frondaHoja) { return cache.frondaHoja; }
+  var w = 256, h = 512, c = document.createElement('canvas');
+  c.width = w; c.height = h;
+  var g = c.getContext('2d');
+  g.clearRect(0, 0, w, h);
+  var cx = w / 2;
+  g.strokeStyle = 'rgba(96,110,52,1)';
+  g.lineWidth = 5;
+  g.beginPath(); g.moveTo(cx, h); g.lineTo(cx, 6); g.stroke();
+  for (var y = h - 10; y > 12; y -= 6) {
+    var t = 1 - y / h;                                  // 0 base, 1 punta
+    var largo = Math.sin(Math.min(1, t * 1.15) * Math.PI) * w * 0.48 + 6;
+    var ang = 0.55 + t * 0.5;                           // mas caidos hacia la punta
+    for (var lado = -1; lado <= 1; lado += 2) {
+      g.strokeStyle = 'rgba(' + (40 + Math.random() * 40 | 0) + ',' + (100 + Math.random() * 50 | 0) + ',' + (40 + Math.random() * 20 | 0) + ',0.95)';
+      /* Foliolos de 3px cada 6px: con 2px y alphaTest, los mipmaps los
+         diluian y a distancia la copa quedaba rala; con 4px cada 4px se
+         tocaban y de cerca la hoja era una lamina rayada. */
+      g.lineWidth = 3;
+      g.beginPath();
+      g.moveTo(cx, y);
+      g.lineTo(cx + lado * Math.cos(ang) * largo, y - Math.sin(ang) * largo * 0.55 + largo * 0.25);
+      g.stroke();
+    }
+  }
+  cache.frondaHoja = envolver(c, 1, 1);
+  cache.frondaHoja.wrapS = cache.frondaHoja.wrapT = ClampToEdgeWrapping;
+  return cache.frondaHoja;
+}
+
 export function veta() {
   if (cache.veta) { return cache.veta; }
   var n = 256, c = lienzo(n), g = c.getContext('2d');
@@ -319,4 +358,17 @@ export function arboleda() {
   t.colorSpace = SRGBColorSpace;
   t.anisotropy = 8;
   return (cache.arboleda = t);
+}
+
+/** Corteza de palmera: anillos horizontales irregulares. */
+export function corteza() {
+  if (cache.corteza) { return cache.corteza; }
+  var n = 256, c = lienzo(n), g = c.getContext('2d');
+  ruido(g, n, 12, 0.18, [138, 115, 85]);
+  for (var y = 0; y < n; y += 9 + Math.random() * 5) {
+    g.fillStyle = 'rgba(60,45,30,' + (0.25 + Math.random() * 0.3) + ')';
+    g.fillRect(0, y, n, 2 + Math.random() * 2);
+  }
+  cache.corteza = envolver(c, 2, 6);
+  return cache.corteza;
 }
