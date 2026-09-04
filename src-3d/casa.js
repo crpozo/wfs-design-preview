@@ -273,37 +273,113 @@ export function construir() {
   g.add(barra([vA, C.alto, vD], R0, 0.5, remate));
   g.add(barra([vB, C.alto, vC], R1, 0.5, remate));
   g.add(barra([vB, C.alto, vD], R1, 0.5, remate));
-  g.add(caja(vB - vA, 0.4, 0.45, mats.trim, cx, C.alto - 0.1, vD));
+  /* Canalon frontal solo hasta el ala del garaje, que tiene el suyo. */
+  g.add(caja((3.5 - 2.2) - vA, 0.4, 0.45, mats.trim, (vA + 3.5 - 2.2) / 2, C.alto - 0.1, vD));
   g.add(caja(vB - vA, 0.4, 0.45, mats.trim, cx, C.alto - 0.1, vC));
   g.add(caja(0.35, C.alto, 0.35, mats.trim, vA + 0.3, C.alto / 2, vD - 0.1));
   g.add(caja(0.35, C.alto, 0.35, mats.trim, vB - 0.3, C.alto / 2, vD - 0.1));
 
-  /* Fachada a la calle: garaje a la derecha, entrada a la izquierda. */
+  /* ── fachada a la calle ──────────────────────────────────────────────
+     Una caja con tejado se lee como maqueta. Lo que la convierte en casa:
+     el ala del garaje ADELANTADA con su propio tejado (cruce de aguas), un
+     portico de teja sobre la entrada, contraventanas, fascias, plafones en
+     la puerta del garaje. Todo cajas: sigue sin costar nada de descarga. */
   var zf = C.z1 + 0.01;
-  g.add(caja(16, 7.6, 0.5, mats.garaje, 12, 3.9, zf));
-  g.add(caja(16.7, 8.3, 0.3, mats.trim, 12, 4.2, zf - 0.06));
-  for (var i = 0; i < 4; i++) {
-    g.add(caja(15.6, 0.12, 0.62, mats.trim, 12, 1.1 + i * 1.85, zf));
-  }
-  g.add(caja(3.4, 7.4, 0.45, mats.puerta, -12, 3.7, zf));
-  /* Pomo y plafones de la puerta. */
-  g.add(caja(0.22, 0.22, 0.5, mats.trim, -10.9, 3.5, zf + 0.1));
-  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12, 5.3, zf + 0.04));
-  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12, 2.1, zf + 0.04));
-  g.add(caja(4.1, 8.1, 0.28, mats.trim, -12, 4.05, zf - 0.06));
-  ventana(g, mats, -20.5, 5.4, zf, 5, 4.4);
-  ventana(g, mats, -5.5, 5.4, zf, 4, 4.4);
+  var mats2 = {
+    contra:  new MeshStandardMaterial({ color: new Color('#2f3a4a'), roughness: 0.7 }),
+    banda:   new MeshStandardMaterial({ color: new Color('#d9d0bf'), roughness: 0.95 }),
+    panel:   new MeshStandardMaterial({ color: new Color('#e4e1d9'), roughness: 0.75 }),
+    aplique: new MeshStandardMaterial({ color: new Color('#2a2a2a'), roughness: 0.5, metalness: 0.4 }),
+    ac:      new MeshStandardMaterial({ color: new Color('#b9bcb8'), roughness: 0.6, metalness: 0.3 })
+  };
 
-  /* Porche: dos columnas y un alero bajo. */
+  /* Ala del garaje: 18 pies de ancho, adelantada 5 desde la fachada, con
+     tejado a cuatro aguas mas bajo que el principal. */
+  var G = { x0: 3.5, x1: 21.5, z0: C.z1 - 10, z1: C.z1 + 5 };
+  var gcx = (G.x0 + G.x1) / 2;
+  g.add(caja(G.x1 - G.x0, C.alto, G.z1 - G.z0, mats.pared, gcx, C.alto / 2, (G.z0 + G.z1) / 2));
+  g.add(caja(G.x1 - G.x0 + 0.6, 1.4, G.z1 - G.z0 + 0.6, mats.zocalo, gcx, 0.7, (G.z0 + G.z1) / 2));
+  g.add(cubierta(G.x0, G.x1, G.z0, G.z1, C.alto, 5.6, 2.2, mats.teja));
+  /* Fascia y canalon del ala. */
+  g.add(caja(G.x1 - G.x0 + 4.4, 0.4, 0.45, mats.trim, gcx, C.alto - 0.1, G.z1 + 2.2));
+  g.add(caja(0.45, 0.4, G.z1 - G.z0 + 4.4, mats.trim, G.x1 + 2.2, C.alto - 0.1, (G.z0 + G.z1) / 2));
+  var vGa = G.x0 - 2.2, vGb = G.x1 + 2.2, vGc = G.z0 - 2.2, vGd = G.z1 + 2.2;
+  var sG = Math.min((vGd - vGc) / 2, (vGb - vGa) / 2 - 0.5), yG = C.alto + 5.6, czG = (vGc + vGd) / 2;
+  var remateG = new MeshStandardMaterial({ color: new Color('#8d4a2c'), roughness: 0.8 });
+  g.add(barra([vGa + sG, yG, czG], [vGb - sG, yG, czG], 0.5, remateG));
+  g.add(barra([vGa, C.alto, vGd], [vGa + sG, yG, czG], 0.45, remateG));
+  g.add(barra([vGb, C.alto, vGd], [vGb - sG, yG, czG], 0.45, remateG));
+
+  /* Puerta del garaje en la cara adelantada: 16 plafones en 4 filas y una
+     fila de ventanitas arriba, como las puertas seccionales de verdad. */
+  var zg = G.z1 + 0.01;
+  g.add(caja(16, 7.6, 0.5, mats.garaje, gcx, 3.9, zg));
+  g.add(caja(16.7, 8.3, 0.3, mats.trim, gcx, 4.2, zg - 0.06));
+  for (var fi = 0; fi < 4; fi++) {
+    for (var co = 0; co < 4; co++) {
+      var px0 = gcx - 8 + 2 + co * 4, py0 = 1.0 + fi * 1.85;
+      if (fi === 3) {
+        g.add(caja(2.6, 0.9, 0.6, mats.vidrio, px0, py0 + 0.1, zg));
+      } else {
+        g.add(caja(3.2, 1.3, 0.62, mats2.panel, px0, py0, zg));
+        g.add(caja(2.6, 0.8, 0.7, mats.garaje, px0, py0, zg));
+      }
+    }
+  }
+
+  /* Portico de entrada: tejado de teja a cuatro aguas sobre las columnas, en
+     vez de la losa plana. */
+  var P = { x0: -17.6, x1: -6.4, z0: zf - 0.6, z1: zf + 7 };
   g.add(losa(11, 7, mats.hormigon, -12, 0.06, zf + 3.4));
-  g.add(caja(11.6, 0.7, 7.6, mats.trim, -12, 9.4, zf + 3.4));
+  g.add(caja(11, 0.5, 1.4, mats.hormigon, -12, 0.25, zf + 7.4));        // escalon
   g.add(caja(0.8, 9.1, 0.8, mats.trim, -16.6, 4.55, zf + 6.6));
   g.add(caja(0.8, 9.1, 0.8, mats.trim, -7.4, 4.55, zf + 6.6));
+  g.add(caja(1.2, 0.5, 1.2, mats.trim, -16.6, 0.5, zf + 6.6));            // basas
+  g.add(caja(1.2, 0.5, 1.2, mats.trim, -7.4, 0.5, zf + 6.6));
+  g.add(cubierta(P.x0, P.x1, P.z0, P.z1, 9.1, 2.6, 1.2, mats.teja));
+  g.add(caja(P.x1 - P.x0 + 2.4, 0.5, 0.4, mats.trim, -12, 8.95, P.z1 + 1.2));
+  g.add(caja(0.4, 0.5, P.z1 - P.z0 + 2.4, mats.trim, P.x0 - 1.2, 8.95, (P.z0 + P.z1) / 2));
+  g.add(caja(0.4, 0.5, P.z1 - P.z0 + 2.4, mats.trim, P.x1 + 1.2, 8.95, (P.z0 + P.z1) / 2));
+
+  /* Puerta con plafones, pomo, vidriera lateral y aplique. */
+  g.add(caja(3.4, 7.4, 0.45, mats.puerta, -12.6, 3.7, zf));
+  g.add(caja(5.4, 8.1, 0.28, mats.trim, -12, 4.05, zf - 0.06));
+  g.add(caja(0.22, 0.22, 0.5, mats.trim, -11.5, 3.5, zf + 0.1));
+  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12.6, 5.3, zf + 0.04));
+  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12.6, 2.1, zf + 0.04));
+  g.add(caja(1.1, 6.8, 0.42, mats.vidrio, -10.1, 3.9, zf));              // vidriera
+  g.add(caja(0.5, 0.9, 0.5, mats2.aplique, -15.2, 6.3, zf + 0.2));       // aplique
+
+  /* Ventanas con contraventanas. */
+  ventana(g, mats, -21.5, 5.4, zf, 5, 4.4);
+  g.add(caja(0.9, 4.9, 0.3, mats2.contra, -24.8, 5.4, zf));
+  g.add(caja(0.9, 4.9, 0.3, mats2.contra, -18.2, 5.4, zf));
+  ventana(g, mats, -3.5, 5.4, zf, 4, 4.4);
+  g.add(caja(0.9, 4.9, 0.3, mats2.contra, -6.3, 5.4, zf));
+  g.add(caja(0.9, 4.9, 0.3, mats2.contra, -0.7, 5.4, zf));
+  /* Ventana en la cara adelantada del garaje, lado del portico. */
+
+  /* Banda de estuco a la altura del dintel, y fascias blancas en los aleros
+     que faltaban (laterales y fondo). */
+  g.add(caja(anchoCasa + 0.16, 0.55, fondoCasa + 0.16, mats2.banda, cx, 8.1, cz));
+  g.add(caja(G.x1 - G.x0 + 0.16, 0.55, G.z1 - G.z0 + 0.16, mats2.banda, gcx, 8.1, (G.z0 + G.z1) / 2));
+  g.add(caja(0.45, 0.4, fondoCasa + 4.8, mats.trim, C.x0 - 2.4, C.alto - 0.1, cz));
+  g.add(caja(0.45, 0.4, fondoCasa + 4.8, mats.trim, C.x1 + 2.4, C.alto - 0.1, cz));
+
+  /* Unidad de aire acondicionado en el lateral derecho: nadie la mira, pero
+     sin ella la casa parece deshabitada. */
+  g.add(caja(2.6, 2.4, 2.6, mats2.ac, C.x1 + 1.8, 1.25, -30));
+  g.add(caja(2.2, 0.15, 2.2, mats2.aplique, C.x1 + 1.8, 2.5, -30));
 
   /* Lateral visible desde la calle. */
   var xl = C.x0 - 0.01;
   ventana(g, mats, xl, 5.4, -20, 4.6, 4.4, Math.PI / 2);
   ventana(g, mats, xl, 5.4, -30, 4.6, 4.4, Math.PI / 2);
+  var contraL = new MeshStandardMaterial({ color: new Color('#2f3a4a'), roughness: 0.7 });
+  [-20, -30].forEach(function (zz) {
+    g.add(caja(0.9, 4.9, 0.3, contraL, xl, 5.4, zz - 3.05, Math.PI / 2));
+    g.add(caja(0.9, 4.9, 0.3, contraL, xl, 5.4, zz + 3.05, Math.PI / 2));
+  });
 
   /* ── piscina y terraza, en el lateral ─────────────────────────────────── */
   var px = -37, pz = -28;
