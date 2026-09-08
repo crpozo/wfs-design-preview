@@ -323,16 +323,6 @@
         var g = c.getContext('2d', { willReadFrequently: true });
         g.drawImage(img, 0, 0, w, h);
         var d = g.getImageData(0, 0, w, h).data;
-        var oscuro = function (y) {
-          for (var x = 0; x < w; x++) {
-            var i = (y * w + x) * 4;
-            if (d[i] < 200 || d[i + 1] < 200 || d[i + 2] < 200) { return true; }
-          }
-          return false;
-        };
-        var inf = null, sup = null;
-        for (var y = h - 1; y >= 0; y--) { if (oscuro(y)) { inf = (h - 1 - y) / h; break; } }
-        for (var y2 = 0; y2 < h; y2++) { if (oscuro(y2)) { sup = y2 / h; break; } }
         /* Fondo: media 3x3 en cada esquina. Si las cuatro coinciden, la foto
            tiene fondo liso (estudio) y sabemos de que color pintarlo. */
         var esquina = function (x0, y0) {
@@ -356,6 +346,26 @@
           ? [Math.round((es[0][0] + es[3][0]) / 2), Math.round((es[0][1] + es[3][1]) / 2),
              Math.round((es[0][2] + es[3][2]) / 2)]
           : null;
+        /* Producto = lo que NO es fondo. Antes se buscaban pixeles "oscuros"
+           y con un producto blanco sobre fondo gris (las variantes tintadas
+           en blanco) el fondo contaba como producto: la cerca parecia ocupar
+           toda la imagen, se escalaba de menos y quedaba mas baja que la
+           cota. Ahora se compara con el color de fondo medido; si no hay
+           fondo liso, se cae al criterio de oscuridad. */
+        var esProducto = function (i) {
+          if (fondo) {
+            return Math.abs(d[i] - fondo[0]) + Math.abs(d[i + 1] - fondo[1]) + Math.abs(d[i + 2] - fondo[2]) > 48;
+          }
+          return d[i] < 200 || d[i + 1] < 200 || d[i + 2] < 200;
+        };
+        var fila = function (y) {
+          var n = 0;
+          for (var x = 0; x < w; x++) { if (esProducto((y * w + x) * 4)) { n++; } }
+          return n >= 2;          /* dos pixeles: una mota no es el producto */
+        };
+        var inf = null, sup = null;
+        for (var y = h - 1; y >= 0; y--) { if (fila(y)) { inf = (h - 1 - y) / h; break; } }
+        for (var y2 = 0; y2 < h; y2++) { if (fila(y2)) { sup = y2 / h; break; } }
         if (inf !== null && sup !== null && inf + sup < 0.9) {
           v = { inf: inf, sup: sup, fondo: fondo };
         }
