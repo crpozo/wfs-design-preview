@@ -62,10 +62,13 @@
       name: 'Metal / DuraFence', tag: 'Aluminum board privacy', key: 'metal',
       styleLabel: 'Style',
       styles: [
-        { label: 'Modern',   img: 'metal-modern',   slug: null, sub: 'Wide horizontal boards' },
-        { label: 'Original', img: 'metal-original', slug: null, sub: 'Classic board profile' },
-        { label: 'P1',       img: 'metal-p1',       slug: null, sub: 'Narrow slat pattern' }
+        { label: 'Modern',   img: 'metal-modern',   slug: null, sub: 'Wide-rib corrugated panel' },
+        { label: 'Original', img: 'metal-original', slug: null, sub: 'Narrow-rib corrugated panel' },
+        { label: 'P1',       img: 'metal-p1',       slug: null, sub: 'Medium-rib corrugated panel' }
       ],
+      /* Rieles: la pagina de metal enseña obras a 2 y a 3 rieles, asi que se
+         elige. Van por detras de la chapa, y en el 3D se ven desde el jardin. */
+      rails: ['2-Rail', '3-Rail'],
       heights: ["6'", "8'"],
       colors: [ { label: 'White', hex: '#f2f2ee' }, { label: 'Black', hex: '#1c1c1c' }, { label: 'Bronze', hex: '#4a3728' }, { label: 'Woodgrain', hex: '#7a5c3e' } ],
       grades: []
@@ -393,7 +396,7 @@
   var reabierto = {};
 
   var s = { product: FIJO.product, gate: FIJO.gate || opts.gateInicial || null, mat: FIJO.mat,
-            opcion: null, ancho: null, marco: null, style: null, height: null, color: null };
+            opcion: null, ancho: null, marco: null, style: null, rails: null, height: null, color: null };
 
   /* Que ofrece cada tipo de porton, segun lo que dice SU pagina: las tarjetas
      de obra y los materiales que se venden para ese porton. Un corredero no
@@ -479,6 +482,7 @@
     if (s.product !== 'gate' || (!(m().colors && m().colors.length) && !estiloDeOpcion())) {
       out.push({ key: 'style', title: m().styleLabel });
     }
+    if (s.product !== 'gate' && m().rails) { out.push({ key: 'rails', title: 'Rails' }); }
     out.push({ key: 'height', title: 'Height' });
     if (m().colors && m().colors.length) { out.push({ key: 'color', title: 'Color' }); }
     return out;
@@ -570,6 +574,7 @@
       if (s.product !== 'gate' || (!(m().colors && m().colors.length) && !estiloDeOpcion())) {
         filas.push([m().styleLabel, s.style]);
       }
+      if (s.product !== 'gate' && m().rails) { filas.push(['Rails', s.rails]); }
       filas.push(['Height', s.height]);
       if (m().colors.length) { filas.push(['Color', s.color]); }
     }
@@ -594,6 +599,7 @@
     if (!s.style && (s.product !== 'gate' || (!(mm.colors && mm.colors.length) && !estiloDeOpcion()))) {
       out.push('a ' + String(mm.styleLabel).toLowerCase());
     }
+    if (s.product !== 'gate' && mm.rails && !s.rails) { out.push('a rail count'); }
     if (!s.height) { out.push('a height'); }
     /* En chain link y EC Fence el acabado ES el paso de estilo, y colors va
        vacio: ahi no hay nada mas que pedir. */
@@ -618,6 +624,7 @@
     return {
       mat: s.mat, estilo: s.style, alto: s.height, colorHex: col,
       producto: s.product, gate: s.gate, ancho: s.ancho, marco: s.marco,
+      rieles: s.rails ? parseInt(s.rails, 10) : null,
       etiqueta: mm.tag,
       titulo: mm.name + (s.product === 'gate' ? ' gate' : ' fence'),
       resumen: ficha().filter(function (f) { return f[1]; })
@@ -842,6 +849,11 @@
         return opt('style', x.label, x.label, x.sub, 'assets/profiles/' + x.img + '.jpg');
       }).join('');
     }
+    if (k === 'rails') {
+      return '<div class="opts-row">' + m().rails.map(function (r) {
+        return '<button class="chip" data-set="rails" data-v="' + esc(r) + '" aria-pressed="' + (s.rails === r) + '">' + esc(r) + '</button>';
+      }).join('') + '</div>';
+    }
     if (k === 'height') {
       var lista = m().heights;
       return '<div class="opts-row">' + lista.map(function (h) {
@@ -932,14 +944,14 @@
        existe en chain link, y un ancho de porton no aplica a una cerca. */
     if (campo === 'product' && s.product !== v) {
       s.product = v; s.gate = null; s.opcion = null; s.mat = null; s.style = null;
-      s.height = null; s.color = null; s.grade = null;
+      s.rails = null; s.height = null; s.color = null; s.grade = null;
     } else if (campo === 'gate' && s.gate !== v) {
       /* Cambiar de tipo de porton cambia lo que ese porton ofrece: las
          tarjetas son otras y puede que el material elegido ya no se venda
          (un corredero no lleva aluminio). Se conserva lo que siga valiendo. */
       s.gate = v;
       s.opcion = null; s.ancho = null; s.marco = null;
-      s.mat = null; s.style = null; s.height = null; s.color = null; s.grade = null;
+      s.mat = null; s.style = null; s.rails = null; s.height = null; s.color = null; s.grade = null;
       /* Sin tarjetas (cantilever, rolling) no hay de donde sacar el material,
          asi que se pone el que esa pagina da por defecto. */
       if (!opciones().length) {
@@ -957,7 +969,7 @@
       if (cambiaMat) { s.mat = o.mat; s.height = null; s.color = null; }
       s.style = o.estilo || (MAT[s.mat] ? MAT[s.mat].styles[0].label : null);
     } else if (campo === 'mat' && s.mat !== v) {
-      s.mat = v; s.style = null; s.height = null; s.color = null; s.grade = null;
+      s.mat = v; s.style = null; s.rails = null; s.height = null; s.color = null; s.grade = null;
     } else { s[campo] = v; }
 
     render();

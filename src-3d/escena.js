@@ -278,7 +278,8 @@ Visor.prototype.cerca = function (estado) {
   var t = traza(estado);
   var res = Cerca.construir({
     mat: estado.mat, estilo: estado.estilo, alto: altoPies(estado.alto),
-    color: estado.colorHex, marco: estado.marco, tramos: t.tramos, huecos: t.huecos
+    color: estado.colorHex, marco: estado.marco, rieles: estado.rieles,
+    tramos: t.tramos, huecos: t.huecos
   });
   this.foco = t.foco;
   this.cercaGrupo = res.grupo;

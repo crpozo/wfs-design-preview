@@ -218,7 +218,12 @@ function vanoChainLink(e, m, est, mk, u0, ancho, alto) {
 /** Vinilo: privacidad, semiprivacidad, picket y ranch rail. */
 function vanoVinilo(e, m, est, mk, u0, ancho, alto) {
   var rotY = mk.rotY;
-  var railH = 3.5 * PUL, railG = 1.75 * PUL;
+  /* Medidas de las fotos de perfil: el riel superior REMATA las tablas (nada
+     asoma por encima) y los rieles quedan casi a ras de las tablas, que van
+     dentro del bolsillo del riel. La version anterior dejaba los rieles muy
+     salidos y en semi-privacidad inventaba un zocalo solido con lamas encima:
+     el cliente lo vio como "rieles por fuera y bordes off". */
+  var railH = 3.5 * PUL, railG = 1.3 * PUL, tablaG = 1.0 * PUL;
 
   if (est === 'Ranch Rail') {
     var n = alto >= 5 ? 3 : 2;
@@ -229,50 +234,49 @@ function vanoVinilo(e, m, est, mk, u0, ancho, alto) {
     return;
   }
 
-  var yInf = 3 * PUL + railH / 2;
-  var ySup = alto - 2 * PUL - railH / 2;
-  e.caja(m.estructura, 'rail', mk.p(u0 + ancho / 2, yInf, 0), [ancho, railH, railG], rotY);
-  e.caja(m.estructura, 'rail', mk.p(u0 + ancho / 2, ySup, 0), [ancho, railH, railG], rotY);
-
+  var yInf = 2 * PUL + railH / 2;
+  var ySup = alto - railH / 2;                 // riel superior a ras de la cima
   var yA = yInf + railH / 2, yB = ySup - railH / 2;
 
   if (est === 'Picket') {
-    /* Picket abierto: tabla de 1,5" con 3" de luz. */
+    /* Picket: tablas de 1,5" con 3" de luz, montadas POR DELANTE de los
+       rieles y con punta por encima del riel superior, como en la foto. */
+    e.caja(m.estructura, 'rail', mk.p(u0 + ancho / 2, yInf, -0.7 * PUL), [ancho, railH, railG], rotY);
+    e.caja(m.estructura, 'rail', mk.p(u0 + ancho / 2, ySup - 4 * PUL, -0.7 * PUL), [ancho, railH, railG], rotY);
     var pitch = 4.5 * PUL, tabla = 1.5 * PUL;
     var np = Math.max(2, Math.round((ancho - tabla) / pitch));
     var paso = (ancho - tabla) / np;
     for (var j = 0; j <= np; j++) {
-      var alt = yB - yA + 6 * PUL;
-      e.caja(m.estructura, 'picket', mk.p(u0 + tabla / 2 + j * paso, yA + alt / 2 - 1 * PUL, 0),
-             [tabla, alt, 0.9 * PUL], rotY);
+      var u = u0 + tabla / 2 + j * paso;
+      var alt = alto - 1 * PUL - 2 * PUL;
+      e.caja(m.estructura, 'picket', mk.p(u, 1 * PUL + alt / 2, 0.2 * PUL), [tabla, alt, tablaG], rotY);
+      e.pieza('cono', m.estructura, 'punta', mk.p(u, 1 * PUL + alt + 1 * PUL, 0.2 * PUL), [tabla, 2 * PUL, tablaG], rotY);
     }
     return;
   }
 
-  /* Privacidad y semiprivacidad: tablas de 6" machihembradas. Se modelan una a
-     una porque el ritmo de la junta es lo que hace que se lea como vinilo y no
-     como una pared lisa. */
-  var solidoHasta = est === 'Semi-Privacy' ? yA + (yB - yA) * 0.62 : yB;
+  /* Rieles superior e inferior, con las tablas dentro. */
+  e.caja(m.estructura, 'rail', mk.p(u0 + ancho / 2, yInf, 0), [ancho, railH, railG], rotY);
+  e.caja(m.estructura, 'rail', mk.p(u0 + ancho / 2, ySup, 0), [ancho, railH, railG], rotY);
+
+  if (est === 'Semi-Privacy') {
+    /* Tablas de 6" separadas 2", a toda altura entre los dos rieles. */
+    var pitchS = 8 * PUL, tabS = 6 * PUL;
+    var ns = Math.max(2, Math.round((ancho - tabS) / pitchS));
+    var pasoS = (ancho - tabS) / ns;
+    for (var q = 0; q <= ns; q++) {
+      e.caja(m.estructura, 'tabla', mk.p(u0 + tabS / 2 + q * pasoS, (yA + yB) / 2, 0), [tabS, yB - yA, tablaG], rotY);
+    }
+    return;
+  }
+
+  /* Privacidad: tablas de 6" machihembradas, una a una, porque el ritmo de
+     la junta es lo que hace que se lea como vinilo y no como pared lisa. */
   var ancT = 6 * PUL;
   var nt = Math.max(1, Math.round(ancho / ancT));
   var pasoT = ancho / nt;
   for (var k = 0; k < nt; k++) {
-    var u = u0 + pasoT / 2 + k * pasoT;
-    e.caja(m.estructura, 'tabla', mk.p(u, yA + (solidoHasta - yA) / 2, 0),
-           [pasoT - 0.02 * PUL, solidoHasta - yA, 0.9 * PUL], rotY);
-  }
-  if (est === 'Semi-Privacy') {
-    /* Arriba, tablas separadas: es la parte que deja pasar el aire. */
-    var pitch2 = 5 * PUL, tab2 = 2.5 * PUL;
-    var n2 = Math.max(2, Math.round((ancho - tab2) / pitch2));
-    var paso2 = (ancho - tab2) / n2;
-    e.caja(m.estructura, 'rail', mk.p(u0 + ancho / 2, solidoHasta + railH / 2, 0), [ancho, railH, railG], rotY);
-    for (var q = 0; q <= n2; q++) {
-      var y2a = solidoHasta + railH, y2b = yB;
-      if (y2b - y2a <= 0) { break; }
-      e.caja(m.estructura, 'lama', mk.p(u0 + tab2 / 2 + q * paso2, (y2a + y2b) / 2, 0),
-             [tab2, y2b - y2a, 0.9 * PUL], rotY);
-    }
+    e.caja(m.estructura, 'tabla', mk.p(u0 + pasoT / 2 + k * pasoT, (yA + yB) / 2, 0), [pasoT - 0.03 * PUL, yB - yA, tablaG], rotY);
   }
 }
 
@@ -302,8 +306,10 @@ function vanoMetal(e, m, est, mk, u0, ancho, alto) {
   }
   /* Los dos rails van DETRAS de la chapa, como en el producto: desde la calle
      no se ven, desde el jardin si. */
-  e.caja(m.estructura, 'rail', mk.p(u0 + ancho / 2, y0 + h * 0.22, -prof - 0.9 * PUL), [ancho, 1.5 * PUL, 1.5 * PUL], rotY);
-  e.caja(m.estructura, 'rail', mk.p(u0 + ancho / 2, y0 + h * 0.80, -prof - 0.9 * PUL), [ancho, 1.5 * PUL, 1.5 * PUL], rotY);
+  var fr = (m.rieles === 3) ? [0.20, 0.50, 0.80] : [0.22, 0.80];
+  for (var r = 0; r < fr.length; r++) {
+    e.caja(m.estructura, 'rail', mk.p(u0 + ancho / 2, y0 + h * fr[r], -prof - 0.9 * PUL), [ancho, 1.5 * PUL, 1.5 * PUL], rotY);
+  }
 }
 
 /** EC Fence: paneles verticales de acero que encajan entre si. */
@@ -414,6 +420,7 @@ export function construir(opts) {
   }
   var vano = VANO[mat] || 6;
   var m = materiales(mat, est, opts.color, vano, alto, opts.marco);
+  m.rieles = opts.rieles || 2;
   var e = new Ensamblador();
   var fn = VANOS[mat] || vanoAluminio;
 
