@@ -1,4 +1,1 @@
-(function(){ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(MaterialPage,{slug:"metal"}));
-
-
-})();
+ReactDOM.createRoot(document.getElementById('root')).render(<MaterialPage slug="metal" />);

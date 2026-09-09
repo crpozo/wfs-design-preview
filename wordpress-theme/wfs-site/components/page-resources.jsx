@@ -9,7 +9,7 @@ const ResourcesHero = () => {
       title={t('Pick the right fence', 'Elija la cerca correcta')}
       accent={t('the first time.', 'a la primera.')}
       subtitle={t('Guides, materials comparisons, Florida code references and downloadable spec sheets. Written by the people who fabricate this stuff every day.', 'Guías, comparativas de materiales, referencias del código de Florida y fichas técnicas descargables. Escrito por las personas que fabrican esto todos los días.')}
-      image="assets/gate-rolling.jpg"
+      image="https://crpozo.github.io/wfs-design-preview/assets/gate-rolling.jpg"
     />
   );
 };

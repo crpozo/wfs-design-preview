@@ -3,7 +3,9 @@
 const IconStrip = () => {
   const t = useT();
   const items = [
-    { key: 'aluminum', label: { EN: 'Aluminum', ES: 'Aluminio' }, href: '#products' }, { key: 'chainlink', label: { EN: 'Chain Link', ES: 'Malla ciclónica' }, href: '#products' }, { key: 'metal', label: { EN: 'Metal / DuraFence', ES: 'Metal / DuraFence' }, href: '#products' }, { key: 'vinyl', label: { EN: 'Vinyl / PVC', ES: 'Vinilo / PVC' }, href: '#products' }, ];
+    /* A la pagina de cada material: "#products" no existia como ancla en
+       ninguna pagina y el clic no llevaba a ningun sitio. */
+    { key: 'aluminum', label: { EN: 'Aluminum', ES: 'Aluminio' }, href: 'aluminum.html' }, { key: 'chainlink', label: { EN: 'Chain Link', ES: 'Malla ciclónica' }, href: 'chain-link.html' }, { key: 'metal', label: { EN: 'Metal / DuraFence', ES: 'Metal / DuraFence' }, href: 'metal.html' }, { key: 'vinyl', label: { EN: 'Vinyl / PVC', ES: 'Vinilo / PVC' }, href: 'vinyl.html' }, ];
   return (
     <section style={{ background: 'var(--white)', padding: '64px 0', borderBottom: '1px solid rgba(0,16,17,0.06)' }}>
       <div className="container">
@@ -257,7 +259,7 @@ const Articles = () => {
               {t('Fence guides', 'Guías de cercas')}<br/>{t('& how-tos.', 'y tutoriales.')}
             </h2>
           </div>
-          <a href="#" className="mono" style={{ fontSize: 14.5, letterSpacing: '0.14em', color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 8 }}>
+          <a href="articles.html" className="mono" style={{ fontSize: 14.5, letterSpacing: '0.14em', color: 'var(--ink)', display: 'flex', alignItems: 'center', gap: 8 }}>
             {t('ALL ARTICLES', 'TODOS LOS ARTÍCULOS')} <ArrowRight size={13} />
           </a>
         </div>

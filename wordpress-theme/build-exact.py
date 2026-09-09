@@ -42,7 +42,11 @@ LOCAL = sorted(
 (OUT / "assets-local.json").write_text(json.dumps(LOCAL, indent=2))
 
 # ---------------------------------------------------------------- componentes
-for jsx in sorted((SRC / "components").glob("*.jsx")):
+# Tambien los .js planos de components/ (flow-data.js, los datos del
+# cuestionario de cotizacion): no son JSX pero las paginas los cargan igual.
+# Sin copiarlos, /estimate/ quedaba EN BLANCO en produccion (FLOW_DATA
+# indefinido y el componente reventaba al montar).
+for jsx in sorted(list((SRC / "components").glob("*.jsx")) + list((SRC / "components").glob("*.js"))):
     txt = jsx.read_text()
     # 'assets/foo.png'  ->  'https://.../assets/foo.png'
     txt = re.sub(r"(['\"])assets/", r"\1" + ASSET_BASE + "/", txt)
@@ -90,7 +94,9 @@ except Exception as err:
 
 # ---------------------------------------------------------------- paginas
 RE_TITLE = re.compile(r"<title>(.*?)</title>", re.S)
-RE_COMP  = re.compile(r'<script type="text/babel" src="components/([^"?]+)')
+# Con o sin type="text/babel": los .js planos (flow-data.js) van en el mismo
+# orden del documento, que importa (los datos antes del componente que los usa).
+RE_COMP  = re.compile(r'<script(?: type="text/babel")? src="components/([^"?]+)')
 RE_APP   = re.compile(r'<script type="text/babel">(.*?)</script>', re.S)
 
 pages = {}
