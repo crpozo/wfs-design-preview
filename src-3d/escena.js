@@ -154,8 +154,13 @@ function Visor(lienzo) {
   /* Luz: sol de media tarde. Un cenital plano aplana los perfiles y hace que
      un picket cuadrado y uno redondo se vean iguales; con el sol bajo cada
      barrote proyecta su propia sombra y el perfil se lee. */
+  /* Sol a 51 grados de elevacion y 30 de azimut (antes 41 y 47): con el sol
+     bajo y tan lateral, cada columna y contraventana tiraba una franja larga
+     inclinada por la fachada y el cliente lo leia como "sombras diagonales sin
+     sentido". Mas alto y mas frontal, las sombras de la fachada son bandas
+     cortas bajo el alero, y los pickets siguen sombreandose lo justo. */
   var sol = new DirectionalLight(0xfff2df, 2.7);
-  sol.position.set(-62, 74, 58);
+  sol.position.set(-40, 100, 70);
   sol.castShadow = true;
   /* Sombras: el encuadre se ciñe al lote (antes cubria 190 pies de lado y
      medio mapa se iba en cesped vacio), y en escritorio el mapa sube a 4096.
@@ -164,7 +169,10 @@ function Visor(lienzo) {
   var tactil = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
   sol.shadow.mapSize.set(tactil ? 2048 : 4096, tactil ? 2048 : 4096);
   var s = sol.shadow.camera;
-  s.left = -64; s.right = 64; s.top = 64; s.bottom = -64; s.near = 1; s.far = 260;
+  /* ±84 y no ±64: medido en el espacio de la luz, la finca va de -68 a +58
+     y con ±64 el borde se recortaba en un corte recto que en el mundo se veia
+     como otra diagonal sin sentido. */
+  s.left = -84; s.right = 84; s.top = 84; s.bottom = -84; s.near = 1; s.far = 300;
   /* Sesgo: con el mapa a 4096 y el encuadre ceñido, el sesgo negativo de
      antes dejaba que las losas horizontales se sombrearan a si mismas en
      bandas (shadow acne). Sesgo casi nulo y normalBias de dos texeles. */
