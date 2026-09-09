@@ -663,7 +663,10 @@
     var caja = $('escala');
     if (!caja) { return; }
     var ft = parseFloat(s.height);
-    if (!s.height || !isFinite(ft) || ft <= 0) {
+    /* En portones que no son single swing el preview es solo la foto del
+       tipo: sin la persona ni la cota (el cliente no quiere el "muñequito"
+       ahi), y la foto sin escalar. */
+    if (!s.height || !isFinite(ft) || ft <= 0 || soloTipo()) {
       caja.classList.remove('is-on');
       var md = $('img') && $('img').parentNode;
       if (md) { md.style.transform = ''; }
