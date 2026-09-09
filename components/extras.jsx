@@ -189,7 +189,7 @@ const FAQ = () => {
                 color: 'var(--ink)', borderBottom: '1px solid var(--tangerine)', }}>sales@westernfencesupply.com</a>.
             </p>
 
-            <a href="estimate.html"
+            <a href="contact.html#contact"
               onMouseEnter={() => setCtaHover(true)}
               onMouseLeave={() => setCtaHover(false)}
               style={{
@@ -441,7 +441,7 @@ const AboutIntro = () => {
           </div>
 
           <div style={{ marginTop: 36, display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center' }}>
-            <a href="estimate.html"
+            <a href="contact.html#contact"
               onMouseEnter={() => setCtaHover(true)}
               onMouseLeave={() => setCtaHover(false)}
               style={{

@@ -665,7 +665,7 @@ const GateSystems = () => (
     id="gates" chapter="02"
     label={{ EN: 'Gates', ES: 'Portones' }}
     items={GATE_SYSTEMS}
-    topLink={{ href: 'estimate.html', label: { EN: 'Custom quote', ES: 'Cotización a medida' } }}
+    topLink={{ href: 'contact.html#contact', label: { EN: 'Custom quote', ES: 'Cotización a medida' } }}
     ctaLabel={{ EN: 'Explore', ES: 'Explora' }}
   />
 );
@@ -704,7 +704,7 @@ const WhyWFS = () => {
               )}
             </p>
           </div>
-          <PillCTA href="estimate.html">{t('Get started', 'Comenzar')}</PillCTA>
+          <PillCTA href="contact.html#contact">{t('Get started', 'Comenzar')}</PillCTA>
         </div>
 
         {/* Value-prop cards */}

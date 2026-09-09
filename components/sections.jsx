@@ -438,7 +438,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
                       marginTop: 16, fontSize: 13.5, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)', }}>{t(MAT_LABELS[p.material] || p.material)}</div>
                     <h3 className="display" style={{
                       margin: '8px 0 0', fontSize: 20.5, lineHeight: 1.25, fontWeight: 700, color: 'var(--ink)', }}>{t(p.type)}</h3>
-                    <a href="estimate.html#contact" className="mono" style={{
+                    <a href="contact.html#contact" className="mono" style={{
                       marginTop: 14, display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 14, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--tangerine)', }}>
                       {t('Request quote', 'Solicitar cotización')}
                       <svg width="12" height="12" viewBox="0 0 16 16" fill="none">

@@ -140,7 +140,7 @@ const LocationsCTA = () => {
     title={t('Want it staged', '¿Quieres tu pedido listo')}
     accent={t('before you arrive?', 'antes de llegar?')}
     body={t("Send your order or quote request first and we'll have it pulled, staged and ready at the bay, Fort Myers or Port Charlotte.", 'Envía tu pedido o solicitud de cotización primero y lo tendremos preparado y listo en la bahía, en Fort Myers o Port Charlotte.')}
-    primary={[t('Request a Quote', 'Solicitar cotización'), 'estimate.html#contact']}
+    primary={[t('Request a Quote', 'Solicitar cotización'), 'contact.html#contact']}
     secondary={[t('Call (239) 465-2482', 'Llamar (239) 465-2482'), 'tel:2394652482']}
   />
   );

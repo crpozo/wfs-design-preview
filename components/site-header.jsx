@@ -383,7 +383,7 @@ const SiteHeader = ({ active }) => {
                           ? t('Supplier-direct pricing for contractors, homeowners and DIY projects across SW Florida.', 'Precios directos de fábrica para contratistas, propietarios y proyectos DIY en el suroeste de Florida.')
                           : t('Sized to fit your run. Quoted in 24h, delivered or shop-pickup.', 'A la medida de tu proyecto. Cotizado en 24h, entrega o recoge en planta.')}
                       </p>
-                      <a href={def.kind === 'mega-fences' ? 'products.html' : 'estimate.html'}
+                      <a href={def.kind === 'mega-fences' ? 'products.html' : 'contact.html#contact'}
                         style={{ display: 'inline-flex', alignItems: 'center', gap: 9, fontWeight: 700, fontSize: 18, color: 'var(--ink)' }}>
                         {def.kind === 'mega-fences' ? t('Full catalog', 'Catálogo completo') : t('Custom quote', 'Cotización a medida')} <ArrowRight size={14}/>
                       </a>

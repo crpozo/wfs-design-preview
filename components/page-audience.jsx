@@ -37,7 +37,7 @@ const HomeownerHero = () => {
           {t('Premium manufacturing-direct fencing. We help you plan the project and quote the material for the build.', 'Cercas premium directas de fábrica. Te ayudamos a planear el proyecto y a cotizar el material para la obra.')}
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
-          <a href="estimate.html#contact"
+          <a href="contact.html#contact"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}
@@ -379,7 +379,7 @@ const HomeownerFAQ = () => {
                 color: 'var(--ink)', borderBottom: '1px solid var(--tangerine)', }}>sales@westernfencesupply.com</a>.
             </p>
 
-            <a href="estimate.html#contact"
+            <a href="contact.html#contact"
               onMouseEnter={() => setCtaHover(true)}
               onMouseLeave={() => setCtaHover(false)}
               style={{
@@ -479,7 +479,7 @@ const HomeownerPaths = () => {
   const paths = [
     {
       pill: t('No minimums', 'Sin mínimos'), title: t('I want to repair my fence', 'Quiero reparar mi cerca'), body: t('Buy exactly what you need, piece by piece, from a single picket to a full rail, post, cap or bracket. No minimums, supplier-direct pricing. Fix what broke without paying for a whole new fence.', 'Compra exactamente lo que necesitas, pieza por pieza: desde un solo picket hasta un riel completo, poste, tapa o soporte. Sin mínimos y con precio directo de proveedor. Arregla lo que se dañó sin pagar por una cerca nueva completa.'), cta: t('Shop repair parts', 'Comprar repuestos'), href: 'products.html', icon: (<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a3.8 3.8 0 0 0-5 5l-5 5 2 2 5-5a3.8 3.8 0 0 0 5-5l-2.4 2.4-2-.5-.5-2Z"/></svg>), }, {
-      pill: t('Wholesale pricing', 'Precio mayorista'), title: t('New project · new fence installation', 'Proyecto nuevo · instalación de cerca'), body: t("We give you everything you need to build it yourself, complete DIY fence kits cut to your layout, with the hardware and step-by-step guidance to install it. And because we don't install fences, you get true wholesale, supplier-direct pricing.", 'Te damos todo lo que necesitas para armarla tú mismo: kits DIY completos, cortados a tu medida, con los herrajes y la guía paso a paso para instalarla. Y como no instalamos cercas, obtienes precio mayorista real, directo de proveedor.'), cta: t('Start my project', 'Empezar mi proyecto'), href: 'estimate.html#contact', accent: true, icon: (<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11 L12 4 L21 11"/><path d="M5 10 V20 H19 V10"/></svg>), }, ];
+      pill: t('Wholesale pricing', 'Precio mayorista'), title: t('New project · new fence installation', 'Proyecto nuevo · instalación de cerca'), body: t("We give you everything you need to build it yourself, complete DIY fence kits cut to your layout, with the hardware and step-by-step guidance to install it. And because we don't install fences, you get true wholesale, supplier-direct pricing.", 'Te damos todo lo que necesitas para armarla tú mismo: kits DIY completos, cortados a tu medida, con los herrajes y la guía paso a paso para instalarla. Y como no instalamos cercas, obtienes precio mayorista real, directo de proveedor.'), cta: t('Start my project', 'Empezar mi proyecto'), href: 'contact.html#contact', accent: true, icon: (<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11 L12 4 L21 11"/><path d="M5 10 V20 H19 V10"/></svg>), }, ];
   return (
     <section style={{ background: '#f5f5f7', padding: 'clamp(80px, 10vh, 112px) 0' }}>
       <div className="container">
@@ -584,7 +584,7 @@ const ContractorHero = () => {
           {t(', without an out-of-state distributor in the middle.', ', sin un distribuidor de fuera del estado de por medio.')}
         </p>
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginBottom: 22 }}>
-          <a href="estimate.html#contact"
+          <a href="contact.html#contact"
             style={{
               display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}

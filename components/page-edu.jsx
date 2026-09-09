@@ -423,7 +423,7 @@ const PoolCodeCTA = () => {
     title={t('Quote your', 'Cotiza tu')}
     accent={t('pool enclosure.', 'cerramiento de piscina.')}
     body={t('Send us your layout, measurements, and project details, and we will prepare a material quote based on the information provided. Western Fence Supply supplies materials only. Installation, code compliance, permitting, inspections, and final approval are not included.', 'Envíanos tu distribución, medidas y detalles del proyecto, y prepararemos una cotización de materiales con base en la información proporcionada. Western Fence Supply provee únicamente materiales. La instalación, el cumplimiento de código, los permisos, las inspecciones y la aprobación final no están incluidos.')}
-    primary={[t('Request a quote', 'Solicitar una cotización'), 'estimate.html#contact']}
+    primary={[t('Request a quote', 'Solicitar una cotización'), 'contact.html#contact']}
     secondary={[t('Call the yard', 'Llama al almacén'), 'tel:2394652482']}
   />
   <section style={{ background: '#ffffff', borderTop: '1px solid rgba(0,16,17,0.08)', padding: '26px 0' }}>
@@ -518,7 +518,7 @@ const FaqTopics = () => {
             ))}
             <p style={{ margin: '18px 0 0', fontSize: 15, lineHeight: 1.6, color: 'var(--charcoal)' }}>
               {t("These are the questions we hear most on first-time quotes. Can't find yours?", 'Estas son las preguntas que más escuchamos en primeras cotizaciones. ¿No encuentras la tuya?')}
-              {' '}<a href="estimate.html#contact" style={{ color: 'var(--ink)', borderBottom: '1px solid var(--tangerine)' }}>{t('Ask a rep', 'Pregunta a un asesor')}</a>.
+              {' '}<a href="contact.html#contact" style={{ color: 'var(--ink)', borderBottom: '1px solid var(--tangerine)' }}>{t('Ask a rep', 'Pregunta a un asesor')}</a>.
             </p>
           </nav>
 

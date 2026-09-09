@@ -678,7 +678,7 @@ Object.assign(ES_TR, {
 
    These pages render via React + Babel-standalone, so when the browser
    handles the URL fragment the #target does not exist yet, the native
-   jump is a no-op and links like estimate.html#contact land at the top.
+   jump is a no-op and links like contact.html#contact land at the top.
    Any late browser retry then races image-driven layout shift, which is
    what reads as flickering/jumping.
 
