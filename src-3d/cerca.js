@@ -127,7 +127,11 @@ export function materiales(mat, estilo, colorHex, ancho, altoMalla, marcoHex) {
     return conMarco(m, marcoHex);
   }
   if (mat === 'ecfence') {
-    var ec = estilo === 'White' ? '#eceae4' : '#5a4433';
+    /* Los tres acabados que enseña la pagina de EC Fence: bronce, blanco y
+       "Matching Gate", cuya foto es un porton NEGRO. Antes todo lo que no era
+       blanco salia bronce, y el cliente vio la cerca marron con el porton
+       negro elegido. */
+    var ec = estilo === 'White' ? '#eceae4' : estilo === 'Matching Gate' ? '#1c1c1c' : '#5a4433';
     m.estructura = metalico(ec, 0.5, 0.42);
     m.tabla = m.estructura;
     return m;
