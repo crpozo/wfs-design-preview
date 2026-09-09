@@ -157,11 +157,11 @@ const DownloadsSection = () => {
         accent={t('installer or AHJ.', 'instalador o AHJ.')}
         sub={t('PDF spec sheets for every system. Stamped versions available on request for commercial submissions.', 'Fichas técnicas en PDF para cada sistema. Versiones selladas disponibles a solicitud para presentaciones comerciales.')}
       />
+      {/* No hay PDFs publicados todavia: cada tarjeta pide la ficha por el
+          formulario en vez de fingir una descarga con href="#". */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 12 }}>
         {[
           [t('EC Fence, Exposure C Wind', 'EC Fence, viento de exposición C'), t('PDF on request', 'PDF a solicitud')], [t('Aluminum 3/4/5 Rail Profiles', 'Perfiles de aluminio de 3/4/5 rieles'), t('PDF on request', 'PDF a solicitud')], [t('DuraFence Aluminum Board', 'Tablero de aluminio DuraFence'), t('PDF on request', 'PDF a solicitud')], [t('Catalyst Vinyl, Privacy + Picket', 'Vinilo Catalyst, privacidad + barrotes'), t('PDF on request', 'PDF a solicitud')], [t('Chain Link Gauges & Mesh', 'Calibres y malla de malla ciclónica'), t('PDF on request', 'PDF a solicitud')], [t('Florida Pool Code Profiles', 'Perfiles del código de piscinas de Florida'), t('PDF on request', 'PDF a solicitud')], ].map(([t, meta], i) => (
-          {/* No hay PDFs publicados todavia: la tarjeta pide la ficha por el
-              formulario en vez de fingir una descarga con href="#". */}
           <a key={i} href="contact.html#contact" style={{
             display: 'flex', alignItems: 'center', gap: 16, padding: '18px 20px', border: '1px solid rgba(0,16,17,0.15)', background: 'var(--white)', color: 'var(--ink)', }}>
             <span style={{
