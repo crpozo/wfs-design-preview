@@ -131,11 +131,16 @@ export function materiales(mat, estilo, colorHex, ancho, altoMalla, marcoHex) {
     return conMarco(m, marcoHex);
   }
   if (mat === 'ecfence') {
-    /* Dos acabados, bronce y blanco (el "Matching Gate" es un porton, no un
-       color). El bronce va mas claro y menos metalico: con metalness 0,42 y
-       sin brillo se comia la luz y parecia negro. */
-    var ec = estilo === 'White' ? '#eceae4' : '#7a5d47';
-    m.estructura = metalico(ec, 0.55, 0.12);
+    /* Dos acabados, blanco y "bronce", que en su foto ES NEGRO (el cliente:
+       "bronze y matching gates son del mismo color pero son negros"). Lo que
+       no puede es comerse la luz: mismo suelo de luminancia y satinado que el
+       negro del metal, para que se lea como chapa negra al sol y no como un
+       agujero. */
+    if (estilo === 'White') {
+      m.estructura = metalico('#eceae4', 0.55, 0.12);
+    } else {
+      m.estructura = new MeshStandardMaterial({ color: new Color().setRGB(0.085, 0.085, 0.085), roughness: 0.38, metalness: 0.12 });
+    }
     m.tabla = m.estructura;
     return m;
   }
