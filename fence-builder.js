@@ -52,7 +52,8 @@
         { label: 'Privacy',      img: 'vinyl-privacy',      slug: null, sub: 'Solid panel, no gaps' },
         { label: 'Semi-Privacy', img: 'vinyl-semi-privacy', slug: null, sub: 'Airflow with partial screening' },
         { label: 'Picket',       img: 'vinyl-picket',       slug: null, sub: 'Open front-yard look' },
-        { label: 'Ranch Rail',   img: 'vinyl-ranch-rail',   slug: null, sub: 'Two or three rail, acreage' }
+        /* Ranch rail solo se vende en 4 pies. */
+        { label: 'Ranch Rail',   img: 'vinyl-ranch-rail',   slug: null, sub: 'Three rail, acreage', heights: ["4'"] }
       ],
       heights: ["4'", "5'", "6'"],
       colors: [ { label: 'White', hex: '#f2f2ee' }, { label: 'Tan', hex: '#d6c9ae' }, { label: 'Gray', hex: '#8b8b88' } ],
@@ -78,8 +79,7 @@
       styleLabel: 'Color',
       styles: [
         { label: 'Bronze',        img: 'ecfence-bronze', slug: null, sub: 'Warm dark finish' },
-        { label: 'White',         img: 'ecfence-white',  slug: null, sub: 'Bright coastal finish' },
-        { label: 'Matching Gate', img: 'ecfence-gate',   slug: null, sub: 'Gate built to match the run' }
+        { label: 'White',         img: 'ecfence-white',  slug: null, sub: 'Bright coastal finish' }
       ],
       heights: ["6'"], colors: [], grades: []
     }
@@ -423,7 +423,7 @@
      Height y Color tengan de donde salir sin pedirle nada al visitante. Va
      AQUI y no junto a la declaracion de s: alli GATES_CFG todavia no tiene
      valor y cfg() reventaba. */
-  if (s.product === 'gate' && s.gate && !s.mat && !opciones().length) {
+  if (s.product === 'gate' && s.gate && !s.mat && (!opciones().length || soloTipo())) {
     s.mat = cfg().matDefecto || 'chain-link';
     s.style = MAT[s.mat] ? MAT[s.mat].styles[0].label : null;
   }
@@ -456,12 +456,18 @@
 
   /* Los pasos se derivan del estado: un porton pide ancho, una cerca no; el
      color y el grado solo salen donde el material los ofrece. */
+  function soloTipo() { return s.product === 'gate' && !!s.gate && s.gate !== 'single'; }
   function steps() {
     var out = [];
     if (!FIJO.product) { out.push({ key: 'product', title: 'What are you building' }); }
     if (!s.product) { return out; }
     if (s.product === 'gate' && !FIJO.gate) { out.push({ key: 'gate', title: 'Gate type' }); }
     if (!s.gate && s.product === 'gate') { return out; }
+    /* En portones que NO son single swing solo se elige el tipo y la altura:
+       las opciones y el acabado se enseñan como galeria en la pagina, no en
+       el configurador, y el 3D monta el tipo de porton con el material por
+       defecto de esa pagina. */
+    if (soloTipo()) { out.push({ key: 'height', title: 'Height' }); return out; }
     /* Solo si esa pagina trae tarjetas de obra. Cantilever y rolling no
        tienen: sus tarjetas son componentes, no variantes. */
     if (s.product === 'gate' && opciones().length) { out.push({ key: 'opcion', title: 'Gate option' }); }
@@ -495,6 +501,12 @@
     return s[k] || null;
   }
   function completo() { return steps().every(function (st) { return value(st.key); }); }
+  /* Alturas disponibles: las del perfil si las acota (ranch rail solo 4'), si
+     no las del material. */
+  function alturas() {
+    var st = styleObj();
+    return (st && st.heights) || (m() ? m().heights : []);
+  }
 
   function sheetKey() {
     if (!m()) { return null; }
@@ -536,7 +548,7 @@
       var o = opciones().filter(function (x) { return x.name === s.opcion; })[0];
       if (o && o.img) {
         /* Misma foto, repintada al color elegido, si esa variante existe. */
-        var slug = COLOR_SLUG[s.color];
+        var slug = COLOR_SLUG[s.color] || (s.mat === 'ecfence' && s.style ? s.style.toLowerCase() : null);
         var base = o.img.split('/').pop().replace(/\.(jpg|jpeg|png|webp)$/i, '');
         if (slug && TINTADO_PORTON[base + '-' + slug]) {
           return 'assets/gates/tinted/' + base + '-' + slug + '.jpg';
@@ -568,6 +580,7 @@
     var filas = [];
     if (s.product) { filas.push(['Building', value('product')]); }
     if (s.product === 'gate') { filas.push(['Gate type', value('gate')]); }
+    if (soloTipo()) { filas.push(['Height', s.height]); return filas; }
     if (s.product === 'gate' && opciones().length) { filas.push(['Gate option', value('opcion')]); }
     if (s.product !== 'gate') { filas.push(['Material', value('mat')]); }
     if (m()) {
@@ -593,6 +606,7 @@
     var out = [];
     if (!s.product) { out.push('what you are building'); }
     if (s.product === 'gate' && !s.gate) { out.push('a gate type'); return out; }
+    if (soloTipo()) { if (!s.height) { out.push('a height'); } return out; }
     if (s.product === 'gate' && opciones().length && !s.opcion) { out.push('a gate option'); }
     var mm = m();
     if (!mm) { out.push(s.product === 'gate' ? 'a gate option' : 'a material'); return out; }
@@ -692,8 +706,8 @@
     var base = Math.round((mh - contentH) / 2 + contentH * margenes.inf);
     var usable = mh - base - 10;
     var maxFt = 8;
-    if (m() && m().heights && m().heights.length) {
-      maxFt = Math.max.apply(null, m().heights.map(function (x) { return parseFloat(x) || 0; })) || 8;
+    if (m() && alturas().length) {
+      maxFt = Math.max.apply(null, alturas().map(function (x) { return parseFloat(x) || 0; })) || 8;
     }
     /* La persona sale del alto del MARCO, no de la imagen: si dependiera de la
        imagen, cambiaria de tamaño al cambiar de perfil. */
@@ -855,7 +869,7 @@
       }).join('') + '</div>';
     }
     if (k === 'height') {
-      var lista = m().heights;
+      var lista = alturas();
       return '<div class="opts-row">' + lista.map(function (h) {
         return '<button class="chip" data-set="' + k + '" data-v="' + esc(h) + '" aria-pressed="' + (s[k] === h) + '">' + esc(h) + '</button>';
       }).join('') + '</div>';
@@ -954,7 +968,7 @@
       s.mat = null; s.style = null; s.rails = null; s.height = null; s.color = null; s.grade = null;
       /* Sin tarjetas (cantilever, rolling) no hay de donde sacar el material,
          asi que se pone el que esa pagina da por defecto. */
-      if (!opciones().length) {
+      if (!opciones().length || soloTipo()) {
         s.mat = cfg().matDefecto || 'chain-link';
         s.style = MAT[s.mat] ? MAT[s.mat].styles[0].label : null;
       }
@@ -971,6 +985,7 @@
     } else if (campo === 'mat' && s.mat !== v) {
       s.mat = v; s.style = null; s.rails = null; s.height = null; s.color = null; s.grade = null;
     } else { s[campo] = v; }
+    if (campo === 'style' && s.height && alturas().indexOf(s.height) === -1) { s.height = null; }
 
     render();
   });

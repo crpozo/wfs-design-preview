@@ -27,7 +27,7 @@ const GATE_DATA = {
          metalico, y pintarlo todo del mismo color no se parecia a la foto
          que el cliente acaba de pulsar. */
       matDefecto: 'chain-link',
-      opciones: [{ name: 'Standard Walk Gate', mat: 'chain-link', estilo: 'Black PVC-coated', ancho: 4 }, { name: 'Custom Opening Gate', mat: 'vinyl', estilo: 'Privacy', ancho: 5, marco: '#1f1f1f' }, { name: 'Matching Material Gate', mat: 'metal', estilo: 'Modern', ancho: 4 }], name: 'Single Swing', tag: 'Single swing gate materials & hardware', heroTitle: 'Single Swing Gates Built', heroAccent: 'for the Right Opening.', heroBody: 'Single swing gates for pedestrian access, pool enclosures, side yards, and residential or commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.', heroImg: 'assets/SINGLE_SWING_GATE.webp', quickFacts: [
+      opciones: [{ name: 'Standard Walk Gate', mat: 'chain-link', estilo: 'Black PVC-coated', ancho: 4 }, { name: 'Custom Opening Gate', mat: 'vinyl', estilo: 'Privacy', ancho: 5, marco: '#1f1f1f' }, { name: 'Matching Material Gate', mat: 'ecfence', ancho: 4 }], name: 'Single Swing', tag: 'Single swing gate materials & hardware', heroTitle: 'Single Swing Gates Built', heroAccent: 'for the Right Opening.', heroBody: 'Single swing gates for pedestrian access, pool enclosures, side yards, and residential or commercial openings. Available in multiple materials, sizes, colors, and hardware options. Send us your opening size and project details for an accurate quote.', heroImg: 'assets/SINGLE_SWING_GATE.webp', quickFacts: [
       ['Best For', 'Walk gates, side yards, pool enclosures, pedestrian access'], ['Materials', GATE_MATERIALS], ['Hardware', GATE_HARDWARE], ['Lead Time', GATE_LEADTIME], ], gateTypes: [
       { name: 'Standard Walk Gate', tag: 'Pedestrian', notes: 'Common single gate sizes for pedestrian access.', img: 'assets/projects/gate-single-walk.webp' }, { name: 'Custom Opening Gate', tag: 'Made to size', notes: 'Built to match your exact opening size.', img: 'assets/projects/gate-single-custom-pvc.webp' }, { name: 'Matching Material Gate', tag: 'All materials', notes: 'Available in aluminum, vinyl, chain link, metal, and EC Fence styles.', img: 'assets/projects/gate-single-matching-ecfence.webp' }, ], specs: GATE_SPECS, applications: [
       ['Pedestrian Access', 'Single gates for walkways, side yards, and everyday access points.', 'Everyday walk-through'], ['Pool Enclosures', 'Gate options for pool areas and code-related requirements.', 'Meets pool barrier code'], ['Service Openings', 'Single or double gates for maintenance access, equipment, and utility areas.', 'Maintenance & utility'], ], projects: [
@@ -142,17 +142,20 @@ const GateQuickFacts = ({ data }) => (
 const GateCardGrid = ({ items, gateId }) => {
   /* En una pagina de porton el configurador ya esta embebido con este tipo
      fijado, asi que la tarjeta lleva la vista alli en vez de navegar. */
-  const Etiqueta = gateId ? 'button' : 'a';
+  /* Solo en single swing la tarjeta elige dentro del configurador; en los
+     demas tipos las opciones son GALERIA: el configurador solo pide altura. */
+  const interactiva = gateId === 'single';
+  const Etiqueta = interactiva ? 'button' : (gateId ? 'div' : 'a');
   return (
   <div className="wfs-profiles-grid" style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(items.length, 4)}, 1fr)`, gap: 14 }}>
     {items.map((p) => (
       /* Cada tarjeta abre el configurador con este tipo de porton ya elegido. */
       <Etiqueta key={p.name}
-        {...(gateId
+        {...(interactiva
           ? { type: 'button', onClick: () => { if (window.WFSBuilder) { window.WFSBuilder.ir(); } } }
-          : { href: 'estimate.html#contact' })}
+          : (gateId ? {} : { href: 'estimate.html#contact' }))}
         style={{
-        display: 'flex', flexDirection: 'column', background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', overflow: 'hidden', textDecoration: 'none', color: 'inherit', textAlign: 'left', font: 'inherit', padding: 0, cursor: 'pointer', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
+        display: 'flex', flexDirection: 'column', background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', overflow: 'hidden', textDecoration: 'none', color: 'inherit', textAlign: 'left', font: 'inherit', padding: 0, cursor: (interactiva || !gateId) ? 'pointer' : 'default', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
       onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -20px rgba(0,16,17,0.25)'; }}
       onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
         <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#263166', overflow: 'hidden' }}>

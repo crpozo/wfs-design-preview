@@ -103,9 +103,15 @@ function traza(estado) {
     { a: [-X, F], b: peatonal.a },
     { a: peatonal.b, b: coches.a },
     { a: coches.b, b: [X, F] },
-    { a: [-X, F], b: [-X, Z] },
+    /* La cara "buena" de cada tramo (v positivo) queda a la derecha de su
+       sentido a->b. Para que TODOS los tramos miren hacia fuera del lote,
+       el perimetro se recorre en el sentido de las agujas del reloj visto
+       desde arriba: el lateral izquierdo de atras hacia delante y el fondo de
+       derecha a izquierda. Antes el lateral izquierdo y el fondo miraban
+       hacia dentro ("la cerca esta dada la vuelta en el lado izquierdo"). */
+    { a: [-X, Z], b: [-X, F] },
     { a: [X, F], b: [X, Z] },
-    { a: [-X, Z], b: [X, Z] }
+    { a: [X, Z], b: [-X, Z] }
   ];
   var foco = (elegido && elegido !== 'single') ? coches : peatonal;
   /* Viendo una CERCA, los portones van cerrados y en el plano de la valla:

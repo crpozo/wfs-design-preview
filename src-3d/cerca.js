@@ -118,7 +118,11 @@ export function materiales(mat, estilo, colorHex, ancho, altoMalla, marcoHex) {
          de lado y el tone mapping se come los medios tonos. El negro sigue
          negro y el blanco satura, que es lo que toca. */
       var base = new Color(colorHex || '#1c1c1c').multiplyScalar(1.8);
-      m.tabla = new MeshStandardMaterial({ color: base, roughness: 0.42, metalness: 0.12 });
+      /* El negro pintado no es un agujero: bajo el sol se lee gris muy
+         oscuro con brillo. Un suelo de luminancia para los colores casi
+         negros, que si no "parece que no tiene luz". */
+      if (base.r * 0.3 + base.g * 0.59 + base.b * 0.11 < 0.06) { base.setRGB(0.085, 0.085, 0.085); }
+      m.tabla = new MeshStandardMaterial({ color: base, roughness: 0.38, metalness: 0.12 });
       /* Los planos entre nervios, un poco mas oscuros: es lo que hace leer el
          relieve de frente, cuando los lados del nervio apenas se ven. */
       m.tablaFondo = new MeshStandardMaterial({ color: base.clone().multiplyScalar(0.8), roughness: 0.5, metalness: 0.12 });
@@ -127,12 +131,11 @@ export function materiales(mat, estilo, colorHex, ancho, altoMalla, marcoHex) {
     return conMarco(m, marcoHex);
   }
   if (mat === 'ecfence') {
-    /* Los tres acabados que enseña la pagina de EC Fence: bronce, blanco y
-       "Matching Gate", cuya foto es un porton NEGRO. Antes todo lo que no era
-       blanco salia bronce, y el cliente vio la cerca marron con el porton
-       negro elegido. */
-    var ec = estilo === 'White' ? '#eceae4' : estilo === 'Matching Gate' ? '#1c1c1c' : '#5a4433';
-    m.estructura = metalico(ec, 0.5, 0.42);
+    /* Dos acabados, bronce y blanco (el "Matching Gate" es un porton, no un
+       color). El bronce va mas claro y menos metalico: con metalness 0,42 y
+       sin brillo se comia la luz y parecia negro. */
+    var ec = estilo === 'White' ? '#eceae4' : '#7a5d47';
+    m.estructura = metalico(ec, 0.55, 0.12);
     m.tabla = m.estructura;
     return m;
   }
@@ -183,7 +186,10 @@ function vanoAluminio(e, m, est, mk, u0, ancho, alto) {
   if (est === 'Pool Code') { abajo = 2 * PUL; }
   /* En spear top los rieles quedan mas abajo porque encima van las puntas:
      el picket sigue hasta casi la cima y la punta remata por encima. */
-  if (est === 'Spear Top') { arriba = alto - 1 * PUL; }
+  /* 4-Rail Custom tambien lleva puntas: su foto es un spear top con doble
+     riel arriba y doble riel abajo. */
+  var conPunta = est === 'Spear Top' || est === '4-Rail Custom';
+  if (conPunta) { arriba = alto - 1 * PUL; }
 
   var n = Math.max(2, Math.round((ancho - pk) / pitch));
   var paso = (ancho - pk) / n;
@@ -191,7 +197,7 @@ function vanoAluminio(e, m, est, mk, u0, ancho, alto) {
     var u = u0 + pk / 2 + j * paso;
     var h = arriba - abajo;
     e.caja(m.estructura, 'picket', mk.p(u, abajo + h / 2, 0), [pk, h, pk], rotY);
-    if (est === 'Spear Top') {
+    if (conPunta) {
       e.pieza('cono', m.estructura, 'punta', mk.p(u, arriba + 2.2 * PUL, 0), [1.6 * PUL, 4.4 * PUL, 1.6 * PUL], rotY);
     }
   }
@@ -230,7 +236,9 @@ function vanoVinilo(e, m, est, mk, u0, ancho, alto) {
   var railH = 3.5 * PUL, railG = 1.3 * PUL, tablaG = 1.0 * PUL;
 
   if (est === 'Ranch Rail') {
-    var n = alto >= 5 ? 3 : 2;
+    /* Tres rieles siempre, como la foto: con dos a cuatro pies faltaba
+       "la mitad de la valla". */
+    var n = 3;
     for (var i = 0; i < n; i++) {
       var y = alto - 4 * PUL - i * (alto - 10 * PUL) / Math.max(1, n - 1);
       e.caja(m.estructura, 'ranch', mk.p(u0 + ancho / 2, y, 0), [ancho, 5.5 * PUL, 1.5 * PUL], rotY);
@@ -316,21 +324,20 @@ function vanoMetal(e, m, est, mk, u0, ancho, alto) {
   }
 }
 
-/** EC Fence: paneles verticales de acero que encajan entre si. */
+/** EC Fence: tablas HORIZONTALES de acero que encajan entre si. La foto del
+ *  perfil tiene nueve tablas en seis pies; se generan las mismas. Antes iban
+ *  verticales, que no es este producto. */
 function vanoEc(e, m, est, mk, u0, ancho, alto) {
   var rotY = mk.rotY;
-  var ancT = 8 * PUL;
-  var n = Math.max(1, Math.round(ancho / ancT));
-  var paso = ancho / n;
-  var y0 = 2 * PUL, h = alto - y0 - 1.5 * PUL;
+  var n = Math.max(3, Math.round(alto * 1.5));      // 9 tablas a 6'
+  var y0 = 2 * PUL, y1 = alto - 1 * PUL, luz = 0.12 * PUL;   // junta fina: en la foto no se ve a traves
+  var altT = (y1 - y0 - luz * (n - 1)) / n;
   for (var i = 0; i < n; i++) {
-    /* El encaje alterna el plano de la tabla; ese relieve es la firma del
-       producto y a contraluz es lo unico que lo distingue de una chapa. */
-    var v = (i % 2) ? 0.35 * PUL : -0.35 * PUL;
-    e.caja(m.tabla, 'panel', mk.p(u0 + paso / 2 + i * paso, y0 + h / 2, v),
-           [paso - 0.05 * PUL, h, 1.1 * PUL], rotY);
+    /* El encaje alterna un pelo el plano de cada tabla: es el relieve que
+       distingue el machihembrado de una chapa lisa. */
+    var v = (i % 2) ? 0.12 * PUL : -0.12 * PUL;
+    e.caja(m.tabla, 'tabla', mk.p(u0 + ancho / 2, y0 + i * (altT + luz) + altT / 2, v), [ancho, altT, 1.0 * PUL], rotY);
   }
-  e.caja(m.estructura, 'remate', mk.p(u0 + ancho / 2, alto - 0.6 * PUL, 0), [ancho, 1.6 * PUL, 2.4 * PUL], rotY);
 }
 
 var VANOS = {
@@ -381,7 +388,9 @@ function hoja(e, m, mat, est, a, b, alto) {
      "adorno" que el cliente pidio quitar). En aluminio y chain link el
      bastidor es parte del aspecto y va en el plano. */
   var mm = m.marco || m.estructura;
-  var vB = (mat === 'aluminum' || mat === 'chain-link') ? 0 : -(tubo / 2 + 1.2 * PUL);
+  /* Con marco explicito (el bastidor metalico negro del Custom Opening Gate
+     de su foto) el bastidor va a la vista, en el plano de la hoja. */
+  var vB = (mat === 'aluminum' || mat === 'chain-link' || m.marcoExplicito) ? 0 : -(tubo / 2 + 1.2 * PUL);
   var yTop = vB === 0 ? alto - tubo / 2 : alto - tubo / 2 - 2 * PUL;
   /* En aluminio los rieles del propio panel YA son el bastidor horizontal:
      añadir los tubos de arriba y abajo dejaba dos barras a cuatro pulgadas
@@ -393,6 +402,15 @@ function hoja(e, m, mat, est, a, b, alto) {
   }
   e.caja(mm, 'marco', mk.p(tubo / 2, alto / 2 + 1.5 * PUL, vB), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
   e.caja(mm, 'marco', mk.p(ancho - tubo / 2, alto / 2 + 1.5 * PUL, vB), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
+  /* Refuerzos, como en las fotos: el walk gate de chain link lleva una barra
+     horizontal a media altura ("el palito en la mitad"); el Custom Opening
+     Gate con bastidor metalico lleva una cruz (montante central y travesaño). */
+  if (mat === 'chain-link') {
+    e.caja(mm, 'marco', mk.p(ancho / 2, alto / 2, vB), [ancho - 2 * tubo, tubo, tubo * 1.1], mk.rotY);
+  } else if (m.marcoExplicito) {
+    e.caja(mm, 'marco', mk.p(ancho / 2, alto / 2, vB), [ancho - 2 * tubo, tubo, tubo * 1.1], mk.rotY);
+    e.caja(mm, 'marco', mk.p(ancho / 2, alto / 2 + 1.5 * PUL, vB), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY);
+  }
 }
 
 /* ── cerca completa ───────────────────────────────────────────────────────── */

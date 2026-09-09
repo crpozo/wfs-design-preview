@@ -370,12 +370,15 @@ export function construir() {
   /* Puerta con plafones, pomo, vidriera lateral y aplique. Todo POR DELANTE
      del zocalo (que sobresale 0,3): con la puerta a ras de fachada, su parte
      baja quedaba coplanar con la banda y la GPU rayaba la union (z-fighting). */
-  g.add(caja(3.4, 7.4, 0.45, mats.puerta, -12.6, 3.7, zf + 0.22));
-  g.add(caja(5.4, 8.1, 0.28, mats.trim, -12, 4.05, zf - 0.06));
-  g.add(caja(0.22, 0.22, 0.5, mats.trim, -11.5, 3.5, zf + 0.34));
-  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12.6, 5.3, zf + 0.30));
-  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12.6, 2.1, zf + 0.30));
-  g.add(caja(1.1, 6.8, 0.42, mats.vidrio, -10.1, 3.9, zf + 0.22));       // vidriera
+  /* La puerta centrada en el camino (x = -12), con vidriera a CADA lado: con
+     una sola vidriera la puerta quedaba corrida respecto al hormigon. */
+  g.add(caja(3.4, 7.4, 0.45, mats.puerta, -12, 3.7, zf + 0.22));
+  g.add(caja(6.6, 8.1, 0.28, mats.trim, -12, 4.05, zf - 0.06));
+  g.add(caja(0.22, 0.22, 0.5, mats.trim, -10.9, 3.5, zf + 0.34));
+  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12, 5.3, zf + 0.30));
+  g.add(caja(2.4, 2.6, 0.5, mats.puerta, -12, 2.1, zf + 0.30));
+  g.add(caja(1.1, 6.8, 0.42, mats.vidrio, -14.45, 3.9, zf + 0.22));      // vidrieras
+  g.add(caja(1.1, 6.8, 0.42, mats.vidrio, -9.55, 3.9, zf + 0.22));
   g.add(caja(0.5, 0.9, 0.5, mats2.aplique, -15.2, 6.3, zf + 0.2));       // aplique
 
   /* Ventanas con contraventanas. */
@@ -411,7 +414,9 @@ export function construir() {
 
   /* ── piscina y terraza, en el lateral ─────────────────────────────────── */
   var px = -37, pz = -28;
-  g.add(losa(20, 34, mats.hormigon, px, 0.07, pz));
+  /* 17,5 de ancho y no 20: con 20 la terraza asomaba un pie por fuera de la
+     cerca del lindero (x = -46). */
+  g.add(losa(17.5, 34, mats.hormigon, px + 0.25, 0.07, pz));
   g.add(caja(15, 0.9, 26, mats.borde, px, 0.42, pz));
   g.add(caja(13.2, 1, 24.2, mats.agua, px, 0.5, pz));
   for (var s = 0; s < 3; s++) {
@@ -427,8 +432,11 @@ export function construir() {
   /* Ninguna palmera pisa la piscina ni su terraza: el vaso va en x -44..-30 y
      z -40..-16, y la terraza en x -47..-27, z -45..-11. Las dos que caian ahi
      dentro se reparten por el jardin. */
-  var palmas = [[-34, 12, 17], [-41, 2, 13], [41, 20, 15], [40, -6, 19],
-                [-44, -48, 16], [26, -44, 18], [-32, 31, 12], [-31, 19, 14]];
+  /* Repartidas: en el jardin delantero izquierdo habia tres casi encima una
+     de otra y sus copas proyectaban sombras solapadas y desfasadas que se
+     leian como una "sombra doble". Ahora una por zona. */
+  var palmas = [[-34, 12, 17], [-44, -8, 13], [41, 20, 15], [40, -6, 19],
+                [-44, -48, 16], [26, -44, 18], [-32, 31, 12], [30, -40, 14]];
   for (var q = 0; q < palmas.length; q++) {
     g.add(palmera(palmas[q][0], palmas[q][1], palmas[q][2]));
   }
