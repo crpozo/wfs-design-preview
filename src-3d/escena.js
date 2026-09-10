@@ -90,7 +90,9 @@ function traza(estado) {
      va donde le corresponde por ancho: el peatonal al camino de la puerta, y
      cualquier otro a la calzada. El que no se eligio se monta igual, con el
      mismo material y perfil, porque asi es como se instala de verdad. */
-  var peatonal = { a: [-14.5, F], b: [-10.5, F], tipo: 'single' };
+  /* Centrado en el camino a la puerta (x = -12, 4 pies): antes iba medio pie
+     a la izquierda y en perspectiva el porton no caia sobre el hormigon. */
+  var peatonal = { a: [-14, F], b: [-10, F], tipo: 'single' };
   /* El hueco de la calzada se abre al ancho que pida la opcion elegida,
      centrado en la entrada: un porton "a la medida" tiene que verse mas ancho
      que el estandar, si no la eleccion no se nota. */
