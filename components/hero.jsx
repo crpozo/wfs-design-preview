@@ -53,8 +53,8 @@ const ChatBanner = () => {
           a todo el ancho, el texto no cuadraba con nada de la pagina. */}
       <span className="container wfs-chatbanner__in">
         <span className="wfs-chatbanner__txt">
-          {t('New & Improved ChatBot: Chat with a real person NOW!',
-             'ChatBot nuevo y mejorado: habla con una persona real AHORA')}
+          {t('New and improved live chat: chat with a real sales associate now!',
+             'Chat en vivo nuevo y mejorado: chatea con un asesor de ventas real ahora')}
         </span>
         <span className="wfs-chatbanner__cta">
           <span className="wfs-chatbanner__cta-txt">{t('Start chatting', 'Empezar a chatear')}</span>
