@@ -98,6 +98,11 @@ function traza(estado) {
   var cx = 12;
   var coches   = { a: [cx - W / 2, F], b: [cx + W / 2, F],
                    tipo: (elegido && elegido !== 'single') ? elegido : 'double' };
+  /* Correderas y cantilever: la hoja casi cerrada sobre la calzada, con la
+     cola asomando tras los postes. Apartada del todo (como antes) el hueco
+     quedaba vacio y la hoja parecia un panel de cerca suelto. */
+  if (elegido === 'cantilever') { coches.apertura = 0.12; }
+  if (elegido === 'sliding' || elegido === 'rolling') { coches.apertura = 0.3; }
 
   var tramos = [
     { a: [-X, F], b: peatonal.a },

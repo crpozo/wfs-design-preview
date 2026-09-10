@@ -639,8 +639,12 @@
       mat: s.mat, estilo: s.style, alto: s.height, colorHex: col,
       producto: s.product, gate: s.gate, ancho: s.ancho, marco: s.marco,
       rieles: s.rails ? parseInt(s.rails, 10) : null,
-      etiqueta: mm.tag,
-      titulo: mm.name + (s.product === 'gate' ? ' gate' : ' fence'),
+      /* En portones el rotulo es el TIPO (Cantilever, Sliding...) y el titulo
+         lo lleva junto al material: "Chain Link cantilever gate". */
+      etiqueta: s.product === 'gate' && gateObj() ? gateObj().label : mm.tag,
+      titulo: s.product === 'gate' && gateObj()
+        ? mm.name + ' ' + String(gateObj().label).toLowerCase() + ' gate'
+        : mm.name + ' fence',
       resumen: ficha().filter(function (f) { return f[1]; })
     };
   }

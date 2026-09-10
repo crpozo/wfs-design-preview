@@ -32,10 +32,12 @@ Ensamblador.prototype._lote = function (clave, geo, material) {
  * unico que hace falta: una cerca no tiene piezas inclinadas salvo las hojas
  * de porton abiertas, y esas giran justamente en Y.
  */
-Ensamblador.prototype.pieza = function (forma, material, clave, c, t, rotY, rotX) {
+Ensamblador.prototype.pieza = function (forma, material, clave, c, t, rotY, rotX, rotZ) {
   var geo = forma === 'cilindro' ? cilindro() : forma === 'cono' ? cono() : forma === 'plano' ? plano() : caja();
   var l = this._lote(forma + '|' + clave, geo, material);
-  _e.set(rotX || 0, rotY || 0, 0, 'YXZ');
+  /* rotZ: giro en el plano de la pieza (las diagonales de un porton). Con
+     'YXZ' se aplica primero, y luego la orientacion del tramo (rotY). */
+  _e.set(rotX || 0, rotY || 0, rotZ || 0, 'YXZ');
   if (forma === 'plano') { _e.set(0, rotY || 0, 0); }
   _q.setFromEuler(_e);
   _p.set(c[0], c[1], c[2]);
@@ -44,8 +46,8 @@ Ensamblador.prototype.pieza = function (forma, material, clave, c, t, rotY, rotX
   return this;
 };
 
-Ensamblador.prototype.caja = function (material, clave, c, t, rotY) {
-  return this.pieza('caja', material, clave, c, t, rotY);
+Ensamblador.prototype.caja = function (material, clave, c, t, rotY, rotZ) {
+  return this.pieza('caja', material, clave, c, t, rotY, 0, rotZ);
 };
 
 /** Cilindro vertical (postes redondos de chain link). */

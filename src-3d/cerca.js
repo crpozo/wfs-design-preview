@@ -376,7 +376,7 @@ function poste(e, m, mat, x, z, alto) {
  * Un porton no es un trozo de cerca colgado: lleva marco perimetral porque si
  * no se descuelga. Modelarlo importa, es lo primero que se mira de cerca.
  */
-function hoja(e, m, mat, est, a, b, alto) {
+function hoja(e, m, mat, est, a, b, alto, ref) {
   var mk = marco(a, b);
   var ancho = mk.largo;
   var tubo = mat === 'vinyl' ? 3 * PUL : 2 * PUL;
@@ -410,7 +410,18 @@ function hoja(e, m, mat, est, a, b, alto) {
   /* Refuerzos, como en las fotos: el walk gate de chain link lleva una barra
      horizontal a media altura ("el palito en la mitad"); el Custom Opening
      Gate con bastidor metalico lleva una cruz (montante central y travesaño). */
-  if (mat === 'chain-link') {
+  if (ref && ref.diagonales) {
+    /* Hoja de correderas y cantilever, como la foto: montantes cada tramo y
+       una DIAGONAL por tramo, de abajo a arriba, que es lo que arriostra una
+       hoja larga que vuela. Sin travesaño horizontal. */
+    var ns = ref.secciones || 2, w = (ancho - 2 * tubo) / ns, hh = alto - 3 * PUL - 2 * tubo;
+    for (var si = 0; si < ns; si++) {
+      var u0 = tubo + si * w;
+      if (si > 0) { e.caja(mm, 'marco', mk.p(u0, alto / 2 + 1.5 * PUL, vB), [tubo, alto - 3 * PUL, tubo * 1.1], mk.rotY); }
+      var len = Math.sqrt(w * w + hh * hh), ang = Math.atan2(hh, w);
+      e.caja(mm, 'diag', mk.p(u0 + w / 2, 3 * PUL + tubo + hh / 2, vB), [len, tubo * 0.8, tubo * 0.9], mk.rotY, ang);
+    }
+  } else if (mat === 'chain-link') {
     e.caja(mm, 'marco', mk.p(ancho / 2, alto / 2, vB), [ancho - 2 * tubo, tubo, tubo * 1.1], mk.rotY);
   } else if (m.marcoExplicito) {
     e.caja(mm, 'marco', mk.p(ancho / 2, alto / 2, vB), [ancho - 2 * tubo, tubo, tubo * 1.1], mk.rotY);
@@ -534,7 +545,7 @@ function porton(e, m, mat, est, alto, h) {
   } else if (tipo === 'sliding' || tipo === 'rolling') {
     /* Corredera: la hoja se aparta a un lado, montada sobre el rail. */
     var d = mk.p(L + L * 0.86 * fr, 0, DENTRO), o2 = mk.p(L * 0.86 * fr, 0, DENTRO);
-    hoja(e, m, mat, est, [o2[0], o2[2]], [d[0], d[2]], altoP);
+    hoja(e, m, mat, est, [o2[0], o2[2]], [d[0], d[2]], altoP, { diagonales: true, secciones: Math.max(2, Math.round(L / 8)) });
     var rail = mk.p(L * (0.5 + 0.9 * fr), 0.5 * PUL, DENTRO);
     e.caja(m.estructura, 'guia', rail, [L * 1.1, 1 * PUL, 4 * PUL], mk.rotY);
     if (tipo === 'rolling') {
@@ -547,7 +558,7 @@ function porton(e, m, mat, est, alto, h) {
     /* Cantilever: la hoja vuela sin rail en el suelo, con una cola trasera que
        hace de contrapeso. Es exactamente lo que lo diferencia. */
     var o3 = mk.p(L * 0.9 * fr, 0, DENTRO), d3 = mk.p(L * 0.9 * fr + L * 1.5, 0, DENTRO);
-    hoja(e, m, mat, est, [o3[0], o3[2]], [d3[0], d3[2]], altoP);
+    hoja(e, m, mat, est, [o3[0], o3[2]], [d3[0], d3[2]], altoP, { diagonales: true, secciones: 3 });
     var v1 = mk.p(L * (0.65 + 0.9 * fr), altoP + 3 * PUL, DENTRO);
     e.caja(m.estructura, 'viga', v1, [L * 1.5, 3.5 * PUL, 3.5 * PUL], mk.rotY);
     for (var t2 = 0; t2 < 2; t2++) {
