@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Arvo en titulares · Prueba tipográfica · Western Fence Supply</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Archivo wdth 125 = el titular de hoy · Inter = cuerpo · Arvo = el candidato -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Inter:wght@300;400;500;600;700&family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<!-- El CSS REAL del sitio: lo que se ve aqui es exactamente como quedaria -->
+<link rel="stylesheet" href="styles.css?v=297">
+<style>
+  /* Pagina de prueba tipografica. No forma parte del sitio: sirve para decidir
+     si los titulares pasan de Archivo (eje ancho 125) a Arvo (slab serif).
+     Las dos columnas usan las MISMAS clases y tamaños que el sitio; lo unico
+     que cambia entre ellas es la variable --display, que es el interruptor
+     real que habria que accionar. */
+  body { background: #f4f5f7; }
+  .pt-top {
+    position: sticky; top: 0; z-index: 20; background: var(--ink); color: #fff;
+    padding: 16px var(--pad); display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+  }
+  .pt-top__t { font-family: var(--sans); font-size: 15.5px; font-weight: 700; }
+  .pt-top__s { font-family: var(--sans); font-size: 13.5px; color: var(--blue-ice); }
+  .pt-top__sp { flex: 1; }
+  .pt-link {
+    font-family: var(--sans); font-size: 12.5px; font-weight: 700; letter-spacing: .12em;
+    text-transform: uppercase; color: var(--ink); background: var(--tangerine);
+    padding: 9px 16px; border-radius: 999px; text-decoration: none; white-space: nowrap;
+  }
+  .pt-wrap { max-width: 1560px; margin: 0 auto; padding: 0 var(--pad) 90px; }
+
+  .pt-nota {
+    background: #fff; border-left: 4px solid var(--tangerine);
+    padding: 22px 26px; margin: 28px 0 8px; border-radius: 0 10px 10px 0;
+    font-family: var(--sans); font-size: 15px; line-height: 1.6; color: #333;
+  }
+  .pt-nota b { color: var(--ink); }
+  .pt-nota ul { margin: 10px 0 0; padding-left: 20px; }
+  .pt-nota li { margin-bottom: 6px; }
+
+  /* ── una muestra = etiqueta + las dos versiones ─────────────────────────── */
+  .pt-fila { margin-top: 34px; }
+  .pt-eti {
+    font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--charcoal); margin-bottom: 10px;
+  }
+  .pt-eti span { font-weight: 500; letter-spacing: .04em; text-transform: none; color: #8a8f99; }
+  .pt-par { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+  @media (max-width: 1080px) { .pt-par { grid-template-columns: 1fr; } }
+  /* El hero va apilado, no en dos columnas: su caja tiene que medir los 720px
+     reales del sitio. En media pantalla caben 631px y ahi las dos fuentes caen
+     en 4 lineas, que es justo lo que oculta el hallazgo. */
+  .pt-par--apilado { grid-template-columns: 1fr; }
+
+  .pt-caja { background: #fff; border: 1px solid rgba(0,16,17,.12); border-radius: 12px; overflow: hidden; }
+  .pt-caja__cab {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 9px 16px; border-bottom: 1px solid rgba(0,16,17,.09);
+    font-family: var(--sans); font-size: 11.5px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase;
+  }
+  .es-hoy .pt-caja__cab { background: #eef0f5; color: var(--charcoal); }
+  .es-arvo .pt-caja__cab { background: #fff2ea; color: #b8501f; }
+  .pt-caja__med { font-weight: 500; letter-spacing: .02em; text-transform: none; color: #8a8f99; font-variant-numeric: tabular-nums; }
+  .pt-caja__cuerpo { padding: 24px 26px 28px; }
+  .pt-caja.sobre-tinta .pt-caja__cuerpo { background: var(--ink); }
+
+  /* EL INTERRUPTOR. Es exactamente la linea 59 de styles.css. Arvo no tiene
+     eje de ancho, asi que el 'wdth' 125 que el sitio repite en 8 reglas queda
+     inerte: no estorba, pero tampoco hace nada. */
+  .es-arvo .pt-caja__cuerpo { --display: 'Arvo', 'Rockwell', Georgia, serif; }
+
+  /* Recreaciones fieles: mismos tamaños e inline styles que los componentes. */
+  .m-hero {
+    margin: 0; font-family: var(--display); font-variation-settings: 'wdth' 125;
+    font-weight: 800; font-size: clamp(34px, 4.2vw, 56px); line-height: 1.02;
+    letter-spacing: -.02em; text-transform: uppercase; color: #fff; max-width: 720px;
+  }
+  .m-hero .ac { color: var(--blue-ice); }
+  .m-sec { margin: 0; font-size: clamp(28px, 3vw, 40px); line-height: 1; letter-spacing: -.02em; }
+  .m-sec .ac { color: var(--tangerine); }
+  .m-why { margin: 0; font-size: clamp(34px, 5vw, 56px); line-height: 1; letter-spacing: -.02em; }
+  .m-why .ac { color: var(--tangerine); }
+  .m-card { margin: 0; font-size: 23.5px; line-height: 1.1; }
+  .m-kick {
+    font-family: var(--mono); font-size: 13.5px; font-weight: 700; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--tangerine); margin-bottom: 7px;
+  }
+  .m-paso { display: flex; align-items: baseline; gap: 12px; }
+  .m-paso__n { font-family: var(--mono); font-size: 12.5px; font-weight: 700; letter-spacing: .16em; color: var(--tangerine); }
+  .m-paso__t { font-family: var(--display); font-variation-settings: 'wdth' 125; font-weight: 700; font-size: 17px; color: var(--ink); }
+  .m-cifras { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  /* inline-block: asi la caja mide el numero y no la celda de la rejilla,
+     que es lo que hay que comparar. */
+  .m-cifra__n { margin: 0; display: inline-block; font-size: clamp(28px, 3vw, 40px); line-height: 1; }
+  .m-cifra__e { font-family: var(--mono); font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--charcoal); margin-top: 8px; }
+  .m-uso { display: grid; grid-template-columns: 104px 1fr; gap: 20px; align-items: start; }
+  .m-uso__n {
+    font-family: var(--display); font-variation-settings: 'wdth' 125; font-weight: 800;
+    font-size: 61.5px; line-height: 1; color: transparent;
+    -webkit-text-stroke: 1.5px var(--ink);
+  }
+  .m-uso__t { font-family: var(--display); font-variation-settings: 'wdth' 125; font-weight: 800; font-size: clamp(18px, 1.6vw, 24px); text-transform: uppercase; line-height: 1.1; color: var(--ink); }
+  .m-pesos > div { margin-bottom: 10px; font-family: var(--display); font-variation-settings: 'wdth' 125; font-size: 26px; color: var(--ink); }
+  .m-pesos i { font-style: normal; font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: .12em; color: #8a8f99; margin-left: 12px; }
+  .m-prosa h2 { margin: 0 0 6px; }
+  .m-prosa p { margin: 0; font-size: 16px; line-height: 1.62; color: #444; }
+</style>
+</head>
+<body>
+
+<div class="pt-top">
+  <span class="pt-top__t">Arvo en titulares</span>
+  <span class="pt-top__s">Izquierda: como está hoy (Archivo ancho 125) · Derecha: Arvo</span>
+  <span class="pt-top__sp"></span>
+  <a class="pt-link" href="Homepage.html?font=arvo">Ver el sitio entero con Arvo →</a>
+</div>
+
+<div class="pt-wrap">
+
+  <div class="pt-nota" id="resumen">
+    <b>Qué estás viendo.</b> Las dos columnas usan el CSS real del sitio, los mismos tamaños y los
+    titulares que de verdad salen en las páginas. Lo único que cambia entre ellas es la variable
+    <code>--display</code>, que es el interruptor que habría que accionar.
+    <ul>
+      <li><b>Arvo es un 20% más estrecho</b> y sus mayúsculas un 8% más altas que Archivo al mismo tamaño. Los titulares dejan de partirse donde se parten hoy: mira el primer bloque.</li>
+      <li><b>Arvo solo tiene dos pesos</b>, 400 y 700. El sitio usa 800 en 48 sitios y 600 en los subtítulos del blog: todos caen a 700 y se pierde un escalón de jerarquía.</li>
+      <li><b>Las cifras encogen un 27%</b>, más que el texto, así que en las filas de datos la etiqueta pasa a ser más ancha que el número.</li>
+      <li>La página de pago <b>/pay ya usa Alfa Slab One</b>, otro slab serif. Con este cambio el sitio tendría dos.</li>
+    </ul>
+  </div>
+
+  <!-- ── 1. Hero: el bloque donde mas se nota ─────────────────────────────── -->
+  <div class="pt-fila">
+    <div class="pt-eti">01 · Titular del hero, portada <span>clamp(34→56px) · peso 800 · caja de 720px</span></div>
+    <div class="pt-par pt-par--apilado">
+      <div class="pt-caja es-hoy sobre-tinta">
+        <div class="pt-caja__cab"><span>Hoy · Archivo</span><span class="pt-caja__med" data-med="h-hoy"></span></div>
+        <div class="pt-caja__cuerpo"><h1 class="m-hero" id="h-hoy">The Best Place to Buy Fences in <span class="ac">Southwest Florida</span></h1></div>
+      </div>
+      <div class="pt-caja es-arvo sobre-tinta">
+        <div class="pt-caja__cab"><span>Arvo</span><span class="pt-caja__med" data-med="h-arvo"></span></div>
+        <div class="pt-caja__cuerpo"><h1 class="m-hero" id="h-arvo">The Best Place to Buy Fences in <span class="ac">Southwest Florida</span></h1></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 2. El titular mas largo del sitio ────────────────────────────────── -->
+  <div class="pt-fila">
+    <div class="pt-eti">02 · El titular más largo del sitio, products.html <span>clamp(28→40px) · salto manual antes del acento</span></div>
+    <div class="pt-par">
+      <div class="pt-caja es-hoy">
+        <div class="pt-caja__cab"><span>Hoy · Archivo</span><span class="pt-caja__med" data-med="l-hoy"></span></div>
+        <div class="pt-caja__cuerpo"><h2 class="display m-sec" id="l-hoy">Posts, hinges, latches,<br><span class="ac">and the little stuff that breaks first.</span></h2></div>
+      </div>
+      <div class="pt-caja es-arvo">
+        <div class="pt-caja__cab"><span>Arvo</span><span class="pt-caja__med" data-med="l-arvo"></span></div>
+        <div class="pt-caja__cuerpo"><h2 class="display m-sec" id="l-arvo">Posts, hinges, latches,<br><span class="ac">and the little stuff that breaks first.</span></h2></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 3. Titulares de seccion, los mas repetidos ───────────────────────── -->
+  <div class="pt-fila">
+    <div class="pt-eti">03 · Titulares de sección <span>los que más se repiten en el sitio</span></div>
+    <div class="pt-par">
+      <div class="pt-caja es-hoy">
+        <div class="pt-caja__cab"><span>Hoy · Archivo</span></div>
+        <div class="pt-caja__cuerpo">
+          <h2 class="display m-why">Built by fencers.<br><span class="ac">Priced like a supplier.</span></h2>
+          <h2 class="display m-sec" style="margin-top:30px">Configure Your<br><span class="ac">Vinyl / PVC.</span></h2>
+          <h2 class="display m-sec" style="margin-top:26px">Common fence<br><span class="ac">questions.</span></h2>
+        </div>
+      </div>
+      <div class="pt-caja es-arvo">
+        <div class="pt-caja__cab"><span>Arvo</span></div>
+        <div class="pt-caja__cuerpo">
+          <h2 class="display m-why">Built by fencers.<br><span class="ac">Priced like a supplier.</span></h2>
+          <h2 class="display m-sec" style="margin-top:30px">Configure Your<br><span class="ac">Vinyl / PVC.</span></h2>
+          <h2 class="display m-sec" style="margin-top:26px">Common fence<br><span class="ac">questions.</span></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 4. Tarjetas y pasos del configurador ─────────────────────────────── -->
+  <div class="pt-fila">
+    <div class="pt-eti">04 · Tarjetas y pasos del configurador <span>23,5px y 17px · donde vive el texto pequeño</span></div>
+    <div class="pt-par">
+      <div class="pt-caja es-hoy">
+        <div class="pt-caja__cab"><span>Hoy · Archivo</span></div>
+        <div class="pt-caja__cuerpo">
+          <div class="m-kick">07 · Pet-friendly</div>
+          <h3 class="display m-card">Puppy Picket</h3>
+          <h3 class="display m-card" style="margin-top:18px">Big Rubber Wheels</h3>
+          <div style="margin-top:26px;padding-top:20px;border-top:1px solid rgba(0,16,17,.1)">
+            <div class="m-paso"><span class="m-paso__n">01</span><span class="m-paso__t">What are you building</span></div>
+            <div class="m-paso" style="margin-top:12px"><span class="m-paso__n">02</span><span class="m-paso__t">Gate option</span></div>
+            <div class="m-paso" style="margin-top:12px"><span class="m-paso__n">03</span><span class="m-paso__t">Height</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-caja es-arvo">
+        <div class="pt-caja__cab"><span>Arvo</span></div>
+        <div class="pt-caja__cuerpo">
+          <div class="m-kick">07 · Pet-friendly</div>
+          <h3 class="display m-card">Puppy Picket</h3>
+          <h3 class="display m-card" style="margin-top:18px">Big Rubber Wheels</h3>
+          <div style="margin-top:26px;padding-top:20px;border-top:1px solid rgba(0,16,17,.1)">
+            <div class="m-paso"><span class="m-paso__n">01</span><span class="m-paso__t">What are you building</span></div>
+            <div class="m-paso" style="margin-top:12px"><span class="m-paso__n">02</span><span class="m-paso__t">Gate option</span></div>
+            <div class="m-paso" style="margin-top:12px"><span class="m-paso__n">03</span><span class="m-paso__t">Height</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 5. Cifras: el peor caso medido ───────────────────────────────────── -->
+  <div class="pt-fila">
+    <div class="pt-eti">05 · Cifras <span>encogen un 27%, más que las letras · las etiquetas siguen en Inter</span></div>
+    <div class="pt-par">
+      <div class="pt-caja es-hoy">
+        <div class="pt-caja__cab"><span>Hoy · Archivo</span><span class="pt-caja__med" data-med="c-hoy"></span></div>
+        <div class="pt-caja__cuerpo">
+          <div class="m-cifras">
+            <div><h3 class="display m-cifra__n" id="c-hoy">2 400</h3><div class="m-cifra__e">Referencias</div></div>
+            <div><h3 class="display m-cifra__n">24h</h3><div class="m-cifra__e">Cotización</div></div>
+            <div><h3 class="display m-cifra__n">5</h3><div class="m-cifra__e">Materiales</div></div>
+          </div>
+          <div class="m-uso" style="margin-top:28px">
+            <div class="m-uso__n">01</div>
+            <div><div class="m-uso__t">HOA &amp; Residential Communities</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-caja es-arvo">
+        <div class="pt-caja__cab"><span>Arvo</span><span class="pt-caja__med" data-med="c-arvo"></span></div>
+        <div class="pt-caja__cuerpo">
+          <div class="m-cifras">
+            <div><h3 class="display m-cifra__n" id="c-arvo">2 400</h3><div class="m-cifra__e">Referencias</div></div>
+            <div><h3 class="display m-cifra__n">24h</h3><div class="m-cifra__e">Cotización</div></div>
+            <div><h3 class="display m-cifra__n">5</h3><div class="m-cifra__e">Materiales</div></div>
+          </div>
+          <div class="m-uso" style="margin-top:28px">
+            <div class="m-uso__n">01</div>
+            <div><div class="m-uso__t">HOA &amp; Residential Communities</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 6. Pesos: lo que se pierde ───────────────────────────────────────── -->
+  <div class="pt-fila">
+    <div class="pt-eti">06 · Pesos <span>Archivo tiene 300–900 · Arvo solo 400 y 700</span></div>
+    <div class="pt-par">
+      <div class="pt-caja es-hoy">
+        <div class="pt-caja__cab"><span>Hoy · Archivo</span><span class="pt-caja__med">4 pesos distintos</span></div>
+        <div class="pt-caja__cuerpo m-pesos">
+          <div style="font-weight:600">Fence guides &amp; how-tos<i>600 · subtítulo de blog</i></div>
+          <div style="font-weight:700">Fence guides &amp; how-tos<i>700 · .display</i></div>
+          <div style="font-weight:800">Fence guides &amp; how-tos<i>800 · titulares</i></div>
+          <div style="font-weight:900">Fence guides &amp; how-tos<i>900</i></div>
+        </div>
+      </div>
+      <div class="pt-caja es-arvo">
+        <div class="pt-caja__cab"><span>Arvo</span><span class="pt-caja__med">los cuatro caen en 700</span></div>
+        <div class="pt-caja__cuerpo m-pesos">
+          <div style="font-weight:600">Fence guides &amp; how-tos<i>600 → 700</i></div>
+          <div style="font-weight:700">Fence guides &amp; how-tos<i>700</i></div>
+          <div style="font-weight:800">Fence guides &amp; how-tos<i>800 → 700</i></div>
+          <div style="font-weight:900">Fence guides &amp; how-tos<i>900 → 700</i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 7. Titular sobre cuerpo, la prueba de convivencia ────────────────── -->
+  <div class="pt-fila">
+    <div class="pt-eti">07 · Titular sobre cuerpo <span>el cuerpo sigue en Inter y no cambia</span></div>
+    <div class="pt-par">
+      <div class="pt-caja es-hoy">
+        <div class="pt-caja__cab"><span>Hoy · Archivo</span></div>
+        <div class="pt-caja__cuerpo m-prosa">
+          <h2 class="display m-sec" style="font-size:30px">Florida pool code, in plain English.</h2>
+          <p style="margin-top:14px">Any pool or spa needs a barrier at least 48 inches high, measured on the side facing away from the pool. Gaps under the fence can't exceed 4 inches, and gates must swing outward and self-latch.</p>
+        </div>
+      </div>
+      <div class="pt-caja es-arvo">
+        <div class="pt-caja__cab"><span>Arvo</span></div>
+        <div class="pt-caja__cuerpo m-prosa">
+          <h2 class="display m-sec" style="font-size:30px">Florida pool code, in plain English.</h2>
+          <p style="margin-top:14px">Any pool or spa needs a barrier at least 48 inches high, measured on the side facing away from the pool. Gaps under the fence can't exceed 4 inches, and gates must swing outward and self-latch.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pt-nota" style="margin-top:44px">
+    <b>Medido, no estimado.</b> Arvo/Archivo en las mismas cadenas del sitio:
+    ancho de titular <b>0,80</b> · altura de mayúscula <b>1,08</b> · anchura de cifras <b>0,73</b> ·
+    interlínea natural <b>+11%</b>. Si se adopta, hay que bajar el tamaño de los titulares
+    alrededor de un 7% para conservar la altura óptica, revisar los saltos de línea manuales
+    (<code>&lt;br&gt;</code>) y aflojar los interlineados de 0,90–1,02, que se quedan cortos para
+    las mayúsculas acentuadas del español.
+  </div>
+
+</div>
+
+<script>
+/* Mide y rotula lo que no se ve a simple vista: cuantas lineas ocupa cada
+   titular y cuanto mide de alto. Se recalcula al cambiar el tamaño de la
+   ventana porque los titulares usan clamp() y cambian con el ancho. */
+function medirMuestras() {
+  ['h-hoy', 'h-arvo', 'l-hoy', 'l-arvo', 'c-hoy', 'c-arvo'].forEach(function (id) {
+    var el = document.getElementById(id);
+    var salida = document.querySelector('[data-med="' + id + '"]');
+    if (!el || !salida) { return; }
+    var caja = el.getBoundingClientRect();
+    if (id.indexOf('c-') === 0) {
+      salida.textContent = Math.round(caja.width) + ' px de ancho';
+      return;
+    }
+    /* El alto de linea real, no uno supuesto: line-height puede llegar como
+       'normal' y entonces hay que deducirlo del propio tamaño. */
+    var cs = getComputedStyle(el);
+    var lh = parseFloat(cs.lineHeight);
+    if (!isFinite(lh)) { lh = parseFloat(cs.fontSize) * 1.2; }
+    var lineas = Math.max(1, Math.round(caja.height / lh));
+    salida.textContent = lineas + (lineas === 1 ? ' línea' : ' líneas') + ' · ' + Math.round(caja.height) + ' px';
+  });
+}
+document.fonts.ready.then(medirMuestras);
+window.addEventListener('resize', medirMuestras, { passive: true });
+</script>
+</body>
+</html>
