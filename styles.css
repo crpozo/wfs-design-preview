@@ -110,10 +110,10 @@ article[style*="border: 1.5px solid"]:has(img),
 a[style*="border: 1.5px solid"]:has(img) { border: none !important; }
 div[style*="border-bottom: 1px solid"]:has(> img) { border-bottom: none !important; }
 /* Style/profile cards (SVG illustrations + photos) share this grid */
-.wfs-profiles-grid > article,
-.wfs-profiles-grid > a { border: none !important; }
-.wfs-profiles-grid > article > div:first-child,
-.wfs-profiles-grid > a > div:first-child { border-bottom: none !important; }
+/* Cualquier hijo: las tarjetas de porton son <button> (single) o <div>
+   (galeria), no solo <article>/<a>. */
+.wfs-profiles-grid > * { border: none !important; }
+.wfs-profiles-grid > * > div:first-child { border-bottom: none !important; }
 
 /* Display type — Mirano Extended substitute: Archivo at wdth 125 */
 .display {
@@ -272,6 +272,11 @@ section { position: relative; }
   background: currentColor;
   display: inline-block;
 }
+
+/* iOS Safari infla el texto por su cuenta en bloques que considera "texto
+   principal"; con filas en nowrap eso ensancha columnas mas alla de la
+   pantalla (el configurador se salia por la derecha en el iPhone). */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 /* ───── Responsive ───── */
 
@@ -725,13 +730,14 @@ section { position: relative; }
     padding: 0 var(--pad);
   }
   .wfs-profiles-grid::-webkit-scrollbar { display: none; }
-  .wfs-profiles-grid > article,
-  .wfs-profiles-grid > a {
+  /* Cualquier hijo, no solo article/a: las tarjetas de porton son <button>
+     o <div> y, fuera de esta regla, se aplastaban a tres columnas en movil. */
+  .wfs-profiles-grid > * {
     flex: 0 0 72%;
+    min-width: 0;
     scroll-snap-align: start;
   }
-  .wfs-profiles-grid > article > div:first-child,
-  .wfs-profiles-grid > a > div:first-child {
+  .wfs-profiles-grid > * > div:first-child {
     aspect-ratio: 16 / 9 !important;
   }
 }
@@ -1209,7 +1215,10 @@ p { font-family: var(--body); }
    ═══════════════════════════════════════════════════════════════════════════ */
 .bld { padding: 96px 0 110px; }
 
-  .bld__grid { display: grid; grid-template-columns: 1fr 460px; gap: 64px; align-items: start; }
+  /* minmax(0, 1fr) y no 1fr: 1fr equivale a minmax(auto, 1fr) y una fila con
+     nowrap puede ensanchar la columna mas alla del contenedor. */
+  .bld__grid { display: grid; grid-template-columns: minmax(0, 1fr) 460px; gap: 64px; align-items: start; }
+  .bld__grid > * { min-width: 0; }
 
   /* La vista previa se queda fija: es el punto del configurador, ver como cambia
      lo que eliges sin perderlo de vista al bajar por los pasos. */
@@ -1295,7 +1304,7 @@ p { font-family: var(--body); }
   .step { border: 1px solid rgba(0,16,17,.14); border-radius: 16px; padding: 22px 24px; margin-bottom: 14px; transition: border-color .18s ease; }
   .step.is-open { border-color: var(--ink); }
   .step.is-locked { opacity: .45; }
-  .step__head { display: flex; align-items: baseline; gap: 12px; }
+  .step__head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; min-width: 0; }
   /* La cabecera de un paso alcanzable es pulsable. */
   .step__head[data-edit] { cursor: pointer; }
   .step__head[data-edit]:hover .step__t { color: var(--laser-blue); }
@@ -1341,7 +1350,7 @@ p { font-family: var(--body); }
   .bld__sheet span.none { color: rgba(255,255,255,.6); }
 
   @media (max-width: 1040px) {
-    .bld__grid { grid-template-columns: 1fr; gap: 34px; }
+    .bld__grid { grid-template-columns: minmax(0, 1fr); gap: 34px; }
     .bld__stage { position: static; }
   }
 
