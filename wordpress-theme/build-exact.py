@@ -17,7 +17,8 @@ SKIP = {"index.html"}
 # WordPress para ellas y chocarian con el blog de verdad.
 # pay tampoco: es una pagina autonoma sin React (la del mostrador, NFC/QR) y
 # viaja al tema como plantilla page-pay.php, no como app.
-SKIP_PREFIX = ("blog", "fence-builder", "pay")
+# font-arvo es la pagina de prueba tipografica: vive solo en el preview.
+SKIP_PREFIX = ("blog", "fence-builder", "pay", "font-")
 
 # ---------------------------------------------------------------- limpiar
 if OUT.exists():
