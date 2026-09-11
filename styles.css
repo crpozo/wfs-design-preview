@@ -1531,3 +1531,120 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
     .wfs-chatbanner__cta-txt { display: none; }
     .wfs-chatbanner__cta { padding: 9px; border-radius: 50%; gap: 0; }
   }
+
+/* ─────────────────────────────────────────────────────────────
+   Areas We Serve (components/page-areas.jsx)
+   Mapa de condados + lista en columnas, como la pagina de referencia.
+   Todo va por clase, asi que los [style*=...] de arriba no lo tocan. */
+.wfs-areas-block { scroll-margin-top: 90px; }
+.wfs-areas-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr); gap: 64px; align-items: start; }
+.wfs-areas-mapcol { position: sticky; top: 150px; }
+.wfs-areas-block--flip .wfs-areas-mapcol { order: 2; }
+.wfs-areas-map { position: relative; width: 100%; container-type: inline-size; }
+.wfs-areas-map svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: hidden; }
+.wfs-areas-county { stroke: #ffffff; stroke-width: 1; vector-effect: non-scaling-stroke; stroke-linejoin: round; transition: fill .15s ease; }
+.wfs-areas-county.is-primary { fill: var(--tangerine); }
+.wfs-areas-county.is-other { fill: var(--ink); }
+.wfs-areas-county.is-muted { fill: #d9deea; }
+.wfs-areas-county.is-listed { cursor: pointer; }
+.wfs-areas-county.is-primary.is-hot { fill: #d9541a; }
+.wfs-areas-county.is-other.is-hot { fill: #4d5fb0; }
+.wfs-areas-outline { fill: none; stroke: var(--ink); stroke-width: 1.2; vector-effect: non-scaling-stroke; opacity: .35; pointer-events: none; }
+.wfs-areas-clabel { position: absolute; transform: translate(-50%, -50%); font-family: var(--sans); font-size: 12.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: #1b2450; white-space: nowrap; pointer-events: none; }
+.wfs-areas-pin { position: absolute; z-index: 2; width: 14px; height: 14px; border-radius: 50%; background: #ffffff; border: 3px solid var(--ink); box-shadow: 0 0 0 4px rgba(38, 49, 102, .28); transform: translate(-50%, -50%); pointer-events: none; }
+.wfs-areas-map--fl .wfs-areas-pin { width: 11px; height: 11px; border-width: 2.5px; }
+.wfs-areas-pinlabel { position: absolute; z-index: 3; font-family: var(--sans); font-size: 12.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); background: #ffffff; border: 1px solid var(--ink); padding: 5px 9px; white-space: nowrap; box-shadow: 0 6px 16px rgba(0, 0, 0, .18); pointer-events: none; }
+.wfs-areas-pinlabel--right { transform: translate(16px, -50%); }
+.wfs-areas-pinlabel--left { transform: translate(calc(-100% - 16px), -50%); }
+.wfs-areas-city { position: absolute; width: 7px; height: 7px; border-radius: 50%; background: #ffffff; transform: translate(-50%, -50%); pointer-events: none; }
+.wfs-areas-citylabel { position: absolute; font-family: var(--sans); font-size: 12.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #ffffff; white-space: nowrap; background: var(--ink); padding: 2px 6px; border-radius: 2px; pointer-events: none; }
+.wfs-areas-citylabel--right { transform: translate(9px, -50%); }
+.wfs-areas-citylabel--left { transform: translate(calc(-100% - 9px), -50%); }
+.wfs-areas-citylabel--top { transform: translate(-50%, calc(-100% - 7px)); }
+.wfs-areas-legend { list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px 22px; font-size: 14.5px; line-height: 1.4; color: var(--charcoal); }
+.wfs-areas-legend li { display: flex; align-items: center; gap: 9px; }
+.wfs-areas-swatch { width: 14px; height: 14px; flex-shrink: 0; }
+.wfs-areas-swatch.is-primary { background: var(--tangerine); }
+.wfs-areas-swatch.is-other { background: var(--ink); }
+.wfs-areas-swatch.is-yard { background: #ffffff; border: 3px solid var(--ink); border-radius: 50%; }
+.wfs-areas-eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; font-family: var(--sans); font-size: 13.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #c4480f; }
+.wfs-areas-eyebrow::before { content: ''; width: 30px; height: 3px; border-radius: 2px; background: var(--tangerine); }
+.wfs-areas-title { margin: 0; font-size: clamp(30px, 3.4vw, 46px); line-height: 1; letter-spacing: -.02em; color: var(--ink); }
+.wfs-areas-title span { color: var(--tangerine); }
+.wfs-areas-lead { margin: 18px 0 34px; max-width: 560px; font-size: 16.5px; line-height: 1.6; color: var(--charcoal); }
+.wfs-areas-list { columns: 3; column-gap: 34px; }
+.wfs-areas-group { break-inside: avoid; margin: 0 0 28px; padding-left: 14px; border-left: 3px solid rgba(38, 49, 102, .12); scroll-margin-top: 150px; transition: border-color .15s ease; }
+.wfs-areas-group.is-hot { border-left-color: var(--tangerine); }
+.wfs-areas-group h3 { margin: 0; font-family: var(--display); font-size: 19px; font-weight: 700; line-height: 1.15; color: var(--ink); }
+.wfs-areas-yard { margin-top: 5px; font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--charcoal); }
+.wfs-areas-towns { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 7px; }
+.wfs-areas-towns li { font-size: 16.5px; line-height: 1.35; color: var(--charcoal); }
+.wfs-areas-towns a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--tangerine); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.wfs-areas-towns a:hover { color: #c4480f; }
+/* Zona de toque de 44px sin mover el texto ni agrandar el anillo de foco. */
+.wfs-areas-towns a { position: relative; }
+.wfs-areas-towns a::before { content: ''; position: absolute; inset: -12px -4px; }
+.wfs-areas-nowrap { white-space: nowrap; }
+.wfs-areas-intro__head { max-width: 860px; margin: 0 auto; text-align: center; }
+.wfs-areas-intro__head h2 { margin: 0; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.02; letter-spacing: -.02em; color: #ffffff; }
+.wfs-areas-intro__head h2 span { color: var(--tangerine); }
+.wfs-areas-intro__head p { margin: 20px auto 0; max-width: 700px; font-size: 17.5px; line-height: 1.6; color: var(--alice-blue); }
+.wfs-areas-intro__ctas { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.wfs-areas-facts { margin: 64px 0 0; padding: 30px 0 0; border-top: 1px solid rgba(255, 255, 255, .16); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
+.wfs-areas-facts dt { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3vw, 42px); line-height: 1; color: #ffffff; }
+.wfs-areas-facts dd { margin: 10px 0 0; font-size: 14.5px; line-height: 1.45; letter-spacing: .06em; text-transform: uppercase; color: var(--alice-blue); }
+.wfs-areas-mats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.wfs-areas-mat { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 26px 64px 26px 26px; background: #ffffff; border: 1.5px solid #263167; color: var(--ink); text-decoration: none; transition: transform .18s ease, box-shadow .18s ease; }
+.wfs-areas-mat:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--tangerine); }
+.wfs-areas-mat__name { font-family: var(--display); font-size: 22px; font-weight: 700; line-height: 1.1; }
+.wfs-areas-mat__note { font-size: 15.5px; line-height: 1.5; color: var(--charcoal); }
+.wfs-areas-mat__go { position: absolute; top: 24px; right: 22px; width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: #ffffff; display: flex; align-items: center; justify-content: center; }
+.wfs-areas-cta { position: relative; overflow: hidden; background: var(--ink); padding: 120px 0; }
+.wfs-areas-cta__bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .35; }
+.wfs-areas-cta .container { position: relative; }
+.wfs-areas-cta__card { max-width: 680px; margin: 0 auto; padding: 48px 48px 44px; background: #ffffff; border: 2px solid #263167; box-shadow: 12px 12px 0 var(--tangerine); text-align: center; }
+.wfs-areas-cta__card .wfs-areas-eyebrow { justify-content: center; }
+.wfs-areas-cta__card h2 { margin: 0; font-size: clamp(28px, 3.2vw, 42px); line-height: 1.04; letter-spacing: -.02em; color: var(--ink); }
+.wfs-areas-cta__card h2 span { display: block; color: var(--tangerine); }
+.wfs-areas-cta__card p { margin: 18px auto 0; max-width: 520px; font-size: 16.5px; line-height: 1.6; color: var(--charcoal); }
+.wfs-areas-cta__btns { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+/* El mapa de Florida va fijo junto a una lista larga: en portatiles de 768-800px
+   de alto se comia la leyenda. Se limita su ancho por la altura de la ventana. */
+@media (min-width: 1025px) {
+  .wfs-areas-block--flip .wfs-areas-mapcol { width: 100%; max-width: max(380px, calc((100vh - 250px) * 686 / 662)); justify-self: end; }
+}
+/* Etiquetas de condado segun el ancho del mapa, no de la ventana: entre 1025 y
+   1280 el mapa mide 420-530px y SARASOTA se salia de su condado. */
+@container (max-width: 560px) {
+  .wfs-areas-map--swfl .wfs-areas-clabel { font-size: 9.5px; letter-spacing: .04em; }
+}
+@media (max-width: 1180px) {
+  .wfs-areas-list { columns: 2; }
+}
+@media (max-width: 1024px) {
+  .wfs-areas-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
+  .wfs-areas-mapcol { position: static; }
+  .wfs-areas-block--flip .wfs-areas-mapcol { order: 0; }
+  .wfs-areas-map { max-width: 620px; margin: 0 auto; }
+  .wfs-areas-legend { justify-content: center; }
+  .wfs-areas-mats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wfs-areas-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .wfs-areas-list { column-gap: 22px; }
+  .wfs-areas-towns li { font-size: 15.5px; }
+  .wfs-areas-group h3 { font-size: 17.5px; }
+  .wfs-areas-mats { grid-template-columns: minmax(0, 1fr); }
+  .wfs-areas-clabel, .wfs-areas-pinlabel, .wfs-areas-citylabel { font-size: 10.5px; letter-spacing: .1em; }
+  .wfs-areas-pinlabel { padding: 4px 6px; }
+  .wfs-areas-facts { margin-top: 40px; }
+  .wfs-areas-cta { padding: 64px 0 !important; }
+  .wfs-areas-cta__card { padding: 32px 22px 28px; box-shadow: 8px 8px 0 var(--tangerine); }
+  .wfs-areas-cta__btns .btn { width: 100%; justify-content: center; }
+  .wfs-areas-yard { font-size: 12px; letter-spacing: .06em; }
+  .wfs-areas-group h3 { text-wrap: balance; }
+  .wfs-areas-facts dt { font-size: 26px; white-space: nowrap; }
+  .wfs-areas-facts dd { font-size: 13.5px; letter-spacing: .02em; }
+  .wfs-areas-eyebrow { font-size: 12.5px; letter-spacing: .14em; }
+  .wfs-areas-cta__card .wfs-areas-eyebrow::before { display: none; }
+}

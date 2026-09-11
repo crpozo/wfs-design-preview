@@ -15,6 +15,7 @@ function wfs_seo_map() {
 	return apply_filters( 'wfs_seo_map', array(
 		'about' => array( 't' => 'Family-Owned Fence Supplier', 'd' => 'Family-owned, supply-only fence company with 20+ years of experience, in-house gate fabrication, and yards in Fort Myers and Port Charlotte, Florida.' ),
 		'aluminum' => array( 't' => 'Powder-Coated Aluminum Fence Supply', 'd' => 'Wholesale powder-coated aluminum fence panels, posts, and gates, including pool code options. Pickup or delivery from our Fort Myers and Port Charlotte yards.' ),
+		'areas-we-serve' => array( 't' => 'Fence Supply Service Areas in Florida', 'd' => 'Fence supply for Lee, Collier, Charlotte, Sarasota, Hendry and DeSoto counties, with job-site delivery statewide from Fort Myers and Port Charlotte.' ),
 		'blog' => array( 't' => 'Fence Guides, News & Job Stories', 'd' => 'Guides, news and job stories from the crew that stocks and fabricates the material, for contractors and homeowners across Southwest Florida.' ),
 		'articles' => array( 't' => 'Fence Buying Guides & Articles', 'd' => 'Short, plain-English fence guides for Southwest Florida, covering materials, pricing, pool code and hurricane zones, written by the crew that fabricates it.' ),
 		'chain-link' => array( 't' => 'Chain Link Fence Supply, Fort Myers', 'd' => 'Galvanized and vinyl-coated chain link mesh, posts, fittings, and gates for security, sports, and industrial jobs. Pickup or delivery in Southwest Florida.' ),
@@ -53,22 +54,37 @@ function wfs_seo_current() {
 }
 
 /**
- * Migracion: renombra las 29 paginas con el titulo SEO y guarda la meta
+ * Migracion: renombra las paginas con el titulo SEO y guarda la meta
  * description donde Yoast la lee. Corregir el post_title arregla el <title>
  * con cualquier plugin SEO, porque todos parten de ahi.
+ *
+ * v2 renombro las 29 paginas originales. v3 solo toca las que se anadieron
+ * despues (Areas We Serve), para no pisar titulos o descripciones que el
+ * cliente haya editado en Yoast desde entonces.
  */
 function wfs_seo_migrate() {
-	if ( get_option( 'wfs_seo_titles' ) === '2' ) { return; }
-	foreach ( wfs_seo_map() as $slug => $seo ) {
+	$done = get_option( 'wfs_seo_titles' );
+	if ( '3' === $done ) { return; }
+	$map   = wfs_seo_map();
+	$nuevas = array( 'areas-we-serve' );
+	$slugs = ( '2' === $done ) ? $nuevas : array_keys( $map );
+	foreach ( $slugs as $slug ) {
+		if ( ! isset( $map[ $slug ] ) ) { continue; }
 		$page = get_page_by_path( $slug );
-		if ( ! $page ) { continue; }
-		wp_update_post( array( 'ID' => $page->ID, 'post_title' => $seo['t'] ) );
-		update_post_meta( $page->ID, '_yoast_wpseo_metadesc', $seo['d'] );
+		if ( ! $page ) {
+			/* La crea wfs_install_pages; si aun no existe, se reintenta en la
+			   siguiente carga del admin sin dar la migracion por hecha. */
+			if ( in_array( $slug, $nuevas, true ) ) { return; }
+			continue;
+		}
+		wp_update_post( array( 'ID' => $page->ID, 'post_title' => $map[ $slug ]['t'] ) );
+		update_post_meta( $page->ID, '_yoast_wpseo_metadesc', $map[ $slug ]['d'] );
 	}
-	update_option( 'wfs_seo_titles', '2' );
+	update_option( 'wfs_seo_titles', '3' );
 }
-add_action( 'after_switch_theme', 'wfs_seo_migrate' );
-add_action( 'admin_init', 'wfs_seo_migrate' );
+/* Prioridad 20: despues de wfs_install_pages (10), que crea las paginas nuevas. */
+add_action( 'after_switch_theme', 'wfs_seo_migrate', 20 );
+add_action( 'admin_init', 'wfs_seo_migrate', 20 );
 
 /** Si Yoast no esta, el tema imprime las etiquetas el mismo. */
 function wfs_seo_head() {
@@ -105,18 +121,26 @@ add_filter( 'wpseo_metadesc', function ( $desc ) {
 
 /**
  * Schema LocalBusiness: los dos yards con direccion, telefono y horario
- * reales (los de las fichas de Google). Solo en home, contacto y sucursales.
+ * reales (los de las fichas de Google). En home, contacto, sucursales y
+ * Areas We Serve. areaServed nombra los condados del suroeste (los de la
+ * pagina Areas We Serve) y el estado entero, donde se entrega en camion.
  */
 function wfs_local_schema() {
 	$slug = function_exists( 'wfs_current_slug' ) ? wfs_current_slug() : '';
-	if ( ! in_array( $slug, array( 'homepage', 'contact', 'locations' ), true ) ) { return; }
+	if ( ! in_array( $slug, array( 'homepage', 'contact', 'locations', 'areas-we-serve' ), true ) ) { return; }
 
 	$week = array(
 		'opens'     => '07:30',
 		'closes'    => '15:30',
 		'dayOfWeek' => array( 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday' ),
 	);
-	$yard = function ( $id, $phone, $email, $street, $city, $zip, $sat_close ) use ( $week ) {
+	$served = array();
+	foreach ( array( 'Lee', 'Collier', 'Charlotte', 'Sarasota', 'Hendry', 'DeSoto' ) as $county ) {
+		$served[] = array( '@type' => 'AdministrativeArea', 'name' => $county . ' County, FL' );
+	}
+	$served[] = array( '@type' => 'State', 'name' => 'Florida' );
+
+	$yard = function ( $id, $phone, $email, $street, $city, $zip, $sat_close ) use ( $week, $served ) {
 		return array(
 			'@type'     => 'LocalBusiness',
 			'@id'       => home_url( '/#' . $id ),
@@ -134,6 +158,7 @@ function wfs_local_schema() {
 				'postalCode'      => $zip,
 				'addressCountry'  => 'US',
 			),
+			'areaServed' => $served,
 			'openingHoursSpecification' => array(
 				array_merge( array( '@type' => 'OpeningHoursSpecification' ), $week ),
 				array(

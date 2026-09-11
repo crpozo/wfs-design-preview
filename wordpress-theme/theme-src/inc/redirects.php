@@ -25,7 +25,7 @@ function wfs_redirect_exact() {
 		/* Paginas que cambiaron de nombre */
 		'home'                            => '',
 		'gates'                           => 'products',
-		'fence-service-areas'             => 'locations',
+		'fence-service-areas'             => 'areas-we-serve',
 		'request-a-fence-estimate'        => 'estimate',
 		'get-free-fence-material-quote'   => 'estimate',
 		'test-form'                       => 'estimate',
@@ -77,8 +77,9 @@ function wfs_redirect_prefixes() {
 		array( 'aluminum-fence',   'aluminum' ),
 		array( 'chain-link-fence', 'chain-link' ),
 		array( 'metal-fence',      'metal' ),
-		/* Las 63 paginas de localidad de Yoast Local SEO */
-		array( 'fl', 'locations' ),
+		/* Las paginas de localidad de Yoast Local SEO (ver wfs_legacy_area_url) */
+		array( 'fl',                  'areas-we-serve' ),
+		array( 'fence-service-areas', 'areas-we-serve' ),
 	) );
 }
 
@@ -113,6 +114,35 @@ function wfs_redirect_url( $slug ) {
 }
 
 /**
+ * Paginas de localidad del sitio viejo: /fl/, /fl/<condado>/ y
+ * /fl/<condado>/<ciudad>-fence-company/ (69 URLs segun el Wayback Machine),
+ * mas la version de 2019 bajo /fence-service-areas/. Todas van a Areas We
+ * Serve y, si traen condado, a su seccion (#lee-county). Devuelve la URL o null.
+ *
+ * Se resuelve por la ruta, no por lo que WordPress encuentre: el plugin Yoast
+ * Local SEO sigue registrando sus tipos, asi que WordPress las servia como
+ * entradas con 200 (el template de blog, fechadas en 2019) y la guarda de
+ * "contenido real" de wfs_do_legacy_redirect nunca las dejaba redirigir.
+ */
+function wfs_legacy_area_url( $path ) {
+	$seg = explode( '/', strtolower( trim( (string) $path, '/' ) ) );
+	if ( ! in_array( $seg[0], array( 'fl', 'fence-service-areas' ), true ) ) { return null; }
+	if ( isset( wfs_pages()[ $seg[0] ] ) ) { return null; }
+
+	$county = isset( $seg[1] ) ? $seg[1] : '';
+	/* Categorias viejas con slug propio. */
+	$alias = array(
+		'miami'           => 'miami-dade-county',
+		'central-florida' => 'across-florida',
+		'south-florida'   => 'across-florida',
+	);
+	if ( isset( $alias[ $county ] ) ) { $county = $alias[ $county ]; }
+	$anchor = preg_match( '/^([a-z]+-)+county$|^across-florida$/', $county ) ? '#' . $county : '';
+
+	return wfs_redirect_url( 'areas-we-serve' ) . $anchor;
+}
+
+/**
  * Manda el 301, o deja que WordPress devuelva 404.
  *
  * Corre en template_redirect: ya se resolvio la consulta, asi que solo actua
@@ -122,6 +152,20 @@ function wfs_do_legacy_redirect() {
 	if ( is_admin() || wp_doing_ajax() ) { return; }
 	if ( defined( 'REST_REQUEST' ) && REST_REQUEST ) { return; }
 
+	$path = wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/', PHP_URL_PATH );
+	$path = trim( (string) $path, '/' );
+
+	/* Localidades viejas: antes de la guarda de contenido real (ver arriba). */
+	$area = wfs_legacy_area_url( $path );
+	if ( $area ) {
+		/* Se conserva la query (?utm_...) de los enlaces viejos, antes del ancla. */
+		$query = wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '', PHP_URL_QUERY );
+		$parts = explode( '#', $area, 2 );
+		$area  = $parts[0] . ( $query ? '?' . $query : '' ) . ( isset( $parts[1] ) ? '#' . $parts[1] : '' );
+		wp_safe_redirect( $area, 301 );
+		exit;
+	}
+
 	/* Si WordPress resolvio la peticion a contenido real, no es una URL vieja:
 	   es una entrada del blog, una categoria o una busqueda. Sin esta guarda
 	   toda entrada publicada daria 404, porque su slug no esta en el manifiesto
@@ -129,8 +173,6 @@ function wfs_do_legacy_redirect() {
 	   una vieja, gana la entrada y no la redireccion. */
 	if ( is_singular() || is_home() || is_front_page() || is_archive() || is_search() ) { return; }
 
-	$path = wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/', PHP_URL_PATH );
-	$path = trim( (string) $path, '/' );
 	if ( '' === $path ) { return; }
 
 	/* Si el primer segmento es una pagina real del sitio nuevo, no se toca.

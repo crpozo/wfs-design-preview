@@ -36,6 +36,20 @@
       "page-material.js"
     ]
   },
+  "areas-we-serve": {
+    "title": "Areas We Serve",
+    "file": "areas-we-serve.html",
+    "components": [
+      "shared.js",
+      "site-header.js",
+      "page-blocks.js",
+      "sections.js",
+      "extras.js",
+      "page-locations.js",
+      "areas-map-data.js",
+      "page-areas.js"
+    ]
+  },
   "articles": {
     "title": "Articles & Guides",
     "file": "articles.html",

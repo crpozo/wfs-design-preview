@@ -2,10 +2,10 @@
 
 const YARDS = [
   {
-    key: 'fm', chip: { EN: 'HQ · FORT MYERS', ES: 'SEDE · FORT MYERS' }, name: 'Fort Myers', address: '2621 Fowler St, Fort Myers, FL 33901', phone: '(239) 465-2482', tel: 'tel:2394652482', email: 'sales@westernfencesupply.com',
+    key: 'fm', anchor: 'fort-myers', chip: { EN: 'HQ · FORT MYERS', ES: 'SEDE · FORT MYERS' }, name: 'Fort Myers', address: '2621 Fowler St, Fort Myers, FL 33901', phone: '(239) 465-2482', tel: 'tel:2394652482', email: 'sales@westernfencesupply.com',
     hours: { EN: 'Mon–Fri 7:30am–3:30pm · Sat 7am–12pm · Sun closed', ES: 'Lun–Vie 7:30am–3:30pm · Sáb 7am–12pm · Dom cerrado' }, photo: 'assets/hero-warehouse.webp', mapQ: '2621 Fowler St, Fort Myers, FL 33901', notes: [
       { EN: 'Main warehouse, most material ships from here', ES: 'Almacén principal: la mayoría del material sale de aquí' }, { EN: 'In-house gate fabrication shop', ES: 'Taller de fabricación de portones en planta' }, { EN: 'Same-day pickup on standard qualifying orders', ES: 'Retiro el mismo día en pedidos estándar que califiquen' }, ], }, {
-    key: 'pc', chip: { EN: 'PORT CHARLOTTE', ES: 'PORT CHARLOTTE' }, name: 'Port Charlotte', address: '1145 Enterprise Dr, Port Charlotte, FL 33953', phone: '(941) 467-5821', tel: 'tel:9414675821', email: 'salespc@westernfencesupply.com',
+    key: 'pc', anchor: 'port-charlotte', chip: { EN: 'PORT CHARLOTTE', ES: 'PORT CHARLOTTE' }, name: 'Port Charlotte', address: '1145 Enterprise Dr, Port Charlotte, FL 33953', phone: '(941) 467-5821', tel: 'tel:9414675821', email: 'salespc@westernfencesupply.com',
     hours: { EN: 'Mon–Fri 7:30am–3:30pm · Sat 7–11:30am · Sun closed', ES: 'Lun–Vie 7:30am–3:30pm · Sáb 7–11:30am · Dom cerrado' }, photo: 'assets/wfs-shop.webp', mapQ: '1145 Enterprise Dr, Port Charlotte, FL 33953', notes: [
       { EN: 'Pickup point for Charlotte County and north', ES: 'Punto de retiro para el condado de Charlotte y el norte' }, { EN: 'Stock varies by yard, call ahead to confirm', ES: 'El stock varía por sucursal: llama antes para confirmar' }, { EN: 'Same supplier-direct pricing as Fort Myers', ES: 'El mismo precio directo de proveedor que Fort Myers' }, ], },
 ];
@@ -45,8 +45,10 @@ const LocationsYards = () => {
 
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
         {YARDS.map((y) => (
-          <article key={y.key} style={{
-            border: '1px solid rgba(0,16,17,0.12)', display: 'flex', flexDirection: 'column', overflow: 'hidden', }}>
+          /* id: destino de los enlaces de Areas We Serve (#fort-myers). El salto lo
+             hace el manejador global de anclas de shared.jsx. */
+          <article key={y.key} id={y.anchor} style={{
+            scrollMarginTop: 140, border: '1px solid rgba(0,16,17,0.12)', display: 'flex', flexDirection: 'column', overflow: 'hidden', }}>
             {/* Live map */}
             <div style={{ position: 'relative', aspectRatio: '16 / 9', background: '#263166' }}>
               <iframe
