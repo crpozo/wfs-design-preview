@@ -1,44 +1,31 @@
-Mirano Extended
-===============
+Fuentes del tema
+================
 
-Esta carpeta esta vacia a proposito.
+TITULARES: ARVO (auto-hospedada)
+--------------------------------
+Arvo-Regular.woff2 y Arvo-Bold.woff2 NO se editan aqui: las copia
+build-exact.py desde fonts/ de la raiz del repo, que es la unica fuente de
+verdad, junto con su licencia (Arvo-OFL.txt, SIL Open Font License: se puede
+redistribuir y servir en un sitio comercial).
 
-Mirano Extended es una fuente COMERCIAL de Unio Creative Solutions. No se puede
-incluir en el repositorio ni en el zip del tema: la licencia no permite
-redistribuirla, y un @font-face deja el archivo descargable para cualquiera que
-visite el sitio.
+Son un subconjunto latino en woff2 (tildes, ñ, ¿¡, comillas, €, ™), 17 KB por
+peso. El @font-face vive en css/styles.css con la familia 'Arvo WFS':
+  · size-adjust 92,67%  iguala la altura de mayuscula del Archivo de antes, asi
+                        que ningun tamaño de titular tuvo que cambiar.
+  · pesos por rangos    100-600 -> Regular (subtitulos del blog), 700-900 -> Bold.
+La negrita se precarga en index.php y parts/blog-head.php porque es la del
+titular del hero, que es el LCP.
 
-QUE HAY QUE COMPRAR
--------------------
-La licencia de ESCRITORIO no sirve para una web. Hay que comprar la licencia
-WEBFONT, que se vende aparte:
+Para regenerar los woff2 desde los .ttf originales (fontTools + brotli):
+  python -m fontTools.subset Arvo-Bold.ttf --flavor=woff2 --layout-features='*' \
+    --unicodes="U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD" \
+    --output-file=Arvo-Bold.woff2
 
-  MyFonts        https://www.myfonts.com/products/var-mirano-extended-1110759
-  Creative Market https://creativemarket.com/UnioDesigns/292039530-Mirano-Extended-Variable
-
-Lo que circula gratis en Fontesk, Befonts, unblast o freefontdl es un peso
-suelto "Freebie Light" de uso personal, o una copia sin licencia. Ninguno cubre
-un sitio comercial como westernfencesupply.com.
-
-COMO ACTIVARLA
---------------
-1. Convertir los archivos licenciados a .woff2 (el proveedor suele darlos ya
-   convertidos al comprar la licencia web).
-
-2. Dejarlos aqui con EXACTAMENTE estos nombres:
-
-     MiranoExtended-Regular.woff2
-     MiranoExtended-Bold.woff2
-
-3. Nada mas. El tema los detecta al cargar (wfs_font_face en functions.php),
-   emite el @font-face y precarga la negrita. Todos los titulos del sitio
-   cambian de golpe porque todos salen de la variable --display.
-
-Si falta uno de los dos, solo se usa el que este. Si no hay ninguno, el tema no
-imprime nada y los titulos siguen en Archivo (eje ancho, wdth 125), que es la
-sustitucion actual.
-
-DESPUES DE ACTIVARLA
---------------------
-Revisar el letter-spacing de .display y .display-extended en css/styles.css:
-estan ajustados al ritmo de Archivo, no al de Mirano.
+MIRANO EXTENDED (ya no se usa)
+------------------------------
+Era la fuente comercial prevista para los titulares, pendiente de licencia
+webfont. Se sustituyo por Arvo. wfs_font_face en functions.php sigue
+detectando MiranoExtended-*.woff2 si se dejan aqui, pero NO basta con eso para
+activarla: habria que volver a poner 'Mirano Extended' en la variable
+--display de styles.css, y revisar tamaños e interlineados, que ahora estan
+calibrados para Arvo.

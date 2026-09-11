@@ -3,7 +3,7 @@
 Extraído del sitio real (`styles.css` + los 21 componentes). Todo lo que hay aquí
 son valores que ya están en producción, no una propuesta.
 
-Si copias solo tres cosas, que sean estas: **la tipografía display extendida**,
+Si copias solo tres cosas, que sean estas: **la tipografía display (Arvo, slab serif)**,
 **la sombra dura naranja sin desenfoque**, y **los kickers en mayúsculas con
 tracking muy abierto**. Son las que hacen que se reconozca la marca.
 
@@ -14,18 +14,25 @@ tracking muy abierto**. Son las que hacen que se reconozca la marca.
 ```html
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Inter:wght@300;400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+<!-- Arvo va auto-hospedada (fonts/*.woff2, @font-face en styles.css). Precargar la negrita: -->
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/Arvo-Bold.woff2">
 ```
 
 | Rol | Familia | Uso |
 |---|---|---|
-| Display | Archivo (variable, eje `wdth` 62–125) | Titulares, cifras grandes |
+| Display | Arvo (slab serif, auto-hospedada, Regular y Bold) | Titulares, cifras grandes |
 | Cuerpo / UI | Inter | Párrafos, botones, formularios |
 | "Mono" | Inter | Kickers, etiquetas, metadatos |
 
-**Archivo se usa siempre en `wdth 125`**, el extremo extendido de su eje. Es lo
-que imita a *Mirano Extended* (comercial, sin licenciar) y lo que casa con el
-rótulo del local. Sin esa línea, los titulares pierden el carácter.
+**Arvo va auto-hospedada con dos ajustes que Google Fonts no permite.** El
+primero es `size-adjust: 92.67%`, que iguala su altura de mayúscula a la del
+Archivo ancho que había antes, así que los tamaños de titular no cambiaron. El
+segundo son pesos por rangos: 100–600 caen en Regular y 700–900 en Bold, porque
+Arvo solo trae esos dos. La familia se llama `'Arvo WFS'` para no chocar con
+una Arvo de Google, que vendría sin el ajuste. El respaldo es slab o serif, no
+sans. El `font-variation-settings: 'wdth' 125` que aún repiten varias reglas
+era para Archivo: Arvo no tiene ese eje y lo ignora.
 
 > `--mono` **no es monoespaciada**: apunta a Inter. El nombre es histórico. Lo que
 > distingue a un "mono" es el tracking abierto y las mayúsculas, no la familia.
@@ -53,7 +60,7 @@ rótulo del local. Sin esa línea, los titulares pierden el carácter.
   --almond:      #e5d8ca;
   --ink:         #263167;
 
-  --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --display: 'Arvo WFS', 'Rockwell', 'Georgia', serif;
   --sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --mono:    var(--sans);
   --body:    var(--sans);

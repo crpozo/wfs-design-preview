@@ -112,7 +112,7 @@ const PillCTA = ({ href, children, variant = 'ink', target, rel }) => {
   const dotBg = light ? 'var(--ink)' : 'var(--white)';
   const dotFg = light ? 'var(--white)' : 'var(--ink)';
   return (
-    <a href={href} target={target} rel={rel}
+    <a href={href} target={target} rel={rel} className="wfs-pill"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{

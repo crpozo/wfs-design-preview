@@ -1,38 +1,43 @@
-/* ───── Western Fences Supply — Homepage ───── */
-/* Brand fonts: Mirano Extended (propietaria) → Archivo @ wdth 125 ; Inter para UI/cuerpo */
-/* Las fuentes se cargan con <link> desde el HTML: un @import aqui encadena
-   styles.css -> google -> woff2 en serie y retrasa el primer pintado. */
+/* ───── Western Fences Supply ───── */
+/* Fuentes: Arvo (slab serif) en titulares · Inter en UI y cuerpo.
+   Inter se carga con <link> desde el HTML; Arvo va auto-hospedada aqui abajo. */
 
-/* ── Mirano Extended ────────────────────────────────────────────────────────
-   Es una fuente COMERCIAL de Unio Creative Solutions y la licencia web se
-   compra aparte de la de escritorio. Por eso no viaja en el repo: no se puede
-   redistribuir, y un @font-face deja el archivo descargable para cualquiera.
+/* ── Arvo, auto-hospedada ──────────────────────────────────────────────────
+   Licencia OFL (fonts/Arvo-OFL.txt): se puede redistribuir y servir.
+   Subconjunto latino en woff2 (tildes, ñ, ¿¡, comillas, €, ™): 17 KB por peso.
 
-   Hasta que exista esa licencia, los titulos usan Archivo en su eje ancho
-   (wdth 125), que es lo mas cercano disponible sin pagar.
+   Se auto-hospeda en vez de pedirla a Google Fonts por dos descriptores que
+   Google no deja poner, y que son los que hacen que el cambio salga limpio:
 
-   PARA ACTIVAR LA REAL, dos pasos:
-     1. Dejar los .woff2 licenciados en  fonts/
-     2. Descomentar el bloque de abajo
-   Nada mas: todos los titulos salen de --display, asi que cambian de golpe.
-   (El tema de WordPress lo detecta solo: ver wfs_font_face en functions.php.)
+   · size-adjust 92,67%: Arvo tiene las mayusculas un 7,9% mas altas que el
+     Archivo ancho que habia antes (0,740 frente a 0,686 em). Escalarla asi
+     iguala la altura de mayuscula, de modo que los ~40 tamaños de titular
+     repartidos por los componentes siguen valiendo sin tocar ninguno, y las
+     mayusculas acentuadas del español no chocan con la linea de arriba.
+   · font-weight por rangos: Arvo solo trae Regular y Bold. 100-600 van a
+     Regular para que los subtitulos del blog (600) sigan pesando menos que
+     los titulares; 700-900 van a Bold, sin negrita sintetica.
 
+   Nombre propio ('Arvo WFS') para que no choque con ninguna Arvo de Google que
+   cargue una pagina o un plugin: esa vendria sin el size-adjust.
+   El 'wdth' 125 que repiten varias reglas era para Archivo; Arvo no tiene eje
+   de ancho y lo ignora. */
 @font-face {
-  font-family: 'Mirano Extended';
-  src: url('fonts/MiranoExtended-Bold.woff2') format('woff2');
-  font-weight: 700 800;
+  font-family: 'Arvo WFS';
+  src: url('fonts/Arvo-Regular.woff2') format('woff2');
+  font-weight: 100 600;
   font-style: normal;
   font-display: swap;
+  size-adjust: 92.67%;
 }
 @font-face {
-  font-family: 'Mirano Extended';
-  src: url('fonts/MiranoExtended-Regular.woff2') format('woff2');
-  font-weight: 400 600;
+  font-family: 'Arvo WFS';
+  src: url('fonts/Arvo-Bold.woff2') format('woff2');
+  font-weight: 700 900;
   font-style: normal;
   font-display: swap;
+  size-adjust: 92.67%;
 }
-   ── Al activarla conviene revisar el letter-spacing de .display y
-      .display-extended: estan ajustados al ritmo de Archivo, no al de Mirano. */
 
 :root {
   /* Primary */
@@ -54,9 +59,9 @@
   --almond: #e5d8ca;
   --ink: #263167;
 
-  /* Mirano va primero: si algun dia se licencia, entra sola. Mientras no
-     exista el @font-face de arriba, el navegador la salta y usa Archivo. */
-  --display: 'Mirano Extended', 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  /* Titulares en Arvo (ver @font-face arriba). El respaldo es slab o serif, no
+     sans: si Arvo tarda o falla, el titular sigue siendo del mismo genero. */
+  --display: 'Arvo WFS', 'Rockwell', 'Georgia', serif;
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   /* Se unifico a Inter: antes era Space Grotesk y creaba un tercer
      tipo de letra que desentonaba con el cuerpo. */
@@ -115,7 +120,7 @@ div[style*="border-bottom: 1px solid"]:has(> img) { border-bottom: none !importa
 .wfs-profiles-grid > * { border: none !important; }
 .wfs-profiles-grid > * > div:first-child { border-bottom: none !important; }
 
-/* Display type — Mirano Extended substitute: Archivo at wdth 125 */
+/* Display type — Arvo (ver @font-face al principio) */
 .display {
   font-family: var(--display);
   font-variation-settings: 'wdth' 125;
@@ -131,6 +136,17 @@ div[style*="border-bottom: 1px solid"]:has(> img) { border-bottom: none !importa
   letter-spacing: 0;
   text-transform: uppercase;
   line-height: 0.9;
+}
+/* Arvo es ~20% mas estrecha que Archivo extendido: caben mas palabras por
+   linea y quedaban palabras sueltas al final ('TIME.', 'Up.'). balance reparte
+   las lineas sin anadir ninguna. :where() deja la especificidad en cero para
+   no pisar ningun white-space de otra regla. */
+:where(h1, h2, h3, .display, .display-extended) { text-wrap: balance; }
+@media (max-width: 767px) {
+  /* El PillCTA es nowrap; en ES ('HABLA CON NUESTRO EQUIPO') medía 368px y
+     ensanchaba la columna hasta pegar la seccion al borde de la pantalla. */
+  .wfs-pill { white-space: normal !important; }
+  .specs-stamped-title br { display: none; }
 }
 
 .eyebrow {
@@ -932,7 +948,7 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* Body copy in the system face (SF Pro on Apple devices). Headings keep
-   Archivo (.display) and the small labels keep their mono face. */
+   Arvo (.display) and the small labels keep their mono face. */
 p { font-family: var(--body); }
 
 /* ═══════════════════════════════════════════════════════════════════════════

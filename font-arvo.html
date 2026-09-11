@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Arvo en titulares · Prueba tipográfica · Western Fence Supply</title>
+<title>Arvo en titulares · Antes y después · Western Fence Supply</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Archivo wdth 125 = el titular de hoy · Inter = cuerpo · Arvo = el candidato -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Inter:wght@300;400;500;600;700&family=Arvo:ital,wght@0,400;0,700;1,400;1,700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Inter:wght@300;400;500;600;700&display=swap">
 <!-- El CSS REAL del sitio: lo que se ve aqui es exactamente como quedaria -->
-<link rel="stylesheet" href="styles.css?v=297">
+<link rel="stylesheet" href="styles.css?v=311">
 <style>
   /* Pagina de prueba tipografica. No forma parte del sitio: sirve para decidir
      si los titulares pasan de Archivo (eje ancho 125) a Arvo (slab serif).
@@ -71,7 +71,9 @@
   /* EL INTERRUPTOR. Es exactamente la linea 59 de styles.css. Arvo no tiene
      eje de ancho, asi que el 'wdth' 125 que el sitio repite en 8 reglas queda
      inerte: no estorba, pero tampoco hace nada. */
-  .es-arvo .pt-caja__cuerpo { --display: 'Arvo', 'Rockwell', Georgia, serif; }
+  /* La columna ANTES fuerza el Archivo ancho de siempre; la de AHORA hereda el
+     --display de produccion tal cual (Arvo con su size-adjust). */
+  .es-hoy .pt-caja__cuerpo { --display: 'Archivo', 'Helvetica Neue', Arial, sans-serif; }
 
   /* Recreaciones fieles: mismos tamaños e inline styles que los componentes. */
   .m-hero {
@@ -114,22 +116,22 @@
 
 <div class="pt-top">
   <span class="pt-top__t">Arvo en titulares</span>
-  <span class="pt-top__s">Izquierda: como está hoy (Archivo ancho 125) · Derecha: Arvo</span>
+  <span class="pt-top__s">Izquierda: antes (Archivo ancho 125) · Derecha: ahora (Arvo)</span>
   <span class="pt-top__sp"></span>
-  <a class="pt-link" href="Homepage.html?font=arvo">Ver el sitio entero con Arvo →</a>
+  <a class="pt-link" href="Homepage.html">Ver el sitio →</a>
 </div>
 
 <div class="pt-wrap">
 
   <div class="pt-nota" id="resumen">
-    <b>Qué estás viendo.</b> Las dos columnas usan el CSS real del sitio, los mismos tamaños y los
-    titulares que de verdad salen en las páginas. Lo único que cambia entre ellas es la variable
-    <code>--display</code>, que es el interruptor que habría que accionar.
+    <b>Antes y después.</b> Izquierda: los titulares hasta la versión 4.36, en Archivo ancho.
+    Derecha: desde la 4.37, en Arvo, con el CSS real de producción. Mismos tamaños, mismas clases
+    y los titulares que de verdad salen en las páginas.
     <ul>
-      <li><b>Arvo es un 20% más estrecho</b> y sus mayúsculas un 8% más altas que Archivo al mismo tamaño. Los titulares dejan de partirse donde se parten hoy: mira el primer bloque.</li>
-      <li><b>Arvo solo tiene dos pesos</b>, 400 y 700. El sitio usa 800 en 48 sitios y 600 en los subtítulos del blog: todos caen a 700 y se pierde un escalón de jerarquía.</li>
-      <li><b>Las cifras encogen un 27%</b>, más que el texto, así que en las filas de datos la etiqueta pasa a ser más ancha que el número.</li>
-      <li>La página de pago <b>/pay ya usa Alfa Slab One</b>, otro slab serif. Con este cambio el sitio tendría dos.</li>
+      <li><b>Misma altura de mayúscula.</b> Arvo las tiene un 8% más altas, así que va auto-hospedada con <code>size-adjust: 92,67%</code>. Ningún tamaño de titular tuvo que cambiar.</li>
+      <li><b>Más estrecho.</b> Ocupa en torno a un 26% menos de ancho, así que los titulares parten en menos líneas. En español el hero pasa de 5 líneas a 3.</li>
+      <li><b>Dos pesos por rangos.</b> 100–600 van a Regular y 700–900 a Bold. Los subtítulos del blog (600) siguen pesando menos que los titulares.</li>
+      <li><b>Respaldo serif.</b> Si Arvo tardara o fallara, el titular se pinta en Rockwell o Georgia, no en un sans.</li>
     </ul>
   </div>
 
@@ -138,11 +140,11 @@
     <div class="pt-eti">01 · Titular del hero, portada <span>clamp(34→56px) · peso 800 · caja de 720px</span></div>
     <div class="pt-par pt-par--apilado">
       <div class="pt-caja es-hoy sobre-tinta">
-        <div class="pt-caja__cab"><span>Hoy · Archivo</span><span class="pt-caja__med" data-med="h-hoy"></span></div>
+        <div class="pt-caja__cab"><span>Antes · Archivo</span><span class="pt-caja__med" data-med="h-hoy"></span></div>
         <div class="pt-caja__cuerpo"><h1 class="m-hero" id="h-hoy">The Best Place to Buy Fences in <span class="ac">Southwest Florida</span></h1></div>
       </div>
       <div class="pt-caja es-arvo sobre-tinta">
-        <div class="pt-caja__cab"><span>Arvo</span><span class="pt-caja__med" data-med="h-arvo"></span></div>
+        <div class="pt-caja__cab"><span>Ahora · Arvo</span><span class="pt-caja__med" data-med="h-arvo"></span></div>
         <div class="pt-caja__cuerpo"><h1 class="m-hero" id="h-arvo">The Best Place to Buy Fences in <span class="ac">Southwest Florida</span></h1></div>
       </div>
     </div>
@@ -153,11 +155,11 @@
     <div class="pt-eti">02 · El titular más largo del sitio, products.html <span>clamp(28→40px) · salto manual antes del acento</span></div>
     <div class="pt-par">
       <div class="pt-caja es-hoy">
-        <div class="pt-caja__cab"><span>Hoy · Archivo</span><span class="pt-caja__med" data-med="l-hoy"></span></div>
+        <div class="pt-caja__cab"><span>Antes · Archivo</span><span class="pt-caja__med" data-med="l-hoy"></span></div>
         <div class="pt-caja__cuerpo"><h2 class="display m-sec" id="l-hoy">Posts, hinges, latches,<br><span class="ac">and the little stuff that breaks first.</span></h2></div>
       </div>
       <div class="pt-caja es-arvo">
-        <div class="pt-caja__cab"><span>Arvo</span><span class="pt-caja__med" data-med="l-arvo"></span></div>
+        <div class="pt-caja__cab"><span>Ahora · Arvo</span><span class="pt-caja__med" data-med="l-arvo"></span></div>
         <div class="pt-caja__cuerpo"><h2 class="display m-sec" id="l-arvo">Posts, hinges, latches,<br><span class="ac">and the little stuff that breaks first.</span></h2></div>
       </div>
     </div>
@@ -168,7 +170,7 @@
     <div class="pt-eti">03 · Titulares de sección <span>los que más se repiten en el sitio</span></div>
     <div class="pt-par">
       <div class="pt-caja es-hoy">
-        <div class="pt-caja__cab"><span>Hoy · Archivo</span></div>
+        <div class="pt-caja__cab"><span>Antes · Archivo</span></div>
         <div class="pt-caja__cuerpo">
           <h2 class="display m-why">Built by fencers.<br><span class="ac">Priced like a supplier.</span></h2>
           <h2 class="display m-sec" style="margin-top:30px">Configure Your<br><span class="ac">Vinyl / PVC.</span></h2>
@@ -176,7 +178,7 @@
         </div>
       </div>
       <div class="pt-caja es-arvo">
-        <div class="pt-caja__cab"><span>Arvo</span></div>
+        <div class="pt-caja__cab"><span>Ahora · Arvo</span></div>
         <div class="pt-caja__cuerpo">
           <h2 class="display m-why">Built by fencers.<br><span class="ac">Priced like a supplier.</span></h2>
           <h2 class="display m-sec" style="margin-top:30px">Configure Your<br><span class="ac">Vinyl / PVC.</span></h2>
@@ -191,7 +193,7 @@
     <div class="pt-eti">04 · Tarjetas y pasos del configurador <span>23,5px y 17px · donde vive el texto pequeño</span></div>
     <div class="pt-par">
       <div class="pt-caja es-hoy">
-        <div class="pt-caja__cab"><span>Hoy · Archivo</span></div>
+        <div class="pt-caja__cab"><span>Antes · Archivo</span></div>
         <div class="pt-caja__cuerpo">
           <div class="m-kick">07 · Pet-friendly</div>
           <h3 class="display m-card">Puppy Picket</h3>
@@ -204,7 +206,7 @@
         </div>
       </div>
       <div class="pt-caja es-arvo">
-        <div class="pt-caja__cab"><span>Arvo</span></div>
+        <div class="pt-caja__cab"><span>Ahora · Arvo</span></div>
         <div class="pt-caja__cuerpo">
           <div class="m-kick">07 · Pet-friendly</div>
           <h3 class="display m-card">Puppy Picket</h3>
@@ -221,10 +223,10 @@
 
   <!-- ── 5. Cifras: el peor caso medido ───────────────────────────────────── -->
   <div class="pt-fila">
-    <div class="pt-eti">05 · Cifras <span>encogen un 27%, más que las letras · las etiquetas siguen en Inter</span></div>
+    <div class="pt-eti">05 · Cifras <span>más estrechas, pero con el size-adjust conservan la altura · las etiquetas siguen en Inter</span></div>
     <div class="pt-par">
       <div class="pt-caja es-hoy">
-        <div class="pt-caja__cab"><span>Hoy · Archivo</span><span class="pt-caja__med" data-med="c-hoy"></span></div>
+        <div class="pt-caja__cab"><span>Antes · Archivo</span><span class="pt-caja__med" data-med="c-hoy"></span></div>
         <div class="pt-caja__cuerpo">
           <div class="m-cifras">
             <div><h3 class="display m-cifra__n" id="c-hoy">2 400</h3><div class="m-cifra__e">Referencias</div></div>
@@ -238,7 +240,7 @@
         </div>
       </div>
       <div class="pt-caja es-arvo">
-        <div class="pt-caja__cab"><span>Arvo</span><span class="pt-caja__med" data-med="c-arvo"></span></div>
+        <div class="pt-caja__cab"><span>Ahora · Arvo</span><span class="pt-caja__med" data-med="c-arvo"></span></div>
         <div class="pt-caja__cuerpo">
           <div class="m-cifras">
             <div><h3 class="display m-cifra__n" id="c-arvo">2 400</h3><div class="m-cifra__e">Referencias</div></div>
@@ -259,7 +261,7 @@
     <div class="pt-eti">06 · Pesos <span>Archivo tiene 300–900 · Arvo solo 400 y 700</span></div>
     <div class="pt-par">
       <div class="pt-caja es-hoy">
-        <div class="pt-caja__cab"><span>Hoy · Archivo</span><span class="pt-caja__med">4 pesos distintos</span></div>
+        <div class="pt-caja__cab"><span>Antes · Archivo</span><span class="pt-caja__med">4 pesos distintos</span></div>
         <div class="pt-caja__cuerpo m-pesos">
           <div style="font-weight:600">Fence guides &amp; how-tos<i>600 · subtítulo de blog</i></div>
           <div style="font-weight:700">Fence guides &amp; how-tos<i>700 · .display</i></div>
@@ -268,12 +270,12 @@
         </div>
       </div>
       <div class="pt-caja es-arvo">
-        <div class="pt-caja__cab"><span>Arvo</span><span class="pt-caja__med">los cuatro caen en 700</span></div>
+        <div class="pt-caja__cab"><span>Ahora · Arvo</span><span class="pt-caja__med">dos pesos: Regular y Bold</span></div>
         <div class="pt-caja__cuerpo m-pesos">
-          <div style="font-weight:600">Fence guides &amp; how-tos<i>600 → 700</i></div>
-          <div style="font-weight:700">Fence guides &amp; how-tos<i>700</i></div>
-          <div style="font-weight:800">Fence guides &amp; how-tos<i>800 → 700</i></div>
-          <div style="font-weight:900">Fence guides &amp; how-tos<i>900 → 700</i></div>
+          <div style="font-weight:600">Fence guides &amp; how-tos<i>600 → Regular</i></div>
+          <div style="font-weight:700">Fence guides &amp; how-tos<i>700 · Bold</i></div>
+          <div style="font-weight:800">Fence guides &amp; how-tos<i>800 → Bold</i></div>
+          <div style="font-weight:900">Fence guides &amp; how-tos<i>900 → Bold</i></div>
         </div>
       </div>
     </div>
@@ -284,14 +286,14 @@
     <div class="pt-eti">07 · Titular sobre cuerpo <span>el cuerpo sigue en Inter y no cambia</span></div>
     <div class="pt-par">
       <div class="pt-caja es-hoy">
-        <div class="pt-caja__cab"><span>Hoy · Archivo</span></div>
+        <div class="pt-caja__cab"><span>Antes · Archivo</span></div>
         <div class="pt-caja__cuerpo m-prosa">
           <h2 class="display m-sec" style="font-size:30px">Florida pool code, in plain English.</h2>
           <p style="margin-top:14px">Any pool or spa needs a barrier at least 48 inches high, measured on the side facing away from the pool. Gaps under the fence can't exceed 4 inches, and gates must swing outward and self-latch.</p>
         </div>
       </div>
       <div class="pt-caja es-arvo">
-        <div class="pt-caja__cab"><span>Arvo</span></div>
+        <div class="pt-caja__cab"><span>Ahora · Arvo</span></div>
         <div class="pt-caja__cuerpo m-prosa">
           <h2 class="display m-sec" style="font-size:30px">Florida pool code, in plain English.</h2>
           <p style="margin-top:14px">Any pool or spa needs a barrier at least 48 inches high, measured on the side facing away from the pool. Gaps under the fence can't exceed 4 inches, and gates must swing outward and self-latch.</p>
@@ -301,12 +303,11 @@
   </div>
 
   <div class="pt-nota" style="margin-top:44px">
-    <b>Medido, no estimado.</b> Arvo/Archivo en las mismas cadenas del sitio:
-    ancho de titular <b>0,80</b> · altura de mayúscula <b>1,08</b> · anchura de cifras <b>0,73</b> ·
-    interlínea natural <b>+11%</b>. Si se adopta, hay que bajar el tamaño de los titulares
-    alrededor de un 7% para conservar la altura óptica, revisar los saltos de línea manuales
-    (<code>&lt;br&gt;</code>) y aflojar los interlineados de 0,90–1,02, que se quedan cortos para
-    las mayúsculas acentuadas del español.
+    <b>Medido, no estimado.</b> Arvo frente a Archivo ancho en las mismas cadenas del sitio, antes
+    de ajustar: ancho de titular <b>0,80</b> · altura de mayúscula <b>1,08</b> · anchura de cifras <b>0,73</b>.
+    El <code>size-adjust</code> corrige la altura y deja el ancho efectivo en torno a <b>0,74</b>.
+    La fuente va en <code>fonts/</code>, subconjunto latino en woff2 de 17 KB por peso, y la negrita
+    se precarga porque es la del titular del hero.
   </div>
 
 </div>

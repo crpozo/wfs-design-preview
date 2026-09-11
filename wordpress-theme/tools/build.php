@@ -20,7 +20,8 @@ function preview_head($title) {
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,300..900&family=Inter:wght@300;400;500;600;700&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="fonts/Arvo-Bold.woff2" />
 <link rel="stylesheet" href="styles.css?v=' . $GLOBALS['CSSV'] . '" />
 </head>
 <body>

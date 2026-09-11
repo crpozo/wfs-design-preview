@@ -72,7 +72,7 @@ const PageSectionHeader = ({ number, label, title, accent, sub, link }) => (
     <div>
       <h2 className="display" style={{
         margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, }}>
-        {title}{accent && <><br/><span style={{ color: 'var(--tangerine)' }}>{accent}</span></>}
+        {title}{accent && <span style={{ display: 'block', color: 'var(--tangerine)' }}>{accent}</span>}
       </h2>
     </div>
     <div style={{
@@ -192,7 +192,9 @@ const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageAlt, ima
           <div style={{ order: imageRight ? 1 : 2 }}>
             <h2 className="display" style={{
               margin: 0, fontSize: 'clamp(28px, 3vw, 42px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, }}>
-              {title}{accent && <><br/><span style={{ color: 'var(--tangerine)' }}>{accent}</span></>}
+              {/* Acento en bloque (no <br/>): text-wrap: balance no reparte
+                  las lineas de un parrafo cortado con <br/>. */}
+              {title}{accent && <span style={{ display: 'block', color: 'var(--tangerine)' }}>{accent}</span>}
             </h2>
             {body && (
               <p style={{

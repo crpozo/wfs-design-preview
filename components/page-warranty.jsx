@@ -216,7 +216,7 @@ const ClaimsHero = () => {
       [t('Home', 'Inicio'), 'Homepage.html'], [t('Warranty', 'Garantía'), 'warranty.html'], [t('Submit a claim', 'Enviar reclamo'), null], ]}
     eyebrow={t('Warranty · Claims', 'Garantía · Reclamos')}
     title={t('Submit a warranty claim.', 'Envía un reclamo de garantía.')}
-    accent={t('24-hour response.', 'Respuesta en 24 horas.')}
+    accent={t({ EN: <><span style={{ whiteSpace: 'nowrap' }}>24-hour</span> response.</>, ES: <>Respuesta en <span style={{ whiteSpace: 'nowrap' }}>24 horas.</span></> })}
     subtitle={t(
       'One short form, four required fields. A rep follows up by phone the next business morning to schedule inspection or ship replacement material.', 'Un formulario corto, cuatro campos obligatorios. Un representante hace seguimiento por teléfono la mañana hábil siguiente para agendar inspección o enviar material de reemplazo.'
     )}
@@ -308,8 +308,10 @@ const ClaimsForm = () => {
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1.7fr 1fr', gap: 56, alignItems: 'start' }}>
           {/* Left, form card */}
+          {/* minWidth 0 en las dos columnas: sin eso, en movil ES la columna
+              unica crecia a 382px y la seccion se salia 14px por la derecha. */}
           <article style={{
-            background: 'var(--white)', border: '1.5px solid var(--ink)', padding: '40px 44px', boxShadow: '8px 8px 0 var(--tangerine)', }}>
+            minWidth: 0, background: 'var(--white)', border: '1.5px solid var(--ink)', padding: '40px 44px', boxShadow: '8px 8px 0 var(--tangerine)', }}>
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: 22, marginBottom: 28, borderBottom: '1px dashed rgba(38, 49, 102,0.18)', }}>
               <h3 className="display" style={{
@@ -399,7 +401,7 @@ const ClaimsForm = () => {
           </article>
 
           {/* Right, help sidebar */}
-          <aside style={{ position: 'sticky', top: 100, display: 'grid', gap: 16 }}>
+          <aside style={{ minWidth: 0, position: 'sticky', top: 100, display: 'grid', gap: 16 }}>
             <div style={{
               background: 'var(--ink)', color: 'var(--white)', padding: '28px 28px 26px', }}>
               <div className="mono" style={{
@@ -684,9 +686,9 @@ const SpecsStamped = () => {
       <div style={{
         display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 48, alignItems: 'center', background: 'var(--ink)', color: 'var(--white)', padding: '56px 56px', boxShadow: '12px 12px 0 var(--tangerine)', }}>
         <div>
-          <h2 className="display" style={{
+          <h2 className="display specs-stamped-title" style={{
             margin: '0 0 18px', fontSize: 'clamp(26px, 3vw, 38px)', lineHeight: 1.05, letterSpacing: '-0.015em', color: 'var(--white)', }}>
-            {t('Need a stamped', '¿Necesitas una copia')}<br/>{t('copy for AHJ?', 'sellada para el AHJ?')}
+            {t('Need a stamped', '¿Necesitas una copia')}{' '}<br/>{t('copy for AHJ?', 'sellada para el AHJ?')}
           </h2>
           <p className="mono" style={{
             margin: 0, fontSize: 15.5, lineHeight: 1.7, color: 'rgba(255,255,255,0.78)', maxWidth: 480, }}>

@@ -83,7 +83,19 @@ pagohtml = re.sub(r"(['\"])assets/", r"\1" + ASSET_BASE + "/", pagohtml)
 # ---------------------------------------------------------------- css
 css = (SRC / "styles.css").read_text()
 css = re.sub(r"url\((['\"]?)assets/", r"url(\1" + ASSET_BASE + "/", css)
+# Arvo auto-hospedada: styles.css la pide como fonts/*.woff2, relativo a la raiz
+# del preview. En el tema el CSS vive en css/, asi que la ruta sube un nivel.
+css = re.sub(r"url\((['\"]?)fonts/", r"url(\1../fonts/", css)
 (OUT / "css" / "styles.css").write_text(css)
+
+# ---------------------------------------------------------------- fuentes
+# Los ficheros de Arvo (y su licencia OFL) viven en fonts/ de la raiz, que es
+# la unica fuente de verdad; aqui se copian al fonts/ del tema, junto al
+# LEEME.txt que ya trae theme-src.
+(OUT / "fonts").mkdir(exist_ok=True)
+for f in sorted((SRC / "fonts").glob("*")):
+    if f.suffix in (".woff2", ".txt"):
+        shutil.copy2(f, OUT / "fonts" / f.name)
 try:
     subprocess.run(["npx", "--yes", "esbuild@0.24.0", str(OUT / "css" / "styles.css"),
                     "--minify", "--allow-overwrite",
