@@ -1575,18 +1575,24 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
 .wfs-areas-towns a { position: relative; }
 .wfs-areas-towns a::before { content: ''; position: absolute; inset: -12px -4px; }
 .wfs-areas-nowrap { white-space: nowrap; }
-/* A la izquierda, en sintonia con el hero de arriba. */
-.wfs-areas-intro__head { max-width: 760px; margin: 0; text-align: left; }
+/* Intro: texto + foto, y fila de datos con separadores (diseno del cliente). */
+.wfs-areas-intro__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.wfs-areas-intro__head { max-width: 560px; }
 .wfs-areas-intro__head h2 { margin: 0; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.02; letter-spacing: -.02em; color: var(--ink); }
 .wfs-areas-intro__head h2 span { color: var(--tangerine); }
-.wfs-areas-intro__head p { margin: 20px 0 0; max-width: 640px; font-size: 17.5px; line-height: 1.6; color: var(--charcoal); }
+.wfs-areas-intro__head p { margin: 20px 0 0; max-width: 520px; font-size: 17.5px; line-height: 1.6; color: var(--charcoal); }
 .wfs-areas-intro__ctas { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
-/* Boton celeste (el mismo de Draw My Fence) en vez de naranja. */
-.wfs-areas-intro__ctas .btn-primary { background: #9fd1ff; color: var(--ink); }
-.wfs-areas-intro__ctas .btn-primary:hover { background: #7fc0ff; }
-.wfs-areas-facts { margin: 64px 0 0; padding: 30px 0 0; border-top: 1px solid rgba(38, 49, 102, .14); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
-.wfs-areas-facts dt { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3vw, 42px); line-height: 1; color: var(--ink); }
-.wfs-areas-facts dd { margin: 10px 0 0; font-size: 14.5px; line-height: 1.45; letter-spacing: .06em; text-transform: uppercase; color: var(--charcoal); }
+.wfs-areas-intro__ctas .btn-primary { background: var(--ink); color: #ffffff; }
+.wfs-areas-intro__ctas .btn-primary:hover { background: var(--laser-blue); }
+.wfs-areas-intro__photo { margin: 0; position: relative; aspect-ratio: 1.15 / 1; border-radius: 14px; overflow: hidden; background: #e6f0fb; }
+.wfs-areas-intro__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wfs-areas-facts { margin: 64px 0 0; padding: 0; border-top: 2px solid var(--ink); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.wfs-areas-facts > div { padding: 26px 22px 24px; border-right: 1px solid rgba(38, 49, 102, .18); }
+.wfs-areas-facts > div:first-child { padding-left: 0; }
+.wfs-areas-facts > div:last-child { border-right: none; }
+.wfs-areas-facts dt { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3vw, 42px); line-height: 1; color: var(--tangerine); }
+.wfs-areas-facts dd { margin: 10px 0 0; font-size: 14.5px; line-height: 1.45; color: var(--charcoal); }
+.wfs-areas-facts dd strong { display: block; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
 .wfs-areas-mats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .wfs-areas-mat { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 26px 64px 26px 26px; background: #ffffff; border: 1.5px solid #263167; color: var(--ink); text-decoration: none; transition: transform .18s ease, box-shadow .18s ease; }
 .wfs-areas-mat:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--tangerine); }
@@ -1623,6 +1629,10 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
   .wfs-areas-legend { justify-content: center; }
   .wfs-areas-mats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .wfs-areas-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wfs-areas-facts > div:nth-child(2) { border-right: none; }
+  .wfs-areas-facts > div:nth-child(3) { padding-left: 0; }
+  .wfs-areas-intro__grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .wfs-areas-intro__photo { aspect-ratio: 16 / 10; }
 }
 @media (max-width: 640px) {
   .wfs-areas-list { column-gap: 22px; }
@@ -1640,7 +1650,7 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
   .wfs-areas-map { margin: 14px; width: calc(100% - 28px); box-shadow: 0 0 0 14px #eef2f9; }
   .wfs-areas-group h3 { text-wrap: balance; }
   .wfs-areas-facts dt { font-size: 26px; white-space: nowrap; }
-  .wfs-areas-facts dd { font-size: 13.5px; letter-spacing: .02em; }
+  .wfs-areas-facts > div { padding: 18px 14px 16px; }
   .wfs-areas-eyebrow { font-size: 12.5px; letter-spacing: .14em; }
   .wfs-areas-cta__card .wfs-areas-eyebrow::before { display: none; }
 }

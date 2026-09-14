@@ -74,37 +74,43 @@ const AreasHero = () => {
 const AreasIntro = () => {
   const t = useT();
   const facts = [
-    ['2', { EN: 'Yards: Fort Myers + Port Charlotte', ES: 'Sucursales: Fort Myers + Port Charlotte' }],
-    ['6', { EN: 'Southwest Florida counties at our doorstep', ES: 'Condados del suroeste de Florida a un paso' }],
-    ['FL', { EN: 'Statewide delivery on our own trucks', ES: 'Entrega en todo el estado con nuestros propios camiones' }],
-    [{ EN: 'Same day', ES: 'Mismo día' }, { EN: 'Pickup on standard qualifying orders', ES: 'Retiro en pedidos estándar que califiquen' }],
+    ['2', { EN: 'Yards', ES: 'Sucursales' }, { EN: 'Fort Myers + Port Charlotte', ES: 'Fort Myers + Port Charlotte' }],
+    ['6', { EN: 'Counties', ES: 'Condados' }, { EN: 'Southwest Florida at our doorstep', ES: 'El suroeste de Florida a un paso' }],
+    ['FL', { EN: 'Statewide delivery', ES: 'Entrega en todo el estado' }, { EN: 'On our own trucks', ES: 'Con nuestros propios camiones' }],
+    [{ EN: 'Same day', ES: 'Mismo día' }, { EN: 'Pickup', ES: 'Retiro' }, { EN: 'On standard qualifying orders', ES: 'En pedidos estándar que califiquen' }],
   ];
-  /* En blanco: el hero ya es azul y el cliente no quiere dos bloques azules
-     seguidos. El bloque azul viene despues (Como funciona el retiro). */
+  /* Texto a la izquierda y foto real de la sucursal a la derecha; debajo la
+     fila de datos con separadores. En blanco: el hero ya es azul. */
   return (
-    <section className="wfs-areas-intro" style={{ background: 'var(--white)', padding: '104px 0' }}>
+    <section className="wfs-areas-intro" style={{ background: 'var(--white)', padding: '96px 0' }}>
       <div className="container">
-        <div className="wfs-areas-intro__head">
-          <h2 className="display">
-            {t('Your local', 'Tu proveedor local')}{' '}
-            <span>{t('fence supply yard.', 'de material de cerca.')}</span>
-          </h2>
-          <p>
-            {t(
-              'Western Fence Supply is a family-owned, supply-only company: we stock the material and fabricate gates in Fort Myers, and contractors, homeowners and HOAs across Florida build with it. Pick up at either yard or have it delivered to the job site.',
-              'Western Fence Supply es una empresa familiar que solo suministra: tenemos el material y fabricamos portones en Fort Myers, y contratistas, propietarios y HOAs de toda Florida construyen con él. Recógelo en cualquiera de las dos sucursales o recíbelo en la obra.'
-            )}
-          </p>
-          <div className="wfs-areas-intro__ctas">
-            <a href="contact.html#contact" className="btn btn-primary">{t('Request a Quote', 'Solicitar cotización')} <ArrowRight /></a>
-            <a href="tel:2394652482" className="btn btn-ghost" style={{ color: 'var(--ink)' }}>{t('Call (239) 465-2482', 'Llamar (239) 465-2482')}</a>
+        <div className="wfs-areas-intro__grid">
+          <div className="wfs-areas-intro__head">
+            <div className="wfs-areas-eyebrow">Fort Myers · Port Charlotte</div>
+            <h2 className="display">
+              {t('Your local', 'Tu proveedor local')}{' '}
+              <span>{t('fence supply yard.', 'de material de cerca.')}</span>
+            </h2>
+            <p>
+              {t(
+                'Family-owned and supply-only. We stock the material and fabricate gates in Fort Myers; contractors, homeowners and HOAs across Florida build with it. Pick up at either yard or have it delivered to the job site.',
+                'Empresa familiar y solo suministro. Tenemos el material y fabricamos portones en Fort Myers; contratistas, propietarios y HOAs de toda Florida construyen con él. Recógelo en cualquiera de las dos sucursales o recíbelo en la obra.'
+              )}
+            </p>
+            <div className="wfs-areas-intro__ctas">
+              <a href="contact.html#get-a-quote" className="btn btn-primary">{t('Request a Quote', 'Solicitar cotización')} <ArrowRight /></a>
+              <a href="tel:2394652482" className="btn btn-ghost" style={{ color: 'var(--ink)' }}>{t('Call (239) 465-2482', 'Llamar (239) 465-2482')}</a>
+            </div>
           </div>
+          <figure className="wfs-areas-intro__photo">
+            <img src="assets/wfs-shop.webp" alt={t('Fence material stacked in the Western Fence Supply yard', 'Material de cerca apilado en la sucursal de Western Fence Supply')} loading="lazy" decoding="async" />
+          </figure>
         </div>
         <dl className="wfs-areas-facts">
-          {facts.map(([n, l], i) => (
+          {facts.map(([n, l, sub], i) => (
             <div key={i}>
               <dt>{typeof n === 'string' ? n : t(n)}</dt>
-              <dd>{t(l)}</dd>
+              <dd><strong>{t(l)}</strong><span>{t(sub)}</span></dd>
             </div>
           ))}
         </dl>
