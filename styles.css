@@ -1575,9 +1575,9 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
 .wfs-areas-towns a::before { content: ''; position: absolute; inset: -12px -4px; }
 .wfs-areas-nowrap { white-space: nowrap; }
 /* Intro: texto + foto, y fila de datos con separadores (diseno del cliente). */
-.wfs-areas-intro__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 56px; align-items: center; }
+.wfs-areas-intro__grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: center; }
 .wfs-areas-intro__head { max-width: 560px; }
-.wfs-areas-intro__photo { margin: 0; position: relative; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; background: #e6f0fb; }
+.wfs-areas-intro__photo { margin: 0; position: relative; max-width: 480px; justify-self: end; width: 100%; aspect-ratio: 4 / 3; border-radius: 14px; overflow: hidden; background: #e6f0fb; }
 .wfs-areas-intro__photo img { width: 100%; height: 100%; object-fit: cover; object-position: 35% 60%; display: block; }
 .wfs-areas-intro__photo figcaption { position: absolute; left: 14px; bottom: 14px; padding: 6px 11px; border-radius: 999px; background: rgba(38, 49, 103, .88); color: #ffffff; font-size: 12.5px; font-weight: 600; letter-spacing: .04em; }
 .wfs-areas-intro__head h2 { margin: 0; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.02; letter-spacing: -.02em; color: var(--ink); }
