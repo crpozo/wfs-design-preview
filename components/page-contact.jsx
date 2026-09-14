@@ -122,9 +122,9 @@ const QuoteOptions = () => {
   <section id="get-a-quote" className="wfs-qopts" style={{ background: 'var(--white)', padding: 'clamp(56px, 8vh, 96px) 0 clamp(32px, 5vh, 56px)', scrollMarginTop: 120 }}>
     <div className="container">
       <div className="wfs-qopts__head">
-        <div className="wfs-areas-eyebrow">{t('Get a free quote', 'Cotización gratis')}</div>
-        <h2 className="display">{t('Three ways to get', 'Tres formas de conseguir')} <span>{t('your free quote.', 'tu cotización gratis.')}</span></h2>
-        <p>{t('Pick whichever is easiest for you. Every one of them lands with a real person at the yard.', 'Elige la que te quede más fácil. Todas llegan a una persona real de la sucursal.')}</p>
+        <h2 className="display">{t('Get a free quote.', 'Cotización gratis.')}</h2>
+        <h3 className="wfs-qopts__sub">{t('Three ways to reach a real person at the yard.', 'Tres formas de hablar con una persona real de la sucursal.')}</h3>
+        <p>{t('Pick whichever is easiest for you.', 'Elige la que te quede más fácil.')}</p>
       </div>
       <div className="wfs-qopts__grid">
         {opciones.map((o) => (
