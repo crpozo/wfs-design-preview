@@ -1575,11 +1575,15 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
 .wfs-areas-towns a { position: relative; }
 .wfs-areas-towns a::before { content: ''; position: absolute; inset: -12px -4px; }
 .wfs-areas-nowrap { white-space: nowrap; }
-.wfs-areas-intro__head { max-width: 860px; margin: 0 auto; text-align: center; }
+/* A la izquierda, en sintonia con el hero de arriba. */
+.wfs-areas-intro__head { max-width: 760px; margin: 0; text-align: left; }
 .wfs-areas-intro__head h2 { margin: 0; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.02; letter-spacing: -.02em; color: var(--ink); }
 .wfs-areas-intro__head h2 span { color: var(--tangerine); }
-.wfs-areas-intro__head p { margin: 20px auto 0; max-width: 700px; font-size: 17.5px; line-height: 1.6; color: var(--charcoal); }
-.wfs-areas-intro__ctas { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.wfs-areas-intro__head p { margin: 20px 0 0; max-width: 640px; font-size: 17.5px; line-height: 1.6; color: var(--charcoal); }
+.wfs-areas-intro__ctas { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+/* Boton celeste (el mismo de Draw My Fence) en vez de naranja. */
+.wfs-areas-intro__ctas .btn-primary { background: #9fd1ff; color: var(--ink); }
+.wfs-areas-intro__ctas .btn-primary:hover { background: #7fc0ff; }
 .wfs-areas-facts { margin: 64px 0 0; padding: 30px 0 0; border-top: 1px solid rgba(38, 49, 102, .14); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; }
 .wfs-areas-facts dt { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3vw, 42px); line-height: 1; color: var(--ink); }
 .wfs-areas-facts dd { margin: 10px 0 0; font-size: 14.5px; line-height: 1.45; letter-spacing: .06em; text-transform: uppercase; color: var(--charcoal); }
