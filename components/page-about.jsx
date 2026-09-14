@@ -101,7 +101,6 @@ const AboutValues = () => {
       {/* Eyebrow */}
       <div className="mono" style={{
         display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 22, fontSize: 14, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--laser-blue)', }}>
-        <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
         {t('How we operate', 'Cómo operamos')}
       </div>
       {/* Title + right blurb over a heavy rule */}

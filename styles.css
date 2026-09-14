@@ -1558,7 +1558,6 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
 .wfs-areas-swatch.is-other { background: var(--ink); }
 .wfs-areas-swatch.is-yard { background: #ffffff; border: 3px solid var(--ink); border-radius: 50%; }
 .wfs-areas-eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; font-family: var(--sans); font-size: 13.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #c4480f; }
-.wfs-areas-eyebrow::before { content: ''; width: 30px; height: 3px; border-radius: 2px; background: var(--tangerine); }
 .wfs-areas-title { margin: 0; font-size: clamp(30px, 3.4vw, 46px); line-height: 1; letter-spacing: -.02em; color: var(--ink); }
 .wfs-areas-title span { color: var(--tangerine); }
 .wfs-areas-lead { margin: 18px 0 34px; max-width: 560px; font-size: 16.5px; line-height: 1.6; color: var(--charcoal); }
@@ -1576,17 +1575,14 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
 .wfs-areas-towns a::before { content: ''; position: absolute; inset: -12px -4px; }
 .wfs-areas-nowrap { white-space: nowrap; }
 /* Intro: texto + foto, y fila de datos con separadores (diseno del cliente). */
-.wfs-areas-intro__grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center; }
-.wfs-areas-intro__head { max-width: 560px; }
+.wfs-areas-intro__head { max-width: 720px; }
 .wfs-areas-intro__head h2 { margin: 0; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.02; letter-spacing: -.02em; color: var(--ink); }
 .wfs-areas-intro__head h2 span { color: var(--tangerine); }
 .wfs-areas-intro__head p { margin: 20px 0 0; max-width: 520px; font-size: 17.5px; line-height: 1.6; color: var(--charcoal); }
 .wfs-areas-intro__ctas { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
 .wfs-areas-intro__ctas .btn-primary { background: var(--ink); color: #ffffff; }
 .wfs-areas-intro__ctas .btn-primary:hover { background: var(--laser-blue); }
-.wfs-areas-intro__photo { margin: 0; position: relative; aspect-ratio: 1.15 / 1; border-radius: 14px; overflow: hidden; background: #e6f0fb; }
-.wfs-areas-intro__photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.wfs-areas-facts { margin: 64px 0 0; padding: 0; border-top: 2px solid var(--ink); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.wfs-areas-facts { margin: 56px 0 0; padding: 0; border-top: 2px solid var(--ink); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .wfs-areas-facts > div { padding: 26px 22px 24px; border-right: 1px solid rgba(38, 49, 102, .18); }
 .wfs-areas-facts > div:first-child { padding-left: 0; }
 .wfs-areas-facts > div:last-child { border-right: none; }
@@ -1631,8 +1627,6 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
   .wfs-areas-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .wfs-areas-facts > div:nth-child(2) { border-right: none; }
   .wfs-areas-facts > div:nth-child(3) { padding-left: 0; }
-  .wfs-areas-intro__grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
-  .wfs-areas-intro__photo { aspect-ratio: 16 / 10; }
 }
 @media (max-width: 640px) {
   .wfs-areas-list { column-gap: 22px; }
@@ -1652,7 +1646,6 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
   .wfs-areas-facts dt { font-size: 26px; white-space: nowrap; }
   .wfs-areas-facts > div { padding: 18px 14px 16px; }
   .wfs-areas-eyebrow { font-size: 12.5px; letter-spacing: .14em; }
-  .wfs-areas-cta__card .wfs-areas-eyebrow::before { display: none; }
 }
 
 /* ── Opciones de cotizacion (contact.html#get-a-quote) ─────────────────── */

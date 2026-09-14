@@ -246,7 +246,6 @@ const GateQuoteChecklist = () => {
           <div>
             <div className="mono" style={{
               display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 18, fontSize: 14, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--blue-ice)', }}>
-              <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
               {t('Before you quote', 'Antes de cotizar')}
             </div>
             <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1.02, letterSpacing: '-0.02em', color: 'var(--white)' }}>
@@ -302,7 +301,6 @@ const GateSpecs = ({ data }) => (
         <div>
           <div className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 18, fontSize: 14, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--blue-ice)', }}>
-            <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
             {useT()('Gate specs', 'Especificaciones')}
           </div>
           <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', color: 'var(--white)' }}>

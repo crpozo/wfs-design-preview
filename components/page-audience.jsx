@@ -24,7 +24,6 @@ const HomeownerHero = () => {
         {/* Eyebrow */}
         <div className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 14, marginBottom: 24, fontSize: 'clamp(12px, 1.1vw, 13px)', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', }}>
-          <span aria-hidden style={{ width: 34, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
           {t('Homeowner · Built for residential', 'Propietario · Diseñado para residencial')}
         </div>
         <h1 style={{
@@ -567,7 +566,6 @@ const ContractorHero = () => {
         {/* Eyebrow */}
         <div className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 14, marginBottom: 22, fontSize: 'clamp(12px, 1.1vw, 13px)', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', }}>
-          <span aria-hidden style={{ width: 34, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
           {t('Wholesale Partner Program · Florida', 'Programa de socios mayoristas · Florida')}
         </div>
         <h1 style={{
@@ -670,7 +668,6 @@ const ContractorBenefits = () => {
       {/* Eyebrow */}
       <div className="mono" style={{
         display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 22, fontSize: 14, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--blue-ice)', }}>
-        <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
         {t('Wholesale Partner Program', 'Programa de socios mayoristas')}
       </div>
       {/* Title + right blurb */}

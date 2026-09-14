@@ -79,32 +79,27 @@ const AreasIntro = () => {
     ['FL', { EN: 'Statewide delivery', ES: 'Entrega en todo el estado' }, { EN: 'On our own trucks', ES: 'Con nuestros propios camiones' }],
     [{ EN: 'Same day', ES: 'Mismo día' }, { EN: 'Pickup', ES: 'Retiro' }, { EN: 'On standard qualifying orders', ES: 'En pedidos estándar que califiquen' }],
   ];
-  /* Texto a la izquierda y foto real de la sucursal a la derecha; debajo la
-     fila de datos con separadores. En blanco: el hero ya es azul. */
+  /* Sin foto: el hero de arriba ya es una foto y otra seguida sobraba. Debajo
+     la fila de datos con separadores. */
   return (
     <section className="wfs-areas-intro" style={{ background: 'var(--white)', padding: '96px 0' }}>
       <div className="container">
-        <div className="wfs-areas-intro__grid">
-          <div className="wfs-areas-intro__head">
-            <div className="wfs-areas-eyebrow">Fort Myers · Port Charlotte</div>
-            <h2 className="display">
-              {t('Your local', 'Tu proveedor local')}{' '}
-              <span>{t('fence supply yard.', 'de material de cerca.')}</span>
-            </h2>
-            <p>
-              {t(
-                'Family-owned and supply-only. We stock the material and fabricate gates in Fort Myers; contractors, homeowners and HOAs across Florida build with it. Pick up at either yard or have it delivered to the job site.',
-                'Empresa familiar y solo suministro. Tenemos el material y fabricamos portones en Fort Myers; contratistas, propietarios y HOAs de toda Florida construyen con él. Recógelo en cualquiera de las dos sucursales o recíbelo en la obra.'
-              )}
-            </p>
-            <div className="wfs-areas-intro__ctas">
-              <a href="contact.html#get-a-quote" className="btn btn-primary">{t('Request a Quote', 'Solicitar cotización')} <ArrowRight /></a>
-              <a href="tel:2394652482" className="btn btn-ghost" style={{ color: 'var(--ink)' }}>{t('Call (239) 465-2482', 'Llamar (239) 465-2482')}</a>
-            </div>
+        <div className="wfs-areas-intro__head">
+          <div className="wfs-areas-eyebrow">Fort Myers · Port Charlotte</div>
+          <h2 className="display">
+            {t('Your local', 'Tu proveedor local')}{' '}
+            <span>{t('fence supply yard.', 'de material de cerca.')}</span>
+          </h2>
+          <p>
+            {t(
+              'Family-owned and supply-only. We stock the material and fabricate gates in Fort Myers; contractors, homeowners and HOAs across Florida build with it. Pick up at either yard or have it delivered to the job site.',
+              'Empresa familiar y solo suministro. Tenemos el material y fabricamos portones en Fort Myers; contratistas, propietarios y HOAs de toda Florida construyen con él. Recógelo en cualquiera de las dos sucursales o recíbelo en la obra.'
+            )}
+          </p>
+          <div className="wfs-areas-intro__ctas">
+            <a href="contact.html#get-a-quote" className="btn btn-primary">{t('Request a Quote', 'Solicitar cotización')} <ArrowRight /></a>
+            <a href="tel:2394652482" className="btn btn-ghost" style={{ color: 'var(--ink)' }}>{t('Call (239) 465-2482', 'Llamar (239) 465-2482')}</a>
           </div>
-          <figure className="wfs-areas-intro__photo">
-            <img src="assets/wfs-shop.webp" alt={t('Fence material stacked in the Western Fence Supply yard', 'Material de cerca apilado en la sucursal de Western Fence Supply')} loading="lazy" decoding="async" />
-          </figure>
         </div>
         <dl className="wfs-areas-facts">
           {facts.map(([n, l, sub], i) => (

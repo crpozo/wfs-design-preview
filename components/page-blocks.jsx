@@ -29,7 +29,6 @@ const PageHero = ({ eyebrow, title, accent, accentBreak, subtitle, image, crumbs
       {eyebrow && (
         <div className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 14, marginBottom: 22, fontSize: 'clamp(12px, 1.1vw, 13px)', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.85)', }}>
-          <span aria-hidden style={{ width: 34, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
           {eyebrow}
         </div>
       )}

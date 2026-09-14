@@ -52,7 +52,6 @@ const TrainingHero = () => {
       <div className="container">
         <div className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 12, marginBottom: 18, fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', }}>
-          <span aria-hidden style={{ width: 30, height: 3, background: 'var(--tangerine)', borderRadius: 2 }}/>
           {t('WFS · Internal training', 'WFS · Capacitación interna')}
         </div>
         <h1 className="display" style={{
