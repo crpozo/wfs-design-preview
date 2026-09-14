@@ -84,6 +84,7 @@ const AreasIntro = () => {
   return (
     <section className="wfs-areas-intro" style={{ background: 'var(--white)', padding: '96px 0' }}>
       <div className="container">
+        <div className="wfs-areas-intro__grid">
         <div className="wfs-areas-intro__head">
           <div className="wfs-areas-eyebrow">Fort Myers · Port Charlotte</div>
           <h2 className="display">
@@ -100,6 +101,13 @@ const AreasIntro = () => {
             <a href="contact.html#get-a-quote" className="btn btn-primary">{t('Request a Quote', 'Solicitar cotización')} <ArrowRight /></a>
             <a href="tel:2394652482" className="btn btn-ghost" style={{ color: 'var(--ink)' }}>{t('Call (239) 465-2482', 'Llamar (239) 465-2482')}</a>
           </div>
+        </div>
+        {/* Foto distinta a la del hero (la fachada con los muestrarios), con
+            pie para que no salga "de la nada". */}
+        <figure className="wfs-areas-intro__photo">
+          <img src="assets/Showroom.webp" alt={t('Western Fence Supply yard in Fort Myers with fence samples out front', 'Sucursal de Western Fence Supply en Fort Myers con muestras de cercas al frente')} loading="lazy" decoding="async" />
+          <figcaption>{t('Fort Myers yard · 2621 Fowler St', 'Sucursal Fort Myers · 2621 Fowler St')}</figcaption>
+        </figure>
         </div>
         <dl className="wfs-areas-facts">
           {facts.map(([n, l, sub], i) => (
