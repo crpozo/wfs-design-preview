@@ -1,42 +1,25 @@
 /* ───── Western Fences Supply ───── */
-/* Fuentes: Arvo (slab serif) en titulares · Inter en UI y cuerpo.
-   Inter se carga con <link> desde el HTML; Arvo va auto-hospedada aqui abajo. */
+/* Fuentes: Alfa Slab One (slab pesada) en titulares · Montserrat en UI y cuerpo.
+   Montserrat se carga con <link> desde el HTML; Alfa va auto-hospedada aqui. */
 
-/* ── Arvo, auto-hospedada ──────────────────────────────────────────────────
-   Licencia OFL (fonts/Arvo-OFL.txt): se puede redistribuir y servir.
-   Subconjunto latino en woff2 (tildes, ñ, ¿¡, comillas, €, ™): 17 KB por peso.
+/* ── Alfa Slab One, auto-hospedada ────────────────────────────────────────
+   Licencia OFL (fonts/AlfaSlabOne-OFL.txt). Subconjunto latino en woff2.
 
-   Se auto-hospeda en vez de pedirla a Google Fonts por dos descriptores que
-   Google no deja poner, y que son los que hacen que el cambio salga limpio:
-
-   · size-adjust 92,67%: Arvo tiene las mayusculas un 7,9% mas altas que el
-     Archivo ancho que habia antes (0,740 frente a 0,686 em). Escalarla asi
-     iguala la altura de mayuscula, de modo que los ~40 tamaños de titular
-     repartidos por los componentes siguen valiendo sin tocar ninguno, y las
-     mayusculas acentuadas del español no chocan con la linea de arriba.
-   · font-weight por rangos: Arvo solo trae Regular y Bold. 100-600 van a
-     Regular para que los subtitulos del blog (600) sigan pesando menos que
-     los titulares; 700-900 van a Bold, sin negrita sintetica.
-
-   Nombre propio ('Arvo WFS') para que no choque con ninguna Arvo de Google que
-   cargue una pagina o un plugin: esa vendria sin el size-adjust.
-   El 'wdth' 125 que repiten varias reglas era para Archivo; Arvo no tiene eje
-   de ancho y lo ignora. */
+   · size-adjust 88,17%: sus mayusculas miden 0,778 em frente a los 0,686 del
+     Archivo original, base de todos los tamaños de titular del sitio. Asi
+     escalada, la altura de mayuscula queda igual y ningun tamaño cambia.
+   · font-weight 100-900: solo existe en un peso. Cubrir todo el rango evita
+     que el navegador fabrique una negrita sintetica (aun mas gorda) donde
+     las reglas piden 700/800.
+   Nombre propio ('Alfa WFS') para no chocar con la Alfa de Google que pueda
+   cargar un plugin (esa vendria sin size-adjust). */
 @font-face {
-  font-family: 'Arvo WFS';
-  src: url('fonts/Arvo-Regular.woff2') format('woff2');
-  font-weight: 100 600;
+  font-family: 'Alfa WFS';
+  src: url('fonts/AlfaSlabOne-Regular.woff2') format('woff2');
+  font-weight: 100 900;
   font-style: normal;
   font-display: swap;
-  size-adjust: 92.67%;
-}
-@font-face {
-  font-family: 'Arvo WFS';
-  src: url('fonts/Arvo-Bold.woff2') format('woff2');
-  font-weight: 700 900;
-  font-style: normal;
-  font-display: swap;
-  size-adjust: 92.67%;
+  size-adjust: 88.17%;
 }
 
 :root {
@@ -59,10 +42,9 @@
   --almond: #e5d8ca;
   --ink: #263167;
 
-  /* Titulares en Arvo (ver @font-face arriba). El respaldo es slab o serif, no
-     sans: si Arvo tarda o falla, el titular sigue siendo del mismo genero. */
-  --display: 'Arvo WFS', 'Rockwell', 'Georgia', serif;
-  --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Titulares en Alfa Slab One (ver @font-face arriba). Respaldo slab/serif. */
+  --display: 'Alfa WFS', 'Rockwell', 'Georgia', serif;
+  --sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   /* Se unifico a Inter: antes era Space Grotesk y creaba un tercer
      tipo de letra que desentonaba con el cuerpo. */
   --mono: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -142,6 +124,9 @@ div[style*="border-bottom: 1px solid"]:has(> img) { border-bottom: none !importa
    las lineas sin anadir ninguna. :where() deja la especificidad en cero para
    no pisar ningun white-space de otra regla. */
 :where(h1, h2, h3, .display, .display-extended) { text-wrap: balance; }
+/* Jerarquia tipografica del cliente: Alfa Slab One solo en titulos (h1/h2);
+   los subtitulos (h3/h4) van en Montserrat negrita. */
+h3.display, h4.display, .display h3, .display h4 { font-family: var(--sans); font-weight: 700; letter-spacing: -0.01em; }
 @media (max-width: 767px) {
   /* El PillCTA es nowrap; en ES ('HABLA CON NUESTRO EQUIPO') medía 368px y
      ensanchaba la columna hasta pegar la seccion al borde de la pantalla. */

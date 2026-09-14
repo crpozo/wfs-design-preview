@@ -23,10 +23,10 @@ $wfs_assets_origin = wp_parse_url( WFS_ASSETS, PHP_URL_SCHEME ) . '://' . wp_par
 <link rel="preconnect" href="<?php echo esc_url( $wfs_assets_origin ); ?>" crossorigin />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
-<?php /* Arvo Bold: es la del titular del hero, que es el LCP. Precargarla evita
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" />
+<?php /* Alfa Slab One: es la del titular del hero, que es el LCP. Precargarla evita
          que se pinte primero la de respaldo. Misma URL que pide styles.css. */ ?>
-<link rel="preload" as="font" type="font/woff2" crossorigin href="<?php echo esc_url( get_theme_file_uri( 'fonts/Arvo-Bold.woff2' ) ); ?>" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="<?php echo esc_url( get_theme_file_uri( 'fonts/AlfaSlabOne-Regular.woff2' ) ); ?>" />
 <?php if ( 'homepage' === $wfs_slug ) : ?>
 <!-- El LCP del home es el poster del video del hero: pedirlo desde el head
      evita que Lighthouse marque "LCP request discovery" -->

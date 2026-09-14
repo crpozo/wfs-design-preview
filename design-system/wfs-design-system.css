@@ -1,10 +1,7 @@
+@font-face { font-family: 'Alfa WFS'; src: url('../fonts/AlfaSlabOne-Regular.woff2') format('woff2'); font-weight: 100 900; font-display: swap; size-adjust: 88.17%; }
 /* Titulares: Arvo auto-hospedada (fonts/ en la raiz del repo). size-adjust
    iguala la altura de mayuscula del Archivo de antes; pesos por rangos porque
    Arvo solo trae Regular y Bold. Mismo bloque que styles.css. */
-@font-face { font-family: 'Arvo WFS'; src: url('../fonts/Arvo-Regular.woff2') format('woff2');
-  font-weight: 100 600; font-style: normal; font-display: swap; size-adjust: 92.67%; }
-@font-face { font-family: 'Arvo WFS'; src: url('../fonts/Arvo-Bold.woff2') format('woff2');
-  font-weight: 700 900; font-style: normal; font-display: swap; size-adjust: 92.67%; }
 
 :root {
   /* Primarios */
@@ -24,7 +21,7 @@
   --almond:      #e5d8ca;
   --ink:         #263167;
 
-  --display: 'Arvo WFS', 'Rockwell', 'Georgia', serif;
+  --display: 'Alfa WFS', 'Rockwell', 'Georgia', serif;
   --sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --mono:    var(--sans);
   --body:    var(--sans);
