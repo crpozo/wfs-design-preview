@@ -47,7 +47,7 @@
   --sans: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   /* Se unifico a Inter: antes era Space Grotesk y creaba un tercer
      tipo de letra que desentonaba con el cuerpo. */
-  --mono: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   /* Body copy: Inter — an open-source face drawn on the same principles as
      SF Pro (tall x-height, open apertures, neutral UI feel). SF Pro itself
      can't be self-hosted; Inter gives the same look on every device, not
@@ -1640,3 +1640,19 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
   .wfs-areas-eyebrow { font-size: 12.5px; letter-spacing: .14em; }
   .wfs-areas-cta__card .wfs-areas-eyebrow::before { display: none; }
 }
+
+/* ── Opciones de cotizacion (contact.html#get-a-quote) ─────────────────── */
+.wfs-qopts__head { max-width: 720px; margin: 0 auto 40px; text-align: center; }
+.wfs-qopts__head h2 { margin: 0; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.02; letter-spacing: -.02em; color: var(--ink); }
+.wfs-qopts__head h2 span { color: var(--tangerine); }
+.wfs-qopts__head p { margin: 16px auto 0; font-size: 17px; line-height: 1.6; color: var(--charcoal); }
+.wfs-qopts__head .wfs-areas-eyebrow { justify-content: center; }
+.wfs-qopts__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.wfs-qopts__card { display: flex; flex-direction: column; padding: 28px 26px 26px; background: #f5f7fb; border-radius: 14px; border: 1.5px solid transparent; transition: border-color .18s ease, background .18s ease; }
+.wfs-qopts__card:hover { background: #ffffff; border-color: #263167; }
+.wfs-qopts__n { font-family: var(--display); font-size: 26px; line-height: 1; color: var(--tangerine); margin-bottom: 14px; }
+.wfs-qopts__card h3 { margin: 0 0 10px; font-family: var(--sans); font-size: 21px; font-weight: 700; line-height: 1.15; color: var(--ink); }
+.wfs-qopts__card p { margin: 0 0 22px; font-size: 15.5px; line-height: 1.55; color: var(--charcoal); }
+.wfs-qopts__links { margin-top: auto; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.wfs-qopts__links .btn { width: 100%; justify-content: center; }
+@media (max-width: 900px) { .wfs-qopts__grid { grid-template-columns: minmax(0, 1fr); } }

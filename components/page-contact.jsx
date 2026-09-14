@@ -105,6 +105,46 @@ const ContactInfo = () => {
   );
 };
 
+/* Opciones para conseguir la cotizacion. El boton "Get a Free Quote" de la
+   cabecera cae aqui (#get-a-quote): el cliente quiere que se vea que hay
+   VARIAS formas (llamar, chat con un asesor, formulario), no solo el form. */
+const QuoteOptions = () => {
+  const t = useT();
+  const opciones = [
+    { n: '01', title: { EN: 'Call a yard', ES: 'Llama a una sucursal' }, body: { EN: 'Talk to a rep right now. Mon-Fri 7:30am-3:30pm, Saturday mornings.', ES: 'Habla con un asesor ahora mismo. Lun-Vie 7:30am-3:30pm, sábados por la mañana.' },
+      links: [['Fort Myers (239) 465-2482', 'tel:2394652482'], ['Port Charlotte (941) 467-5821', 'tel:9414675821']] },
+    { n: '02', title: { EN: 'Talk to a live sales associate', ES: 'Chatea con un asesor de ventas' }, body: { EN: 'Live chat with a real person from the yard, no chatbot. Send photos or measurements right in the chat.', ES: 'Chat en vivo con una persona real de la sucursal, sin bots. Manda fotos o medidas por el mismo chat.' },
+      links: [[t('Start chatting', 'Empezar a chatear'), 'contact.html', openLiveChat]] },
+    { n: '03', title: { EN: 'Send us your project', ES: 'Envíanos tu proyecto' }, body: { EN: 'Fill out the form with linear feet, height and gates. We come back within 24 hours with stock, pricing and lead time.', ES: 'Llena el formulario con pies lineales, altura y portones. Respondemos en 24 horas con existencias, precio y plazo.' },
+      links: [[t('Fill out the form', 'Llenar el formulario'), '#contact']] },
+  ];
+  return (
+  <section id="get-a-quote" className="wfs-qopts" style={{ background: 'var(--white)', padding: 'clamp(56px, 8vh, 96px) 0 clamp(32px, 5vh, 56px)', scrollMarginTop: 120 }}>
+    <div className="container">
+      <div className="wfs-qopts__head">
+        <div className="wfs-areas-eyebrow">{t('Get a free quote', 'Cotización gratis')}</div>
+        <h2 className="display">{t('Three ways to get', 'Tres formas de conseguir')} <span>{t('your free quote.', 'tu cotización gratis.')}</span></h2>
+        <p>{t('Pick whichever is easiest for you. Every one of them lands with a real person at the yard.', 'Elige la que te quede más fácil. Todas llegan a una persona real de la sucursal.')}</p>
+      </div>
+      <div className="wfs-qopts__grid">
+        {opciones.map((o) => (
+          <div key={o.n} className="wfs-qopts__card">
+            <div className="wfs-qopts__n">{o.n}</div>
+            <h3>{t(o.title)}</h3>
+            <p>{t(o.body)}</p>
+            <div className="wfs-qopts__links">
+              {o.links.map(([label, href, onClick], i) => (
+                <a key={i} href={href} onClick={onClick} className={i === 0 ? 'btn btn-primary' : 'btn btn-ghost'} style={i === 0 ? undefined : { color: 'var(--ink)' }}>{label}</a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+  );
+};
+
 const ContactForm = () => {
   const t = useT();
   const [submitted, setSubmitted] = React.useState(false);
@@ -224,4 +264,4 @@ const ContactForm = () => {
   );
 };
 
-Object.assign(window, { ContactHero, ContactInfo, ContactForm });
+Object.assign(window, { ContactHero, ContactInfo, ContactForm, QuoteOptions });

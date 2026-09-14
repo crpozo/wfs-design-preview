@@ -152,7 +152,7 @@ const SiteHeader = ({ active }) => {
                 icono + 6px arriba y abajo): antes era un enlace subrayado mas
                 bajo y quedaba descentrado respecto al naranja. */}
             <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" className="mono wfs-hide-tablet" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 15px 6px 13px', minHeight: 35, borderRadius: 999, background: '#9fd1ff', color: 'var(--ink)', fontSize: 13, fontWeight: 700, letterSpacing: '0.11em', textTransform: 'uppercase', whiteSpace: 'nowrap', textDecoration: 'none', transition: 'background 0.2s ease, transform 0.2s ease', }}
+              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 15px 6px 13px', minHeight: 35, borderRadius: 999, background: '#9fd1ff', color: 'var(--ink)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.01em', whiteSpace: 'nowrap', textDecoration: 'none', transition: 'background 0.2s ease, transform 0.2s ease', }}
             onMouseEnter={e => { e.currentTarget.style.background = '#7fc0ff'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = '#9fd1ff'; e.currentTarget.style.transform = 'none'; }}>
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
@@ -160,8 +160,8 @@ const SiteHeader = ({ active }) => {
               </svg>
               {t('Draw My Fence', 'Dibuja mi cerca')}
             </a>
-            <a href="contact.html#contact" className="wfs-quote-pill" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 6px 6px 15px', borderRadius: 999, background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, letterSpacing: '0.11em', textTransform: 'uppercase', whiteSpace: 'nowrap', transition: 'background 0.2s ease, transform 0.2s ease', }}
+            <a href="contact.html#get-a-quote" className="wfs-quote-pill" style={{
+              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 6px 6px 15px', borderRadius: 999, background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.01em', whiteSpace: 'nowrap', transition: 'background 0.2s ease, transform 0.2s ease', }}
             aria-label={t('Get a Free Quote', 'Cotización gratis')}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--laser-blue)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'var(--ink)'; e.currentTarget.style.transform = 'none'; }}>
