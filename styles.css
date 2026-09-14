@@ -76,7 +76,7 @@
   --radius: 14px;
   --radius-lg: 22px;
   --max: 1440px;
-  --pad: clamp(20px, 4vw, 56px);
+  --pad: clamp(16px, 3vw, 40px);
 }
 
 * { box-sizing: border-box; }
@@ -298,7 +298,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 /* Tablet (≤ 1024px) */
 @media (max-width: 1024px) {
-  :root { --pad: clamp(20px, 4vw, 32px); }
+  :root { --pad: clamp(16px, 3vw, 24px); }
 
   /* Collapse 5-col grids → 3-col */
   [style*="repeat(5, 1fr)"] {
@@ -364,7 +364,7 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 /* Mobile (≤ 640px) */
 @media (max-width: 640px) {
-  :root { --pad: 22px; }
+  :root { --pad: 16px; }
 
   /* Prevent horizontal scroll from any wide element */
   html, body { overflow-x: hidden; }
