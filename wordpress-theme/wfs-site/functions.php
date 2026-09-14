@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.38.3' );
+define( 'WFS_VERSION', '4.38.4' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -659,13 +659,18 @@ function wfs_lock_phone_numbers() {
       /* Se reemplaza el telefono DENTRO del texto, para que tambien funcione
          en enlaces tipo "Call (239) 465-2482" y no solo cuando el enlace es
          unicamente el numero. */
-      var shown = a.textContent;
-      /* El "+1" y su separador solo cuentan si van juntos, para no comerse el
-         espacio de un texto como "Call (239) 465-2482". */
-      var fixed = shown.replace(/(?:\+?1[\s.-])?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}/g, function (m) {
-        return digits(m) === want ? m : REAL[want];
-      });
-      if (fixed !== shown) { a.textContent = fixed; }
+      /* Solo se tocan los nodos de TEXTO del enlace: escribir a.textContent
+         borraba el icono SVG del telefono de la barra superior cada vez que
+         el rastreador cambiaba el numero. El "+1" y su separador solo cuentan
+         si van juntos, para no comerse el espacio de "Call (239) 465-2482". */
+      var tw = document.createTreeWalker(a, NodeFilter.SHOW_TEXT), tn;
+      while ((tn = tw.nextNode())) {
+        var shown = tn.nodeValue;
+        var fixed = shown.replace(/(?:\+?1[\s.-])?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}/g, function (m) {
+          return digits(m) === want ? m : REAL[want];
+        });
+        if (fixed !== shown) { tn.nodeValue = fixed; }
+      }
     }
     restoreText();
     fixing = false;
