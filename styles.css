@@ -1657,6 +1657,6 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
 .wfs-qopts__links { margin-top: auto; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
 .wfs-qopts__links .btn { width: 100%; justify-content: center; }
 /* Azul y blanco: el naranja solo en el kicker. */
-.wfs-qopts__links .btn-primary { background: var(--ink); color: #ffffff; }
-.wfs-qopts__links .btn-primary:hover { background: var(--laser-blue); }
+.wfs-qopts__links .btn-primary { background: #9fd1ff; color: var(--ink); }
+.wfs-qopts__links .btn-primary:hover { background: #7fc0ff; }
 @media (max-width: 900px) { .wfs-qopts__grid { grid-template-columns: minmax(0, 1fr); } }
