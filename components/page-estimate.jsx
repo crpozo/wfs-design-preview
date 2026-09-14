@@ -23,7 +23,7 @@ const EstimateHero = () => {
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', maxWidth: 720 }}>
         <h1 style={{
           margin: '0 0 20px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 125", fontWeight: 800, fontSize: 'clamp(30px, 3.4vw, 48px)', lineHeight: 1.02, letterSpacing: '-0.015em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', }}>
-          {t('Draw your fence.', 'Dibuja tu cerca.')}{' '}
+          {t('Draw my fence.', 'Dibuja mi cerca.')}{' '}
           <span style={{ color: 'var(--blue-ice)' }}>{t('Get a binding quote in 24 hours.', 'Obtén una cotización en firme en 24 horas.')}</span>
         </h1>
         <p style={{
@@ -35,7 +35,7 @@ const EstimateHero = () => {
             display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 15.5, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 10px 28px rgba(255, 113, 51,0.4)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
           onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(255, 113, 51,0.5)'; }}
           onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(255, 113, 51,0.4)'; }}>
-            {t('Draw your fence', 'Dibuja tu cerca')}
+            {t('Draw my fence', 'Dibuja mi cerca')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
           <a href="#contact" className="mono" style={{

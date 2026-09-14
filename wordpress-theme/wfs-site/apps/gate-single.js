@@ -1,4 +1,1 @@
-(function(){ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(GatePage,{slug:"single"}));
-
-
-})();
+ReactDOM.createRoot(document.getElementById('root')).render(<GatePage slug="single" />);
