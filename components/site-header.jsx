@@ -148,18 +148,8 @@ const SiteHeader = ({ active }) => {
 
           {/* CTAs */}
           <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-            {/* Boton celeste con la MISMA caja que el pill de cotizacion (23px de
-                icono + 6px arriba y abajo): antes era un enlace subrayado mas
-                bajo y quedaba descentrado respecto al naranja. */}
-            <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" className="mono wfs-hide-tablet" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 15px 6px 13px', minHeight: 35, borderRadius: 999, background: '#9fd1ff', color: 'var(--ink)', fontSize: 13, fontWeight: 700, letterSpacing: '0.11em', textTransform: 'uppercase', whiteSpace: 'nowrap', textDecoration: 'none', transition: 'background 0.2s ease, transform 0.2s ease', }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#7fc0ff'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = '#9fd1ff'; e.currentTarget.style.transform = 'none'; }}>
-              <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-                <path d="M3 3 H13 V13 H3 Z M3 6 H13 M6 3 V13" stroke="currentColor" strokeWidth="1.4"/>
-              </svg>
-              {t('Draw Your Fence', 'Dibuja tu cerca')}
-            </a>
+            {/* 'Draw Your Fence' salio de aqui (sigue en el menu Get a Quote):
+                el cliente pidio menos botones. */}
             <a href="contact.html#contact" className="wfs-quote-pill" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 6px 6px 15px', borderRadius: 999, background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, letterSpacing: '0.11em', textTransform: 'uppercase', whiteSpace: 'nowrap', transition: 'background 0.2s ease, transform 0.2s ease', }}
             aria-label={t('Request Material Quote', 'Solicitar cotización de material')}
