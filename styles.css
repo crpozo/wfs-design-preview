@@ -1642,10 +1642,11 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
 }
 
 /* ── Opciones de cotizacion (contact.html#get-a-quote) ─────────────────── */
-.wfs-qopts__head { max-width: 720px; margin: 0 auto 40px; text-align: center; }
+/* Alineado a la izquierda como el hero y el resto de cabeceras de seccion. */
+.wfs-qopts__head { max-width: 720px; margin: 0 0 40px; text-align: left; }
 .wfs-qopts__head h2 { margin: 0; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.02; letter-spacing: -.02em; color: var(--ink); }
 .wfs-qopts__head h2 span { color: var(--laser-blue); }
-.wfs-qopts__head p { margin: 16px auto 0; font-size: 17px; line-height: 1.6; color: var(--charcoal); }
+.wfs-qopts__head p { margin: 16px 0 0; font-size: 17px; line-height: 1.6; color: var(--charcoal); }
 .wfs-qopts__sub { margin: 14px 0 0; font-family: var(--sans); font-size: clamp(19px, 1.8vw, 24px); font-weight: 700; line-height: 1.25; color: var(--laser-blue); }
 .wfs-qopts__head p { margin-top: 10px; }
 .wfs-qopts__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
