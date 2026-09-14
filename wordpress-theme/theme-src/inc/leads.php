@@ -68,6 +68,9 @@ function wfs_lead_fields( $form ) {
 			'project_type' => 'Project Type',
 			'source'       => 'How They Heard About Us',
 			'details'      => 'Project Details',
+			/* Solo vienen del configurador de Get a Quote (formulario prellenado). */
+			'configuration' => 'Fence Configuration',
+			'drawing_link'  => 'Drawing Tool Link',
 		),
 		'contact'  => array(
 			'name'    => 'Name',
@@ -107,7 +110,11 @@ function wfs_lead_body( $form, $data, $attachments, $meta ) {
 
 	foreach ( wfs_lead_fields( $form ) as $key => $label ) {
 		$value = isset( $data[ $key ] ) ? trim( (string) $data[ $key ] ) : '';
-		if ( '' === $value ) { $value = '(not provided)'; }
+		if ( '' === $value ) {
+			/* Los campos del configurador se omiten cuando el envio no viene de ahi. */
+			if ( in_array( $key, array( 'configuration', 'drawing_link' ), true ) ) { continue; }
+			$value = '(not provided)';
+		}
 		$out .= $label . ":\n" . $value . "\n" . $rule . "\n\n";
 	}
 

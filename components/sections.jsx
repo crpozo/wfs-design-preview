@@ -724,7 +724,9 @@ const ServiceAreas = () => {
   );
 };
 
-const FinalCTA = () => {
+/* prefill: { project_type, details, configuration, drawing_link } para llegar
+   con el formulario ya lleno desde el configurador de Get a Quote. */
+const FinalCTA = ({ prefill }) => {
   const t = useT();
   const [submitted, setSubmitted] = React.useState(false);
   const [sending, setSending] = React.useState(false);
@@ -853,7 +855,7 @@ const FinalCTA = () => {
                     </select>
                   </div>
                   <div><label style={formLabelStyle}>{t('Project type', 'Tipo de proyecto')}</label>
-                    <select name="project_type" style={inputStyle}>
+                    <select name="project_type" style={inputStyle} defaultValue={prefill && prefill.project_type}>
                       <option value="Vinyl / PVC">{t('Vinyl / PVC', 'Vinilo / PVC')}</option>
                       <option value="Aluminum">{t('Aluminum', 'Aluminio')}</option>
                       <option value="Chain Link">{t('Chain Link', 'Malla ciclónica')}</option>
@@ -884,9 +886,11 @@ const FinalCTA = () => {
                     <option value="Other">{t('Other', 'Otro')}</option>
                   </select>
                 </div>
+                {prefill && prefill.configuration && <input type="hidden" name="configuration" value={prefill.configuration} />}
+                {prefill && prefill.drawing_link && <input type="hidden" name="drawing_link" value={prefill.drawing_link} />}
                 <div style={{ marginBottom: 18 }}>
                   <label style={formLabelStyle}>{t('Project details', 'Detalles del proyecto')}</label>
-                  <textarea name="details" rows={4} style={{ ...inputStyle, resize: 'vertical', minHeight: 100 }} placeholder={t('Approx. linear feet, height, location/zip, timeline, anything else relevant…', 'Aprox. pies lineales, altura, ubicación/código postal, plazo, cualquier otro detalle relevante…')}/>
+                  <textarea name="details" rows={prefill ? 7 : 4} defaultValue={prefill && prefill.details} style={{ ...inputStyle, resize: 'vertical', minHeight: 100 }} placeholder={t('Approx. linear feet, height, location/zip, timeline, anything else relevant…', 'Aprox. pies lineales, altura, ubicación/código postal, plazo, cualquier otro detalle relevante…')}/>
                 </div>
 
                 {/* Drawing / layout upload, lets people send the sketch with the request */}

@@ -144,6 +144,17 @@ const QuoteFlow = () => {
     return m + (hIdx >= 0 && trail[hIdx] ? ' · ' + trail[hIdx].t : '');
   };
 
+  const flowPrefill = () => {
+    const m = (material ? material.t : '').toLowerCase();
+    const project_type = /vinyl|pvc/.test(m) ? 'Vinyl / PVC' : /alumin/.test(m) ? 'Aluminum' : /chain/.test(m) ? 'Chain Link'
+      : /metal|dura/.test(m) ? 'Metal / DuraFence' : /ec ?fence/.test(m) ? 'EC Fence' : /gate|port/.test(m) ? 'Gate System' : 'Other';
+    const lines = groups.map((g, i) => `${flowName(g.node.h, 'EN')}: ${trail[i] ? trail[i].t : '—'}`);
+    const configuration = lines.join(' · ');
+    const drawing_link = `${FLOW_APP}${terminal}`;
+    const details = t('Fence configuration from the Get a Quote tool:', 'Configuración de la herramienta Get a Quote:') + '\n' + lines.join('\n')
+      + '\n\n' + t('Approx. linear feet, location/zip, timeline:', 'Pies lineales aprox., ubicación/zip, plazo:') + ' ';
+    return { project_type, details, configuration, drawing_link };
+  };
   const onSummary = view === 'summary' && !!terminal;
   const onDetail = !onSummary && view !== 'material' && material;
   const header = onSummary
@@ -264,20 +275,32 @@ const QuoteFlow = () => {
                   </div>
                 ))}
               </dl>
-              {/* CTA: deja claro que redirige a la herramienta de dibujo del app */}
-              <a className="btn btn-primary" href={`${FLOW_APP}${terminal}`} target="_blank" rel="noopener" style={{
-                borderRadius: 2, fontWeight: 700, fontSize: 17, padding: '18px 28px', display: 'inline-flex', alignItems: 'center', gap: 10, }}>
-                {t('Continue to the drawing tool', 'Continuar a la herramienta de dibujo')}
-                <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M4 12 L12 4 M6 4 h6 v6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
-                </svg>
-              </a>
+              {/* CTA principal: el formulario de abajo ya viene lleno con esta
+                  configuracion; el de dibujo queda como segunda opcion. */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+                <a className="btn btn-primary" href="#contact" onClick={(e) => { e.preventDefault(); const el = document.getElementById('contact'); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }} style={{
+                  borderRadius: 2, fontWeight: 700, fontSize: 17, padding: '18px 28px', display: 'inline-flex', alignItems: 'center', gap: 10, }}>
+                  {t('Request a quote with this configuration', 'Pedir cotización con esta configuración')}
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 3v10M4 9l4 4 4-4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/></svg>
+                </a>
+                <a className="btn btn-ghost on-dark" href={`${FLOW_APP}${terminal}`} target="_blank" rel="noopener" style={{
+                  borderRadius: 2, fontWeight: 700, fontSize: 17, padding: '18px 28px', display: 'inline-flex', alignItems: 'center', gap: 10, color: '#fff', }}>
+                  {t('Continue to the drawing tool', 'Continuar a la herramienta de dibujo')}
+                  <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M4 12 L12 4 M6 4 h6 v6" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
+                  </svg>
+                </a>
+              </div>
               <div style={{ marginTop: 14, fontSize: 14.5, color: 'rgba(255,255,255,0.72)' }}>
                 {t("You'll be redirected to app.westernfencesupply.com to draw your fence with this exact configuration and get the instant material list.", 'Serás redirigido a app.westernfencesupply.com para dibujar tu cerca con esta configuración exacta y obtener la lista de materiales al instante.')}
               </div>
             </div>
           </div>
         )}
+
+        {/* Formulario ya lleno con la configuracion: el cliente pidio que al
+            elegir las opciones el form se llene solo y se envie desde aqui. */}
+        {onSummary && <FinalCTA key={terminal} prefill={flowPrefill()} />}
 
         {/* Empezar de nuevo */}
         {(onDetail || onSummary) && (
