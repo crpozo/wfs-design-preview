@@ -56,7 +56,8 @@ const ChatBanner = () => {
           {t('New and improved live chat: chat with a real sales associate now!',
              'Chat en vivo nuevo y mejorado: chatea con un asesor de ventas real ahora')}
         </span>
-        <span className="wfs-chatbanner__cta" aria-hidden="true">
+        <span className="wfs-chatbanner__cta">
+          <span className="wfs-chatbanner__cta-txt">{t('Start chatting', 'Empezar a chatear')}</span>
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3 8h9M8.5 4.5 12 8l-3.5 3.5" stroke="currentColor" strokeWidth="1.7"
                   strokeLinecap="round" strokeLinejoin="round"/>
