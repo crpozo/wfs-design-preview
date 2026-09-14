@@ -162,12 +162,12 @@ const SiteHeader = ({ active }) => {
             </a>
             <a href="contact.html#contact" className="wfs-quote-pill" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 6px 6px 15px', borderRadius: 999, background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--mono)', fontSize: 13, fontWeight: 700, letterSpacing: '0.11em', textTransform: 'uppercase', whiteSpace: 'nowrap', transition: 'background 0.2s ease, transform 0.2s ease', }}
-            aria-label={t('Request Material Quote', 'Solicitar cotización de material')}
+            aria-label={t('Get a Free Quote', 'Cotización gratis')}
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--laser-blue)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'var(--ink)'; e.currentTarget.style.transform = 'none'; }}>
               <span className="wfs-quote-pill__dot" style={{
                 width: 6, height: 6, borderRadius: '50%', background: '#ff7133', boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)', }}/>
-              <span className="wfs-quote-pill__label">{t('Request Material Quote', 'Solicitar cotización de material')}</span>
+              <span className="wfs-quote-pill__label">{t('Get a Free Quote', 'Cotización gratis')}</span>
               <span style={{
                 width: 23, height: 23, borderRadius: '50%', background: 'var(--tangerine)', color: 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, }}>
                 {/* Arrow on desktop; phone/contact icon on mobile, swap via CSS (styles.css @600px) */}
