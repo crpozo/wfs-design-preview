@@ -228,14 +228,21 @@
     'metal-p1-white': 1,
     'metal-p1-woodgrain': 1,
     'vinyl-picket-gray': 1,
+    'vinyl-picket-tan': 1,
     'vinyl-picket-white': 1,
     'vinyl-privacy-gray': 1,
+    'vinyl-privacy-tan': 1,
     'vinyl-privacy-white': 1,
     'vinyl-ranch-rail-gray': 1,
+    'vinyl-ranch-rail-tan': 1,
     'vinyl-ranch-rail-white': 1,
     'vinyl-semi-privacy-gray': 1,
+    'vinyl-semi-privacy-tan': 1,
     'vinyl-semi-privacy-white': 1
   };
+  /* Cache-bust de las variantes: se regeneraron (vinilo gris/tan) y el navegador
+     y GitHub Pages guardaban las viejas, que eran identicas al blanco. */
+  var TINTED_V = '?v=2';
   var COLOR_SLUG = { 'Black':'black', 'Bronze':'bronze', 'White':'white',
                      'Woodgrain':'woodgrain', 'Gray':'gray', 'Tan':'tan' };
   /* Los acabados claros se generaron sobre gris para que se vieran; el resto
@@ -561,10 +568,9 @@
     }
 
     if (st && s.color) {
-      /* Tan en vinilo es el color del propio dibujo, asi que no hay variante. */
       var slug = COLOR_SLUG[s.color];
       if (slug && TINTED[st.img + '-' + slug]) {
-        return 'assets/profiles/tinted/' + st.img + '-' + slug + '.jpg';
+        return 'assets/profiles/tinted/' + st.img + '-' + slug + '.jpg' + TINTED_V;
       }
     }
     if (st) { return 'assets/profiles/' + st.img + '.jpg'; }
