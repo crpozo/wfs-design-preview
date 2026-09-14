@@ -79,8 +79,10 @@ const AreasIntro = () => {
     ['FL', { EN: 'Statewide delivery on our own trucks', ES: 'Entrega en todo el estado con nuestros propios camiones' }],
     [{ EN: 'Same day', ES: 'Mismo día' }, { EN: 'Pickup on standard qualifying orders', ES: 'Retiro en pedidos estándar que califiquen' }],
   ];
+  /* En blanco: el hero ya es azul y el cliente no quiere dos bloques azules
+     seguidos. El bloque azul viene despues (Como funciona el retiro). */
   return (
-    <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', color: 'var(--parchment)', padding: '104px 0' }}>
+    <section className="wfs-areas-intro" style={{ background: 'var(--white)', padding: '104px 0' }}>
       <div className="container">
         <div className="wfs-areas-intro__head">
           <h2 className="display">
@@ -95,7 +97,7 @@ const AreasIntro = () => {
           </p>
           <div className="wfs-areas-intro__ctas">
             <a href="contact.html#contact" className="btn btn-primary">{t('Request a Quote', 'Solicitar cotización')} <ArrowRight /></a>
-            <a href="tel:2394652482" className="btn btn-ghost on-dark" style={{ color: 'var(--parchment)' }}>{t('Call (239) 465-2482', 'Llamar (239) 465-2482')}</a>
+            <a href="tel:2394652482" className="btn btn-ghost" style={{ color: 'var(--ink)' }}>{t('Call (239) 465-2482', 'Llamar (239) 465-2482')}</a>
           </div>
         </div>
         <dl className="wfs-areas-facts">
@@ -167,7 +169,10 @@ const AreasList = ({ groups, hot, setHot }) => {
           onMouseEnter={() => setHot(g.key)} onMouseLeave={() => setHot(null)}>
           <h3>{t(`${g.county} County`, `Condado de ${g.county}`)}</h3>
           {g.yard && (
-            <div className="wfs-areas-yard">{t({ EN: <><span className="wfs-areas-nowrap">{AREAS_YARD_NAMES[g.yard]}</span> yard</>, ES: <>Sucursal <span className="wfs-areas-nowrap">{AREAS_YARD_NAMES[g.yard]}</span></> })}</div>
+            <div className="wfs-areas-yard" title={t('Closest yard', 'Sucursal más cercana')}>
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 15s5-4.6 5-8.5A5 5 0 0 0 3 6.5C3 10.4 8 15 8 15Z" stroke="currentColor" strokeWidth="1.6"/><circle cx="8" cy="6.5" r="1.6" fill="currentColor"/></svg>
+              {AREAS_YARD_NAMES[g.yard]}{' '}{t('yard', '')}
+            </div>
           )}
           <ul className="wfs-areas-towns">
             {g.towns.map((tw) => Array.isArray(tw)
