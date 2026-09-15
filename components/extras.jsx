@@ -440,12 +440,14 @@ const AboutIntro = () => {
             ))}
           </div>
 
-          <div style={{ marginTop: 36, display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center' }}>
-            <a href="contact.html#contact"
+          {/* Los dos a la par (sin uppercase ni tracking, que los hacia demasiado
+              anchos y el enlace caia debajo). */}
+          <div style={{ marginTop: 36, display: 'flex', gap: 24, flexWrap: 'wrap', alignItems: 'center' }}>
+            <a href="contact.html#get-a-quote"
               onMouseEnter={() => setCtaHover(true)}
               onMouseLeave={() => setCtaHover(false)}
               style={{
-                display: 'inline-flex', alignItems: 'center', gap: 16, padding: '14px 14px 14px 26px', borderRadius: 999, background: ctaHover ? 'var(--laser-blue)' : 'var(--ink)', color: 'var(--white)', textDecoration: 'none', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', transition: 'background 0.2s ease, transform 0.2s ease', transform: ctaHover ? 'translateY(-1px)' : 'none', boxShadow: '0 18px 36px -18px rgba(38, 49, 102,0.5)', }}>
+                display: 'inline-flex', alignItems: 'center', gap: 16, padding: '14px 14px 14px 26px', borderRadius: 999, background: ctaHover ? 'var(--laser-blue)' : 'var(--ink)', color: 'var(--white)', textDecoration: 'none', fontFamily: 'var(--sans)', fontSize: 15.5, fontWeight: 700, letterSpacing: '0.01em', transition: 'background 0.2s ease, transform 0.2s ease', transform: ctaHover ? 'translateY(-1px)' : 'none', boxShadow: '0 18px 36px -18px rgba(38, 49, 102,0.5)', }}>
               {t('Start Your Fence Project', 'Inicia tu proyecto de cerca')}
               <span style={{
                 width: 30, height: 30, borderRadius: '50%', background: 'var(--white)', color: 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
@@ -455,7 +457,7 @@ const AboutIntro = () => {
               </span>
             </a>
             <a href="about.html" className="mono" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '14px 0', fontSize: 14, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--ink)', borderBottom: '1px solid var(--ink)', }}>
+              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '10px 0', fontSize: 15.5, fontWeight: 700, letterSpacing: '0.01em', color: 'var(--ink)', borderBottom: '2px solid var(--tangerine)', whiteSpace: 'nowrap', }}>
               {t('Tour the shop', 'Recorre la planta')}
               <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
