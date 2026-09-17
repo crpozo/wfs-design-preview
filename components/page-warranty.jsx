@@ -394,7 +394,7 @@ const ClaimsForm = () => {
               </div>
               {error && (
                 <p role="alert" style={{
-                  gridColumn: 'span 2', margin: 0, padding: '14px 16px', background: 'rgba(255,113,51,0.08)', border: '1px solid rgba(255,113,51,0.35)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)', }}>{error}</p>
+                  gridColumn: 'span 2', margin: 0, padding: '14px 16px', background: 'rgba(61, 148, 228,0.08)', border: '1px solid rgba(61, 148, 228,0.35)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)', }}>{error}</p>
               )}
             </form>
             )}
@@ -406,7 +406,7 @@ const ClaimsForm = () => {
               background: 'var(--ink)', color: 'var(--white)', padding: '28px 28px 26px', }}>
               <div className="mono" style={{
                 fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em', color: 'var(--tangerine)', textTransform: 'uppercase', marginBottom: 14, display: 'flex', alignItems: 'center', gap: 10, }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff7133', boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)' }}/>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#3d94e4', boxShadow: '0 0 0 3px rgba(61, 148, 228,0.25)' }}/>
                 {t('Live · 7:30am - 3:30pm EST', 'En vivo · 7:30am - 3:30pm EST')}
               </div>
               <h3 className="display" style={{

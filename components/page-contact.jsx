@@ -244,7 +244,7 @@ const ContactForm = () => {
                   {t('By submitting, you agree to be contacted by Western Fence Supply.', 'Al enviar, aceptas que Western Fence Supply te contacte.')}
                 </span>
                 <button type="submit" disabled={sending} style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 10, opacity: sending ? 0.6 : 1, padding: '15px 28px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', boxShadow: '0 10px 26px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s', }}
+                  display: 'inline-flex', alignItems: 'center', gap: 10, opacity: sending ? 0.6 : 1, padding: '15px 28px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', boxShadow: '0 10px 26px rgba(61, 148, 228,0.35)', transition: 'transform 0.18s', }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; }}>
                   {sending ? t('Sending…', 'Enviando…') : t('Send message', 'Enviar mensaje')}
@@ -253,7 +253,7 @@ const ContactForm = () => {
               </div>
               {error && (
                 <p role="alert" style={{
-                  margin: 0, padding: '14px 16px', borderRadius: 12, background: 'rgba(255,113,51,0.08)', border: '1px solid rgba(255,113,51,0.35)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)', }}>{error}</p>
+                  margin: 0, padding: '14px 16px', borderRadius: 12, background: 'rgba(61, 148, 228,0.08)', border: '1px solid rgba(61, 148, 228,0.35)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)', }}>{error}</p>
               )}
             </form>
           )}

@@ -166,7 +166,7 @@ const SiteHeader = ({ active }) => {
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--laser-blue)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'var(--ink)'; e.currentTarget.style.transform = 'none'; }}>
               <span className="wfs-quote-pill__dot" style={{
-                width: 6, height: 6, borderRadius: '50%', background: '#ff7133', boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)', }}/>
+                width: 6, height: 6, borderRadius: '50%', background: '#3d94e4', boxShadow: '0 0 0 3px rgba(61, 148, 228,0.25)', }}/>
               <span className="wfs-quote-pill__label">{t('Get a Free Quote', 'Cotización gratis')}</span>
               <span style={{
                 width: 23, height: 23, borderRadius: '50%', background: 'var(--tangerine)', color: 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, }}>
@@ -221,7 +221,7 @@ const SiteHeader = ({ active }) => {
             <button onClick={() => setMobileOpen(false)} aria-label={t('Close menu', 'Cerrar menú')} style={{
               flexShrink: 0, width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0, background: '#263166', border: 'none', cursor: 'pointer', padding: 0, }}>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M3 3 L15 15 M15 3 L3 15" stroke="#ff7133" strokeWidth="2" strokeLinecap="square"/>
+                <path d="M3 3 L15 15 M15 3 L3 15" stroke="#3d94e4" strokeWidth="2" strokeLinecap="square"/>
               </svg>
             </button>
           </div>
@@ -332,7 +332,7 @@ const SiteHeader = ({ active }) => {
             <a href="tel:2394652482" style={{
               display: 'inline-flex', alignItems: 'center', gap: 14, padding: '14px 16px', background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--mono)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', }}>
               <span style={{
-                width: 7, height: 7, borderRadius: '50%', background: '#ff7133', boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)', }}/>
+                width: 7, height: 7, borderRadius: '50%', background: '#3d94e4', boxShadow: '0 0 0 3px rgba(61, 148, 228,0.25)', }}/>
               {t('Call (239) 465-2482', 'Llamar (239) 465-2482')}
             </a>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>

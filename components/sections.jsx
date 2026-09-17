@@ -650,7 +650,7 @@ const ServiceAreas = () => {
           <div className="wfs-map" style={{
             position: 'relative', background: 'var(--ink)', border: '1px solid var(--ink)', overflow: 'hidden', aspectRatio: '192 / 152', }}>
             {/* Map, viewBox cropped to Florida (624 432 192 152) */}
-            <img loading="lazy" decoding="async" src="assets/us-map.svg" alt={t('Florida map showing WFS service area', 'Mapa de Florida que muestra la zona de servicio de WFS')}
+            <img loading="lazy" decoding="async" src="assets/us-map.svg?v=2" alt={t('Florida map showing WFS service area', 'Mapa de Florida que muestra la zona de servicio de WFS')}
               style={{
                 position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', }}/>
 
@@ -691,7 +691,7 @@ const ServiceAreas = () => {
 
             {/* Legend, bottom-left */}
             <div style={{
-              position: 'absolute', bottom: 16, left: 16, background: 'rgba(38, 49, 102,0.85)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,113,51,0.4)', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 10, boxShadow: '0 8px 20px rgba(0,0,0,0.32)', }}>
+              position: 'absolute', bottom: 16, left: 16, background: 'rgba(38, 49, 102,0.85)', backdropFilter: 'blur(6px)', border: '1px solid rgba(61, 148, 228,0.4)', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 10, boxShadow: '0 8px 20px rgba(0,0,0,0.32)', }}>
               <span style={{
                 width: 8, height: 8, borderRadius: '50%', background: 'var(--white)', border: '2px solid var(--ink)', }}/>
               <span className="mono" style={{
@@ -820,7 +820,7 @@ const FinalCTA = ({ prefill }) => {
 
             <div style={{ paddingTop: 24, borderTop: '1px solid rgba(0,16,17,0.15)' }}>
               <div className="mono" style={{ fontSize: 14, letterSpacing: '0.16em', color: 'var(--ink)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ width: 8, height: 8, background: '#ff7133', borderRadius: '50%' }}/>
+                <span style={{ width: 8, height: 8, background: '#3d94e4', borderRadius: '50%' }}/>
                 {t('Get a detailed quote', 'Pide tu cotización')}
               </div>
             </div>
@@ -897,7 +897,7 @@ const FinalCTA = ({ prefill }) => {
                 <div style={{ marginBottom: 24 }}>
                   <label style={formLabelStyle}>{t('Drawing or layout (optional)', 'Plano o diseño (opcional)')}</label>
                   <label htmlFor="wfs-upload" style={{
-                    display: 'flex', alignItems: 'center', gap: 14, padding: '16px 18px', borderRadius: 12, border: '1.5px dashed ' + (fileName ? 'var(--tangerine)' : 'rgba(255,255,255,0.3)'), background: fileName ? 'rgba(255,113,51,0.12)' : 'rgba(255,255,255,0.06)', cursor: 'pointer', transition: 'border-color 0.15s, background 0.15s', }}>
+                    display: 'flex', alignItems: 'center', gap: 14, padding: '16px 18px', borderRadius: 12, border: '1.5px dashed ' + (fileName ? 'var(--tangerine)' : 'rgba(255,255,255,0.3)'), background: fileName ? 'rgba(61, 148, 228,0.12)' : 'rgba(255,255,255,0.06)', cursor: 'pointer', transition: 'border-color 0.15s, background 0.15s', }}>
                     <span aria-hidden style={{
                       width: 42, height: 42, borderRadius: 11, flexShrink: 0, background: fileName ? 'var(--tangerine)' : 'rgba(255,255,255,0.16)', color: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', }}>
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -923,14 +923,14 @@ const FinalCTA = ({ prefill }) => {
                     {t('By submitting, you agree to be contacted by Western Fence Supply.', 'Al enviar, aceptas ser contactado por Western Fence Supply.')}
                   </p>
                   <button type="submit" disabled={sending} style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 10, padding: '16px 28px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, boxShadow: '0 12px 30px -10px rgba(255,113,51,0.55)', opacity: sending ? 0.6 : 1, cursor: sending ? 'wait' : 'pointer', }}>
+                    display: 'inline-flex', alignItems: 'center', gap: 10, padding: '16px 28px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, boxShadow: '0 12px 30px -10px rgba(61, 148, 228,0.55)', opacity: sending ? 0.6 : 1, cursor: sending ? 'wait' : 'pointer', }}>
                     {sending ? t('Sending…', 'Enviando…') : t('Request quote', 'Solicitar cotización')}
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
                   </button>
                 </div>
                 {error && (
                   <p role="alert" style={{
-                    margin: '18px 0 0', padding: '14px 16px', borderRadius: 12, background: 'rgba(255,113,51,0.16)', border: '1px solid rgba(255,113,51,0.5)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--white)', }}>{error}</p>
+                    margin: '18px 0 0', padding: '14px 16px', borderRadius: 12, background: 'rgba(61, 148, 228,0.16)', border: '1px solid rgba(61, 148, 228,0.5)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--white)', }}>{error}</p>
                 )}
               </>
             )}
