@@ -32,9 +32,9 @@ const EstimateHero = () => {
         </p>
         <div style={{ marginTop: 32, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
           <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 15.5, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 10px 28px rgba(61, 148, 228,0.4)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(61, 148, 228,0.5)'; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(61, 148, 228,0.4)'; }}>
+            display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 15.5, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 10px 28px rgba(255, 113, 51,0.4)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
+          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(255, 113, 51,0.5)'; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(255, 113, 51,0.4)'; }}>
             {t('Draw my fence', 'Dibuja mi cerca')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
@@ -80,7 +80,7 @@ const LiveAgentBand = () => {
         <div>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3vw, 44px)', lineHeight: 1, letterSpacing: '-0.02em', maxWidth: 620, }}>
-            {t('Talk to a', 'Habla con un')} <span style={{ color: 'var(--tangerine)' }}>{t('real sales rep', 'asesor de ventas real')}</span>
+            {t('Talk to a', 'Habla con un')} <span style={{ color: 'var(--sky)' }}>{t('real sales rep', 'asesor de ventas real')}</span>
             <span style={{ color: 'var(--charcoal)', fontWeight: 700 }}>{t(', no chatbot.', ', sin chatbot.')}</span>
           </h2>
         </div>

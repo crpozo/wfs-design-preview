@@ -241,14 +241,14 @@ const FENCE_RARITY = {
   aluminum:  { c1: '#6381d6', c2: '#263166' }, // glaucous → indigo
   chainlink: { c1: '#97baff', c2: '#2e59c1' }, // blue-ice → laser-blue
   metal:     { c1: '#c1c1c1', c2: '#565656' }, // silver → charcoal
-  ecfence:   { c1: '#3d94e4', c2: '#263166' }, // tangerine accent → ink
+  ecfence:   { c1: '#ff7133', c2: '#263166' }, // tangerine accent → ink
 };
 const GATE_RARITY = {
   'single-swing': { c1: '#97baff', c2: '#6381d6' }, // steel blue
   'double-swing': { c1: '#6381d6', c2: '#263166' }, // teal
   'sliding':      { c1: '#e5d8ca', c2: '#565656' }, // brass
   'cantilever':   { c1: '#c1c1c1', c2: '#565656' }, // graphite
-  'rolling':      { c1: '#9fd1ff', c2: '#3d94e4' }, // industrial orange
+  'rolling':      { c1: '#ffa180', c2: '#ff7133' }, // industrial orange
 };
 
 /* Single selectable card in the rail, game-locker style.
@@ -696,7 +696,7 @@ const WhyWFS = () => {
             <h2 className="display" style={{
               margin: '14px 0 0', fontSize: 'clamp(34px, 5vw, 56px)', lineHeight: 1.0, letterSpacing: '-0.02em', }}>
               {t('Built by fencers.', 'Hecho por cerqueros.')}<br/>
-              <span style={{ color: 'var(--tangerine)' }}>{t('Priced like a supplier.', 'Preciado como proveedor.')}</span>
+              <span style={{ color: 'var(--sky)' }}>{t('Priced like a supplier.', 'Preciado como proveedor.')}</span>
             </h2>
             <p style={{ margin: '18px 0 0', fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>
               {t(

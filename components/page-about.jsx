@@ -26,7 +26,7 @@ const AboutStory = () => {
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3vw, 44px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, maxWidth: 640, }}>
             {t("From contractor's yard", 'De la sucursal de un contratista')} <br/>
-            <span style={{ color: 'var(--tangerine)' }}>{t("to SW Florida's supply hub.", 'al centro de suministro del suroeste de Florida.')}</span>
+            <span style={{ color: 'var(--sky)' }}>{t("to SW Florida's supply hub.", 'al centro de suministro del suroeste de Florida.')}</span>
           </h2>
         </div>
         <p style={{
@@ -60,14 +60,14 @@ const AboutStory = () => {
         <div style={{ position: 'relative', paddingLeft: 56 }}>
           {/* Spine line */}
           <div aria-hidden style={{
-            position: 'absolute', left: 17, top: 14, bottom: 14, width: 1, background: 'rgba(61, 148, 228,0.35)', }}/>
+            position: 'absolute', left: 17, top: 14, bottom: 14, width: 1, background: 'rgba(255,113,51,0.35)', }}/>
           {[
             ['01', { EN: 'Supply only', ES: 'Solo suministro' }, { EN: 'We are a supply company, not an installer. We sell the material your fence is built from and can recommend trusted local installers for the build.', ES: 'Somos una empresa de suministro, no instaladores. Vendemos el material con el que se construye tu cerca y podemos recomendarte instaladores locales de confianza para la obra.' }], ['02', { EN: 'In-house fabrication', ES: 'Fabricación en planta' }, { EN: 'Gates and custom work are fabricated in-house at our Fort Myers yard.', ES: 'Los portones y los trabajos a medida se fabrican en planta, en nuestra sucursal de Fort Myers.' }], ['03', { EN: 'Four fence systems', ES: 'Cuatro sistemas de cercas' }, { EN: 'Premium vinyl, aluminum, chain link and metal fencing, sold to fence companies and homeowners alike.', ES: 'Cercas premium de vinilo, aluminio, malla ciclónica y metal, para empresas de cercas y propietarios por igual.' }], ['04', { EN: 'Two yards', ES: 'Dos sucursales' }, { EN: 'Two convenient yard locations in Fort Myers and Port Charlotte, serving customers throughout Florida, including Lee, Collier, Charlotte, Hendry, and surrounding counties.', ES: 'Dos sucursales convenientes en Fort Myers y Port Charlotte, al servicio de clientes en toda Florida, incluidos los condados de Lee, Collier, Charlotte, Hendry y los alrededores.' }], ['05', { EN: 'Delivery or pickup', ES: 'Entrega o retiro' }, { EN: 'Job-site delivery on our own trucks, or same-day pickup on standard qualifying orders.', ES: 'Entrega en obra con nuestros propios camiones, o retiro el mismo día en pedidos estándar que califiquen.' }], ].map(([y, label, body], i, arr) => (
             <div key={y} style={{
               position: 'relative', paddingBottom: i === arr.length - 1 ? 0 : 44, }}>
               {/* Dot on the spine */}
               <span aria-hidden style={{
-                position: 'absolute', left: -45, top: 10, width: 14, height: 14, borderRadius: '50%', background: 'var(--tangerine)', border: '3px solid var(--white)', boxShadow: '0 0 0 1px rgba(61, 148, 228,0.5)', }}/>
+                position: 'absolute', left: -45, top: 10, width: 14, height: 14, borderRadius: '50%', background: 'var(--tangerine)', border: '3px solid var(--white)', boxShadow: '0 0 0 1px rgba(255,113,51,0.5)', }}/>
               <div style={{
                 display: 'grid', gridTemplateColumns: '88px 1fr', gap: 28, alignItems: 'baseline', }}>
                 <div className="display" style={{
@@ -109,7 +109,7 @@ const AboutValues = () => {
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02, letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase', }}>
           {t('Three rules', 'Tres reglas')}<br/>
-          <span style={{ color: 'var(--tangerine)' }}>{t("we don't break.", 'que no rompemos.')}</span>
+          <span style={{ color: 'var(--sky)' }}>{t("we don't break.", 'que no rompemos.')}</span>
         </h2>
         <p style={{
           margin: 0, maxWidth: 360, justifySelf: 'end', textAlign: 'right', fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)', }}>

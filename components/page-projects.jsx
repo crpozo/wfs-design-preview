@@ -93,7 +93,7 @@ const ProjectsCaseStudy = () => {
             <h2 className="display" style={{
               margin: 0, fontSize: 'clamp(32px, 3.6vw, 48px)', lineHeight: 1, letterSpacing: '-0.02em', }}>
               {t('1.4 miles of perimeter.', '1.4 millas de perímetro.')}<br/>
-              <span style={{ color: 'var(--tangerine)' }}>{t('Six cantilever gates.', 'Seis portones cantilever.')}</span><br/>
+              <span style={{ color: 'var(--sky)' }}>{t('Six cantilever gates.', 'Seis portones cantilever.')}</span><br/>
               {t('Eleven weeks.', 'Once semanas.')}
             </h2>
             <p style={{ marginTop: 18, fontSize: 17, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 520 }}>

@@ -176,7 +176,7 @@ const QuoteFlow = () => {
           display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 40, alignItems: 'end', paddingBottom: 22, marginBottom: 34, boxShadow: 'inset 0 -1px 0 rgba(0,16,17,0.12)', }} className="wfs-flow-header">
           <h2 className="display" style={{ margin: 0, fontSize: 'clamp(26px, 2.9vw, 38px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800 }}>
             {header[lang === 'ES' ? 'ES' : 'EN'][0]}<br/>
-            <span style={{ color: 'var(--tangerine)' }}>{header[lang === 'ES' ? 'ES' : 'EN'][1]}</span>
+            <span style={{ color: 'var(--sky)' }}>{header[lang === 'ES' ? 'ES' : 'EN'][1]}</span>
           </h2>
           <p style={{ margin: 0, justifySelf: 'end', textAlign: 'right', maxWidth: 380, fontSize: 14.5, lineHeight: 1.55, color: 'var(--charcoal)' }}>
             {onSummary

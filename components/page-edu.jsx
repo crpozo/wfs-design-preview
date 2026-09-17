@@ -67,7 +67,7 @@ const ArticlesFeatured = () => {
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(26px, 2.8vw, 38px)', fontWeight: 800, letterSpacing: '-0.015em', color: 'var(--ink)', }}>
             {t('Start with', 'Empieza con')}{' '}
-            <span style={{ color: 'var(--tangerine)' }}>{t('these guides.', 'estas guías.')}</span>
+            <span style={{ color: 'var(--sky)' }}>{t('these guides.', 'estas guías.')}</span>
           </h2>
           <p style={{
             margin: 0, maxWidth: 380, fontSize: 15.5, lineHeight: 1.55, color: 'var(--charcoal)', }}>
@@ -387,7 +387,7 @@ const PoolCodeChecklist = () => {
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', }}>
             {t('Before you', 'Antes de')}<br/>
-            <span style={{ color: 'var(--tangerine)' }}>{t('file the permit.', 'presentar el permiso.')}</span>
+            <span style={{ color: 'var(--sky)' }}>{t('file the permit.', 'presentar el permiso.')}</span>
           </h2>
           <p style={{ marginTop: 18, fontSize: 16, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 360 }}>
             {t('Use this checklist as general planning guidance. Western Fence Supply provides materials only and does not review plans, determine code compliance, prepare permits, perform installation, or manage inspections.', 'Usa esta lista como guía general de planeación. Western Fence Supply provee únicamente materiales y no revisa planos, determina cumplimiento de código, prepara permisos, realiza instalación ni gestiona inspecciones.')}
@@ -512,7 +512,7 @@ const FaqTopics = () => {
             {FAQ_TOPICS.map((tp, i) => (
               <a key={tp.id} href={`#faq-${tp.id}`} className="mono" style={{
                 display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', fontSize: 14, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink)', border: '1px solid rgba(0,16,17,0.12)', }}>
-                <span style={{ color: 'var(--tangerine)' }}>0{i + 1}</span>
+                <span style={{ color: 'var(--sky)' }}>0{i + 1}</span>
                 {t(tp.title)}
               </a>
             ))}

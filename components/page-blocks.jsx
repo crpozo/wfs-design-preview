@@ -45,9 +45,9 @@ const PageHero = ({ eyebrow, title, accent, accentBreak, subtitle, image, crumbs
           {actions.map((a, i) => (
             a.primary ? (
               <a key={i} href={a.href} download={a.download} style={{
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '15px 28px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 8px 24px rgba(61, 148, 228,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(61, 148, 228,0.45)'; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(61, 148, 228,0.35)'; }}>
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '15px 28px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 113, 51,0.35)'; }}>
                 {a.label}
               </a>
             ) : (
@@ -71,7 +71,7 @@ const PageSectionHeader = ({ number, label, title, accent, sub, link }) => (
     <div>
       <h2 className="display" style={{
         margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, }}>
-        {title}{accent && <span style={{ display: 'block', color: 'var(--tangerine)' }}>{accent}</span>}
+        {title}{accent && <span style={{ display: 'block', color: 'var(--sky)' }}>{accent}</span>}
       </h2>
     </div>
     <div style={{
@@ -119,7 +119,7 @@ const CTABand = ({ kicker, title, accent, body, primary, secondary, theme = 'cre
           <div>
             <h2 className="display" style={{
               fontSize: 'clamp(30px, 3.5vw, 48px)', lineHeight: 1, letterSpacing: '-0.02em', margin: 0, }}>
-              {title}{accent && <> <span style={{ color: 'var(--tangerine)' }}>{accent}</span></>}
+              {title}{accent && <> <span style={{ color: 'var(--sky)' }}>{accent}</span></>}
             </h2>
             {body && (
               <p style={{
@@ -193,7 +193,7 @@ const SplitBlock = ({ kicker, title, accent, body, bullets, image, imageAlt, ima
               margin: 0, fontSize: 'clamp(28px, 3vw, 42px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, }}>
               {/* Acento en bloque (no <br/>): text-wrap: balance no reparte
                   las lineas de un parrafo cortado con <br/>. */}
-              {title}{accent && <span style={{ display: 'block', color: 'var(--tangerine)' }}>{accent}</span>}
+              {title}{accent && <span style={{ display: 'block', color: 'var(--sky)' }}>{accent}</span>}
             </h2>
             {body && (
               <p style={{
@@ -239,7 +239,7 @@ const UseCaseRow = ({ title, body, badge, index }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
-        display: 'grid', gridTemplateColumns: '104px 1.15fr 1fr 48px', gap: 28, alignItems: 'center', padding: '32px 22px', margin: '0 -22px', borderBottom: '1px solid rgba(0,16,17,0.1)', textDecoration: 'none', color: 'inherit', background: hover ? 'rgba(61, 148, 228,0.07)' : 'transparent', transition: 'background 0.2s ease', }}>
+        display: 'grid', gridTemplateColumns: '104px 1.15fr 1fr 48px', gap: 28, alignItems: 'center', padding: '32px 22px', margin: '0 -22px', borderBottom: '1px solid rgba(0,16,17,0.1)', textDecoration: 'none', color: 'inherit', background: hover ? 'rgba(255,113,51,0.07)' : 'transparent', transition: 'background 0.2s ease', }}>
       <span className="display wfs-usecase-num" aria-hidden style={{
         fontSize: 61.5, lineHeight: 1, fontWeight: 800, color: hover ? 'var(--tangerine)' : 'transparent', WebkitTextStroke: hover ? '0px transparent' : '1.5px rgba(38,49,102,0.32)', transition: 'color 0.2s ease', }}>0{index + 1}</span>
       <div>

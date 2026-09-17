@@ -38,9 +38,9 @@ const HomeownerHero = () => {
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
           <a href="contact.html#contact"
             style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', boxShadow: '0 8px 24px rgba(61, 148, 228,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(61, 148, 228,0.45)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(61, 148, 228,0.35)'; }}>
+              display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 113, 51,0.35)'; }}>
             {t('Get started', 'Comenzar')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
@@ -124,7 +124,7 @@ const HomeownerSteps = () => {
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02, letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase', }}>
           {t('Measure once,', 'Mide una vez,')}<br/>
-          <span style={{ color: 'var(--tangerine)' }}>{t('build once.', 'construye una vez.')}</span>
+          <span style={{ color: 'var(--sky)' }}>{t('build once.', 'construye una vez.')}</span>
         </h2>
         <p style={{
           margin: 0, maxWidth: 340, justifySelf: 'end', textAlign: 'right', fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)', }}>
@@ -198,7 +198,7 @@ const HomeownerStylePicker = () => {
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, }}>
             {t('Find the style', 'Encuentra el estilo')}<br/>
-            <span style={{ color: 'var(--tangerine)' }}>{t('that fits your home.', 'que va con tu hogar.')}</span>
+            <span style={{ color: 'var(--sky)' }}>{t('that fits your home.', 'que va con tu hogar.')}</span>
           </h2>
         </div>
         <div style={{
@@ -241,9 +241,9 @@ const HomeownerInstallerSplit = () => {
       <article
         {...rest}
         onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = dark ? '0 18px 36px rgba(0,0,0,0.35)' : '12px 12px 0 var(--tangerine)'; }}
-        onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = dark ? '0 8px 18px rgba(0,0,0,0.2)' : '8px 8px 0 rgba(61, 148, 228,0.85)'; }}
+        onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = dark ? '0 8px 18px rgba(0,0,0,0.2)' : '8px 8px 0 rgba(255,113,51,0.85)'; }}
         style={{
-          background: dark ? 'var(--ink)' : 'var(--white)', color: dark ? 'var(--white)' : 'var(--ink)', border: dark ? 'none' : '1.5px solid var(--ink)', padding: '40px 44px 36px', display: 'flex', flexDirection: 'column', boxShadow: dark ? '0 8px 18px rgba(0,0,0,0.2)' : '8px 8px 0 rgba(61, 148, 228,0.85)', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
+          background: dark ? 'var(--ink)' : 'var(--white)', color: dark ? 'var(--white)' : 'var(--ink)', border: dark ? 'none' : '1.5px solid var(--ink)', padding: '40px 44px 36px', display: 'flex', flexDirection: 'column', boxShadow: dark ? '0 8px 18px rgba(0,0,0,0.2)' : '8px 8px 0 rgba(255,113,51,0.85)', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
       >{children}</article>
     );
   };
@@ -369,7 +369,7 @@ const HomeownerFAQ = () => {
             <h2 className="display" style={{
               margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, }}>
               {t('Common homeowner', 'Preguntas comunes de')}<br/>
-              <span style={{ color: 'var(--tangerine)' }}>{t('questions.', 'propietarios.')}</span>
+              <span style={{ color: 'var(--sky)' }}>{t('questions.', 'propietarios.')}</span>
             </h2>
             <p style={{
               marginTop: 24, fontSize: 15.5, lineHeight: 1.6, color: 'var(--charcoal)', maxWidth: 340, marginBottom: 28, }}>
@@ -451,7 +451,7 @@ const HomeownerClosingCTA = () => {
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(32px, 4vw, 56px)', lineHeight: 1, letterSpacing: '-0.02em', color: 'var(--white)', }}>
           {t('Send a sketch.', 'Envía un boceto.')}<br/>
-          <span style={{ color: 'var(--tangerine)' }}>{t('Quote in 24 hours.', 'Cotización en 24 horas.')}</span>
+          <span style={{ color: 'var(--sky)' }}>{t('Quote in 24 hours.', 'Cotización en 24 horas.')}</span>
         </h2>
         <p className="mono" style={{
           margin: '22px 0 0', maxWidth: 520, fontSize: 14.5, lineHeight: 1.7, color: 'rgba(255,255,255,0.7)', }}>
@@ -488,7 +488,7 @@ const HomeownerPaths = () => {
           </div>
           <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 42px)', lineHeight: 1.05, letterSpacing: '-0.02em', fontWeight: 800, textTransform: 'uppercase' }}>
             {t('What brings you in', '¿Qué te trae')}{' '}
-            <span style={{ color: 'var(--tangerine)' }}>{t('today?', 'hoy?')}</span>
+            <span style={{ color: 'var(--sky)' }}>{t('today?', 'hoy?')}</span>
           </h2>
           <p style={{ margin: '16px auto 0', fontSize: 16.5, lineHeight: 1.6, color: 'var(--charcoal)', maxWidth: 520 }}>
             {t("Pick your path, a quick repair or a full new fence. Either way you buy direct, and since we don't install, there's no installer markup.", 'Elige tu camino: una reparación rápida o una cerca nueva completa. En ambos casos compras directo y, como no instalamos, no hay margen de instalador.')}
@@ -499,7 +499,7 @@ const HomeownerPaths = () => {
             <div key={i}
               onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(-1)}
               style={{
-                background: 'var(--white)', borderRadius: 20, border: p.accent ? '1px solid rgba(61, 148, 228,0.45)' : '1px solid rgba(0,16,17,0.1)', boxShadow: hover === i ? '0 30px 60px -28px rgba(38,49,102,0.35)' : '0 18px 44px -30px rgba(38,49,102,0.24)', transform: hover === i ? 'translateY(-4px)' : 'none', transition: 'transform 0.2s ease, box-shadow 0.2s ease', padding: 'clamp(28px, 3vw, 40px)', display: 'flex', flexDirection: 'column', }}>
+                background: 'var(--white)', borderRadius: 20, border: p.accent ? '1px solid rgba(255,113,51,0.45)' : '1px solid rgba(0,16,17,0.1)', boxShadow: hover === i ? '0 30px 60px -28px rgba(38,49,102,0.35)' : '0 18px 44px -30px rgba(38,49,102,0.24)', transform: hover === i ? 'translateY(-4px)' : 'none', transition: 'transform 0.2s ease, box-shadow 0.2s ease', padding: 'clamp(28px, 3vw, 40px)', display: 'flex', flexDirection: 'column', }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 }}>
                 <span style={{
                   width: 54, height: 54, borderRadius: 14, flexShrink: 0, background: p.accent ? 'var(--tangerine)' : 'var(--ink)', color: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', }}>{p.icon}</span>
@@ -509,7 +509,7 @@ const HomeownerPaths = () => {
               <h3 className="display" style={{ margin: '0 0 14px', fontSize: 'clamp(22px, 2vw, 27px)', lineHeight: 1.12, letterSpacing: '-0.01em', color: 'var(--ink)' }}>{p.title}</h3>
               <p style={{ margin: '0 0 28px', fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>{p.body}</p>
               <a href={p.href} style={{
-                marginTop: 'auto', alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 10, padding: '14px 24px', borderRadius: 999, background: p.accent ? 'var(--tangerine)' : 'var(--ink)', color: 'var(--white)', fontSize: 15.5, fontWeight: 600, fontFamily: 'var(--sans)', boxShadow: p.accent ? '0 10px 26px rgba(61, 148, 228,0.35)' : 'none', }}>
+                marginTop: 'auto', alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 10, padding: '14px 24px', borderRadius: 999, background: p.accent ? 'var(--tangerine)' : 'var(--ink)', color: 'var(--white)', fontSize: 15.5, fontWeight: 600, fontFamily: 'var(--sans)', boxShadow: p.accent ? '0 10px 26px rgba(255,113,51,0.35)' : 'none', }}>
                 {p.cta}
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
               </a>
@@ -571,7 +571,7 @@ const ContractorHero = () => {
         <h1 style={{
           margin: '0 0 20px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 125", fontWeight: 800, fontSize: 'clamp(32px, 4vw, 54px)', lineHeight: 1.02, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', }}>
           {t('Build with the', 'Construye con el')}{' '}
-          <span style={{ color: 'var(--tangerine)' }}>{t('manufacturer.', 'fabricante.')}</span>
+          <span style={{ color: 'var(--sky)' }}>{t('manufacturer.', 'fabricante.')}</span>
         </h1>
         <p style={{
           fontSize: 17, lineHeight: 1.6, maxWidth: 500, margin: '0 0 26px', color: 'rgba(255,255,255,0.85)', }}>
@@ -584,9 +584,9 @@ const ContractorHero = () => {
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginBottom: 22 }}>
           <a href="contact.html#contact"
             style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', boxShadow: '0 8px 24px rgba(61, 148, 228,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(61, 148, 228,0.45)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(61, 148, 228,0.35)'; }}>
+              display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 113, 51,0.35)'; }}>
             {t('Get a quick quote', 'Cotiza rápido')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
@@ -676,7 +676,7 @@ const ContractorBenefits = () => {
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02, letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase', color: 'var(--white)', }}>
           {t('Why partner', 'Por qué asociarte')}<br/>
-          <span style={{ color: 'var(--tangerine)' }}>{t('with WFS.', 'con WFS.')}</span>
+          <span style={{ color: 'var(--sky)' }}>{t('with WFS.', 'con WFS.')}</span>
         </h2>
         <p style={{
           margin: 0, maxWidth: 320, justifySelf: 'end', textAlign: 'right', fontSize: 16, lineHeight: 1.6, color: 'rgba(255,255,255,0.72)', }}>
@@ -859,7 +859,7 @@ const ContractorClosingCTA = () => {
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(32px, 4.2vw, 60px)', lineHeight: 0.98, letterSpacing: '-0.02em', color: 'var(--white)', }}>
           {t('Apply once.', 'Regístrate una vez.')}<br/>
-          <span style={{ color: 'var(--tangerine)' }}>{t('Quote forever.', 'Cotiza siempre.')}</span>
+          <span style={{ color: 'var(--sky)' }}>{t('Quote forever.', 'Cotiza siempre.')}</span>
         </h2>
         <p className="mono" style={{
           margin: '24px 0 32px', maxWidth: 520, fontSize: 14.5, lineHeight: 1.7, color: 'rgba(255,255,255,0.7)', }}>

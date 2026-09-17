@@ -94,7 +94,7 @@ const Testimonials = () => {
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(24px, 2.5vw, 36px)', lineHeight: 1.02, letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase', }}>
           {t('What our', 'Lo que dicen')}{' '}
-          <span style={{ color: 'var(--tangerine)' }}>{t('clients say.', 'nuestros clientes.')}</span>
+          <span style={{ color: 'var(--sky)' }}>{t('clients say.', 'nuestros clientes.')}</span>
         </h2>
       </div>
 
@@ -150,7 +150,7 @@ const Testimonials = () => {
         <div style={{ display: 'flex', gap: 8 }}>
           {reviews.map((_, i) => (
             <button key={i} onClick={() => go(i)} aria-label={`${i + 1}`} style={{
-              width: 26, height: 4, borderRadius: 2, padding: 0, border: 'none', cursor: 'pointer', background: i <= active ? 'var(--tangerine)' : 'rgba(0,16,17,0.15)', transition: 'background 0.3s ease', }}/>
+              width: 26, height: 4, borderRadius: 2, padding: 0, border: 'none', cursor: 'pointer', background: i <= active ? 'var(--sky)' : 'rgba(0,16,17,0.15)', transition: 'background 0.3s ease', }}/>
           ))}
         </div>
         <button onClick={() => go(active + 1)} aria-label={t('Next review', 'Siguiente reseña')} style={{
@@ -180,7 +180,7 @@ const FAQ = () => {
             <h2 className="display" style={{
               margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, }}>
               {t('Common fence', 'Preguntas comunes')}<br/>
-              <span style={{ color: 'var(--tangerine)' }}>{t('questions.', 'sobre cercas.')}</span>
+              <span style={{ color: 'var(--sky)' }}>{t('questions.', 'sobre cercas.')}</span>
             </h2>
             <p style={{
               marginTop: 24, fontSize: 15.5, lineHeight: 1.6, color: 'var(--charcoal)', maxWidth: 340, marginBottom: 28, }}>
@@ -210,19 +210,19 @@ const FAQ = () => {
               const isOpen = open === i;
               return (
                 <div key={i} style={{
-                  borderBottom: '1px solid rgba(0,16,17,0.12)', borderLeft: `2px solid ${isOpen ? 'var(--tangerine)' : 'transparent'}`, paddingLeft: isOpen ? 20 : 0, background: 'transparent', transition: 'all 0.25s ease', }}>
+                  borderBottom: '1px solid rgba(0,16,17,0.12)', borderLeft: `2px solid ${isOpen ? 'var(--sky)' : 'transparent'}`, paddingLeft: isOpen ? 20 : 0, background: 'transparent', transition: 'all 0.25s ease', }}>
                   <button onClick={() => setOpen(isOpen ? -1 : i)} style={{
                     width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '22px 0', textAlign: 'left', gap: 24, }}>
                     <span style={{ display: 'flex', gap: 20, alignItems: 'baseline' }}>
                       <span className="mono" style={{
-                        fontSize: 14, fontWeight: 700, letterSpacing: '0.22em', color: isOpen ? 'var(--tangerine)' : 'var(--charcoal)', transition: 'color 0.25s ease', }}>
+                        fontSize: 14, fontWeight: 700, letterSpacing: '0.22em', color: isOpen ? 'var(--sky)' : 'var(--charcoal)', transition: 'color 0.25s ease', }}>
                         {String(i + 1).padStart(2, '0')}
                       </span>
                       <span style={{
                         fontSize: 18.5, fontWeight: 500, color: 'var(--ink)', letterSpacing: '-0.005em', }}>{t(q)}</span>
                     </span>
                     <span className="wfs-faq-toggle" style={{
-                      width: 28, height: 28, background: isOpen ? 'var(--tangerine)' : 'transparent', border: `1px solid ${isOpen ? 'var(--tangerine)' : 'rgba(0,16,17,0.2)'}`, color: isOpen ? 'var(--ink)' : 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s ease', }}>
+                      width: 28, height: 28, background: isOpen ? 'var(--sky)' : 'transparent', border: `1px solid ${isOpen ? 'var(--sky)' : 'rgba(0,16,17,0.2)'}`, color: isOpen ? 'var(--ink)' : 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s ease', }}>
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                         <path d="M2 6h8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
                         {!isOpen && <path d="M6 2v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>}
@@ -411,7 +411,7 @@ const AboutIntro = () => {
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(26px, 2.6vw, 36px)', lineHeight: 1.02, letterSpacing: '-0.02em', fontWeight: 800, }}>
             {t('#1 Southwest Florida', '#1 del suroeste de Florida')}<br/>
-            <span style={{ color: 'var(--tangerine)' }}>{t('Fence Supply.', 'en cercas.')}</span>
+            <span style={{ color: 'var(--sky)' }}>{t('Fence Supply.', 'en cercas.')}</span>
           </h2>
 
           <p style={{

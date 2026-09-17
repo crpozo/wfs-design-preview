@@ -33,7 +33,7 @@ const ContactInfo = () => {
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(26px, 2.8vw, 40px)', lineHeight: 1.02, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '-0.01em', }}>
           {t('Visit or call', 'Visita o llama a')}{' '}
-          <span style={{ color: 'var(--tangerine)' }}>{t('a yard.', 'una sucursal.')}</span>
+          <span style={{ color: 'var(--sky)' }}>{t('a yard.', 'una sucursal.')}</span>
         </h2>
         <div className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10, fontSize: 14, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)', }}>
@@ -187,7 +187,7 @@ const ContactForm = () => {
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(26px, 2.6vw, 38px)', lineHeight: 1.05, textTransform: 'uppercase', fontWeight: 800, color: 'var(--white)', }}>
             {t('Send us a', 'Envíanos un')}{' '}
-            <span style={{ color: 'var(--tangerine)' }}>{t('message.', 'mensaje.')}</span>
+            <span style={{ color: 'var(--sky)' }}>{t('message.', 'mensaje.')}</span>
           </h2>
           <p style={{ margin: 0, fontSize: 16, lineHeight: 1.65, color: 'var(--alice-blue)', maxWidth: 340 }}>
             {t('Questions, feedback, or anything that is not a material quote. For pricing, use the quote form so it reaches the right rep with the right details.', 'Preguntas, comentarios o cualquier tema que no sea una cotización de material. Para precios, usa el formulario de cotización para que llegue al asesor correcto con los datos correctos.')}
@@ -244,7 +244,7 @@ const ContactForm = () => {
                   {t('By submitting, you agree to be contacted by Western Fence Supply.', 'Al enviar, aceptas que Western Fence Supply te contacte.')}
                 </span>
                 <button type="submit" disabled={sending} style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 10, opacity: sending ? 0.6 : 1, padding: '15px 28px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', boxShadow: '0 10px 26px rgba(61, 148, 228,0.35)', transition: 'transform 0.18s', }}
+                  display: 'inline-flex', alignItems: 'center', gap: 10, opacity: sending ? 0.6 : 1, padding: '15px 28px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', boxShadow: '0 10px 26px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s', }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; }}>
                   {sending ? t('Sending…', 'Enviando…') : t('Send message', 'Enviar mensaje')}
@@ -253,7 +253,7 @@ const ContactForm = () => {
               </div>
               {error && (
                 <p role="alert" style={{
-                  margin: 0, padding: '14px 16px', borderRadius: 12, background: 'rgba(61, 148, 228,0.08)', border: '1px solid rgba(61, 148, 228,0.35)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)', }}>{error}</p>
+                  margin: 0, padding: '14px 16px', borderRadius: 12, background: 'rgba(255,113,51,0.08)', border: '1px solid rgba(255,113,51,0.35)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)', }}>{error}</p>
               )}
             </form>
           )}

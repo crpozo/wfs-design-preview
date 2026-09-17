@@ -35,7 +35,7 @@ const LocationsYards = () => {
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02, letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase', }}>
           {t('Visit a', 'Visita una')}{' '}
-          <span style={{ color: 'var(--tangerine)' }}>{t('yard.', 'sucursal.')}</span>
+          <span style={{ color: 'var(--sky)' }}>{t('yard.', 'sucursal.')}</span>
         </h2>
         <div className="mono" style={{
           fontSize: 14.5, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--charcoal)', textAlign: 'right', }}>
@@ -117,7 +117,7 @@ const LocationsPickup = () => {
       <h2 className="display" style={{
         margin: '0 0 44px', fontSize: 'clamp(28px, 3vw, 42px)', lineHeight: 1.02, letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase', color: 'var(--white)', }}>
         {t('How pickup', 'Cómo funciona')}{' '}
-        <span style={{ color: 'var(--tangerine)' }}>{t('works.', 'el retiro.')}</span>
+        <span style={{ color: 'var(--sky)' }}>{t('works.', 'el retiro.')}</span>
       </h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
         {steps.map(([title, body], i) => (

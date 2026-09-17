@@ -57,7 +57,7 @@ const TrainingHero = () => {
         <h1 className="display" style={{
           margin: 0, fontSize: 'clamp(30px, 3.6vw, 50px)', lineHeight: 1.02, fontWeight: 800, textTransform: 'uppercase', letterSpacing: '-0.01em', }}>
           {t('Before you', 'Antes de')}{' '}
-          <span style={{ color: 'var(--tangerine)' }}>{t('begin.', 'empezar.')}</span>
+          <span style={{ color: 'var(--sky)' }}>{t('begin.', 'empezar.')}</span>
         </h1>
         <div style={{
           marginTop: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', gap: 24, flexWrap: 'wrap', }}>
@@ -65,7 +65,7 @@ const TrainingHero = () => {
             {t('Two steps between you and your first module: watch the short platform tour, then log in.', 'Dos pasos entre tú y tu primer módulo: mira el recorrido corto de la plataforma y luego inicia sesión.')}
           </p>
           <a href={TRAINING_LOGIN_URL} target="_blank" rel="noopener" className="mono" style={{
-            fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--tangerine)', borderBottom: '1px solid rgba(61, 148, 228,0.5)', paddingBottom: 3, whiteSpace: 'nowrap', }}>
+            fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--tangerine)', borderBottom: '1px solid rgba(255,113,51,0.5)', paddingBottom: 3, whiteSpace: 'nowrap', }}>
             {t('Already trained? Skip to login →', '¿Ya te capacitaste? Ir al login →')}
           </a>
         </div>
@@ -174,7 +174,7 @@ const TrainingSteps = () => {
                 <a href={TRAINING_LOGIN_URL} target="_blank" rel="noopener"
                   onClick={() => { if (window.gtag) window.gtag('event', 'training_login_click'); }}
                   style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 12, padding: '15px 26px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', boxShadow: '0 10px 26px rgba(61, 148, 228,0.35)', transition: 'transform 0.18s', }}
+                    display: 'inline-flex', alignItems: 'center', gap: 12, padding: '15px 26px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', boxShadow: '0 10px 26px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s', }}
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
                   onMouseLeave={e => { e.currentTarget.style.transform = ''; }}>
                   {t('Login to Training Companion', 'Iniciar sesión en Training Companion')}

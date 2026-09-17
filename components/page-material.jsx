@@ -66,7 +66,7 @@ const MaterialQuickFacts = ({ data }) => (
    rails/boards + light verticals on a lavender panel; tangerine is reserved
    for the aluminum "custom" accent rail. Adapts by material so vinyl, chain
    link, metal and EC Fence get a fitting illustration too. */
-const DIAG = { bg: '#e9edf9', navy: '#263166', light: '#aeb9de', accent: '#3d94e4' };
+const DIAG = { bg: '#e9edf9', navy: '#263166', light: '#aeb9de', accent: '#ff7133' };
 const ProfileDiagram = ({ slug, name = '', index = 0 }) => {
   const { bg, navy, light, accent } = DIAG;
   const W = 220, H = 132, L = 18, R = 202;
@@ -278,7 +278,7 @@ const MaterialSpecs = ({ data }) => (
           </div>
           <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', color: 'var(--white)' }}>
             {useT()('Real numbers,', 'Números reales,')}<br/>
-            <span style={{ color: 'var(--tangerine)' }}>{useT()('no marketing.', 'sin marketing.')}</span>
+            <span style={{ color: 'var(--sky)' }}>{useT()('no marketing.', 'sin marketing.')}</span>
           </h2>
           <p style={{ marginTop: 20, fontSize: 15.5, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 320 }}>
             {useT()("Actual specs may vary by style, height, color and availability. Contact our team to confirm the right material package for your project.", 'Las especificaciones reales pueden variar según estilo, altura, color y disponibilidad. Contacta a nuestro equipo para confirmar el paquete de material adecuado para tu proyecto.')}
@@ -318,7 +318,7 @@ const MaterialUseCases = ({ data }) => {
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02, letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase', }}>
           {t('Three jobs', 'Tres trabajos')}<br/>
-          <span style={{ color: 'var(--tangerine)' }}>{t('this material wins.', 'que este material gana.')}</span>
+          <span style={{ color: 'var(--sky)' }}>{t('this material wins.', 'que este material gana.')}</span>
         </h2>
         {data.useCasesBlurb && (
           <p style={{

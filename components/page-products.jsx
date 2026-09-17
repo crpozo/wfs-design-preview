@@ -38,7 +38,7 @@ const ProductsIntro = () => {
         <div>
           <h2 className="display" style={{ margin: 0, fontSize: 'clamp(26px, 2.6vw, 36px)', lineHeight: 1.12, letterSpacing: '-0.02em' }}>
             {t('Everything you need to build the perimeter,', 'Todo lo que necesitas para construir el perímetro,')}<br/>
-            <span style={{ color: 'var(--tangerine)' }}>{t("and nothing we wouldn't put on our own job.", 'y nada que no pondríamos en nuestro propio trabajo.')}</span>
+            <span style={{ color: 'var(--sky)' }}>{t("and nothing we wouldn't put on our own job.", 'y nada que no pondríamos en nuestro propio trabajo.')}</span>
           </h2>
         </div>
         <p style={{ margin: 0, fontSize: 16, lineHeight: 1.7, color: 'var(--charcoal)', maxWidth: 420 }}>

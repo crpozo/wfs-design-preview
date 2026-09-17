@@ -250,7 +250,7 @@ const GateQuoteChecklist = () => {
             </div>
             <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1.02, letterSpacing: '-0.02em', color: 'var(--white)' }}>
               {t('What We Need to', 'Lo que necesitamos para')}<br/>
-              <span style={{ color: 'var(--tangerine)' }}>{t('Quote Your Gate.', 'cotizar tu portón.')}</span>
+              <span style={{ color: 'var(--sky)' }}>{t('Quote Your Gate.', 'cotizar tu portón.')}</span>
             </h2>
             <p style={{ marginTop: 20, fontSize: 16, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 360 }}>
               {t('To prepare an accurate gate quote, send us the opening size, material, height, color, gate type, and any hardware requirements. Photos or drawings are highly recommended.', 'Para preparar una cotización precisa, envíanos la medida de la abertura, material, altura, color, tipo de portón y los herrajes que necesites. Las fotos o dibujos son muy recomendables.')}
@@ -305,7 +305,7 @@ const GateSpecs = ({ data }) => (
           </div>
           <h2 className="display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', color: 'var(--white)' }}>
             {useT()('Real numbers,', 'Números reales,')}<br/>
-            <span style={{ color: 'var(--tangerine)' }}>{useT()('no guesswork.', 'sin conjeturas.')}</span>
+            <span style={{ color: 'var(--sky)' }}>{useT()('no guesswork.', 'sin conjeturas.')}</span>
           </h2>
           <p style={{ marginTop: 20, fontSize: 15.5, lineHeight: 1.6, color: 'var(--alice-blue)', maxWidth: 320 }}>
             {useT()('Gate dimensions, hardware, and compatibility depend on the material, opening size, post type, and swing direction. Contact our team to confirm the right gate package for your project.', 'Las dimensiones, herrajes y compatibilidad del portón dependen del material, la medida de la abertura, el tipo de poste y la dirección de apertura. Contacta a nuestro equipo para confirmar el paquete adecuado para tu proyecto.')}
@@ -345,7 +345,7 @@ const GateApplications = ({ data }) => {
         <h2 className="display" style={{
           margin: 0, fontSize: 'clamp(30px, 3.4vw, 46px)', lineHeight: 1.02, letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase', }}>
           {t('Common Gate', 'Aplicaciones comunes')}<br/>
-          <span style={{ color: 'var(--tangerine)' }}>{t('Applications.', 'de portón.')}</span>
+          <span style={{ color: 'var(--sky)' }}>{t('Applications.', 'de portón.')}</span>
         </h2>
       </div>
       {data.applications.map(([title, body, badge], i) => (
