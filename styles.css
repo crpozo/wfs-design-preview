@@ -1709,3 +1709,13 @@ select, input, textarea { max-width: 100%; min-width: 0; }
      empujar el ancho de la pagina. */
   a.mono, .mono a, .btn { white-space: normal; }
 }
+
+/* Footer: los correos (salespc@westernfencesupply.com) no cabian en la ultima
+   columna y se salian de la pantalla. La columna Company es mas ancha, los
+   enlaces pueden partir linea, y la barra inferior deja sitio a la burbuja
+   del chat, que tapaba el correo. */
+@media (min-width: 1025px) {
+  .wfs-footer-grid { grid-template-columns: 1.7fr 1fr 1fr 1fr 1.7fr !important; gap: 32px !important; }
+}
+.wfs-footer-grid a { overflow-wrap: anywhere; }
+.wfs-footer-bar { padding-right: 76px; }

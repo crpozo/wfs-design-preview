@@ -947,7 +947,7 @@ const Footer = () => {
   return (
     <footer style={{ background: 'var(--ink)', color: 'var(--parchment)', padding: '104px 0 32px' }}>
       <div className="container">
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 60 }}>
+        <div className="wfs-footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40, marginBottom: 60 }}>
           <div>
             <Logo light />
             <p style={{ fontSize: 15.5, color: 'var(--alice-blue)', lineHeight: 1.5, marginTop: 20, maxWidth: 320 }}>
@@ -971,7 +971,7 @@ const Footer = () => {
             </div>
           ))}
         </div>
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+        <div className="wfs-footer-bar" style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: 24, display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
           <div className="mono" style={{ fontSize: 14, letterSpacing: '0.14em', color: 'var(--silver)' }}>
             © 2026 Western Fence Supply · Fort Myers, FL · Port Charlotte, FL
           </div>
