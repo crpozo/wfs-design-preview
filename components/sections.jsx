@@ -763,11 +763,6 @@ const FinalCTA = ({ prefill }) => {
   const formLabelStyle = { ...labelStyle, color: 'rgba(255,255,255,0.72)' };
   return (
     <section id="contact" style={{ background: 'var(--white)', padding: '120px 0', position: 'relative', overflow: 'hidden', scrollMarginTop: 110 }}>
-      {/* Decorative background pattern + accent shapes */}
-      <div aria-hidden style={{
-        position: 'absolute', inset: 0, backgroundImage:
-          'linear-gradient(rgba(38, 49, 102,0.04) 1px, transparent 1px), ' +
-          'linear-gradient(90deg, rgba(38, 49, 102,0.04) 1px, transparent 1px)', backgroundSize: '56px 56px', maskImage: 'radial-gradient(circle at 70% 0%, #000 0%, transparent 70%)', WebkitMaskImage: 'radial-gradient(circle at 70% 0%, #000 0%, transparent 70%)', pointerEvents: 'none', }}/>
       <div className="container" style={{ position: 'relative' }}>
         <div style={{
           display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end', paddingBottom: 24, marginBottom: 40, borderBottom: '1px solid rgba(0,16,17,0.12)', }}>
