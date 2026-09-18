@@ -674,10 +674,10 @@ const GateSystems = () => (
    No chapter number so the 01 / 02 arena sequence stays intact. */
 const WHY_WFS = [
   {
-    title: { EN: 'Manufacturing-direct', ES: 'Directo de fábrica' }, desc:  { EN: 'Supplier-direct floor pricing, no middleman markup between the plant and your project.', ES: 'Precio directo de fábrica, sin intermediarios entre la planta y tu proyecto.' }, icon: 'factory', }, {
-    title: { EN: 'No minimums', ES: 'Sin mínimos' }, desc:  { EN: 'Order a single panel or a full subdivision, the same supplier-direct floor either way.', ES: 'Pide un solo panel o una urbanización completa, el mismo precio directo en ambos casos.' }, icon: 'layers', }, {
-    title: { EN: 'Free takeoff · 24h quotes', ES: 'Toma de medidas gratis · 24h' }, desc:  { EN: 'Send measurements and get itemized pricing back within 24 hours.', ES: 'Envía medidas y recibe precios detallados en menos de 24 horas.' }, icon: 'document', }, {
-    title: { EN: 'In-house fabrication', ES: 'Fabricación propia' }, desc:  { EN: 'Gates and custom work built in our Fort Myers shop.', ES: 'Portones y trabajos a medida hechos en nuestro taller de Fort Myers.' }, icon: 'wrench', },
+    title: { EN: 'Manufacturing-direct', ES: 'Directo de fábrica' }, desc:  { EN: 'Supplier-direct floor pricing, no middleman markup between the plant and your project.', ES: 'Precio directo de fábrica, sin intermediarios entre la planta y tu proyecto.' }, icon: 'assets/icons/factory-box.png', }, {
+    title: { EN: 'No minimums', ES: 'Sin mínimos' }, desc:  { EN: 'Order a single panel or a full subdivision, the same supplier-direct floor either way.', ES: 'Pide un solo panel o una urbanización completa, el mismo precio directo en ambos casos.' }, icon: 'assets/icons/layers-box.png', }, {
+    title: { EN: 'Free takeoff · 24h quotes', ES: 'Toma de medidas gratis · 24h' }, desc:  { EN: 'Send measurements and get itemized pricing back within 24 hours.', ES: 'Envía medidas y recibe precios detallados en menos de 24 horas.' }, icon: 'assets/icons/document-box.png', }, {
+    title: { EN: 'In-house fabrication', ES: 'Fabricación propia' }, desc:  { EN: 'Gates and custom work built in our Fort Myers shop.', ES: 'Portones y trabajos a medida hechos en nuestro taller de Fort Myers.' }, icon: 'assets/icons/wrench-box.png', },
 ];
 
 const WhyWFS = () => {
@@ -716,8 +716,9 @@ const WhyWFS = () => {
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; e.currentTarget.style.borderColor = 'rgba(38, 49, 102,0.14)'; }}>
               <span style={{
                 width: 46, height: 46, marginBottom: 18, display: 'block', }}>
-                {/* Iconos del cliente (assets/icons, caja azul con glifo blanco). */}
-                <img src={`assets/icons/${v.icon}-box.png`} alt="" width={46} height={46} style={{ display: 'block', width: 46, height: 46 }} loading="lazy" decoding="async" />
+                {/* Iconos del cliente. La ruta va ENTERA y entre comillas en WHY_WFS: el
+                    build del tema solo reescribe 'assets/...' literales. */}
+                <img src={v.icon} alt="" width={46} height={46} style={{ display: 'block', width: 46, height: 46 }} loading="lazy" decoding="async" />
               </span>
               <h3 className="display" style={{
                 margin: '0 0 8px', fontSize: 19.5, lineHeight: 1.15, letterSpacing: '-0.01em', color: 'var(--ink)', }}>{t(v.title)}</h3>

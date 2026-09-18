@@ -411,7 +411,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
             </h2>
             <p className="mono" style={{
               margin: '12px 0 0', fontSize: 14, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)', }}>
-              {t('Representative product photos, not customer projects.', 'Fotos representativas de producto, no proyectos de clientes.')}
+              {t('Representative product photos.', 'Fotos representativas de producto.')}
             </p>
           </div>
           <div style={{ display: 'flex', gap: 10 }}>
