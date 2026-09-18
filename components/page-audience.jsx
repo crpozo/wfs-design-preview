@@ -29,7 +29,7 @@ const HomeownerHero = () => {
         <h1 style={{
           margin: '0 0 22px', fontFamily: 'var(--display)', fontVariationSettings: "'wdth' 125", fontWeight: 800, fontSize: 'clamp(32px, 4vw, 54px)', lineHeight: 1.02, letterSpacing: '-0.02em', textTransform: 'uppercase', color: 'var(--white)', textShadow: '0 2px 28px rgba(0,0,0,0.28)', }}>
           {t('Fence solutions', 'Soluciones de cercas')}{' '}
-          <span style={{ color: 'var(--coral)' }}>{t('for your home.', 'para tu hogar.')}</span>
+          <span style={{ color: 'var(--blue-ice)' }}>{t('for your home.', 'para tu hogar.')}</span>
         </h1>
         <p style={{
           fontSize: 17.5, lineHeight: 1.55, maxWidth: 440, margin: '0 0 26px', color: 'rgba(255,255,255,0.85)', }}>
@@ -502,14 +502,14 @@ const HomeownerPaths = () => {
                 background: 'var(--white)', borderRadius: 20, border: p.accent ? '1px solid rgba(255,113,51,0.45)' : '1px solid rgba(0,16,17,0.1)', boxShadow: hover === i ? '0 30px 60px -28px rgba(38,49,102,0.35)' : '0 18px 44px -30px rgba(38,49,102,0.24)', transform: hover === i ? 'translateY(-4px)' : 'none', transition: 'transform 0.2s ease, box-shadow 0.2s ease', padding: 'clamp(28px, 3vw, 40px)', display: 'flex', flexDirection: 'column', }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 }}>
                 <span style={{
-                  width: 54, height: 54, borderRadius: 14, flexShrink: 0, background: p.accent ? 'var(--tangerine)' : 'var(--ink)', color: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', }}>{p.icon}</span>
+                  width: 54, height: 54, borderRadius: 14, flexShrink: 0, background: p.accent ? 'var(--sky)' : 'var(--ink)', color: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', }}>{p.icon}</span>
                 <span className="mono" style={{
-                  padding: '7px 14px', borderRadius: 999, fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', background: p.accent ? 'var(--tangerine)' : 'rgba(0,16,17,0.06)', color: p.accent ? 'var(--white)' : 'var(--charcoal)', }}>{p.pill}</span>
+                  padding: '7px 14px', borderRadius: 999, fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', background: p.accent ? 'var(--sky)' : 'rgba(0,16,17,0.06)', color: p.accent ? 'var(--white)' : 'var(--charcoal)', }}>{p.pill}</span>
               </div>
               <h3 className="display" style={{ margin: '0 0 14px', fontSize: 'clamp(22px, 2vw, 27px)', lineHeight: 1.12, letterSpacing: '-0.01em', color: 'var(--ink)' }}>{p.title}</h3>
               <p style={{ margin: '0 0 28px', fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>{p.body}</p>
               <a href={p.href} style={{
-                marginTop: 'auto', alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 10, padding: '14px 24px', borderRadius: 999, background: p.accent ? 'var(--tangerine)' : 'var(--ink)', color: 'var(--white)', fontSize: 15.5, fontWeight: 600, fontFamily: 'var(--sans)', boxShadow: p.accent ? '0 10px 26px rgba(255,113,51,0.35)' : 'none', }}>
+                marginTop: 'auto', alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 10, padding: '14px 24px', borderRadius: 999, background: p.accent ? 'var(--sky)' : 'var(--ink)', color: 'var(--white)', fontSize: 15.5, fontWeight: 600, fontFamily: 'var(--sans)', boxShadow: p.accent ? '0 10px 26px rgba(61,148,228,0.35)' : 'none', }}>
                 {p.cta}
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
               </a>
