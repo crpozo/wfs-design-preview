@@ -674,10 +674,10 @@ const GateSystems = () => (
    No chapter number so the 01 / 02 arena sequence stays intact. */
 const WHY_WFS = [
   {
-    title: { EN: 'Manufacturing-direct', ES: 'Directo de fábrica' }, desc:  { EN: 'Supplier-direct floor pricing, no middleman markup between the plant and your project.', ES: 'Precio directo de fábrica, sin intermediarios entre la planta y tu proyecto.' }, icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 21V10l6 3V10l6 3V10l6 3v8Z"/><path d="M3 10 4 4h2l.5 4"/></svg>), }, {
-    title: { EN: 'No minimums', ES: 'Sin mínimos' }, desc:  { EN: 'Order a single panel or a full subdivision, the same supplier-direct floor either way.', ES: 'Pide un solo panel o una urbanización completa, el mismo precio directo en ambos casos.' }, icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 3 21 8 12 13 3 8Z"/><path d="M3 13l9 5 9-5"/></svg>), }, {
-    title: { EN: 'Free takeoff · 24h quotes', ES: 'Toma de medidas gratis · 24h' }, desc:  { EN: 'Send measurements and get itemized pricing back within 24 hours.', ES: 'Envía medidas y recibe precios detallados en menos de 24 horas.' }, icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M5 3h9l5 5v13H5Z"/><path d="M14 3v5h5"/><path d="M8 13h7M8 17h5"/></svg>), }, {
-    title: { EN: 'In-house fabrication', ES: 'Fabricación propia' }, desc:  { EN: 'Gates and custom work built in our Fort Myers shop.', ES: 'Portones y trabajos a medida hechos en nuestro taller de Fort Myers.' }, icon: (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>), },
+    title: { EN: 'Manufacturing-direct', ES: 'Directo de fábrica' }, desc:  { EN: 'Supplier-direct floor pricing, no middleman markup between the plant and your project.', ES: 'Precio directo de fábrica, sin intermediarios entre la planta y tu proyecto.' }, icon: 'factory', }, {
+    title: { EN: 'No minimums', ES: 'Sin mínimos' }, desc:  { EN: 'Order a single panel or a full subdivision, the same supplier-direct floor either way.', ES: 'Pide un solo panel o una urbanización completa, el mismo precio directo en ambos casos.' }, icon: 'layers', }, {
+    title: { EN: 'Free takeoff · 24h quotes', ES: 'Toma de medidas gratis · 24h' }, desc:  { EN: 'Send measurements and get itemized pricing back within 24 hours.', ES: 'Envía medidas y recibe precios detallados en menos de 24 horas.' }, icon: 'document', }, {
+    title: { EN: 'In-house fabrication', ES: 'Fabricación propia' }, desc:  { EN: 'Gates and custom work built in our Fort Myers shop.', ES: 'Portones y trabajos a medida hechos en nuestro taller de Fort Myers.' }, icon: 'wrench', },
 ];
 
 const WhyWFS = () => {
@@ -715,7 +715,10 @@ const WhyWFS = () => {
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -22px rgba(0,16,17,0.3)'; e.currentTarget.style.borderColor = 'var(--ink)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; e.currentTarget.style.borderColor = 'rgba(38, 49, 102,0.14)'; }}>
               <span style={{
-                width: 46, height: 46, marginBottom: 18, border: '1.5px solid var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--tangerine)', }}>{v.icon}</span>
+                width: 46, height: 46, marginBottom: 18, display: 'block', }}>
+                {/* Iconos del cliente (assets/icons, caja azul con glifo blanco). */}
+                <img src={`assets/icons/${v.icon}-box.png`} alt="" width={46} height={46} style={{ display: 'block', width: 46, height: 46 }} loading="lazy" decoding="async" />
+              </span>
               <h3 className="display" style={{
                 margin: '0 0 8px', fontSize: 19.5, lineHeight: 1.15, letterSpacing: '-0.01em', color: 'var(--ink)', }}>{t(v.title)}</h3>
               <p className="mono" style={{
