@@ -1549,7 +1549,7 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
 .wfs-areas-county.is-other { fill: var(--ink); }
 .wfs-areas-county.is-muted { fill: #d0d8e8; }
 .wfs-areas-county.is-listed { cursor: pointer; }
-.wfs-areas-county.is-primary.is-hot { fill: #d9541a; }
+.wfs-areas-county.is-primary.is-hot { fill: #8fb3ff; }
 .wfs-areas-county.is-other.is-hot { fill: #4d5fb0; }
 .wfs-areas-outline { fill: none; stroke: var(--ink); stroke-width: 1.2; vector-effect: non-scaling-stroke; opacity: .35; pointer-events: none; }
 .wfs-areas-clabel { position: absolute; transform: translate(-50%, -50%); font-family: var(--sans); font-size: 12.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: #1b2450; white-space: nowrap; pointer-events: none; }
@@ -1569,21 +1569,23 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
 .wfs-areas-swatch.is-primary { background: var(--sky); }
 .wfs-areas-swatch.is-other { background: var(--ink); }
 .wfs-areas-swatch.is-yard { background: #ffffff; border: 3px solid var(--ink); border-radius: 50%; }
-.wfs-areas-eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; font-family: var(--sans); font-size: 13.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: #c4480f; }
+.wfs-areas-eyebrow { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 16px; font-family: var(--sans); font-size: 13.5px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; color: var(--tangerine); }
 .wfs-areas-title { margin: 0; font-size: clamp(30px, 3.4vw, 46px); line-height: 1; letter-spacing: -.02em; color: var(--ink); }
 .wfs-areas-title span { color: var(--sky); }
 .wfs-areas-lead { margin: 18px 0 34px; max-width: 560px; font-size: 16.5px; line-height: 1.6; color: var(--charcoal); }
-.wfs-areas-list { columns: 3; column-gap: 40px; }
-/* Grupos como fichas de texto (sin tarjeta): regla fina abajo, como las fichas
-   de sucursal del formulario de contacto. */
-.wfs-areas-group { break-inside: avoid; margin: 0 0 22px; padding: 0 0 20px; border-bottom: 1px solid rgba(0, 16, 17, .12); scroll-margin-top: 150px; }
+/* Directorio en filas: numero + condado (+ sucursal) a la izquierda y los
+   pueblos en linea a la derecha, separados por reglas finas. Mas ordenado que
+   las columnas en cascada. */
+.wfs-areas-list { border-top: 1px solid rgba(0, 16, 17, .12); }
+.wfs-areas-group { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.6fr); gap: 8px 28px; align-items: start; padding: 18px 0; border-bottom: 1px solid rgba(0, 16, 17, .12); scroll-margin-top: 150px; transition: background .15s ease; }
+.wfs-areas-group.is-hot { background: linear-gradient(90deg, rgba(168, 197, 255, .18), transparent); }
 .wfs-areas-group__head { display: flex; align-items: baseline; gap: 12px; }
-.wfs-areas-group__n { font-size: 13px; font-weight: 700; letter-spacing: .22em; color: var(--tangerine); transition: color .15s ease; }
-.wfs-areas-group.is-hot .wfs-areas-group__n { color: var(--ink); }
+.wfs-areas-group__n { font-size: 13px; font-weight: 700; letter-spacing: .22em; color: var(--tangerine); }
 .wfs-areas-group h3 { margin: 0; font-size: 21px; line-height: 1.1; color: var(--ink); }
-.wfs-areas-yard { margin-top: 6px; font-size: 12.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--charcoal); }
-.wfs-areas-towns { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 6px; }
+.wfs-areas-yard { grid-column: 1; margin-top: 2px; padding-left: 34px; font-size: 12.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--charcoal); }
+.wfs-areas-towns { grid-column: 2; grid-row: 1 / span 2; list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 0; }
 .wfs-areas-towns li { font-size: 16px; line-height: 1.4; color: var(--charcoal); }
+.wfs-areas-towns li + li::before { content: '·'; margin: 0 10px; color: rgba(38, 49, 102, .35); }
 .wfs-areas-towns a { color: var(--ink); font-weight: 600; border-bottom: 1px solid var(--tangerine); }
 .wfs-areas-towns a:hover { color: var(--laser-blue); }
 /* Zona de toque de 44px sin mover el texto ni agrandar el anillo de foco. */
@@ -1635,7 +1637,6 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
   .wfs-areas-map--swfl .wfs-areas-clabel { font-size: 9.5px; letter-spacing: .04em; }
 }
 @media (max-width: 1180px) {
-  .wfs-areas-list { columns: 2; }
 }
 @media (max-width: 1024px) {
   .wfs-areas-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; }
@@ -1651,9 +1652,11 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
   .wfs-areas-facts > div:nth-child(3) { padding-left: 0; }
 }
 @media (max-width: 640px) {
-  .wfs-areas-list { column-gap: 22px; }
   .wfs-areas-towns li { font-size: 15.5px; }
   .wfs-areas-group h3 { font-size: 18px; }
+  .wfs-areas-group { grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 14px 0; }
+  .wfs-areas-towns { grid-column: 1; grid-row: auto; margin-top: 8px; }
+  .wfs-areas-yard { padding-left: 0; }
   .wfs-areas-mats { grid-template-columns: minmax(0, 1fr); }
   .wfs-areas-clabel, .wfs-areas-pinlabel, .wfs-areas-citylabel { font-size: 10.5px; letter-spacing: .1em; }
   .wfs-areas-pinlabel { padding: 4px 6px; }
@@ -1661,7 +1664,6 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
   .wfs-areas-cta { padding: 64px 0 !important; }
   .wfs-areas-cta__card { padding: 32px 22px 28px; box-shadow: 8px 8px 0 var(--tangerine); }
   .wfs-areas-cta__btns .btn { width: 100%; justify-content: center; }
-  .wfs-areas-yard { font-size: 11px; letter-spacing: .12em; }
   .wfs-areas-map { margin: 14px; width: calc(100% - 28px); box-shadow: 0 0 0 14px #eef2f9; }
   .wfs-areas-group h3 { text-wrap: balance; }
   .wfs-areas-facts dt { font-size: 26px; white-space: nowrap; }
