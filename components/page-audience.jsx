@@ -38,9 +38,9 @@ const HomeownerHero = () => {
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
           <a href="contact.html#contact"
             style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 113, 51,0.35)'; }}>
+              display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', boxShadow: '0 8px 24px rgba(233, 106, 44,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(233, 106, 44,0.45)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(233, 106, 44,0.35)'; }}>
             {t('Get started', 'Comenzar')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
@@ -168,7 +168,7 @@ const HomeownerSteps = () => {
 
       {/* Bottom-right CTA */}
       <div style={{
-        marginTop: 'clamp(36px, 6vh, 64px)', paddingTop: 24, borderTop: '1px solid rgba(0,16,17,0.1)', display: 'flex', justifyContent: 'flex-end', }}>
+        marginTop: 'clamp(36px, 6vh, 64px)', paddingTop: 24, borderTop: '1px solid rgba(38, 49, 102,0.1)', display: 'flex', justifyContent: 'flex-end', }}>
         <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" className="mono" style={{
           display: 'inline-flex', alignItems: 'center', gap: 10, fontSize: 14, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--tangerine)', }}>
           {t('Start drawing your fence', 'Empieza a dibujar tu cerca')}
@@ -241,9 +241,9 @@ const HomeownerInstallerSplit = () => {
       <article
         {...rest}
         onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = dark ? '0 18px 36px rgba(0,0,0,0.35)' : '12px 12px 0 var(--tangerine)'; }}
-        onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = dark ? '0 8px 18px rgba(0,0,0,0.2)' : '8px 8px 0 rgba(255,113,51,0.85)'; }}
+        onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = dark ? '0 8px 18px rgba(0,0,0,0.2)' : '8px 8px 0 rgba(233, 106, 44,0.85)'; }}
         style={{
-          background: dark ? 'var(--ink)' : 'var(--white)', color: dark ? 'var(--white)' : 'var(--ink)', border: dark ? 'none' : '1.5px solid var(--ink)', padding: '40px 44px 36px', display: 'flex', flexDirection: 'column', boxShadow: dark ? '0 8px 18px rgba(0,0,0,0.2)' : '8px 8px 0 rgba(255,113,51,0.85)', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
+          background: dark ? 'var(--ink)' : 'var(--white)', color: dark ? 'var(--white)' : 'var(--ink)', border: dark ? 'none' : '1.5px solid var(--ink)', padding: '40px 44px 36px', display: 'flex', flexDirection: 'column', boxShadow: dark ? '0 8px 18px rgba(0,0,0,0.2)' : '8px 8px 0 rgba(233, 106, 44,0.85)', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
       >{children}</article>
     );
   };
@@ -399,7 +399,7 @@ const HomeownerFAQ = () => {
               const isOpen = open === i;
               return (
                 <div key={i} style={{
-                  borderBottom: '1px solid rgba(0,16,17,0.12)', borderLeft: `2px solid ${isOpen ? 'var(--tangerine)' : 'transparent'}`, paddingLeft: isOpen ? 20 : 0, background: 'transparent', transition: 'all 0.25s ease', }}>
+                  borderBottom: '1px solid rgba(38, 49, 102,0.12)', borderLeft: `2px solid ${isOpen ? 'var(--tangerine)' : 'transparent'}`, paddingLeft: isOpen ? 20 : 0, background: 'transparent', transition: 'all 0.25s ease', }}>
                   <button onClick={() => setOpen(isOpen ? -1 : i)} style={{
                     width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '22px 0', textAlign: 'left', gap: 24, }}>
                     <span style={{ display: 'flex', gap: 20, alignItems: 'baseline' }}>
@@ -411,7 +411,7 @@ const HomeownerFAQ = () => {
                         fontSize: 18.5, fontWeight: 500, color: 'var(--ink)', letterSpacing: '-0.005em', }}>{t(q)}</span>
                     </span>
                     <span className="wfs-faq-toggle" style={{
-                      width: 28, height: 28, background: isOpen ? 'var(--tangerine)' : 'transparent', border: `1px solid ${isOpen ? 'var(--tangerine)' : 'rgba(0,16,17,0.2)'}`, color: 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s ease', }}>
+                      width: 28, height: 28, background: isOpen ? 'var(--tangerine)' : 'transparent', border: `1px solid ${isOpen ? 'var(--tangerine)' : 'rgba(38, 49, 102,0.2)'}`, color: 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s ease', }}>
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                         <path d="M2 6h8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
                         {!isOpen && <path d="M6 2v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>}
@@ -480,7 +480,7 @@ const HomeownerPaths = () => {
       pill: t('No minimums', 'Sin mínimos'), title: t('I want to repair my fence', 'Quiero reparar mi cerca'), body: t('Buy exactly what you need, piece by piece, from a single picket to a full rail, post, cap or bracket. No minimums, supplier-direct pricing. Fix what broke without paying for a whole new fence.', 'Compra exactamente lo que necesitas, pieza por pieza: desde un solo picket hasta un riel completo, poste, tapa o soporte. Sin mínimos y con precio directo de proveedor. Arregla lo que se dañó sin pagar por una cerca nueva completa.'), cta: t('Shop repair parts', 'Comprar repuestos'), href: 'products.html', icon: (<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M14.7 6.3a3.8 3.8 0 0 0-5 5l-5 5 2 2 5-5a3.8 3.8 0 0 0 5-5l-2.4 2.4-2-.5-.5-2Z"/></svg>), }, {
       pill: t('Wholesale pricing', 'Precio mayorista'), title: t('New project · new fence installation', 'Proyecto nuevo · instalación de cerca'), body: t("We give you everything you need to build it yourself, complete DIY fence kits cut to your layout, with the hardware and step-by-step guidance to install it. And because we don't install fences, you get true wholesale, supplier-direct pricing.", 'Te damos todo lo que necesitas para armarla tú mismo: kits DIY completos, cortados a tu medida, con los herrajes y la guía paso a paso para instalarla. Y como no instalamos cercas, obtienes precio mayorista real, directo de proveedor.'), cta: t('Start my project', 'Empezar mi proyecto'), href: 'contact.html#contact', accent: true, icon: (<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M3 11 L12 4 L21 11"/><path d="M5 10 V20 H19 V10"/></svg>), }, ];
   return (
-    <section style={{ background: '#f5f5f7', padding: 'clamp(80px, 10vh, 112px) 0' }}>
+    <section style={{ background: 'rgba(38, 49, 102, 0.04)', padding: 'clamp(80px, 10vh, 112px) 0' }}>
       <div className="container">
         <div style={{ textAlign: 'center', maxWidth: 640, margin: '0 auto clamp(40px, 6vh, 60px)' }}>
           <div className="mono" style={{ fontSize: 13.5, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--tangerine)', fontWeight: 700, marginBottom: 14 }}>
@@ -499,17 +499,17 @@ const HomeownerPaths = () => {
             <div key={i}
               onMouseEnter={() => setHover(i)} onMouseLeave={() => setHover(-1)}
               style={{
-                background: 'var(--white)', borderRadius: 20, border: p.accent ? '1px solid rgba(255,113,51,0.45)' : '1px solid rgba(0,16,17,0.1)', boxShadow: hover === i ? '0 30px 60px -28px rgba(38,49,102,0.35)' : '0 18px 44px -30px rgba(38,49,102,0.24)', transform: hover === i ? 'translateY(-4px)' : 'none', transition: 'transform 0.2s ease, box-shadow 0.2s ease', padding: 'clamp(28px, 3vw, 40px)', display: 'flex', flexDirection: 'column', }}>
+                background: 'var(--white)', borderRadius: 20, border: p.accent ? '1px solid rgba(233, 106, 44,0.45)' : '1px solid rgba(38, 49, 102,0.1)', boxShadow: hover === i ? '0 30px 60px -28px rgba(38,49,102,0.35)' : '0 18px 44px -30px rgba(38,49,102,0.24)', transform: hover === i ? 'translateY(-4px)' : 'none', transition: 'transform 0.2s ease, box-shadow 0.2s ease', padding: 'clamp(28px, 3vw, 40px)', display: 'flex', flexDirection: 'column', }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 22 }}>
                 <span style={{
                   width: 54, height: 54, borderRadius: 14, flexShrink: 0, background: p.accent ? 'var(--sky)' : 'var(--ink)', color: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', }}>{p.icon}</span>
                 <span className="mono" style={{
-                  padding: '7px 14px', borderRadius: 999, fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', background: p.accent ? 'var(--sky)' : 'rgba(0,16,17,0.06)', color: p.accent ? 'var(--white)' : 'var(--charcoal)', }}>{p.pill}</span>
+                  padding: '7px 14px', borderRadius: 999, fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', background: p.accent ? 'var(--sky)' : 'rgba(38, 49, 102,0.06)', color: p.accent ? 'var(--white)' : 'var(--charcoal)', }}>{p.pill}</span>
               </div>
               <h3 className="display" style={{ margin: '0 0 14px', fontSize: 'clamp(22px, 2vw, 27px)', lineHeight: 1.12, letterSpacing: '-0.01em', color: 'var(--ink)' }}>{p.title}</h3>
               <p style={{ margin: '0 0 28px', fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>{p.body}</p>
               <a href={p.href} style={{
-                marginTop: 'auto', alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 10, padding: '14px 24px', borderRadius: 999, background: p.accent ? 'var(--sky)' : 'var(--ink)', color: 'var(--white)', fontSize: 15.5, fontWeight: 600, fontFamily: 'var(--sans)', boxShadow: p.accent ? '0 10px 26px rgba(168,197,255,0.35)' : 'none', }}>
+                marginTop: 'auto', alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 10, padding: '14px 24px', borderRadius: 999, background: p.accent ? 'var(--sky)' : 'var(--ink)', color: 'var(--white)', fontSize: 15.5, fontWeight: 600, fontFamily: 'var(--sans)', boxShadow: p.accent ? '0 10px 26px rgba(168, 197, 255,0.35)' : 'none', }}>
                 {p.cta}
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
               </a>
@@ -584,9 +584,9 @@ const ContractorHero = () => {
         <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginBottom: 22 }}>
           <a href="contact.html#contact"
             style={{
-              display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 113, 51,0.35)'; }}>
+              display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, letterSpacing: '0.01em', boxShadow: '0 8px 24px rgba(233, 106, 44,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(233, 106, 44,0.45)'; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(233, 106, 44,0.35)'; }}>
             {t('Get a quick quote', 'Cotiza rápido')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
@@ -774,7 +774,7 @@ const ContractorWholesaleKit = () => {
         {/* Editorial rows: outlined number · icon + title · description */}
         {items.map((it, i) => (
           <div key={i} className="wfs-usecase-row" style={{
-            display: 'grid', gridTemplateColumns: '104px 1fr 1.2fr', gap: 28, alignItems: 'center', padding: '34px 0', borderBottom: '1px solid rgba(0,16,17,0.1)', }}>
+            display: 'grid', gridTemplateColumns: '104px 1fr 1.2fr', gap: 28, alignItems: 'center', padding: '34px 0', borderBottom: '1px solid rgba(38, 49, 102,0.1)', }}>
             <span className="display wfs-usecase-num" aria-hidden style={{
               fontSize: 61.5, lineHeight: 1, fontWeight: 800, color: 'var(--tangerine)', }}>0{i + 1}</span>
             <h3 className="display" style={{

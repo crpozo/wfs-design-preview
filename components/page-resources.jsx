@@ -31,7 +31,7 @@ const ResourceArticles = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
           {posts.map((p, i) => (
             <article key={i} style={{
-              background: 'var(--white)', border: '1px solid rgba(0,16,17,0.1)', display: 'flex', flexDirection: 'column', cursor: 'pointer', }}>
+              background: 'var(--white)', border: '1px solid rgba(38, 49, 102,0.1)', display: 'flex', flexDirection: 'column', cursor: 'pointer', }}>
               <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', background: '#263166' }}>
                 <img loading="lazy" decoding="async" src={FENCE_IMG[p.img]} alt=""
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
@@ -68,7 +68,7 @@ const MaterialsComparison = () => {
         sub={t('Pick the one that matches your job. Click through to the material page for full specs.', 'Elija el que se ajuste a su proyecto. Haga clic para ver la página del material con las especificaciones completas.')}
       />
       <div style={{
-        borderRadius: 18, overflow: 'hidden', border: '1px solid rgba(0,16,17,0.08)', boxShadow: '0 34px 70px -36px rgba(0,16,17,0.28)', background: 'var(--white)', }}>
+        borderRadius: 18, overflow: 'hidden', border: '1px solid rgba(38, 49, 102,0.08)', boxShadow: '0 34px 70px -36px rgba(38, 49, 102,0.28)', background: 'var(--white)', }}>
         {/* Header: edge-to-edge photo per material, label on a dark scrim.
             The photo fills its whole cell (cover), no floating cutouts. */}
         <div style={{
@@ -84,7 +84,7 @@ const MaterialsComparison = () => {
                   position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.4s ease', }}/>
                 {/* Scrim so the label stays legible over any photo */}
                 <span aria-hidden style={{
-                  position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(38,49,103,0.10) 35%, rgba(38,49,103,0.92) 100%)', }}/>
+                  position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(38, 49, 102,0.10) 35%, rgba(38, 49, 102,0.92) 100%)', }}/>
                 <span className="mono" style={{
                   position: 'absolute', left: 16, right: 14, bottom: 14, display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, fontSize: 13.5, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', lineHeight: 1.25, }}>
                   <span style={{ minWidth: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{h.label}</span>
@@ -111,13 +111,13 @@ const MaterialsComparison = () => {
         {[
           [t('Best for', 'Ideal para'), t('Privacy', 'Privacidad'), t('Pool + ornamental', 'Piscina + ornamental'), t('Security + perimeter', 'Seguridad + perímetro'), t('Modern privacy + screens', 'Privacidad moderna + pantallas')], [t('Heights', 'Alturas'), t("4'-6' common", "4'-6' comunes"), t("4'-6' common", "4'-6' comunes"), t("4'-6' common, taller by request", "4'-6' comunes, más altas bajo pedido"), t("6' and 8'", "6' y 8'")], [t('Maintenance', 'Mantenimiento'), t('Occasional rinse', 'Enjuague ocasional'), t('Low; varies by finish and exposure', 'Bajo; varía según acabado y exposición'), t('Low; varies by coating', 'Bajo; varía según recubrimiento'), t('Low; varies by finish and exposure', 'Bajo; varía según acabado y exposición')], [t('Wind & code', 'Viento y código'), t('Depends on product and installation', 'Depende del producto y la instalación'), t('Pool-code compliant options', 'Opciones que cumplen código de piscinas'), t('Depends on product and installation', 'Depende del producto y la instalación'), t('Depends on product and installation', 'Depende del producto y la instalación')], [t('Warranty', 'Garantía'), t('Manufacturer warranty; varies by product', 'Garantía del fabricante; varía por producto'), t('Manufacturer warranty; varies by product', 'Garantía del fabricante; varía por producto'), t('Manufacturer warranty; varies by product', 'Garantía del fabricante; varía por producto'), t('Manufacturer warranty; varies by product', 'Garantía del fabricante; varía por producto')], [t('Lead time', 'Tiempo de entrega'), t('Stocked: ready now · custom varies', 'En stock: listo ya · a medida varía'), t('Stocked: ready now · custom varies', 'En stock: listo ya · a medida varía'), t('Stocked: ready now · custom varies', 'En stock: listo ya · a medida varía'), t('Stocked: ready now · custom varies', 'En stock: listo ya · a medida varía')], [t('Starts at', 'Desde'), t('Quote-based', 'Según cotización'), t('Quote-based', 'Según cotización'), t('Quote-based', 'Según cotización'), t('Quote-based', 'Según cotización')], ].map((row, ri) => (
           <div key={ri}
-            onMouseEnter={e => { e.currentTarget.style.background = '#eef1f7'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = ri % 2 ? '#f7f8fa' : 'var(--white)'; }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'rgba(168, 197, 255, 0.2)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = ri % 2 ? 'rgba(38, 49, 102, 0.03)' : 'var(--white)'; }}
             style={{
-              display: 'grid', gridTemplateColumns: '1.2fr repeat(4, 1fr)', background: ri % 2 ? '#f7f8fa' : 'var(--white)', borderTop: '1px solid rgba(0,16,17,0.06)', transition: 'background 0.15s ease', }}>
+              display: 'grid', gridTemplateColumns: '1.2fr repeat(4, 1fr)', background: ri % 2 ? 'rgba(38, 49, 102, 0.03)' : 'var(--white)', borderTop: '1px solid rgba(38, 49, 102,0.06)', transition: 'background 0.15s ease', }}>
             {row.map((cell, ci) => (
               <div key={ci} style={{
-                padding: '18px 20px', fontSize: 15, lineHeight: 1.5, color: ci === 0 ? 'var(--charcoal)' : 'var(--ink)', fontWeight: ci === 0 ? 700 : 400, fontFamily: ci === 0 ? 'var(--mono)' : 'var(--sans)', letterSpacing: ci === 0 ? '0.08em' : 'normal', textTransform: ci === 0 ? 'uppercase' : 'none', borderLeft: ci === 0 ? 'none' : '1px solid rgba(0,16,17,0.06)', }}>{cell}</div>
+                padding: '18px 20px', fontSize: 15, lineHeight: 1.5, color: ci === 0 ? 'var(--charcoal)' : 'var(--ink)', fontWeight: ci === 0 ? 700 : 400, fontFamily: ci === 0 ? 'var(--mono)' : 'var(--sans)', letterSpacing: ci === 0 ? '0.08em' : 'normal', textTransform: ci === 0 ? 'uppercase' : 'none', borderLeft: ci === 0 ? 'none' : '1px solid rgba(38, 49, 102,0.06)', }}>{cell}</div>
             ))}
           </div>
         ))}
@@ -163,7 +163,7 @@ const DownloadsSection = () => {
         {[
           [t('EC Fence, Exposure C Wind', 'EC Fence, viento de exposición C'), t('PDF on request', 'PDF a solicitud')], [t('Aluminum 3/4/5 Rail Profiles', 'Perfiles de aluminio de 3/4/5 rieles'), t('PDF on request', 'PDF a solicitud')], [t('DuraFence Aluminum Board', 'Tablero de aluminio DuraFence'), t('PDF on request', 'PDF a solicitud')], [t('Catalyst Vinyl, Privacy + Picket', 'Vinilo Catalyst, privacidad + barrotes'), t('PDF on request', 'PDF a solicitud')], [t('Chain Link Gauges & Mesh', 'Calibres y malla de malla ciclónica'), t('PDF on request', 'PDF a solicitud')], [t('Florida Pool Code Profiles', 'Perfiles del código de piscinas de Florida'), t('PDF on request', 'PDF a solicitud')], ].map(([t, meta], i) => (
           <a key={i} href="contact.html#contact" style={{
-            display: 'flex', alignItems: 'center', gap: 16, padding: '18px 20px', border: '1px solid rgba(0,16,17,0.15)', background: 'var(--white)', color: 'var(--ink)', }}>
+            display: 'flex', alignItems: 'center', gap: 16, padding: '18px 20px', border: '1px solid rgba(38, 49, 102,0.15)', background: 'var(--white)', color: 'var(--ink)', }}>
             <span style={{
               width: 40, height: 40, flexShrink: 0, background: 'var(--tangerine)', color: 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">

@@ -45,7 +45,7 @@ const ContactInfo = () => {
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
         {CONTACT_YARDS.map((y) => (
           <article key={y.key} style={{
-            border: '1px solid rgba(0,16,17,0.12)', borderTop: '3px solid var(--tangerine)', padding: '28px 30px 30px', display: 'flex', flexDirection: 'column', gap: 20, }}>
+            border: '1px solid rgba(38, 49, 102,0.12)', borderTop: '3px solid var(--tangerine)', padding: '28px 30px 30px', display: 'flex', flexDirection: 'column', gap: 20, }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
               <div>
                 <h3 className="display" style={{ margin: '0 0 6px', fontSize: 28.5, lineHeight: 1 }}>{y.name}</h3>
@@ -178,7 +178,7 @@ const ContactForm = () => {
     }
   };
   const inputStyle = {
-    width: '100%', padding: '14px 16px', border: '1px solid rgba(0,16,17,0.25)', background: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 15.5, color: 'var(--ink)', };
+    width: '100%', padding: '14px 16px', border: '1px solid rgba(38, 49, 102,0.25)', background: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 15.5, color: 'var(--ink)', };
   const labelStyle = {
     display: 'block', marginBottom: 8, fontFamily: 'var(--mono)', fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--ink)', };
   const expectations = [
@@ -212,7 +212,7 @@ const ContactForm = () => {
 
         {/* Form card */}
         <div style={{
-          background: 'var(--white)', border: '1px solid rgba(0,16,17,0.15)', padding: 'clamp(28px, 3.5vw, 48px)', }}>
+          background: 'var(--white)', border: '1px solid rgba(38, 49, 102,0.15)', padding: 'clamp(28px, 3.5vw, 48px)', }}>
           {submitted ? (
             <div style={{ padding: '48px 0', textAlign: 'center' }}>
               <span aria-hidden style={{
@@ -250,7 +250,7 @@ const ContactForm = () => {
                   {t('By submitting, you agree to be contacted by Western Fence Supply.', 'Al enviar, aceptas que Western Fence Supply te contacte.')}
                 </span>
                 <button type="submit" disabled={sending} style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 10, opacity: sending ? 0.6 : 1, padding: '15px 28px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', boxShadow: '0 10px 26px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s', }}
+                  display: 'inline-flex', alignItems: 'center', gap: 10, opacity: sending ? 0.6 : 1, padding: '15px 28px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', boxShadow: '0 10px 26px rgba(233, 106, 44,0.35)', transition: 'transform 0.18s', }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; }}>
                   {sending ? t('Sending…', 'Enviando…') : t('Send message', 'Enviar mensaje')}
@@ -259,7 +259,7 @@ const ContactForm = () => {
               </div>
               {error && (
                 <p role="alert" style={{
-                  margin: 0, padding: '14px 16px', borderRadius: 12, background: 'rgba(255,113,51,0.08)', border: '1px solid rgba(255,113,51,0.35)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)', }}>{error}</p>
+                  margin: 0, padding: '14px 16px', borderRadius: 12, background: 'rgba(233, 106, 44,0.08)', border: '1px solid rgba(233, 106, 44,0.35)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)', }}>{error}</p>
               )}
             </form>
           )}

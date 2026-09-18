@@ -32,9 +32,9 @@ const EstimateHero = () => {
         </p>
         <div style={{ marginTop: 32, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
           <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" style={{
-            display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 15.5, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 10px 28px rgba(255, 113, 51,0.4)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
-          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(255, 113, 51,0.5)'; }}
-          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(255, 113, 51,0.4)'; }}>
+            display: 'inline-flex', alignItems: 'center', gap: 12, padding: '16px 26px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 15.5, fontWeight: 600, letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 10px 28px rgba(233, 106, 44,0.4)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
+          onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 14px 36px rgba(233, 106, 44,0.5)'; }}
+          onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 10px 28px rgba(233, 106, 44,0.4)'; }}>
             {t('Draw my fence', 'Dibuja mi cerca')}
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
           </a>
@@ -72,11 +72,11 @@ const LiveAgentBand = () => {
   const t = useT();
   return (
   <section id="quote" style={{
-    background: 'var(--white)', padding: '120px 0', borderTop: '1px solid rgba(0,16,17,0.08)', scrollMarginTop: 120, }}>
+    background: 'var(--white)', padding: '120px 0', borderTop: '1px solid rgba(38, 49, 102,0.08)', scrollMarginTop: 120, }}>
     <div className="container">
       {/* Editorial header */}
       <div style={{
-        display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 56, alignItems: 'end', paddingBottom: 32, marginBottom: 40, borderBottom: '1px solid rgba(0,16,17,0.12)', }}>
+        display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 56, alignItems: 'end', paddingBottom: 32, marginBottom: 40, borderBottom: '1px solid rgba(38, 49, 102,0.12)', }}>
         <div>
           <h2 className="display" style={{
             margin: 0, fontSize: 'clamp(28px, 3vw, 44px)', lineHeight: 1, letterSpacing: '-0.02em', maxWidth: 620, }}>
@@ -127,7 +127,7 @@ const LiveAgentBand = () => {
         {/* EMAIL card, white */}
         <a href="mailto:sales@westernfencesupply.com" style={{
           display: 'block', padding: '40px 36px', background: 'var(--white)', color: 'var(--ink)', textDecoration: 'none', border: '1px solid var(--ink)', transition: 'transform 0.18s ease, box-shadow 0.18s ease', }}
-        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 18px 36px -18px rgba(0,16,17,0.25)'; }}
+        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 18px 36px -18px rgba(38, 49, 102,0.25)'; }}
         onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
           <div style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 32, }}>

@@ -23,7 +23,7 @@ const PageHero = ({ eyebrow, title, accent, accentBreak, subtitle, image, crumbs
     )}
     {/* Scrim, strong left to light right, same recipe as the home banner */}
     <div aria-hidden style={{
-      position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(95deg, rgba(38, 49, 103,0.86) 0%, rgba(38, 49, 103,0.68) 38%, rgba(38, 49, 103,0.42) 68%, rgba(38, 49, 103,0.26) 100%)', }}/>
+      position: 'absolute', inset: 0, zIndex: 1, background: 'linear-gradient(95deg, rgba(38, 49, 102,0.86) 0%, rgba(38, 49, 102,0.68) 38%, rgba(38, 49, 102,0.42) 68%, rgba(38, 49, 102,0.26) 100%)', }}/>
     <div className="container" style={{
       position: 'relative', zIndex: 2, width: '100%', paddingTop: 72, paddingBottom: 56, }}>
       {eyebrow && (
@@ -45,9 +45,9 @@ const PageHero = ({ eyebrow, title, accent, accentBreak, subtitle, image, crumbs
           {actions.map((a, i) => (
             a.primary ? (
               <a key={i} href={a.href} download={a.download} style={{
-                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '15px 28px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 8px 24px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(255, 113, 51,0.45)'; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(255, 113, 51,0.35)'; }}>
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center', padding: '15px 28px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.06em', textTransform: 'uppercase', boxShadow: '0 8px 24px rgba(233, 106, 44,0.35)', transition: 'transform 0.18s, box-shadow 0.18s, background 0.18s', }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(233, 106, 44,0.45)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 24px rgba(233, 106, 44,0.35)'; }}>
                 {a.label}
               </a>
             ) : (
@@ -67,7 +67,7 @@ const PageHero = ({ eyebrow, title, accent, accentBreak, subtitle, image, crumbs
 
 const PageSectionHeader = ({ number, label, title, accent, sub, link }) => (
   <div style={{
-    display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end', paddingBottom: 24, marginBottom: 28, borderBottom: '1px solid rgba(0,16,17,0.12)', }}>
+    display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end', paddingBottom: 24, marginBottom: 28, borderBottom: '1px solid rgba(38, 49, 102,0.12)', }}>
     <div>
       <h2 className="display" style={{
         margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, }}>
@@ -95,7 +95,7 @@ const PageSectionHeader = ({ number, label, title, accent, sub, link }) => (
 
 const StatStrip = ({ items, dark = false }) => (
   <div style={{
-    display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 28, paddingTop: 30, borderTop: `1px solid ${dark ? 'rgba(255,255,255,0.18)' : 'rgba(0,16,17,0.12)'}`, }}>
+    display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 28, paddingTop: 30, borderTop: `1px solid ${dark ? 'rgba(255,255,255,0.18)' : 'rgba(38, 49, 102,0.12)'}`, }}>
     {items.map(([n, l]) => (
       <div key={l}>
         <div className="display" style={{ fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, color: dark ? 'var(--white)' : 'var(--ink)' }}>{n}</div>
@@ -112,7 +112,7 @@ const CTABand = ({ kicker, title, accent, body, primary, secondary, theme = 'cre
   const sub = theme === 'ink' ? 'var(--alice-blue)' : 'var(--charcoal)';
   return (
     <section style={{
-      background: bg, color: fg, padding: '120px 0', borderTop: theme === 'ink' ? 'none' : '1px solid rgba(0,16,17,0.08)', }}>
+      background: bg, color: fg, padding: '120px 0', borderTop: theme === 'ink' ? 'none' : '1px solid rgba(38, 49, 102,0.08)', }}>
       <div className="container">
         <div style={{
           display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: 48, alignItems: 'center', }}>
@@ -166,10 +166,10 @@ const featureIcon = (label = '') => {
 
 const FeatureRow = ({ items }) => (
   <div style={{
-    display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 0, background: 'var(--white)', borderRadius: 16, boxShadow: '0 34px 70px -34px rgba(0,16,17,0.4)', border: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden', }}>
+    display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 0, background: 'var(--white)', borderRadius: 16, boxShadow: '0 34px 70px -34px rgba(38, 49, 102,0.4)', border: '1px solid rgba(38, 49, 102,0.06)', overflow: 'hidden', }}>
     {items.map(([k, v], i) => (
       <div key={i} style={{
-        padding: '28px 26px', borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.08)', }}>
+        padding: '28px 26px', borderLeft: i === 0 ? 'none' : '1px solid rgba(38, 49, 102,0.08)', }}>
         <div aria-hidden style={{ color: 'var(--tangerine)', marginBottom: 14 }}>{featureIcon(k)}</div>
         <div className="mono" style={{
           fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--tangerine)', fontWeight: 700, marginBottom: 10, }}>{k}</div>
@@ -239,7 +239,7 @@ const UseCaseRow = ({ title, body, badge, index }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
-        display: 'grid', gridTemplateColumns: '104px 1.15fr 1fr 48px', gap: 28, alignItems: 'center', padding: '32px 22px', margin: '0 -22px', borderBottom: '1px solid rgba(0,16,17,0.1)', textDecoration: 'none', color: 'inherit', background: hover ? 'rgba(255,113,51,0.07)' : 'transparent', transition: 'background 0.2s ease', }}>
+        display: 'grid', gridTemplateColumns: '104px 1.15fr 1fr 48px', gap: 28, alignItems: 'center', padding: '32px 22px', margin: '0 -22px', borderBottom: '1px solid rgba(38, 49, 102,0.1)', textDecoration: 'none', color: 'inherit', background: hover ? 'rgba(233, 106, 44,0.07)' : 'transparent', transition: 'background 0.2s ease', }}>
       <span className="display wfs-usecase-num" aria-hidden style={{
         fontSize: 61.5, lineHeight: 1, fontWeight: 800, color: hover ? 'var(--tangerine)' : 'transparent', WebkitTextStroke: hover ? '0px transparent' : '1.5px rgba(38,49,102,0.32)', transition: 'color 0.2s ease', }}>0{index + 1}</span>
       <div>
@@ -252,7 +252,7 @@ const UseCaseRow = ({ title, body, badge, index }) => {
       </div>
       <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>{body}</p>
       <span aria-hidden style={{
-        width: 44, height: 44, borderRadius: '50%', border: `1px solid ${hover ? 'var(--tangerine)' : 'rgba(0,16,17,0.18)'}`, background: hover ? 'var(--tangerine)' : 'transparent', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: hover ? 'var(--white)' : 'var(--ink)', justifySelf: 'end', transition: 'background 0.2s ease, border-color 0.2s ease, color 0.2s ease', }}>
+        width: 44, height: 44, borderRadius: '50%', border: `1px solid ${hover ? 'var(--tangerine)' : 'rgba(38, 49, 102,0.18)'}`, background: hover ? 'var(--tangerine)' : 'transparent', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: hover ? 'var(--white)' : 'var(--ink)', justifySelf: 'end', transition: 'background 0.2s ease, border-color 0.2s ease, color 0.2s ease', }}>
         <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
           <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
         </svg>

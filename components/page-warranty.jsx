@@ -81,10 +81,10 @@ const WarrantyMaterialTable = () => {
         {[
           ['Vinyl / PVC', { EN: 'Lifetime', ES: 'De por vida' }, { EN: 'Lifetime UV', ES: 'UV de por vida' }, { EN: 'Catalyst-extruded. No fading, peeling or rotting.', ES: 'Extruido Catalyst. No se decolora, no se pela, no se pudre.' }], ['Aluminum', { EN: 'Lifetime', ES: 'De por vida' }, { EN: '20-year finish', ES: 'Acabado 20 años' }, { EN: 'Powder-coat over marine-grade extrusion.', ES: 'Pintura en polvo sobre extrusión grado marino.' }], [{ EN: 'Chain Link · Galv', ES: 'Malla · Galv' }, { EN: 'Rust-thru', ES: 'Contra perforación por óxido' }, '—', { EN: 'ASTM A392 zinc-coat. Salt-air rated.', ES: 'Galvanizado ASTM A392. Resistente al aire salino.' }], [{ EN: 'Chain Link · PVC', ES: 'Malla · PVC' }, { EN: 'Rust-thru', ES: 'Contra perforación por óxido' }, { EN: '15-year color', ES: 'Color 15 años' }, { EN: 'Black, green PVC-coated.', ES: 'Recubrimiento PVC negro o verde.' }], ['Metal / DuraFence', { EN: '20 years', ES: '20 años' }, { EN: '10-year finish', ES: 'Acabado 10 años' }, { EN: 'HVHZ-rated aluminum board.', ES: 'Tabla de aluminio con clasificación HVHZ.' }], ['EC Fence', { EN: 'Lifetime', ES: 'De por vida' }, { EN: '20-year finish', ES: 'Acabado 20 años' }, { EN: 'Self-mating galv steel, Exp. C wind-load.', ES: 'Acero galv. autoensamblable, carga eólica Exp. C.' }], [{ EN: 'Gates · welded', ES: 'Portones · soldados' }, { EN: '10 years', ES: '10 años' }, { EN: 'Per system', ES: 'Por sistema' }, { EN: 'WFS in-house weld + hardware coverage.', ES: 'Cobertura de soldadura en planta WFS + herrajes.' }], ].map((row, ri) => (
           <div key={ri} style={{
-            display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.2fr', background: ri % 2 === 0 ? 'var(--white)' : '#ffffff', borderTop: '1px solid rgba(0,16,17,0.08)', }}>
+            display: 'grid', gridTemplateColumns: '1.2fr 1fr 1fr 1.2fr', background: ri % 2 === 0 ? 'var(--white)' : '#ffffff', borderTop: '1px solid rgba(38, 49, 102,0.08)', }}>
             {row.map((cell, ci) => (
               <div key={ci} style={{
-                padding: '16px 18px', fontSize: 15, lineHeight: 1.5, color: ci === 0 ? 'var(--ink)' : 'var(--ink)', fontWeight: ci === 0 ? 700 : 400, fontFamily: ci === 0 ? 'var(--mono)' : 'var(--sans)', letterSpacing: ci === 0 ? '0.06em' : 'normal', textTransform: ci === 0 ? 'uppercase' : 'none', borderLeft: ci === 0 ? 'none' : '1px solid rgba(0,16,17,0.08)', }}>{typeof cell === 'string' ? cell : t(cell)}</div>
+                padding: '16px 18px', fontSize: 15, lineHeight: 1.5, color: ci === 0 ? 'var(--ink)' : 'var(--ink)', fontWeight: ci === 0 ? 700 : 400, fontFamily: ci === 0 ? 'var(--mono)' : 'var(--sans)', letterSpacing: ci === 0 ? '0.06em' : 'normal', textTransform: ci === 0 ? 'uppercase' : 'none', borderLeft: ci === 0 ? 'none' : '1px solid rgba(38, 49, 102,0.08)', }}>{typeof cell === 'string' ? cell : t(cell)}</div>
             ))}
           </div>
         ))}
@@ -394,7 +394,7 @@ const ClaimsForm = () => {
               </div>
               {error && (
                 <p role="alert" style={{
-                  gridColumn: 'span 2', margin: 0, padding: '14px 16px', background: 'rgba(255,113,51,0.08)', border: '1px solid rgba(255,113,51,0.35)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)', }}>{error}</p>
+                  gridColumn: 'span 2', margin: 0, padding: '14px 16px', background: 'rgba(233, 106, 44,0.08)', border: '1px solid rgba(233, 106, 44,0.35)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--ink)', }}>{error}</p>
               )}
             </form>
             )}
@@ -406,7 +406,7 @@ const ClaimsForm = () => {
               background: 'var(--ink)', color: 'var(--white)', padding: '28px 28px 26px', }}>
               <div className="mono" style={{
                 fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em', color: 'var(--tangerine)', textTransform: 'uppercase', marginBottom: 14, display: 'flex', alignItems: 'center', gap: 10, }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#ff7133', boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)' }}/>
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#e96a2c', boxShadow: '0 0 0 3px rgba(233, 106, 44,0.25)' }}/>
                 {t('Live · 7:30am - 3:30pm EST', 'En vivo · 7:30am - 3:30pm EST')}
               </div>
               <h3 className="display" style={{

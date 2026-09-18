@@ -14,10 +14,10 @@ const InstallerMarquee = () => {
   const base = [...INSTALLERS, ...INSTALLERS];
   const row = [...base, ...base];
   return (
-    <section style={{ background: 'var(--white)', padding: '64px 0', borderTop: '1px solid rgba(0,16,17,0.06)', borderBottom: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
+    <section style={{ background: 'var(--white)', padding: '64px 0', borderTop: '1px solid rgba(38, 49, 102,0.06)', borderBottom: '1px solid rgba(38, 49, 102,0.06)', overflow: 'hidden' }}>
       <div className="container">
         <p className="mono" style={{
-          margin: '0 0 32px', fontSize: 14, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(0,16,17,0.4)', fontWeight: 600, }}>
+          margin: '0 0 32px', fontSize: 14, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(38, 49, 102,0.4)', fontWeight: 600, }}>
           {t('The #1 Choice of Florida’s Top Fence Installers', 'La opción #1 de los mejores instaladores de cercas de Florida')}
         </p>
       </div>
@@ -87,7 +87,7 @@ const ProductMarquee = () => {
     <button onClick={() => nudge(dir === 'prev' ? -1 : 1)}
       aria-label={dir === 'prev' ? t('Previous products', 'Productos anteriores') : t('More products', 'Más productos')}
       style={{
-        position: 'absolute', top: '50%', transform: 'translateY(-50%)', [dir === 'prev' ? 'left' : 'right']: 'clamp(10px, 1.6vw, 28px)', zIndex: 2, width: 46, height: 46, borderRadius: '50%', border: '1px solid var(--ink)', background: 'var(--white)', color: 'var(--ink)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 10px 24px -14px rgba(0,16,17,0.4)', }}>
+        position: 'absolute', top: '50%', transform: 'translateY(-50%)', [dir === 'prev' ? 'left' : 'right']: 'clamp(10px, 1.6vw, 28px)', zIndex: 2, width: 46, height: 46, borderRadius: '50%', border: '1px solid var(--ink)', background: 'var(--white)', color: 'var(--ink)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', boxShadow: '0 10px 24px -14px rgba(38, 49, 102,0.4)', }}>
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style={{ transform: dir === 'prev' ? 'rotate(180deg)' : 'none' }}>
         <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
       </svg>
@@ -95,7 +95,7 @@ const ProductMarquee = () => {
   );
   const row = [...MARQUEE_PRODUCTS, ...MARQUEE_PRODUCTS];
   return (
-    <section id="products-marquee" style={{ background: 'var(--white)', padding: '64px 0 116px', borderTop: '1px solid rgba(0,16,17,0.06)', overflow: 'hidden' }}>
+    <section id="products-marquee" style={{ background: 'var(--white)', padding: '64px 0 116px', borderTop: '1px solid rgba(38, 49, 102,0.06)', overflow: 'hidden' }}>
       <div className="container" style={{
         display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 24, flexWrap: 'wrap', marginBottom: 36, }}>
         <span className="eyebrow" style={{ color: 'var(--ink)', display: 'inline-flex', alignItems: 'center', gap: 10 }}>
@@ -126,7 +126,7 @@ const ProductMarquee = () => {
               <h3 className="display" style={{
                 margin: '14px 0 0', fontSize: 17.5, lineHeight: 1.2, letterSpacing: '-0.01em', color: 'var(--ink)', textAlign: 'center', }}>{t(p.name)}</h3>
               <p className="mono" style={{
-                margin: '5px 0 0', fontSize: 13.5, lineHeight: 1.4, color: 'rgba(0,16,17,0.55)', textAlign: 'center', }}>{t(p.spec)}</p>
+                margin: '5px 0 0', fontSize: 13.5, lineHeight: 1.4, color: 'rgba(38, 49, 102,0.55)', textAlign: 'center', }}>{t(p.spec)}</p>
             </div>
           ))}
         </div>
@@ -152,7 +152,7 @@ const FeaturedGrid = () => {
   const start = page * PER;
   const ArrowBtn = ({ dir, disabled, onClick }) => (
     <button onClick={onClick} disabled={disabled} aria-label={dir === 'prev' ? t('Previous', 'Anterior') : t('Next', 'Siguiente')} style={{
-      width: 46, height: 46, borderRadius: '50%', border: `1px solid ${disabled ? 'rgba(0,16,17,0.12)' : 'var(--ink)'}`, background: 'var(--white)', color: disabled ? 'rgba(0,16,17,0.25)' : 'var(--ink)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', cursor: disabled ? 'default' : 'pointer', transition: 'border-color 0.2s ease, color 0.2s ease', }}>
+      width: 46, height: 46, borderRadius: '50%', border: `1px solid ${disabled ? 'rgba(38, 49, 102,0.12)' : 'var(--ink)'}`, background: 'var(--white)', color: disabled ? 'rgba(38, 49, 102,0.25)' : 'var(--ink)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', cursor: disabled ? 'default' : 'pointer', transition: 'border-color 0.2s ease, color 0.2s ease', }}>
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style={{ transform: dir === 'prev' ? 'rotate(180deg)' : 'none' }}>
         <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
       </svg>
@@ -212,7 +212,7 @@ const FeaturedGrid = () => {
         {/* Footer: progress + counter + catalog download */}
         <div style={{
           marginTop: 40, display: 'flex', alignItems: 'center', gap: 24, flexWrap: 'wrap', }}>
-          <span style={{ flex: 1, minWidth: 160, height: 2, background: 'rgba(0,16,17,0.12)', position: 'relative' }}>
+          <span style={{ flex: 1, minWidth: 160, height: 2, background: 'rgba(38, 49, 102,0.12)', position: 'relative' }}>
             <span style={{
               position: 'absolute', left: 0, top: 0, bottom: 0, width: `${((page + 1) / pages) * 100}%`, background: 'var(--tangerine)', transition: 'width 0.3s ease', }}/>
           </span>
@@ -238,7 +238,7 @@ const ProjectCard = ({ p, i, layout }) => {
         style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: hover ? 'scale(1.05)' : 'scale(1)', transition: 'transform 0.7s ease', }} />
       <div style={{
-        position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,16,17,0) 35%, rgba(0,16,17,0.92) 100%)', }}/>
+        position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 35%, rgba(38, 49, 102,0.92) 100%)', }}/>
 
       {/* Top meta row */}
       <div style={{
@@ -248,7 +248,7 @@ const ProjectCard = ({ p, i, layout }) => {
           {String(i + 1).padStart(2, '0')} / {p.year}
         </div>
         <div className="mono" style={{
-          fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--white)', background: 'rgba(0,16,17,0.55)', padding: '5px 9px', backdropFilter: 'blur(6px)', }}>
+          fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--white)', background: 'rgba(38, 49, 102,0.55)', padding: '5px 9px', backdropFilter: 'blur(6px)', }}>
           {t(MAT_LABELS[p.material] || p.material)}
         </div>
       </div>
@@ -344,7 +344,7 @@ const ProjectListRow = ({ p, active, onSelect }) => {
       onClick={onSelect}
       onMouseEnter={onSelect}
       style={{
-        display: 'grid', gridTemplateColumns: '72px 1fr auto', gap: 14, alignItems: 'center', padding: 8, width: '100%', textAlign: 'left', cursor: 'pointer', background: active ? '#ffffff' : 'transparent', border: '1px solid', borderColor: active ? 'rgba(38, 49, 102,0.22)' : 'rgba(0,16,17,0.10)', borderLeftWidth: 3, borderLeftColor: active ? 'var(--tangerine)' : 'transparent', transition: 'background 0.2s ease, border-color 0.2s ease', }}>
+        display: 'grid', gridTemplateColumns: '72px 1fr auto', gap: 14, alignItems: 'center', padding: 8, width: '100%', textAlign: 'left', cursor: 'pointer', background: active ? '#ffffff' : 'transparent', border: '1px solid', borderColor: active ? 'rgba(38, 49, 102,0.22)' : 'rgba(38, 49, 102,0.10)', borderLeftWidth: 3, borderLeftColor: active ? 'var(--tangerine)' : 'transparent', transition: 'background 0.2s ease, border-color 0.2s ease', }}>
       <span style={{ display: 'block', width: 72, height: 50, overflow: 'hidden', background: '#263166' }}>
         <img loading="lazy" decoding="async" src={p.imgUrl || FENCE_IMG[MAT_IMG[p.material]] || FENCE_IMG[p.img]} alt={t(p.name)}
           style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
@@ -368,7 +368,7 @@ const PageBtn = ({ active, disabled, onClick, label, arrow }) => {
     aria-label={arrow === 'prev' ? t('Previous page', 'Página anterior') : arrow === 'next' ? t('Next page', 'Página siguiente') : `${t('Page', 'Página')} ${label}`}
     className="mono"
     style={{
-      width: 32, height: 32, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 700, letterSpacing: '0.04em', border: '1px solid', borderColor: active ? 'var(--ink)' : 'rgba(0,16,17,0.18)', background: active ? 'var(--ink)' : 'transparent', color: active ? 'var(--white)' : 'var(--ink)', cursor: disabled ? 'not-allowed' : 'pointer', opacity: disabled ? 0.32 : 1, transition: 'background 0.2s ease, border-color 0.2s ease', }}>
+      width: 32, height: 32, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', fontSize: 14, fontWeight: 700, letterSpacing: '0.04em', border: '1px solid', borderColor: active ? 'var(--ink)' : 'rgba(38, 49, 102,0.18)', background: active ? 'var(--ink)' : 'transparent', color: active ? 'var(--white)' : 'var(--ink)', cursor: disabled ? 'not-allowed' : 'pointer', opacity: disabled ? 0.32 : 1, transition: 'background 0.2s ease, border-color 0.2s ease', }}>
     {arrow ? (
       <svg width="13" height="13" viewBox="0 0 16 16" fill="none"
         style={{ transform: arrow === 'prev' ? 'scaleX(-1)' : 'none' }}>
@@ -391,7 +391,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
   const start = page * PER;
   const ArrowBtn = ({ dir, disabled, onClick }) => (
     <button onClick={onClick} disabled={disabled} aria-label={dir === 'prev' ? t('Previous', 'Anterior') : t('Next', 'Siguiente')} style={{
-      width: 46, height: 46, borderRadius: '50%', border: `1px solid ${disabled ? 'rgba(0,16,17,0.12)' : 'var(--ink)'}`, background: 'var(--white)', color: disabled ? 'rgba(0,16,17,0.25)' : 'var(--ink)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', cursor: disabled ? 'default' : 'pointer', transition: 'border-color 0.2s ease, color 0.2s ease', }}>
+      width: 46, height: 46, borderRadius: '50%', border: `1px solid ${disabled ? 'rgba(38, 49, 102,0.12)' : 'var(--ink)'}`, background: 'var(--white)', color: disabled ? 'rgba(38, 49, 102,0.25)' : 'var(--ink)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', cursor: disabled ? 'default' : 'pointer', transition: 'border-color 0.2s ease, color 0.2s ease', }}>
       <svg width="15" height="15" viewBox="0 0 16 16" fill="none" style={{ transform: dir === 'prev' ? 'rotate(180deg)' : 'none' }}>
         <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
       </svg>
@@ -454,7 +454,7 @@ const ProjectGallery = ({ featuredMaterial, items }) => {
 
         {/* Footer: progress + counter */}
         <div style={{ marginTop: 40, display: 'flex', alignItems: 'center', gap: 24 }}>
-          <span style={{ flex: 1, height: 2, background: 'rgba(0,16,17,0.12)', position: 'relative' }}>
+          <span style={{ flex: 1, height: 2, background: 'rgba(38, 49, 102,0.12)', position: 'relative' }}>
             <span style={{
               position: 'absolute', left: 0, top: 0, bottom: 0, width: `${((page + 1) / pages) * 100}%`, background: 'var(--tangerine)', transition: 'width 0.3s ease', }}/>
           </span>
@@ -482,7 +482,7 @@ const Calculator = () => {
   return (
     <section id="calculator" style={{ background: 'var(--indigo-blue)', color: 'var(--parchment)', padding: '120px 0', position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, opacity: 0.18, pointerEvents: 'none' }}>
-        <ChainLinkSVG color="#97baff" opacity={0.6} />
+        <ChainLinkSVG color="#a8c5ff" opacity={0.6} />
       </div>
 
       <div className="container" style={{ position: 'relative' }}>
@@ -522,7 +522,7 @@ const Calculator = () => {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 6 }}>
                   {[['chain-link', 'Chain Link', 'Malla ciclónica'], ['aluminum', 'Aluminum', 'Aluminio'], ['vinyl', 'Vinyl', 'Vinilo'], ['metal', 'Metal', 'Metal']].map(([id, label, labelEs]) => (
                     <button key={id} onClick={() => setType(id)} style={{
-                      padding: '14px 10px', fontSize: 14.5, background: type === id ? 'var(--ink)' : 'var(--white)', color: type === id ? 'var(--parchment)' : 'var(--ink)', border: '1px solid rgba(0,16,17,0.12)', borderRadius: 8, fontWeight: 500, }}>{t(label, labelEs)}</button>
+                      padding: '14px 10px', fontSize: 14.5, background: type === id ? 'var(--ink)' : 'var(--white)', color: type === id ? 'var(--parchment)' : 'var(--ink)', border: '1px solid rgba(38, 49, 102,0.12)', borderRadius: 8, fontWeight: 500, }}>{t(label, labelEs)}</button>
                   ))}
                 </div>
               </div>
@@ -547,7 +547,7 @@ const Calculator = () => {
                   <div style={{ display: 'flex', gap: 4 }}>
                     {[4, 6, 8, 10].map(h => (
                       <button key={h} onClick={() => setHeight(h)} style={{
-                        flex: 1, padding: '12px 0', fontSize: 14.5, background: height === h ? 'var(--ink)' : 'var(--white)', color: height === h ? 'var(--parchment)' : 'var(--ink)', border: '1px solid rgba(0,16,17,0.12)', borderRadius: 8, fontWeight: 500, }}>{h}'</button>
+                        flex: 1, padding: '12px 0', fontSize: 14.5, background: height === h ? 'var(--ink)' : 'var(--white)', color: height === h ? 'var(--parchment)' : 'var(--ink)', border: '1px solid rgba(38, 49, 102,0.12)', borderRadius: 8, fontWeight: 500, }}>{h}'</button>
                     ))}
                   </div>
                 </div>
@@ -558,14 +558,14 @@ const Calculator = () => {
                   <div style={{ display: 'flex', gap: 4 }}>
                     {[0, 1, 2, 3].map(g => (
                       <button key={g} onClick={() => setGates(g)} style={{
-                        flex: 1, padding: '12px 0', fontSize: 14.5, background: gates === g ? 'var(--ink)' : 'var(--white)', color: gates === g ? 'var(--parchment)' : 'var(--ink)', border: '1px solid rgba(0,16,17,0.12)', borderRadius: 8, fontWeight: 500, }}>{g}</button>
+                        flex: 1, padding: '12px 0', fontSize: 14.5, background: gates === g ? 'var(--ink)' : 'var(--white)', color: gates === g ? 'var(--parchment)' : 'var(--ink)', border: '1px solid rgba(38, 49, 102,0.12)', borderRadius: 8, fontWeight: 500, }}>{g}</button>
                     ))}
                   </div>
                 </div>
               </div>
 
               {/* Result */}
-              <div style={{ marginTop: 8, padding: '24px 0 0', borderTop: '1px solid rgba(0,16,17,0.12)' }}>
+              <div style={{ marginTop: 8, padding: '24px 0 0', borderTop: '1px solid rgba(38, 49, 102,0.12)' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 14.5, color: 'var(--charcoal)', marginBottom: 8 }}>
                   <span>{t('Materials', 'Materiales')} ({length} ft × {height}' {type})</span>
                   <span className="mono">${matCost.toLocaleString()}</span>
@@ -627,7 +627,7 @@ const ServiceAreas = () => {
       <div className="container">
         {/* Editorial header, matches FenceCategories / GateSystems / Projects */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end', paddingBottom: 24, marginBottom: 28, borderBottom: '1px solid rgba(0,16,17,0.12)', }}>
+          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end', paddingBottom: 24, marginBottom: 28, borderBottom: '1px solid rgba(38, 49, 102,0.12)', }}>
           <div>
             <h2 className="display" style={{
               margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, }}>
@@ -691,7 +691,7 @@ const ServiceAreas = () => {
 
             {/* Legend, bottom-left */}
             <div style={{
-              position: 'absolute', bottom: 16, left: 16, background: 'rgba(38, 49, 102,0.85)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,113,51,0.4)', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 10, boxShadow: '0 8px 20px rgba(0,0,0,0.32)', }}>
+              position: 'absolute', bottom: 16, left: 16, background: 'rgba(38, 49, 102,0.85)', backdropFilter: 'blur(6px)', border: '1px solid rgba(233, 106, 44,0.4)', padding: '10px 14px', display: 'flex', alignItems: 'center', gap: 10, boxShadow: '0 8px 20px rgba(0,0,0,0.32)', }}>
               <span style={{
                 width: 8, height: 8, borderRadius: '50%', background: 'var(--white)', border: '2px solid var(--ink)', }}/>
               <span className="mono" style={{
@@ -704,7 +704,7 @@ const ServiceAreas = () => {
             {[
               { city: t('Fort Myers · HQ', 'Fort Myers · Sede'), addr: '2621 Fowler St, FL 33901', phone: '(239) 465-2482' }, { city: 'Port Charlotte', addr: '1145 Enterprise Dr, FL 33953', phone: '(941) 467-5821' }, { city: t('Service area', 'Área de servicio'), addr: t('Serving customers throughout Florida', 'Atendemos clientes en toda Florida'), phone: t('Mon-Fri 7:30am-3:30pm · Sat mornings', 'Lun-Vie 7:30am-3:30pm · Sáb por la mañana') }, ].map((y, i) => (
               <div key={i} className="wfs-yard-card" style={{
-                border: '1px solid rgba(0,16,17,0.18)', padding: '16px 18px', background: 'var(--white)', boxShadow: '0 6px 18px rgba(38,49,102,0.12)', display: 'flex', alignItems: 'center', gap: 16, }}>
+                border: '1px solid rgba(38, 49, 102,0.18)', padding: '16px 18px', background: 'var(--white)', boxShadow: '0 6px 18px rgba(38,49,102,0.12)', display: 'flex', alignItems: 'center', gap: 16, }}>
                 <div className="mono" style={{
                   fontSize: 13.5, letterSpacing: '0.22em', color: 'var(--tangerine)', textTransform: 'uppercase', fontWeight: 700, minWidth: 22, }}>0{i+1}</div>
                 <div className="wfs-yard-body" style={{ flex: 1, minWidth: 0 }}>
@@ -754,7 +754,7 @@ const FinalCTA = ({ prefill }) => {
     }
   };
   const inputStyle = {
-    width: '100%', padding: '15px 16px', border: '1px solid rgba(0,16,17,0.16)', background: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, color: 'var(--ink)', outline: 'none', borderRadius: 12, };
+    width: '100%', padding: '15px 16px', border: '1px solid rgba(38, 49, 102,0.16)', background: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, color: 'var(--ink)', outline: 'none', borderRadius: 12, };
   const labelStyle = {
     fontFamily: 'var(--mono)', fontSize: 14, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 600, marginBottom: 8, display: 'block', };
   /* La tarjeta del formulario va sobre azul, así que sus etiquetas y textos
@@ -765,7 +765,7 @@ const FinalCTA = ({ prefill }) => {
     <section id="contact" style={{ background: 'var(--white)', padding: '120px 0', position: 'relative', overflow: 'hidden', scrollMarginTop: 110 }}>
       <div className="container" style={{ position: 'relative' }}>
         <div style={{
-          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end', paddingBottom: 24, marginBottom: 40, borderBottom: '1px solid rgba(0,16,17,0.12)', }}>
+          display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48, alignItems: 'end', paddingBottom: 24, marginBottom: 40, borderBottom: '1px solid rgba(38, 49, 102,0.12)', }}>
           <div>
             <h2 className="display" style={{
               margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800, }}>
@@ -799,7 +799,7 @@ const FinalCTA = ({ prefill }) => {
             ].map((y, i) => (
               <div key={y.name} style={{
                 marginBottom: 24, paddingBottom: 24,
-                borderBottom: i === 0 ? '1px solid rgba(0,16,17,0.12)' : 'none',
+                borderBottom: i === 0 ? '1px solid rgba(38, 49, 102,0.12)' : 'none',
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
                   <span style={{ width: 9, height: 9, borderRadius: '50%', background: 'var(--tangerine)', flexShrink: 0 }}/>
@@ -813,9 +813,9 @@ const FinalCTA = ({ prefill }) => {
               </div>
             ))}
 
-            <div style={{ paddingTop: 24, borderTop: '1px solid rgba(0,16,17,0.15)' }}>
+            <div style={{ paddingTop: 24, borderTop: '1px solid rgba(38, 49, 102,0.15)' }}>
               <div className="mono" style={{ fontSize: 14, letterSpacing: '0.16em', color: 'var(--ink)', textTransform: 'uppercase', display: 'flex', alignItems: 'center', gap: 10 }}>
-                <span style={{ width: 8, height: 8, background: '#ff7133', borderRadius: '50%' }}/>
+                <span style={{ width: 8, height: 8, background: '#e96a2c', borderRadius: '50%' }}/>
                 {t('Get a detailed quote', 'Pide tu cotización')}
               </div>
             </div>
@@ -892,7 +892,7 @@ const FinalCTA = ({ prefill }) => {
                 <div style={{ marginBottom: 24 }}>
                   <label style={formLabelStyle}>{t('Drawing or layout (optional)', 'Plano o diseño (opcional)')}</label>
                   <label htmlFor="wfs-upload" style={{
-                    display: 'flex', alignItems: 'center', gap: 14, padding: '16px 18px', borderRadius: 12, border: '1.5px dashed ' + (fileName ? 'var(--tangerine)' : 'rgba(255,255,255,0.3)'), background: fileName ? 'rgba(255,113,51,0.12)' : 'rgba(255,255,255,0.06)', cursor: 'pointer', transition: 'border-color 0.15s, background 0.15s', }}>
+                    display: 'flex', alignItems: 'center', gap: 14, padding: '16px 18px', borderRadius: 12, border: '1.5px dashed ' + (fileName ? 'var(--tangerine)' : 'rgba(255,255,255,0.3)'), background: fileName ? 'rgba(233, 106, 44,0.12)' : 'rgba(255,255,255,0.06)', cursor: 'pointer', transition: 'border-color 0.15s, background 0.15s', }}>
                     <span aria-hidden style={{
                       width: 42, height: 42, borderRadius: 11, flexShrink: 0, background: fileName ? 'var(--tangerine)' : 'rgba(255,255,255,0.16)', color: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', }}>
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -918,14 +918,14 @@ const FinalCTA = ({ prefill }) => {
                     {t('By submitting, you agree to be contacted by Western Fence Supply.', 'Al enviar, aceptas ser contactado por Western Fence Supply.')}
                   </p>
                   <button type="submit" disabled={sending} style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 10, padding: '16px 28px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, boxShadow: '0 12px 30px -10px rgba(255,113,51,0.55)', opacity: sending ? 0.6 : 1, cursor: sending ? 'wait' : 'pointer', }}>
+                    display: 'inline-flex', alignItems: 'center', gap: 10, padding: '16px 28px', borderRadius: 999, background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 16.5, fontWeight: 600, boxShadow: '0 12px 30px -10px rgba(233, 106, 44,0.55)', opacity: sending ? 0.6 : 1, cursor: sending ? 'wait' : 'pointer', }}>
                     {sending ? t('Sending…', 'Enviando…') : t('Request quote', 'Solicitar cotización')}
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
                   </button>
                 </div>
                 {error && (
                   <p role="alert" style={{
-                    margin: '18px 0 0', padding: '14px 16px', borderRadius: 12, background: 'rgba(255,113,51,0.16)', border: '1px solid rgba(255,113,51,0.5)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--white)', }}>{error}</p>
+                    margin: '18px 0 0', padding: '14px 16px', borderRadius: 12, background: 'rgba(233, 106, 44,0.16)', border: '1px solid rgba(233, 106, 44,0.5)', fontSize: 15.5, lineHeight: 1.5, color: 'var(--white)', }}>{error}</p>
                 )}
               </>
             )}

@@ -17,7 +17,7 @@ const TrainingHeader = () => {
   const [curLang, setCurLang] = useLang();
   return (
     <header style={{
-      background: 'var(--white)', borderBottom: '1px solid rgba(0,16,17,0.1)', position: 'sticky', top: 0, zIndex: 50, }}>
+      background: 'var(--white)', borderBottom: '1px solid rgba(38, 49, 102,0.1)', position: 'sticky', top: 0, zIndex: 50, }}>
       <div className="container" style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 14, paddingBottom: 14, gap: 20, }}>
         <a href="Homepage.html" style={{ display: 'inline-flex', alignItems: 'center' }}>
@@ -31,7 +31,7 @@ const TrainingHeader = () => {
               const isActive = curLang === l;
               return (
                 <button key={l} onClick={() => setCurLang(l)} style={{
-                  display: 'inline-flex', alignItems: 'center', gap: 6, padding: 0, background: 'transparent', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: isActive ? 'var(--ink)' : 'rgba(0,16,17,0.35)', }}>
+                  display: 'inline-flex', alignItems: 'center', gap: 6, padding: 0, background: 'transparent', cursor: 'pointer', fontFamily: 'inherit', fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: isActive ? 'var(--ink)' : 'rgba(38, 49, 102,0.35)', }}>
                   <span aria-hidden style={{
                     fontSize: 15.5, lineHeight: 1, filter: isActive ? 'none' : 'grayscale(0.55)', opacity: isActive ? 1 : 0.75, }}>{l === 'EN' ? '🇺🇸' : '🇲🇽'}</span>
                   {l}
@@ -65,7 +65,7 @@ const TrainingHero = () => {
             {t('Two steps between you and your first module: watch the short platform tour, then log in.', 'Dos pasos entre tú y tu primer módulo: mira el recorrido corto de la plataforma y luego inicia sesión.')}
           </p>
           <a href={TRAINING_LOGIN_URL} target="_blank" rel="noopener" className="mono" style={{
-            fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--tangerine)', borderBottom: '1px solid rgba(255,113,51,0.5)', paddingBottom: 3, whiteSpace: 'nowrap', }}>
+            fontSize: 13.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--tangerine)', borderBottom: '1px solid rgba(233, 106, 44,0.5)', paddingBottom: 3, whiteSpace: 'nowrap', }}>
             {t('Already trained? Skip to login →', '¿Ya te capacitaste? Ir al login →')}
           </a>
         </div>
@@ -107,7 +107,7 @@ const TrainingSteps = () => {
               {/* Player */}
               <div style={{ marginTop: 24, maxWidth: 680 }}>
                 <div style={{
-                  position: 'relative', aspectRatio: '16 / 9', background: '#1a2350', border: '1px solid rgba(0,16,17,0.15)', overflow: 'hidden', }}>
+                  position: 'relative', aspectRatio: '16 / 9', background: '#263166', border: '1px solid rgba(38, 49, 102,0.15)', overflow: 'hidden', }}>
                   {mode === 'native' ? (
                     <video
                       controls
@@ -115,7 +115,7 @@ const TrainingSteps = () => {
                       preload="metadata"
                       poster="assets/training/poster.svg"
                       onError={() => setMode('drive')}
-                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', background: '#1a2350' }}
+                      style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', background: '#263166' }}
                     >
                       <source src={TRAINING_MP4} type="video/mp4" onError={() => setMode('drive')} />
                     </video>
@@ -174,7 +174,7 @@ const TrainingSteps = () => {
                 <a href={TRAINING_LOGIN_URL} target="_blank" rel="noopener"
                   onClick={() => { if (window.gtag) window.gtag('event', 'training_login_click'); }}
                   style={{
-                    display: 'inline-flex', alignItems: 'center', gap: 12, padding: '15px 26px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', boxShadow: '0 10px 26px rgba(255, 113, 51,0.35)', transition: 'transform 0.18s', }}
+                    display: 'inline-flex', alignItems: 'center', gap: 12, padding: '15px 26px', background: 'var(--tangerine)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', boxShadow: '0 10px 26px rgba(233, 106, 44,0.35)', transition: 'transform 0.18s', }}
                   onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-1px)'; }}
                   onMouseLeave={e => { e.currentTarget.style.transform = ''; }}>
                   {t('Login to Training Companion', 'Iniciar sesión en Training Companion')}

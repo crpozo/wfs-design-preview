@@ -122,10 +122,10 @@ const GateQuickFacts = ({ data }) => (
   <section style={{ background: 'var(--white)', padding: '64px 0 56px' }}>
     <div className="container">
       <div className="wfs-gate-facts" style={{
-        position: 'relative', zIndex: 5, background: 'var(--white)', borderRadius: 16, boxShadow: '0 34px 70px -34px rgba(0,16,17,0.4)', border: '1px solid rgba(0,16,17,0.06)', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', overflow: 'hidden', }}>
+        position: 'relative', zIndex: 5, background: 'var(--white)', borderRadius: 16, boxShadow: '0 34px 70px -34px rgba(38, 49, 102,0.4)', border: '1px solid rgba(38, 49, 102,0.06)', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', overflow: 'hidden', }}>
         {data.quickFacts.map(([k, v], i) => (
           <div key={i} style={{
-            padding: '30px 28px', borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.08)', }}>
+            padding: '30px 28px', borderLeft: i === 0 ? 'none' : '1px solid rgba(38, 49, 102,0.08)', }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
               <span aria-hidden style={{ color: 'var(--laser-blue)', display: 'inline-flex' }}>{gateFactIcon(k)}</span>
               <span className="mono" style={{
@@ -155,8 +155,8 @@ const GateCardGrid = ({ items, gateId }) => {
           ? { type: 'button', onClick: () => { if (window.WFSBuilder) { window.WFSBuilder.ir(); } } }
           : (gateId ? {} : { href: 'contact.html#contact' }))}
         style={{
-        display: 'flex', flexDirection: 'column', background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', overflow: 'hidden', textDecoration: 'none', color: 'inherit', textAlign: 'left', font: 'inherit', padding: 0, cursor: (interactiva || !gateId) ? 'pointer' : 'default', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
-      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -20px rgba(0,16,17,0.25)'; }}
+        display: 'flex', flexDirection: 'column', background: 'var(--white)', border: '1px solid rgba(38, 49, 102,0.12)', overflow: 'hidden', textDecoration: 'none', color: 'inherit', textAlign: 'left', font: 'inherit', padding: 0, cursor: (interactiva || !gateId) ? 'pointer' : 'default', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
+      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -20px rgba(38, 49, 102,0.25)'; }}
       onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
         <div style={{ position: 'relative', aspectRatio: '4 / 3', background: '#263166', overflow: 'hidden' }}>
           {p.img && (
@@ -321,7 +321,7 @@ const GateSpecs = ({ data }) => (
           <div style={{ position: 'relative', background: 'var(--white)', borderTop: '4px solid var(--tangerine)' }}>
           {data.specs.map(([k, v], i) => (
             <div key={k} style={{
-              display: 'grid', gridTemplateColumns: '220px 1fr', borderBottom: i === data.specs.length - 1 ? 'none' : '1px solid rgba(0,16,17,0.08)', }}>
+              display: 'grid', gridTemplateColumns: '220px 1fr', borderBottom: i === data.specs.length - 1 ? 'none' : '1px solid rgba(38, 49, 102,0.08)', }}>
               <div className="mono" style={{
                 padding: '14px 18px', fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 700, background: '#ffffff', }}>{k}</div>
               <div style={{ padding: '14px 18px', fontSize: 15.5, color: 'var(--ink)' }}>{v}</div>

@@ -66,7 +66,7 @@ const MaterialQuickFacts = ({ data }) => (
    rails/boards + light verticals on a lavender panel; tangerine is reserved
    for the aluminum "custom" accent rail. Adapts by material so vinyl, chain
    link, metal and EC Fence get a fitting illustration too. */
-const DIAG = { bg: '#e9edf9', navy: '#263166', light: '#aeb9de', accent: '#ff7133' };
+const DIAG = { bg: 'rgba(168, 197, 255, 0.25)', navy: '#263166', light: '#a8c5ff', accent: '#e96a2c' };
 const ProfileDiagram = ({ slug, name = '', index = 0 }) => {
   const { bg, navy, light, accent } = DIAG;
   const W = 220, H = 132, L = 18, R = 202;
@@ -240,8 +240,8 @@ const MaterialProfiles = ({ data }) => {
           <button key={p.name} type="button"
             onClick={() => { if (window.WFSBuilder && p.img) { window.WFSBuilder.elegir(p.img.split('/').pop().replace('.jpg','')); } }}
             className="wfs-profile-card" style={{ textAlign: 'left', cursor: 'pointer', font: 'inherit',
-            background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', overflow: 'hidden', display: 'flex', flexDirection: 'column', color: 'var(--ink)', }}>
-            <div style={{ aspectRatio: '16 / 10', background: p.img ? 'var(--white)' : DIAG.bg, borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
+            background: 'var(--white)', border: '1px solid rgba(38, 49, 102,0.12)', overflow: 'hidden', display: 'flex', flexDirection: 'column', color: 'var(--ink)', }}>
+            <div style={{ aspectRatio: '16 / 10', background: p.img ? 'var(--white)' : DIAG.bg, borderBottom: '1px solid rgba(38, 49, 102,0.08)' }}>
               {p.img
                 ? <img src={p.img} alt={p.name} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'contain', display: 'block' }}/>
                 : <ProfileDiagram slug={data.slug} name={p.name} index={i}/>}
@@ -294,7 +294,7 @@ const MaterialSpecs = ({ data }) => (
           <div style={{ position: 'relative', background: 'var(--white)', borderTop: '4px solid var(--tangerine)' }}>
           {data.specs.map(([k, v], i) => (
             <div key={k} style={{
-              display: 'grid', gridTemplateColumns: '220px 1fr', borderBottom: i === data.specs.length - 1 ? 'none' : '1px solid rgba(0,16,17,0.08)', }}>
+              display: 'grid', gridTemplateColumns: '220px 1fr', borderBottom: i === data.specs.length - 1 ? 'none' : '1px solid rgba(38, 49, 102,0.08)', }}>
               <div className="mono" style={{
                 padding: '14px 18px', fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--charcoal)', fontWeight: 700, background: '#ffffff', }}>{k}</div>
               <div style={{ padding: '14px 18px', fontSize: 15.5, color: 'var(--ink)' }}>{v}</div>

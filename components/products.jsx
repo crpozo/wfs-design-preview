@@ -81,7 +81,7 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
           return (
             <button key={it.id} onClick={() => setActive(i)}
               style={{
-                display: 'flex', alignItems: 'center', gap: 18, padding: '20px 18px', background: isActive ? '#ffffff' : 'transparent', border: 'none', borderBottom: isLast ? 'none' : '1px solid rgba(0,16,17,0.12)', color: 'var(--ink)', cursor: 'pointer', textAlign: 'left', fontFamily: 'var(--sans)', fontWeight: isActive ? 700 : 500, fontSize: 18.5, letterSpacing: '-0.005em', transition: 'background 0.18s ease', position: 'relative', }}>
+                display: 'flex', alignItems: 'center', gap: 18, padding: '20px 18px', background: isActive ? '#ffffff' : 'transparent', border: 'none', borderBottom: isLast ? 'none' : '1px solid rgba(38, 49, 102,0.12)', color: 'var(--ink)', cursor: 'pointer', textAlign: 'left', fontFamily: 'var(--sans)', fontWeight: isActive ? 700 : 500, fontSize: 18.5, letterSpacing: '-0.005em', transition: 'background 0.18s ease', position: 'relative', }}>
               <span style={{
                 width: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ink)', }}>
                 <FenceIcon id={it.id}/>
@@ -101,7 +101,7 @@ const ProductSelector = ({ items, ctaLabel = 'Learn More' }) => {
         position: 'relative', aspectRatio: '1 / 1', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
         {/* Circular backdrop */}
         <div style={{
-          position: 'absolute', inset: '6%', border: '1px solid rgba(0,16,17,0.18)', borderRadius: '50%', background: '#ffffff', }}/>
+          position: 'absolute', inset: '6%', border: '1px solid rgba(38, 49, 102,0.18)', borderRadius: '50%', background: '#ffffff', }}/>
         {/* Active image */}
         <img loading="lazy" decoding="async"
           key={item.id}
@@ -141,7 +141,7 @@ const FenceCard = ({ item, index, featured }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
-        gridColumn: featured ? 'span 2' : 'span 1', gridRow: featured ? 'span 2' : 'span 1', position: 'relative', display: 'flex', flexDirection: 'column', background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', textDecoration: 'none', color: 'var(--ink)', overflow: 'hidden', transition: 'border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease', borderColor: hover ? 'var(--ink)' : 'rgba(0,16,17,0.12)', boxShadow: hover ? '0 24px 48px -28px rgba(0,16,17,0.35)' : 'none', }}>
+        gridColumn: featured ? 'span 2' : 'span 1', gridRow: featured ? 'span 2' : 'span 1', position: 'relative', display: 'flex', flexDirection: 'column', background: 'var(--white)', border: '1px solid rgba(38, 49, 102,0.12)', textDecoration: 'none', color: 'var(--ink)', overflow: 'hidden', transition: 'border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease', borderColor: hover ? 'var(--ink)' : 'rgba(38, 49, 102,0.12)', boxShadow: hover ? '0 24px 48px -28px rgba(38, 49, 102,0.35)' : 'none', }}>
       {/* Image */}
       <div style={{
         position: 'relative', aspectRatio: featured ? '4 / 3.2' : '4 / 3.2', overflow: 'hidden', background: '#ffffff', }}>
@@ -172,7 +172,7 @@ const FenceCard = ({ item, index, featured }) => {
         )}
 
         <div style={{
-          marginTop: featured ? 18 : 'auto', paddingTop: featured ? 0 : 14, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: featured ? 'none' : '1px solid rgba(0,16,17,0.1)', }}>
+          marginTop: featured ? 18 : 'auto', paddingTop: featured ? 0 : 14, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: featured ? 'none' : '1px solid rgba(38, 49, 102,0.1)', }}>
           <span className="mono" style={{
             fontSize: 14, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: hover ? 'var(--laser-blue)' : 'var(--ink)', transition: 'color 0.2s ease', }}>Explore →</span>
           <span style={{
@@ -238,17 +238,17 @@ const FenceStyleCard = ({ item, index }) => {
    sections read as the same family but clearly distinct. */
 const FENCE_RARITY = {
   vinyl:     { c1: '#2e59c1', c2: '#263166' }, // laser-blue → indigo
-  aluminum:  { c1: '#6381d6', c2: '#263166' }, // glaucous → indigo
-  chainlink: { c1: '#97baff', c2: '#2e59c1' }, // blue-ice → laser-blue
-  metal:     { c1: '#c1c1c1', c2: '#565656' }, // silver → charcoal
-  ecfence:   { c1: '#ff7133', c2: '#263166' }, // tangerine accent → ink
+  aluminum:  { c1: '#2e59c1', c2: '#263166' }, // glaucous → indigo
+  chainlink: { c1: '#a8c5ff', c2: '#2e59c1' }, // blue-ice → laser-blue
+  metal:     { c1: 'rgba(255, 255, 255, 0.6)', c2: 'rgba(0, 0, 0, 0.68)' }, // silver → charcoal
+  ecfence:   { c1: '#e96a2c', c2: '#263166' }, // tangerine accent → ink
 };
 const GATE_RARITY = {
-  'single-swing': { c1: '#97baff', c2: '#6381d6' }, // steel blue
-  'double-swing': { c1: '#6381d6', c2: '#263166' }, // teal
-  'sliding':      { c1: '#e5d8ca', c2: '#565656' }, // brass
-  'cantilever':   { c1: '#c1c1c1', c2: '#565656' }, // graphite
-  'rolling':      { c1: '#ffa180', c2: '#ff7133' }, // industrial orange
+  'single-swing': { c1: '#a8c5ff', c2: '#2e59c1' }, // steel blue
+  'double-swing': { c1: '#2e59c1', c2: '#263166' }, // teal
+  'sliding':      { c1: '#a8c5ff', c2: 'rgba(0, 0, 0, 0.68)' }, // brass
+  'cantilever':   { c1: 'rgba(255, 255, 255, 0.6)', c2: 'rgba(0, 0, 0, 0.68)' }, // graphite
+  'rolling':      { c1: '#a8c5ff', c2: '#e96a2c' }, // industrial orange
 };
 
 /* Single selectable card in the rail, game-locker style.
@@ -448,7 +448,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
                 position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', }}/>
               {/* Navy overlay, lighter on the expanded slat */}
               <div aria-hidden className="wfs-slat__overlay" style={{
-                position: 'absolute', inset: 0, background: exp ? 'linear-gradient(180deg, rgba(38, 49, 103, 0.04) 28%, rgba(38, 49, 103, 0.85) 100%)' : 'rgba(38, 49, 102, 0.66)', transition: 'background 0.5s ease', }}/>
+                position: 'absolute', inset: 0, background: exp ? 'linear-gradient(180deg, rgba(38, 49, 102, 0.04) 28%, rgba(38, 49, 102, 0.85) 100%)' : 'rgba(38, 49, 102, 0.66)', transition: 'background 0.5s ease', }}/>
               {/* Number */}
               <span className="mono" style={{
                 position: 'absolute', top: 24, left: 24, fontSize: 16.5, fontWeight: 700, lineHeight: 1, color: exp ? 'var(--tangerine)' : 'var(--blue-ice)', transition: 'color 0.35s ease', }}>0{i + 1}</span>
@@ -464,9 +464,9 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
               <div className="wfs-slat__expanded" style={{
                 position: 'absolute', left: 'clamp(24px, 3vw, 44px)', right: 'clamp(20px, 2.5vw, 40px)', bottom: 'clamp(26px, 4.5vh, 44px)', opacity: exp ? 1 : 0, transform: exp ? 'translateY(0)' : 'translateY(12px)', transition: exp ? 'opacity 0.4s ease 0.18s, transform 0.4s ease 0.18s' : 'opacity 0.2s ease, transform 0.2s ease', pointerEvents: exp ? 'auto' : 'none', }}>
                 <h3 className="display" style={{
-                  margin: '0 0 12px', fontSize: 'clamp(26px, 2.9vw, 56px)', fontWeight: 800, lineHeight: 0.98, letterSpacing: '-0.01em', textTransform: 'capitalize', color: 'var(--white)', textShadow: '0 2px 20px rgba(0,16,17,0.6)', }}>{t(c.name)}</h3>
+                  margin: '0 0 12px', fontSize: 'clamp(26px, 2.9vw, 56px)', fontWeight: 800, lineHeight: 0.98, letterSpacing: '-0.01em', textTransform: 'capitalize', color: 'var(--white)', textShadow: '0 2px 20px rgba(38, 49, 102,0.6)', }}>{t(c.name)}</h3>
                 <p style={{
-                  margin: '0 0 18px', maxWidth: 520, fontSize: 'clamp(13px, 1.05vw, 16px)', lineHeight: 1.5, color: 'var(--white)', textShadow: '0 1px 12px rgba(0,16,17,0.6)', }}>{t(c.desc)}</p>
+                  margin: '0 0 18px', maxWidth: 520, fontSize: 'clamp(13px, 1.05vw, 16px)', lineHeight: 1.5, color: 'var(--white)', textShadow: '0 1px 12px rgba(38, 49, 102,0.6)', }}>{t(c.desc)}</p>
                 <span className="mono" style={{
                   display: 'inline-flex', alignItems: 'center', gap: 12, fontSize: 'clamp(12px, 1vw, 15px)', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--tangerine)', }}>{t(ctaLabel)} {t(c.name)} <span style={{ fontSize: '1.25em' }}>→</span></span>
               </div>
@@ -623,23 +623,23 @@ const SystemTabs = ({ id, chapter, label, items, topLink, ctaLabel }) => {
           position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', animation: 'fadeUp 0.45s ease', }}/>
         {/* Light left wash for text legibility, photo stays visible + subtle bottom fade */}
         <div aria-hidden style={{
-          position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(38,49,103,0.68) 0%, rgba(38,49,103,0.36) 26%, rgba(38,49,103,0.08) 54%, rgba(38,49,103,0) 78%)', }}/>
+          position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(38, 49, 102,0.68) 0%, rgba(38, 49, 102,0.36) 26%, rgba(38, 49, 102,0.08) 54%, rgba(38, 49, 102,0) 78%)', }}/>
         <div aria-hidden style={{
-          position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(38,49,103,0) 62%, rgba(38,49,103,0.40) 100%)', }}/>
+          position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 62%, rgba(38, 49, 102,0.40) 100%)', }}/>
         {/* Content */}
         <div style={{
           position: 'relative', padding: 'clamp(28px, 5vh, 52px) var(--pad)', maxWidth: 660, }}>
           <div className="mono" style={{ fontSize: 15.5, fontWeight: 700, color: 'var(--tangerine)', marginBottom: 14 }}>0{active + 1}</div>
           <h3 className="display" style={{
-            margin: '0 0 16px', fontSize: 'clamp(34px, 4.4vw, 68px)', fontWeight: 800, lineHeight: 0.96, letterSpacing: '-0.015em', textTransform: 'capitalize', color: 'var(--white)', textShadow: '0 2px 16px rgba(0,16,17,0.7), 0 1px 3px rgba(0,16,17,0.6)', }}>{t(cur.name)}</h3>
+            margin: '0 0 16px', fontSize: 'clamp(34px, 4.4vw, 68px)', fontWeight: 800, lineHeight: 0.96, letterSpacing: '-0.015em', textTransform: 'capitalize', color: 'var(--white)', textShadow: '0 2px 16px rgba(38, 49, 102,0.7), 0 1px 3px rgba(38, 49, 102,0.6)', }}>{t(cur.name)}</h3>
           <p style={{
-            margin: '0 0 22px', maxWidth: 540, fontSize: 'clamp(14px, 1.1vw, 17px)', lineHeight: 1.5, color: 'rgba(255,255,255,0.92)', textShadow: '0 1px 10px rgba(0,16,17,0.7), 0 1px 2px rgba(0,16,17,0.55)', }}>{t(cur.desc)}</p>
+            margin: '0 0 22px', maxWidth: 540, fontSize: 'clamp(14px, 1.1vw, 17px)', lineHeight: 1.5, color: 'rgba(255,255,255,0.92)', textShadow: '0 1px 10px rgba(38, 49, 102,0.7), 0 1px 2px rgba(38, 49, 102,0.55)', }}>{t(cur.desc)}</p>
           <span className="mono" style={{
             display: 'inline-flex', alignItems: 'center', gap: 12, fontSize: 'clamp(12px, 1vw, 15px)', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--tangerine)', }}>{t(ctaLabel)} {t(cur.name)} <span style={{ fontSize: '1.25em' }}>→</span></span>
         </div>
         {/* Vertical label at the right edge */}
         <span className="mono wfs-systemtabs__vlabel" style={{
-          position: 'absolute', right: 'clamp(16px, 2vw, 30px)', bottom: 'clamp(28px, 5vh, 52px)', writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontSize: 'clamp(11px, 0.9vw, 13px)', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.9)', whiteSpace: 'nowrap', textShadow: '0 1px 8px rgba(0,16,17,0.6)', }}>{t(cur.name)}</span>
+          position: 'absolute', right: 'clamp(16px, 2vw, 30px)', bottom: 'clamp(28px, 5vh, 52px)', writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontSize: 'clamp(11px, 0.9vw, 13px)', fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.9)', whiteSpace: 'nowrap', textShadow: '0 1px 8px rgba(38, 49, 102,0.6)', }}>{t(cur.name)}</span>
       </a>
     </section>
     {/* Mobile replacement (same carousel the slats use) */}
@@ -712,7 +712,7 @@ const WhyWFS = () => {
           {WHY_WFS.map((v, i) => (
             <div key={i} style={{
               border: '1px solid rgba(38, 49, 102,0.14)', background: 'var(--white)', padding: '24px 22px 26px', display: 'flex', flexDirection: 'column', transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease', }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -22px rgba(0,16,17,0.3)'; e.currentTarget.style.borderColor = 'var(--ink)'; }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -22px rgba(38, 49, 102,0.3)'; e.currentTarget.style.borderColor = 'var(--ink)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; e.currentTarget.style.borderColor = 'rgba(38, 49, 102,0.14)'; }}>
               <span style={{
                 width: 46, height: 46, marginBottom: 18, display: 'block', }}>

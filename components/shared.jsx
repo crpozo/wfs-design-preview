@@ -89,7 +89,7 @@ const MetalSVG = ({ color = '#263166', opacity = 0.7 }) => (
   </svg>
 );
 
-const DiamondGrid = ({ color = '#ff7133', opacity = 0.4 }) => (
+const DiamondGrid = ({ color = '#e96a2c', opacity = 0.4 }) => (
   <svg viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" style={{ width: '100%', height: '100%' }}>
     <defs>
       <pattern id="dP" width="28" height="28" patternUnits="userSpaceOnUse">
@@ -117,7 +117,7 @@ const PillCTA = ({ href, children, variant = 'ink', target, rel, onClick }) => {
       onMouseLeave={() => setHover(false)}
       style={{
         display: 'inline-flex', alignItems: 'center', gap: 16, padding: '14px 14px 14px 26px', borderRadius: 999, background: hover ? 'var(--tangerine)' : baseBg, color: hover ? 'var(--white)' : baseFg, textDecoration: 'none', whiteSpace: 'nowrap', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', transition: 'background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s', transform: hover ? 'translateY(-2px)' : 'none', boxShadow: hover
-          ? '0 22px 44px -18px rgba(255, 113, 51, 0.55)'
+          ? '0 22px 44px -18px rgba(233, 106, 44, 0.55)'
           : '0 18px 36px -18px rgba(38, 49, 102, 0.5)', }}>
       {children}
       <span style={{

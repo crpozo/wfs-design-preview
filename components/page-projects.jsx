@@ -39,7 +39,7 @@ const ProjectsBigGallery = () => {
           sub={t('Twelve highlighted jobs shown, full archive available on request.', 'Doce trabajos destacados a la vista; el archivo completo está disponible bajo petición.')}
         />
         <div style={{
-          display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 28, paddingBottom: 16, borderBottom: '1px solid rgba(0,16,17,0.12)', }}>
+          display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 28, paddingBottom: 16, borderBottom: '1px solid rgba(38, 49, 102,0.12)', }}>
           {filters.map(f => {
             const active = f === filter;
             return (

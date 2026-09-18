@@ -48,7 +48,7 @@ const LocationsYards = () => {
           /* id: destino de los enlaces de Areas We Serve (#fort-myers). El salto lo
              hace el manejador global de anclas de shared.jsx. */
           <article key={y.key} id={y.anchor} style={{
-            scrollMarginTop: 140, border: '1px solid rgba(0,16,17,0.12)', display: 'flex', flexDirection: 'column', overflow: 'hidden', }}>
+            scrollMarginTop: 140, border: '1px solid rgba(38, 49, 102,0.12)', display: 'flex', flexDirection: 'column', overflow: 'hidden', }}>
             {/* Live map */}
             <div style={{ position: 'relative', aspectRatio: '16 / 9', background: '#263166' }}>
               <iframe

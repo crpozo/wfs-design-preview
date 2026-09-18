@@ -10,10 +10,10 @@
 
    OJO styles.css: los overrides [style*="border: …"] y [style*="aspect-ratio:
    4 / 3"] meten radius/fondo !important; por eso los bordes van con hex
-   (#263167), las hairlines con box-shadow inset y el aspect ratio como 1.333. */
+   (#263166), las hairlines con box-shadow inset y el aspect ratio como 1.333. */
 
 const FLOW_APP = window.WFS_APP_BASE || 'https://app.westernfencesupply.com';
-const INK_BORDER = '1.5px solid #263167';
+const INK_BORDER = '1.5px solid #263166';
 
 /* Etiqueta corta de cada pantalla real (kickers de grupo y resumen) */
 const FLOW_STEP_NAME = {
@@ -52,7 +52,7 @@ const FlowMaterialCard = ({ opt, selected, onPick }) => {
     <button onClick={onPick} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
       aria-pressed={selected} style={{
         textAlign: 'left', width: '100%', background: '#fff', border: INK_BORDER, padding: 0, cursor: 'pointer', display: 'flex', flexDirection: 'column', transform: lifted ? 'translateY(-3px)' : 'none', boxShadow: lifted ? '6px 6px 0 var(--tangerine)' : 'none', transition: 'transform 0.18s ease, box-shadow 0.18s ease', }}>
-      <span style={{ display: 'block', position: 'relative', aspectRatio: '1.6 / 1', background: '#fff', overflow: 'hidden', boxShadow: 'inset 0 -1px 0 rgba(0,16,17,0.08)' }}>
+      <span style={{ display: 'block', position: 'relative', aspectRatio: '1.6 / 1', background: '#fff', overflow: 'hidden', boxShadow: 'inset 0 -1px 0 rgba(38, 49, 102,0.08)' }}>
         <img src={opt.img} alt={opt.t} decoding="async" style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: 10, transform: lifted ? 'scale(1.04)' : 'none', transition: 'transform 0.6s ease', }}/>
       </span>
@@ -70,7 +70,7 @@ const FlowChip = ({ opt, selected, onPick }) => (
   <button onClick={onPick} aria-pressed={selected} className="mono" style={{
     display: 'inline-flex', alignItems: 'center', gap: 10, border: INK_BORDER, background: selected ? 'var(--ink)' : '#fff', color: selected ? '#fff' : 'var(--ink)', padding: '12px 18px', fontSize: 13.5, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', transition: 'background 0.18s ease, color 0.18s ease', textAlign: 'left', }}>
     {opt.c && <span aria-hidden style={{
-      width: 16, height: 16, background: opt.c, flexShrink: 0, boxShadow: selected ? 'inset 0 0 0 1px rgba(255,255,255,0.6)' : 'inset 0 0 0 1px rgba(0,16,17,0.25)', }}/>}
+      width: 16, height: 16, background: opt.c, flexShrink: 0, boxShadow: selected ? 'inset 0 0 0 1px rgba(255,255,255,0.6)' : 'inset 0 0 0 1px rgba(38, 49, 102,0.25)', }}/>}
     <span>
       {opt.t}
       {opt.n && <span style={{ display: 'block', fontSize: 12, fontWeight: 600, letterSpacing: '0.02em', textTransform: 'none', color: selected ? 'rgba(255,255,255,0.75)' : 'var(--charcoal)' }}>{opt.n}</span>}
@@ -173,7 +173,7 @@ const QuoteFlow = () => {
 
         {/* Cabecera: titular dos líneas + descripción a la derecha */}
         <div style={{
-          display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 40, alignItems: 'end', paddingBottom: 22, marginBottom: 34, boxShadow: 'inset 0 -1px 0 rgba(0,16,17,0.12)', }} className="wfs-flow-header">
+          display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: 40, alignItems: 'end', paddingBottom: 22, marginBottom: 34, boxShadow: 'inset 0 -1px 0 rgba(38, 49, 102,0.12)', }} className="wfs-flow-header">
           <h2 className="display" style={{ margin: 0, fontSize: 'clamp(26px, 2.9vw, 38px)', lineHeight: 1, letterSpacing: '-0.02em', fontWeight: 800 }}>
             {header[lang === 'ES' ? 'ES' : 'EN'][0]}<br/>
             <span style={{ color: 'var(--sky)' }}>{header[lang === 'ES' ? 'ES' : 'EN'][1]}</span>

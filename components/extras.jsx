@@ -7,12 +7,12 @@ const IconStrip = () => {
        ninguna pagina y el clic no llevaba a ningun sitio. */
     { key: 'aluminum', label: { EN: 'Aluminum', ES: 'Aluminio' }, href: 'aluminum.html' }, { key: 'chainlink', label: { EN: 'Chain Link', ES: 'Malla ciclónica' }, href: 'chain-link.html' }, { key: 'metal', label: { EN: 'Metal / DuraFence', ES: 'Metal / DuraFence' }, href: 'metal.html' }, { key: 'vinyl', label: { EN: 'Vinyl / PVC', ES: 'Vinilo / PVC' }, href: 'vinyl.html' }, ];
   return (
-    <section style={{ background: 'var(--white)', padding: '64px 0', borderBottom: '1px solid rgba(0,16,17,0.06)' }}>
+    <section style={{ background: 'var(--white)', padding: '64px 0', borderBottom: '1px solid rgba(38, 49, 102,0.06)' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 0 }}>
           {items.map((it, i) => (
             <a key={it.key} href={it.href} style={{
-              display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, padding: '24px 16px', borderLeft: i === 0 ? 'none' : '1px solid rgba(0,16,17,0.08)', transition: 'background 0.2s', }}
+              display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 14, padding: '24px 16px', borderLeft: i === 0 ? 'none' : '1px solid rgba(38, 49, 102,0.08)', transition: 'background 0.2s', }}
             onMouseEnter={e => e.currentTarget.style.background = 'var(--parchment)'}
             onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
               <img loading="lazy" decoding="async" src={FENCE_ICON[it.key]} alt="" style={{ height: 56, width: 56 }} />
@@ -45,13 +45,13 @@ const Gates = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 14 }}>
           {gates.map((g, i) => (
             <article key={i} style={{
-              background: 'var(--white)', borderRadius: 'var(--radius)', overflow: 'hidden', border: '1px solid rgba(0,16,17,0.06)', }}>
+              background: 'var(--white)', borderRadius: 'var(--radius)', overflow: 'hidden', border: '1px solid rgba(38, 49, 102,0.06)', }}>
               <div style={{ position: 'relative', height: 200, background: '#263166' }}>
                 <img loading="lazy" decoding="async" src={FENCE_IMG[g.img]} alt={t(g.name)}
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,16,17,0) 50%, rgba(0,16,17,0.5) 100%)' }}/>
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 50%, rgba(38, 49, 102,0.5) 100%)' }}/>
                 <div className="mono" style={{
-                  position: 'absolute', top: 14, left: 14, fontSize: 13.5, letterSpacing: '0.14em', background: 'rgba(0,16,17,0.6)', color: 'var(--alice-blue)', padding: '5px 8px', borderRadius: 3, }}>
+                  position: 'absolute', top: 14, left: 14, fontSize: 13.5, letterSpacing: '0.14em', background: 'rgba(38, 49, 102,0.6)', color: 'var(--alice-blue)', padding: '5px 8px', borderRadius: 3, }}>
                   GATE-0{i + 1}
                 </div>
               </div>
@@ -112,7 +112,7 @@ const Testimonials = () => {
               style={{
                 position: 'absolute', left: '50%', top: 0, width: 'min(345px, 84vw)', transform: `translateX(-50%) translateX(${off * 107}%) translateY(${abs * 16}px) rotate(${off * 4}deg) scale(${isCenter ? 1 : 0.96})`, transformOrigin: '50% 120%', transition: 'transform 0.7s cubic-bezier(0.3, 1.15, 0.35, 1), opacity 0.45s ease', opacity: abs > 2 ? 0 : 1, pointerEvents: abs > 2 ? 'none' : 'auto', zIndex: 10 - abs, cursor: isCenter ? 'default' : 'pointer', }}>
               <div style={{
-                background: 'var(--white)', borderRadius: 18, border: '1px solid rgba(0,16,17,0.08)', boxShadow: isCenter
+                background: 'var(--white)', borderRadius: 18, border: '1px solid rgba(38, 49, 102,0.08)', boxShadow: isCenter
                   ? '0 30px 60px -28px rgba(38,49,102,0.38)'
                   : '0 22px 44px -30px rgba(38,49,102,0.28)', padding: '24px 26px', minHeight: 280, display: 'flex', flexDirection: 'column', gap: 16, textAlign: 'left', }}>
                 <div style={{ color: 'var(--tangerine)', fontSize: 17.5, letterSpacing: 3 }}>★★★★★</div>
@@ -120,9 +120,9 @@ const Testimonials = () => {
                   “{t(r.text)}”
                 </p>
                 <div style={{
-                  borderTop: '1px solid rgba(0,16,17,0.1)', paddingTop: 14, display: 'flex', alignItems: 'center', gap: 12, }}>
+                  borderTop: '1px solid rgba(38, 49, 102,0.1)', paddingTop: 14, display: 'flex', alignItems: 'center', gap: 12, }}>
                   <span style={{
-                    width: 54, height: 54, borderRadius: 12, flexShrink: 0, overflow: 'hidden', background: 'var(--white)', boxShadow: 'inset 0 0 0 1px rgba(0,16,17,0.1)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', }}>
+                    width: 54, height: 54, borderRadius: 12, flexShrink: 0, overflow: 'hidden', background: 'var(--white)', boxShadow: 'inset 0 0 0 1px rgba(38, 49, 102,0.1)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', }}>
                     <img src={MAT_IMG[r.mat]} alt={t(r.tag)} loading="lazy"
                       style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}/>
                   </span>
@@ -142,7 +142,7 @@ const Testimonials = () => {
       <div style={{
         marginTop: 'clamp(36px, 5.5vh, 56px)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 22, }}>
         <button onClick={() => go(active - 1)} aria-label={t('Previous review', 'Reseña anterior')} style={{
-          width: 46, height: 46, borderRadius: '50%', border: '1px solid rgba(0,16,17,0.15)', background: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ink)', cursor: 'pointer', }}>
+          width: 46, height: 46, borderRadius: '50%', border: '1px solid rgba(38, 49, 102,0.15)', background: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ink)', cursor: 'pointer', }}>
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
             <path d="M13 8H3m0 0l4-4M3 8l4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
           </svg>
@@ -150,11 +150,11 @@ const Testimonials = () => {
         <div style={{ display: 'flex', gap: 8 }}>
           {reviews.map((_, i) => (
             <button key={i} onClick={() => go(i)} aria-label={`${i + 1}`} style={{
-              width: 26, height: 4, borderRadius: 2, padding: 0, border: 'none', cursor: 'pointer', background: i <= active ? 'var(--sky)' : 'rgba(0,16,17,0.15)', transition: 'background 0.3s ease', }}/>
+              width: 26, height: 4, borderRadius: 2, padding: 0, border: 'none', cursor: 'pointer', background: i <= active ? 'var(--sky)' : 'rgba(38, 49, 102,0.15)', transition: 'background 0.3s ease', }}/>
           ))}
         </div>
         <button onClick={() => go(active + 1)} aria-label={t('Next review', 'Siguiente reseña')} style={{
-          width: 46, height: 46, borderRadius: '50%', border: '1px solid rgba(0,16,17,0.15)', background: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ink)', cursor: 'pointer', }}>
+          width: 46, height: 46, borderRadius: '50%', border: '1px solid rgba(38, 49, 102,0.15)', background: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', color: 'var(--ink)', cursor: 'pointer', }}>
           <svg width="15" height="15" viewBox="0 0 16 16" fill="none">
             <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
           </svg>
@@ -210,7 +210,7 @@ const FAQ = () => {
               const isOpen = open === i;
               return (
                 <div key={i} style={{
-                  borderBottom: '1px solid rgba(0,16,17,0.12)', borderLeft: `2px solid ${isOpen ? 'var(--sky)' : 'transparent'}`, paddingLeft: isOpen ? 20 : 0, background: 'transparent', transition: 'all 0.25s ease', }}>
+                  borderBottom: '1px solid rgba(38, 49, 102,0.12)', borderLeft: `2px solid ${isOpen ? 'var(--sky)' : 'transparent'}`, paddingLeft: isOpen ? 20 : 0, background: 'transparent', transition: 'all 0.25s ease', }}>
                   <button onClick={() => setOpen(isOpen ? -1 : i)} style={{
                     width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '22px 0', textAlign: 'left', gap: 24, }}>
                     <span style={{ display: 'flex', gap: 20, alignItems: 'baseline' }}>
@@ -222,7 +222,7 @@ const FAQ = () => {
                         fontSize: 18.5, fontWeight: 500, color: 'var(--ink)', letterSpacing: '-0.005em', }}>{t(q)}</span>
                     </span>
                     <span className="wfs-faq-toggle" style={{
-                      width: 28, height: 28, background: isOpen ? 'var(--sky)' : 'transparent', border: `1px solid ${isOpen ? 'var(--sky)' : 'rgba(0,16,17,0.2)'}`, color: isOpen ? 'var(--ink)' : 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s ease', }}>
+                      width: 28, height: 28, background: isOpen ? 'var(--sky)' : 'transparent', border: `1px solid ${isOpen ? 'var(--sky)' : 'rgba(38, 49, 102,0.2)'}`, color: isOpen ? 'var(--ink)' : 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s ease', }}>
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                         <path d="M2 6h8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
                         {!isOpen && <path d="M6 2v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>}
@@ -251,7 +251,7 @@ const Articles = () => {
   const posts = [
     { tag: { EN: 'Materials', ES: 'Materiales' }, title: { EN: 'Top 4 Durable Fence Materials For Your Home', ES: 'Los 4 mejores materiales duraderos de cerca para tu hogar' }, read: '6 min', img: 'aluminum' }, { tag: { EN: 'How-to', ES: 'Tutorial' }, title: { EN: 'How to Measure for Fence Material in Florida', ES: 'Cómo medir para el material de cerca en Florida' }, read: '4 min', img: 'chainlink' }, { tag: { EN: 'Pricing', ES: 'Precios' }, title: { EN: 'How Much Does a Fence Cost in Florida?', ES: '¿Cuánto cuesta una cerca en Florida?' }, read: '8 min', img: 'vinyl' }, ];
   return (
-    <section style={{ background: 'var(--parchment)', padding: '120px 0', borderTop: '1px solid rgba(0,16,17,0.08)' }}>
+    <section style={{ background: 'var(--parchment)', padding: '120px 0', borderTop: '1px solid rgba(38, 49, 102,0.08)' }}>
       <div className="container">
         <div style={{ marginBottom: 48, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 24 }}>
           <div>
@@ -429,7 +429,7 @@ const AboutIntro = () => {
 
           {/* Stat strip */}
           <div style={{
-            marginTop: 36, display: 'grid', gridTemplateColumns: 'repeat(2, auto)', gap: 32, paddingTop: 28, borderTop: '1px solid rgba(0,16,17,0.12)', }}>
+            marginTop: 36, display: 'grid', gridTemplateColumns: 'repeat(2, auto)', gap: 32, paddingTop: 28, borderTop: '1px solid rgba(38, 49, 102,0.12)', }}>
             {[
               ['20+', { EN: 'Years fabricating', ES: 'Años fabricando' }], ['2', { EN: 'Yards · FM + PC', ES: 'Sucursales · FM + PC' }], ].map(([n, l], i) => (
               <div key={i}>

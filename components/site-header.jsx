@@ -48,7 +48,7 @@ const SiteHeader = ({ active }) => {
       `}</style>
       {modeToast && (
         <div role="status" style={{
-          position: 'fixed', left: '50%', bottom: 28, transform: 'translateX(-50%)', zIndex: 200, background: 'var(--ink)', color: 'var(--white)', padding: '13px 24px', borderRadius: 999, boxShadow: '0 14px 34px rgba(0,16,17,0.32)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 12, whiteSpace: 'nowrap', animation: 'wfsFadeDown 0.25s ease', }}>
+          position: 'fixed', left: '50%', bottom: 28, transform: 'translateX(-50%)', zIndex: 200, background: 'var(--ink)', color: 'var(--white)', padding: '13px 24px', borderRadius: 999, boxShadow: '0 14px 34px rgba(38, 49, 102,0.32)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 600, display: 'flex', alignItems: 'center', gap: 12, whiteSpace: 'nowrap', animation: 'wfsFadeDown 0.25s ease', }}>
           <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>
           {t(modeToast === 'CONTRACTOR' ? 'Now viewing contractor content' : 'Now viewing homeowner content', modeToast === 'CONTRACTOR' ? 'Viendo contenido de contratista' : 'Viendo contenido de propietario')}
         </div>
@@ -153,7 +153,7 @@ const SiteHeader = ({ active }) => {
                 bajo y quedaba descentrado respecto al naranja. */}
             <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" className="mono wfs-hide-tablet" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 15px 6px 13px', minHeight: 35, borderRadius: 999, background: '#a8c5ff', color: 'var(--ink)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.01em', whiteSpace: 'nowrap', textDecoration: 'none', transition: 'background 0.2s ease, transform 0.2s ease', }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#8fb3ff'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#a8c5ff'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = '#a8c5ff'; e.currentTarget.style.transform = 'none'; }}>
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                 <path d="M3 3 H13 V13 H3 Z M3 6 H13 M6 3 V13" stroke="currentColor" strokeWidth="1.4"/>
@@ -166,7 +166,7 @@ const SiteHeader = ({ active }) => {
             onMouseEnter={e => { e.currentTarget.style.background = 'var(--laser-blue)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
             onMouseLeave={e => { e.currentTarget.style.background = 'var(--ink)'; e.currentTarget.style.transform = 'none'; }}>
               <span className="wfs-quote-pill__dot" style={{
-                width: 6, height: 6, borderRadius: '50%', background: '#ff7133', boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)', }}/>
+                width: 6, height: 6, borderRadius: '50%', background: '#e96a2c', boxShadow: '0 0 0 3px rgba(233, 106, 44,0.25)', }}/>
               <span className="wfs-quote-pill__label">{t('Get a Free Quote', 'Cotización gratis')}</span>
               <span style={{
                 width: 23, height: 23, borderRadius: '50%', background: 'var(--tangerine)', color: 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, }}>
@@ -216,19 +216,19 @@ const SiteHeader = ({ active }) => {
         <div className="wfs-mobile-menu" style={{
           position: 'fixed', inset: 0, background: 'var(--white)', zIndex: 100, display: 'none', flexDirection: 'column', transform: mobileOpen ? 'translateY(0)' : 'translateY(-100%)', transition: 'transform 0.3s ease', overflowY: 'auto', }}>
           <div style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px', borderBottom: '1px solid rgba(0,16,17,0.12)', }}>
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px', borderBottom: '1px solid rgba(38, 49, 102,0.12)', }}>
             <img src="assets/wfs-logo.svg" alt="Western Fence Supply" style={{ height: 32, width: 'auto' }}/>
             <button onClick={() => setMobileOpen(false)} aria-label={t('Close menu', 'Cerrar menú')} style={{
               flexShrink: 0, width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0, background: '#263166', border: 'none', cursor: 'pointer', padding: 0, }}>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M3 3 L15 15 M15 3 L3 15" stroke="#ff7133" strokeWidth="2" strokeLinecap="square"/>
+                <path d="M3 3 L15 15 M15 3 L3 15" stroke="#e96a2c" strokeWidth="2" strokeLinecap="square"/>
               </svg>
             </button>
           </div>
 
           {/* Audience select (mobile), each goes to its landing page */}
           <div style={{
-            padding: '20px', borderBottom: '1px solid rgba(0,16,17,0.08)', display: 'flex', gap: 12, }}>
+            padding: '20px', borderBottom: '1px solid rgba(38, 49, 102,0.08)', display: 'flex', gap: 12, }}>
             {[
               { key: 'HOMEOWNER', href: 'homeowners.html', label: { EN: "I'm a homeowner", ES: 'Soy propietario' } }, { key: 'CONTRACTOR', href: 'contractors.html', label: { EN: "I'm a contractor", ES: 'Soy contratista' } }, ].map((m) => {
               return (
@@ -236,7 +236,7 @@ const SiteHeader = ({ active }) => {
                   href={m.href}
                   onClick={() => setCurMode(m.key)}
                   className="mono" style={{
-                    flex: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 12px', background: 'var(--white)', color: 'var(--ink)', border: '1px solid rgba(0,16,17,0.25)', fontSize: 14, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', lineHeight: 1.3, textDecoration: 'none', }}>
+                    flex: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '14px 12px', background: 'var(--white)', color: 'var(--ink)', border: '1px solid rgba(38, 49, 102,0.25)', fontSize: 14, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', lineHeight: 1.3, textDecoration: 'none', }}>
                   {t(m.label)}
                   <svg width="10" height="10" viewBox="0 0 16 16" fill="none">
                     <path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
@@ -251,7 +251,7 @@ const SiteHeader = ({ active }) => {
             {NAV.map(({ id, label, def }) => {
               if (def.kind === 'link') {
                 return (
-                  <div key={id} style={{ borderBottom: '1px solid rgba(0,16,17,0.08)' }}>
+                  <div key={id} style={{ borderBottom: '1px solid rgba(38, 49, 102,0.08)' }}>
                     <a href={def.href} target={def.external ? '_blank' : undefined} rel={def.external ? 'noopener' : undefined} style={{
                       width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 20px', fontFamily: 'var(--sans)', fontSize: 19.5, fontWeight: 500, color: 'var(--ink)', textDecoration: 'none', }}>
                       {t(label)}
@@ -268,13 +268,13 @@ const SiteHeader = ({ active }) => {
                 : def.items && def.items[0] ? def.items[0].href : '#';
               return (
                 <div key={id} style={{
-                  borderBottom: '1px solid rgba(0,16,17,0.08)', }}>
+                  borderBottom: '1px solid rgba(38, 49, 102,0.08)', }}>
                   <button onClick={() => setMobileExpanded(isExpanded ? null : id)} style={{
                     width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 20px', background: 'transparent', fontFamily: 'var(--sans)', fontSize: 19.5, fontWeight: 500, color: 'var(--ink)', textAlign: 'left', cursor: 'pointer', }}>
                     {t(label)}
                     {(def.items || def.kind === 'mega-fences' || def.kind === 'mega-gates') ? (
                       <span style={{
-                        width: 28, height: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', background: isExpanded ? 'var(--tangerine)' : 'transparent', border: `1px solid ${isExpanded ? 'var(--tangerine)' : 'rgba(0,16,17,0.2)'}`, color: 'var(--ink)', }}>
+                        width: 28, height: 28, display: 'flex', alignItems: 'center', justifyContent: 'center', background: isExpanded ? 'var(--tangerine)' : 'transparent', border: `1px solid ${isExpanded ? 'var(--tangerine)' : 'rgba(38, 49, 102,0.2)'}`, color: 'var(--ink)', }}>
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                           <path d="M2 6h8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
                           {!isExpanded && <path d="M6 2v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>}
@@ -291,7 +291,7 @@ const SiteHeader = ({ active }) => {
                       maxHeight: isExpanded ? 500 : 0, overflow: 'hidden', transition: 'max-height 0.3s ease', background: '#ffffff', }}>
                       {def.items.map((it, i) => (
                         <a key={i} href={it.href} target={it.href.startsWith('http') ? '_blank' : undefined} rel={it.href.startsWith('http') ? 'noopener' : undefined} style={{
-                          display: 'block', padding: '14px 20px 14px 36px', borderTop: '1px solid rgba(0,16,17,0.06)', fontSize: 15.5, color: 'var(--ink)', }}>
+                          display: 'block', padding: '14px 20px 14px 36px', borderTop: '1px solid rgba(38, 49, 102,0.06)', fontSize: 15.5, color: 'var(--ink)', }}>
                           <div style={{ fontWeight: 500 }}>{t(it.label)}</div>
                           {it.sub && <div style={{ fontSize: 14.5, color: 'var(--charcoal)', marginTop: 2 }}>{t(it.sub)}</div>}
                         </a>
@@ -303,7 +303,7 @@ const SiteHeader = ({ active }) => {
                       maxHeight: isExpanded ? 640 : 0, overflow: 'hidden', transition: 'max-height 0.3s ease', background: '#ffffff', }}>
                       {(def.kind === 'mega-fences' ? FENCE_TILES : GATE_TILES).map((tile, i) => (
                         <a key={i} href={tile.href} style={{
-                          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: '14px 20px 14px 36px', borderTop: '1px solid rgba(0,16,17,0.06)', fontSize: 15.5, color: 'var(--ink)', }}>
+                          display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, padding: '14px 20px 14px 36px', borderTop: '1px solid rgba(38, 49, 102,0.06)', fontSize: 15.5, color: 'var(--ink)', }}>
                           <span>
                             <span style={{ fontWeight: 600, display: 'block' }}>{t(tile.name)}</span>
                             <span style={{ fontSize: 14.5, color: 'var(--charcoal)' }}>{t(tile.tag)}</span>
@@ -314,7 +314,7 @@ const SiteHeader = ({ active }) => {
                         </a>
                       ))}
                       <a href={fallbackHref} style={{
-                        display: 'block', padding: '15px 20px 15px 36px', borderTop: '1px solid rgba(0,16,17,0.1)', fontSize: 14.5, color: 'var(--laser-blue)', fontWeight: 700, letterSpacing: '0.04em', }}>
+                        display: 'block', padding: '15px 20px 15px 36px', borderTop: '1px solid rgba(38, 49, 102,0.1)', fontSize: 14.5, color: 'var(--laser-blue)', fontWeight: 700, letterSpacing: '0.04em', }}>
                         {def.kind === 'mega-fences'
                           ? t('View full catalog →', 'Ver catálogo completo →')
                           : t('Custom gate quote →', 'Cotizar portón a medida →')}
@@ -328,11 +328,11 @@ const SiteHeader = ({ active }) => {
 
           {/* Mobile footer: phone + lang */}
           <div style={{
-            padding: '20px', borderTop: '1px solid rgba(0,16,17,0.12)', display: 'flex', flexDirection: 'column', gap: 16, }}>
+            padding: '20px', borderTop: '1px solid rgba(38, 49, 102,0.12)', display: 'flex', flexDirection: 'column', gap: 16, }}>
             <a href="tel:2394652482" style={{
               display: 'inline-flex', alignItems: 'center', gap: 14, padding: '14px 16px', background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--mono)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', }}>
               <span style={{
-                width: 7, height: 7, borderRadius: '50%', background: '#ff7133', boxShadow: '0 0 0 3px rgba(255, 113, 51,0.25)', }}/>
+                width: 7, height: 7, borderRadius: '50%', background: '#e96a2c', boxShadow: '0 0 0 3px rgba(233, 106, 44,0.25)', }}/>
               {t('Call (239) 465-2482', 'Llamar (239) 465-2482')}
             </a>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -344,7 +344,7 @@ const SiteHeader = ({ active }) => {
                   const isActive = curLang === l.code;
                   return (
                     <button key={l.code} onClick={() => setCurLang(l.code)} className="mono" style={{
-                      flex: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '13px 12px', background: isActive ? 'var(--ink)' : 'var(--white)', color: isActive ? 'var(--white)' : 'var(--ink)', border: `1px solid ${isActive ? 'var(--ink)' : 'rgba(0,16,17,0.25)'}`, fontSize: 14.5, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', }}>
+                      flex: 1, display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 8, padding: '13px 12px', background: isActive ? 'var(--ink)' : 'var(--white)', color: isActive ? 'var(--white)' : 'var(--ink)', border: `1px solid ${isActive ? 'var(--ink)' : 'rgba(38, 49, 102,0.25)'}`, fontSize: 14.5, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', cursor: 'pointer', }}>
                       <span aria-hidden style={{ flexShrink: 0, fontSize: 16.5, lineHeight: 1 }}>{l.code === 'EN' ? '🇺🇸' : '🇲🇽'}</span>
                       {l.code}
                       <span style={{ fontWeight: 500, letterSpacing: '0.03em', textTransform: 'none', opacity: 0.75 }}>
@@ -365,7 +365,7 @@ const SiteHeader = ({ active }) => {
           const navIdx = NAV.findIndex(n => n.id === openMenu);
           return (
             <div onMouseEnter={() => setOpenMenu(openMenu)} onMouseLeave={() => setOpenMenu(null)} style={{
-              position: 'absolute', left: 0, right: 0, top: '100%', background: 'var(--white)', borderTop: '1px solid rgba(0,16,17,0.06)', borderBottom: '1px solid var(--ink)', boxShadow: '0 24px 40px -16px rgba(0,16,17,0.18)', animation: 'wfsFadeDown 0.18s ease', }}>
+              position: 'absolute', left: 0, right: 0, top: '100%', background: 'var(--white)', borderTop: '1px solid rgba(38, 49, 102,0.06)', borderBottom: '1px solid var(--ink)', boxShadow: '0 24px 40px -16px rgba(38, 49, 102,0.18)', animation: 'wfsFadeDown 0.18s ease', }}>
               <div className="container" style={{ paddingTop: 40, paddingBottom: 48 }}>
                 {def.kind === 'mega-fences' || def.kind === 'mega-gates' ? (
                   <div style={{ display: 'grid', gridTemplateColumns: '1fr 4fr', gap: 56 }}>
@@ -391,12 +391,12 @@ const SiteHeader = ({ active }) => {
                     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 12 }}>
                       {(def.kind === 'mega-fences' ? FENCE_TILES : GATE_TILES).map((tile, i) => (
                         <a key={i} href={tile.href} style={{
-                          position: 'relative', aspectRatio: '4/5', borderRadius: 'var(--radius)', overflow: 'hidden', display: 'block', border: '1px solid rgba(0,16,17,0.06)', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
-                        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 18px 40px -20px rgba(0,16,17,0.25)'; }}
+                          position: 'relative', aspectRatio: '4/5', borderRadius: 'var(--radius)', overflow: 'hidden', display: 'block', border: '1px solid rgba(38, 49, 102,0.06)', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
+                        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 18px 40px -20px rgba(38, 49, 102,0.25)'; }}
                         onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
                           <img src={FENCE_IMG[tile.key]} alt={t(tile.name)}
                             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
-                          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(0,16,17,0) 35%, rgba(0,16,17,0.85) 100%)' }}/>
+                          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(38, 49, 102,0) 35%, rgba(38, 49, 102,0.85) 100%)' }}/>
                           <div style={{
                             position: 'absolute', top: 12, left: 12, fontFamily: 'var(--sans)', fontSize: 13.5, fontWeight: 700, letterSpacing: '0.14em', color: 'var(--ink)', background: 'var(--tangerine)', padding: '4px 8px', borderRadius: 3, }}>
                             0{i + 1}
@@ -421,10 +421,10 @@ const SiteHeader = ({ active }) => {
                         {openMenu === 'Fence Education Hub' && t('Pick the\nright fence.', 'Elige la\ncerca correcta.')}
                       </h3>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, borderTop: '1px solid rgba(0,16,17,0.08)' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 0, borderTop: '1px solid rgba(38, 49, 102,0.08)' }}>
                       {def.items.map((it, i) => (
                         <a key={i} href={it.href} target={it.href.startsWith('http') ? '_blank' : undefined} rel={it.href.startsWith('http') ? 'noopener' : undefined} style={{
-                          display: 'block', padding: '20px 22px', borderBottom: '1px solid rgba(0,16,17,0.08)', borderRight: i % 2 === 0 ? '1px solid rgba(0,16,17,0.08)' : 'none', transition: 'background 0.15s', }}
+                          display: 'block', padding: '20px 22px', borderBottom: '1px solid rgba(38, 49, 102,0.08)', borderRight: i % 2 === 0 ? '1px solid rgba(38, 49, 102,0.08)' : 'none', transition: 'background 0.15s', }}
                         onMouseEnter={e => { e.currentTarget.style.background = '#ffffff'; }}
                         onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>

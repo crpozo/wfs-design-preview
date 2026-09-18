@@ -39,7 +39,7 @@ const ArticlesFeatured = () => {
       <img loading="lazy" decoding="async" src={FENCE_IMG[a.img]} alt="" style={{
         position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', transform: hover ? 'scale(1.05)' : 'scale(1)', transition: 'transform 0.6s ease', }}/>
       <div aria-hidden style={{
-        position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(38, 49, 103,0.05) 30%, rgba(38, 49, 103,0.88) 100%)', }}/>
+        position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(38, 49, 102,0.05) 30%, rgba(38, 49, 102,0.88) 100%)', }}/>
       {/* Category chip, top-left */}
       <span className="mono" style={{
         position: 'absolute', top: big ? 24 : 18, left: big ? 24 : 18, background: 'var(--tangerine)', color: 'var(--white)', padding: '5px 12px', fontSize: 13.5, fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', }}>{t(a.tag, ARTICLE_TAG_ES[a.tag])}</span>
@@ -96,7 +96,7 @@ const ArticleCard = ({ p }) => {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{
-        display: 'flex', flexDirection: 'column', cursor: 'pointer', borderRadius: 20, overflow: 'hidden', background: 'var(--white)', border: '1px solid rgba(0,16,17,0.08)', transform: hover ? 'translateY(-5px)' : 'none', boxShadow: hover ? '0 24px 46px -22px rgba(38, 49, 103,0.4)' : 'none', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}>
+        display: 'flex', flexDirection: 'column', cursor: 'pointer', borderRadius: 20, overflow: 'hidden', background: 'var(--white)', border: '1px solid rgba(38, 49, 102,0.08)', transform: hover ? 'translateY(-5px)' : 'none', boxShadow: hover ? '0 24px 46px -22px rgba(38, 49, 102,0.4)' : 'none', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}>
       <div style={{ position: 'relative', aspectRatio: '16 / 10', overflow: 'hidden', background: '#263166' }}>
         <img loading="lazy" decoding="async" src={FENCE_IMG[p.img]} alt=""
           style={{
@@ -109,7 +109,7 @@ const ArticleCard = ({ p }) => {
         <h3 style={{
           margin: 0, fontSize: 17.5, fontWeight: 700, lineHeight: 1.35, color: 'var(--ink)', letterSpacing: '-0.005em', textTransform: 'capitalize', }}>{t(p.title)}</h3>
         <div style={{
-          marginTop: 'auto', paddingTop: 14, borderTop: '1px solid rgba(0,16,17,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', }}>
+          marginTop: 'auto', paddingTop: 14, borderTop: '1px solid rgba(38, 49, 102,0.08)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', }}>
           <span className="mono" style={{
             fontSize: 13.5, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--charcoal)', }}>{p.read} {t('read', 'de lectura')}</span>
           <span style={{
@@ -150,7 +150,7 @@ const ArticlesGrid = () => {
             return (
               <button key={tag} onClick={() => setFilter(tag)}
                 style={{
-                  padding: '8px 16px', borderRadius: 999, fontSize: 14.5, fontWeight: 600, fontFamily: 'var(--sans)', border: '1px solid ' + (active ? 'var(--ink)' : 'rgba(0,16,17,0.18)'), background: active ? 'var(--ink)' : 'var(--white)', color: active ? 'var(--white)' : 'var(--ink)', cursor: 'pointer', transition: 'all 0.15s ease', }}>{t(tag, ARTICLE_TAG_ES[tag])}</button>
+                  padding: '8px 16px', borderRadius: 999, fontSize: 14.5, fontWeight: 600, fontFamily: 'var(--sans)', border: '1px solid ' + (active ? 'var(--ink)' : 'rgba(38, 49, 102,0.18)'), background: active ? 'var(--ink)' : 'var(--white)', color: active ? 'var(--white)' : 'var(--ink)', cursor: 'pointer', transition: 'all 0.15s ease', }}>{t(tag, ARTICLE_TAG_ES[tag])}</button>
             );
           })}
         </div>
@@ -232,8 +232,8 @@ const MaterialsCompDeepDive = () => {
         <div style={{ display: 'grid', gap: 16 }}>
           {profiles.map((p, i) => (
             <a key={p.slug} className="wfs-matrow" href={p.href} style={{
-              display: 'grid', gridTemplateColumns: '96px 150px 1fr 1.4fr 1.4fr auto', gap: 24, alignItems: 'center', padding: '20px 26px', background: i % 2 === 0 ? 'var(--white)' : '#ffffff', border: '1px solid rgba(0,16,17,0.12)', color: 'var(--ink)', }}>
-              <div className="wfs-matrow__thumb" style={{ width: 96, height: 78, overflow: 'hidden', background: '#eef2f7' }}>
+              display: 'grid', gridTemplateColumns: '96px 150px 1fr 1.4fr 1.4fr auto', gap: 24, alignItems: 'center', padding: '20px 26px', background: i % 2 === 0 ? 'var(--white)' : '#ffffff', border: '1px solid rgba(38, 49, 102,0.12)', color: 'var(--ink)', }}>
+              <div className="wfs-matrow__thumb" style={{ width: 96, height: 78, overflow: 'hidden', background: 'rgba(168, 197, 255, 0.2)' }}>
                 <img src={FENCE_IMG[p.slug === 'chain-link' ? 'chainlink' : p.slug]} alt={p.name} loading="lazy"
                   style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
@@ -314,7 +314,7 @@ const PoolCodeRequirements = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
           {reqs.map((r, i) => (
             <article key={i} style={{
-              background: 'var(--white)', padding: 30, border: '1px solid rgba(0,16,17,0.1)', borderRadius: 16, display: 'flex', flexDirection: 'column', }}>
+              background: 'var(--white)', padding: 30, border: '1px solid rgba(38, 49, 102,0.1)', borderRadius: 16, display: 'flex', flexDirection: 'column', }}>
               <div className="mono" style={{
                 fontSize: 13, letterSpacing: '0.22em', color: 'var(--tangerine)', fontWeight: 700, textTransform: 'uppercase', marginBottom: 10, }}>{r.code}</div>
               <h3 className="display" style={{ fontSize: 23, lineHeight: 1.12, margin: '0 0 20px', color: 'var(--ink)' }}>{r.title}</h3>
@@ -354,7 +354,7 @@ const PoolCodeProfiles = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
           {profiles.map((p, i) => (
             <a key={p.slug} href={p.href} style={{
-              display: 'block', textDecoration: 'none', color: 'var(--ink)', background: 'var(--white)', border: '1px solid rgba(0,16,17,0.12)', }}>
+              display: 'block', textDecoration: 'none', color: 'var(--ink)', background: 'var(--white)', border: '1px solid rgba(38, 49, 102,0.12)', }}>
               <div style={{ position: 'relative', aspectRatio: '4 / 3', overflow: 'hidden', background: '#263166' }}>
                 <img loading="lazy" decoding="async" src={FENCE_IMG[p.img]} alt=""
                   style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }}/>
@@ -426,7 +426,7 @@ const PoolCodeCTA = () => {
     primary={[t('Request a quote', 'Solicitar una cotización'), 'contact.html#contact']}
     secondary={[t('Call the yard', 'Llama al almacén'), 'tel:2394652482']}
   />
-  <section style={{ background: '#ffffff', borderTop: '1px solid rgba(0,16,17,0.08)', padding: '26px 0' }}>
+  <section style={{ background: '#ffffff', borderTop: '1px solid rgba(38, 49, 102,0.08)', padding: '26px 0' }}>
     <div className="container">
       <p style={{ margin: 0, fontSize: 14.5, lineHeight: 1.65, color: 'var(--charcoal)', maxWidth: 860 }}>
         {t('Western Fence Supply is a material supplier only. WFS does not provide installation, engineering, code review, permit services, inspections, or compliance certification.', 'Western Fence Supply es únicamente un proveedor de materiales. WFS no ofrece instalación, ingeniería, revisión de código, servicios de permisos, inspecciones ni certificación de cumplimiento.')}
@@ -477,12 +477,12 @@ const FaqTopicGroup = ({ topic, index }) => {
       {topic.items.map(([q, a], i) => {
         const isOpen = open === i;
         return (
-          <div key={i} style={{ borderBottom: '1px solid rgba(0,16,17,0.1)' }}>
+          <div key={i} style={{ borderBottom: '1px solid rgba(38, 49, 102,0.1)' }}>
             <button onClick={() => setOpen(isOpen ? -1 : i)} style={{
               width: '100%', textAlign: 'left', padding: '20px 4px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 18, cursor: 'pointer', }}>
               <span style={{ fontSize: 17.5, fontWeight: 600, color: 'var(--ink)', lineHeight: 1.35 }}>{t(q)}</span>
               <span aria-hidden style={{
-                flexShrink: 0, width: 30, height: 30, borderRadius: '50%', border: `1px solid ${isOpen ? 'var(--tangerine)' : 'rgba(0,16,17,0.2)'}`, background: isOpen ? 'var(--tangerine)' : 'transparent', color: isOpen ? 'var(--white)' : 'var(--ink)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s ease, border-color 0.2s ease, color 0.2s ease', }}>
+                flexShrink: 0, width: 30, height: 30, borderRadius: '50%', border: `1px solid ${isOpen ? 'var(--tangerine)' : 'rgba(38, 49, 102,0.2)'}`, background: isOpen ? 'var(--tangerine)' : 'transparent', color: isOpen ? 'var(--white)' : 'var(--ink)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', transition: 'background 0.2s ease, border-color 0.2s ease, color 0.2s ease', }}>
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="none" style={{ transform: isOpen ? 'rotate(45deg)' : 'none', transition: 'transform 0.25s ease' }}>
                   <path d="M8 2 V14 M2 8 H14" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/>
                 </svg>
@@ -511,7 +511,7 @@ const FaqTopics = () => {
               fontSize: 14, fontWeight: 700, letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--charcoal)', marginBottom: 12, }}>{t('Browse by topic', 'Explora por tema')}</div>
             {FAQ_TOPICS.map((tp, i) => (
               <a key={tp.id} href={`#faq-${tp.id}`} className="mono" style={{
-                display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', fontSize: 14, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink)', border: '1px solid rgba(0,16,17,0.12)', }}>
+                display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px', fontSize: 14, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--ink)', border: '1px solid rgba(38, 49, 102,0.12)', }}>
                 <span style={{ color: 'var(--sky)' }}>0{i + 1}</span>
                 {t(tp.title)}
               </a>
