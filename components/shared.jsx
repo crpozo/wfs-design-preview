@@ -104,7 +104,7 @@ const DiamondGrid = ({ color = '#ff7133', opacity = 0.4 }) => (
    The "Start your fence project" button: pill, uppercase label, white
    circle with an out-arrow, lifts and turns tangerine on hover.
    variant="light" flips it for dark sections (white pill, ink text). */
-const PillCTA = ({ href, children, variant = 'ink', target, rel }) => {
+const PillCTA = ({ href, children, variant = 'ink', target, rel, onClick }) => {
   const [hover, setHover] = React.useState(false);
   const light = variant === 'light';
   const baseBg = light ? 'var(--white)' : 'var(--ink)';
@@ -112,7 +112,7 @@ const PillCTA = ({ href, children, variant = 'ink', target, rel }) => {
   const dotBg = light ? 'var(--ink)' : 'var(--white)';
   const dotFg = light ? 'var(--white)' : 'var(--ink)';
   return (
-    <a href={href} target={target} rel={rel} className="wfs-pill"
+    <a href={href} target={target} rel={rel} onClick={onClick} className="wfs-pill"
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
       style={{

@@ -112,36 +112,36 @@ const QuoteOptions = () => {
   const t = useT();
   const opciones = [
     { n: '01', title: { EN: 'Call a yard', ES: 'Llama a una sucursal' }, body: { EN: 'Fort Myers or Port Charlotte. Mon-Fri 7:30am-3:30pm, Saturday mornings.', ES: 'Fort Myers o Port Charlotte. Lun-Vie 7:30am-3:30pm, sábados por la mañana.' },
-      links: [['(239) 465-2482', 'tel:2394652482', null, true], ['(941) 467-5821', 'tel:9414675821', null, true]] },
+      links: [['Fort Myers · (239) 465-2482', 'tel:2394652482', null, true], ['Port Charlotte · (941) 467-5821', 'tel:9414675821', null, true]] },
     { n: '02', title: { EN: 'Talk to a live sales associate', ES: 'Chatea con un asesor de ventas' }, body: { EN: 'Live chat with a real person from the yard, no chatbot. Send photos or measurements right in the chat.', ES: 'Chat en vivo con una persona real de la sucursal, sin bots. Manda fotos o medidas por el mismo chat.' },
       links: [[t('Start chatting', 'Empezar a chatear'), 'contact.html', openLiveChat]] },
     { n: '03', title: { EN: 'Send us your project', ES: 'Envíanos tu proyecto' }, body: { EN: 'Fill out the form with linear feet, height and gates. We come back within 24 hours with stock, pricing and lead time.', ES: 'Llena el formulario con pies lineales, altura y portones. Respondemos en 24 horas con existencias, precio y plazo.' },
       links: [[t('Fill out the form', 'Llenar el formulario'), '#contact']] },
   ];
+  /* Banda azul con la malla de marca y las tres opciones como los pasos de
+     "How pickup works": numero grande, titulo y la accion (telefonos grandes
+     o pill blanco). Asi no compite con el formulario blanco de abajo. */
   return (
-  <section id="get-a-quote" className="wfs-qopts" style={{ background: 'var(--white)', padding: 'clamp(56px, 8vh, 96px) 0 clamp(32px, 5vh, 56px)', scrollMarginTop: 120 }}>
+  <section id="get-a-quote" className="wfs-qopts wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', color: 'var(--parchment)', padding: 'clamp(72px, 9vh, 110px) 0', scrollMarginTop: 120 }}>
     <div className="container">
       <div className="wfs-qopts__head">
-        <h2 className="display">{t('Get a free quote.', 'Cotización gratis.')}</h2>
-        <h3 className="wfs-qopts__sub">{t('Three ways to reach a real person at the yard.', 'Tres formas de hablar con una persona real de la sucursal.')}</h3>
-        <p>{t('Pick whichever is easiest for you.', 'Elige la que te quede más fácil.')}</p>
+        <div className="mono wfs-qopts__eyebrow">{t('Get a free quote', 'Cotización gratis')}</div>
+        <h2 className="display">
+          {t('Three ways to reach', 'Tres formas de hablar con')}{' '}
+          <span>{t('a real person at the yard.', 'una persona real de la sucursal.')}</span>
+        </h2>
+        <p>{t('Pick whichever is easiest for you. Every one lands with a sales rep, not a bot.', 'Elige la que te quede más fácil. Todas llegan a un asesor de ventas, no a un bot.')}</p>
       </div>
       <div className="wfs-qopts__grid">
         {opciones.map((o) => (
-          <div key={o.n} className="wfs-qopts__col">
-            <div className="mono wfs-qopts__kicker">
-              <span aria-hidden="true">●</span> {o.n} · {t(o.title)}
-            </div>
+          <div key={o.n} className="wfs-qopts__card">
+            <div className="display wfs-qopts__n">{o.n}</div>
+            <h3 className="wfs-qopts__title">{t(o.title)}</h3>
             <p>{t(o.body)}</p>
             <div className="wfs-qopts__links">
               {o.links.map(([label, href, onClick, big], i) => big
                 ? <a key={i} href={href} className="display wfs-qopts__phone">{label}</a>
-                : (
-                  <a key={i} href={href} onClick={onClick} className="mono wfs-qopts__link">
-                    {label}
-                    <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/></svg>
-                  </a>
-                ))}
+                : <PillCTA key={i} href={href} variant="light" onClick={onClick}>{label}</PillCTA>)}
             </div>
           </div>
         ))}
