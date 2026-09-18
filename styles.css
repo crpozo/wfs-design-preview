@@ -1691,7 +1691,21 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
   .wfs-qopts__grid { grid-template-columns: minmax(0, 1fr); }
   .wfs-qopts__card { padding: 24px 22px; }
 }
-  .wfs-qopts__col { padding: 24px 0; border-right: none; border-bottom: 1px solid rgba(38, 49, 102, .12); }
-  .wfs-qopts__col + .wfs-qopts__col { padding-left: 0; }
-  .wfs-qopts__col:last-child { border-bottom: none; }
+
+/* ─────────────────────────────────────────────────────────────
+   Responsive: los hijos de un grid/flex no pueden ensanchar su columna.
+   Por defecto min-width es "auto" (el contenido minimo): un <select> con una
+   opcion larga o un texto nowrap hacia que la columna midiera mas que la
+   pantalla y la tarjeta del formulario salia cortada por la derecha. */
+[style*="display: grid"] > *, [style*="display:grid"] > * { min-width: 0; }
+select, input, textarea { max-width: 100%; min-width: 0; }
+@media (max-width: 1024px) {
+  [style*="display: flex"] > * { min-width: 0; }
+  .wfs-map { max-width: 100%; }
+  img, video, iframe, svg { max-width: 100%; }
+}
+@media (max-width: 640px) {
+  /* Enlaces y botones en mayusculas con tracking: que partan linea en vez de
+     empujar el ancho de la pagina. */
+  a.mono, .mono a, .btn { white-space: normal; }
 }

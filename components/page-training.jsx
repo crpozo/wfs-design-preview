@@ -24,7 +24,7 @@ const TrainingHeader = () => {
           <img src="assets/wfs-logo.svg" alt="Western Fence Supply" style={{ height: 36, width: 'auto', display: 'block' }}/>
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
-          <span className="mono" style={{
+          <span className="mono wfs-hide-mobile" style={{
             fontSize: 13.5, fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--charcoal)', }}>{t('Training Companion', 'Training Companion')}</span>
           <div className="mono" style={{ display: 'inline-flex', alignItems: 'center', gap: 14 }}>
             {['EN', 'ES'].map((l) => {
