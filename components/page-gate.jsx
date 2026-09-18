@@ -240,7 +240,7 @@ const GateTypes = ({ data }) => (
 const GateQuoteChecklist = () => {
   const t = useT();
   return (
-    <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
+    <section className="wfs-texture-rail" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.25fr', gap: 56, alignItems: 'start' }}>
           <div>
@@ -295,7 +295,7 @@ const GateHardware = ({ data }) => (
 );
 
 const GateSpecs = ({ data }) => (
-  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
+  <section className="wfs-texture-wire" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>

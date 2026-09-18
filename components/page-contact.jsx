@@ -111,8 +111,8 @@ const ContactInfo = () => {
 const QuoteOptions = () => {
   const t = useT();
   const opciones = [
-    { n: '01', title: { EN: 'Call a yard', ES: 'Llama a una sucursal' }, body: { EN: 'Talk to a rep right now. Mon-Fri 7:30am-3:30pm, Saturday mornings.', ES: 'Habla con un asesor ahora mismo. Lun-Vie 7:30am-3:30pm, sábados por la mañana.' },
-      links: [['Fort Myers (239) 465-2482', 'tel:2394652482'], ['Port Charlotte (941) 467-5821', 'tel:9414675821']] },
+    { n: '01', title: { EN: 'Call a yard', ES: 'Llama a una sucursal' }, body: { EN: 'Fort Myers or Port Charlotte. Mon-Fri 7:30am-3:30pm, Saturday mornings.', ES: 'Fort Myers o Port Charlotte. Lun-Vie 7:30am-3:30pm, sábados por la mañana.' },
+      links: [['(239) 465-2482', 'tel:2394652482', null, true], ['(941) 467-5821', 'tel:9414675821', null, true]] },
     { n: '02', title: { EN: 'Talk to a live sales associate', ES: 'Chatea con un asesor de ventas' }, body: { EN: 'Live chat with a real person from the yard, no chatbot. Send photos or measurements right in the chat.', ES: 'Chat en vivo con una persona real de la sucursal, sin bots. Manda fotos o medidas por el mismo chat.' },
       links: [[t('Start chatting', 'Empezar a chatear'), 'contact.html', openLiveChat]] },
     { n: '03', title: { EN: 'Send us your project', ES: 'Envíanos tu proyecto' }, body: { EN: 'Fill out the form with linear feet, height and gates. We come back within 24 hours with stock, pricing and lead time.', ES: 'Llena el formulario con pies lineales, altura y portones. Respondemos en 24 horas con existencias, precio y plazo.' },
@@ -128,14 +128,20 @@ const QuoteOptions = () => {
       </div>
       <div className="wfs-qopts__grid">
         {opciones.map((o) => (
-          <div key={o.n} className="wfs-qopts__card">
-            <div className="wfs-qopts__n">{o.n}</div>
-            <h3>{t(o.title)}</h3>
+          <div key={o.n} className="wfs-qopts__col">
+            <div className="mono wfs-qopts__kicker">
+              <span aria-hidden="true">●</span> {o.n} · {t(o.title)}
+            </div>
             <p>{t(o.body)}</p>
             <div className="wfs-qopts__links">
-              {o.links.map(([label, href, onClick], i) => (
-                <a key={i} href={href} onClick={onClick} className={i === 0 ? 'btn btn-primary' : 'btn btn-ghost'} style={i === 0 ? undefined : { color: 'var(--ink)' }}>{label}</a>
-              ))}
+              {o.links.map(([label, href, onClick, big], i) => big
+                ? <a key={i} href={href} className="display wfs-qopts__phone">{label}</a>
+                : (
+                  <a key={i} href={href} onClick={onClick} className="mono wfs-qopts__link">
+                    {label}
+                    <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="square"/></svg>
+                  </a>
+                ))}
             </div>
           </div>
         ))}

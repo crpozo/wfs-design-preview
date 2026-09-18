@@ -112,7 +112,7 @@ const LocationsPickup = () => {
   const steps = [
     [{ EN: 'Confirm before you drive', ES: 'Confirma antes de manejar' }, { EN: 'Stock varies by yard. Call or email first and we confirm availability and which yard your order is staged at.', ES: 'El stock varía por sucursal. Llama o escribe primero y te confirmamos disponibilidad y en qué sucursal está tu pedido.' }], [{ EN: 'Same-day staging', ES: 'Preparación el mismo día' }, { EN: 'Call ahead and standard qualifying orders are pulled and staged the same day, ready at the bay when you arrive.', ES: 'Si avisas con anticipación, los pedidos estándar que califiquen se preparan el mismo día, listos en la bahía cuando llegues.' }], [{ EN: 'Or we deliver', ES: 'O te lo llevamos' }, { EN: 'Job-site delivery on our own trucks throughout Florida. Fees vary by location and order size. We confirm both with your quote.', ES: 'Entrega en obra con nuestros propios camiones en toda Florida. El costo varía según ubicación y tamaño del pedido: te confirmamos ambos con tu cotización.' }], ];
   return (
-  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', color: 'var(--parchment)', padding: '120px 0' }}>
+  <section className="wfs-texture-rail" style={{ backgroundColor: 'var(--ink)', color: 'var(--parchment)', padding: '120px 0' }}>
     <div className="container">
       <h2 className="display" style={{
         margin: '0 0 44px', fontSize: 'clamp(28px, 3vw, 42px)', lineHeight: 1.02, letterSpacing: '-0.01em', fontWeight: 800, textTransform: 'uppercase', color: 'var(--white)', }}>

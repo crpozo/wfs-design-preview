@@ -152,9 +152,9 @@ const SiteHeader = ({ active }) => {
                 icono + 6px arriba y abajo): antes era un enlace subrayado mas
                 bajo y quedaba descentrado respecto al naranja. */}
             <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" className="mono wfs-hide-tablet" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 15px 6px 13px', minHeight: 35, borderRadius: 999, background: '#9fd1ff', color: 'var(--ink)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.01em', whiteSpace: 'nowrap', textDecoration: 'none', transition: 'background 0.2s ease, transform 0.2s ease', }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#7fc0ff'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = '#9fd1ff'; e.currentTarget.style.transform = 'none'; }}>
+              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 15px 6px 13px', minHeight: 35, borderRadius: 999, background: '#a8c5ff', color: 'var(--ink)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.01em', whiteSpace: 'nowrap', textDecoration: 'none', transition: 'background 0.2s ease, transform 0.2s ease', }}
+            onMouseEnter={e => { e.currentTarget.style.background = '#8fb3ff'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = '#a8c5ff'; e.currentTarget.style.transform = 'none'; }}>
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                 <path d="M3 3 H13 V13 H3 Z M3 6 H13 M6 3 V13" stroke="currentColor" strokeWidth="1.4"/>
               </svg>

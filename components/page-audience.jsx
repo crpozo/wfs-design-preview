@@ -509,7 +509,7 @@ const HomeownerPaths = () => {
               <h3 className="display" style={{ margin: '0 0 14px', fontSize: 'clamp(22px, 2vw, 27px)', lineHeight: 1.12, letterSpacing: '-0.01em', color: 'var(--ink)' }}>{p.title}</h3>
               <p style={{ margin: '0 0 28px', fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>{p.body}</p>
               <a href={p.href} style={{
-                marginTop: 'auto', alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 10, padding: '14px 24px', borderRadius: 999, background: p.accent ? 'var(--sky)' : 'var(--ink)', color: 'var(--white)', fontSize: 15.5, fontWeight: 600, fontFamily: 'var(--sans)', boxShadow: p.accent ? '0 10px 26px rgba(61,148,228,0.35)' : 'none', }}>
+                marginTop: 'auto', alignSelf: 'flex-start', display: 'inline-flex', alignItems: 'center', gap: 10, padding: '14px 24px', borderRadius: 999, background: p.accent ? 'var(--sky)' : 'var(--ink)', color: 'var(--white)', fontSize: 15.5, fontWeight: 600, fontFamily: 'var(--sans)', boxShadow: p.accent ? '0 10px 26px rgba(168,197,255,0.35)' : 'none', }}>
                 {p.cta}
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4l-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round"/></svg>
               </a>
@@ -663,7 +663,7 @@ const ContractorBenefits = () => {
   const perks = [
     [{ EN: 'Factory direct pricing', ES: 'Precio directo de fábrica' }, { EN: 'True wholesale pricing tiered to your volume, no out-of-state distributor markup.', ES: 'Precio mayorista real por niveles según tu volumen, sin margen de distribuidores de fuera del estado.' }], [{ EN: 'Priority fabrication', ES: 'Fabricación prioritaria' }, { EN: 'Skip the line. Partners get priority manufacturing slots and turnaround on gates.', ES: 'Sáltate la fila. Los socios tienen prioridad en los turnos de fabricación y en los tiempos de portones.' }], [{ EN: 'Job site delivery', ES: 'Entrega en obra' }, { EN: 'Unbranded or branded drops to your site. Curbside, will-call, or LTL, your choice per PO.', ES: 'Entregas con o sin marca en tu obra. En banqueta, will-call o LTL, tú eliges por orden de compra.' }], [{ EN: 'Lead routing', ES: 'Referencia de clientes' }, { EN: 'Homeowner projects referred directly to trusted installer partners, with the WFS material line locked in.', ES: 'Proyectos de propietarios referidos directamente a instaladores socios de confianza, con la línea de material WFS asegurada.' }], [{ EN: 'Payment terms', ES: 'Términos de pago' }, { EN: 'Flexible terms for qualified high-volume partners after a short trade-reference review.', ES: 'Términos flexibles para socios calificados de alto volumen tras una breve revisión de referencias comerciales.' }], [{ EN: 'Dedicated rep', ES: 'Asesor dedicado' }, { EN: 'One named account rep. Phone, email, or in-yard, from RFQ through PO close-out.', ES: 'Un asesor de cuenta con nombre y apellido. Por teléfono, correo o en la sucursal, del RFQ al cierre de la orden.' }], ];
   return (
-  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
+  <section className="wfs-texture-picket" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
     <div className="container">
       {/* Eyebrow */}
       <div className="mono" style={{

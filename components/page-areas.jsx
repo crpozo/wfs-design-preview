@@ -173,15 +173,17 @@ const AreasList = ({ groups, hot, setHot }) => {
   const t = useT();
   return (
     <div className="wfs-areas-list">
-      {groups.map((g) => (
+      {groups.map((g, i) => (
         <div key={g.key} id={`${g.key}-county`} className={`wfs-areas-group${hot === g.key ? ' is-hot' : ''}`}
           onMouseEnter={() => setHot(g.key)} onMouseLeave={() => setHot(null)}>
-          <h3>{t(`${g.county} County`, `Condado de ${g.county}`)}</h3>
+          {/* Mismo lenguaje que las fichas de sucursal del sitio: numero mono,
+              nombre en display y una nota mono en mayusculas; sin tarjetas. */}
+          <div className="wfs-areas-group__head">
+            <span className="mono wfs-areas-group__n">{String(i + 1).padStart(2, '0')}</span>
+            <h3 className="display">{t(`${g.county} County`, `Condado de ${g.county}`)}</h3>
+          </div>
           {g.yard && (
-            <div className="wfs-areas-yard" title={t('Closest yard', 'Sucursal más cercana')}>
-              <svg width="10" height="10" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 15s5-4.6 5-8.5A5 5 0 0 0 3 6.5C3 10.4 8 15 8 15Z" stroke="currentColor" strokeWidth="1.6"/><circle cx="8" cy="6.5" r="1.6" fill="currentColor"/></svg>
-              {AREAS_YARD_NAMES[g.yard]}{' '}{t('yard', '')}
-            </div>
+            <div className="mono wfs-areas-yard">{t(`${AREAS_YARD_NAMES[g.yard]} yard`, `Sucursal ${AREAS_YARD_NAMES[g.yard]}`)}</div>
           )}
           <ul className="wfs-areas-towns">
             {g.towns.map((tw) => Array.isArray(tw)
@@ -229,7 +231,7 @@ const AreasBlock = ({ id, view, groups, eyebrow, title, accent, intro, legend, l
     return () => { clearTimeout(go); clearTimeout(off); };
   }, []);
   return (
-    <section id={id} className={`wfs-areas-block${flip ? ' wfs-areas-block--flip' : ''}`} style={{ background: tone, padding: '112px 0' }}>
+    <section id={id} className={`wfs-areas-block${flip ? ' wfs-areas-block--flip wfs-texture-picket--light' : ''}`} style={{ background: tone, padding: '112px 0' }}>
       <div className="container">
         <div className="wfs-areas-grid">
           <div className="wfs-areas-mapcol">
