@@ -105,8 +105,8 @@ const AreasIntro = () => {
         {/* Foto distinta a la del hero (la fachada con los muestrarios), con
             pie para que no salga "de la nada". */}
         <figure className="wfs-areas-intro__photo">
-          <img src="assets/Showroom.webp" alt={t('Western Fence Supply yard in Fort Myers with fence samples out front', 'Sucursal de Western Fence Supply en Fort Myers con muestras de cercas al frente')} loading="lazy" decoding="async" />
-          <figcaption>{t('Fort Myers yard · 2621 Fowler St', 'Sucursal Fort Myers · 2621 Fowler St')}</figcaption>
+          <img src="assets/wfs-shop.webp" alt={t('Western Fence Supply yard in Fort Myers with fence samples out front', 'Sucursal de Western Fence Supply en Fort Myers con muestras de cercas al frente')} loading="lazy" decoding="async" />
+          <figcaption>{t('Western Fence Supply yard', 'Sucursal de Western Fence Supply')}</figcaption>
         </figure>
         </div>
         <dl className="wfs-areas-facts">
@@ -231,7 +231,7 @@ const AreasBlock = ({ id, view, groups, eyebrow, title, accent, intro, legend, l
     return () => { clearTimeout(go); clearTimeout(off); };
   }, []);
   return (
-    <section id={id} className={`wfs-areas-block${flip ? ' wfs-areas-block--flip wfs-texture-picket--light' : ''}`} style={{ background: tone, padding: '112px 0' }}>
+    <section id={id} className={`wfs-areas-block${flip ? ' wfs-areas-block--flip' : ''}`} style={{ background: tone, padding: '112px 0' }}>
       <div className="container">
         <div className="wfs-areas-grid">
           <div className="wfs-areas-mapcol">

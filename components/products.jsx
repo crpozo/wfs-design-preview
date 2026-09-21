@@ -711,7 +711,7 @@ const WhyWFS = () => {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
           {WHY_WFS.map((v, i) => (
             <div key={i} style={{
-              border: '1px solid rgba(38, 49, 102,0.14)', background: 'var(--white)', padding: '24px 22px 26px', display: 'flex', flexDirection: 'column', transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease', }}
+              border: '1px solid rgba(38, 49, 102,0.14)', borderRadius: 18, background: 'var(--white)', padding: '24px 22px 26px', display: 'flex', flexDirection: 'column', transition: 'transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease', }}
             onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 18px 40px -22px rgba(38, 49, 102,0.3)'; e.currentTarget.style.borderColor = 'var(--ink)'; }}
             onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; e.currentTarget.style.borderColor = 'rgba(38, 49, 102,0.14)'; }}>
               <span style={{

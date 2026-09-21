@@ -182,8 +182,8 @@ const QuoteFlow = () => {
             {onSummary
               ? t('Review your configuration. The drawing tool opens with these exact options.', 'Revisa tu configuración. La herramienta de dibujo se abre con estas opciones exactas.')
               : onDetail
-              ? t('Pick each option and the next one appears. Same options as the Easy Draw My Fence tool.', 'Elige cada opción y aparece la siguiente. Las mismas opciones de la herramienta Easy Draw My Fence.')
-              : t('Pick a material to configure your fence. Same options as the Easy Draw My Fence tool.', 'Elige un material para configurar tu cerca. Las mismas opciones de la herramienta Easy Draw My Fence.')}
+              ? t('Pick each option and the next one appears. Same options as the Easy Draw Your Fence tool.', 'Elige cada opción y aparece la siguiente. Las mismas opciones de la herramienta Easy Draw Your Fence.')
+              : t('Pick a material to configure your fence. Same options as the Easy Draw Your Fence tool.', 'Elige un material para configurar tu cerca. Las mismas opciones de la herramienta Easy Draw Your Fence.')}
           </p>
         </div>
 

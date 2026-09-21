@@ -147,7 +147,7 @@ const CTABand = ({ kicker, title, accent, body, primary, secondary, theme = 'cre
 
 const featureIcon = (label = '') => {
   const l = String(label).toLowerCase();
-  const p = { width: 30, height: 30, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round' };
+  const p = { width: 26, height: 26, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.9, strokeLinecap: 'round', strokeLinejoin: 'round' };
   if (l.includes('best') || l.includes('ideal')) return <svg {...p}><circle cx="9" cy="8" r="3"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.2a3 3 0 0 1 0 5.6"/><path d="M21 20a5.5 5.5 0 0 0-4-5.3"/></svg>;
   if (l.includes('style') || l.includes('estilo') || l.includes('option') || l.includes('opcion')) return <svg {...p}><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>;
   if (l.includes('material')) return <svg {...p}><path d="M12 3 21 8 12 13 3 8Z"/><path d="M3 12 12 17 21 12"/><path d="M3 16 12 21 21 16"/></svg>;
@@ -164,13 +164,29 @@ const featureIcon = (label = '') => {
   return <svg {...p}><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M11.5 12h.5v4h1"/></svg>;
 };
 
+const featureIconBox = (label = '') => {
+  const l = String(label).toLowerCase();
+  const png = l.includes('material') ? 'assets/icons/layers-box.png'
+    : (l.includes('hardware') || l.includes('herraj')) ? 'assets/icons/wrench-box.png'
+    : (l.includes('start') || l.includes('desde') || l.includes('spec')) ? 'assets/icons/document-box.png' : null;
+  if (png) return <img src={png} alt="" width={46} height={46} style={{ display: 'block', width: 46, height: 46 }} loading="lazy" decoding="async" />;
+  return (
+    <span style={{ width: 46, height: 46, borderRadius: 10, background: 'var(--laser-blue)', color: 'var(--white)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+      {featureIcon(label)}
+    </span>
+  );
+};
+
 const FeatureRow = ({ items }) => (
   <div style={{
     display: 'grid', gridTemplateColumns: `repeat(${items.length}, 1fr)`, gap: 0, background: 'var(--white)', borderRadius: 16, boxShadow: '0 34px 70px -34px rgba(38, 49, 102,0.4)', border: '1px solid rgba(38, 49, 102,0.06)', overflow: 'hidden', }}>
     {items.map(([k, v], i) => (
       <div key={i} style={{
         padding: '28px 26px', borderLeft: i === 0 ? 'none' : '1px solid rgba(38, 49, 102,0.08)', }}>
-        <div aria-hidden style={{ color: 'var(--tangerine)', marginBottom: 14 }}>{featureIcon(k)}</div>
+        {/* Misma caja que los iconos del cliente (Why WFS): cuadro azul
+            redondeado con el glifo en blanco. Donde hay PNG del cliente
+            (materiales, herrajes) se usa ese. */}
+        <div aria-hidden style={{ marginBottom: 14 }}>{featureIconBox(k)}</div>
         <div className="mono" style={{
           fontSize: 13.5, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--tangerine)', fontWeight: 700, marginBottom: 10, }}>{k}</div>
         <div style={{ fontSize: 15.5, lineHeight: 1.55, color: 'var(--ink)' }}>{v}</div>
@@ -241,7 +257,7 @@ const UseCaseRow = ({ title, body, badge, index }) => {
       style={{
         display: 'grid', gridTemplateColumns: '104px 1.15fr 1fr 48px', gap: 28, alignItems: 'center', padding: '32px 22px', margin: '0 -22px', borderBottom: '1px solid rgba(38, 49, 102,0.1)', textDecoration: 'none', color: 'inherit', background: hover ? 'rgba(46, 89, 193,0.07)' : 'transparent', transition: 'background 0.2s ease', }}>
       <span className="display wfs-usecase-num" aria-hidden style={{
-        fontSize: 61.5, lineHeight: 1, fontWeight: 800, color: hover ? 'var(--tangerine)' : 'transparent', WebkitTextStroke: hover ? '0px transparent' : '1.5px rgba(38,49,102,0.32)', transition: 'color 0.2s ease', }}>0{index + 1}</span>
+        fontSize: 61.5, lineHeight: 1, fontWeight: 800, color: hover ? 'var(--tangerine)' : 'var(--ink)', transition: 'color 0.2s ease', }}>0{index + 1}</span>
       <div>
         <h3 className="display" style={{
           margin: '0 0 12px', fontSize: 'clamp(18px, 1.6vw, 24px)', lineHeight: 1.1, textTransform: 'uppercase', letterSpacing: '0.01em', }}>{title}</h3>

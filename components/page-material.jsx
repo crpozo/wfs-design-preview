@@ -268,7 +268,7 @@ const MaterialProfiles = ({ data }) => {
 };
 
 const MaterialSpecs = ({ data }) => (
-  <section className="wfs-texture-picket" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
+  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
@@ -290,8 +290,7 @@ const MaterialSpecs = ({ data }) => (
           </div>
         </div>
         <div style={{ position: 'relative' }}>
-          <div aria-hidden style={{ position: 'absolute', inset: '14px -14px -14px 14px', background: 'var(--laser-blue)' }}/>
-          <div style={{ position: 'relative', background: 'var(--white)', borderTop: '4px solid var(--tangerine)' }}>
+          <div className="wfs-card" style={{ position: 'relative', background: 'var(--white)', overflow: 'hidden' }}>
           {data.specs.map(([k, v], i) => (
             <div key={k} style={{
               display: 'grid', gridTemplateColumns: '220px 1fr', borderBottom: i === data.specs.length - 1 ? 'none' : '1px solid rgba(38, 49, 102,0.08)', }}>

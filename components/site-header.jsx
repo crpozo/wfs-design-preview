@@ -25,7 +25,7 @@ const SiteHeader = ({ active }) => {
   // NAV: id stays stable (used by `active` prop). label + items get translated.
   const NAV = [
     { id: 'Fences', label: { EN: 'Fences', ES: 'Cercas' }, def: { kind: 'mega-fences' } }, { id: 'Gates', label: { EN: 'Gates', ES: 'Portones' }, def: { kind: 'mega-gates' } }, { id: 'Get a Quote', label: { EN: 'Get a Quote', ES: 'Cotizar' }, def: { kind: 'list', items: [
-      { label: { EN: 'Draw My Fence', ES: 'Dibuja mi cerca' }, href: 'https://app.westernfencesupply.com/', sub: { EN: 'Sketch or send measurements, pricing in 24h', ES: 'Dibuja o envía medidas, precios en 24h' } }, { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' }, href: 'contact.html', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte', ES: 'Lun-Vie · Fort Myers + Port Charlotte' } }, { label: { EN: 'Email Sales', ES: 'Escribir a ventas' }, href: 'mailto:sales@westernfencesupply.com', sub: { EN: 'sales@westernfencesupply.com', ES: 'sales@westernfencesupply.com' } }, ]}}, { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [
+      { label: { EN: 'Draw Your Fence', ES: 'Dibuja tu cerca' }, href: 'https://app.westernfencesupply.com/', sub: { EN: 'Sketch or send measurements, pricing in 24h', ES: 'Dibuja o envía medidas, precios en 24h' } }, { label: { EN: 'Talk to a Live Agent', ES: 'Hablar con un agente' }, href: 'contact.html', sub: { EN: 'Mon-Fri · Fort Myers + Port Charlotte', ES: 'Lun-Vie · Fort Myers + Port Charlotte' } }, { label: { EN: 'Email Sales', ES: 'Escribir a ventas' }, href: 'mailto:sales@westernfencesupply.com', sub: { EN: 'sales@westernfencesupply.com', ES: 'sales@westernfencesupply.com' } }, ]}}, { id: 'Company', label: { EN: 'Company', ES: 'Empresa' }, def: { kind: 'list', items: [
       { label: { EN: 'About WFS', ES: 'Sobre WFS' }, href: 'about.html', sub: { EN: 'Family-owned · fabricated in-house', ES: 'Familiar · fabricado en planta' } }, { label: { EN: 'Yard Locations', ES: 'Sucursales' }, href: 'locations.html', sub: { EN: 'Pickup, hours & directions · FM + PC', ES: 'Retiro, horarios y cómo llegar · FM + PC' } }, { label: { EN: 'Areas We Serve', ES: 'Zonas que atendemos' }, href: 'areas-we-serve.html', sub: { EN: 'Counties & towns we deliver to', ES: 'Condados y ciudades donde entregamos' } },{ label: { EN: 'Contact', ES: 'Contacto' }, href: 'contact.html', sub: { EN: 'Phone, email, hours by yard', ES: 'Teléfono, email, horarios por sucursal' } }, ]}}, { id: 'Fence Education Hub', label: { EN: 'Fence Education Hub', ES: 'Centro Educativo' }, def: { kind: 'list', items: [
       { label: { EN: 'Blog', ES: 'Blog' }, href: 'blog.html', sub: { EN: 'News, guides and job stories', ES: 'Noticias, guías e historias de obra' } }, { label: { EN: 'FAQ', ES: 'Preguntas frecuentes' }, href: 'faq.html', sub: { EN: 'The questions we get every week', ES: 'Las preguntas que recibimos cada semana' } }, { label: { EN: 'Materials Comparison', ES: 'Comparativa de materiales' }, href: 'materials-comparison.html', sub: { EN: 'Aluminum vs Vinyl vs Chain Link vs Metal', ES: 'Aluminio vs Vinilo vs Malla vs Metal' } }, { label: { EN: 'Florida Pool Code', ES: 'Código de piscinas FL' }, href: 'pool-code.html', sub: { EN: 'Code-compliant enclosure profiles', ES: 'Perfiles de cerramiento según código' } }, ]}}, ];
 
@@ -120,7 +120,7 @@ const SiteHeader = ({ active }) => {
           {/* Logo */}
           <a href="Homepage.html" style={{
             display: 'inline-flex', alignItems: 'center', padding: '6px 4px', }}>
-            <img src="assets/wfs-logo.svg" alt="Western Fence Supply" style={{ height: 40, width: 'auto', display: 'block' }}/>
+            <img src="assets/wfs-logo.svg?v=2" alt="Western Fence Supply" style={{ height: 40, width: 'auto', display: 'block' }}/>
           </a>
 
           {/* Nav */}
@@ -152,13 +152,13 @@ const SiteHeader = ({ active }) => {
                 icono + 6px arriba y abajo): antes era un enlace subrayado mas
                 bajo y quedaba descentrado respecto al naranja. */}
             <a href="https://app.westernfencesupply.com/" target="_blank" rel="noopener" className="mono wfs-hide-tablet" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 15px 6px 13px', minHeight: 35, borderRadius: 999, background: '#a8c5ff', color: 'var(--ink)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.01em', whiteSpace: 'nowrap', textDecoration: 'none', transition: 'background 0.2s ease, transform 0.2s ease', }}
-            onMouseEnter={e => { e.currentTarget.style.background = '#a8c5ff'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
-            onMouseLeave={e => { e.currentTarget.style.background = '#a8c5ff'; e.currentTarget.style.transform = 'none'; }}>
+              display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 15px 6px 13px', minHeight: 35, borderRadius: 999, background: 'var(--laser-blue)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.01em', whiteSpace: 'nowrap', textDecoration: 'none', transition: 'background 0.2s ease, transform 0.2s ease', }}
+            onMouseEnter={e => { e.currentTarget.style.background = 'var(--ink)'; e.currentTarget.style.transform = 'translateY(-1px)'; }}
+            onMouseLeave={e => { e.currentTarget.style.background = 'var(--laser-blue)'; e.currentTarget.style.transform = 'none'; }}>
               <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
                 <path d="M3 3 H13 V13 H3 Z M3 6 H13 M6 3 V13" stroke="currentColor" strokeWidth="1.4"/>
               </svg>
-              {t('Draw My Fence', 'Dibuja mi cerca')}
+              {t('Draw Your Fence', 'Dibuja tu cerca')}
             </a>
             <a href="contact.html#get-a-quote" className="wfs-quote-pill" style={{
               display: 'inline-flex', alignItems: 'center', gap: 8, padding: '6px 6px 6px 15px', borderRadius: 999, background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.01em', whiteSpace: 'nowrap', transition: 'background 0.2s ease, transform 0.2s ease', }}
@@ -217,7 +217,7 @@ const SiteHeader = ({ active }) => {
           position: 'fixed', inset: 0, background: 'var(--white)', zIndex: 100, display: 'none', flexDirection: 'column', transform: mobileOpen ? 'translateY(0)' : 'translateY(-100%)', transition: 'transform 0.3s ease', overflowY: 'auto', }}>
           <div style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px', borderBottom: '1px solid rgba(38, 49, 102,0.12)', }}>
-            <img src="assets/wfs-logo.svg" alt="Western Fence Supply" style={{ height: 32, width: 'auto' }}/>
+            <img src="assets/wfs-logo.svg?v=2" alt="Western Fence Supply" style={{ height: 32, width: 'auto' }}/>
             <button onClick={() => setMobileOpen(false)} aria-label={t('Close menu', 'Cerrar menú')} style={{
               flexShrink: 0, width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0, background: '#263166', border: 'none', cursor: 'pointer', padding: 0, }}>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
@@ -425,7 +425,7 @@ const SiteHeader = ({ active }) => {
                       {def.items.map((it, i) => (
                         <a key={i} href={it.href} target={it.href.startsWith('http') ? '_blank' : undefined} rel={it.href.startsWith('http') ? 'noopener' : undefined} style={{
                           display: 'block', padding: '20px 22px', borderBottom: '1px solid rgba(38, 49, 102,0.08)', borderRight: i % 2 === 0 ? '1px solid rgba(38, 49, 102,0.08)' : 'none', transition: 'background 0.15s', }}
-                        onMouseEnter={e => { e.currentTarget.style.background = '#ffffff'; }}
+                        onMouseEnter={e => { e.currentTarget.style.background = 'rgba(38, 49, 102, 0.05)'; }}
                         onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}>
                           <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 6 }}>
                             <span className="eyebrow" style={{ color: 'var(--tangerine)', fontSize: 13.5 }}>

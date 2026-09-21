@@ -67,7 +67,7 @@ const ProjectsBigGallery = () => {
 const ProjectsCaseStudy = () => {
   const t = useT();
   return (
-    <section className="wfs-texture-rail" style={{ backgroundColor: 'var(--ink)', color: 'var(--parchment)', padding: 'clamp(40px, 7vh, 72px) 0', display: 'flex', alignItems: 'center', minHeight: 0, maxHeight: 'none' }}>
+    <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', color: 'var(--parchment)', padding: 'clamp(40px, 7vh, 72px) 0', display: 'flex', alignItems: 'center', minHeight: 0, maxHeight: 'none' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: 56, alignItems: 'center' }}>
           <div style={{ display: 'grid', gridTemplateColumns: '1.5fr 1fr', gap: 10, width: 'min(100%, 620px)', justifySelf: 'center', position: 'relative' }}>

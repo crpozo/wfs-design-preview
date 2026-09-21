@@ -36,7 +36,9 @@
   --tangerine: #2e59c1;
   /* Celeste: acentos de titulos, rayas del carrusel, toggle del FAQ y mapa.
      El naranja se queda en botones y detalles pequenos. */
-  --sky: #a8c5ff;
+  /* Sky Steel es complementario: SOLO sobre navy. Sobre blanco --sky vale
+     Western Blue; los contenedores oscuros lo redefinen (final del archivo). */
+  --sky: #2e59c1;
   --coral: #a8c5ff;
   /* Neutrals */
   --white: #ffffff;
@@ -606,14 +608,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   background-repeat: repeat;
 }
 
-
-/* Mas patrones de marca (hoja de iconos/patrones del cliente): pickets,
-   ranch rail y alambre torcido, ademas de la malla de .wfs-brand-texture. Se
-   alternan entre secciones oscuras para que no se repita siempre la malla. */
-.wfs-texture-picket { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2228%22%20height%3D%22140%22%20viewBox%3D%220%200%2028%20140%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.06%22%20d%3D%22M6%200h10v92q0%206%206%206h0v42H12V104q0-4-4-4H6z%22%2F%3E%3C%2Fsvg%3E"); background-size: 28px 140px; background-repeat: repeat; }
-.wfs-texture-rail { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2226%22%20height%3D%2220%22%20viewBox%3D%220%200%2026%2020%22%3E%3Crect%20x%3D%229%22%20y%3D%220%22%20width%3D%228%22%20height%3D%2220%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.05%22%2F%3E%3C%2Fsvg%3E"); background-size: 26px 20px; background-repeat: repeat; }
-.wfs-texture-wire { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2296%22%20height%3D%2296%22%20viewBox%3D%220%200%2096%2096%22%3E%3Cg%20fill%3D%22none%22%20stroke%3D%22%23ffffff%22%20stroke-opacity%3D%220.045%22%20stroke-width%3D%227%22%20stroke-linecap%3D%22round%22%3E%3Cpath%20d%3D%22M0%2048q24-40%2048%200t48%200%22%2F%3E%3Cpath%20d%3D%22M0%2048q24%2040%2048%200t48%200%22%2F%3E%3Cpath%20d%3D%22M48%200q-40%2024%200%2048t0%2048%22%2F%3E%3Cpath%20d%3D%22M48%200q40%2024%200%2048t0%2048%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E"); background-size: 96px 96px; background-repeat: repeat; }
-.wfs-texture-picket--light { background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2228%22%20height%3D%22140%22%20viewBox%3D%220%200%2028%20140%22%3E%3Cpath%20fill%3D%22%23263167%22%20fill-opacity%3D%220.05%22%20d%3D%22M6%200h10v92q0%206%206%206h0v42H12V104q0-4-4-4H6z%22%2F%3E%3C%2Fsvg%3E"); background-size: 28px 140px; background-repeat: repeat; }
 
 /* Poster-style bars rising from the bottom (for laser-blue bands) */
 .wfs-bars-texture {
@@ -1729,10 +1723,42 @@ footer, .wfs-utility-bar, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .w
 .wfs-areas-cta, .wfs-qopts, .wfs-quote-pill,
 [style*="background: var(--ink)"], [style*="background-color: var(--ink)"], [style*="background: rgb(38, 49, 102)"] {
   --tangerine: #a8c5ff;
+  --sky: #a8c5ff;
 }
 :is(footer, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .wfs-texture-rail, .wfs-texture-wire, .wfs-qopts,
     [style*="background: var(--ink)"], [style*="background-color: var(--ink)"], [style*="background: rgb(38, 49, 102)"])
   :is([style*="background: var(--tangerine)"], .btn-primary) { color: var(--ink) !important; }
 /* Dentro de una tarjeta blanca metida en un bloque oscuro vuelve a ser azul. */
-[style*="background: var(--white)"], [style*="background: rgb(255, 255, 255)"], .wfs-areas-cta__card { --tangerine: #2e59c1; }
+[style*="background: var(--white)"], [style*="background: rgb(255, 255, 255)"], .wfs-areas-cta__card, .wfs-card { --tangerine: #2e59c1; --sky: #2e59c1; }
 .btn-primary { color: #ffffff; }
+
+/* ── Hoja de cambios del cliente (2026-09-21) ───────────────────────────
+   Una sola estetica de caja: blanca, redondeada, sombra suave. */
+.wfs-card, .wfs-areas-mat, .wfs-areas-cta__card {
+  border: 1px solid rgba(38, 49, 102, 0.1) !important; border-radius: 18px !important;
+  box-shadow: 0 18px 40px -24px rgba(38, 49, 102, 0.35) !important;
+}
+.wfs-areas-mat:hover { transform: translateY(-3px); box-shadow: 0 24px 48px -24px rgba(38, 49, 102, 0.45) !important; }
+/* Pasos sobre navy (How pickup works, opciones de cotizacion): con vertices. */
+.wfs-sharp, .wfs-qopts__card { border-radius: 0 !important; box-shadow: none !important; }
+/* Relleno con el acento sobre fondo claro: letra blanca. */
+[style*="background: var(--tangerine)"] { color: #ffffff !important; }
+/* Pasteles fuera del fondo blanco: mapas y chips en azul. */
+.wfs-areas-county.is-primary { fill: var(--laser-blue); }
+.wfs-areas-county.is-primary.is-hot { fill: var(--ink); }
+.wfs-areas-county.is-muted { fill: rgba(38, 49, 102, 0.16); }
+.wfs-areas-swatch.is-primary { background: var(--laser-blue); }
+.wfs-areas-clabel { color: #ffffff; }
+.wfs-areas-map, .wfs-areas-mapcol { --sea: rgba(38, 49, 102, 0.06); }
+.wfs-areas-map { background: rgba(38, 49, 102, 0.06); box-shadow: 0 0 0 22px rgba(38, 49, 102, 0.06); }
+.wfs-areas-group.is-hot { background: linear-gradient(90deg, rgba(38, 49, 102, 0.07), transparent); }
+.wfs-chatbanner { background: var(--laser-blue); color: #ffffff; border-bottom: none; }
+.wfs-chatbanner:hover { background: var(--ink); }
+.wfs-chatbanner__txt { color: #ffffff; }
+.wfs-chatbanner__cta { background: #ffffff; color: var(--ink); }
+.wfs-chatbanner:hover .wfs-chatbanner__cta { background: #ffffff; }
+/* Menos espacio en blanco entre secciones en escritorio. */
+@media (min-width: 1025px) {
+  section[style*="padding: 120px 0"] { padding-top: 84px !important; padding-bottom: 84px !important; }
+  section[style*="padding: 112px 0"] { padding-top: 84px !important; padding-bottom: 84px !important; }
+}

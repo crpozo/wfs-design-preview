@@ -127,7 +127,7 @@ const GateQuickFacts = ({ data }) => (
           <div key={i} style={{
             padding: '30px 28px', borderLeft: i === 0 ? 'none' : '1px solid rgba(38, 49, 102,0.08)', }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
-              <span aria-hidden style={{ color: 'var(--laser-blue)', display: 'inline-flex' }}>{gateFactIcon(k)}</span>
+              <span aria-hidden style={{ display: 'inline-flex' }}>{featureIconBox(k)}</span>
               <span className="mono" style={{
                 fontSize: 14, letterSpacing: '0.16em', textTransform: 'uppercase', color: 'var(--ink)', fontWeight: 700, }}>{k}</span>
             </div>
@@ -240,7 +240,7 @@ const GateTypes = ({ data }) => (
 const GateQuoteChecklist = () => {
   const t = useT();
   return (
-    <section className="wfs-texture-rail" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
+    <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
       <div className="container">
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.25fr', gap: 56, alignItems: 'start' }}>
           <div>
@@ -295,7 +295,7 @@ const GateHardware = ({ data }) => (
 );
 
 const GateSpecs = ({ data }) => (
-  <section className="wfs-texture-wire" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
+  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', padding: '120px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
@@ -317,8 +317,7 @@ const GateSpecs = ({ data }) => (
           </div>
         </div>
         <div style={{ position: 'relative' }}>
-          <div aria-hidden style={{ position: 'absolute', inset: '14px -14px -14px 14px', background: 'var(--laser-blue)' }}/>
-          <div style={{ position: 'relative', background: 'var(--white)', borderTop: '4px solid var(--tangerine)' }}>
+          <div className="wfs-card" style={{ position: 'relative', background: 'var(--white)', overflow: 'hidden' }}>
           {data.specs.map(([k, v], i) => (
             <div key={k} style={{
               display: 'grid', gridTemplateColumns: '220px 1fr', borderBottom: i === data.specs.length - 1 ? 'none' : '1px solid rgba(38, 49, 102,0.08)', }}>

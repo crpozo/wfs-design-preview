@@ -380,7 +380,7 @@ const PoolCodeProfiles = () => {
 const PoolCodeChecklist = () => {
   const t = useT();
   return (
-  <section className="wfs-texture-wire" style={{ backgroundColor: 'var(--ink)', color: 'var(--parchment)', padding: '120px 0' }}>
+  <section className="wfs-brand-texture" style={{ backgroundColor: 'var(--ink)', color: 'var(--parchment)', padding: '120px 0' }}>
     <div className="container">
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: 56, alignItems: 'start' }}>
         <div>
@@ -469,7 +469,7 @@ const FaqTopicGroup = ({ topic, index }) => {
       <div style={{
         display: 'flex', alignItems: 'baseline', gap: 16, paddingBottom: 14, marginBottom: 6, borderBottom: '2px solid var(--ink)', }}>
         <span className="display" aria-hidden style={{
-          fontSize: 35.5, lineHeight: 1, fontWeight: 800, color: 'transparent', WebkitTextStroke: '1.3px rgba(38,49,102,0.32)', }}>0{index + 1}</span>
+          fontSize: 35.5, lineHeight: 1, fontWeight: 800, color: 'var(--tangerine)', }}>0{index + 1}</span>
         <h2 className="display" style={{ margin: 0, fontSize: 'clamp(20px, 1.8vw, 26px)', lineHeight: 1.05, textTransform: 'uppercase' }}>
           {t(topic.title)}
         </h2>

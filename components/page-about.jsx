@@ -124,7 +124,7 @@ const AboutValues = () => {
           style={{
           display: 'grid', gridTemplateColumns: '104px 1fr 1.2fr', gap: 28, alignItems: 'center', padding: '34px 0', borderBottom: '1px solid rgba(38, 49, 102,0.1)', }}>
           <span className="display wfs-usecase-num" aria-hidden style={{
-            fontSize: 61.5, lineHeight: 1, fontWeight: 800, color: 'transparent', WebkitTextStroke: hovered === i ? '1.5px var(--tangerine)' : '1.5px rgba(38,49,102,0.32)', transition: 'stroke 0.22s ease', }}>0{i + 1}</span>
+            fontSize: 61.5, lineHeight: 1, fontWeight: 800, color: hovered === i ? 'var(--tangerine)' : 'var(--ink)', transition: 'color 0.22s ease', }}>0{i + 1}</span>
           <h3 className="display" style={{
             margin: 0, fontSize: 'clamp(18px, 1.6vw, 24px)', lineHeight: 1.1, textTransform: 'uppercase', letterSpacing: '0.01em', }}>{t(label)}</h3>
           <p style={{ margin: 0, fontSize: 16, lineHeight: 1.6, color: 'var(--charcoal)' }}>{t(body)}</p>
