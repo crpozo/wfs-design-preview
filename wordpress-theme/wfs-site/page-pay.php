@@ -20,7 +20,7 @@
    instante en el telefono de un cliente que esta de pie frente al vendedor.
    Los colores son los tokens de la marca, copiados aqui por valor. */
 :root {
-  --ink: #263167; --tangerine: #ff7133; --laser: #2e59c1;
+  --ink: #263167; --tangerine: #2e59c1; --laser: #2e59c1;
   --charcoal: #565656; --linea: rgba(0,16,17,.14);
   --display: 'Alfa Slab One', 'Rockwell', 'Georgia', serif;
   --sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -75,7 +75,7 @@ h1 {
   background: var(--ink); color: #fff; border: 0; cursor: pointer;
   font-family: var(--sans); font-size: 18px; font-weight: 700; text-align: left;
   text-decoration: none; transition: background .15s ease;
-  -webkit-tap-highlight-color: rgba(255,113,51,.25);
+  -webkit-tap-highlight-color: rgba(46, 89, 193,.25);
 }
 .opcion__btn:active { background: var(--laser); }
 /* El logo del servicio, a la izquierda: se reconoce antes de leer. */

@@ -241,14 +241,14 @@ const FENCE_RARITY = {
   aluminum:  { c1: '#2e59c1', c2: '#263166' }, // glaucous → indigo
   chainlink: { c1: '#a8c5ff', c2: '#2e59c1' }, // blue-ice → laser-blue
   metal:     { c1: 'rgba(255, 255, 255, 0.6)', c2: 'rgba(0, 0, 0, 0.68)' }, // silver → charcoal
-  ecfence:   { c1: '#e96a2c', c2: '#263166' }, // tangerine accent → ink
+  ecfence:   { c1: 'var(--tangerine)', c2: '#263166' }, // tangerine accent → ink
 };
 const GATE_RARITY = {
   'single-swing': { c1: '#a8c5ff', c2: '#2e59c1' }, // steel blue
   'double-swing': { c1: '#2e59c1', c2: '#263166' }, // teal
   'sliding':      { c1: '#a8c5ff', c2: 'rgba(0, 0, 0, 0.68)' }, // brass
   'cantilever':   { c1: 'rgba(255, 255, 255, 0.6)', c2: 'rgba(0, 0, 0, 0.68)' }, // graphite
-  'rolling':      { c1: '#a8c5ff', c2: '#e96a2c' }, // industrial orange
+  'rolling':      { c1: '#a8c5ff', c2: 'var(--tangerine)' }, // industrial orange
 };
 
 /* Single selectable card in the rail, game-locker style.

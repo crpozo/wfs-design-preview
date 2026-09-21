@@ -33,7 +33,7 @@
   --silver: rgba(255, 255, 255, 0.6);
   --charcoal: rgba(0, 0, 0, 0.68);
   /* Tertiary */
-  --tangerine: #e96a2c;
+  --tangerine: #2e59c1;
   /* Celeste: acentos de titulos, rayas del carrusel, toggle del FAQ y mapa.
      El naranja se queda en botones y detalles pequenos. */
   --sky: #a8c5ff;
@@ -162,7 +162,7 @@ h3.display, h4.display, .display h3, .display h4 { font-family: var(--sans); fon
 }
 .btn:hover { transform: translateY(-1px); }
 .btn-primary { background: var(--tangerine); color: var(--ink); }
-.btn-primary:hover { background: #e96a2c; }
+.btn-primary:hover { background: var(--tangerine); }
 .btn-dark { background: var(--ink); color: var(--parchment); }
 .btn-dark:hover { background: var(--indigo-blue); }
 .btn-light { background: var(--parchment); color: var(--ink); }
@@ -922,7 +922,7 @@ p.mono[style*="font-size: 15"] {
 /* Quote-form fields: visible focus ring (inline styles can't express :focus) */
 input:focus, select:focus, textarea:focus {
   border-color: var(--tangerine) !important;
-  box-shadow: 0 0 0 3px rgba(233, 106, 44, 0.18) !important;
+  box-shadow: 0 0 0 3px rgba(46, 89, 193, 0.18) !important;
 }
 
 /* Hero → next-section dissolve. The colour matches whatever section follows
@@ -1719,3 +1719,20 @@ select, input, textarea { max-width: 100%; min-width: 0; }
 }
 .wfs-footer-grid a { overflow-wrap: anywhere; }
 .wfs-footer-bar { padding-right: 76px; }
+
+/* ─────────────────────────────────────────────────────────────
+   Sin naranja (pedido del cliente, 2026-09-21): el token de acento
+   --tangerine ahora es Western Blue. Sobre fondos navy ese azul no se lee,
+   asi que dentro de cualquier contenedor oscuro el mismo token vale Sky Steel.
+   Los botones rellenos con el acento llevan texto navy cuando son celestes. */
+footer, .wfs-utility-bar, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .wfs-texture-rail, .wfs-texture-wire,
+.wfs-areas-cta, .wfs-qopts, .wfs-quote-pill,
+[style*="background: var(--ink)"], [style*="background-color: var(--ink)"], [style*="background: rgb(38, 49, 102)"] {
+  --tangerine: #a8c5ff;
+}
+:is(footer, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .wfs-texture-rail, .wfs-texture-wire, .wfs-qopts,
+    [style*="background: var(--ink)"], [style*="background-color: var(--ink)"], [style*="background: rgb(38, 49, 102)"])
+  :is([style*="background: var(--tangerine)"], .btn-primary) { color: var(--ink) !important; }
+/* Dentro de una tarjeta blanca metida en un bloque oscuro vuelve a ser azul. */
+[style*="background: var(--white)"], [style*="background: rgb(255, 255, 255)"], .wfs-areas-cta__card { --tangerine: #2e59c1; }
+.btn-primary { color: #ffffff; }

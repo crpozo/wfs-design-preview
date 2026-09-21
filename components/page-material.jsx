@@ -66,7 +66,7 @@ const MaterialQuickFacts = ({ data }) => (
    rails/boards + light verticals on a lavender panel; tangerine is reserved
    for the aluminum "custom" accent rail. Adapts by material so vinyl, chain
    link, metal and EC Fence get a fitting illustration too. */
-const DIAG = { bg: 'rgba(168, 197, 255, 0.25)', navy: '#263166', light: '#a8c5ff', accent: '#e96a2c' };
+const DIAG = { bg: 'rgba(168, 197, 255, 0.25)', navy: '#263166', light: '#a8c5ff', accent: 'var(--tangerine)' };
 const ProfileDiagram = ({ slug, name = '', index = 0 }) => {
   const { bg, navy, light, accent } = DIAG;
   const W = 220, H = 132, L = 18, R = 202;

@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.43.3' );
+define( 'WFS_VERSION', '4.44.0' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -459,11 +459,11 @@ function wfs_tawk_hidden_until_asked() {
   box-shadow: 0 10px 26px -6px rgba(38, 49, 102, 0.55);
   transition: transform 0.18s ease, background 0.18s ease;
 }
-.wfs-chat-bubble:hover { background: #e96a2c; transform: translateY(-2px); }
+.wfs-chat-bubble:hover { background: #2e59c1; transform: translateY(-2px); }
 /* Con el chat abierto la burbuja hace de boton de cerrar. */
 .wfs-chat-bubble.is-open { background: #1c2550; }
-.wfs-chat-bubble.is-open:hover { background: #e96a2c; }
-.wfs-chat-bubble:focus-visible { outline: 3px solid #e96a2c; outline-offset: 3px; }
+.wfs-chat-bubble.is-open:hover { background: #2e59c1; }
+.wfs-chat-bubble:focus-visible { outline: 3px solid #2e59c1; outline-offset: 3px; }
 .wfs-chat-bubble__badge {
   display: none;
   position: absolute;
@@ -473,7 +473,7 @@ function wfs_tawk_hidden_until_asked() {
   height: 20px;
   padding: 0 5px;
   border-radius: 999px;
-  background: #e96a2c;
+  background: #2e59c1;
   color: #fff;
   font: 700 12px/20px -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   align-items: center;
