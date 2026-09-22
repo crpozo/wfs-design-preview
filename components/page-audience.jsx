@@ -411,7 +411,7 @@ const HomeownerFAQ = () => {
                         fontSize: 18.5, fontWeight: 500, color: 'var(--ink)', letterSpacing: '-0.005em', }}>{t(q)}</span>
                     </span>
                     <span className="wfs-faq-toggle" style={{
-                      width: 28, height: 28, background: isOpen ? 'var(--tangerine)' : 'transparent', border: `1px solid ${isOpen ? 'var(--tangerine)' : 'rgba(38, 49, 102,0.2)'}`, color: 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s ease', }}>
+                      width: 28, height: 28, background: isOpen ? 'var(--tangerine)' : 'transparent', border: `1px solid ${isOpen ? 'var(--tangerine)' : 'rgba(38, 49, 102,0.2)'}`, color: isOpen ? 'var(--white)' : 'var(--ink)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, transition: 'all 0.2s ease', }}>
                       <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                         <path d="M2 6h8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>
                         {!isOpen && <path d="M6 2v8" stroke="currentColor" strokeWidth="1.6" strokeLinecap="square"/>}

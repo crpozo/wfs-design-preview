@@ -321,15 +321,12 @@ const AreasMaterials = () => {
           link={[t('Full catalog', 'Catálogo completo'), 'products.html']}
         />
         <div className="wfs-areas-mats">
+          {/* Misma tarjeta que los herrajes de products.html: kicker, titulo, nota. */}
           {AREAS_MATERIALS.map((m) => (
             <a key={m.href + m.name.EN} href={m.href} className="wfs-areas-mat">
+              <span className="wfs-areas-mat__kicker mono">{t('Materials', 'Materiales')}</span>
               <span className="wfs-areas-mat__name">{t(m.name)}</span>
               <span className="wfs-areas-mat__note">{t(m.note)}</span>
-              <span className="wfs-areas-mat__go" aria-hidden="true">
-                <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
-                  <path d="M5 11L11 5M11 5H6M11 5V10" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
             </a>
           ))}
         </div>
