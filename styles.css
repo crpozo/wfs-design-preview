@@ -1758,8 +1758,8 @@ footer, .wfs-utility-bar, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .w
 .wfs-areas-group.is-hot { background: linear-gradient(90deg, rgba(38, 49, 102, 0.07), transparent); }
 .wfs-chatbanner { background: var(--laser-blue); color: #ffffff; border-bottom: none; }
 .wfs-chatbanner:hover { background: var(--ink); }
-.wfs-chatbanner__txt { color: #ffffff; }
-.wfs-chatbanner__cta { background: #ffffff; color: var(--ink); }
+.wfs-chatbanner__txt { color: var(--blue-ice); }
+.wfs-chatbanner__cta { background: var(--blue-ice); color: var(--ink); }
 .wfs-chatbanner:hover .wfs-chatbanner__cta { background: #ffffff; }
 /* Menos espacio en blanco entre secciones en escritorio. */
 @media (min-width: 1025px) {
