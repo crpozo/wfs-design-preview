@@ -1756,11 +1756,11 @@ footer, .wfs-utility-bar, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .w
 .wfs-areas-map, .wfs-areas-mapcol { --sea: rgba(38, 49, 102, 0.06); }
 .wfs-areas-map { background: rgba(38, 49, 102, 0.06); box-shadow: 0 0 0 22px rgba(38, 49, 102, 0.06); }
 .wfs-areas-group.is-hot { background: linear-gradient(90deg, rgba(38, 49, 102, 0.07), transparent); }
-.wfs-chatbanner { background: var(--laser-blue); color: #ffffff; border-bottom: none; }
-.wfs-chatbanner:hover { background: var(--ink); }
-.wfs-chatbanner__txt { color: var(--blue-ice); }
-.wfs-chatbanner__cta { background: var(--blue-ice); color: var(--ink); }
-.wfs-chatbanner:hover .wfs-chatbanner__cta { background: #ffffff; }
+.wfs-chatbanner { background: var(--blue-ice); color: var(--ink); border-bottom: none; }
+.wfs-chatbanner:hover { background: var(--laser-blue); }
+.wfs-chatbanner__txt { color: var(--ink); }
+.wfs-chatbanner__cta { background: var(--ink); color: #ffffff; }
+.wfs-chatbanner:hover .wfs-chatbanner__txt { color: #ffffff; } .wfs-chatbanner:hover .wfs-chatbanner__cta { background: #ffffff; color: var(--ink); }
 /* Menos espacio en blanco entre secciones en escritorio. */
 @media (min-width: 1025px) {
   section[style*="padding: 120px 0"] { padding-top: 84px !important; padding-bottom: 84px !important; }
