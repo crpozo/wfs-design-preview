@@ -674,7 +674,7 @@ const GateSystems = () => (
    No chapter number so the 01 / 02 arena sequence stays intact. */
 const WHY_WFS = [
   {
-    title: { EN: 'Manufacturing-direct', ES: 'Directo de fábrica' }, desc:  { EN: 'Supplier-direct floor pricing, no middleman markup between the plant and your project.', ES: 'Precio directo de fábrica, sin intermediarios entre la planta y tu proyecto.' }, icon: 'assets/icons/factory-box.png', }, {
+    title: { EN: 'Manufacturing-direct', ES: 'Directo de fábrica' }, desc:  { EN: 'Supplier-direct floor pricing, no middleman markup between the plant and your project.', ES: 'Precio directo de fábrica, sin intermediarios entre la planta y tu proyecto.' }, icon: 'assets/icons/wfs-box.png', }, {
     title: { EN: 'No minimums', ES: 'Sin mínimos' }, desc:  { EN: 'Order a single panel or a full subdivision, the same supplier-direct floor either way.', ES: 'Pide un solo panel o una urbanización completa, el mismo precio directo en ambos casos.' }, icon: 'assets/icons/layers-box.png', }, {
     title: { EN: 'Free takeoff · 24h quotes', ES: 'Toma de medidas gratis · 24h' }, desc:  { EN: 'Send measurements and get itemized pricing back within 24 hours.', ES: 'Envía medidas y recibe precios detallados en menos de 24 horas.' }, icon: 'assets/icons/document-box.png', }, {
     title: { EN: 'In-house fabrication', ES: 'Fabricación propia' }, desc:  { EN: 'Gates and custom work built in our Fort Myers shop.', ES: 'Portones y trabajos a medida hechos en nuestro taller de Fort Myers.' }, icon: 'assets/icons/wrench-box.png', },
