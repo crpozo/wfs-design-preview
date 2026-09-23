@@ -464,7 +464,7 @@ const SlatArena = ({ id, chapter, label, items, topLink, ctaLabel }) => {
               <div className="wfs-slat__expanded" style={{
                 position: 'absolute', left: 'clamp(24px, 3vw, 44px)', right: 'clamp(20px, 2.5vw, 40px)', bottom: 'clamp(26px, 4.5vh, 44px)', opacity: exp ? 1 : 0, transform: exp ? 'translateY(0)' : 'translateY(12px)', transition: exp ? 'opacity 0.4s ease 0.18s, transform 0.4s ease 0.18s' : 'opacity 0.2s ease, transform 0.2s ease', pointerEvents: exp ? 'auto' : 'none', }}>
                 <h3 className="display" style={{
-                  margin: '0 0 12px', fontSize: 'clamp(26px, 2.9vw, 56px)', fontWeight: 800, lineHeight: 0.98, letterSpacing: '-0.01em', textTransform: 'capitalize', color: 'var(--white)', textShadow: '0 2px 20px rgba(38, 49, 102,0.6)', }}>{t(c.name)}</h3>
+                  margin: '0 0 12px', fontFamily: 'var(--display)', fontSize: 'clamp(26px, 2.9vw, 56px)', fontWeight: 800, lineHeight: 1, letterSpacing: '-0.01em', textTransform: 'capitalize', color: 'var(--white)', textShadow: '0 2px 20px rgba(38, 49, 102,0.6)', }}>{t(c.name)}</h3>
                 <p style={{
                   margin: '0 0 18px', maxWidth: 520, fontSize: 'clamp(13px, 1.05vw, 16px)', lineHeight: 1.5, color: 'var(--white)', textShadow: '0 1px 12px rgba(38, 49, 102,0.6)', }}>{t(c.desc)}</p>
                 <span className="mono" style={{
