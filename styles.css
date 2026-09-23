@@ -1606,7 +1606,7 @@ html.v3d-abierto, html.v3d-abierto body { overflow: hidden; }
 .wfs-areas-facts dt { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3vw, 42px); line-height: 1; color: var(--sky); }
 .wfs-areas-facts dd { margin: 10px 0 0; font-size: 14.5px; line-height: 1.45; color: var(--charcoal); }
 .wfs-areas-facts dd strong { display: block; font-weight: 700; color: var(--ink); margin-bottom: 2px; }
-.wfs-areas-mats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.wfs-areas-mats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
 .wfs-areas-mat { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 26px 64px 26px 26px; background: #ffffff; border: 1.5px solid #263166; color: var(--ink); text-decoration: none; transition: transform .18s ease, box-shadow .18s ease; }
 .wfs-areas-mat:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--tangerine); }
 .wfs-areas-mat__name { font-family: var(--display); font-size: 22px; font-weight: 700; line-height: 1.1; }
@@ -1740,7 +1740,7 @@ footer, .wfs-utility-bar, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .w
 }
 .wfs-areas-mat { padding: 24px 22px; gap: 0; }
 .wfs-areas-mat__kicker { font-size: 13.5px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--laser-blue); font-weight: 700; margin-bottom: 10px; }
-.wfs-areas-mat__name { font-size: 21.5px; margin-bottom: 10px; }
+.wfs-areas-mat__name { font-family: var(--sans); font-weight: 700; letter-spacing: -0.01em; font-size: 21.5px; line-height: 1.1; margin-bottom: 10px; }
 .wfs-areas-mat__note { font-size: 15px; line-height: 1.55; }
 .wfs-areas-mat:hover { transform: translateY(-3px); box-shadow: 0 24px 48px -24px rgba(38, 49, 102, 0.45) !important; }
 /* Pasos sobre navy (How pickup works, opciones de cotizacion): con vertices. */
