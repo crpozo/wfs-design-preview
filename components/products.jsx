@@ -631,7 +631,7 @@ const SystemTabs = ({ id, chapter, label, items, topLink, ctaLabel }) => {
           position: 'relative', padding: 'clamp(28px, 5vh, 52px) var(--pad)', maxWidth: 660, }}>
           <div className="mono" style={{ fontSize: 15.5, fontWeight: 700, color: 'var(--tangerine)', marginBottom: 14 }}>0{active + 1}</div>
           <h3 className="display" style={{
-            margin: '0 0 16px', fontSize: 'clamp(34px, 4.4vw, 68px)', fontWeight: 800, lineHeight: 0.96, letterSpacing: '-0.015em', textTransform: 'capitalize', color: 'var(--white)', textShadow: '0 2px 16px rgba(38, 49, 102,0.7), 0 1px 3px rgba(38, 49, 102,0.6)', }}>{t(cur.name)}</h3>
+            margin: '0 0 16px', fontFamily: 'var(--display)', fontSize: 'clamp(34px, 4.4vw, 68px)', fontWeight: 800, lineHeight: 1, letterSpacing: '-0.01em', textTransform: 'capitalize', color: 'var(--white)', textShadow: '0 2px 16px rgba(38, 49, 102,0.7), 0 1px 3px rgba(38, 49, 102,0.6)', }}>{t(cur.name)}</h3>
           <p style={{
             margin: '0 0 22px', maxWidth: 540, fontSize: 'clamp(14px, 1.1vw, 17px)', lineHeight: 1.5, color: 'rgba(255,255,255,0.92)', textShadow: '0 1px 10px rgba(38, 49, 102,0.7), 0 1px 2px rgba(38, 49, 102,0.55)', }}>{t(cur.desc)}</p>
           <span className="mono" style={{
