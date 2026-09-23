@@ -1721,7 +1721,8 @@ select, input, textarea { max-width: 100%; min-width: 0; }
    Los botones rellenos con el acento llevan texto navy cuando son celestes. */
 footer, .wfs-utility-bar, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .wfs-texture-rail, .wfs-texture-wire,
 .wfs-areas-cta, .wfs-qopts, .wfs-quote-pill,
-[style*="background: var(--ink)"], [style*="background-color: var(--ink)"], [style*="background: rgb(38, 49, 102)"] {
+[style*="background: var(--ink)"], [style*="background-color: var(--ink)"], [style*="background: rgb(38, 49, 102)"], [style*="background-color: rgb(38, 49, 102)"],
+[style*="background: var(--indigo-blue)"], [style*="background-color: var(--indigo-blue)"], [style*="background: rgb(26, 37, 72)"] {
   --tangerine: #a8c5ff;
   --sky: #a8c5ff;
 }
@@ -1766,3 +1767,9 @@ footer, .wfs-utility-bar, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .w
   section[style*="padding: 120px 0"] { padding-top: 84px !important; padding-bottom: 84px !important; }
   section[style*="padding: 112px 0"] { padding-top: 84px !important; padding-bottom: 84px !important; }
 }
+
+/* Columnas pegajosas (FAQ, about, garantia): la cabecera fija mide 120px, asi que
+   lo pegado arranca debajo de ella y no queda tapado al hacer scroll. */
+.wfs-faq-sidebar,
+[style*="position: sticky"][style*="top: 100px"],
+[style*="position: sticky"][style*="top: 120px"] { top: calc(var(--wfs-cabecera, 120px) + 24px) !important; }

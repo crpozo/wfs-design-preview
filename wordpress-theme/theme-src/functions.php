@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.45.8' );
+define( 'WFS_VERSION', '4.45.9' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -697,3 +697,19 @@ function wfs_lock_phone_numbers() {
 /* En <head> con prioridad 0: tiene que correr ANTES que Google Tag Manager,
    asi el numero real nunca llega a sustituirse y no hay parpadeo. */
 add_action( 'wp_head', 'wfs_lock_phone_numbers', 0 );
+
+/* Al instalar una version nueva del tema, purgar la cache de Kinsta (pagina, edge
+   y CDN) una sola vez. Sin esto, la version anterior sigue sirviendose hasta una
+   hora desde el borde de Cloudflare. Todo protegido con existencia de metodos:
+   si el MU plugin de Kinsta cambia o no esta, no pasa nada. */
+function wfs_purge_kinsta_on_update() {
+	if ( get_option( 'wfs_purged_version' ) === WFS_VERSION ) { return; }
+	update_option( 'wfs_purged_version', WFS_VERSION );
+	global $kinsta_cache;
+	if ( isset( $kinsta_cache->kinsta_cache_purge ) && method_exists( $kinsta_cache->kinsta_cache_purge, 'purge_complete_caches' ) ) {
+		$kinsta_cache->kinsta_cache_purge->purge_complete_caches();
+		return;
+	}
+	wp_remote_get( 'https://localhost/kinsta-clear-cache-all', array( 'sslverify' => false, 'timeout' => 5 ) );
+}
+add_action( 'admin_init', 'wfs_purge_kinsta_on_update' );
