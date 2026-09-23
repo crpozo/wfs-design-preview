@@ -8,7 +8,7 @@
 .separator1 {stroke:rgba(219,233,238,0.25); stroke-width:1}
 .dccircle {display:none}
 /* Highlight Florida — service area */
-.fl {fill:#a8c5ff}
+.fl {fill:#2e59c1; stroke:#a8c5ff; stroke-width:1.1; stroke-linejoin:round}
 </style>
 </defs>
 

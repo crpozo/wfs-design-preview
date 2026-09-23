@@ -649,7 +649,7 @@ const ServiceAreas = () => {
           <div className="wfs-map" style={{
             position: 'relative', background: 'var(--ink)', border: '1px solid var(--ink)', overflow: 'hidden', aspectRatio: '192 / 152', }}>
             {/* Map, viewBox cropped to Florida (624 432 192 152) */}
-            <img loading="lazy" decoding="async" src="assets/us-map.svg?v=4" alt={t('Florida map showing WFS service area', 'Mapa de Florida que muestra la zona de servicio de WFS')}
+            <img loading="lazy" decoding="async" src="assets/us-map.svg?v=5" alt={t('Florida map showing WFS service area', 'Mapa de Florida que muestra la zona de servicio de WFS')}
               style={{
                 position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', }}/>
 
