@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.45.11' );
+define( 'WFS_VERSION', '4.45.12' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
