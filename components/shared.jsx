@@ -3,7 +3,7 @@
 const Logo = ({ light = false }) => (
   <a href="Homepage.html" style={{ display: 'inline-flex', alignItems: 'center', height: 36 }}>
     <img
-      src="assets/wfs-logo.svg?v=2"
+      src="assets/wfs-logo.svg?v=3"
       alt="Western Fence Supply"
       style={{
         height: 36, width: 'auto', filter: light ? 'brightness(0) invert(1)' : 'none', }}

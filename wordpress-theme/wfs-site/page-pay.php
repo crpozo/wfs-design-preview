@@ -123,7 +123,7 @@ h1 {
 </head>
 <body>
 <main class="envoltura">
-  <img class="logo" src="https://crpozo.github.io/wfs-design-preview/assets/wfs-logo.svg" alt="Western Fence Supply">
+  <img class="logo" src="https://crpozo.github.io/wfs-design-preview/assets/wfs-logo.svg?v=3" alt="Western Fence Supply">
 
   <div class="sede" id="sede">
     <span class="sede__eti" id="sede-eti">Paying at</span>

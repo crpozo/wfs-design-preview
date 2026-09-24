@@ -21,7 +21,7 @@ const TrainingHeader = () => {
       <div className="container" style={{
         display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingTop: 14, paddingBottom: 14, gap: 20, }}>
         <a href="Homepage.html" style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <img src="assets/wfs-logo.svg?v=2" alt="Western Fence Supply" style={{ height: 36, width: 'auto', display: 'block' }}/>
+          <img src="assets/wfs-logo.svg?v=3" alt="Western Fence Supply" style={{ height: 36, width: 'auto', display: 'block' }}/>
         </a>
         <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
           <span className="mono wfs-hide-mobile" style={{

@@ -120,7 +120,7 @@ const SiteHeader = ({ active }) => {
           {/* Logo */}
           <a href="Homepage.html" style={{
             display: 'inline-flex', alignItems: 'center', padding: '6px 4px', }}>
-            <img src="assets/wfs-logo.svg?v=2" alt="Western Fence Supply" style={{ height: 40, width: 'auto', display: 'block' }}/>
+            <img src="assets/wfs-logo.svg?v=3" alt="Western Fence Supply" style={{ height: 40, width: 'auto', display: 'block' }}/>
           </a>
 
           {/* Nav */}
@@ -217,7 +217,7 @@ const SiteHeader = ({ active }) => {
           position: 'fixed', inset: 0, background: 'var(--white)', zIndex: 100, display: 'none', flexDirection: 'column', transform: mobileOpen ? 'translateY(0)' : 'translateY(-100%)', transition: 'transform 0.3s ease', overflowY: 'auto', }}>
           <div style={{
             display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '14px 20px', borderBottom: '1px solid rgba(38, 49, 102,0.12)', }}>
-            <img src="assets/wfs-logo.svg?v=2" alt="Western Fence Supply" style={{ height: 32, width: 'auto' }}/>
+            <img src="assets/wfs-logo.svg?v=3" alt="Western Fence Supply" style={{ height: 32, width: 'auto' }}/>
             <button onClick={() => setMobileOpen(false)} aria-label={t('Close menu', 'Cerrar menú')} style={{
               flexShrink: 0, width: 44, height: 44, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 0, background: '#263166', border: 'none', cursor: 'pointer', padding: 0, }}>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
