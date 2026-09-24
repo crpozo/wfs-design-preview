@@ -153,19 +153,12 @@ h1 {
      westernfencesupply.com/pay?loc=pc   -> Port Charlotte
    y el cliente siempre puede cambiar con el selector de arriba.
 
-   Port Charlotte: Zelle, cuenta bancaria y Cash App ($WesternFenceSupplyPC)
-   ya son los de Port Charlotte (recibidos el 2026-09-24). No queda nada
-   pendiente.
+   Cuenta bancaria (ACH y wire): la misma en las dos sedes, la de las wire
+   instructions del cliente (2026-09-24). Zelle y Cash App si cambian por sede.
    ══════════════════════════════════════════════════════════════════════════ */
-var CUENTA_FM = {
-  titular:  'WESTERN FENCE SUPPLY LLC',
-  banco:    'Bank of America, Business Checking',
-  direccion:'2640 Evans Ave, Fort Myers, FL 33901',
-  cuenta:   '898131229920',
-  rutaWire: '026009593',
-  rutaACH:  '063100277'
-};
-
+/* Una sola cuenta bancaria para las dos sedes: las wire instructions que
+   entrego el cliente (2026-09-24) son las de Western Fence Supply Port
+   Charlotte, LLC, y son las que se usan tambien en Fort Myers. */
 var CUENTA_PC = {
   titular:  'WESTERN FENCE SUPPLY PORT CHARLOTTE, LLC',
   banco:    'Bank of America, Business Checking',
@@ -181,7 +174,7 @@ var SEDES = {
     tel:     '(239) 465-2482', telHref: 'tel:2394652482',
     zelle:   'sales@westernfencesupply.com',
     cashapp: 'https://cash.app/$WesternFenceSupply?qr=1',
-    cuenta:  CUENTA_FM
+    cuenta:  CUENTA_PC
   },
   pc: {
     nombre:  'Port Charlotte',
