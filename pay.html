@@ -96,6 +96,7 @@ h1 {
   text-transform: uppercase; color: var(--charcoal); margin-bottom: 4px;
 }
 .dato__fila { display: flex; align-items: center; gap: 10px; }
+.dato__val a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .dato__val {
   flex: 1; font-size: 17px; font-weight: 700; color: var(--ink);
   word-break: break-all; font-variant-numeric: tabular-nums;
@@ -147,8 +148,9 @@ h1 {
      westernfencesupply.com/pay?loc=pc   -> Port Charlotte
    y el cliente siempre puede cambiar con el selector de arriba.
 
-   Cuenta bancaria (ACH y wire): la misma en las dos sedes, la de las wire
-   instructions del cliente (2026-09-24). Zelle y Cash App si cambian por sede.
+   Datos de pago: los mismos en las dos sedes (Zelle salespc@, Cash App
+   $WesternFenceSupplyPC y la cuenta de las wire instructions del 2026-09-24).
+   Solo el telefono cambia por sede.
    ══════════════════════════════════════════════════════════════════════════ */
 /* Una sola cuenta bancaria para las dos sedes: las wire instructions que
    entrego el cliente (2026-09-24) son las de Western Fence Supply Port
@@ -166,14 +168,16 @@ var SEDES = {
   fm: {
     nombre:  'Fort Myers',
     tel:     '(239) 465-2482', telHref: 'tel:2394652482',
-    zelle:   'sales@westernfencesupply.com',
-    cashapp: 'https://cash.app/$WesternFenceSupply?qr=1',
+    zelle:   'salespc@westernfencesupply.com',
+    cashtag: '$WesternFenceSupplyPC',
+    cashapp: 'https://cash.app/$WesternFenceSupplyPC?qr=1',
     cuenta:  CUENTA_PC
   },
   pc: {
     nombre:  'Port Charlotte',
     tel:     '(941) 467-5821', telHref: 'tel:9414675821',
     zelle:   'salespc@westernfencesupply.com',
+    cashtag: '$WesternFenceSupplyPC',
     cashapp: 'https://cash.app/$WesternFenceSupplyPC?qr=1',
     cuenta:  CUENTA_PC
   }
@@ -192,7 +196,7 @@ function opciones(sede) {
         nota: 'Open your banking app, choose <strong>Zelle</strong> and send to:',
         datos: [['Zelle recipient', sede.zelle]]
     }},
-    { id: 'cashapp', nombre: 'Cash App', sub: 'Opens Cash App', url: sede.cashapp },
+    { id: 'cashapp', nombre: 'Cash App', sub: sede.cashtag, url: sede.cashapp },
     { id: 'ach', nombre: 'Bank ACH', sub: 'Account & routing numbers', panel: {
         nota: 'ACH transfer to ' + banco,
         datos: [['Account number', C.cuenta],
@@ -236,6 +240,11 @@ var LOGOS = {
 };
 
 /* ── pintado ─────────────────────────────────────────────────────────────── */
+/* Un correo se pinta como enlace mailto: ademas de copiarlo, se puede tocar. */
+function valor(v) {
+  v = String(v);
+  return /^[^@\s]+@[^@\s]+\.[a-z]+$/i.test(v) ? '<a href="mailto:' + esc(v) + '">' + esc(v) + '</a>' : esc(v);
+}
 function esc(t) { return String(t).replace(/[&<>"]/g, function (c) {
   return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
 
@@ -259,7 +268,7 @@ function pintar() {
     }
     var datos = (o.panel.datos || []).map(function (d) {
       return '<div class="dato"><div class="dato__eti">' + esc(d[0]) + '</div>' +
-        '<div class="dato__fila"><span class="dato__val">' + esc(d[1]) + '</span>' +
+        '<div class="dato__fila"><span class="dato__val">' + valor(d[1]) + '</span>' +
         '<button class="copiar" type="button" data-copia="' + esc(d[1]) + '">Copy</button></div></div>';
     }).join('');
     return '<div class="opcion" id="op-' + esc(o.id) + '">' +
