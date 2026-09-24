@@ -154,13 +154,20 @@ h1 {
      westernfencesupply.com/pay?loc=pc   -> Port Charlotte
    y el cliente siempre puede cambiar con el selector de arriba.
 
-   Datos de pago: los mismos en las dos sedes (Zelle salespc@, Cash App
-   $WesternFenceSupplyPC y la cuenta de las wire instructions del 2026-09-24).
-   Solo el telefono cambia por sede.
+   Cada sede tiene sus propios datos: Fort Myers (sales@, $WesternFenceSupply,
+   cuenta 898131229920) y Port Charlotte (salespc@, $WesternFenceSupplyPC,
+   cuenta 898162811307).
    ══════════════════════════════════════════════════════════════════════════ */
-/* Una sola cuenta bancaria para las dos sedes: las wire instructions que
-   entrego el cliente (2026-09-24) son las de Western Fence Supply Port
-   Charlotte, LLC, y son las que se usan tambien en Fort Myers. */
+var CUENTA_FM = {
+  titular:  'WESTERN FENCE SUPPLY LLC',
+  banco:    'Bank of America, Business Checking',
+  direccion:'2640 Evans Ave, Fort Myers, FL 33901',
+  cuenta:   '898131229920',
+  rutaWire: '026009593',
+  rutaACH:  '063100277'
+};
+
+/* Port Charlotte: wire instructions entregadas por el cliente el 2026-09-24. */
 var CUENTA_PC = {
   titular:  'WESTERN FENCE SUPPLY PORT CHARLOTTE, LLC',
   banco:    'Bank of America, Business Checking',
@@ -174,10 +181,10 @@ var SEDES = {
   fm: {
     nombre:  'Fort Myers',
     tel:     '(239) 465-2482', telHref: 'tel:2394652482',
-    zelle:   'salespc@westernfencesupply.com',
-    cashtag: '$WesternFenceSupplyPC',
-    cashapp: 'https://cash.app/$WesternFenceSupplyPC?qr=1',
-    cuenta:  CUENTA_PC
+    zelle:   'sales@westernfencesupply.com',
+    cashtag: '$WesternFenceSupply',
+    cashapp: 'https://cash.app/$WesternFenceSupply?qr=1',
+    cuenta:  CUENTA_FM
   },
   pc: {
     nombre:  'Port Charlotte',
