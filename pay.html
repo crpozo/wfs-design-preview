@@ -147,15 +147,24 @@ h1 {
      westernfencesupply.com/pay?loc=pc   -> Port Charlotte
    y el cliente siempre puede cambiar con el selector de arriba.
 
-   PENDIENTE (Port Charlotte): los campos marcados con "PENDIENTE" llevan por
-   ahora los datos de Fort Myers porque no se han recibido los de Port
-   Charlotte. Sustituirlos cuando lleguen.
+   PENDIENTE (Port Charlotte): solo falta el enlace de Cash App; mientras
+   tanto lleva el de Fort Myers. Zelle y cuenta bancaria ya son las de
+   Port Charlotte (wire instructions recibidas el 2026-09-24).
    ══════════════════════════════════════════════════════════════════════════ */
 var CUENTA_FM = {
   titular:  'WESTERN FENCE SUPPLY LLC',
   banco:    'Bank of America, Business Checking',
   direccion:'2640 Evans Ave, Fort Myers, FL 33901',
   cuenta:   '898131229920',
+  rutaWire: '026009593',
+  rutaACH:  '063100277'
+};
+
+var CUENTA_PC = {
+  titular:  'WESTERN FENCE SUPPLY PORT CHARLOTTE, LLC',
+  banco:    'Bank of America, Business Checking',
+  direccion:'1145 Enterprise Drive, Port Charlotte, FL 33953',
+  cuenta:   '898162811307',
   rutaWire: '026009593',
   rutaACH:  '063100277'
 };
@@ -171,9 +180,9 @@ var SEDES = {
   pc: {
     nombre:  'Port Charlotte',
     tel:     '(941) 467-5821', telHref: 'tel:9414675821',
-    zelle:   'sales@westernfencesupply.com',                 /* PENDIENTE */
+    zelle:   'salespc@westernfencesupply.com',
     cashapp: 'https://cash.app/$WesternFenceSupply?qr=1',    /* PENDIENTE */
-    cuenta:  CUENTA_FM                                       /* PENDIENTE */
+    cuenta:  CUENTA_PC
   }
 };
 
