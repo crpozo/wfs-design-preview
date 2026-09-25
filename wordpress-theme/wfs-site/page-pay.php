@@ -163,8 +163,9 @@ var CUENTA_FM = {
   banco:    'Bank of America, Business Checking',
   direccion:'2640 Evans Ave, Fort Myers, FL 33901',
   cuenta:   '898131229920',
-  rutaWire: null,            /* Fort Myers: el wire usa el mismo routing 063100277 */
-  rutaACH:  '063100277'
+  rutaWire: '026009593',     /* wire: solo este routing (corregido por el cliente 2026-09-25) */
+  rutaACH:  '063100277',     /* ACH */
+  soloWire: true             /* en Bank Wire no se lista el routing de ACH */
 };
 
 /* Port Charlotte: wire instructions entregadas por el cliente el 2026-09-24. */
@@ -218,8 +219,8 @@ function opciones(sede) {
     { id: 'wire', nombre: 'Bank Wire', sub: 'Wire instructions', panel: {
         nota: 'Wire to ' + banco,
         datos: [['Account number', C.cuenta]]
-                .concat(C.rutaWire ? [['Routing number (wires)', C.rutaWire]] : [])
-                .concat([[C.rutaWire ? 'Routing number (paper & electronic)' : 'Routing number', C.rutaACH]])
+                .concat(C.rutaWire ? [[C.soloWire ? 'Routing number' : 'Routing number (wires)', C.rutaWire]] : [])
+                .concat(C.soloWire ? [] : [[C.rutaWire ? 'Routing number (paper & electronic)' : 'Routing number', C.rutaACH]])
     }},
     { id: 'debit', nombre: 'Debit Card', sub: 'At the sales desk', panel: {
         nota: 'Hand your debit card to your sales rep and we process it right at the desk. <strong>No fee.</strong>',
