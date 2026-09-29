@@ -1781,3 +1781,14 @@ footer, .wfs-utility-bar, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .w
 /* Ninguna caja con vertices: las tarjetas <article> sobre navy y cualquier caja
    con borde inline que quede recta pasan a 18px, como el resto del sitio. */
 article[style*="background: var(--ink)"], article[style*="background: rgb(38, 49, 102)"] { border-radius: 18px; }
+
+/* Cajas sobre navy (checklist de portones, pasos de pickup, opciones de
+   cotizacion, checklist de contractors): todas iguales, redondeadas y con
+   fondo azul translucido. */
+.wfs-qopts__card, .wfs-sharp,
+[style*="border: 1px solid rgba(255, 255, 255, 0.14)"],
+[style*="border: 1px solid rgba(255, 255, 255, 0.16)"],
+[style*="border: 1.5px solid rgba(255, 255, 255, 0.25)"] {
+  border-radius: 16px !important; background: rgba(168, 197, 255, 0.1) !important; border-color: rgba(168, 197, 255, 0.28) !important;
+}
+[style*="border: 1px solid rgba(46, 89, 193, 0.4)"] { border-radius: 12px !important; }
