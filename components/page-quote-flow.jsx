@@ -51,7 +51,9 @@ const FlowMaterialCard = ({ opt, selected, onPick }) => {
   return (
     <button onClick={onPick} onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
       aria-pressed={selected} style={{
-        textAlign: 'left', width: '100%', background: '#fff', border: INK_BORDER, padding: 0, cursor: 'pointer', display: 'flex', flexDirection: 'column', transform: lifted ? 'translateY(-3px)' : 'none', boxShadow: lifted ? '6px 6px 0 var(--tangerine)' : 'none', transition: 'transform 0.18s ease, box-shadow 0.18s ease', }}>
+        /* Misma caja que el resto del sitio: redondeada, borde casi invisible y
+           sombra suave. La seleccion se marca con el borde en Western Blue. */
+        textAlign: 'left', width: '100%', background: '#fff', border: `1.5px solid ${selected ? 'var(--laser-blue)' : 'rgba(38, 49, 102, 0.08)'}`, borderRadius: 18, overflow: 'hidden', padding: 0, cursor: 'pointer', display: 'flex', flexDirection: 'column', transform: lifted ? 'translateY(-3px)' : 'none', boxShadow: lifted ? '0 24px 48px -24px rgba(38, 49, 102, 0.45)' : '0 18px 40px -22px rgba(38, 49, 102, 0.34)', transition: 'transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease', }}>
       <span style={{ display: 'block', position: 'relative', aspectRatio: '1.6 / 1', background: '#fff', overflow: 'hidden', boxShadow: 'inset 0 -1px 0 rgba(38, 49, 102,0.08)' }}>
         <img src={opt.img} alt={opt.t} decoding="async" style={{
           position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: 10, transform: lifted ? 'scale(1.04)' : 'none', transition: 'transform 0.6s ease', }}/>
@@ -210,7 +212,7 @@ const QuoteFlow = () => {
         {onDetail && (
           <div className="wfs-flow-detail" style={{ display: 'grid', gridTemplateColumns: '0.85fr 1.15fr', gap: 44, alignItems: 'start' }}>
             <div>
-              <div style={{ position: 'relative', aspectRatio: '1.333 / 1', border: INK_BORDER, background: '#fff', overflow: 'hidden' }}>
+              <div style={{ position: 'relative', aspectRatio: '1.333 / 1', border: '1px solid rgba(38, 49, 102, 0.08)', borderRadius: 18, boxShadow: '0 18px 40px -22px rgba(38, 49, 102, 0.34)', background: '#fff', overflow: 'hidden' }}>
                 <img key={heroPick.img} className="wfs-flow-in" src={heroPick.img} alt={heroPick.t} decoding="async" style={{
                   position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', padding: 14, }}/>
               </div>
@@ -259,7 +261,7 @@ const QuoteFlow = () => {
                 ← {t('Edit options', 'Editar opciones')}
               </button>
             </div>
-            <div style={{ background: 'var(--ink)', color: '#fff', padding: 'clamp(26px, 3vw, 40px)', boxShadow: '12px 12px 0 var(--tangerine)' }}>
+            <div style={{ background: 'var(--ink)', color: '#fff', padding: 'clamp(26px, 3vw, 40px)', borderRadius: 18, boxShadow: '0 24px 48px -24px rgba(38, 49, 102, 0.55)' }}>
               <span style={flowKicker}>{t('Your fence configuration', 'La configuración de tu cerca')}</span>
               <div className="display-extended" style={{ fontSize: 'clamp(22px, 2.4vw, 32px)', margin: '10px 0 18px', color: '#fff' }}>
                 {summaryTitle()}
