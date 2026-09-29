@@ -1774,3 +1774,6 @@ footer, .wfs-utility-bar, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .w
 .wfs-faq-sidebar,
 [style*="position: sticky"][style*="top: 100px"],
 [style*="position: sticky"][style*="top: 120px"] { top: calc(var(--wfs-cabecera, 120px) + 24px) !important; }
+
+/* CTA de Areas We Serve: botones en pastilla, como el resto de los CTA del sitio. */
+.wfs-areas-cta__btns .btn { border-radius: 999px; }
