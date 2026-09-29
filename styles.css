@@ -1745,7 +1745,7 @@ footer, .wfs-utility-bar, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .w
 .wfs-areas-mat__note { font-size: 15px; line-height: 1.55; }
 .wfs-areas-mat:hover { transform: translateY(-3px); box-shadow: 0 24px 48px -24px rgba(38, 49, 102, 0.45) !important; }
 /* Pasos sobre navy (How pickup works, opciones de cotizacion): con vertices. */
-.wfs-sharp { border-radius: 0 !important; box-shadow: none !important; }
+.wfs-sharp { border-radius: 18px !important; box-shadow: none !important; }
 .wfs-qopts__card { border-radius: 18px !important; }
 /* Relleno con el acento sobre fondo claro: letra blanca. */
 [style*="background: var(--tangerine)"] { color: #ffffff !important; }
