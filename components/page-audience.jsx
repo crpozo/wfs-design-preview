@@ -316,7 +316,7 @@ const HomeownerTestimonial = () => {
 
         {/* Right, quote card */}
         <article style={{
-          position: 'relative', border: '1.5px solid var(--ink)', background: 'var(--white)', padding: '44px 48px', boxShadow: '10px 10px 0 var(--tangerine)', }}>
+          position: 'relative', border: '1px solid rgba(38, 49, 102, 0.08)', borderRadius: 18, background: 'var(--white)', padding: '44px 48px', boxShadow: '0 18px 40px -22px rgba(38, 49, 102, 0.34)', }}>
           {/* Big open quote */}
           <span className="display" style={{
             position: 'absolute', top: -18, left: 28, background: 'var(--white)', padding: '0 10px', fontSize: 65.5, lineHeight: 1, color: 'var(--tangerine)', }}>“</span>
@@ -813,7 +813,7 @@ const ContractorTestimonial = () => {
 
         {/* Right, quote card on dark */}
         <article style={{
-          position: 'relative', background: 'var(--ink)', color: 'var(--white)', padding: '44px 48px', boxShadow: '10px 10px 0 var(--tangerine)', }}>
+          position: 'relative', background: 'var(--ink)', color: 'var(--white)', padding: '44px 48px', borderRadius: 18, boxShadow: '0 24px 48px -24px rgba(38, 49, 102, 0.55)', }}>
           <span className="display" style={{
             position: 'absolute', top: -22, left: 28, background: 'var(--ink)', padding: '0 10px', fontSize: 65.5, lineHeight: 1, color: 'var(--tangerine)', }}>“</span>
           <p className="mono" style={{
@@ -877,7 +877,7 @@ const ContractorClosingCTA = () => {
 
       {/* Right, application checklist */}
       <div style={{
-        border: '1.5px solid rgba(255,255,255,0.25)', background: 'rgba(255,255,255,0.04)', padding: '32px 32px 28px', }}>
+        border: '1.5px solid rgba(255,255,255,0.25)', borderRadius: 18, background: 'rgba(255,255,255,0.04)', padding: '32px 32px 28px', }}>
         <div className="mono" style={{
           fontSize: 13.5, fontWeight: 700, letterSpacing: '0.22em', color: 'var(--tangerine)', textTransform: 'uppercase', marginBottom: 18, display: 'flex', alignItems: 'center', gap: 10, }}>
           <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--tangerine)' }}/>

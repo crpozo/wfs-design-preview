@@ -311,7 +311,7 @@ const ClaimsForm = () => {
           {/* minWidth 0 en las dos columnas: sin eso, en movil ES la columna
               unica crecia a 382px y la seccion se salia 14px por la derecha. */}
           <article style={{
-            minWidth: 0, background: 'var(--white)', border: '1.5px solid var(--ink)', padding: '40px 44px', boxShadow: '8px 8px 0 var(--tangerine)', }}>
+            minWidth: 0, background: 'var(--white)', border: '1px solid rgba(38, 49, 102, 0.08)', borderRadius: 18, padding: '40px 44px', boxShadow: '0 18px 40px -22px rgba(38, 49, 102, 0.34)', }}>
             <div style={{
               display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBottom: 22, marginBottom: 28, borderBottom: '1px dashed rgba(38, 49, 102,0.18)', }}>
               <h3 className="display" style={{
@@ -684,7 +684,7 @@ const SpecsStamped = () => {
   <section style={{ background: '#ffffff', padding: '120px 0' }}>
     <div className="container">
       <div style={{
-        display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 48, alignItems: 'center', background: 'var(--ink)', color: 'var(--white)', padding: '56px 56px', boxShadow: '12px 12px 0 var(--tangerine)', }}>
+        display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 48, alignItems: 'center', background: 'var(--ink)', color: 'var(--white)', padding: '56px 56px', borderRadius: 18, boxShadow: '0 24px 48px -24px rgba(38, 49, 102, 0.55)', }}>
         <div>
           <h2 className="display specs-stamped-title" style={{
             margin: '0 0 18px', fontSize: 'clamp(26px, 3vw, 38px)', lineHeight: 1.05, letterSpacing: '-0.015em', color: 'var(--white)', }}>

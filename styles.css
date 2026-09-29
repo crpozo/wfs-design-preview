@@ -1777,3 +1777,7 @@ footer, .wfs-utility-bar, .wfs-hero, .wfs-brand-texture, .wfs-texture-picket, .w
 
 /* CTA de Areas We Serve: botones en pastilla, como el resto de los CTA del sitio. */
 .wfs-areas-cta__btns .btn { border-radius: 999px; }
+
+/* Ninguna caja con vertices: las tarjetas <article> sobre navy y cualquier caja
+   con borde inline que quede recta pasan a 18px, como el resto del sitio. */
+article[style*="background: var(--ink)"], article[style*="background: rgb(38, 49, 102)"] { border-radius: 18px; }
