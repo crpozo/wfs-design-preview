@@ -373,7 +373,7 @@ const SiteHeader = ({ active }) => {
                       <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>
                         0{navIdx + 1}, {def.kind === 'mega-fences' ? t('By material', 'Por material') : t('By gate type', 'Por tipo de portón')}
                       </span>
-                      <h3 className="display" style={{ fontSize: 37.5, lineHeight: 0.98, margin: '14px 0 16px', maxWidth: 240 }}>
+                      <h3 className="display" style={{ fontFamily: 'var(--display)', fontSize: 36, lineHeight: 1, margin: '14px 0 16px', maxWidth: 240 }}>
                         {def.kind === 'mega-fences'
                           ? t('Four systems,\none yard.', 'Cuatro sistemas,\nuna sucursal.')
                           : t('Welded\nin-house.', 'Soldados\nen planta.')}
@@ -415,7 +415,7 @@ const SiteHeader = ({ active }) => {
                       <span className="eyebrow" style={{ color: 'var(--laser-blue)' }}>
                         0{navIdx + 1}, {t(navItem.label)}
                       </span>
-                      <h3 className="display" style={{ fontSize: 37.5, margin: '14px 0 0', lineHeight: 0.98, maxWidth: 240 }}>
+                      <h3 className="display" style={{ fontFamily: 'var(--display)', fontSize: 36, margin: '14px 0 0', lineHeight: 1, maxWidth: 240 }}>
                         {openMenu === 'Get a Quote' && t('Three ways\nto start.','Tres maneras\nde empezar.')}
                         {openMenu === 'Company' && t('About\nthe yard.', 'Sobre\nla empresa.')}
                         {openMenu === 'Fence Education Hub' && t('Pick the\nright fence.', 'Elige la\ncerca correcta.')}
