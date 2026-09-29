@@ -815,7 +815,7 @@ const ContractorTestimonial = () => {
         <article style={{
           position: 'relative', background: 'var(--ink)', color: 'var(--white)', padding: '44px 48px', borderRadius: 18, boxShadow: '0 24px 48px -24px rgba(38, 49, 102, 0.55)', }}>
           <span className="display" style={{
-            position: 'absolute', top: -22, left: 28, background: 'var(--ink)', padding: '0 10px', fontSize: 65.5, lineHeight: 1, color: 'var(--tangerine)', }}>“</span>
+            position: 'absolute', borderRadius: 10, top: -22, left: 28, background: 'var(--ink)', padding: '0 10px', fontSize: 65.5, lineHeight: 1, color: 'var(--tangerine)', }}>“</span>
           <p className="mono" style={{
             margin: '0 0 28px', fontSize: 18.5, lineHeight: 1.55, color: 'var(--white)', fontWeight: 500, }}>
             {t(

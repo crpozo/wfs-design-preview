@@ -382,7 +382,7 @@ const ClaimsForm = () => {
 
               <div style={{ gridColumn: 'span 2', display: 'flex', gap: 16, alignItems: 'center', marginTop: 8, flexWrap: 'wrap' }}>
                 <button type="submit" disabled={sending} style={{
-                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center', opacity: sending ? 0.6 : 1, padding: '16px 36px', background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', border: 'none', cursor: 'pointer', boxShadow: '6px 6px 0 var(--tangerine)', transition: 'transform 0.18s ease, box-shadow 0.18s ease', }}
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center', opacity: sending ? 0.6 : 1, padding: '16px 36px', background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', border: 'none', cursor: 'pointer', borderRadius: 999, transition: 'transform 0.18s ease, box-shadow 0.18s ease', }}
                 onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '8px 8px 0 var(--tangerine)'; }}
                 onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '6px 6px 0 var(--tangerine)'; }}>
                   {sending ? t('Sending…', 'Enviando…') : t('Submit claim', 'Enviar reclamo')}
