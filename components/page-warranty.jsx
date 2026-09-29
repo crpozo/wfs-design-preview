@@ -383,8 +383,8 @@ const ClaimsForm = () => {
               <div style={{ gridColumn: 'span 2', display: 'flex', gap: 16, alignItems: 'center', marginTop: 8, flexWrap: 'wrap' }}>
                 <button type="submit" disabled={sending} style={{
                   display: 'inline-flex', alignItems: 'center', justifyContent: 'center', opacity: sending ? 0.6 : 1, padding: '16px 36px', background: 'var(--ink)', color: 'var(--white)', fontFamily: 'var(--sans)', fontSize: 14.5, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', border: 'none', cursor: 'pointer', borderRadius: 999, transition: 'transform 0.18s ease, box-shadow 0.18s ease', }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '8px 8px 0 var(--tangerine)'; }}
-                onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '6px 6px 0 var(--tangerine)'; }}>
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translate(-2px,-2px)'; e.currentTarget.style.boxShadow = '0 24px 48px -24px rgba(38, 49, 102, 0.45)'; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = '0 24px 48px -24px rgba(38, 49, 102, 0.45)'; }}>
                   {sending ? t('Sending…', 'Enviando…') : t('Submit claim', 'Enviar reclamo')}
                 </button>
                 <span className="mono" style={{
@@ -635,7 +635,7 @@ const SpecsLibrary = () => {
             <a key={d.file} href={'assets/specs/' + d.file} download target="_blank" rel="noopener"
               style={{
                 display: 'flex', alignItems: 'center', gap: 18, padding: '22px 24px', border: '1.5px solid var(--ink)', background: 'var(--white)', color: 'var(--ink)', position: 'relative', transition: 'transform 0.18s ease, box-shadow 0.18s ease', }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '6px 6px 0 var(--tangerine)'; }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-3px)'; e.currentTarget.style.boxShadow = '0 24px 48px -24px rgba(38, 49, 102, 0.45)'; }}
               onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = ''; }}>
               {/* PDF tile */}
               <span style={{

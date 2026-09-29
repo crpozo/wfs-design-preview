@@ -240,7 +240,7 @@ const HomeownerInstallerSplit = () => {
     return (
       <article
         {...rest}
-        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = dark ? '0 18px 36px rgba(0,0,0,0.35)' : '12px 12px 0 var(--tangerine)'; }}
+        onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = dark ? '0 18px 36px rgba(0,0,0,0.35)' : '0 24px 48px -24px rgba(38, 49, 102, 0.45)'; }}
         onMouseLeave={e => { e.currentTarget.style.transform = ''; e.currentTarget.style.boxShadow = dark ? '0 8px 18px rgba(0,0,0,0.2)' : '8px 8px 0 rgba(46, 89, 193,0.85)'; }}
         style={{
           background: dark ? 'var(--ink)' : 'var(--white)', color: dark ? 'var(--white)' : 'var(--ink)', border: dark ? 'none' : '1.5px solid var(--ink)', padding: '40px 44px 36px', display: 'flex', flexDirection: 'column', boxShadow: dark ? '0 8px 18px rgba(0,0,0,0.2)' : '8px 8px 0 rgba(46, 89, 193,0.85)', transition: 'transform 0.2s ease, box-shadow 0.2s ease', }}
