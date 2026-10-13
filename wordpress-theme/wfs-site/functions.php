@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.45.28' );
+define( 'WFS_VERSION', '4.45.29' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -570,14 +570,13 @@ add_action( 'wp_enqueue_scripts', 'wfs_strip_unused_plugin_assets', 100 );
  * es como funciona la insercion dinamica, no una falla.
  */
 function wfs_lock_phone_numbers() {
-	/* ENCENDIDO por defecto desde 4.35.7: el cliente vio el numero de rastreo
-	   de Marketing 360 ((239) 212-1473) en lugar del real al recargar y no lo
-	   quiere ("solo deberia mostrar el real y ya"). Consecuencia: el rastreo
-	   de llamadas de la agencia deja de funcionar en el sitio. Para volver a
-	   permitirlo, en wp-config.php:
-	     define( 'WFS_ALLOW_CALL_TRACKING', true );
-	   o define( 'WFS_LOCK_PHONE_NUMBERS', false ). */
-	$lock = ! ( defined( 'WFS_LOCK_PHONE_NUMBERS' ) && ! WFS_LOCK_PHONE_NUMBERS );
+	/* APAGADO por defecto desde 4.45.29: Marketing 360 pidio (2026-10-13) que
+	   el intercambio dinamico de numeros (CTC de Google Ads) vuelva a funcionar.
+	   Historial: en 4.35.7 el cliente pidio lo contrario al ver el numero de
+	   rastreo ((239) 212-1473) en vez del real. Si vuelve a pedirlo, el candado
+	   se enciende sin tocar el tema, en wp-config.php:
+	     define( 'WFS_LOCK_PHONE_NUMBERS', true ); */
+	$lock = defined( 'WFS_LOCK_PHONE_NUMBERS' ) && WFS_LOCK_PHONE_NUMBERS;
 	if ( defined( 'WFS_ALLOW_CALL_TRACKING' ) && WFS_ALLOW_CALL_TRACKING ) { $lock = false; }
 	if ( ! $lock ) { return; }
 	?>
