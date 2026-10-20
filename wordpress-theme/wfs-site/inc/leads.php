@@ -284,6 +284,17 @@ function wfs_mail( $to, $subject, $body, $headers = array(), $attachments = arra
 		return true;
 	} catch ( Throwable $e ) {
 		$GLOBALS['wfs_mail_error'] = 'SMTP: ' . $e->getMessage();
+		/* Respaldo (2026-10-20): cinco semanas de leads sin correo porque el
+		   SMTP rechazaba las credenciales. Si el SMTP falla, el aviso sale por
+		   el correo del host (wp_mail) antes que no salir. El error del SMTP
+		   queda registrado igual para que se arreglen las credenciales. */
+		$GLOBALS['wfs_smtp_active'] = false;
+		$ok = wp_mail( $to, $subject, $body, $headers, $attachments );
+		if ( $ok ) {
+			update_option( 'wfs_last_mail_error', gmdate( 'Y-m-d H:i' ) . ' UTC · ' . $GLOBALS['wfs_mail_error'] . ' (delivered through the host mailer as a fallback; renew the SMTP credentials)' );
+			$GLOBALS['wfs_mail_error'] = '';
+			return true;
+		}
 		return false;
 	}
 }
@@ -501,6 +512,7 @@ function wfs_handle_lead( WP_REST_Request $request ) {
 	foreach ( $to as $bcc ) { $headers[] = 'Bcc: ' . $bcc; }
 
 	list( $sent, $error, $dropped ) = wfs_send_lead_mail( $primary, $subject, $body, $headers, $attachments );
+	if ( $sent ) { update_option( 'wfs_last_mail_sent', gmdate( 'Y-m-d H:i' ) . ' UTC' ); }
 
 	/* Confirmacion al cliente: independiente del correo interno; si falla no
 	   afecta la respuesta (su solicitud ya esta guardada igual). */
@@ -580,12 +592,90 @@ add_action( 'manage_wfs_lead_posts_custom_column', function ( $col, $post_id ) {
 /** Aviso con el último error de entrega. */
 add_action( 'admin_notices', function () {
 	if ( ! current_user_can( 'manage_options' ) ) { return; }
-	$screen = get_current_screen();
-	if ( ! $screen || 'wfs_lead' !== $screen->post_type ) { return; }
 	$last = get_option( 'wfs_last_mail_error' );
-	if ( ! $last ) { return; }
-	echo '<div class="notice notice-error"><p><strong>Email sending is failing.</strong><br>';
+	$ok   = get_option( 'wfs_last_mail_sent' );
+	/* Solo si el ultimo fallo es mas reciente que el ultimo envio correcto.
+	   Se muestra en todo el panel: en Leads nadie entra hasta que alguien
+	   reclama, y asi se tardo cinco semanas en notar el fallo de 2026-09-14. */
+	if ( ! $last || ( $ok && strcmp( substr( $ok, 0, 16 ), substr( $last, 0, 16 ) ) > 0 ) ) { return; }
+	echo '<div class="notice notice-error"><p><strong>Form email notifications are failing.</strong><br>';
 	echo esc_html( $last );
-	echo '<br>Leads are still being saved here, but they are not arriving by email. ';
-	echo 'Fix: add the WFS_SMTP_* constants (Amazon SES credentials) to wp-config.php; the theme then sends form email through SES directly, bypassing the exhausted provider.</p></div>';
+	echo '<br>Leads are still saved under <a href="' . esc_url( admin_url( 'edit.php?post_type=wfs_lead' ) ) . '">Leads</a>, and from there you can select them and use the bulk action "Resend email notification". ';
+	echo 'To fix the root cause, renew the SMTP credentials (WFS_SMTP_USER / WFS_SMTP_PASS in wp-config.php).</p></div>';
+} );
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Reenvio desde el panel (2026-10-20). Cada lead guarda el correo completo
+   en post_content, asi que se puede volver a mandar tal cual a los
+   destinatarios actuales: accion en lote en Leads y enlace por fila.
+   ───────────────────────────────────────────────────────────────────────── */
+function wfs_resend_lead( $post_id ) {
+	$post = get_post( $post_id );
+	if ( ! $post || 'wfs_lead' !== $post->post_type ) { return false; }
+	$to      = wfs_lead_recipients();
+	$primary = array_shift( $to );
+	$headers = array( 'Content-Type: text/plain; charset=UTF-8' );
+	foreach ( $to as $bcc ) { $headers[] = 'Bcc: ' . $bcc; }
+	list( $sent, $error, $dropped ) = wfs_send_lead_mail( $primary, $post->post_title, $post->post_content, $headers, array() );
+	update_post_meta( $post_id, '_wfs_mail_sent', $sent ? 'yes' : 'no' );
+	if ( $sent ) {
+		delete_post_meta( $post_id, '_wfs_mail_error' );
+		update_post_meta( $post_id, '_wfs_mail_resent', gmdate( 'Y-m-d H:i' ) . ' UTC' );
+		update_option( 'wfs_last_mail_sent', gmdate( 'Y-m-d H:i' ) . ' UTC' );
+	} elseif ( $error ) {
+		update_post_meta( $post_id, '_wfs_mail_error', $error );
+		update_option( 'wfs_last_mail_error', gmdate( 'Y-m-d H:i' ) . ' UTC · ' . $error );
+	}
+	return $sent;
+}
+
+add_filter( 'bulk_actions-edit-wfs_lead', function ( $actions ) {
+	$actions['wfs_resend'] = 'Resend email notification';
+	return $actions;
+} );
+
+add_filter( 'handle_bulk_actions-edit-wfs_lead', function ( $redirect, $action, $ids ) {
+	if ( 'wfs_resend' !== $action || ! current_user_can( 'edit_posts' ) ) { return $redirect; }
+	$ok = 0;
+	foreach ( $ids as $id ) { if ( wfs_resend_lead( (int) $id ) ) { $ok++; } }
+	return add_query_arg( array( 'wfs_resent' => $ok, 'wfs_resend_total' => count( $ids ) ), remove_query_arg( array( 'wfs_resent', 'wfs_resend_total' ), $redirect ) );
+}, 10, 3 );
+
+add_filter( 'post_row_actions', function ( $actions, $post ) {
+	if ( 'wfs_lead' !== $post->post_type ) { return $actions; }
+	$url = wp_nonce_url( admin_url( 'admin-post.php?action=wfs_resend_lead&lead=' . $post->ID ), 'wfs_resend_' . $post->ID );
+	$actions['wfs_resend'] = '<a href="' . esc_url( $url ) . '">Resend email</a>';
+	return $actions;
+}, 10, 2 );
+
+add_action( 'admin_post_wfs_resend_lead', function () {
+	$id = isset( $_GET['lead'] ) ? (int) $_GET['lead'] : 0;
+	if ( ! $id || ! current_user_can( 'edit_posts' ) || ! wp_verify_nonce( isset( $_GET['_wpnonce'] ) ? $_GET['_wpnonce'] : '', 'wfs_resend_' . $id ) ) { wp_die( 'Not allowed.' ); }
+	$ok = wfs_resend_lead( $id ) ? 1 : 0;
+	wp_safe_redirect( add_query_arg( array( 'post_type' => 'wfs_lead', 'wfs_resent' => $ok, 'wfs_resend_total' => 1 ), admin_url( 'edit.php' ) ) );
+	exit;
+} );
+
+add_action( 'admin_notices', function () {
+	if ( ! isset( $_GET['wfs_resent'], $_GET['wfs_resend_total'] ) ) { return; }
+	$ok = (int) $_GET['wfs_resent']; $total = (int) $_GET['wfs_resend_total'];
+	$class = ( $ok === $total ) ? 'notice-success' : 'notice-warning';
+	echo '<div class="notice ' . $class . ' is-dismissible"><p>Resent ' . $ok . ' of ' . $total . ' lead notification(s)';
+	if ( $ok < $total ) { echo '. The ones that failed keep their error in the Email column.'; }
+	echo '</p></div>';
+} );
+
+/* Salud del correo, para vigilarla desde fuera sin entrar al panel:
+   GET /wp-json/wfs/v1/mail-health -> ultimo fallo y ultimo envio correcto. */
+add_action( 'rest_api_init', function () {
+	register_rest_route( 'wfs/v1', '/mail-health', array(
+		'methods'             => 'GET',
+		'callback'            => function () {
+			$err = (string) get_option( 'wfs_last_mail_error' );
+			$ok  = (string) get_option( 'wfs_last_mail_sent' );
+			$failing = $err && ( ! $ok || strcmp( substr( $ok, 0, 16 ), substr( $err, 0, 16 ) ) <= 0 );
+			return array( 'status' => $failing ? 'failing' : 'ok', 'last_error' => $err, 'last_sent' => $ok, 'smtp' => wfs_smtp_configured() );
+		},
+		'permission_callback' => '__return_true',
+	) );
 } );

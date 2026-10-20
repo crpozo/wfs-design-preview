@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'WFS_VERSION', '4.45.29' );
+define( 'WFS_VERSION', '4.45.30' );
 
 /** Base de las imagenes y videos. Se puede sobreescribir en wp-config.php. */
 if ( ! defined( 'WFS_ASSETS' ) ) {
@@ -570,7 +570,7 @@ add_action( 'wp_enqueue_scripts', 'wfs_strip_unused_plugin_assets', 100 );
  * es como funciona la insercion dinamica, no una falla.
  */
 function wfs_lock_phone_numbers() {
-	/* APAGADO por defecto desde 4.45.29: Marketing 360 pidio (2026-10-13) que
+	/* APAGADO por defecto desde 4.45.30: Marketing 360 pidio (2026-10-13) que
 	   el intercambio dinamico de numeros (CTC de Google Ads) vuelva a funcionar.
 	   Historial: en 4.35.7 el cliente pidio lo contrario al ver el numero de
 	   rastreo ((239) 212-1473) en vez del real. Si vuelve a pedirlo, el candado
